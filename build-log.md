@@ -2201,3 +2201,12 @@ Real Victoria BC business. Website was literally just a street address (touristw
 - **Stats bar style:** dark-bar
 - **Score:** 7.5 (v0) → 8.3 (v5 estimated)
 - **Key decisions:** Warm paper (#F5F0E8) + deep ink + copper accent — entirely new palette direction. Classical serif paired with monospace creates tension matching Scott's thesis: craft + code. "Not theorizing about AI. Living inside it." hero line pulled directly from his LinkedIn voice. AI products framed as "the last year wasn't a gap, it was deliberate" handles career-pivot narrative proactively. On-load hero line stagger + scroll-reveal throughout.
+
+### Scott Bell Portfolio v6 — Portfolio, Victoria BC
+- **Date:** 2026-03-26
+- **Hero pattern:** dark-immersive (full viewport, dark bg, editorial serif)
+- **Typography:** Fraunces (200/300/400, variable optical size, italic) + Inter
+- **Review layout:** N/A (portfolio, not business site)
+- **Stats bar style:** inline in hero grid (4 stats, serif numerals)
+- **Score:** 8/10 → 8.5/10 final
+- **Key decisions:** Dark warm theme (#0C0B09 + amber #C8963A) for AI/agent designer positioning. Real case study screenshots from scottkbell.com. Hero headline "I find the logic underneath — then make it impossible to ignore" captures Zone of Genius precisely. LoopIn featured as current direction with terminal mockup. Case study layout: 260px meta column + flexible description + full-width 4-col image row.

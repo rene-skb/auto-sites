@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Painted Lotus Studios — Custom Tattooing in Victoria, BC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --ink: #1A1614;
+    --ink-2: #252120;
+    --lotus: #CE8A90;          /* on dark backgrounds — passes WCAG contrast */
+    --lotus-dark: #C47078;     /* on light backgrounds only */
+    --cream: #FAF6F0;
+    --cream-alt: #F0EBE4;
+    --gray: #5A5550;
+    --gray-mid: #9A9290;
+
+    /* Spacing system: 8px base */
+    --sp-1: 8px;
+    --sp-2: 16px;
+    --sp-3: 24px;
+    --sp-4: 32px;
+    --sp-5: 48px;
+    --sp-6: 64px;
+    --sp-7: 80px;
+    --sp-8: 96px;
+    --sp-9: 128px;
+    --section-pad: 96px;
+
+    /* Letter-spacing system */
+    --ls-sm: 0.04em;
+    --ls-md: 0.08em;
+    --ls-lg: 0.14em;
+
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+
+    /* Consistent max content width */
+    --max-w: 1200px;
+    --content-px: 48px;
+  }
+
+  html { font-size: 16px; scroll-behavior: smooth; }
+  body {
+    background: var(--cream); color: var(--ink);
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 400; line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  a { color: inherit; text-decoration: none; }
+  ::selection { background: var(--lotus-dark); color: var(--cream); }
+  [id] { scroll-margin-top: 80px; }
+
+  /* Reveal animations */
+  .reveal, .reveal-img {
+    opacity: 0; transform: translateY(20px);
+    transition: opacity 0.45s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.45s cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+  .reveal.visible, .reveal-img.visible { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal, .reveal-img { opacity: 1 !important; transform: none !important; transition: none !important; }
+    .hero-label, .hero-h1, .hero-body, .hero-ctas { opacity: 1 !important; transform: none !important; }
+  }
+
+  /* ─── Nav ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px var(--content-px);
+    transition: background 0.3s ease;
+  }
+  nav.scrolled { background: rgba(26,22,20,0.94); backdrop-filter: blur(12px); }
+  .nav-brand {
+    font-family: 'Spectral', serif; font-size: 1rem; font-weight: 600;
+    letter-spacing: var(--ls-sm); color: var(--cream); line-height: 1.2;
+  }
+  .nav-brand span { display: block; font-style: italic; font-size: 0.75rem; letter-spacing: var(--ls-md); color: var(--lotus); font-weight: 400; }
+  .nav-links { display: flex; gap: var(--sp-4); list-style: none; }
+  .nav-links a {
+    font-size: 0.75rem; font-weight: 500; letter-spacing: var(--ls-lg);
+    text-transform: uppercase; color: rgba(250,246,240,0.72);
+    transition: color 0.2s; position: relative;
+  }
+  .nav-links a::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 100%; height: 1px; background: var(--lotus); transition: right 0.25s var(--ease-out); }
+  .nav-links a:hover { color: var(--cream); }
+  .nav-links a:hover::after { right: 0; }
+  .nav-cta {
+    font-size: 0.75rem; font-weight: 500; letter-spacing: var(--ls-lg);
+    text-transform: uppercase; color: var(--cream); background: var(--lotus-dark);
+    padding: 10px 20px; border-radius: 2px; transition: background 0.2s, transform 0.16s;
+  }
+  .nav-cta:hover { background: #d4868e; }
+  .nav-cta:active { transform: scale(0.97); }
+  .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+  .nav-hamburger span { display: block; width: 24px; height: 2px; background: var(--cream); }
+  .nav-mobile {
+    display: none; position: fixed; inset: 0; background: var(--ink); z-index: 99;
+    flex-direction: column; align-items: center; justify-content: center; gap: var(--sp-5);
+  }
+  .nav-mobile.open { display: flex; }
+  .nav-mobile a { font-family: 'Spectral', serif; font-size: 2rem; font-weight: 600; color: var(--cream); transition: color 0.2s; }
+  .nav-mobile a:hover { color: var(--lotus); }
+  .nav-mobile-close { position: absolute; top: 24px; right: var(--content-px); font-size: 1.5rem; color: var(--cream); cursor: pointer; opacity: 0.7; }
+
+  /* ─── Hero ─── */
+  #hero {
+    position: relative; min-height: 100vh; display: flex; align-items: flex-end;
+    overflow: hidden; background: var(--ink);
+  }
+  .hero-bg { position: absolute; inset: 0; background: var(--ink); }
+  .hero-bg img { opacity: 0.2; mix-blend-mode: luminosity; }
+  .hero-content { position: relative; z-index: 2; padding: 120px var(--content-px) var(--sp-7); max-width: 900px; }
+  .hero-label {
+    font-size: 0.6875rem; font-weight: 500; letter-spacing: var(--ls-lg);
+    text-transform: uppercase; color: var(--lotus); margin-bottom: var(--sp-3); opacity: 0;
+  }
+  .hero-h1 {
+    font-family: 'Spectral', serif;
+    font-size: clamp(3rem, 7vw, 6.5rem);
+    font-weight: 800; line-height: 1.0; letter-spacing: -0.03em;
+    color: var(--cream); margin-bottom: var(--sp-4); opacity: 0;
+  }
+  .hero-h1 em { font-style: italic; font-weight: 400; color: var(--lotus); }
+  .hero-body {
+    font-size: 1.0625rem; font-weight: 300; line-height: 1.7;
+    color: rgba(250,246,240,0.72); max-width: 480px; margin-bottom: var(--sp-5); opacity: 0;
+  }
+  .hero-body strong { color: rgba(250,246,240,0.92); font-weight: 500; }
+  .hero-ctas { display: flex; gap: var(--sp-2); flex-wrap: wrap; opacity: 0; }
+
+  /* ─── Buttons (consistent system) ─── */
+  .btn-primary {
+    display: inline-block; font-size: 0.8125rem; font-weight: 500; letter-spacing: var(--ls-md);
+    text-transform: uppercase; color: var(--cream); background: var(--lotus-dark);
+    padding: 14px 28px; border-radius: 2px; transition: background 0.2s, transform 0.16s;
+  }
+  .btn-primary:hover { background: #d4868e; }
+  .btn-primary:active { transform: scale(0.97); }
+  .btn-outline-light {
+    display: inline-block; font-size: 0.8125rem; font-weight: 500; letter-spacing: var(--ls-md);
+    text-transform: uppercase; color: rgba(250,246,240,0.75);
+    border: 1px solid rgba(250,246,240,0.3); padding: 14px 28px; border-radius: 2px;
+    transition: border-color 0.2s, color 0.2s, transform 0.16s;
+  }
+  .btn-outline-light:hover { border-color: rgba(250,246,240,0.7); color: var(--cream); }
+  .btn-outline-light:active { transform: scale(0.97); }
+  .btn-outline-dark {
+    display: inline-block; font-size: 0.8125rem; font-weight: 500; letter-spacing: var(--ls-md);
+    text-transform: uppercase; color: var(--ink);
+    border: 1px solid rgba(26,22,20,0.3); padding: 14px 28px; border-radius: 2px;
+    transition: border-color 0.2s, background 0.2s, transform 0.16s;
+  }
+  .btn-outline-dark:hover { border-color: var(--ink); background: rgba(26,22,20,0.05); }
+  .btn-outline-dark:active { transform: scale(0.97); }
+
+  /* ─── Trust bar (dark) ─── */
+  #trust {
+    background: var(--ink-2); padding: var(--sp-4) var(--content-px);
+    display: flex; gap: var(--sp-6); flex-wrap: wrap; align-items: center;
+    border-bottom: 1px solid rgba(250,246,240,0.06);
+  }
+  .trust-num {
+    font-family: 'Spectral', serif; font-size: 1.75rem; font-weight: 700;
+    color: var(--cream); line-height: 1; letter-spacing: -0.02em;
+  }
+  .trust-label {
+    font-size: 0.6875rem; letter-spacing: var(--ls-lg); text-transform: uppercase;
+    color: var(--gray-mid); margin-top: 4px;
+  }
+
+  /* ─── Section utility ─── */
+  .section-label {
+    font-size: 0.6875rem; font-weight: 500; letter-spacing: var(--ls-lg);
+    text-transform: uppercase; color: var(--lotus-dark); margin-bottom: var(--sp-2);
+  }
+  .section-label-light { color: var(--lotus); }
+  .section-h2 {
+    font-family: 'Spectral', serif; font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700; letter-spacing: -0.03em; line-height: 1.1;
+  }
+
+  /* photo-strip removed */
+
+  /* ─── About ─── */
+  #about {
+    padding: var(--section-pad) var(--content-px); display: grid;
+    grid-template-columns: 5fr 7fr; gap: var(--sp-9); align-items: start;
+  }
+  .about-image { aspect-ratio: 4/5; overflow: hidden; background: var(--cream-alt); position: relative; }
+  .about-image::before { content: ''; position: absolute; inset: 12px; border: 1px solid var(--lotus-dark); opacity: 0.3; z-index: 1; pointer-events: none; }
+  .about-content { padding-top: var(--sp-1); }
+  .about-quote {
+    font-family: 'Spectral', serif; font-size: 1.25rem; font-style: italic;
+    font-weight: 400; line-height: 1.55; color: var(--ink);
+    margin-bottom: var(--sp-3); padding-left: var(--sp-3); border-left: 2px solid var(--lotus-dark);
+  }
+  .about-body { font-size: 1rem; color: var(--gray); line-height: 1.75; margin-bottom: 18px; }
+  .about-link {
+    font-size: 0.8125rem; font-weight: 500; letter-spacing: var(--ls-md);
+    text-transform: uppercase; color: var(--lotus-dark); display: inline-flex;
+    align-items: center; gap: 6px; transition: gap 0.2s;
+  }
+  .about-link::after { content: '→'; }
+  .about-link:hover { gap: 10px; }
+
+  /* ─── Name section ─── */
+  #name-section { background: var(--ink); padding: 120px var(--content-px); text-align: center; }
+  .name-h2 {
+    font-family: 'Spectral', serif; font-size: clamp(2.5rem, 5vw, 4.25rem);
+    font-weight: 800; line-height: 1.05; letter-spacing: -0.03em;
+    color: var(--cream); max-width: 680px; margin: 0 auto var(--sp-3);
+  }
+  .name-h2 em { font-style: italic; font-weight: 400; color: var(--lotus); }
+  .name-body {
+    font-size: 1.0625rem; font-weight: 300; color: rgba(250,246,240,0.58);
+    max-width: 500px; margin: 0 auto; line-height: 1.7;
+  }
+
+  /* ─── Artists (dark bg, clean 2-col grid) ─── */
+  #artists { padding: var(--section-pad) var(--content-px); background: var(--ink); }
+  .artists-header { margin-bottom: var(--sp-6); }
+  .artists-intro { font-size: 1rem; color: rgba(250,246,240,0.5); line-height: 1.7; margin-top: 14px; max-width: 520px; }
+  .artists-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; }
+  .artist-card {
+    background: var(--ink-2); padding: var(--sp-5) var(--sp-5);
+    border-left: 2px solid transparent;
+    transition: border-left-color 0.2s, background 0.2s;
+  }
+  .artist-card:hover { border-left-color: var(--lotus); background: #2E2926; }
+  .artist-card.span-two { grid-column: span 2; }
+  .artist-card-meta {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: var(--sp-2);
+  }
+  .artist-num-h {
+    font-size: 0.75rem; font-weight: 500; color: var(--lotus); opacity: 0.5;
+    letter-spacing: var(--ls-lg); text-transform: uppercase;
+  }
+  .artist-avail {
+    font-size: 0.6875rem; font-weight: 500; letter-spacing: var(--ls-sm);
+    text-transform: uppercase; padding: 3px 8px; border-radius: 2px;
+    background: rgba(206,138,144,0.12); color: var(--lotus);
+  }
+  .artist-avail.limited { background: rgba(206,138,144,0.06); color: rgba(206,138,144,0.5); }
+  .artist-name {
+    font-family: 'Spectral', serif; font-size: 1.25rem; font-weight: 600;
+    color: var(--cream); margin-bottom: var(--sp-1); letter-spacing: -0.01em;
+  }
+  .artist-handle { font-size: 0.875rem; color: var(--lotus); opacity: 0.8; letter-spacing: var(--ls-sm); margin-bottom: var(--sp-2); }
+  .artist-note { font-size: 0.9375rem; color: rgba(250,246,240,0.5); line-height: 1.55; margin-bottom: var(--sp-3); max-width: 42ch; }
+  .artist-link {
+    font-size: 0.75rem; font-weight: 500; letter-spacing: var(--ls-lg);
+    text-transform: uppercase; color: rgba(250,246,240,0.6);
+    transition: color 0.2s; display: inline-flex; align-items: center; gap: 6px;
+  }
+  .artist-link::after { content: '→'; }
+  .artist-link:hover { color: var(--lotus); }
+
+  /* ─── Booking process ─── */
+  #booking-process { padding: var(--section-pad) var(--content-px); background: var(--cream-alt); }
+  .process-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-6); margin-top: var(--sp-6); }
+  .process-num {
+    font-family: 'Spectral', serif; font-size: 1.75rem; font-weight: 700;
+    color: var(--lotus-dark); opacity: 0.28; line-height: 1; margin-bottom: var(--sp-2);
+    letter-spacing: -0.02em;
+  }
+  .process-h3 { font-family: 'Spectral', serif; font-size: 1.0625rem; font-weight: 600; color: var(--ink); margin-bottom: var(--sp-1); letter-spacing: -0.01em; }
+  .process-body { font-size: 0.9375rem; color: var(--gray); line-height: 1.6; }
+
+  /* ─── Reviews ─── */
+  #reviews { padding: var(--section-pad) var(--content-px); background: var(--cream); }
+  .reviews-header { margin-bottom: var(--sp-6); }
+  .reviews-list { display: flex; flex-direction: column; max-width: 640px; }
+  .review-item { padding: var(--sp-4) 0; border-top: 1px solid rgba(26,22,20,0.08); }
+  .review-item:last-child { border-bottom: 1px solid rgba(26,22,20,0.08); }
+  .review-text {
+    font-family: 'Spectral', serif; font-size: 1.25rem; font-style: italic;
+    font-weight: 400; line-height: 1.6; color: var(--ink); margin-bottom: 12px;
+  }
+  .review-meta {
+    font-size: 0.8125rem; font-weight: 500; letter-spacing: var(--ls-md);
+    text-transform: uppercase; color: var(--gray);
+  }
+
+  /* ─── Visit ─── */
+  #visit {
+    background: var(--cream-alt); padding: var(--section-pad) var(--content-px);
+    display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-8); align-items: start;
+  }
+  .visit-h2 {
+    font-family: 'Spectral', serif; font-size: 2rem; font-weight: 700;
+    letter-spacing: -0.025em; color: var(--ink); margin-bottom: var(--sp-4); line-height: 1.15;
+  }
+  .visit-phone {
+    font-family: 'Spectral', serif; font-size: 1.5rem; font-weight: 700;
+    color: var(--lotus-dark); letter-spacing: -0.01em; display: block; margin-bottom: var(--sp-1);
+  }
+  .visit-phone:hover { color: var(--ink); }
+  .visit-detail { display: flex; flex-direction: column; gap: var(--sp-2); margin-bottom: var(--sp-4); }
+  .visit-row { display: flex; gap: var(--sp-2); align-items: flex-start; }
+  .visit-row-label { font-size: 0.75rem; font-weight: 500; letter-spacing: var(--ls-md); text-transform: uppercase; color: var(--gray); min-width: 72px; padding-top: 2px; }
+  .visit-row-value { font-size: 0.9375rem; color: var(--ink); line-height: 1.55; }
+  .visit-row-value a { color: var(--lotus-dark); }
+  .visit-row-value a:hover { text-decoration: underline; }
+  .visit-note { font-size: 0.875rem; color: var(--gray); font-style: italic; margin-top: 4px; display: block; }
+  .visit-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+  .visit-map { height: 340px; overflow: hidden; border-radius: 2px; background: var(--cream); }
+  .visit-map iframe { width: 100%; height: 100%; border: 0; filter: grayscale(1) contrast(1.05); }
+
+  /* ─── CTA Band ─── */
+  #cta-band { background: var(--ink); padding: var(--sp-7) var(--content-px); text-align: center; }
+  .cta-band-h2 {
+    font-family: 'Spectral', serif; font-size: clamp(1.75rem, 4vw, 2.75rem);
+    font-weight: 700; letter-spacing: -0.025em; color: var(--cream);
+    margin-bottom: 10px; line-height: 1.15;
+  }
+  .cta-band-sub { font-size: 1rem; color: rgba(250,246,240,0.5); margin-bottom: var(--sp-5); font-weight: 300; }
+
+  /* ─── Footer ─── */
+  footer {
+    background: var(--ink-2); padding: var(--sp-6) var(--content-px);
+    display: flex; justify-content: space-between; align-items: flex-start;
+    flex-wrap: wrap; gap: var(--sp-4);
+    border-top: 1px solid rgba(250,246,240,0.06);
+  }
+  .footer-brand { font-family: 'Spectral', serif; font-size: 1rem; font-weight: 600; color: var(--cream); letter-spacing: var(--ls-sm); }
+  .footer-brand span { display: block; font-style: italic; font-size: 0.75rem; letter-spacing: var(--ls-md); color: var(--lotus); font-weight: 400; margin-top: 2px; }
+  .footer-links { display: flex; gap: var(--sp-3); flex-wrap: wrap; }
+  .footer-links a { font-size: 0.8125rem; color: rgba(250,246,240,0.45); transition: color 0.2s; }
+  .footer-links a:hover { color: var(--cream); }
+  .footer-meta { font-size: 0.8125rem; color: rgba(250,246,240,0.3); line-height: 1.7; }
+  .footer-land { font-size: 0.75rem; color: rgba(250,246,240,0.25); margin-top: var(--sp-1); }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    :root { --content-px: 24px; --section-pad: 64px; }
+    nav { padding: 16px var(--content-px); }
+    .nav-links, .nav-cta { display: none; }
+    .nav-hamburger { display: flex; }
+    #trust { gap: var(--sp-4); }
+    #photo-strip { height: 200px; grid-template-columns: 1fr 1fr; }
+    #photo-strip .photo-strip-img:last-child { display: none; }
+    #about { grid-template-columns: 1fr; gap: var(--sp-5); }
+    #name-section { padding: var(--sp-7) var(--content-px); }
+    .artists-grid { grid-template-columns: 1fr; }
+    .artist-card.span-two { grid-column: span 1; }
+    #booking-process { padding: var(--section-pad) var(--content-px); }
+    .process-steps { grid-template-columns: 1fr; gap: var(--sp-4); }
+    #visit { grid-template-columns: 1fr; gap: var(--sp-5); }
+    #cta-band { padding: var(--section-pad) var(--content-px); }
+    footer { flex-direction: column; }
+    .nav-mobile-close { right: var(--content-px); }
+  }
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav id="main-nav">
+  <div class="nav-brand">Painted Lotus Studios<span>Custom Tattooing Since 2009</span></div>
+  <ul class="nav-links">
+    <li><a href="#artists">Artists</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#visit">Visit</a></li>
+  </ul>
+  <a href="https://www.paintedlotustattoo.com/booking-an-appointment" class="nav-cta" target="_blank" rel="noopener">Book a Tattoo</a>
+  <div class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="nav-mobile" id="mobile-nav">
+  <span class="nav-mobile-close" id="mobile-close">✕</span>
+  <a href="#artists" class="mobile-link">Artists</a>
+  <a href="#reviews" class="mobile-link">Reviews</a>
+  <a href="#visit" class="mobile-link">Visit</a>
+  <a href="https://www.paintedlotustattoo.com/booking-an-appointment" target="_blank" rel="noopener" style="color:var(--lotus)">Book a Tattoo</a>
+</div>
+
+<!-- Hero -->
+<section id="hero">
+  <div class="hero-bg"><img src="tattoo-detail.png" alt="" role="presentation"></div>
+  <div class="hero-content">
+    <p class="hero-label" id="hero-label">Victoria, BC · Downtown · Award-Winning Since 2009</p>
+    <h1 class="hero-h1" id="hero-h1">
+      Sixteen Years.<br><em>Seven Artists.</em><br>One Address.
+    </h1>
+    <p class="hero-body" id="hero-body">
+      Custom tattooing in the heart of downtown Victoria. <strong>Walk-ins welcome.</strong> Tattoo only — because that's all we do.
+    </p>
+    <div class="hero-ctas" id="hero-ctas">
+      <a href="https://www.paintedlotustattoo.com/booking-an-appointment" class="btn-primary" target="_blank" rel="noopener">Book a Tattoo</a>
+      <a href="#artists" class="btn-outline-light">Meet the Artists</a>
+    </div>
+  </div>
+</section>
+
+<!-- Trust bar (dark) -->
+<div id="trust">
+  <div class="trust-item"><div class="trust-num">4.8★</div><div class="trust-label">290 Google Reviews</div></div>
+  <div class="trust-item"><div class="trust-num">2009</div><div class="trust-label">Custom Tattooing Since</div></div>
+  <div class="trust-item"><div class="trust-num">7</div><div class="trust-label">Resident Artists</div></div>
+  <div class="trust-item"><div class="trust-num">Walk-In</div><div class="trust-label">Always Welcome</div></div>
+  <div class="trust-item"><div class="trust-num">Voted</div><div class="trust-label">Victoria's Best Tattoo Shop</div></div>
+</div>
+
+<!-- Work gallery — two image columns, tall, dramatic -->
+<div id="work-gallery" style="display:grid; grid-template-columns:1fr 1fr; gap:4px; background:var(--ink); height:400px;">
+  <div class="reveal-img" style="overflow:hidden; background:var(--ink-2);">
+    <img src="tattoo-work.png" alt="Custom tattoo work by Painted Lotus Studios">
+  </div>
+  <div style="display:grid; grid-template-rows:1fr 1fr; gap:4px; height:400px;">
+    <div class="reveal-img" style="overflow:hidden; background:var(--ink-2); transition-delay:80ms;">
+      <img src="ink-close.png" alt="Tattoo detail close-up">
+    </div>
+    <div class="reveal-img" style="overflow:hidden; background:var(--ink-2); transition-delay:160ms;">
+      <img src="needle-detail.png" alt="Tattoo needle and ink">
+    </div>
+  </div>
+</div>
+
+<!-- About -->
+<section id="about">
+  <div class="about-image reveal-img"><img src="studio-atmosphere.png" alt="Painted Lotus Studios — tools and ink"></div>
+  <div class="about-content reveal">
+    <p class="section-label">The Studio</p>
+    <h2 class="section-h2" style="margin-bottom:var(--sp-4);">Victoria's Most-Loved<br>Tattoo Studio</h2>
+    <blockquote class="about-quote">"The customer service was amazing and the artists make you feel right at home!"</blockquote>
+    <p class="about-body">Painted Lotus has been part of downtown Victoria since 2009. Not a chain, not a flash shop. A collective of seven working artists — each with their own style, voice, and portfolio.</p>
+    <p class="about-body">You're not getting whoever's available. You're choosing your artist. Browse their work, reach out directly, and build your tattoo with someone whose style genuinely speaks to you.</p>
+    <a href="https://www.paintedlotustattoo.com/artists" class="about-link" target="_blank" rel="noopener">Browse All Portfolios</a>
+  </div>
+</section>
+
+<!-- Name section -->
+<section id="name-section">
+  <p class="section-label section-label-light" style="text-align:center; margin-bottom:var(--sp-2);">What We Believe</p>
+  <h2 class="name-h2">The Tattoo Outlasts<br><em>Everything Else.</em></h2>
+  <p class="name-body">Sixteen years. Seven artists. The work is permanent. So is our commitment to getting it right. Tattoo only — no shortcuts, no piercing.</p>
+</section>
+
+<!-- Artists -->
+<section id="artists">
+  <div class="artists-header reveal">
+    <p class="section-label section-label-light">The Collective</p>
+    <h2 class="section-h2" style="color:var(--cream);">Seven Artists.<br>Seven Distinct Voices.</h2>
+    <p class="artists-intro">Each artist books independently — browse their portfolio and reach out directly.</p>
+  </div>
+  <div class="artists-grid">
+    <div class="artist-card reveal">
+      <div class="artist-card-meta"><span class="artist-num-h">01</span><span class="artist-avail">Open for Bookings</span></div>
+      <div class="artist-name">Shannon Hayward</div>
+      <div class="artist-handle">@sbh_tattoo</div>
+      <p class="artist-note">Email sbh.tattoo@gmail.com or DM on Instagram.</p>
+      <a href="https://paintedlotus.com/shannon" class="artist-link" target="_blank" rel="noopener">View Portfolio</a>
+    </div>
+    <div class="artist-card reveal" style="transition-delay:80ms">
+      <div class="artist-card-meta"><span class="artist-num-h">02</span><span class="artist-avail">Open for Bookings</span></div>
+      <div class="artist-name">Ro Curran</div>
+      <div class="artist-handle">@therotattoos</div>
+      <p class="artist-note">Books via consultation form. Reach out to discuss your concept first.</p>
+      <a href="https://paintedlotus.com/ro-curran" class="artist-link" target="_blank" rel="noopener">View Portfolio</a>
+    </div>
+    <div class="artist-card reveal">
+      <div class="artist-card-meta"><span class="artist-num-h">03</span><span class="artist-avail">Open for Bookings</span></div>
+      <div class="artist-name">Mr. Megs</div>
+      <div class="artist-handle">@mr.megs</div>
+      <p class="artist-note">Email mkirwintattoo@gmail.com or DM on Instagram.</p>
+      <a href="https://paintedlotus.com/mr-megs" class="artist-link" target="_blank" rel="noopener">View Portfolio</a>
+    </div>
+    <div class="artist-card reveal" style="transition-delay:80ms">
+      <div class="artist-card-meta"><span class="artist-num-h">04</span><span class="artist-avail">Open for Bookings</span></div>
+      <div class="artist-name">Genghis Shawn</div>
+      <div class="artist-handle">@genghis_shawn</div>
+      <p class="artist-note">Email tattoosbygenghisshawn@gmail.com to start a conversation.</p>
+      <a href="https://paintedlotus.com/genghis-shawn" class="artist-link" target="_blank" rel="noopener">View Portfolio</a>
+    </div>
+    <div class="artist-card reveal">
+      <div class="artist-card-meta"><span class="artist-num-h">05</span><span class="artist-avail">Open for Bookings</span></div>
+      <div class="artist-name">Emily Shoichet</div>
+      <div class="artist-handle">@emilyshoichet</div>
+      <p class="artist-note">Email emily@emilyshoichet.com to start a consultation.</p>
+      <a href="https://paintedlotus.com/emily-shoichet" class="artist-link" target="_blank" rel="noopener">View Portfolio</a>
+    </div>
+    <div class="artist-card reveal" style="transition-delay:80ms">
+      <div class="artist-card-meta"><span class="artist-num-h">06</span><span class="artist-avail">Open for Bookings</span></div>
+      <div class="artist-name">Scott Robertson</div>
+      <div class="artist-handle">@scottrobertsonarts</div>
+      <p class="artist-note">Email scott.robertson.tattoos@gmail.com to discuss your project.</p>
+      <a href="https://paintedlotus.com/scott-robertson" class="artist-link" target="_blank" rel="noopener">View Portfolio</a>
+    </div>
+    <div class="artist-card span-two reveal">
+      <div class="artist-card-meta"><span class="artist-num-h">07</span><span class="artist-avail limited">In-Progress Projects Only</span></div>
+      <div class="artist-name">Gwendolyn Williams</div>
+      <div class="artist-handle">@tattoogwendolyn</div>
+      <p class="artist-note">Currently working on in-progress projects only. Sign up to Gwen's email list for flash drops and last-minute openings.</p>
+      <a href="https://tattoogwendolyn.substack.com" class="artist-link" target="_blank" rel="noopener">Join Gwen's Email List</a>
+    </div>
+  </div>
+</section>
+
+<!-- Booking process -->
+<section id="booking-process">
+  <div class="reveal">
+    <p class="section-label">How It Works</p>
+    <h2 class="section-h2">From Idea<br>to Appointment</h2>
+  </div>
+  <div class="process-steps">
+    <div class="process-step reveal">
+      <div class="process-num">01</div>
+      <h3 class="process-h3">Browse the Artists</h3>
+      <p class="process-body">Seven portfolios, seven voices. Find the artist whose work resonates — then reach out to them directly.</p>
+    </div>
+    <div class="process-step reveal" style="transition-delay:60ms">
+      <div class="process-num">02</div>
+      <h3 class="process-h3">Share Your Idea</h3>
+      <p class="process-body">Size, placement, references, or just a feeling. Your artist will help you turn it into something you'll carry forever.</p>
+    </div>
+    <div class="process-step reveal" style="transition-delay:120ms">
+      <div class="process-num">03</div>
+      <h3 class="process-h3">Get Tattooed</h3>
+      <p class="process-body">Walk-ins welcome by availability. Or book ahead for your preferred artist. 910 Gordon Street, downtown Victoria.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Reviews -->
+<section id="reviews">
+  <div class="reviews-header reveal">
+    <p class="section-label">What People Say</p>
+    <h2 class="section-h2">4.8 Stars.<br>290 Times.</h2>
+  </div>
+  <div class="reviews-list">
+    <div class="review-item">
+      <p class="review-text">"The quality of work is very much worth the price and the service is wonderful."</p>
+      <p class="review-meta">C. · Via Google</p>
+    </div>
+    <div class="review-item">
+      <p class="review-text">"The customer service was amazing and the artists make you feel right at home!"</p>
+      <p class="review-meta">Madeleine S. · Via Google</p>
+    </div>
+    <div class="review-item">
+      <p class="review-text">"Good place, great people — and if you're new to tattoos and want your first one, this is the place to go."</p>
+      <p class="review-meta">Wei-An L. · Via Google</p>
+    </div>
+  </div>
+</section>
+
+<!-- Visit -->
+<section id="visit">
+  <div class="reveal">
+    <p class="section-label">Find Us</p>
+    <h2 class="visit-h2">Downtown Victoria.<br>910 Gordon Street.</h2>
+    <a href="tel:2505901831" class="visit-phone">(250) 590-1831</a>
+    <div class="visit-detail">
+      <div class="visit-row">
+        <span class="visit-row-label">Address</span>
+        <span class="visit-row-value">910 Gordon St, Victoria, BC V8W 1X5</span>
+      </div>
+      <div class="visit-row">
+        <span class="visit-row-label">Hours</span>
+        <span class="visit-row-value">
+          Opens 11 AM (Fri–Sat)
+          <span class="visit-note">Hours vary by artist — follow <a href="https://www.instagram.com/paintedlotusstudios/" target="_blank" rel="noopener">@paintedlotusstudios</a> for updates</span>
+        </span>
+      </div>
+      <div class="visit-row">
+        <span class="visit-row-label">Walk-Ins</span>
+        <span class="visit-row-value">Always welcome by availability</span>
+      </div>
+      <div class="visit-row">
+        <span class="visit-row-label">Email</span>
+        <span class="visit-row-value"><a href="mailto:paintedlotustattoo@gmail.com">paintedlotustattoo@gmail.com</a></span>
+      </div>
+    </div>
+    <div class="visit-ctas">
+      <a href="https://www.paintedlotustattoo.com/booking-an-appointment" class="btn-primary" target="_blank" rel="noopener">Book an Appointment</a>
+      <a href="https://maps.google.com/?q=910+Gordon+St+Victoria+BC" class="btn-outline-dark" target="_blank" rel="noopener">Get Directions</a>
+    </div>
+  </div>
+  <div class="visit-map reveal">
+    <iframe src="https://maps.google.com/maps?q=910+Gordon+St+Victoria+BC&output=embed"
+      title="Painted Lotus Studios on Google Maps" loading="lazy" allowfullscreen></iframe>
+  </div>
+</section>
+
+<!-- CTA Band -->
+<section id="cta-band">
+  <h2 class="cta-band-h2">Ready for Something Permanent?</h2>
+  <p class="cta-band-sub">Browse artist portfolios and book directly. Walk-ins always welcome at 910 Gordon Street.</p>
+  <a href="https://www.paintedlotustattoo.com/booking-an-appointment" class="btn-primary" target="_blank" rel="noopener">Book a Tattoo</a>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div>
+    <div class="footer-brand">Painted Lotus Studios<span>Custom Tattooing · Downtown Victoria</span></div>
+    <p class="footer-land">Painted Lotus Studios operates on the traditional territories of the lək̓ʷəŋən Peoples.</p>
+  </div>
+  <div class="footer-links">
+    <a href="https://www.paintedlotustattoo.com/artists" target="_blank" rel="noopener">Artists</a>
+    <a href="https://www.paintedlotustattoo.com/booking-an-appointment" target="_blank" rel="noopener">Book</a>
+    <a href="https://www.paintedlotustattoo.com/rules" target="_blank" rel="noopener">Shop Policies</a>
+    <a href="https://www.instagram.com/paintedlotusstudios/" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.facebook.com/paintedlotusstudios/" target="_blank" rel="noopener">Facebook</a>
+  </div>
+  <div class="footer-meta">
+    <p>910 Gordon St, Victoria, BC V8W 1X5</p>
+    <p>(250) 590-1831</p>
+  </div>
+</footer>
+
+<script>
+  // Custom ease: cubic-bezier(0.25, 0.1, 0.25, 1)
+  const EASE = 'cubic-bezier(0.25, 0.1, 0.25, 1)';
+
+  // Nav scroll
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60), { passive: true });
+  document.getElementById('hamburger').addEventListener('click', () => { document.getElementById('mobile-nav').classList.add('open'); document.body.style.overflow = 'hidden'; });
+  document.getElementById('mobile-close').addEventListener('click', () => { document.getElementById('mobile-nav').classList.remove('open'); document.body.style.overflow = ''; });
+  document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', () => { document.getElementById('mobile-nav').classList.remove('open'); document.body.style.overflow = ''; }));
+
+  // Hero entrance stagger
+  document.addEventListener('DOMContentLoaded', () => {
+    requestAnimationFrame(() => { requestAnimationFrame(() => {
+      ['hero-label','hero-h1','hero-body','hero-ctas'].forEach((id, i) => {
+        const el = document.getElementById(id); if (!el) return;
+        el.style.transition = `opacity 0.8s ${EASE} ${i * 100}ms, transform 0.8s ${EASE} ${i * 100}ms`;
+        el.style.transform = 'translateY(20px)';
+        setTimeout(() => { el.style.opacity = '1'; el.style.transform = ''; }, 60 + i * 100);
+      });
+    }); });
+  });
+
+  // Scroll reveals (trust bar stagger, artists stagger, etc.)
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const el = e.target;
+        const delay = el.dataset.delay ? parseInt(el.dataset.delay) : 0;
+        setTimeout(() => el.classList.add('visible'), delay);
+        obs.unobserve(el);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal, .reveal-img').forEach(el => obs.observe(el));
+
+  // Trust bar stagger
+  document.querySelectorAll('#trust .trust-item').forEach((el, i) => {
+    el.classList.add('reveal');
+    el.dataset.delay = i * 80;
+    obs.observe(el);
+  });
+
+  // Counter animation on trust numbers
+  function animateCount(el, target, duration) {
+    const start = performance.now();
+    const isFloat = String(target).includes('.');
+    const from = 0;
+    requestAnimationFrame(function step(now) {
+      const pct = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - pct, 3);
+      const val = from + (target - from) * eased;
+      el.textContent = isFloat ? val.toFixed(1) : Math.floor(val).toString();
+      if (pct < 1) requestAnimationFrame(step);
+      else el.textContent = isFloat ? target.toFixed(1) + '★' : String(target);
+    });
+  }
+
+  const trustObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        document.querySelectorAll('#trust .trust-num').forEach(numEl => {
+          const raw = numEl.textContent.trim();
+          if (raw === '4.8★') animateCount(numEl, 4.8, 800);
+          else if (raw === '2009') { setTimeout(() => animateCount(numEl, 2009, 700), 80); }
+          else if (raw === '7') { setTimeout(() => animateCount(numEl, 7, 500), 160); }
+        });
+        trustObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  const trustBar = document.getElementById('trust');
+  if (trustBar) trustObs.observe(trustBar);
+
+  // Artist cards sequential stagger (pairs)
+  document.querySelectorAll('.artist-card').forEach((card, i) => {
+    const colDelay = (i % 2) * 80;
+    const rowDelay = Math.floor(i / 2) * 0; // rows trigger on scroll, columns stagger
+    card.style.transitionDelay = `${colDelay}ms`;
+  });
+
+  // Process steps stagger
+  document.querySelectorAll('.process-step').forEach((step, i) => {
+    step.classList.add('reveal');
+    step.dataset.delay = i * 120;
+    obs.observe(step);
+  });
+
+  // Review items stagger
+  document.querySelectorAll('.review-item').forEach((item, i) => {
+    item.classList.add('reveal');
+    item.dataset.delay = i * 150;
+    obs.observe(item);
+  });
+
+  // CTA band fade-in
+  const ctaBand = document.querySelector('#cta-band h2');
+  if (ctaBand) { ctaBand.classList.add('reveal'); obs.observe(ctaBand); }
+</script>
+<noscript><style>
+  .reveal, .reveal-img { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .hero-label, .hero-h1, .hero-body, .hero-ctas { opacity: 1 !important; transform: none !important; }
+</style></noscript>
+</body>
+</html>

@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scott Bell — Product Designer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:          #0D0C0A;
+      --surface:     #141311;
+      --surface-2:   #1A1917;
+      --text:        #EDE8E0;
+      --muted:       #9A9490;
+      --subtle:      #2A2825;
+      --accent:      #00C9A7;
+      --accent-dim:  rgba(0, 201, 167, 0.08);
+      --border:      rgba(237, 232, 224, 0.08);
+
+      --font-display: 'Syne', system-ui, sans-serif;
+      --font-mono:    'IBM Plex Mono', 'Menlo', monospace;
+
+      --ls-wide:   0.14em;
+      --ls-md:     0.08em;
+      --ease-out:  cubic-bezier(0.23, 1, 0.32, 1);
+
+      --content-width: 1200px;
+      --gutter: 48px;
+      --section-pad: 128px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-mono);
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      pointer-events: none;
+      opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 256px;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+
+    .wrap {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+
+    .eyebrow {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: var(--ls-wide);
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .eyebrow-accent { color: var(--accent); }
+
+    /* ===== NAV ===== */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(13, 12, 10, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-brand {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: -0.02em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: var(--ls-md);
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: color 0.2s ease;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 4px;
+      border-radius: 2px;
+    }
+
+    /* Hamburger */
+    .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+    .nav-toggle span {
+      display: block; width: 20px; height: 2px;
+      background: var(--text); margin: 5px 0;
+      transition: transform 0.3s var(--ease-out), opacity 0.2s;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 120px 0 var(--section-pad);
+    }
+    .hero-label {
+      margin-bottom: 32px;
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(3rem, 7vw, 6.5rem);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      max-width: 14ch;
+      margin-bottom: 40px;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--accent);
+    }
+    .hero-subtitle {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: var(--ls-md);
+      color: var(--accent);
+      margin-bottom: 24px;
+    }
+    .hero-body {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--muted);
+      max-width: 52ch;
+      margin-bottom: 48px;
+    }
+    .hero-meta {
+      display: flex;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+    .hero-stat {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .hero-stat-value {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.5rem;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+    .hero-stat-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: var(--ls-wide);
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ===== COMPANIES STRIP ===== */
+    .companies {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 32px 0;
+    }
+    .companies-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+    .company-name {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.125rem;
+      color: var(--muted);
+      letter-spacing: -0.01em;
+      transition: color 0.2s ease;
+    }
+    .company-name:hover { color: var(--text); }
+
+    /* ===== SECTION SHARED ===== */
+    section {
+      padding: var(--section-pad) 0;
+      scroll-margin-top: 80px;
+    }
+    [id] { scroll-margin-top: 80px; }
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: var(--ls-wide);
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+    .section-h2 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 24px;
+    }
+    .section-h3 {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 1.25rem;
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+      margin-bottom: 12px;
+    }
+
+    /* ===== CASE STUDIES ===== */
+    .case-study {
+      padding: var(--section-pad) 0;
+      border-top: 1px solid var(--border);
+    }
+    .case-study:first-of-type { border-top: none; }
+    .case-study-alt {
+      background: var(--surface);
+    }
+    .case-header {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+    .case-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .case-meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .case-meta-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: var(--ls-wide);
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .case-meta-value {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--text);
+    }
+    .case-title {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+    }
+    .case-desc {
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--muted);
+      max-width: 60ch;
+    }
+    .case-impact {
+      display: flex;
+      gap: 48px;
+      margin-top: 32px;
+      flex-wrap: wrap;
+    }
+    .case-impact-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .case-impact-value {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.75rem;
+      letter-spacing: -0.02em;
+      color: var(--accent);
+    }
+    .case-impact-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: var(--ls-wide);
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* Case study images */
+    .case-images {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+    }
+    .case-images img {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      border-radius: 6px;
+      background: var(--surface);
+    }
+    .case-images-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .case-image-wide {
+      grid-column: span 2;
+    }
+
+    /* ===== ABOUT ===== */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .about-text {
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--muted);
+    }
+    .about-text p + p { margin-top: 24px; }
+    .about-quote {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      border-left: 3px solid var(--accent);
+      padding-left: 32px;
+    }
+
+    /* ===== AI SECTION ===== */
+    .ai-section {
+      background: var(--surface);
+      border-radius: 12px;
+      padding: 64px;
+    }
+    .ai-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      margin-top: 32px;
+    }
+    .ai-card {
+      padding: 32px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--bg);
+    }
+    .ai-card h3 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.125rem;
+      letter-spacing: -0.01em;
+      margin-bottom: 12px;
+    }
+    .ai-card p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    /* ===== CTA ===== */
+    .cta-section {
+      text-align: center;
+      padding: 160px 0;
+    }
+    .cta-section h2 {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+      margin-bottom: 32px;
+    }
+    .cta-section p {
+      font-size: 16px;
+      color: var(--muted);
+      margin-bottom: 48px;
+      max-width: 48ch;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cta-links {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 40px;
+      background: var(--accent);
+      color: var(--bg);
+      font-family: var(--font-mono);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: var(--ls-md);
+      text-transform: uppercase;
+      border-radius: 6px;
+      transition: transform 0.16s var(--ease-out), box-shadow 0.16s var(--ease-out);
+    }
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 20px rgba(0, 201, 167, 0.25);
+    }
+    .btn-primary:active { transform: scale(0.97); }
+    .btn-primary:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 4px;
+    }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 40px;
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: var(--font-mono);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: var(--ls-md);
+      text-transform: uppercase;
+      border-radius: 6px;
+      transition: border-color 0.2s ease, transform 0.16s var(--ease-out);
+    }
+    .btn-secondary:hover {
+      border-color: var(--muted);
+      transform: translateY(-1px);
+    }
+    .btn-secondary:active { transform: scale(0.97); }
+    .btn-secondary:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 4px;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 48px 0;
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-brand {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.875rem;
+      color: var(--muted);
+    }
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+    .footer-links a {
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: var(--ls-md);
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: color 0.2s ease;
+    }
+    .footer-links a:hover { color: var(--text); }
+
+    /* ===== ANIMATIONS ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-20px);
+      transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+    }
+    .reveal-left.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* Stagger on case images */
+    .case-images img {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out);
+    }
+    .case-images.visible img:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: 0s; }
+    .case-images.visible img:nth-child(2) { opacity: 1; transform: translateY(0); transition-delay: 0.08s; }
+    .case-images.visible img:nth-child(3) { opacity: 1; transform: translateY(0); transition-delay: 0.16s; }
+    .case-images.visible img:nth-child(4) { opacity: 1; transform: translateY(0); transition-delay: 0.24s; }
+
+    /* AI card stagger */
+    .ai-card {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out);
+    }
+    .ai-grid.visible .ai-card:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: 0s; }
+    .ai-grid.visible .ai-card:nth-child(2) { opacity: 1; transform: translateY(0); transition-delay: 0.06s; }
+    .ai-grid.visible .ai-card:nth-child(3) { opacity: 1; transform: translateY(0); transition-delay: 0.12s; }
+    .ai-grid.visible .ai-card:nth-child(4) { opacity: 1; transform: translateY(0); transition-delay: 0.18s; }
+
+    /* Nav link hover underline */
+    .nav-links a {
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--accent);
+      transition: width 0.3s var(--ease-out);
+    }
+    .nav-links a:hover::after { width: 100%; }
+
+    /* Hero entrance */
+    body.js-ready .hero-label,
+    body.js-ready .hero h1,
+    body.js-ready .hero-subtitle,
+    body.js-ready .hero-body,
+    body.js-ready .hero-meta {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+    }
+    body.js-loaded .hero-label    { opacity: 1; transform: translateY(0); transition-delay: 0.1s; }
+    body.js-loaded .hero h1       { opacity: 1; transform: translateY(0); transition-delay: 0.25s; }
+    body.js-loaded .hero-subtitle { opacity: 1; transform: translateY(0); transition-delay: 0.35s; }
+    body.js-loaded .hero-body     { opacity: 1; transform: translateY(0); transition-delay: 0.45s; }
+    body.js-loaded .hero-meta     { opacity: 1; transform: translateY(0); transition-delay: 0.6s; }
+
+    /* Stagger */
+    .stagger-1 { transition-delay: 0.05s; }
+    .stagger-2 { transition-delay: 0.1s; }
+    .stagger-3 { transition-delay: 0.15s; }
+    .stagger-4 { transition-delay: 0.2s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal, .reveal-left, .case-images img, .ai-card,
+      body.js-ready .hero-label, body.js-ready .hero h1,
+      body.js-ready .hero-subtitle, body.js-ready .hero-body, body.js-ready .hero-meta {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+    }
+
+    /* ===== MOBILE ===== */
+    @media (max-width: 768px) {
+      :root {
+        --gutter: 24px;
+        --section-pad: 80px;
+      }
+      .nav-links { display: none; }
+      .nav-toggle { display: block; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 60px; left: 0; right: 0;
+        background: var(--bg);
+        border-bottom: 1px solid var(--border);
+        padding: 24px var(--gutter);
+        gap: 20px;
+      }
+      .hero h1 { max-width: none; }
+      .hero-meta { gap: 24px; }
+      .case-header { grid-template-columns: 1fr; gap: 24px; }
+      .case-images { grid-template-columns: repeat(2, 1fr); }
+      .case-image-wide { grid-column: span 2; }
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .ai-section { padding: 40px 24px; }
+      .ai-grid { grid-template-columns: 1fr; }
+      .companies-inner { justify-content: center; gap: 24px; }
+      .footer-inner { flex-direction: column; gap: 16px; text-align: center; }
+    }
+
+    /* No-JS fallback */
+    noscript + .hero .hero-label,
+    noscript + .hero .hero h1,
+    noscript + .hero .hero-body,
+    noscript + .hero .hero-meta { opacity: 1; transform: none; }
+  </style>
+</head>
+<body class="js-ready">
+  <noscript><style>
+    .reveal { opacity: 1 !important; transform: none !important; }
+    body.js-ready .hero-label, body.js-ready .hero h1,
+    body.js-ready .hero-body, body.js-ready .hero-meta {
+      opacity: 1 !important; transform: none !important;
+    }
+  </style></noscript>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="nav-brand">Scott Bell</a>
+      <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open'); this.setAttribute('aria-expanded', this.getAttribute('aria-expanded')==='true' ? 'false' : 'true')" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="#work">Work</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#now">Now</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow hero-label">Product Designer · 14 Years · Victoria, BC</p>
+      <h1>He finds the <em>hidden layer</em> and makes it real.</h1>
+      <p class="hero-subtitle">Senior Product Designer · AI, Design Systems, 0-to-1 Products</p>
+      <p class="hero-body">I started in microbiology, studying systems at the cellular level. Then I spent 14 years designing products that reached millions. The throughline? I go where everyone else stops looking. Right now, I'm building with AI agents every day, not reading about them.</p>
+      <div class="hero-meta">
+        <div class="hero-stat">
+          <span class="hero-stat-value">1.5M+</span>
+          <span class="hero-stat-label">Users Reached</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-value">65+</span>
+          <span class="hero-stat-label">Countries</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-value">$800M+</span>
+          <span class="hero-stat-label">Company Valuation</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-value">8</span>
+          <span class="hero-stat-label">Design Systems</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <div id="work">
+
+    <!-- STRIKE -->
+    <section class="case-study">
+      <div class="wrap">
+        <div class="case-header reveal">
+          <div class="case-meta">
+            <div class="case-meta-item">
+              <span class="case-meta-label">Company</span>
+              <span class="case-meta-value">Strike</span>
+            </div>
+            <div class="case-meta-item">
+              <span class="case-meta-label">Role</span>
+              <span class="case-meta-value">Senior Product Designer</span>
+            </div>
+            <div class="case-meta-item">
+              <span class="case-meta-label">Period</span>
+              <span class="case-meta-value">2021 — 2023</span>
+            </div>
+          </div>
+          <div>
+            <p class="section-label">Case Study</p>
+            <h2 class="case-title">450 screens in 5 months. Then it went to 65 countries.</h2>
+            <p class="case-desc">Strike needed a complete mobile redesign to go global. I owned every surface: onboarding, payments, KYC, account management, in-app support. The hidden layer was making Bitcoin feel as simple as Venmo while handling the regulatory complexity of 65+ countries underneath.</p>
+            <div class="case-impact">
+              <div class="case-impact-item">
+                <span class="case-impact-value">450+</span>
+                <span class="case-impact-label">Screens Designed</span>
+              </div>
+              <div class="case-impact-item">
+                <span class="case-impact-value">80+</span>
+                <span class="case-impact-label">User Flows</span>
+              </div>
+              <div class="case-impact-item">
+                <span class="case-impact-value">1.5M+</span>
+                <span class="case-impact-label">Users</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="case-images reveal">
+          <img src="assets/strike1.png" alt="Strike app — send payment flow" />
+          <img src="assets/strike2.png" alt="Strike app — home screen" />
+          <img src="assets/strike3.png" alt="Strike app — onboarding" />
+          <img src="assets/strike4.png" alt="Strike app — transaction detail" />
+        </div>
+      </div>
+    </section>
+
+    <!-- AIOZ -->
+    <section class="case-study case-study-alt">
+      <div class="wrap">
+        <div class="case-header reveal">
+          <div class="case-meta">
+            <div class="case-meta-item">
+              <span class="case-meta-label">Company</span>
+              <span class="case-meta-value">AIOZ Network</span>
+            </div>
+            <div class="case-meta-item">
+              <span class="case-meta-label">Role</span>
+              <span class="case-meta-value">Principal Product Designer</span>
+            </div>
+            <div class="case-meta-item">
+              <span class="case-meta-label">Period</span>
+              <span class="case-meta-value">2023 — 2025</span>
+            </div>
+          </div>
+          <div>
+            <p class="section-label">Case Study</p>
+            <h2 class="case-title">The market cap went 100×. The design system held.</h2>
+            <p class="case-desc">AIOZ had 8 products and no design coherence. AI marketplace, decentralized storage, multichain wallet, video middleware. The hidden layer was a unified design system that could scale across all of them. While the market cap grew from $13M to $1.38B, the design language stayed consistent.</p>
+            <div class="case-impact">
+              <div class="case-impact-item">
+                <span class="case-impact-value">8</span>
+                <span class="case-impact-label">Products</span>
+              </div>
+              <div class="case-impact-item">
+                <span class="case-impact-value">100×</span>
+                <span class="case-impact-label">Market Cap Growth</span>
+              </div>
+              <div class="case-impact-item">
+                <span class="case-impact-value">$1.38B</span>
+                <span class="case-impact-label">Peak Valuation</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="case-images case-images-3 reveal">
+          <img src="assets/aioz1.png" alt="AIOZ — AI marketplace interface" />
+          <img src="assets/aioz2.png" alt="AIOZ — decentralized storage dashboard" />
+          <img src="assets/aioz3.png" alt="AIOZ — multichain wallet" />
+        </div>
+      </div>
+    </section>
+
+    <!-- FOUNTAIN -->
+    <section class="case-study">
+      <div class="wrap">
+        <div class="case-header reveal">
+          <div class="case-meta">
+            <div class="case-meta-item">
+              <span class="case-meta-label">Company</span>
+              <span class="case-meta-value">Fountain</span>
+            </div>
+            <div class="case-meta-item">
+              <span class="case-meta-label">Role</span>
+              <span class="case-meta-value">Design Advisor / Director</span>
+            </div>
+            <div class="case-meta-item">
+              <span class="case-meta-label">Period</span>
+              <span class="case-meta-value">2023 — 2024</span>
+            </div>
+          </div>
+          <div>
+            <p class="section-label">Case Study</p>
+            <h2 class="case-title">They had a podcast app. I gave them a listening experience.</h2>
+            <p class="case-desc">Fountain was a Bitcoin-native podcast player that needed to feel as intuitive as Spotify while handling tipping, wallets, and streaming payments. Full mobile redesign in under 5 months with a tokenized design system. The hidden layer: making micropayments invisible so the listener never leaves the content.</p>
+            <div class="case-impact">
+              <div class="case-impact-item">
+                <span class="case-impact-value">&lt; 5mo</span>
+                <span class="case-impact-label">Ship Time</span>
+              </div>
+              <div class="case-impact-item">
+                <span class="case-impact-value">Full</span>
+                <span class="case-impact-label">App Redesign</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="case-images reveal">
+          <img src="assets/fountain1.png" alt="Fountain — podcast player redesign" />
+          <img src="assets/fountain2.png" alt="Fountain — discovery screen" />
+          <img src="assets/fountain3.png" alt="Fountain — wallet interface" />
+          <img src="assets/fountain4.png" alt="Fountain — onboarding flow" />
+        </div>
+      </div>
+    </section>
+
+    <!-- KOHO -->
+    <section class="case-study case-study-alt">
+      <div class="wrap">
+        <div class="case-header reveal">
+          <div class="case-meta">
+            <div class="case-meta-item">
+              <span class="case-meta-label">Company</span>
+              <span class="case-meta-value">KOHO</span>
+            </div>
+            <div class="case-meta-item">
+              <span class="case-meta-label">Role</span>
+              <span class="case-meta-value">Design Lead · Employee #1</span>
+            </div>
+            <div class="case-meta-item">
+              <span class="case-meta-label">Period</span>
+              <span class="case-meta-value">2015 — 2018</span>
+            </div>
+          </div>
+          <div>
+            <p class="section-label">Case Study</p>
+            <h2 class="case-title">Employee #1. Zero users. Now it's worth $800M.</h2>
+            <p class="case-desc">I was the first person at KOHO. No product, no brand, no users. Built every design foundation: onboarding, transactions, budgeting, savings. The hidden layer was designing a bank that didn't feel like one, for people who hated their bank.</p>
+            <div class="case-impact">
+              <div class="case-impact-item">
+                <span class="case-impact-value">#1</span>
+                <span class="case-impact-label">Employee</span>
+              </div>
+              <div class="case-impact-item">
+                <span class="case-impact-value">0 → 100K+</span>
+                <span class="case-impact-label">Users</span>
+              </div>
+              <div class="case-impact-item">
+                <span class="case-impact-value">$800M+</span>
+                <span class="case-impact-label">Valuation</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- No screenshots available for KOHO -->
+        <div class="case-images case-images-2 reveal" style="opacity: 0.5;">
+          <div style="aspect-ratio: 16/10; background: var(--surface); border-radius: 6px; display: flex; align-items: center; justify-content: center; grid-column: span 2;">
+            <span style="font-size: 13px; letter-spacing: var(--ls-wide); text-transform: uppercase; color: var(--muted);">Case study in progress</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- AI / NOW — moved above about per Cagan feedback -->
+  <section id="now" style="border-top: 1px solid var(--border);">
+    <div class="wrap">
+      <div class="ai-section reveal">
+        <p class="section-label">Right Now</p>
+        <h2 class="section-h2">Not theorizing about AI. Living inside it.</h2>
+        <p class="about-text" style="margin-bottom: 0;">I spend my days building with AI agents, designing for LLMs, and figuring out how humans and machines actually work together. Not reading about it. Doing it.</p>
+        <div class="ai-grid reveal">
+          <div class="ai-card">
+            <h3>LoopIn</h3>
+            <p>Click any UI element in your browser. It goes straight to Claude Code via MCP. I built it because designers shouldn't have to describe what they can see.</p>
+          </div>
+          <div class="ai-card">
+            <h3>Agent UX</h3>
+            <p>The interface for AI agents isn't the chat window. It's everything around it: the controls, the trust signals, the moments where the machine asks for help. I'm designing those patterns.</p>
+          </div>
+          <div class="ai-card">
+            <h3>Vibe Coding</h3>
+            <p>Shipping apps end-to-end with AI as co-pilot. Workout tracker, flavor pairing tool, browser bridges. The hidden layer: knowing when to trust the machine and when to override it.</p>
+          </div>
+          <div class="ai-card">
+            <h3>AI-Native Design</h3>
+            <p>AI isn't a tool I added to my workflow. It IS my workflow. Research, prototyping, code, deployment. This portfolio was designed by an AI I built. That's the point.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" style="border-top: 1px solid var(--border);">
+    <div class="wrap">
+      <p class="section-label">About</p>
+      <h2 class="section-h2">The layer underneath.</h2>
+      <div class="about-grid reveal">
+        <div class="about-sidebar">
+          <div class="case-meta-item">
+            <span class="case-meta-label">Education</span>
+            <span class="case-meta-value">BSc Microbiology</span>
+            <span class="case-meta-value">BA Interaction Design</span>
+          </div>
+          <div class="case-meta-item" style="margin-top: 24px;">
+            <span class="case-meta-label">Location</span>
+            <span class="case-meta-value">Victoria, BC</span>
+          </div>
+          <div class="case-meta-item" style="margin-top: 24px;">
+            <span class="case-meta-label">Experience</span>
+            <span class="case-meta-value">14+ years</span>
+          </div>
+        </div>
+        <div>
+          <div class="about-text">
+            <p>I started in microbiology. Four years studying systems you can't see with the naked eye. Then I went back to school for interaction design, because I realized the same skill applies: find the hidden structure, make it visible, make it useful.</p>
+            <p>Fourteen years later, the pattern holds. At KOHO I found the hidden layer in banking (people hate their bank, so don't make it feel like one). At Strike I found it in Bitcoin (the technology should be invisible). At AIOZ I found it in chaos (8 products need one language).</p>
+            <p>I'm not the designer who makes things pretty. I'm the one who figures out what the product is actually about, underneath all the features and requirements and stakeholder opinions. Then I make that real.</p>
+          </div>
+          <blockquote class="about-quote" style="margin-top: 48px;">
+            "Every product has a logic underneath that nobody sees. I find it. Then I turn it into something you can hold in your hand."
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="contact" class="cta-section" style="border-top: 1px solid var(--border);">
+    <div class="wrap">
+      <h2>Let's build something<br />that matters.</h2>
+      <p>I'm looking for my next role designing AI products, agent interfaces, or anything that needs someone who goes deep. Based in Victoria, BC. Open to remote.</p>
+      <div class="cta-links">
+        <a href="mailto:scott.k.bell@gmail.com" class="btn-primary">Get in Touch</a>
+        <a href="https://linkedin.com/in/scottkbell" target="_blank" rel="noopener" class="btn-secondary">LinkedIn</a>
+        <a href="https://www.scottkbell.com/" target="_blank" rel="noopener" class="btn-secondary">Portfolio</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap">
+      <div class="footer-inner">
+        <span class="footer-brand">Scott Bell · Victoria, BC</span>
+        <ul class="footer-links">
+          <li><a href="mailto:scott.k.bell@gmail.com">Email</a></li>
+          <li><a href="https://linkedin.com/in/scottkbell" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://github.com/skip5this" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Hero entrance
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        document.body.classList.add('js-loaded');
+      });
+    });
+
+    // Scroll reveals
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

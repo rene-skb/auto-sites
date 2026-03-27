@@ -1,5 +1,67 @@
 # Auto-Sites Build Log
 
+## Build 57 — Kid Sister Ice Cream
+- **Category:** Food & Beverage — Artisan Ice Cream
+- **City:** Victoria, BC (Esquimalt — 1320 Esquimalt Road)
+- **Date:** 2026-03-27
+- **Model:** claude-sonnet-4-6 (subagent)
+- **Agent:** Lucy
+- **Hero pattern:** split-image-right
+- **Typography:** Fraunces 300/400/500/600/700 (display, variable opsz) + Poppins 300/400/500/600 (body/UI)
+- **Review layout:** Single-column pull-quote style — Fraunces italic for key phrase, Poppins body for full review. Stars hidden (redundant with 5.0★ headline). First review slightly larger pull-quote.
+- **Stats bar style:** sidebar-stats (4 stats in left col on green bg — 5.0★, Thu–Sun, 100%, Island — with origin story on right)
+- **Score:** 7.2 (v0 WHY avg) → 8.5 (v5 self-review)
+- **Key decisions:** Used REAL photos from kidsistericecream.com (8 images downloaded). Coral `#E8573B` + Cream `#F5F0DC` + Forest Green `#3E7A45` extracted from actual brand. "Foraged. Seasonal. Gone by Sunday." conviction headline. Fraunces (wavy variable serif) + Poppins (their actual body font per brief) — first use of this pairing. Flavor ticker with all 6 real flavors (Blackberry Fig, Roasted Strawberry, Matcha Lemon, Sea Salt, Double Chocolate, Vegan Sorbet from reviews). Real Google reviews — 5.0★ (18 reviews), Women-owned, LGBTQ+ friendly. "This Week's Flavours ↗" as coral primary nav CTA — pointing to Instagram as the real-time menu. "See This Week's Flavours" as the CTAs in stats section. Full motion system: hero stagger, IntersectionObserver scroll-reveals, star pop-in animation, dandelion float-in.
+
+### Business
+Kid Sister Ice Cream. Real Victoria BC business. Website kidsistericecream.com (Squarespace — content site, not a designed marketing/landing page). Address: 1320 Esquimalt Rd, Victoria, BC V9A 3P6. Phone: (250) 590-9777. Email: hello@kidsistericecream.com. Instagram: @kidsistericecream. Google: 5.0 stars, 18 reviews. Women-owned. LGBTQ+ friendly. Hours: Thu-Fri 3pm-8pm, Sat-Sun 1pm-8pm. Product: ice cream, sherbet, frozen yogurt, vegan sorbet, ice pops, fruit cream pops. Organic dairy, local farm fruit (Vancouver Island + Fraser Valley), foraged figs and blackberries. Available at shop + stockists around Victoria and the Island. Gift cards available.
+
+### Scores
+| Round | Phase | Reviewers | Avg |
+|-------|-------|-----------|-----|
+| v0→v1 | WHY | Jobs 7.0, Cagan 7.0, Ogilvy 7.5 | 7.2 |
+| v1→v2 | WHAT | Norman 8.0, Krug 7.5, Nielsen 7.0 | 7.5 |
+| v2→v3 | HOW | Vignelli 7.0, Spiekermann 6.0, Rams 7.0 | 6.7 |
+| v4→v5 | Motion + Self | Emil + Lucy | 8.5 |
+
+### Key improvements
+- v0→v1: Gift card section got dandelion.png instead of corporate card mockup; origin copy added stockists + "Instagram IS the menu" framing; "See This Week's Flavours" as the primary Instagram CTA in stats section
+- v1→v2: "This Week's Flavours ↗" added to nav (primary path for returning visitors); hero secondary CTA changed to "This Week's Flavours ↗"; body text bumped to 1rem; gift card CTA changed to mailto with gift card subject
+- v2→v3: Review text switched from Fraunces italic → Poppins (readability failure caught by Spiekermann); pull-quote pattern introduced (italic Fraunces for short phrase + Poppins for body); stats grid `align-items: start` for baseline alignment; "V.I." → "Island" (Rams: insider shorthand)
+- v3→v4: Full motion system — hero stagger (double-rAF), IntersectionObserver scroll-reveals (reveal/reveal-img/stagger), star pop-in animations, dandelion float-rotate entrance, nav underline hover (draw-in from left), hours-row hover highlight
+- v4→v5: Body text weight 300→400 (fixes "squint" issue); review stars hidden (redundant with 5.0★ headline); first review pull-quote larger; gift card CTA = "Email for a Gift Card" with mailto:?subject; map section gets fallback "Get Directions" link; "This Week's Flavours" nav link coral + font-weight:600; origin copy tightened (removed redundancy with What We Make)
+
+### What worked
+- Real photos push this past the AI ceiling — the counter/scooping photo as hero is the most authentic hero we've built. Immediately feels like a real place.
+- "Foraged. Seasonal. Gone by Sunday." — best conviction headline in the build log. Five words, three brand values, and FOMO in one sentence.
+- Fraunces + Poppins pairing: Fraunces' wavy optical size variable axis gives warmth and handcraft energy. Poppins is their actual brand font — using it for body makes this feel genuinely theirs.
+- Flavor ticker: immediate product evidence, adds movement to an otherwise photography-dominated page. Using the six real flavors from reviews (not invented) — Blackberry Fig, Roasted Strawberry, Matcha Lemon are specific enough to be memorable.
+- Dandelion (their actual brand mark) as the gift card section visual — transforms a weak section into a brand moment. The float-rotate entrance animation makes it feel alive.
+- "Instagram IS the real-time menu" as UX philosophy — clever solution to the "what's in the case today?" problem without a CMS.
+- Real Google reviews with actual customer names (Dani B, Jonathan M., Little June, Joyce T., Rachel R.) and specific flavor mentions — far more credible than invented testimonials.
+- Review pull-quote pattern: short memorable phrase in Fraunces italic, body copy in Poppins. Fixes Spiekermann's readability issue while keeping editorial quality.
+- sidebar-stats on green — the four-stat credibility block (5.0★ / Thu–Sun / 100% / Island) reads immediately and doesn't need explanation.
+
+### Files
+- index-v0.html through index-v5.html (6 versions — v*.html gitignored per project rules)
+- index.html (copy of v5)
+- Real photos: hero-counter.jpg, spring-pints.jpg, dandelion.png, sunflowers.jpg, christen-truck.jpg, farm-cows.jpg, sixpacks.jpg, logo.gif (8 files from kidsistericecream.com)
+
+---
+
+## Build 56 — LoopIn (Scott Bell's Product)
+- **Category:** Dev Tool / Product Landing Page
+- **Date:** 2026-03-26
+- **Model:** claude-sonnet-4-6 (subagent)
+- **Agent:** Lucy
+- **Hero pattern:** dark-immersive
+- **Typography:** Space Grotesk (display) + Inter (body) + JetBrains Mono (code/labels)
+- **Review layout:** N/A (no reviews — dev tool product)
+- **Stats bar style:** no-stats
+- **Score:** 6.5 (v0) → 7.5 (final)
+- **Live URL:** https://auto-sites.pages.dev/demos/loopin/
+- **Key decisions:** Premium dark dev tool aesthetic (amber/gold accent on near-black). Real product assets pulled directly from scottkbell.com — actual product video (loopin-architecture.mp4) and icon. Interactive demo visualization showing browser → JSON capture flow. Full motion pipeline with IntersectionObserver scroll-reveals and JSON type-in animation. Unlike typical local business builds, this required adapting design DNA for a developer tool context (dark theme, monospace typography, technical precision over warmth).
+
 ## Build 55 — Flowers On Top
 - **Category:** Florist
 - **City:** Victoria, BC (warehouse at 1818 Vancouver St)

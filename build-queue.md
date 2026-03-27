@@ -5,12 +5,6 @@
 
 ## Queue
 
-### Flowers On Top
-- **City:** Victoria, BC
-- **Category:** Florist
-- **Rating:** 4.9★ (134 reviews)
-- **Notes:** High-rated florist with no web presence. Found via Outscraper.
-
 ### GoodSide Pastry House
 - **City:** Victoria, BC
 - **Category:** Bakery / Pastry
@@ -24,6 +18,12 @@
 - **Notes:** Well-reviewed tattoo studio, no website. Found via Outscraper.
 
 ## Built
+
+### Flowers On Top
+- **City:** Victoria, BC
+- **Category:** Florist
+- **Built:** 2026-03-27
+- **Demo:** `projects/auto-sites/demos/flowers-on-top/`
 
 ### La Roux Patisserie
 - **City:** Victoria, BC

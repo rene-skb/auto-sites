@@ -1,5 +1,54 @@
 # Auto-Sites Build Log
 
+## Build 55 — Flowers On Top
+- **Category:** Florist
+- **City:** Victoria, BC (warehouse at 1818 Vancouver St)
+- **Date:** 2026-03-27
+- **Model:** claude-sonnet-4-6 (subagent)
+- **Agent:** Lucy
+- **Hero pattern:** asymmetric-collage
+- **Typography:** Playfair Display 400/500/600/700/400i (display) + Jost 300/400/500/600 (body/UI)
+- **Review layout:** 2-col equal cards, all same treatment (cream-alt bg, petal border-top)
+- **Stats bar style:** no-stats
+- **Score:** 7.0 (v0 WHY avg) → 8.2 (v5 self-review)
+- **Key decisions:** Asymmetric-collage hero (3-image: tall left + 2 stacked right) — "The Flowers Are *Never* Just Flowers." as conviction headline. Palette: cream + sage botanical (#5C7A62) + deep rose accent (#8A3D44). Playfair Display first use with Jost — editorial yet botanical. The origin story (flower cart → restaurant tables → "people kept asking where to get them") as name section drama. Services moved to immediately after hero/photo strip based on WHAT panel feedback. Review dates added per non-negotiables. Hero entrance stagger (js-loaded/js-ready double-rAF pattern) + IntersectionObserver scroll-reveals throughout.
+
+### Business
+Flowers On Top. Real Victoria BC business. Website flowersontop.ca (FloraNext ordering platform — not a designed marketing site). Address: 1818 Vancouver St, Victoria, BC V8T 5E3 (North Park warehouse — moved May 2025 from 1005 Broad St where they operated 35 years). Phone: (250) 383-5262. Instagram: @flowersontop. Facebook: @flowersontop. Google: 4.9 stars, 134 reviews. Family-owned since 1990 — second generation (Simone + Jacqueline) now managing. Origin: started as flower cart at Fort & Government → put flowers on top of restaurant tables → people kept asking → became the business. Weekly trips to United Flower Growers auction in Burnaby for 35 years. BC-grown sourcing from Fraser Valley + Vancouver Island. Delivery Mon-Sat across all of Greater Victoria. Pickup Mon-Fri 8am-2pm at warehouse. Services: bouquets/vases, wedding flowers, plants/planters, subscriptions, bulk flowers.
+
+### Scores
+| Round | Phase | Reviewers | Avg |
+|-------|-------|-----------|-----|
+| v0→v1 | WHY | Jobs 7.0, Cagan 7.0, Ogilvy 7.0 | 7.0 |
+| v1→v2 | WHAT | Norman 7.0, Krug 6.0, Nielsen 6.0 | 6.3 |
+| v2→v3 | HOW | Vignelli 6.0, Spiekermann 7.0, Rams 7.0 | 6.7 |
+| v4→v5 | Motion + Self | Emil + Lucy | 8.2 |
+
+### Key improvements
+- v0→v1: Delivery info surfaced near hero (same-day note below CTAs); "Something for Every Occasion" replaced with "This Week's Flowers. Your Occasion."; service card descriptions rewritten in business voice (no repetition from hero); visit section heading changed to "Delivered Monday–Saturday. Order Online or by Phone."
+- v1→v2: Services section moved before About/Name sections; images added to service cards (4:3 aspect ratio); petal accent darkened from #B07A7C → #8A3D44 for WCAG contrast; accessibility states added; photo strip height reduced from 240→160px (Rams: redundant with hero)
+- v2→v3: Section label letter-spacing 0.14→0.16em; section-h2 tracking tightened -0.02→-0.03em; review-meta bumped to 0.8125rem; service card images use aspect-ratio: 4/3
+- v3→v4: Full motion system implemented: hero entrance stagger (js-loaded/js-ready double-rAF), IntersectionObserver scroll-reveals (reveal/reveal-img/reveal-fade) on all sections, stagger classes for cards/reviews, prefers-reduced-motion wrapper
+- v4→v5: Review dates added per non-negotiables; footer padding 48→64px; about-badge restyled in sage green with box-shadow; land acknowledgment added to footer; hero entrance animation fixed with proper double-rAF
+
+### What worked
+- Asymmetric collage hero: 3-image grid (2fr tall + 2×1fr stacked) creates editorial magazine richness. Different from single-image split-right or full-viewport approaches.
+- "The Flowers Are *Never* Just Flowers.": conviction headline that takes a position. The italic *Never* adds spoken emphasis.
+- Origin story as name section: "They Put Flowers on Restaurant Tables. *People Kept Asking Where to Get Them.*" — specific, surprising, true.  The most distinctive moment on the page.
+- Sage botanical green (#5C7A62) + deep rose (#8A3D44): warm, botanical, distinctly florist without being cliché pink. European editorial palette.
+- Playfair Display + Jost: elegant serif with a practical geometric sans. Warm without being heavy.
+- Review structure: Mike H. "artists" framing + Jessica H. "like they were from a magazine" — put customer words front and center.
+- Services early: WHAT panel correctly identified that task-oriented visitors need to see what's available before the brand narrative.
+- Service card images: added immediate visual affordance to what was previously an abstract text grid.
+- No stats bar: the reviews and 35-year story do credibility work better than a data strip would.
+
+### Files
+- index-v0.html through index-v5.html (6 versions, v*.html excluded from git per .gitignore)
+- index.html (copy of v5)
+- bouquet-hero.png, flowers-detail.png, arrangement-close.png, peonies-closeup.png, stems-fresh.png (5 AI-generated images)
+
+---
+
 ## Build 54 — La Roux Patisserie
 - **Category:** French Patisserie
 - **City:** Victoria, BC (519 Fisgard St, Chinatown)

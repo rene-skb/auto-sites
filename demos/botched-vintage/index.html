@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Botched Vintage & Apparel — Curated Vintage on Fort Street, Victoria BC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F5F0E8;
+    --ink: #1A1A18;
+    --warm-gray: #3D3B36;
+    --stone: #A69E93;
+    --brass: #B8956A;
+    --off-white: #FDFBF7;
+    --charcoal: #2A2825;
+    
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+    
+    --ls-nav: 0.08em;
+    --ls-label: 0.12em;
+    --ls-micro: 0.06em;
+    
+    --section-lg: 96px;
+    --content-width: 1100px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  img { display: block; width: 100%; height: auto; }
+
+  .content-width {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 20px 0;
+    background: var(--cream);
+    transition: box-shadow 300ms var(--ease-out);
+  }
+
+  nav.scrolled { box-shadow: 0 1px 0 rgba(0,0,0,0.06); }
+
+  .nav-inner {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav-brand {
+    font-family: 'Instrument Serif', serif;
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: var(--ls-micro);
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+
+  .nav-links a {
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: var(--ls-nav);
+    text-transform: uppercase;
+    color: var(--warm-gray);
+    text-decoration: none;
+    transition: color 200ms var(--ease-out);
+  }
+
+  .nav-links a:hover { color: var(--ink); }
+
+  .nav-hamburger {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 24px;
+    height: 20px;
+    position: relative;
+  }
+
+  .nav-hamburger span {
+    position: absolute; left: 0; width: 100%; height: 1.5px;
+    background: var(--ink);
+    transition: all 250ms var(--ease-out);
+  }
+
+  .nav-hamburger span:nth-child(1) { top: 0; }
+  .nav-hamburger span:nth-child(2) { top: 9px; }
+  .nav-hamburger span:nth-child(3) { top: 18px; }
+  .nav-hamburger.open span:nth-child(1) { top: 9px; transform: rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.open span:nth-child(3) { top: 9px; transform: rotate(-45deg); }
+
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 60px; left: 0; right: 0; bottom: 0;
+    background: var(--cream);
+    z-index: 99;
+    padding: 48px 24px;
+  }
+  .mobile-menu.open { display: flex; flex-direction: column; gap: 24px; }
+  .mobile-menu a {
+    font-family: 'Instrument Serif', serif;
+    font-size: 32px;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  /* ── HERO — Type-driven, big statement ── */
+  .hero {
+    padding-top: 160px;
+    padding-bottom: 48px;
+  }
+
+  .hero h1 {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(56px, 10vw, 120px);
+    font-weight: 400;
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--brass);
+  }
+
+  .hero-sub {
+    text-align: center;
+    max-width: 420px;
+    margin: 0 auto 32px;
+  }
+
+  .hero-sub p {
+    font-size: 15px;
+    color: var(--stone);
+    letter-spacing: var(--ls-micro);
+  }
+
+  .hero-cta {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .hero-meta {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    font-size: 11px;
+    letter-spacing: var(--ls-label);
+    text-transform: uppercase;
+    color: var(--stone);
+  }
+
+  .hero-meta span { display: flex; align-items: center; gap: 6px; }
+  .hero-meta .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--brass); }
+
+  /* ── HERO IMAGE STRIP — 3 images, editorial ── */
+  .hero-strip {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 0;
+    margin-top: 48px;
+  }
+
+  .hero-strip img {
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  .hero-strip img:first-child {
+    aspect-ratio: 3/4;
+    grid-row: span 1;
+  }
+
+  /* ── EDITORIAL ABOUT — asymmetric 40/60 ── */
+  .about {
+    padding: var(--section-lg) 0;
+  }
+
+  .about-layout {
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .about-label {
+    font-size: 11px;
+    letter-spacing: var(--ls-label);
+    text-transform: uppercase;
+    color: var(--brass);
+    margin-bottom: 16px;
+  }
+
+  .about h2 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 1.15;
+    margin-bottom: 24px;
+  }
+
+  .about p {
+    color: var(--warm-gray);
+    font-size: 15px;
+    margin-bottom: 16px;
+  }
+
+  .about-right {
+    padding-top: 48px;
+  }
+
+  /* ── WHAT WE CARRY — horizontal scroll list ── */
+  .carry-section {
+    padding: var(--section-lg) 0;
+    background: var(--charcoal);
+    color: var(--cream);
+    overflow: hidden;
+  }
+
+  .carry-header {
+    margin-bottom: 48px;
+  }
+
+  .carry-header h2 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 40px;
+    font-weight: 400;
+    margin-bottom: 8px;
+  }
+
+  .carry-header .sub {
+    font-size: 11px;
+    letter-spacing: var(--ls-nav);
+    text-transform: uppercase;
+    color: var(--stone);
+  }
+
+  .carry-list {
+    display: flex;
+    gap: 1px;
+  }
+
+  .carry-item {
+    flex: 1;
+    padding: 32px 24px;
+    border-left: 1px solid rgba(255,255,255,0.08);
+    min-width: 0;
+  }
+
+  .carry-item:first-child { border-left: none; }
+
+  .carry-item .num {
+    font-size: 13px;
+    color: var(--brass);
+    letter-spacing: var(--ls-micro);
+    margin-bottom: 12px;
+    opacity: 0.35;
+  }
+
+  .carry-item h3 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 8px;
+  }
+
+  .carry-item p {
+    font-size: 13px;
+    color: var(--stone);
+    line-height: 1.65;
+  }
+
+  /* ── FULL BLEED PHOTO ── */
+  .full-bleed {
+    width: 100%;
+  }
+
+  .full-bleed img {
+    width: 100%;
+    aspect-ratio: 21/9;
+    object-fit: cover;
+  }
+
+  /* ── PRESS QUOTE ── */
+  .press-quote {
+    padding: 64px 0;
+    text-align: center;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+
+  .press-quote blockquote {
+    font-family: 'Instrument Serif', serif;
+    font-size: 28px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.4;
+    max-width: 640px;
+    margin: 0 auto 12px;
+    color: var(--warm-gray);
+  }
+
+  .press-quote cite {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-size: 11px;
+    letter-spacing: var(--ls-label);
+    text-transform: uppercase;
+    color: var(--stone);
+  }
+
+  /* ── TRUST BAR ── */
+  .trust-bar {
+    padding: 32px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+
+  .trust-items {
+    display: flex;
+    justify-content: center;
+    gap: 64px;
+  }
+
+  .trust-item { text-align: center; }
+
+  .trust-item .value {
+    font-family: 'Instrument Serif', serif;
+    font-size: 28px;
+    color: var(--ink);
+  }
+
+  .trust-item .label {
+    font-size: 11px;
+    letter-spacing: var(--ls-label);
+    text-transform: uppercase;
+    color: var(--stone);
+    margin-top: 4px;
+  }
+
+  /* ── REVIEWS ── */
+  .reviews {
+    padding: var(--section-lg) 0;
+  }
+
+  .reviews-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .reviews-header h2 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 40px;
+    font-weight: 400;
+  }
+
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .review-card {
+    padding: 32px;
+    background: var(--off-white);
+  }
+
+  .review-card:nth-child(even) {
+    background: rgba(184, 149, 106, 0.06);
+  }
+
+  .review-stars {
+    color: var(--brass);
+    font-size: 14px;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+  }
+
+  .review-card p {
+    font-size: 15px;
+    color: var(--warm-gray);
+    margin-bottom: 16px;
+    font-style: italic;
+  }
+
+  .review-source {
+    font-size: 11px;
+    letter-spacing: var(--ls-label);
+    text-transform: uppercase;
+    color: var(--stone);
+  }
+
+  /* ── VISIT ── */
+  .visit {
+    padding: var(--section-lg) 0;
+    background: var(--charcoal);
+    color: var(--cream);
+  }
+
+  .visit-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+  }
+
+  .visit h2 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 40px;
+    font-weight: 400;
+    margin-bottom: 32px;
+  }
+
+  .visit-detail { margin-bottom: 24px; }
+
+  .visit-detail .label {
+    font-size: 11px;
+    letter-spacing: var(--ls-label);
+    text-transform: uppercase;
+    color: var(--brass);
+    margin-bottom: 4px;
+  }
+
+  .visit-detail p, .visit-detail a {
+    font-size: 15px;
+    color: var(--cream);
+    text-decoration: none;
+  }
+
+  .visit-detail a:hover { text-decoration: underline; }
+
+  .visit-map {
+    width: 100%;
+    aspect-ratio: 4/3;
+    border: none;
+    filter: grayscale(0.5) contrast(1.1);
+  }
+
+  .btn-primary {
+    display: inline-block;
+    padding: 14px 32px;
+    background: var(--brass);
+    color: var(--cream);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: var(--ls-nav);
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 160ms var(--ease-out), background 200ms var(--ease-out);
+  }
+
+  .btn-primary:active { transform: scale(0.97); }
+  .btn-primary:hover { background: #a6834f; }
+
+  .btn-outline {
+    display: inline-block;
+    padding: 14px 32px;
+    background: transparent;
+    border: 1px solid var(--stone);
+    color: var(--cream);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: var(--ls-nav);
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 160ms var(--ease-out), border-color 200ms var(--ease-out);
+  }
+
+  .btn-outline:active { transform: scale(0.97); }
+  .btn-outline:hover { border-color: var(--cream); }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 48px 0 32px;
+    border-top: 1px solid rgba(0,0,0,0.06);
+  }
+
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-brand {
+    font-family: 'Instrument Serif', serif;
+    font-size: 22px;
+    letter-spacing: var(--ls-micro);
+    color: var(--ink);
+  }
+
+  .footer-links { display: flex; gap: 24px; list-style: none; }
+
+  .footer-links a {
+    font-size: 12px;
+    letter-spacing: var(--ls-nav);
+    text-transform: uppercase;
+    color: var(--stone);
+    text-decoration: none;
+    transition: color 200ms var(--ease-out);
+  }
+
+  .footer-links a:hover { color: var(--ink); }
+
+  .footer-copy {
+    text-align: center;
+    font-size: 11px;
+    color: var(--stone);
+    margin-top: 32px;
+    letter-spacing: var(--ls-micro);
+  }
+
+  /* ── ENTRANCE ANIMATION ── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 600ms var(--ease-out) forwards;
+  }
+  .fade-up-d1 { animation-delay: 100ms; }
+  .fade-up-d2 { animation-delay: 200ms; }
+  .fade-up-d3 { animation-delay: 300ms; }
+  .fade-up-d4 { animation-delay: 400ms; }
+
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    :root { --section-lg: 64px; }
+
+    .nav-links { display: none; }
+    .nav-hamburger { display: block; }
+
+    .hero { padding-top: 120px; }
+    .hero h1 { font-size: 48px; }
+    .hero-meta { flex-wrap: wrap; gap: 16px; justify-content: center; }
+
+    .hero-strip { grid-template-columns: 1fr 1fr; gap: 0; }
+    .hero-strip img:first-child { grid-column: span 2; aspect-ratio: 16/9; }
+
+    .about-layout { grid-template-columns: 1fr; gap: 32px; }
+    .about-right { padding-top: 0; }
+
+    .carry-list { flex-direction: column; }
+    .carry-item { border-left: none; border-top: 1px solid rgba(255,255,255,0.08); padding: 24px 0; }
+    .carry-item:first-child { border-top: none; }
+
+    .reviews-grid { grid-template-columns: 1fr; }
+    .visit-layout { grid-template-columns: 1fr; gap: 32px; }
+    .trust-items { flex-wrap: wrap; gap: 32px; }
+
+    .footer-inner { flex-direction: column; gap: 16px; text-align: center; }
+    .footer-links { flex-wrap: wrap; justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">Botched Vintage</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#shop">Shop</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#visit">Visit</a></li>
+      <li><a href="https://www.instagram.com/botched.vintage/" target="_blank">Instagram</a></li>
+    </ul>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMobile()">About</a>
+  <a href="#shop" onclick="closeMobile()">Shop</a>
+  <a href="#reviews" onclick="closeMobile()">Reviews</a>
+  <a href="#visit" onclick="closeMobile()">Visit</a>
+  <a href="https://www.instagram.com/botched.vintage/" target="_blank">Instagram</a>
+</div>
+
+<!-- HERO — Centered type-driven opening -->
+<section class="hero">
+  <div class="content-width">
+    <h1 class="fade-up">Already<br><em>worn in.</em></h1>
+    <div class="hero-sub fade-up fade-up-d1">
+      <p>Curated vintage clothing and accessories from the decades that got it right. Fort Street, Victoria BC.</p>
+    </div>
+    <div class="hero-cta fade-up fade-up-d2">
+      <a href="https://www.instagram.com/botched.vintage/" target="_blank" class="btn-primary" style="background: var(--ink);">Shop on Instagram</a>
+    </div>
+    <div class="hero-meta fade-up fade-up-d3">
+      <span><span class="dot"></span> 1044A Fort Street</span>
+      <span><span class="dot"></span> Worldwide Shipping</span>
+      <span><span class="dot"></span> @botched.vintage</span>
+    </div>
+  </div>
+
+  <!-- 3-image editorial strip -->
+  <div class="content-width">
+    <div class="hero-strip fade-up fade-up-d4">
+      <img src="rack.png" alt="Curated vintage clothing rack">
+      <img src="detail.png" alt="Vintage denim detail">
+      <img src="storefront.png" alt="Fort Street storefront">
+    </div>
+  </div>
+</section>
+
+<!-- PRESS QUOTE — early social proof -->
+<section class="press-quote">
+  <div class="content-width">
+    <blockquote>"Sleek, stylish, and new age — the kind of vintage store that makes you rethink everything in your closet."</blockquote>
+    <cite>Daily Hive Victoria</cite>
+  </div>
+</section>
+
+<!-- ABOUT — asymmetric editorial -->
+<section class="about" id="about">
+  <div class="content-width">
+    <div class="about-layout">
+      <div>
+        <p class="about-label">The Edit</p>
+        <h2>Not thrift.<br>A point of view.</h2>
+      </div>
+      <div class="about-right">
+        <p>Botched is a curated vintage shop on Victoria's Fort Street, where every piece is hand-selected for quality, era, and attitude. Men's and women's, from 90s designer to premium denim, leather, and the kind of pieces you'd find in a stylist's personal archive.</p>
+        <p>Located inside Botched Shop at 1044A Fort Street, in the heart of Victoria's vintage corridor. New drops land on Instagram first. Worldwide shipping available.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE CARRY — column dividers -->
+<section class="carry-section" id="shop">
+  <div class="content-width">
+    <div class="carry-header">
+      <h2>What We Carry</h2>
+      <p class="sub">New drops weekly on Instagram</p>
+    </div>
+    <div class="carry-list">
+      <div class="carry-item">
+        <p class="num">01</p>
+        <h3>Leather & Outerwear</h3>
+        <p>Vintage jackets, bombers, and coats with character you can't replicate.</p>
+      </div>
+      <div class="carry-item">
+        <p class="num">02</p>
+        <h3>Designer Denim</h3>
+        <p>Premium vintage denim from decades when jeans were built to last.</p>
+      </div>
+      <div class="carry-item">
+        <p class="num">03</p>
+        <h3>Silk & Knit</h3>
+        <p>Blouses, sweaters, layering pieces. Texture fast fashion can't touch.</p>
+      </div>
+      <div class="carry-item">
+        <p class="num">04</p>
+        <h3>Accessories</h3>
+        <p>Jewellery, bags, belts, sunglasses. The details that make the outfit.</p>
+      </div>
+      <div class="carry-item">
+        <p class="num">05</p>
+        <h3>Streetwear</h3>
+        <p>90s and Y2K staples. Graphic tees, track jackets, sportswear.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FULL BLEED PHOTO -->
+<div class="full-bleed">
+  <img src="accessories.png" alt="Vintage accessories flat lay">
+</div>
+
+<!-- TRUST BAR -->
+<section class="trust-bar">
+  <div class="content-width">
+    <div class="trust-items">
+      <div class="trust-item">
+        <div class="value">5.0</div>
+        <div class="label">Google Rating</div>
+      </div>
+      <div class="trust-item">
+        <div class="value">2.4K</div>
+        <div class="label">Followers</div>
+      </div>
+      <div class="trust-item">
+        <div class="value">Fort St</div>
+        <div class="label">Vintage Corridor</div>
+      </div>
+      <div class="trust-item">
+        <div class="value">Worldwide</div>
+        <div class="label">Shipping</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="content-width">
+    <div class="reviews-header">
+      <h2>What People Say</h2>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p>"Highly praised by thrifters. An excellent stop for bargain hunters and vintage collectors alike."</p>
+        <span class="review-source">Via Google</span>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p>"A small curated selection of 1990s, mostly higher-end designer clothes for men and women. I've found a couple of cool things here."</p>
+        <span class="review-source">Via Local Blog</span>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p>"Looking for that special present or wanting to recreate some childhood memories through vintage finds? This is the spot."</p>
+        <span class="review-source">Via Facebook</span>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p>"Part of the incredible Fort Street vintage strip. One of the best curated selections for premium vintage pieces."</p>
+        <span class="review-source">Via Reddit</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section class="visit" id="visit">
+  <div class="content-width">
+    <div class="visit-layout">
+      <div>
+        <h2>Come Find Us</h2>
+        <div class="visit-detail">
+          <p class="label">Address</p>
+          <p>1044A Fort Street<br>Victoria, BC V8V 3K4</p>
+        </div>
+        <div class="visit-detail">
+          <p class="label">Location</p>
+          <p>Inside Botched Shop<br>Fort St between Vancouver & Cook</p>
+        </div>
+        <div class="visit-detail">
+          <p class="label">Hours</p>
+          <p>Check Instagram for current hours</p>
+        </div>
+        <div class="visit-detail">
+          <p class="label">Follow</p>
+          <a href="https://www.instagram.com/botched.vintage/" target="_blank">@botched.vintage</a>
+        </div>
+        <div style="margin-top: 32px; display: flex; gap: 16px; flex-wrap: wrap;">
+          <a href="https://www.instagram.com/botched.vintage/" target="_blank" class="btn-primary">Follow on Instagram</a>
+          <a href="https://www.google.com/maps/search/?api=1&query=1044a+Fort+St+Victoria+BC" target="_blank" class="btn-outline">Get Directions</a>
+        </div>
+      </div>
+      <div>
+        <iframe class="visit-map" src="https://maps.google.com/maps?q=1044+Fort+Street+Victoria+BC&output=embed" loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="content-width">
+    <div class="footer-inner">
+      <span class="footer-brand">Botched Vintage</span>
+      <ul class="footer-links">
+        <li><a href="https://www.instagram.com/botched.vintage/" target="_blank">Instagram</a></li>
+        <li><a href="https://www.instagram.com/botched.shop/" target="_blank">Botched Shop</a></li>
+        <li><a href="#visit">Visit</a></li>
+      </ul>
+    </div>
+    <p class="footer-copy">&copy; 2026 Botched Vintage & Apparel. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  window.addEventListener('scroll', () => {
+    document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+  function closeMobile() {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carlina Cafe — Italian Cafe, View Royal, Victoria BC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Nunito+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* =====================
+       DESIGN TOKENS
+    ===================== */
+    :root {
+      --cream: #FAF4EC;
+      --cream-alt: #F2EAE0;
+      --red: #A63A2F;
+      --red-light: #F0E4E1;
+      --green: #3D5A34;
+      --dark: #1C1A16;
+      --body: #3E3630;
+      --muted: #7A6E68;
+      --border: #D9CDC4;
+
+      --font-serif: 'Lora', Georgia, serif;
+      --font-sans: 'Nunito Sans', system-ui, sans-serif;
+
+      --section-pad: 96px;
+      --content-max: 1200px;
+
+      /* Letter-spacing system */
+      --ls-tight: 0.04em;
+      --ls-mid: 0.08em;
+      --ls-wide: 0.14em;
+
+      /* Easings */
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--cream);
+      color: var(--body);
+      font-size: 1rem;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    a { color: inherit; text-decoration: none; }
+
+    .content-wrap {
+      max-width: var(--content-max);
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+
+    .section-label {
+      font-family: var(--font-sans);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: var(--ls-wide);
+      text-transform: uppercase;
+      color: var(--red);
+      display: block;
+      margin-bottom: 16px;
+    }
+
+    /* =====================
+       NAVIGATION
+    ===================== */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(250, 244, 236, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      max-width: var(--content-max);
+      margin: 0 auto;
+      padding: 0 48px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-brand {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--dark);
+      letter-spacing: var(--ls-tight);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: var(--ls-tight);
+      color: var(--body);
+      transition: color 200ms var(--ease-out);
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 0; right: 0;
+      height: 1px;
+      background: var(--red);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 200ms var(--ease-out);
+    }
+
+    .nav-links a:hover { color: var(--red); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+
+    .nav-cta {
+      background: var(--red);
+      color: #fff;
+      font-family: var(--font-sans);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      letter-spacing: var(--ls-tight);
+      padding: 10px 20px;
+      transition: background 160ms var(--ease-out);
+    }
+
+    .nav-cta:hover { background: #8C2F25; }
+    .nav-cta:active { transform: scale(0.97); }
+
+    /* Hamburger */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 24px; height: 2px;
+      background: var(--dark);
+      transition: transform 200ms var(--ease-out), opacity 200ms;
+    }
+
+    /* Mobile menu */
+    .nav-mobile {
+      display: none;
+      position: fixed;
+      top: 64px; left: 0; right: 0; bottom: 0;
+      background: var(--cream);
+      z-index: 99;
+      padding: 48px 24px;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .nav-mobile.is-open { display: flex; }
+
+    .nav-mobile a {
+      font-family: var(--font-serif);
+      font-size: 1.75rem;
+      font-weight: 500;
+      color: var(--dark);
+    }
+
+    .nav-mobile .nav-mobile-cta {
+      display: inline-block;
+      background: var(--red);
+      color: #fff;
+      font-family: var(--font-sans);
+      font-size: 0.9375rem;
+      font-weight: 600;
+      letter-spacing: var(--ls-tight);
+      padding: 14px 28px;
+      margin-top: 8px;
+      align-self: flex-start;
+    }
+
+    /* =====================
+       HERO — EDITORIAL SPREAD
+    ===================== */
+    .hero {
+      padding-top: 64px; /* nav offset */
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .hero-left {
+      background: var(--dark);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 64px;
+      position: relative;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-sans);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: var(--ls-wide);
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 32px; height: 1px;
+      background: var(--red);
+      flex-shrink: 0;
+    }
+
+    .hero h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(2.75rem, 3.5vw, 4.25rem);
+      font-weight: 600;
+      line-height: 1.1;
+      color: #FAF4EC;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--red);
+    }
+
+    .hero-body {
+      font-size: 1.0625rem;
+      line-height: 1.7;
+      color: rgba(250, 244, 236, 0.75);
+      margin-bottom: 40px;
+      max-width: 44ch;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--red);
+      color: #fff;
+      font-family: var(--font-sans);
+      font-size: 0.875rem;
+      font-weight: 600;
+      letter-spacing: var(--ls-tight);
+      padding: 14px 28px;
+      display: inline-block;
+      transition: background 160ms var(--ease-out);
+    }
+
+    .btn-primary:hover { background: #8C2F25; }
+    .btn-primary:active { transform: scale(0.97); }
+
+    .btn-secondary {
+      background: transparent;
+      color: rgba(250, 244, 236, 0.8);
+      font-family: var(--font-sans);
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: var(--ls-tight);
+      padding: 14px 28px;
+      border: 1px solid rgba(250, 244, 236, 0.3);
+      display: inline-block;
+      transition: border-color 160ms var(--ease-out), color 160ms;
+    }
+
+    .btn-secondary:hover {
+      border-color: rgba(250, 244, 236, 0.6);
+      color: #FAF4EC;
+    }
+
+    .btn-secondary:active { transform: scale(0.97); transition: transform 160ms var(--ease-out); }
+
+    .hero-right {
+      position: relative;
+      overflow: hidden;
+      min-height: 540px;
+    }
+
+    .hero-right img {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-right .hero-img-placeholder {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #3D2218 0%, #6B3020 40%, #8B4A30 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-right .hero-img-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(28, 26, 22, 0.15) 0%, transparent 30%);
+    }
+
+    /* =====================
+       TRUST BAR (light-bar)
+    ===================== */
+    .trust-bar {
+      background: var(--cream-alt);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 24px 0;
+    }
+
+    .trust-bar-inner {
+      max-width: var(--content-max);
+      margin: 0 auto;
+      padding: 0 48px;
+      display: flex;
+      align-items: center;
+      gap: 0;
+      flex-wrap: wrap;
+    }
+
+    .trust-stat {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      flex: 1;
+      padding: 0 32px;
+      border-right: 1px solid var(--border);
+      min-width: 150px;
+    }
+
+    .trust-stat:first-child { padding-left: 0; }
+    .trust-stat:last-child { border-right: none; }
+
+    .trust-num {
+      font-family: var(--font-serif);
+      font-size: 1.75rem;
+      font-weight: 600;
+      color: var(--dark);
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+
+    .trust-num .trust-unit {
+      font-size: 1rem;
+      font-weight: 400;
+      font-style: italic;
+    }
+
+    .trust-label {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: var(--ls-wide);
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    /* =====================
+       ABOUT
+    ===================== */
+    .about {
+      padding: var(--section-pad) 0;
+    }
+
+    .about-inner {
+      display: grid;
+      grid-template-columns: 5fr 7fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .about-image-wrap {
+      position: relative;
+    }
+
+    .about-image {
+      aspect-ratio: 4/5;
+      overflow: hidden;
+      background: var(--cream-alt);
+      position: relative;
+    }
+
+    .about-image img {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+    }
+
+    .about-image-placeholder {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(160deg, #8B4A30 0%, #5C3020 60%, #3D2218 100%);
+    }
+
+    .about-image-caption {
+      position: absolute;
+      bottom: -1px; left: -1px; right: -1px;
+      background: var(--dark);
+      padding: 14px 20px;
+    }
+
+    .about-image-caption p {
+      font-family: var(--font-serif);
+      font-size: 0.875rem;
+      font-style: italic;
+      color: rgba(250, 244, 236, 0.85);
+      line-height: 1.5;
+    }
+
+    .about-content {}
+
+    .about-quote {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--dark);
+      line-height: 1.5;
+      margin-bottom: 32px;
+      padding-left: 24px;
+      border-left: 3px solid var(--red);
+    }
+
+    .about-content h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.875rem, 2.5vw, 2.5rem);
+      font-weight: 600;
+      color: var(--dark);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+
+    .about-content p {
+      font-size: 1rem;
+      line-height: 1.75;
+      color: var(--body);
+      margin-bottom: 16px;
+    }
+
+    .about-content p:last-child { margin-bottom: 0; }
+
+    /* =====================
+       PHOTO STRIP
+    ===================== */
+    .photo-strip {
+      padding: 0 0 var(--section-pad) 0;
+    }
+
+    .photo-strip-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px;
+    }
+
+    .photo-strip-item {
+      aspect-ratio: 3/2;
+      overflow: hidden;
+      background: var(--cream-alt);
+    }
+
+    .photo-strip-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 600ms var(--ease-out);
+    }
+
+    /* =====================
+       NAME SECTION
+    ===================== */
+    .name-section {
+      background: var(--dark);
+      padding: 120px 0;
+      text-align: center;
+    }
+
+    .name-section-inner {
+      max-width: 800px;
+    }
+
+    .name-section .section-label {
+      color: var(--red);
+      margin-bottom: 24px;
+    }
+
+    .name-section h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(3rem, 5.5vw, 5.5rem);
+      font-weight: 600;
+      color: #FAF4EC;
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+      margin-bottom: 24px;
+    }
+
+    .name-section p {
+      font-size: 1.0625rem;
+      line-height: 1.75;
+      color: rgba(250, 244, 236, 0.7);
+      max-width: 52ch;
+      margin: 0 auto;
+    }
+
+    /* =====================
+       MENU HIGHLIGHTS
+    ===================== */
+    .menu {
+      padding: var(--section-pad) 0;
+      background: var(--cream-alt);
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      margin-top: 48px;
+    }
+
+    .menu-card {
+      background: var(--cream);
+      padding: 32px;
+      position: relative;
+      border-top: 3px solid var(--red);
+    }
+
+    .menu-num {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--red);
+      opacity: 0.35;
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    .menu-card h3 {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+
+    .menu-card p {
+      font-size: 0.9375rem;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+
+    .menu-price {
+      font-family: var(--font-sans);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--red);
+      letter-spacing: var(--ls-tight);
+      margin-top: 12px;
+    }
+
+    /* =====================
+       QUOTE SECTION
+    ===================== */
+    .quote-section {
+      background: var(--red);
+      padding: var(--section-pad) 0;
+    }
+
+    .quote-section-inner {
+      max-width: 720px;
+      text-align: center;
+    }
+
+    .quote-mark {
+      font-family: var(--font-serif);
+      font-size: 5rem;
+      line-height: 0.6;
+      color: rgba(255, 255, 255, 0.25);
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .quote-section blockquote {
+      font-family: var(--font-serif);
+      font-size: clamp(1.25rem, 2vw, 1.625rem);
+      font-style: italic;
+      font-weight: 400;
+      color: #fff;
+      line-height: 1.55;
+      margin-bottom: 24px;
+    }
+
+    .quote-section cite {
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: var(--ls-wide);
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.7);
+      font-style: normal;
+    }
+
+    /* =====================
+       REVIEWS
+    ===================== */
+    .reviews {
+      padding: var(--section-pad) 0;
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      margin-top: 48px;
+    }
+
+    .review-card {
+      background: var(--cream-alt);
+      padding: 32px;
+      border-top: 2px solid var(--border);
+    }
+
+    .review-stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 16px;
+    }
+
+    .review-stars span {
+      width: 14px; height: 14px;
+      color: var(--red);
+      font-size: 0.875rem;
+    }
+
+    .review-card p {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      font-style: italic;
+      line-height: 1.65;
+      color: var(--dark);
+      margin-bottom: 20px;
+    }
+
+    .review-attr {
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: var(--ls-mid);
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* =====================
+       VISIT / MAP
+    ===================== */
+    .visit {
+      padding: var(--section-pad) 0;
+      background: var(--cream-alt);
+    }
+
+    .visit-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .visit-info h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.875rem, 2.5vw, 2.5rem);
+      font-weight: 600;
+      color: var(--dark);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 32px;
+    }
+
+    .visit-detail {
+      margin-bottom: 24px;
+    }
+
+    .visit-detail-label {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: var(--ls-wide);
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 6px;
+    }
+
+    .visit-detail-value {
+      font-size: 1rem;
+      color: var(--body);
+      line-height: 1.6;
+    }
+
+    .visit-detail-value a {
+      color: var(--dark);
+      text-decoration: underline;
+      text-decoration-color: var(--border);
+      text-underline-offset: 3px;
+      transition: text-decoration-color 160ms;
+    }
+
+    .visit-detail-value a:hover { text-decoration-color: var(--red); }
+
+    .visit-map {
+      aspect-ratio: 4/3;
+      overflow: hidden;
+    }
+
+    .visit-map iframe {
+      width: 100%; height: 100%;
+      border: 0;
+      filter: saturate(0.85) sepia(0.1);
+    }
+
+    .hours-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .hours-table tr td {
+      padding: 6px 0;
+      font-size: 0.9375rem;
+    }
+
+    .hours-table tr td:first-child {
+      font-weight: 600;
+      color: var(--dark);
+      width: 40%;
+    }
+
+    .hours-table tr td:last-child {
+      color: var(--muted);
+    }
+
+    .hours-table tr + tr td {
+      border-top: 1px solid var(--border);
+    }
+
+    .section-scroll { scroll-margin-top: 64px; }
+
+    /* Focus visible for accessibility */
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid var(--red);
+      outline-offset: 3px;
+    }
+
+    /* =====================
+       CTA BAND
+    ===================== */
+    .cta-band {
+      background: var(--red);
+      padding: 80px 0;
+      text-align: center;
+    }
+
+    .cta-band-inner {}
+
+    .cta-band h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 3vw, 3rem);
+      font-weight: 600;
+      color: #fff;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+
+    .cta-band p {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 32px;
+    }
+
+    .btn-white {
+      background: #fff;
+      color: var(--red);
+      font-family: var(--font-sans);
+      font-size: 0.9375rem;
+      font-weight: 700;
+      letter-spacing: var(--ls-tight);
+      padding: 16px 36px;
+      display: inline-block;
+      transition: background 160ms var(--ease-out);
+    }
+
+    .btn-white:hover { background: #FAF4EC; }
+    .btn-white:active { transform: scale(0.97); }
+
+    /* =====================
+       FOOTER
+    ===================== */
+    footer {
+      background: var(--dark);
+      padding: 48px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .footer-brand {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #FAF4EC;
+      letter-spacing: var(--ls-tight);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-size: 0.8125rem;
+      font-weight: 500;
+      letter-spacing: var(--ls-tight);
+      color: rgba(250, 244, 236, 0.55);
+      transition: color 160ms;
+    }
+
+    .footer-links a:hover { color: rgba(250, 244, 236, 0.85); }
+
+    .footer-meta {
+      font-size: 0.8125rem;
+      color: rgba(250, 244, 236, 0.4);
+      width: 100%;
+      padding-top: 24px;
+      border-top: 1px solid rgba(250, 244, 236, 0.1);
+      margin-top: 8px;
+    }
+
+    /* Utility classes for sections */
+    .section-h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.875rem, 2.5vw, 2.5rem);
+      font-weight: 600;
+      color: var(--dark);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-top: 8px;
+    }
+
+    .section-h2-mb0 { margin-bottom: 0; }
+
+    .centered-block { margin: 0 auto; }
+
+    .visit-phone {
+      font-size: 1.25rem;
+      font-family: var(--font-serif);
+      font-weight: 600;
+      color: var(--dark);
+    }
+
+    .hours-note {
+      font-size: 0.8125rem;
+      color: var(--muted);
+      margin-top: 10px;
+    }
+
+    /* =====================
+       HERO ENTRANCE ANIMATION
+    ===================== */
+    body.js-ready .hero-entrance {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+
+    body.js-ready .hero-entrance.loaded {
+      opacity: 1;
+      transform: none;
+      transition: opacity 700ms var(--ease-out), transform 700ms var(--ease-out);
+    }
+
+    body.js-ready .hero-entrance-img {
+      opacity: 0;
+    }
+
+    body.js-ready .hero-entrance-img.loaded {
+      opacity: 1;
+      transition: opacity 1000ms var(--ease-out);
+    }
+
+    .hero-delay-1.loaded { transition-delay: 80ms; }
+    .hero-delay-2.loaded { transition-delay: 160ms; }
+    .hero-delay-3.loaded { transition-delay: 240ms; }
+
+    /* =====================
+       SCROLL REVEAL (noscript-safe)
+    ===================== */
+    body.js-ready .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+    }
+
+    body.js-ready .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    body.js-ready .stagger-1 { transition-delay: 80ms; }
+    body.js-ready .stagger-2 { transition-delay: 160ms; }
+    body.js-ready .stagger-3 { transition-delay: 240ms; }
+    body.js-ready .stagger-4 { transition-delay: 320ms; }
+
+    /* =====================
+       RESPONSIVE
+    ===================== */
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+
+      .hero-left {
+        padding: 64px 32px;
+        order: 2;
+      }
+
+      .hero-right {
+        min-height: 320px;
+        order: 1;
+      }
+
+      .about-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .menu-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .reviews-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .visit-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links, .nav-cta { display: none; }
+      .nav-hamburger { display: flex; }
+      .content-wrap { padding: 0 24px; }
+      .nav-inner { padding: 0 24px; }
+      .trust-bar-inner { padding: 0 24px; }
+    }
+
+    @media (max-width: 640px) {
+      :root { --section-pad: 64px; }
+      .photo-strip-inner { grid-template-columns: 1fr; }
+      .trust-bar-inner { flex-direction: column; align-items: flex-start; gap: 20px; }
+      .trust-stat { border-right: none; padding: 0; border-bottom: 1px solid var(--border); padding-bottom: 16px; }
+      .trust-stat:last-child { border-bottom: none; padding-bottom: 0; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+
+    /* =====================
+       REDUCED MOTION
+    ===================== */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      body.js-ready .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="nav-brand">Carlina Cafe</a>
+      <ul class="nav-links">
+        <li><a href="#about">Our Story</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#visit">Visit</a></li>
+      </ul>
+      <a href="tel:2505909113" class="nav-cta">Call (250) 590-9113</a>
+      <div class="nav-hamburger" id="hamburger" role="button" aria-label="Open menu" tabindex="0">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="nav-mobile" id="mobileMenu">
+    <a href="#about" class="nav-mobile-link">Our Story</a>
+    <a href="#menu" class="nav-mobile-link">Menu</a>
+    <a href="#reviews" class="nav-mobile-link">Reviews</a>
+    <a href="#visit" class="nav-mobile-link">Visit</a>
+    <a href="tel:2505909113" class="nav-mobile-cta">Call (250) 590-9113</a>
+  </div>
+
+  <!-- HERO — EDITORIAL SPREAD -->
+  <section class="hero" id="hero">
+    <div class="hero-left">
+      <div class="hero-eyebrow hero-entrance">Italian Cafe · View Royal, Victoria BC</div>
+      <h1 class="hero-entrance hero-delay-1">Her Sugo.<br><em>Her Meatballs.</em><br>Her Kitchen.</h1>
+      <p class="hero-body hero-entrance hero-delay-2">Carlina Cafe brings three generations of Italian family recipes to View Royal. Everything on the plate comes from the same handwritten traditions Charly learned from his grandparents in their kitchen.</p>
+      <div class="hero-ctas hero-entrance hero-delay-3">
+        <a href="https://maps.google.com/?q=264+Island+Hwy+Victoria+BC" target="_blank" rel="noopener" class="btn-primary">Get Directions</a>
+        <a href="https://www.ubereats.com/ca/store/carlina-cafe" target="_blank" rel="noopener" class="btn-secondary">Order on Uber Eats</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-img-placeholder"></div>
+      <img src="pasta-meatballs.png" alt="Handmade pasta with grandmother's sugo and meatballs at Carlina Cafe" class="hero-entrance-img" onerror="this.style.display='none'">
+      <div class="hero-img-overlay"></div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR (light-bar) -->
+  <div class="trust-bar">
+    <div class="trust-bar-inner">
+      <div class="trust-stat">
+        <span class="trust-num">5.0<span class="trust-unit"> ★</span></span>
+        <span class="trust-label">122 Google Reviews</span>
+      </div>
+      <div class="trust-stat">
+        <span class="trust-num">$10<span class="trust-unit">–20</span></span>
+        <span class="trust-label">Price Range</span>
+      </div>
+      <div class="trust-stat">
+        <span class="trust-num">CHEK</span>
+        <span class="trust-label">Featured "Order Up"</span>
+      </div>
+      <div class="trust-stat">
+        <span class="trust-num">264</span>
+        <span class="trust-label">Island Hwy, View Royal</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about" id="about" class="section-scroll">
+    <div class="content-wrap">
+      <div class="about-inner">
+        <div class="about-image-wrap reveal">
+          <div class="about-image">
+            <div class="about-image-placeholder"></div>
+            <img src="pasta-meatballs.png" alt="Grandmother's pasta and meatballs, Carlina Cafe" onerror="this.style.display='none'">
+          </div>
+          <div class="about-image-caption">
+            <p>"He's just taken on the tradition from my mom and my dad and added his own stuff to it." — John Cardilicchia</p>
+          </div>
+        </div>
+        <div class="about-content reveal stagger-1">
+          <span class="section-label">The Story</span>
+          <h2>He's Been Getting Ready for This His Whole Life</h2>
+          <p>Charly Cardilicchia grew up watching his grandparents cook. Their recipes — the sugo, the meatballs, the ricotta — stayed with him. When he opened Carlina Cafe, he didn't reinvent them. He just found a kitchen of his own.</p>
+          <p>His father John, who watched Charly work himself into the ground getting the cafe ready, put it simply: "He's just taken on the tradition from my mom and my dad and added his own stuff to it."</p>
+          <p>That tradition is on every plate.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHOTO STRIP -->
+  <div class="photo-strip">
+    <div class="photo-strip-inner">
+      <div class="photo-strip-item reveal">
+        <img src="sandwich-ricotta.png" alt="Italian sandwich with house-made ricotta at Carlina Cafe" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg,#8B4A30 0%,#5C3020 100%)'">
+      </div>
+      <div class="photo-strip-item reveal stagger-1">
+        <img src="gelato.png" alt="Italian gelato at Carlina Cafe" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg,#6B3020 0%,#A05030 100%)'">
+      </div>
+    </div>
+  </div>
+
+  <!-- NAME SECTION -->
+  <section class="name-section">
+    <div class="content-wrap">
+      <div class="name-section-inner centered-block">
+        <span class="section-label">The Name</span>
+        <h2>Carlo. Lina.<br>Carlina.</h2>
+        <p>Charly's grandfather was Carlo. His grandmother was Lina. The cafe's name is both of them — and every recipe on the menu carries that same inheritance. When you sit down, you're eating what they made.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU HIGHLIGHTS -->
+  <section class="menu" id="menu" class="section-scroll">
+    <div class="content-wrap">
+      <span class="section-label">The Menu</span>
+      <h2 class="section-h2">What We Make</h2>
+      <div class="menu-grid">
+        <div class="menu-card reveal">
+          <div class="menu-num">01</div>
+          <h3>The Meatballs</h3>
+          <p>Grandmother's recipe, unchanged. House-made sugo, slow-cooked. A traditional recipe that's "so, so good."</p>
+          <p class="menu-price">From $14</p>
+        </div>
+        <div class="menu-card reveal stagger-1">
+          <div class="menu-num">02</div>
+          <h3>The Sandwiches</h3>
+          <p>Piled heavy with house-made ricotta, glaze, and chili peppers or pepperoncinis. The thing Charly loves to make most.</p>
+          <p class="menu-price">From $12</p>
+        </div>
+        <div class="menu-card reveal stagger-2">
+          <div class="menu-num">03</div>
+          <h3>Fresh Pasta</h3>
+          <p>Made in-house. Order the pasta, the sandwiches, the fresh-baked buns — people come back for all of it.</p>
+          <p class="menu-price">From $14</p>
+        </div>
+        <div class="menu-card reveal stagger-3">
+          <div class="menu-num">04</div>
+          <h3>Italian Gelato</h3>
+          <p>The perfect end to a meal. Made with care, served the way it should be.</p>
+          <p class="menu-price">From $5</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE SECTION -->
+  <section class="quote-section">
+    <div class="content-wrap">
+      <div class="quote-section-inner centered-block">
+        <span class="quote-mark">"</span>
+        <blockquote>It feels like a hug from my grandmother.</blockquote>
+        <cite>Charly Cardilicchia · Owner, Carlina Cafe · CHEK News</cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="reviews" id="reviews" class="section-scroll">
+    <div class="content-wrap">
+      <span class="section-label">What People Say</span>
+      <h2 class="section-h2 section-h2-mb0">Five Stars, 122 Times</h2>
+      <div class="reviews-grid">
+        <div class="review-card reveal">
+          <div class="review-stars">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          </div>
+          <p>"Great pasta, two sandwiches, fresh baked buns and the gelato. Everything was absolutely delicious."</p>
+          <div class="review-attr">Sarah M. · MAR 2025 · Via Google</div>
+        </div>
+        <div class="review-card reveal stagger-1">
+          <div class="review-stars">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          </div>
+          <p>"Great place, staff was super friendly and the food was sensational! We will definitely be back."</p>
+          <div class="review-attr">Victor K. · FEB 2025 · Via Google</div>
+        </div>
+        <div class="review-card reveal stagger-2">
+          <div class="review-stars">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          </div>
+          <p>"Very good focaccia subs and very friendly service/owner. A great new addition to the View Royal neighbourhood."</p>
+          <div class="review-attr">Neil A. · FEB 2025 · Via Google</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISIT + MAP -->
+  <section class="visit" id="visit" class="section-scroll">
+    <div class="content-wrap">
+      <div class="visit-inner">
+        <div class="visit-info">
+          <span class="section-label">Come Visit</span>
+          <h2>Find Us on the Island Highway</h2>
+          <div class="visit-detail">
+            <div class="visit-detail-label">Address</div>
+            <div class="visit-detail-value">
+              <a href="https://maps.google.com/?q=264+Island+Hwy+Victoria+BC" target="_blank" rel="noopener">264 Island Hwy, View Royal<br>Victoria, BC V9B 1G5</a>
+            </div>
+          </div>
+          <div class="visit-detail">
+            <div class="visit-detail-label">Hours</div>
+            <div class="visit-detail-value">
+              <table class="hours-table">
+                <tr><td>Mon – Fri</td><td>11:00 am – 7:00 pm</td></tr>
+                <tr><td>Sat – Sun</td><td>11:00 am – 7:00 pm</td></tr>
+              </table>
+              <p class="hours-note">Hours may vary — call to confirm.</p>
+            </div>
+          </div>
+          <div class="visit-detail">
+            <div class="visit-detail-label">Phone</div>
+            <div class="visit-detail-value">
+              <a href="tel:2505909113" class="visit-phone">(250) 590-9113</a>
+            </div>
+          </div>
+          <div class="visit-detail">
+            <div class="visit-detail-label">Order Online</div>
+            <div class="visit-detail-value">Available on <a href="https://www.ubereats.com" target="_blank" rel="noopener">Uber Eats</a> (4.9 ★)</div>
+          </div>
+        </div>
+        <div class="visit-map">
+          <iframe
+            src="https://maps.google.com/maps?q=264+Island+Hwy+Victoria+BC+V9B+1G5&output=embed"
+            title="Carlina Cafe location map"
+            loading="lazy"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <section class="cta-band">
+    <div class="content-wrap">
+      <div class="cta-band-inner">
+        <h2>Come hungry. Leave full.</h2>
+        <p>264 Island Highway, View Royal &middot; Open daily 11 am – 7 pm &middot; <a href="https://www.instagram.com/carlina_cafe/" target="_blank" rel="noopener" style="color:rgba(255,255,255,0.8);text-decoration:underline;text-decoration-color:rgba(255,255,255,0.4);">@carlina_cafe</a></p>
+        <a href="https://maps.google.com/?q=264+Island+Hwy+Victoria+BC" target="_blank" rel="noopener" class="btn-white">Get Directions</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="content-wrap">
+      <div class="footer-inner">
+        <div class="footer-brand">Carlina Cafe</div>
+        <ul class="footer-links">
+          <li><a href="https://www.instagram.com/carlina_cafe/" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://www.ubereats.com" target="_blank" rel="noopener">Uber Eats</a></li>
+          <li><a href="tel:2505909113">(250) 590-9113</a></li>
+        </ul>
+        <p class="footer-meta">264 Island Hwy, View Royal, Victoria, BC V9B 1G5 · Italian family cafe · Carlina Cafe is a small family owned and operated Italian cafe in View Royal, Victoria, British Columbia. Named after Charly's grandparents, Carlo and Lina.</p>
+      </div>
+    </div>
+  </footer>
+
+  <noscript>
+    <style>
+      .reveal, .hero-entrance, .hero-entrance-img { opacity: 1 !important; transform: none !important; }
+    </style>
+  </noscript>
+
+  <script>
+    // JS ready flag
+    document.body.classList.add('js-ready');
+
+    // Hero entrance animation on load
+    window.addEventListener('load', () => {
+      document.querySelectorAll('.hero-entrance').forEach(el => el.classList.add('loaded'));
+      document.querySelectorAll('.hero-entrance-img').forEach(el => el.classList.add('loaded'));
+    });
+
+    // Mobile menu toggle
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      mobileMenu.classList.toggle('is-open');
+    });
+    // Close mobile menu on link click
+    document.querySelectorAll('.nav-mobile-link, .nav-mobile-cta').forEach(el => {
+      el.addEventListener('click', () => mobileMenu.classList.remove('is-open'));
+    });
+
+    // Scroll-reveal via IntersectionObserver
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    revealEls.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

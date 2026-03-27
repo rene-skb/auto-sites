@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pho Vy Vietnamese Restaurant — Victoria, BC</title>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --cream: #FAF6F0;
+  --broth: #A0714B;
+  --broth-light: #F2E8DC;
+  --herb: #5C7A5E;
+  --herb-light: #E4EDE4;
+  --black: #1A1610;
+  --gray: #6B6560;
+  --alt-bg: #F0EBE3;
+  --gold: #C4A35A;
+  --section-pad: 96px;
+  --content-width: 1080px;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ls-tight: -0.02em;
+  --ls-normal: 0.04em;
+  --ls-wide: 0.08em;
+  --ls-caps: 0.14em;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  background: var(--cream);
+  color: var(--black);
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Noise texture */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+a { color: inherit; text-decoration: none; }
+
+.section-label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: var(--ls-caps);
+  text-transform: uppercase;
+  color: var(--broth);
+  margin-bottom: 16px;
+}
+
+h2 {
+  font-family: 'Newsreader', serif;
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: var(--ls-tight);
+  margin-bottom: 24px;
+}
+
+section[id] { scroll-margin-top: 80px; }
+
+/* ============ NAV ============ */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  background: rgba(250, 246, 240, 0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(26, 22, 16, 0.06);
+}
+
+.nav-inner {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-brand {
+  font-family: 'Newsreader', serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: var(--ls-tight);
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  color: var(--gray);
+  transition: color 200ms var(--ease-out);
+}
+
+.nav-links a:hover { color: var(--black); }
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--black);
+  transition: transform 300ms var(--ease-out);
+}
+
+/* ============ HERO — Giant Display Type ============ */
+.hero {
+  padding: calc(var(--section-pad) + 80px) 24px var(--section-pad);
+  text-align: center;
+  min-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero h1 {
+  font-family: 'Newsreader', serif;
+  font-size: clamp(3rem, 7vw, 6rem);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: var(--ls-tight);
+  max-width: 900px;
+  margin-bottom: 32px;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--broth);
+}
+
+.hero-body {
+  font-size: 1.125rem;
+  color: var(--gray);
+  max-width: 520px;
+  margin-bottom: 40px;
+  line-height: 1.65;
+}
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--black);
+  color: var(--cream);
+  padding: 16px 32px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  transition: transform 160ms var(--ease-out);
+}
+
+.hero-ctas {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.hero-cta:active { transform: scale(0.97); }
+
+.hero-cta-secondary {
+  background: transparent;
+  color: var(--black);
+  border: 1.5px solid var(--black);
+}
+
+.hero-info {
+  margin-top: 48px;
+  display: flex;
+  gap: 48px;
+  font-size: 0.8125rem;
+  color: var(--gray);
+  letter-spacing: var(--ls-normal);
+}
+
+.hero-info a {
+  color: var(--gray);
+  transition: color 200ms var(--ease-out);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 3px;
+}
+
+.hero-info a:hover {
+  color: var(--black);
+  text-decoration-color: var(--broth);
+}
+
+/* ============ TRUST BAR ============ */
+.trust-bar {
+  background: var(--black);
+  color: var(--cream);
+  padding: 20px 24px;
+}
+
+.trust-bar-inner {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+
+.trust-stat {
+  text-align: center;
+}
+
+.trust-number {
+  font-family: 'Newsreader', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: var(--ls-tight);
+  display: block;
+}
+
+.trust-label {
+  font-size: 0.6875rem;
+  letter-spacing: var(--ls-caps);
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-top: 2px;
+}
+
+/* ============ PHOTO STRIP ============ */
+.photo-strip {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 4px;
+  padding: 0;
+}
+
+.photo-strip-item {
+  height: 420px;
+  overflow: hidden;
+}
+
+.photo-strip-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo-strip-stacked {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 4px;
+}
+
+.photo-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--broth-light) 0%, var(--alt-bg) 100%);
+}
+
+/* ============ ABOUT ============ */
+.about {
+  padding: var(--section-pad) 24px;
+  max-width: var(--content-width);
+  margin: 0 auto;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 4fr 8fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.about-quote {
+  font-family: 'Newsreader', serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.4;
+  color: var(--broth);
+  border-left: 3px solid var(--broth);
+  padding-left: 24px;
+}
+
+.about-quote cite {
+  display: block;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: var(--ls-caps);
+  text-transform: uppercase;
+  color: var(--gray);
+  margin-top: 16px;
+}
+
+.about-body p {
+  margin-bottom: 16px;
+  color: var(--gray);
+}
+
+/* ============ NAME MEANING ============ */
+.name-section {
+  padding: 120px 24px;
+  text-align: center;
+  background: var(--alt-bg);
+}
+
+.name-section h2 {
+  font-family: 'Newsreader', serif;
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: 500;
+  font-style: italic;
+  max-width: 700px;
+  margin: 0 auto 24px;
+}
+
+.name-section p {
+  color: var(--gray);
+  max-width: 500px;
+  margin: 0 auto;
+  font-size: 0.9375rem;
+}
+
+/* ============ MENU HIGHLIGHTS ============ */
+.menu-section {
+  padding: var(--section-pad) 24px;
+  max-width: var(--content-width);
+  margin: 0 auto;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  margin-top: 48px;
+}
+
+.menu-card {
+  padding: 40px 32px;
+  background: var(--alt-bg);
+  position: relative;
+}
+
+.menu-card-number {
+  font-family: 'Newsreader', serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--broth);
+  opacity: 0.35;
+  margin-bottom: 12px;
+  letter-spacing: var(--ls-tight);
+}
+
+.menu-card h3 {
+  font-family: 'Newsreader', serif;
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 8px;
+  letter-spacing: var(--ls-tight);
+}
+
+.menu-card p {
+  font-size: 0.875rem;
+  color: var(--gray);
+  line-height: 1.55;
+}
+
+/* ============ BROTH QUOTE ============ */
+.broth-quote {
+  background: var(--broth);
+  color: var(--cream);
+  padding: 80px 24px;
+  text-align: center;
+}
+
+.broth-quote blockquote {
+  font-family: 'Newsreader', serif;
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  font-weight: 400;
+  font-style: italic;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+.broth-quote cite {
+  display: block;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.6875rem;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: var(--ls-caps);
+  text-transform: uppercase;
+  margin-top: 24px;
+  opacity: 0.7;
+}
+
+/* ============ REVIEWS ============ */
+.reviews {
+  padding: var(--section-pad) 24px;
+  max-width: var(--content-width);
+  margin: 0 auto;
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 4px;
+  margin-top: 48px;
+}
+
+.review-card {
+  padding: 32px;
+  background: var(--alt-bg);
+}
+
+.review-card.featured {
+  background: var(--black);
+  color: var(--cream);
+}
+
+.review-text {
+  font-family: 'Newsreader', serif;
+  font-size: 1.0625rem;
+  font-style: italic;
+  line-height: 1.55;
+  margin-bottom: 24px;
+}
+
+.review-attr {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: var(--ls-caps);
+  text-transform: uppercase;
+  color: var(--gray);
+}
+
+.review-card.featured .review-attr {
+  color: rgba(250, 246, 240, 0.5);
+}
+
+/* ============ LOCATIONS ============ */
+.locations {
+  padding: var(--section-pad) 24px;
+  background: var(--alt-bg);
+}
+
+.locations-inner {
+  max-width: var(--content-width);
+  margin: 0 auto;
+}
+
+.locations-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  margin-top: 48px;
+}
+
+.location-card {
+  padding: 40px 32px;
+  background: var(--cream);
+}
+
+.location-card h3 {
+  font-family: 'Newsreader', serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  letter-spacing: var(--ls-tight);
+}
+
+.location-detail {
+  font-size: 0.875rem;
+  color: var(--gray);
+  margin-bottom: 8px;
+}
+
+.location-detail strong {
+  color: var(--black);
+  font-weight: 500;
+}
+
+.location-phone {
+  font-family: 'Newsreader', serif;
+  font-size: 1.375rem;
+  font-weight: 600;
+  letter-spacing: var(--ls-tight);
+  color: var(--broth);
+  display: block;
+  margin: 16px 0;
+}
+
+.location-map {
+  margin-top: 24px;
+  height: 200px;
+  border: none;
+  width: 100%;
+}
+
+.location-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+  background: var(--black);
+  color: var(--cream);
+  padding: 12px 24px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  transition: transform 160ms var(--ease-out);
+}
+
+.location-cta:active { transform: scale(0.97); }
+
+/* ============ CTA BAND ============ */
+.cta-band {
+  background: var(--black);
+  color: var(--cream);
+  padding: 80px 24px;
+  text-align: center;
+}
+
+.cta-band h2 {
+  font-family: 'Newsreader', serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 600;
+  margin-bottom: 24px;
+  color: var(--cream);
+  letter-spacing: var(--ls-tight);
+}
+
+.cta-band p {
+  color: rgba(250, 246, 240, 0.6);
+  margin-bottom: 32px;
+  font-size: 0.9375rem;
+}
+
+.cta-band-btn {
+  display: inline-flex;
+  background: var(--cream);
+  color: var(--black);
+  padding: 16px 32px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  transition: transform 160ms var(--ease-out);
+}
+
+.cta-band-btn:active { transform: scale(0.97); }
+
+/* ============ FOOTER ============ */
+footer {
+  padding: 48px 24px;
+  border-top: 1px solid rgba(26, 22, 16, 0.08);
+}
+
+.footer-inner {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-brand {
+  font-family: 'Newsreader', serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: var(--ls-tight);
+}
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+}
+
+.footer-links a {
+  font-size: 0.8125rem;
+  color: var(--gray);
+  letter-spacing: var(--ls-normal);
+  transition: color 200ms var(--ease-out);
+}
+
+.footer-links a:hover { color: var(--black); }
+
+.footer-copy {
+  font-size: 0.75rem;
+  color: var(--gray);
+  margin-top: 24px;
+  text-align: center;
+}
+
+/* ============ MOBILE ============ */
+@media (max-width: 768px) {
+  :root { --section-pad: 64px; }
+  
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--cream);
+    padding: 24px;
+    gap: 16px;
+    border-bottom: 1px solid rgba(26, 22, 16, 0.08);
+  }
+  
+  .hero { min-height: 70vh; padding-top: calc(var(--section-pad) + 60px); }
+  .hero h1 { font-size: clamp(2.25rem, 10vw, 3.5rem); }
+  .hero-info { flex-direction: column; gap: 8px; }
+  
+  .photo-strip { grid-template-columns: 1fr; }
+  .photo-strip-item { height: 280px; }
+  .photo-strip-stacked { grid-template-rows: auto; }
+  
+  .about-grid { grid-template-columns: 1fr; gap: 32px; }
+  .menu-grid { grid-template-columns: 1fr; }
+  .reviews-grid { grid-template-columns: 1fr; }
+  .locations-grid { grid-template-columns: 1fr; }
+  
+  .trust-bar-inner { gap: 24px; }
+  
+  .footer-inner { flex-direction: column; gap: 16px; text-align: center; }
+  .footer-links { flex-wrap: wrap; justify-content: center; }
+}
+
+/* ============ ANIMATIONS ============ */
+.fade-in {
+  opacity: 1;
+  transform: none;
+}
+
+.js-ready .fade-in {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 500ms var(--ease-out), transform 500ms var(--ease-out);
+}
+
+.js-ready .fade-in.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Stagger for grids */
+.js-ready .menu-card.fade-in { transition-delay: 0ms; }
+.js-ready .menu-card.fade-in:nth-child(2) { transition-delay: 60ms; }
+.js-ready .menu-card.fade-in:nth-child(3) { transition-delay: 120ms; }
+.js-ready .menu-card.fade-in:nth-child(4) { transition-delay: 180ms; }
+
+.js-ready .review-card.fade-in { transition-delay: 0ms; }
+.js-ready .review-card.fade-in:nth-child(2) { transition-delay: 60ms; }
+.js-ready .review-card.fade-in:nth-child(3) { transition-delay: 120ms; }
+
+.js-ready .location-card.fade-in { transition-delay: 0ms; }
+.js-ready .location-card.fade-in:nth-child(2) { transition-delay: 80ms; }
+
+/* Button hover */
+.hero-cta {
+  transition: transform 160ms var(--ease-out), background 200ms var(--ease-out);
+}
+
+.hero-cta:hover { opacity: 0.9; }
+
+.location-cta {
+  transition: transform 160ms var(--ease-out), background 200ms var(--ease-out);
+}
+
+.location-cta:hover { opacity: 0.85; }
+
+.cta-band-btn {
+  transition: transform 160ms var(--ease-out);
+}
+
+.cta-band-btn:hover { opacity: 0.9; }
+
+/* Nav link underline on hover */
+.nav-links a {
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 4px;
+  transition: color 200ms var(--ease-out), text-decoration-color 200ms var(--ease-out);
+}
+
+.nav-links a:hover {
+  color: var(--black);
+  text-decoration-color: var(--broth);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-in,
+  .js-ready .fade-in {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* No-JS fallback */
+noscript .fade-in {
+  opacity: 1 !important;
+  transform: none !important;
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">Pho Vy</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#locations">Locations</a></li>
+    </ul>
+    <button class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO — Giant Display Type -->
+<section class="hero">
+  <h1 class="fade-in">The Answer to <em>'Best Pho in Victoria'</em> Hasn't Changed</h1>
+  <p class="hero-body fade-in">Family-owned Vietnamese restaurant on Fort Street and in Langford. No website, no ads. Just word of mouth and twelve-hour broth.</p>
+  <div class="hero-ctas fade-in">
+    <a href="tel:7784335950" class="hero-cta">Call Fort Street — (778) 433-5950</a>
+    <a href="https://maps.google.com/maps?q=772+Fort+Street+Victoria+BC" target="_blank" rel="noopener" class="hero-cta hero-cta-secondary">Get Directions</a>
+  </div>
+  <div class="hero-info fade-in">
+    <a href="#locations">772 Fort St, Victoria · 11–9</a>
+    <a href="#locations">113-857 Terlane Ave, Langford · 11–8</a>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-bar-inner">
+    <div class="trust-stat">
+      <span class="trust-number">4.3 ★</span>
+      <span class="trust-label">Google Rating</span>
+    </div>
+    <div class="trust-stat">
+      <span class="trust-number">123+</span>
+      <span class="trust-label">Google Reviews</span>
+    </div>
+    <div class="trust-stat">
+      <span class="trust-number">Open Daily</span>
+      <span class="trust-label">11 AM — Walk In</span>
+    </div>
+    <div class="trust-stat">
+      <span class="trust-number">2</span>
+      <span class="trust-label">Victoria Locations</span>
+    </div>
+  </div>
+</div>
+
+<!-- PHOTO STRIP -->
+<div class="photo-strip">
+  <div class="photo-strip-item">
+    <img src="hero-pho.png" alt="Bowl of Vietnamese pho with fresh herbs and rare beef" loading="lazy">
+  </div>
+  <div class="photo-strip-stacked">
+    <div class="photo-strip-item">
+      <img src="spring-rolls.png" alt="Fresh Vietnamese spring rolls with herbs and dipping sauce" loading="lazy">
+    </div>
+    <div class="photo-strip-item">
+      <img src="bun-bo-hue.png" alt="Bun Bo Hue spicy beef noodle soup" loading="lazy">
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div>
+      <div class="about-quote fade-in">
+        "The restaurant owner is so welcoming and making sure that we had a good experience. 6 stars for customer service."
+        <cite>Via Google Review</cite>
+      </div>
+    </div>
+    <div>
+      <span class="section-label">About</span>
+      <h2>The Owner Greets You Like You're Expected</h2>
+      <p class="about-body fade-in">The family behind Pho Vy is from Vietnam. They opened on Fort Street, and when the regulars kept coming back, they opened a second kitchen in Langford. Same recipes, same family, same welcome at the door.</p>
+      <p class="about-body fade-in">There's a reason every Reddit thread asking "best pho in Victoria?" lands here. The broth simmers for twelve hours. The portions are generous. And the owner makes sure you leave full and happy. That's the whole strategy.</p>
+    </div>
+  </div>
+</section>
+
+<!-- NAME MEANING -->
+<section class="name-section">
+  <span class="section-label">The Name</span>
+  <h2 class="fade-in">No Website. No Ads. <em>Just the Food.</em></h2>
+  <p class="fade-in">Every "best pho" thread on Reddit. Every word-of-mouth recommendation from a friend. That's the entire marketing strategy. The broth does the talking.</p>
+</section>
+
+<!-- MENU HIGHLIGHTS -->
+<section class="menu-section" id="menu">
+  <span class="section-label">What to Order</span>
+  <h2>The Regulars Know</h2>
+  <div class="menu-grid">
+    <div class="menu-card fade-in">
+      <div class="menu-card-number">01</div>
+      <h3>Pho Vy Special #18</h3>
+      <p>The signature bowl. Steak, flank, tendon, tripe, and meatballs in a twelve-hour bone broth. The one everyone orders first and keeps ordering. From $13.25.</p>
+    </div>
+    <div class="menu-card fade-in">
+      <div class="menu-card-number">02</div>
+      <h3>Bun Bo Hue</h3>
+      <p>Spicy beef noodle soup from central Vietnam. Lemongrass, chili oil, thick round noodles. Not pho — different tradition, same care.</p>
+    </div>
+    <div class="menu-card fade-in">
+      <div class="menu-card-number">03</div>
+      <h3>Shrimp & Crab Noodle Soup</h3>
+      <p>Seafood broth with shrimp and crab. Lighter than pho, just as satisfying. A regular favorite that doesn't get enough credit.</p>
+    </div>
+    <div class="menu-card fade-in">
+      <div class="menu-card-number">04</div>
+      <h3>Spring Rolls & Salad Rolls</h3>
+      <p>Crispy fried spring rolls with peanut sauce, or fresh pork salad rolls with herbs and rice paper. The perfect starter before your bowl arrives.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BROTH QUOTE -->
+<section class="broth-quote">
+  <blockquote class="fade-in">
+    "Decided to try Pho Vy since it was the most suggested on Reddit. The vegetables were fresh, noodles had a nice texture, and the broth was delicious without feeling too greasy. Very large serving."
+    <cite>Via Reddit · r/VictoriaBC</cite>
+  </blockquote>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <span class="section-label">What People Say</span>
+  <h2>Word of Mouth Is the Only Marketing</h2>
+  <div class="reviews-grid">
+    <div class="review-card fade-in">
+      <p class="review-text">"Pho Vy is delicious, but the best part for me is the speedy service."</p>
+      <span class="review-attr">Via Reddit · r/VictoriaBC · Oct 2024</span>
+    </div>
+    <div class="review-card featured fade-in">
+      <p class="review-text">"Really consistently good broth. Their sizes start at $13.25 and it's a lot of food. Pho Vy on Fort is one of my go-tos."</p>
+      <span class="review-attr">Via Reddit · r/VictoriaBC · 2021</span>
+    </div>
+    <div class="review-card fade-in">
+      <p class="review-text">"The vegetables were fresh and had a very pleasing crunch. Noodles had a nice texture and the broth was delicious without feeling too greasy."</p>
+      <span class="review-attr">Via Reddit · r/VictoriaBC · Jul 2021</span>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATIONS -->
+<section class="locations" id="locations">
+  <div class="locations-inner">
+    <span class="section-label">Find Us</span>
+    <h2>Two Kitchens, Same Family</h2>
+    <div class="locations-grid">
+      <div class="location-card fade-in">
+        <h3>Fort Street · Downtown</h3>
+        <p class="location-detail"><strong>Address:</strong> 772 Fort St, Victoria, BC V8W 1H2</p>
+        <a href="tel:7784335950" class="location-phone">(778) 433-5950</a>
+        <p class="location-detail"><strong>Hours:</strong> Mon–Sun, 11 AM – 9 PM</p>
+        <iframe class="location-map" src="https://maps.google.com/maps?q=772+Fort+Street+Victoria+BC&output=embed" loading="lazy" title="Pho Vy Fort Street location"></iframe>
+        <a href="https://maps.google.com/maps?q=772+Fort+Street+Victoria+BC" target="_blank" rel="noopener" class="location-cta">Get Directions</a>
+      </div>
+      <div class="location-card fade-in">
+        <h3>Terlane Avenue · Langford</h3>
+        <p class="location-detail"><strong>Address:</strong> 113-857 Terlane Ave, Langford, BC V9B 2N1</p>
+        <a href="tel:7784335955" class="location-phone">(778) 433-5955</a>
+        <p class="location-detail"><strong>Hours:</strong> Mon–Sun, 11 AM – 8 PM</p>
+        <iframe class="location-map" src="https://maps.google.com/maps?q=857+Terlane+Ave+Langford+BC&output=embed" loading="lazy" title="Pho Vy Langford location"></iframe>
+        <a href="https://maps.google.com/maps?q=857+Terlane+Ave+Langford+BC" target="_blank" rel="noopener" class="location-cta">Get Directions</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <h2>The Broth Is Ready</h2>
+  <p>No reservations needed. Walk in, sit down, and let the family take care of the rest.</p>
+  <a href="https://www.facebook.com/phovyvictoria/" target="_blank" rel="noopener" class="cta-band-btn">Follow on Facebook</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <span class="footer-brand">Pho Vy</span>
+    <ul class="footer-links">
+      <li><a href="https://www.facebook.com/phovyvictoria/" target="_blank" rel="noopener">Facebook</a></li>
+      <li><a href="tel:7784335950">Fort St: (778) 433-5950</a></li>
+      <li><a href="tel:7784335955">Langford: (778) 433-5955</a></li>
+    </ul>
+  </div>
+  <p class="footer-copy">© 2026 Pho Vy Vietnamese Restaurant. All rights reserved. Demo site — not affiliated with the business.</p>
+</footer>
+
+<noscript>
+<style>.fade-in { opacity: 1 !important; transform: none !important; }</style>
+</noscript>
+
+<script>
+document.documentElement.classList.add('js-ready');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Roux Patisserie — Victoria, BC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ─── TOKENS ─── */
+:root {
+  --cream: #FAF4EE;
+  --cream-alt: #F0E8DF;
+  --dark: #1A0E10;
+  --dark-2: #2A1A1C;
+  --rose: #C4707A;
+  --rose-light: #D4A0A6;
+  --warm-gray: #6B5B60;
+  --mid-gray: #A09090;
+  --body: #3A2A2E;
+
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+
+  --ls-sm: 0.04em;
+  --ls-md: 0.08em;
+  --ls-lg: 0.14em;
+
+  --section-pad: 96px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 16px; scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--body);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { display: block; width: 100%; height: auto; object-fit: cover; }
+
+a { color: inherit; text-decoration: none; }
+
+/* ─── NAV ─── */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 20px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: transparent;
+  transition: background 300ms var(--ease-out), box-shadow 300ms;
+}
+.nav.scrolled {
+  background: rgba(250,244,238,0.95);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 1px 0 rgba(0,0,0,0.08);
+}
+.nav-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: var(--ls-sm);
+  color: var(--cream);
+}
+.nav.scrolled .nav-brand { color: var(--dark); }
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-md);
+  text-transform: uppercase;
+  color: rgba(250,244,238,0.85);
+  transition: color 200ms;
+  position: relative;
+}
+.nav.scrolled .nav-links a { color: var(--warm-gray); }
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: 0; right: 100%;
+  height: 1px;
+  background: var(--rose);
+  transition: right 250ms var(--ease-out);
+}
+.nav-links a:hover::after { right: 0; }
+
+.nav-cta {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-md);
+  text-transform: uppercase;
+  padding: 10px 24px;
+  border: 1px solid rgba(250,244,238,0.5);
+  color: var(--cream);
+  transition: all 200ms;
+}
+.nav.scrolled .nav-cta {
+  border-color: var(--rose);
+  color: var(--rose);
+}
+.nav-cta:hover { background: var(--rose); border-color: var(--rose); color: #fff; }
+
+/* Mobile hamburger */
+.nav-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+.nav-toggle span { display: block; width: 24px; height: 1.5px; background: var(--cream); transition: all 200ms; }
+.nav.scrolled .nav-toggle span { background: var(--dark); }
+
+/* ─── HERO (editorial-spread) ─── */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+}
+
+.hero-left {
+  background: var(--dark);
+  padding: 140px 64px 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: relative;
+}
+
+.hero-eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-lg);
+  text-transform: uppercase;
+  color: var(--rose);
+  margin-bottom: 24px;
+}
+
+.hero-left h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: var(--cream);
+  margin-bottom: 28px;
+}
+
+.hero-left p {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: rgba(250,244,238,0.75);
+  max-width: 380px;
+  margin-bottom: 48px;
+}
+
+.hero-ctas {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  display: inline-block;
+  padding: 14px 32px;
+  background: var(--rose);
+  color: #fff;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-md);
+  text-transform: uppercase;
+  transition: all 160ms var(--ease-out);
+}
+.btn-primary:hover { background: #B5626C; }
+.btn-primary:active { transform: scale(0.97); }
+
+.btn-secondary {
+  display: inline-block;
+  padding: 14px 32px;
+  border: 1px solid rgba(250,244,238,0.35);
+  color: rgba(250,244,238,0.85);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-md);
+  text-transform: uppercase;
+  transition: all 160ms var(--ease-out);
+}
+.btn-secondary:hover { border-color: var(--cream); color: var(--cream); }
+.btn-secondary:active { transform: scale(0.97); }
+
+.hero-right {
+  position: relative;
+  overflow: hidden;
+}
+.hero-right img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ─── TRUST BAR (dark) ─── */
+.trust-bar {
+  background: var(--dark-2);
+  padding: 32px 64px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.trust-stat {
+  text-align: center;
+}
+.trust-stat-number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--cream);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+}
+.trust-stat-label {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-lg);
+  text-transform: uppercase;
+  color: var(--mid-gray);
+}
+
+/* ─── PHOTO STRIP ─── */
+.photo-strip {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 4px;
+  height: 360px;
+}
+.photo-strip img {
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ─── SECTION COMMON ─── */
+.section-label {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-lg);
+  text-transform: uppercase;
+  color: var(--rose);
+  margin-bottom: 16px;
+}
+
+section h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  color: var(--dark);
+  margin-bottom: 20px;
+}
+
+section p {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--warm-gray);
+}
+
+/* ─── ABOUT ─── */
+.about {
+  padding: var(--section-pad) 64px;
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 96px;
+  align-items: center;
+}
+
+.about-image {
+  height: 480px;
+  overflow: hidden;
+}
+
+.about-content .section-label { margin-bottom: 12px; }
+
+.about-content h2 { margin-bottom: 20px; }
+
+.about-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  font-style: italic;
+  color: var(--dark);
+  line-height: 1.6;
+  margin-bottom: 24px;
+  padding-left: 20px;
+  border-left: 2px solid var(--rose);
+}
+
+/* ─── SIGNATURE ITEMS ─── */
+.signature {
+  background: var(--cream-alt);
+  padding: var(--section-pad) 64px;
+}
+
+.signature-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 56px;
+}
+
+.signature-header a {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-md);
+  text-transform: uppercase;
+  color: var(--rose);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.signature-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+}
+
+.sig-card {
+  background: var(--cream);
+  padding: 32px 28px;
+  position: relative;
+}
+.sig-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--rose);
+}
+
+.sig-number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  color: var(--rose-light);
+  font-weight: 600;
+  margin-bottom: 16px;
+  letter-spacing: var(--ls-sm);
+}
+
+.sig-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.375rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--dark);
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+
+.sig-card p {
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: var(--warm-gray);
+}
+
+/* ─── NAME SECTION ─── */
+.name-section {
+  background: var(--dark);
+  padding: 120px 64px;
+  text-align: center;
+}
+
+.name-section h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: var(--cream);
+  margin-bottom: 24px;
+}
+
+.name-section p {
+  font-size: 1rem;
+  color: rgba(250,244,238,0.65);
+  max-width: 520px;
+  margin: 0 auto 40px;
+  line-height: 1.75;
+}
+
+.name-section .section-label {
+  color: var(--rose);
+  margin-bottom: 24px;
+}
+
+/* ─── REVIEWS ─── */
+.reviews {
+  padding: var(--section-pad) 64px;
+}
+
+.reviews-header {
+  margin-bottom: 56px;
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+}
+
+.review-card {
+  background: var(--cream-alt);
+  padding: 36px 32px;
+  position: relative;
+}
+.review-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--rose);
+}
+
+.review-stars {
+  font-size: 0.875rem;
+  color: var(--rose);
+  margin-bottom: 16px;
+  letter-spacing: 2px;
+}
+
+.review-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.0625rem;
+  font-style: italic;
+  line-height: 1.65;
+  color: var(--dark);
+  margin-bottom: 24px;
+}
+
+.review-meta {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: var(--ls-md);
+  text-transform: uppercase;
+  color: var(--mid-gray);
+}
+
+/* ─── VISIT ─── */
+.visit {
+  background: var(--cream-alt);
+  padding: var(--section-pad) 64px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.visit-info h2 { margin-bottom: 32px; }
+
+.visit-detail {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+  align-items: flex-start;
+}
+
+.visit-detail-label {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-lg);
+  text-transform: uppercase;
+  color: var(--rose);
+  min-width: 80px;
+  margin-top: 3px;
+}
+
+.visit-detail-value {
+  font-size: 1rem;
+  color: var(--body);
+}
+
+.visit-detail-value a {
+  color: var(--dark);
+  font-weight: 500;
+}
+.visit-detail-value a:hover { color: var(--rose); }
+
+.visit-map {
+  height: 380px;
+  overflow: hidden;
+}
+.visit-map iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* ─── CTA BAND ─── */
+.cta-band {
+  background: var(--rose);
+  padding: 80px 64px;
+  text-align: center;
+}
+
+.cta-band h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #fff;
+  margin-bottom: 16px;
+}
+
+.cta-band p {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 40px;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn-white {
+  display: inline-block;
+  padding: 14px 40px;
+  background: #fff;
+  color: var(--rose);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: var(--ls-md);
+  text-transform: uppercase;
+  transition: all 160ms var(--ease-out);
+}
+.btn-white:hover { background: var(--dark); color: #fff; }
+.btn-white:active { transform: scale(0.97); }
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--dark);
+  padding: 48px 64px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 32px;
+  align-items: start;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.footer-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: var(--ls-sm);
+  color: var(--cream);
+  margin-bottom: 8px;
+}
+
+.footer-tagline {
+  font-size: 0.8125rem;
+  color: var(--mid-gray);
+  line-height: 1.6;
+}
+
+.footer-col h4 {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-lg);
+  text-transform: uppercase;
+  color: var(--rose);
+  margin-bottom: 16px;
+}
+
+.footer-col p, .footer-col a {
+  font-size: 0.875rem;
+  color: var(--mid-gray);
+  line-height: 1.7;
+  display: block;
+}
+.footer-col a:hover { color: var(--cream); }
+
+.footer-bottom {
+  background: var(--dark);
+  padding: 16px 64px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-bottom p {
+  font-size: 0.75rem;
+  color: rgba(160,144,144,0.6);
+}
+
+/* ─── MOBILE NAV ─── */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: var(--dark);
+  z-index: 99;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: var(--cream);
+  letter-spacing: -0.01em;
+}
+.mobile-close {
+  position: absolute;
+  top: 24px; right: 24px;
+  background: none;
+  border: none;
+  color: var(--cream);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 1024px) {
+  :root { --section-pad: 72px; }
+
+  .nav { padding: 20px 32px; }
+  .nav-links, .nav-cta { display: none; }
+  .nav-toggle { display: flex; }
+
+  .hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero-left { padding: 120px 32px 64px; }
+  .hero-right { height: 50vw; max-height: 420px; }
+
+  .trust-bar { grid-template-columns: repeat(2, 1fr); padding: 32px; }
+
+  .photo-strip { height: 260px; }
+
+  .about { grid-template-columns: 1fr; gap: 48px; padding: var(--section-pad) 32px; }
+  .about-image { height: 320px; }
+
+  .signature { padding: var(--section-pad) 32px; }
+  .signature-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .name-section { padding: 80px 32px; }
+
+  .reviews { padding: var(--section-pad) 32px; }
+  .reviews-grid { grid-template-columns: 1fr; gap: 4px; }
+
+  .visit { grid-template-columns: 1fr; padding: var(--section-pad) 32px; gap: 40px; }
+  .visit-map { height: 280px; }
+
+  .cta-band { padding: 64px 32px; }
+
+  footer { grid-template-columns: 1fr; padding: 48px 32px; }
+  .footer-bottom { padding: 16px 32px; flex-direction: column; gap: 8px; text-align: center; }
+}
+
+@media (max-width: 600px) {
+  .hero-left { padding: 100px 24px 56px; }
+  .photo-strip { grid-template-columns: 1fr; height: auto; }
+  .photo-strip img { height: 240px; }
+  .photo-strip img:nth-child(2), .photo-strip img:nth-child(3) { display: none; }
+  .signature-grid { grid-template-columns: 1fr; }
+  .trust-bar { grid-template-columns: 1fr 1fr; padding: 24px; gap: 24px; }
+}
+
+/* ─── SCROLL REVEAL ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 500ms var(--ease-out), transform 500ms var(--ease-out);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hero entrance */
+.hero-eyebrow,
+.hero-left h1,
+.hero-left p,
+.hero-ctas {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+}
+body.js-ready .hero-eyebrow { opacity: 1; transform: translateY(0); transition-delay: 80ms; }
+body.js-ready .hero-left h1 { opacity: 1; transform: translateY(0); transition-delay: 200ms; }
+body.js-ready .hero-left p { opacity: 1; transform: translateY(0); transition-delay: 320ms; }
+body.js-ready .hero-ctas { opacity: 1; transform: translateY(0); transition-delay: 440ms; }
+
+/* Stagger classes */
+.stagger-1 { transition-delay: 40ms; }
+.stagger-2 { transition-delay: 80ms; }
+.stagger-3 { transition-delay: 120ms; }
+.stagger-4 { transition-delay: 160ms; }
+
+/* ─── FOCUS VISIBLE ─── */
+:focus-visible {
+  outline: 2px solid var(--rose);
+  outline-offset: 3px;
+}
+a:focus-visible, button:focus-visible { outline: 2px solid var(--rose); outline-offset: 3px; }
+
+/* ─── REDUCED MOTION ─── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-brand">La Roux</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#signature">Pastries</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#visit">Visit</a></li>
+  </ul>
+  <a href="https://laroux.ca" target="_blank" rel="noopener" class="nav-cta">Order Online</a>
+  <div class="nav-toggle" id="navToggle" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose" aria-label="Close menu">✕</button>
+  <a href="#about" class="mobile-link">About</a>
+  <a href="#signature" class="mobile-link">Pastries</a>
+  <a href="#reviews" class="mobile-link">Reviews</a>
+  <a href="#visit" class="mobile-link">Visit</a>
+  <a href="https://laroux.ca" target="_blank" rel="noopener" class="mobile-link">Order Online</a>
+</div>
+
+<!-- HERO (editorial-spread) -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">French Patisserie · Victoria, BC</p>
+    <h1>Made to Be Remembered.</h1>
+    <p>A European visitor wrote: <em>"The pastries make me feel like I'm back home."</em> That's the bar La Roux sets — and clears — every morning on Fisgard Street.</p>
+    <div class="hero-ctas">
+      <a href="https://laroux.ca" target="_blank" rel="noopener" class="btn-primary">Order a Cake</a>
+      <a href="#visit" class="btn-secondary">Find Us on Fisgard</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="macarons.png" alt="Assorted French macarons in pastel colors at La Roux Patisserie">
+  </div>
+</section>
+
+<!-- TRUST BAR (dark) -->
+<div class="trust-bar reveal">
+  <div class="trust-stat">
+    <div class="trust-stat-number">4.7★</div>
+    <div class="trust-stat-label">746 Google Reviews</div>
+  </div>
+  <div class="trust-stat">
+    <div class="trust-stat-number">9am</div>
+    <div class="trust-stat-label">Opens Daily</div>
+  </div>
+  <div class="trust-stat">
+    <div class="trust-stat-number">$10–20</div>
+    <div class="trust-stat-label">Per Person</div>
+  </div>
+  <div class="trust-stat">
+    <div class="trust-stat-number">LGBTQ+</div>
+    <div class="trust-stat-label">Friendly & Welcoming</div>
+  </div>
+</div>
+
+<!-- PHOTO STRIP -->
+<div class="photo-strip reveal">
+  <img src="croissant.png" alt="Golden butter croissant, freshly baked">
+  <img src="paris-brest.png" alt="Paris-Brest choux pastry with praline cream">
+  <img src="celebration-cake.png" alt="Beautifully decorated French celebration cake">
+</div>
+
+<!-- ABOUT -->
+<section class="about reveal" id="about" style="scroll-margin-top: 80px;">
+  <div class="about-image">
+    <img src="creme-brulee.png" alt="Perfectly caramelized crème brûlée at La Roux Patisserie" style="height:100%;object-fit:cover;">
+  </div>
+  <div class="about-content">
+    <p class="section-label">The Kitchen</p>
+    <h2>The Kitchen That Makes Europeans Nostalgic.</h2>
+    <blockquote class="about-quote">
+      "As a European, the pastries make me feel like I'm back home."
+    </blockquote>
+    <p style="margin-bottom:20px;">When someone from the continent says your croissants taste like home, you've passed the only test that matters. La Roux Patisserie is a chandelier-lit French pastry shop in Victoria's Chinatown — steps from Fan Tan Alley, a world away from everything else.</p>
+    <p>Everything is handcrafted and made fresh daily. Flaky butter croissants. Delicate macarons. Paris-Brest with real praline cream. And celebration cakes that get photographed before they're cut.</p>
+  </div>
+</section>
+
+<!-- SIGNATURE ITEMS -->
+<section class="signature" id="signature" style="scroll-margin-top: 80px;">
+  <div class="signature-header">
+    <div>
+      <p class="section-label">What to Order</p>
+      <h2>The Signatures.</h2>
+    </div>
+    <a href="https://laroux.ca" target="_blank" rel="noopener">See Full Menu →</a>
+  </div>
+  <div class="signature-grid">
+    <div class="sig-card reveal stagger-1">
+      <div class="sig-number">01</div>
+      <h3>Carrot Cake</h3>
+      <p>Victoria's most-mentioned pastry. Moist, spiced, and somehow better than you expect every time.</p>
+    </div>
+    <div class="sig-card reveal stagger-2">
+      <div class="sig-number">02</div>
+      <h3>Macarons</h3>
+      <p>Crisp shell, yielding centre. The kind that makes you reconsider every macaron you've had before.</p>
+    </div>
+    <div class="sig-card reveal stagger-3">
+      <div class="sig-number">03</div>
+      <h3>Paris-Brest</h3>
+      <p>Choux pastry ring with praline cream. Victoria rarely sees this done right. La Roux does it right.</p>
+    </div>
+    <div class="sig-card reveal stagger-4">
+      <div class="sig-number">04</div>
+      <h3>Custom Cakes</h3>
+      <p>Birthday, anniversary, occasion. Hand-decorated, made to order. Photographed before they're cut.</p>
+    </div>
+  </div>
+</section>
+
+<!-- NAME SECTION -->
+<div class="name-section reveal">
+  <p class="section-label">519 Fisgard St</p>
+  <h2>Under the Chandelier.</h2>
+  <p>A small room with charming décor and pastries that belong in a Parisian showcase. This is where Victoria comes to celebrate — and sometimes just to sit with a croissant and a flat white.</p>
+  <a href="#visit" class="btn-white">Get Directions</a>
+</div>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews" style="scroll-margin-top: 80px;">
+  <div class="reviews-header reveal">
+    <p class="section-label">What People Say</p>
+    <h2>746 Reviews. 4.7 Stars.</h2>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card reveal stagger-1">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"As a European, the pastries make me feel like I'm back home. The chocolate croissants, macarons and carrot cake — all were delicious."</p>
+      <p class="review-meta">LIES V. · JAN 2026 · Via Google</p>
+    </div>
+    <div class="review-card reveal stagger-2">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"If you're a fan of croissants — butter, almond, or chocolate — this is the place to go. Their pastries are honestly some of the best I've ever had."</p>
+      <p class="review-meta">ALI M. · NOV 2025 · Via Google</p>
+    </div>
+    <div class="review-card reveal stagger-3">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Absolutely the BEST birthday cake I have ever received. The lemon cake is phenomenal and looked stunning."</p>
+      <p class="review-meta">CYNTHIA J. · DEC 2025 · Via Google</p>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section class="visit reveal" id="visit" style="scroll-margin-top: 80px;">
+  <div class="visit-info">
+    <p class="section-label">Find Us</p>
+    <h2>519 Fisgard Street.</h2>
+
+    <div class="visit-detail">
+      <div class="visit-detail-label">Address</div>
+      <div class="visit-detail-value">519 Fisgard St, Victoria, BC V8W 1R3<br><span style="font-size:0.875rem;color:var(--warm-gray);">Floor 1, near Fan Tan Alley</span></div>
+    </div>
+    <div class="visit-detail">
+      <div class="visit-detail-label">Hours</div>
+      <div class="visit-detail-value">9am – 5pm<br><span style="font-size:0.875rem;color:var(--warm-gray);">Call to confirm current days — (778) 265-7689</span></div>
+    </div>
+    <div class="visit-detail">
+      <div class="visit-detail-label">Phone</div>
+      <div class="visit-detail-value"><a href="tel:7782657689">(778) 265-7689</a></div>
+    </div>
+    <div class="visit-detail">
+      <div class="visit-detail-label">Order</div>
+      <div class="visit-detail-value"><a href="https://laroux.ca" target="_blank" rel="noopener">laroux.ca</a> — cakes, pastries, gift boxes</div>
+    </div>
+    <div class="visit-detail">
+      <div class="visit-detail-label">Email</div>
+      <div class="visit-detail-value"><a href="mailto:info@laroux.ca">info@laroux.ca</a></div>
+    </div>
+  </div>
+  <div class="visit-map">
+    <iframe
+      src="https://maps.google.com/maps?q=519+Fisgard+St+Victoria+BC&output=embed"
+      allowfullscreen
+      loading="lazy"
+      title="La Roux Patisserie on Google Maps">
+    </iframe>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <h2>Order for Your Next Occasion.</h2>
+  <p>Custom cakes, gift boxes, and fresh pastries available online. Or come in and choose what catches your eye under the chandelier.</p>
+  <a href="https://laroux.ca" target="_blank" rel="noopener" class="btn-white">Shop Online at laroux.ca</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-brand">La Roux Patisserie</div>
+    <p class="footer-tagline">Handcrafted pastries and cakes<br>made fresh daily. Victoria, BC.</p>
+  </div>
+  <div class="footer-col">
+    <h4>Visit</h4>
+    <p>519 Fisgard St</p>
+    <p>Victoria, BC V8W 1R3</p>
+    <p>Open daily 9am – 5pm</p>
+  </div>
+  <div class="footer-col">
+    <h4>Contact</h4>
+    <a href="tel:7782657689">(778) 265-7689</a>
+    <a href="mailto:info@laroux.ca">info@laroux.ca</a>
+    <a href="https://laroux.ca" target="_blank" rel="noopener">laroux.ca</a>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <p>© 2026 La Roux Patisserie. Victoria, BC.</p>
+  <p>LGBTQ+ Friendly · Dine-In &amp; Takeout</p>
+</div>
+
+<noscript><style>
+.reveal { opacity: 1 !important; transform: none !important; }
+.hero-eyebrow, .hero-left h1, .hero-left p, .hero-ctas { opacity: 1 !important; transform: none !important; }
+</style></noscript>
+
+<script>
+// ─── HERO ENTRANCE ───
+document.body.classList.add('js-ready');
+
+// ─── NAV SCROLL ───
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+
+// ─── MOBILE MENU ───
+const toggle = document.getElementById('navToggle');
+const menu = document.getElementById('mobileMenu');
+const close = document.getElementById('mobileClose');
+toggle.addEventListener('click', () => menu.classList.add('open'));
+close.addEventListener('click', () => menu.classList.remove('open'));
+document.querySelectorAll('.mobile-link').forEach(link => {
+  link.addEventListener('click', () => menu.classList.remove('open'));
+});
+
+// ─── SCROLL REVEAL ───
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

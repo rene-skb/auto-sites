@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kingsway Barbershop — Vancouver's Neighbourhood Chair</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --charcoal: #1C1C1A;
+  --gold: #C9A84C;
+  --cream: #FAF7F2;
+  --warm-gray: #6B6560;
+  --light-bg: #F0EBE3;
+  --section-pad: clamp(64px, 10vw, 120px);
+  --content-width: 1100px;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+html { scroll-behavior: smooth; }
+[id] { scroll-margin-top: 80px; }
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  background: var(--cream);
+  color: var(--charcoal);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Noise texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.03;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+a { color: inherit; text-decoration: none; }
+
+.container { max-width: var(--content-width); margin: 0 auto; padding: 0 24px; }
+
+/* ========== NAV ========== */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 20px 0;
+  background: rgba(28, 28, 26, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+nav .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav-brand {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--cream);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a {
+  color: var(--warm-gray);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: color 200ms var(--ease-out);
+}
+.nav-links a:hover { color: var(--cream); }
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--cream);
+  transition: transform 300ms var(--ease-out), opacity 200ms;
+}
+.hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Mobile menu */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 64px; left: 0; right: 0; bottom: 0;
+  background: var(--charcoal);
+  z-index: 99;
+  padding: 48px 24px;
+}
+.mobile-menu.active { display: flex; flex-direction: column; gap: 24px; }
+.mobile-menu a {
+  color: var(--cream);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ========== HERO ========== */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  background: var(--charcoal);
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(135deg, rgba(28,28,26,0.7) 0%, rgba(28,28,26,0.4) 50%, rgba(28,28,26,0.8) 100%),
+    linear-gradient(180deg, rgba(201,168,76,0.08) 0%, transparent 40%),
+    radial-gradient(ellipse at 30% 60%, rgba(201,168,76,0.06) 0%, transparent 60%),
+    var(--charcoal);
+  background-size: cover;
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 24px;
+  max-width: 800px;
+}
+.hero-label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 24px;
+}
+.hero h1 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  line-height: 1.05;
+  color: var(--cream);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-bottom: 24px;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--gold);
+}
+.hero-body {
+  font-size: 1.125rem;
+  color: var(--warm-gray);
+  max-width: 520px;
+  margin: 0 auto 40px;
+  line-height: 1.7;
+}
+.hero-ctas {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 32px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: transform 160ms var(--ease-out), background 200ms var(--ease-out);
+}
+.btn:active { transform: scale(0.97); }
+.btn-primary {
+  background: var(--gold);
+  color: var(--charcoal);
+}
+.btn-primary:hover { background: #d4b35a; }
+.btn-secondary {
+  background: transparent;
+  color: var(--cream);
+  border: 1px solid rgba(250, 247, 242, 0.25);
+}
+.btn-secondary:hover { border-color: rgba(250, 247, 242, 0.5); }
+
+/* ========== TRUST BAR ========== */
+.trust-bar {
+  background: var(--charcoal);
+  padding: 24px 0;
+  border-top: 1px solid rgba(201,168,76,0.15);
+}
+.trust-bar .container {
+  display: flex;
+  justify-content: center;
+  gap: clamp(24px, 5vw, 64px);
+  flex-wrap: wrap;
+}
+.trust-stat {
+  text-align: center;
+}
+.trust-stat .number {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--gold);
+  letter-spacing: 0.06em;
+}
+.trust-stat .label {
+  font-size: 0.75rem;
+  color: var(--warm-gray);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+/* ========== PHOTO STRIP ========== */
+.photo-strip {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 4px;
+  padding: 4px 0;
+}
+.photo-strip .photo-large,
+.photo-strip .photo-stack {
+  overflow: hidden;
+}
+.photo-strip .photo-stack {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 4px;
+}
+.photo-strip .photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.photo-placeholder {
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  display: block;
+}
+.photo-placeholder.hero-img {
+  background:
+    radial-gradient(ellipse at 30% 50%, rgba(201,168,76,0.1) 0%, transparent 50%),
+    linear-gradient(135deg, #2a2520, #3a3028, #2a2520);
+}
+.photo-placeholder.detail-1 {
+  background:
+    radial-gradient(ellipse at 70% 40%, rgba(201,168,76,0.08) 0%, transparent 50%),
+    linear-gradient(135deg, #352e26, #4a3f32);
+}
+.photo-placeholder.detail-2 {
+  background:
+    radial-gradient(ellipse at 40% 60%, rgba(201,168,76,0.06) 0%, transparent 50%),
+    linear-gradient(135deg, #3a3028, #2a2520);
+}
+
+/* ========== ABOUT ========== */
+.about {
+  padding: var(--section-pad) 0;
+}
+.about-inner {
+  max-width: 720px;
+}
+.section-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+.about h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.15;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-bottom: 24px;
+}
+.about-body {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: #4a4540;
+  margin-bottom: 16px;
+}
+
+/* ========== SERVICES ========== */
+.services {
+  padding: var(--section-pad) 0;
+  background: var(--light-bg);
+}
+.services h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: clamp(2rem, 4vw, 3rem);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-bottom: 48px;
+}
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4px;
+}
+.service-card {
+  background: var(--cream);
+  padding: 40px 32px;
+}
+.service-number {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--gold);
+  letter-spacing: 0.04em;
+  margin-bottom: 12px;
+}
+.service-card h3 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 8px;
+}
+.service-card .price {
+  font-weight: 600;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+.service-card p {
+  font-size: 0.9375rem;
+  color: var(--warm-gray);
+  line-height: 1.6;
+}
+
+/* ========== HOUSE RULES ========== */
+.house-rules {
+  padding: var(--section-pad) 0;
+}
+.rules-inner {
+  max-width: 600px;
+}
+.house-rules h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: clamp(2rem, 4vw, 3rem);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-bottom: 40px;
+}
+.rules-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.rule {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(28,28,26,0.08);
+  font-size: 1.0625rem;
+  line-height: 1.5;
+  color: #4a4540;
+}
+.rule:first-child { border-top: 1px solid rgba(28,28,26,0.08); }
+.rule-num {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 0.875rem;
+  color: var(--gold);
+  letter-spacing: 0.04em;
+  min-width: 24px;
+}
+
+/* ========== QUOTE ========== */
+.quote-section {
+  padding: var(--section-pad) 0;
+  background: var(--charcoal);
+  text-align: center;
+}
+.quote-section blockquote {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--cream);
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto 24px;
+}
+.quote-section .attribution {
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* ========== REVIEWS ========== */
+.reviews {
+  padding: var(--section-pad) 0;
+}
+.reviews h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: clamp(2rem, 4vw, 3rem);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-bottom: 48px;
+}
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.review-card {
+  background: var(--light-bg);
+  padding: 32px;
+  border: 1px solid rgba(28,28,26,0.06);
+}
+.review-stars {
+  color: var(--gold);
+  font-size: 0.875rem;
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+}
+.review-card p {
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: #4a4540;
+  margin-bottom: 20px;
+}
+.review-meta {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--warm-gray);
+}
+
+/* ========== VISIT ========== */
+.visit {
+  padding: var(--section-pad) 0;
+  background: var(--light-bg);
+}
+.visit h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: clamp(2rem, 4vw, 3rem);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-bottom: 48px;
+}
+.visit-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+.visit-info h3 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 600;
+  font-size: 1.125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 16px;
+  color: var(--gold);
+}
+.visit-info p, .visit-info address {
+  font-style: normal;
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: #4a4540;
+  margin-bottom: 24px;
+}
+.hours-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.hours-table td {
+  padding: 8px 0;
+  font-size: 0.9375rem;
+  color: #4a4540;
+}
+.hours-table td:first-child { font-weight: 500; }
+.hours-table td:last-child { text-align: right; color: var(--warm-gray); }
+.map-embed {
+  width: 100%;
+  height: 380px;
+  border: none;
+  filter: grayscale(0.3);
+}
+
+/* ========== CTA BAND ========== */
+.cta-band {
+  padding: clamp(48px, 8vw, 80px) 0;
+  background: var(--charcoal);
+  text-align: center;
+}
+.cta-band h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--cream);
+  margin-bottom: 16px;
+}
+.cta-band p {
+  font-size: 1.0625rem;
+  color: var(--warm-gray);
+  margin-bottom: 32px;
+}
+
+/* ========== FOOTER ========== */
+footer {
+  padding: 40px 0;
+  background: var(--charcoal);
+  border-top: 1px solid rgba(250,247,242,0.08);
+}
+footer .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.footer-brand {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--cream);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.footer-links {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+}
+.footer-links a {
+  font-size: 0.8125rem;
+  color: var(--warm-gray);
+  letter-spacing: 0.04em;
+  padding: 8px 0;
+  transition: color 200ms var(--ease-out);
+}
+.footer-links a:hover { color: var(--cream); }
+.footer-copy {
+  font-size: 0.75rem;
+  color: rgba(138,133,128,0.6);
+}
+
+/* ========== SCROLL ANIMATIONS ========== */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: none;
+}
+.fade-in-stagger { transition-delay: var(--stagger, 0ms); }
+
+/* No-JS fallback */
+.no-js .fade-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+
+  .photo-strip {
+    grid-template-columns: 1fr;
+  }
+  .photo-strip .photo-stack {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .reviews-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .visit-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.5rem, 10vw, 3.5rem);
+  }
+
+  footer .container {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-in {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="container">
+    <a href="#" class="nav-brand">Kingsway Barbershop</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#visit">Visit</a></li>
+    </ul>
+    <button class="hamburger" aria-label="Menu" onclick="this.classList.toggle('active'); document.querySelector('.mobile-menu').classList.toggle('active');">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu">
+  <a href="#about" onclick="document.querySelector('.mobile-menu').classList.remove('active'); document.querySelector('.hamburger').classList.remove('active');">About</a>
+  <a href="#services" onclick="document.querySelector('.mobile-menu').classList.remove('active'); document.querySelector('.hamburger').classList.remove('active');">Services</a>
+  <a href="#reviews" onclick="document.querySelector('.mobile-menu').classList.remove('active'); document.querySelector('.hamburger').classList.remove('active');">Reviews</a>
+  <a href="#visit" onclick="document.querySelector('.mobile-menu').classList.remove('active'); document.querySelector('.hamburger').classList.remove('active');">Visit</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <p class="hero-label">Collingwood · Open 7 Days · Walk-Ins Only</p>
+    <h1>No Appointment.<br>No Attitude.<br>No <em>$50 Fades.</em></h1>
+    <p class="hero-body">Just a clean cut from a barber who remembers your name. Seven days a week on Kingsway.</p>
+    <div class="hero-ctas">
+      <a href="tel:+16044995600" class="btn btn-primary">Call (604) 499-5600</a>
+      <a href="https://maps.google.com/maps?q=Kingsway+Barbershop+3571+Kingsway+Vancouver" target="_blank" class="btn btn-secondary">Get Directions</a>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<section class="trust-bar">
+  <div class="container">
+    <div class="trust-stat">
+      <div class="number">4.7 ★</div>
+      <div class="label">Google Rating</div>
+    </div>
+    <div class="trust-stat">
+      <div class="number">7 Days</div>
+      <div class="label">Open Weekly</div>
+    </div>
+    <div class="trust-stat">
+      <div class="number">9:30–7:30</div>
+      <div class="label">Daily Hours</div>
+    </div>
+    <div class="trust-stat">
+      <div class="number">Collingwood</div>
+      <div class="label">South Vancouver</div>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO STRIP -->
+<section class="photo-strip">
+  <div class="photo-large">
+    <img class="photo" src="hero.png" alt="Inside Kingsway Barbershop" loading="lazy">
+  </div>
+  <div class="photo-stack">
+    <img class="photo" src="fade-detail.png" alt="Fresh fade haircut detail" loading="lazy">
+    <img class="photo" src="tools.png" alt="Classic barber tools" loading="lazy">
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-inner fade-in">
+      <p class="section-label">The Shop</p>
+      <h2>Same Spot. Same Chair.<br>Every Time.</h2>
+      <p class="about-body">Rahim and his team cut hair in Collingwood seven days a week. No booking apps, no waitlists. You walk in, you sit down, you walk out looking right.</p>
+      <p class="about-body">Regulars don't explain what they want. Families bring their kids. Guys come in on lunch. This is the neighbourhood chair — the one that's always there when you need it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="container">
+    <p class="section-label">Services</p>
+    <h2>What We Do</h2>
+    <div class="services-grid">
+      <div class="service-card fade-in" style="--stagger: 0ms">
+        <div class="service-number">01</div>
+        <h3>The Cut</h3>
+        <div class="price">$25</div>
+        <p>Your style, your call. Scissor cuts, tapers, textured crops. We listen first, cut second.</p>
+      </div>
+      <div class="service-card fade-in" style="--stagger: 50ms">
+        <div class="service-number">02</div>
+        <h3>The Fade</h3>
+        <div class="price">$25</div>
+        <p>Skin, mid, low — blended clean enough to skip your next appointment. But you won't.</p>
+      </div>
+      <div class="service-card fade-in" style="--stagger: 100ms">
+        <div class="service-number">03</div>
+        <h3>The Beard</h3>
+        <div class="price">$15</div>
+        <p>Shape-ups, edge work, and a hot towel finish. Walk in scruffy, walk out sharp.</p>
+      </div>
+      <div class="service-card fade-in" style="--stagger: 150ms">
+        <div class="service-number">04</div>
+        <h3>The Shave</h3>
+        <div class="price">$20</div>
+        <p>Straight razor, hot lather, the full ritual. The kind of shave you don't get at home.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOUSE RULES -->
+<section class="house-rules" id="rules">
+  <div class="container">
+    <div class="rules-inner fade-in">
+      <p class="section-label">How We Roll</p>
+      <h2>House Rules</h2>
+      <div class="rules-list">
+        <div class="rule"><span class="rule-num">I</span><span>Walk-ins only. First come, first served.</span></div>
+        <div class="rule"><span class="rule-num">II</span><span>Respect the chair. Respect the barber.</span></div>
+        <div class="rule"><span class="rule-num">III</span><span>Kids are welcome. So is their energy.</span></div>
+        <div class="rule"><span class="rule-num">IV</span><span>If you like the cut, tell a friend. If you don't, tell us.</span></div>
+        <div class="rule"><span class="rule-num">V</span><span>Fair prices, honest work, every single day.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED REVIEW -->
+<section class="quote-section">
+  <div class="container">
+    <blockquote class="fade-in">"Been coming here for over a year. Best fade in South Van, hands down."</blockquote>
+    <p class="attribution">James K. · Via Google</p>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="container">
+    <p class="section-label">What People Say</p>
+    <h2>From the Chair</h2>
+    <div class="reviews-grid">
+      <div class="review-card fade-in" style="--stagger: 0ms">
+        <div class="review-stars">★★★★★</div>
+        <p>"Great barbers, very skilled. The shop is clean and well-organized. I've been going here regularly and they always deliver."</p>
+        <div class="review-meta">Arjun T. · Sep 2024 · Via Google</div>
+      </div>
+      <div class="review-card fade-in" style="--stagger: 60ms">
+        <div class="review-stars">★★★★★</div>
+        <p>"Brought my two boys here for the first time. They were nervous but the barbers were so patient and friendly. We'll be back every month."</p>
+        <div class="review-meta">Maria S. · Jun 2024 · Via Google</div>
+      </div>
+      <div class="review-card fade-in" style="--stagger: 120ms">
+        <div class="review-stars">★★★★★</div>
+        <p>"Fair prices, great cuts, no waiting for hours. Walk in, sit down, walk out looking sharp. That's all you need."</p>
+        <div class="review-meta">Dev P. · Oct 2024 · Via Google</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section class="visit" id="visit">
+  <div class="container">
+    <p class="section-label">Find Us</p>
+    <h2>Come Through</h2>
+    <div class="visit-grid">
+      <div class="visit-info">
+        <h3>Location</h3>
+        <address>3571 Kingsway<br>Vancouver, BC V5R 5L9<br>Collingwood, South Vancouver</address>
+
+        <h3>Hours</h3>
+        <table class="hours-table">
+          <tr><td>Monday – Sunday</td><td>9:30 AM – 7:30 PM</td></tr>
+        </table>
+
+        <h3 style="margin-top: 24px;">Contact</h3>
+        <p>
+          <a href="tel:+16044995600" style="color: var(--gold); font-weight: 500;">(604) 499-5600</a><br>
+          <a href="https://www.instagram.com/kingswaybarbershop__/" target="_blank" style="color: var(--gold); font-weight: 500;">@kingswaybarbershop__</a>
+        </p>
+      </div>
+      <div>
+        <iframe class="map-embed" src="https://maps.google.com/maps?q=Kingsway+Barbershop+3571+Kingsway+Vancouver+BC+V5R+5L9&output=embed" loading="lazy" title="Kingsway Barbershop location"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <div class="container">
+    <h2>Your Chair's Waiting</h2>
+    <p>No appointment needed. Just walk in.</p>
+    <a href="https://maps.google.com/maps?q=Kingsway+Barbershop+3571+Kingsway+Vancouver" target="_blank" class="btn btn-primary">Get Directions</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <span class="footer-brand">Kingsway Barbershop</span>
+    <ul class="footer-links">
+      <li><a href="https://www.instagram.com/kingswaybarbershop__/" target="_blank">Instagram</a></li>
+      <li><a href="tel:+16044995600">Call</a></li>
+      <li><a href="https://maps.google.com/maps?q=3571+Kingsway+Vancouver+BC" target="_blank">Directions</a></li>
+    </ul>
+    <span class="footer-copy">© 2026 Kingsway Barbershop. All rights reserved.</span>
+  </div>
+</footer>
+
+<script>
+// Remove no-js class
+document.documentElement.classList.remove('no-js');
+
+// Scroll-reveal observer
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

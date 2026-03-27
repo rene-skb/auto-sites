@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vintage Glory — Winnipeg</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --olive: #2C3A2A;
+  --olive-light: #3D4F3A;
+  --brass: #B8924A;
+  --cream: #FAF5EE;
+  --cream-alt: #F0EBE3;
+  --dark: #1A1A16;
+  --warm-gray: #6B6560;
+  --warm-gray-light: #A09890;
+  --body-text: #3A3530;
+  --section-pad: 96px;
+  --content-width: 1080px;
+  --ls-sm: 0.04em;
+  --ls-md: 0.08em;
+  --ls-lg: 0.14em;
+}
+
+body {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--body-text);
+  background: var(--cream);
+  -webkit-font-smoothing: antialiased;
+}
+
+.content-wrap {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ===== NAV ===== */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(44, 58, 42, 0.95);
+  backdrop-filter: blur(8px);
+  padding: 16px 0;
+}
+
+.nav-inner {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-brand {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 1.125rem;
+  letter-spacing: var(--ls-md);
+  text-transform: uppercase;
+  color: var(--cream);
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-md);
+  text-transform: uppercase;
+  color: rgba(250, 245, 238, 0.7);
+  text-decoration: none;
+  transition: color 200ms ease;
+}
+
+.nav-links a {
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--brass);
+  transition: width 200ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+.nav-links a:hover { color: var(--brass); }
+.nav-links a:hover::after { width: 100%; }
+
+.nav-hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.nav-hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--cream);
+  margin: 5px 0;
+  transition: transform 300ms ease, opacity 200ms ease;
+}
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 100vh;
+  background: var(--olive);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 120px 24px 96px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(44, 58, 42, 0.3) 0%, rgba(44, 58, 42, 0.8) 100%);
+  z-index: 1;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: url('leather-jacket.png') center/cover no-repeat;
+  opacity: 0.2;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+}
+
+.hero-label {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-lg);
+  text-transform: uppercase;
+  color: var(--brass);
+  margin-bottom: 24px;
+}
+
+.hero h1 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--cream);
+  margin-bottom: 24px;
+}
+
+.hero-body {
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: rgba(250, 245, 238, 0.75);
+  max-width: 560px;
+  margin: 0 auto 40px;
+}
+
+.hero-ctas {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: var(--ls-md);
+  text-transform: uppercase;
+  padding: 14px 32px;
+  background: var(--brass);
+  color: var(--dark);
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1), background 200ms ease;
+}
+
+.btn-primary:active { transform: scale(0.97); }
+.btn-primary:hover { background: #C9A35A; }
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: var(--ls-md);
+  text-transform: uppercase;
+  padding: 14px 32px;
+  background: transparent;
+  color: var(--cream);
+  border: 1px solid rgba(250, 245, 238, 0.3);
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1), border-color 200ms ease;
+}
+
+.btn-secondary:active { transform: scale(0.97); }
+.btn-secondary:hover { border-color: var(--brass); color: var(--brass); }
+
+/* ===== TRUST BAR ===== */
+.trust-bar {
+  background: var(--olive);
+  padding: 32px 0;
+  border-top: 1px solid rgba(250, 245, 238, 0.1);
+}
+
+.trust-bar-inner {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  justify-content: center;
+  gap: 64px;
+  flex-wrap: wrap;
+}
+
+.trust-stat {
+  text-align: center;
+}
+
+.trust-stat-value {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 600;
+  font-size: 1.5rem;
+  letter-spacing: var(--ls-sm);
+  color: var(--brass);
+}
+
+.trust-stat-label {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-lg);
+  text-transform: uppercase;
+  color: rgba(250, 245, 238, 0.5);
+  margin-top: 4px;
+}
+
+/* ===== PHOTO STRIP ===== */
+.photo-strip {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 4px;
+  padding: 0;
+}
+
+.photo-strip-tall {
+  aspect-ratio: 3/4;
+  background: var(--cream-alt);
+  overflow: hidden;
+}
+
+.photo-strip-stack {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 4px;
+}
+
+.photo-strip-sq {
+  aspect-ratio: 1/1;
+  background: var(--cream-alt);
+  overflow: hidden;
+}
+
+.photo-strip img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ===== ABOUT ===== */
+.about {
+  padding: var(--section-pad) 0;
+  background: var(--cream);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.about-image {
+  aspect-ratio: 3/4;
+  background: var(--cream-alt);
+  overflow: hidden;
+}
+
+.about-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.section-label {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-lg);
+  text-transform: uppercase;
+  color: var(--brass);
+  margin-bottom: 16px;
+}
+
+.section-h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: var(--dark);
+  margin-bottom: 24px;
+}
+
+.about-text p {
+  margin-bottom: 16px;
+  color: var(--warm-gray);
+}
+
+.about-quote {
+  font-style: italic;
+  color: var(--body-text);
+  border-left: 2px solid var(--brass);
+  padding-left: 20px;
+  margin-top: 24px;
+}
+
+.about-quote cite {
+  display: block;
+  font-style: normal;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-sm);
+  color: var(--warm-gray);
+  margin-top: 8px;
+}
+
+/* ===== NAME SECTION ===== */
+.name-section {
+  background: var(--olive);
+  padding: 120px 0;
+  text-align: center;
+}
+
+.name-section .section-label {
+  color: var(--brass);
+}
+
+.name-h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--cream);
+  max-width: 700px;
+  margin: 0 auto 24px;
+}
+
+.name-body {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: rgba(250, 245, 238, 0.7);
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+/* ===== FIND SECTION ===== */
+.find-section {
+  padding: var(--section-pad) 0;
+  background: var(--cream-alt);
+}
+
+.find-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.find-card {
+  padding: 32px;
+  background: var(--cream);
+  border-top: 2px solid var(--olive);
+}
+
+.find-number {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: rgba(44, 58, 42, 0.2);
+  margin-bottom: 12px;
+}
+
+.find-card h3 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 600;
+  font-size: 1.25rem;
+  letter-spacing: var(--ls-sm);
+  text-transform: uppercase;
+  color: var(--dark);
+  margin-bottom: 8px;
+}
+
+.find-card p {
+  font-size: 0.9375rem;
+  color: var(--warm-gray);
+}
+
+/* ===== QUOTE SECTION ===== */
+.quote-section {
+  background: var(--dark);
+  padding: 80px 0;
+  text-align: center;
+}
+
+.quote-text {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 500;
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: var(--cream);
+  max-width: 700px;
+  margin: 0 auto 16px;
+}
+
+.quote-attr {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-md);
+  text-transform: uppercase;
+  color: var(--brass);
+}
+
+/* ===== REVIEWS ===== */
+.reviews {
+  padding: var(--section-pad) 0;
+  background: var(--cream);
+}
+
+.reviews-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.review-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.review-card {
+  padding: 32px;
+  background: var(--cream-alt);
+  border-top: 2px solid var(--olive);
+}
+
+.review-stars {
+  color: var(--brass);
+  font-size: 0.875rem;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+
+.review-text {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--body-text);
+  margin-bottom: 16px;
+}
+
+.review-meta {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: var(--ls-md);
+  text-transform: uppercase;
+  color: var(--warm-gray);
+}
+
+/* ===== VISIT ===== */
+.visit {
+  padding: var(--section-pad) 0;
+  background: var(--cream-alt);
+}
+
+.visit-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.visit-info h3 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 600;
+  font-size: 1.125rem;
+  letter-spacing: var(--ls-sm);
+  text-transform: uppercase;
+  color: var(--dark);
+  margin-bottom: 16px;
+}
+
+.visit-address {
+  font-size: 0.9375rem;
+  color: var(--warm-gray);
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+
+.visit-phone {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: var(--olive);
+  text-decoration: none;
+  transition: color 200ms ease;
+}
+
+.visit-phone:hover { color: var(--brass); }
+
+.visit-hours table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.visit-hours td {
+  padding: 8px 0;
+  font-size: 0.9375rem;
+  color: var(--warm-gray);
+}
+
+.visit-hours td:last-child {
+  text-align: right;
+  font-weight: 500;
+  color: var(--body-text);
+}
+
+.visit-map {
+  aspect-ratio: 4/3;
+  background: var(--cream);
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.visit-map iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.visit-social {
+  margin-top: 24px;
+}
+
+.visit-social a {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: var(--ls-md);
+  text-transform: uppercase;
+  color: var(--olive);
+  text-decoration: none;
+  transition: color 200ms ease;
+}
+
+.visit-social a:hover { color: var(--brass); }
+
+/* ===== CTA BAND ===== */
+.cta-band {
+  background: var(--olive);
+  padding: 64px 0;
+  text-align: center;
+}
+
+.cta-band h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--cream);
+  margin-bottom: 24px;
+}
+
+.cta-band p {
+  font-size: 0.9375rem;
+  color: rgba(250, 245, 238, 0.6);
+  margin-bottom: 32px;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background: var(--dark);
+  padding: 48px 0;
+}
+
+.footer-inner {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-brand {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: var(--ls-md);
+  text-transform: uppercase;
+  color: rgba(250, 245, 238, 0.5);
+}
+
+.footer-meta {
+  font-size: 0.75rem;
+  color: rgba(250, 245, 238, 0.3);
+}
+
+/* Focus states */
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--brass);
+  outline-offset: 2px;
+}
+
+/* Scroll margin for anchor links */
+section[id] {
+  scroll-margin-top: 80px;
+}
+
+.hours-note {
+  font-size: 0.8125rem;
+  color: var(--warm-gray-light);
+  margin-top: 12px;
+}
+
+.visit-map-spaced {
+  margin-top: 48px;
+}
+
+.visit-h3 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 600;
+  font-size: 1.125rem;
+  letter-spacing: var(--ls-sm);
+  text-transform: uppercase;
+  color: var(--dark);
+  margin-bottom: 16px;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+  :root { --section-pad: 64px; }
+
+  .nav-links { display: none; }
+  .nav-hamburger { display: block; }
+
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--olive);
+    padding: 24px;
+    gap: 16px;
+  }
+
+  .hero h1 { font-size: clamp(2.5rem, 10vw, 4rem); }
+
+  .photo-strip { grid-template-columns: 1fr; }
+  .photo-strip-tall { aspect-ratio: 16/9; }
+  .photo-strip-stack { grid-template-columns: 1fr 1fr; }
+
+  .about-grid { grid-template-columns: 1fr; }
+  .find-grid { grid-template-columns: 1fr; }
+  .visit-grid { grid-template-columns: 1fr; }
+
+  .trust-bar-inner { gap: 32px; }
+
+  .hero-ctas { flex-direction: column; align-items: center; }
+}
+
+/* ===== ANIMATIONS ===== */
+.hero-entrance {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+body.js-ready .hero-entrance {
+  animation: fadeUp 600ms cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+.hero-delay-1 { animation-delay: 0ms !important; }
+.hero-delay-2 { animation-delay: 80ms !important; }
+.hero-delay-3 { animation-delay: 160ms !important; }
+.hero-delay-4 { animation-delay: 240ms !important; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 500ms cubic-bezier(0.23, 1, 0.32, 1), transform 500ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.scroll-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stagger-1 { transition-delay: 0ms; }
+.stagger-2 { transition-delay: 40ms; }
+.stagger-3 { transition-delay: 80ms; }
+.stagger-4 { transition-delay: 120ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-entrance, .scroll-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* noscript fallback */
+.hero-entrance { opacity: 1; transform: none; }
+body.js-ready .hero-entrance { opacity: 0; transform: translateY(20px); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">Vintage Glory</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#find">The Collection</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#visit">Visit</a></li>
+    </ul>
+    <button class="nav-hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <p class="hero-label hero-entrance hero-delay-1">Vintage Clothing · Winnipeg, MB</p>
+    <h1 class="hero-entrance hero-delay-2">Every Piece Has a Story. Doug Knows Them All.</h1>
+    <p class="hero-body hero-entrance hero-delay-3">Military jackets from the '40s. Leather that's been broken in by someone else's life. This isn't a rack to flip through. It's a collection to get lost in.</p>
+    <div class="hero-ctas hero-entrance hero-delay-4">
+      <a href="tel:+12049427186" class="btn-primary">Call (204) 942-7186</a>
+      <a href="https://instagram.com/vintageglorywpg" class="btn-secondary" target="_blank" rel="noopener">Follow on Instagram</a>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<section class="trust-bar">
+  <div class="trust-bar-inner">
+    <div class="trust-stat">
+      <div class="trust-stat-value">4.7 ★</div>
+      <div class="trust-stat-label">Google Rating</div>
+    </div>
+    <div class="trust-stat">
+      <div class="trust-stat-value">Tue – Sun</div>
+      <div class="trust-stat-label">Opens at Noon</div>
+    </div>
+    <div class="trust-stat">
+      <div class="trust-stat-value">One Owner</div>
+      <div class="trust-stat-label">Every Piece Hand-Picked</div>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO STRIP -->
+<section class="photo-strip">
+  <div class="photo-strip-tall">
+    <img src="leather-jacket.png" alt="Vintage leather jacket detail" loading="lazy">
+  </div>
+  <div class="photo-strip-stack">
+    <div class="photo-strip-sq">
+      <img src="military-patch.png" alt="Military patches and insignia" loading="lazy">
+    </div>
+    <div class="photo-strip-sq">
+      <img src="vintage-boots.png" alt="Aged leather boots" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about scroll-reveal" id="about">
+  <div class="content-wrap">
+    <div class="about-grid">
+      <div class="about-image">
+        <img src="vintage-rack.png" alt="Curated vintage clothing rack" loading="lazy">
+      </div>
+      <div class="about-text">
+        <p class="section-label">About</p>
+        <h2 class="section-h2">Doug Doesn't Sell Clothes. He Introduces You to Them.</h2>
+        <p>Walk in and he'll tell you where each piece came from. The WW2 jacket that crossed an ocean. The leather that softened over forty years. He knows the decade, the maker, the regiment.</p>
+        <p>Vintage Glory sits at Keenleyside and Thomas on Winnipeg's east side. Reviews call it a museum you can buy from. That's about right.</p>
+        <blockquote class="about-quote">
+          "Amiable Owner who takes pride in his product & establishment. Can easily see why this business is successful."
+          <cite>40 SAYERS · Via Google</cite>
+        </blockquote>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NAME SECTION -->
+<section class="name-section scroll-reveal">
+  <div class="content-wrap">
+    <p class="section-label">The Name</p>
+    <h2 class="name-h2">The Clothes Outlasted the People Who Wore Them. That's the Point.</h2>
+    <p class="name-body">Doug picks every piece. Not for the label, not for the trend. For the thing that made someone keep it for forty years. That's what's on the rack.</p>
+  </div>
+</section>
+
+<!-- FIND SECTION -->
+<section class="find-section scroll-reveal" id="find">
+  <div class="content-wrap">
+    <p class="section-label">The Collection</p>
+    <h2 class="section-h2">What You'll Find</h2>
+    <div class="find-grid">
+      <div class="find-card scroll-reveal stagger-1">
+        <div class="find-number">01</div>
+        <h3>The Jackets</h3>
+        <p>Motorcycle leather. Bomber jackets. WW2 field coats. Doug knows where each one served. The leather's already broken in by someone who lived in it.</p>
+      </div>
+      <div class="find-card scroll-reveal stagger-2">
+        <div class="find-number">02</div>
+        <h3>The History</h3>
+        <p>Military insignia, regiment patches, pieces that crossed oceans. Not reproductions. The real thing, with the wear to prove it.</p>
+      </div>
+      <div class="find-card scroll-reveal stagger-3">
+        <div class="find-number">03</div>
+        <h3>The Workwear</h3>
+        <p>Denim that's faded honestly. Flannels with the right weight. Western shirts you won't find anywhere else in Winnipeg. Every piece hand-picked.</p>
+      </div>
+      <div class="find-card scroll-reveal stagger-4">
+        <div class="find-number">04</div>
+        <h3>The Weird Stuff</h3>
+        <p>Vintage glasses, antique accessories, things that defy categories. The pieces you didn't know existed until Doug pulled them off the shelf.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE SECTION -->
+<section class="quote-section scroll-reveal">
+  <div class="content-wrap">
+    <p class="quote-text">"It's a kind of museum. Lot of things to see. The owner will explain everything to you in detail."</p>
+    <p class="quote-attr">Balakrishnan S. · Via Google</p>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews scroll-reveal" id="reviews">
+  <div class="content-wrap">
+    <div class="reviews-header">
+      <p class="section-label">Reviews</p>
+      <h2 class="section-h2">38 Five-Star Reviews</h2>
+    </div>
+    <div class="review-stack">
+      <div class="review-card">
+        <div class="review-stars">★ ★ ★ ★ ★</div>
+        <p class="review-text">"Great selection of Men vintage clothing, wonderfully curated, fair pricing. This is the spot if you're looking for real vintage — not reproductions."</p>
+        <p class="review-meta">NPL · 6 Months Ago · Via Google</p>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★ ★ ★ ★ ★</div>
+        <p class="review-text">"Whenever I'm in the area, I always make a point to stop by. Every visit I find something special. Great prices, great atmosphere and everything in great condition."</p>
+        <p class="review-meta">T. W. · 10 Months Ago · Via Google</p>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★ ★ ★ ★ ★</div>
+        <p class="review-text">"Had a great experience popping into this lovely, curated yet chill and relaxed vintage shop. The owner has many stories to tell."</p>
+        <p class="review-meta">Anthony D. · 1 Month Ago · Via Google</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section class="visit scroll-reveal" id="visit">
+  <div class="content-wrap">
+    <p class="section-label">Visit</p>
+    <h2 class="section-h2">Find Doug</h2>
+    <div class="visit-grid">
+      <div class="visit-info">
+        <h3>Address</h3>
+        <p class="visit-address">
+          Keenleyside St & Thomas Ave<br>
+          Winnipeg, MB R2L 2C1
+        </p>
+        <a href="tel:+12049427186" class="visit-phone">(204) 942-7186</a>
+        <div class="visit-social">
+          <a href="https://instagram.com/vintageglorywpg" target="_blank" rel="noopener">@vintageglorywpg →</a>
+        </div>
+      </div>
+      <div>
+        <h3 class="visit-h3">Hours</h3>
+        <div class="visit-hours">
+          <table>
+            <tr><td>Monday</td><td>Closed</td></tr>
+            <tr><td>Tuesday</td><td>12 – 5 PM</td></tr>
+            <tr><td>Wednesday</td><td>12 – 5 PM</td></tr>
+            <tr><td>Thursday</td><td>12 – 5 PM</td></tr>
+            <tr><td>Friday</td><td>12 – 5 PM</td></tr>
+            <tr><td>Saturday</td><td>12 – 5 PM</td></tr>
+            <tr><td>Sunday</td><td>12 – 5 PM</td></tr>
+          </table>
+          <p class="hours-note">Hours may vary — check Instagram for updates</p>
+        </div>
+      </div>
+    </div>
+    <div class="visit-map visit-map-spaced">
+      <iframe src="https://maps.google.com/maps?q=Vintage+Glory+Winnipeg+Keenleyside+Thomas&output=embed" allowfullscreen loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <div class="content-wrap">
+    <h2>New Old Stock Every Week</h2>
+    <p>Doug's always hunting. Follow @vintageglorywpg to see what lands.</p>
+    <a href="https://instagram.com/vintageglorywpg" class="btn-primary" target="_blank" rel="noopener">Follow on Instagram</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <span class="footer-brand">Vintage Glory</span>
+    <span class="footer-meta">Keenleyside & Thomas · Winnipeg, MB</span>
+  </div>
+</footer>
+
+<script>
+document.body.classList.add('js-ready');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

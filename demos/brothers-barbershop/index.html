@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brothers Barbershop — Victoria's Neighbourhood Barber Since 2004</title>
+<meta name="description" content="Walk-in barbershop in Victoria, BC. 20+ years of quality cuts, skin fades, and beard trims. Affordable prices, friendly barbers. Two locations: Downtown & Langford.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --warm-black: #1a1714;
+  --charcoal: #2a2520;
+  --leather: #8B6914;
+  --leather-light: #C49B1A;
+  --cream: #F5F0E8;
+  --warm-white: #FDFBF7;
+  --text: #3a3530;
+  --text-light: #6a6560;
+  --radius: 8px;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--text);
+  background: var(--warm-white);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 { font-family: 'Space Grotesk', sans-serif; }
+
+.container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(26, 23, 20, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(139, 105, 20, 0.2);
+}
+.nav-inner {
+  max-width: 1100px; margin: 0 auto; padding: 0 24px;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 64px;
+}
+.nav-logo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700; font-size: 1.25rem; color: var(--cream);
+  text-decoration: none; letter-spacing: -0.02em;
+}
+.nav-logo span { color: var(--leather-light); }
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a {
+  color: rgba(245, 240, 232, 0.7); text-decoration: none;
+  font-size: 0.875rem; font-weight: 500; transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--cream); }
+.nav-cta {
+  background: var(--leather); color: var(--cream);
+  padding: 8px 20px; border-radius: var(--radius);
+  font-size: 0.875rem; font-weight: 600; text-decoration: none;
+  transition: background 0.2s;
+}
+.nav-cta:hover { background: var(--leather-light); }
+
+/* Mobile menu */
+.hamburger {
+  display: none; background: none; border: none; cursor: pointer;
+  flex-direction: column; gap: 5px; padding: 4px;
+}
+.hamburger span {
+  display: block; width: 24px; height: 2px;
+  background: var(--cream); border-radius: 2px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+.mobile-menu {
+  display: none; position: fixed; top: 64px; left: 0; right: 0;
+  background: var(--warm-black); padding: 24px;
+  border-bottom: 1px solid rgba(139, 105, 20, 0.2);
+}
+.mobile-menu.active { display: block; }
+.mobile-menu a {
+  display: block; color: var(--cream); text-decoration: none;
+  padding: 12px 0; font-size: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+@media (max-width: 768px) {
+  .nav-links, .nav-cta { display: none; }
+  .hamburger { display: flex; }
+}
+
+/* HERO */
+.hero {
+  padding: 140px 0 80px;
+  background: var(--warm-black);
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 600px 400px at 80% 60%, rgba(139, 105, 20, 0.18), transparent),
+    radial-gradient(ellipse 400px 300px at 20% 40%, rgba(196, 155, 26, 0.1), transparent),
+    radial-gradient(ellipse 300px 200px at 50% 80%, rgba(139, 105, 20, 0.06), transparent);
+}
+.hero::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(139, 105, 20, 0.3), transparent);
+}
+.hero-content { position: relative; z-index: 1; max-width: 700px; }
+.hero-badge {
+  display: inline-block; padding: 6px 16px;
+  background: rgba(139, 105, 20, 0.15);
+  border: 1px solid rgba(139, 105, 20, 0.3);
+  border-radius: 100px; font-size: 0.75rem;
+  font-weight: 600; color: var(--leather-light);
+  text-transform: uppercase; letter-spacing: 0.1em;
+  margin-bottom: 24px;
+}
+.hero h1 {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 700; color: var(--cream);
+  line-height: 1.1; letter-spacing: -0.03em;
+  margin-bottom: 20px;
+}
+.hero p {
+  font-size: 1.125rem; color: rgba(245, 240, 232, 0.65);
+  line-height: 1.6; margin-bottom: 32px; max-width: 520px;
+}
+.hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--leather); color: var(--cream);
+  padding: 14px 28px; border-radius: var(--radius);
+  font-size: 1rem; font-weight: 600; text-decoration: none;
+  transition: background 0.2s;
+}
+.btn-primary:hover { background: var(--leather-light); }
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(245, 240, 232, 0.08);
+  border: 1px solid rgba(245, 240, 232, 0.15);
+  color: var(--cream); padding: 14px 28px;
+  border-radius: var(--radius); font-size: 1rem;
+  font-weight: 500; text-decoration: none; transition: background 0.2s;
+}
+.btn-secondary:hover { background: rgba(245, 240, 232, 0.12); }
+
+/* TRUST BAR */
+.trust-bar {
+  background: var(--charcoal);
+  border-top: 1px solid rgba(139, 105, 20, 0.15);
+  border-bottom: 1px solid rgba(139, 105, 20, 0.15);
+  padding: 20px 0;
+}
+.trust-items {
+  display: flex; justify-content: center; gap: 48px; flex-wrap: wrap;
+}
+.trust-item {
+  text-align: center; color: var(--cream);
+  font-size: 0.875rem; font-weight: 500;
+}
+.trust-item strong {
+  display: block; font-size: 1.25rem; font-weight: 700;
+  color: var(--leather-light); margin-bottom: 2px;
+}
+
+/* SECTIONS */
+section { padding: 80px 0; }
+.section-label {
+  font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.1em; color: var(--leather); margin-bottom: 8px;
+}
+.section-title {
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 700; letter-spacing: -0.02em;
+  margin-bottom: 16px; color: var(--warm-black);
+}
+.section-subtitle {
+  font-size: 1.05rem; color: var(--text-light);
+  line-height: 1.6; max-width: 600px; margin-bottom: 48px;
+}
+
+/* SERVICES */
+.services-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+.service-card {
+  background: var(--cream); border-radius: 12px;
+  padding: 28px; transition: transform 0.2s, box-shadow 0.2s;
+}
+.service-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(26, 23, 20, 0.08);
+}
+.service-icon {
+  width: 48px; height: 48px; border-radius: 12px;
+  background: rgba(139, 105, 20, 0.1);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 16px;
+}
+.service-icon svg { width: 22px; height: 22px; stroke: var(--leather); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.service-card h3 {
+  font-size: 1.1rem; font-weight: 600;
+  margin-bottom: 8px; color: var(--warm-black);
+}
+.service-card p { font-size: 0.9rem; color: var(--text-light); line-height: 1.5; }
+.service-price {
+  margin-top: 12px; font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700; font-size: 1.1rem; color: var(--leather);
+}
+
+/* DIFFERENTIATOR */
+.diff-section {
+  background: var(--warm-black); padding: 64px 0; text-align: center;
+}
+.diff-section p {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  font-weight: 600; color: var(--cream);
+  max-width: 700px; margin: 0 auto; line-height: 1.4;
+}
+.diff-section span { color: var(--leather-light); }
+
+/* REVIEWS */
+.reviews { background: var(--cream); }
+.reviews-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+.review-card {
+  background: var(--warm-white); border-radius: 12px;
+  padding: 28px; transition: transform 0.2s, box-shadow 0.2s;
+}
+.review-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(26, 23, 20, 0.06);
+}
+.review-card:nth-child(2) { border-left: 3px solid var(--leather); }
+.review-card:nth-child(odd) { background: rgba(245, 240, 232, 0.5); }
+.review-stars { color: var(--leather-light); font-size: 0.875rem; margin-bottom: 12px; letter-spacing: 2px; }
+.review-text {
+  font-size: 0.95rem; color: var(--text); line-height: 1.6;
+  margin-bottom: 16px; font-style: italic;
+}
+.review-author { font-weight: 600; font-size: 0.85rem; color: var(--text-light); }
+
+/* ABOUT */
+.about-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;
+}
+.about-image {
+  border-radius: 12px; aspect-ratio: 4/3; overflow: hidden;
+  background: var(--charcoal);
+  background-image:
+    radial-gradient(ellipse at 30% 40%, rgba(139, 105, 20, 0.2), transparent 60%),
+    radial-gradient(ellipse at 70% 70%, rgba(196, 155, 26, 0.1), transparent 50%);
+  display: flex; align-items: center; justify-content: center;
+}
+.about-image-text {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.5rem; font-weight: 700; color: rgba(245, 240, 232, 0.15);
+  text-transform: uppercase; letter-spacing: 0.15em;
+  text-align: center; line-height: 1.6;
+}
+
+/* Section dividers */
+.section-divider {
+  border: none; height: 1px; max-width: 120px; margin: 0 auto;
+  background: rgba(139, 105, 20, 0.2);
+}
+.about-content h2 { margin-bottom: 20px; }
+.about-content p {
+  font-size: 1rem; color: var(--text-light);
+  line-height: 1.7; margin-bottom: 16px;
+}
+@media (max-width: 768px) { .about-grid { grid-template-columns: 1fr; } }
+
+/* LOCATIONS */
+.locations-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+}
+.location-card {
+  background: var(--cream); border-radius: 12px;
+  overflow: hidden;
+}
+.location-map {
+  width: 100%; height: 200px; border: none;
+}
+.location-info { padding: 24px; }
+.location-info h3 {
+  font-size: 1.15rem; font-weight: 700;
+  margin-bottom: 12px; color: var(--warm-black);
+}
+.location-detail {
+  display: flex; gap: 10px; margin-bottom: 10px;
+  font-size: 0.9rem; color: var(--text-light);
+}
+.location-detail svg { flex-shrink: 0; width: 18px; height: 18px; stroke: var(--leather); fill: none; stroke-width: 1.5; }
+@media (max-width: 768px) { .locations-grid { grid-template-columns: 1fr; } }
+
+/* FINAL CTA */
+.final-cta {
+  background: var(--cream); padding: 64px 0; text-align: center;
+}
+.final-cta h2 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700; margin-bottom: 12px; color: var(--warm-black);
+}
+.final-cta p {
+  font-size: 1.05rem; color: var(--text-light);
+  margin-bottom: 28px;
+}
+
+/* FOOTER */
+footer {
+  background: var(--warm-black); padding: 40px 0;
+  color: rgba(245, 240, 232, 0.5); font-size: 0.85rem;
+}
+.footer-inner {
+  display: flex; justify-content: space-between;
+  align-items: center; flex-wrap: wrap; gap: 16px;
+}
+.footer-social { display: flex; gap: 16px; }
+.footer-social a {
+  color: rgba(245, 240, 232, 0.5); text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-social a:hover { color: var(--leather-light); }
+
+/* Scroll animations */
+.fade-in {
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+.location-card { transition: transform 0.2s, box-shadow 0.2s; }
+.location-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(26, 23, 20, 0.08);
+}
+
+/* Noise overlay */
+body::after {
+  content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 9999;
+  opacity: 0.015;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+</style>
+<noscript><style>.fade-in { opacity: 1 !important; transform: none !important; }</style></noscript>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">BROTHERS <span>BARBERSHOP</span></a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#locations">Locations</a></li>
+    </ul>
+    <a href="tel:2505903949" class="nav-cta">Call Now</a>
+    <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('active')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu">
+    <a href="#services" onclick="this.parentElement.classList.remove('active')">Services</a>
+    <a href="#reviews" onclick="this.parentElement.classList.remove('active')">Reviews</a>
+    <a href="#about" onclick="this.parentElement.classList.remove('active')">About</a>
+    <a href="#locations" onclick="this.parentElement.classList.remove('active')">Locations</a>
+    <a href="tel:2505903949">Call Now</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge">Walk-ins Welcome &bull; No Appointment Needed</div>
+      <h1>Victoria's neighbourhood barbershop for 20+ years</h1>
+      <p>Quality cuts, honest prices, and barbers who actually listen. Two locations serving downtown Victoria and Langford.</p>
+      <div class="hero-ctas">
+        <a href="tel:2505903949" class="btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call Now
+        </a>
+        <a href="#locations" class="btn-secondary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Get Directions
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="container">
+    <div class="trust-items">
+      <div class="trust-item"><strong>20+</strong> Years in Victoria</div>
+      <div class="trust-item"><strong>4.5★</strong> 138 Reviews</div>
+      <div class="trust-item"><strong>From $20</strong> Haircuts</div>
+      <div class="trust-item"><strong>2</strong> Locations</div>
+      <div class="trust-item"><strong>Walk-In</strong> Only</div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="section-label">Services</div>
+    <h2 class="section-title">Classic barbering, done right</h2>
+    <p class="section-subtitle">No fuss, no gimmicks. Just skilled barbers who take the time to get it right.</p>
+    <div class="services-grid fade-in">
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>
+        </div>
+        <h3>Men's Haircut</h3>
+        <p>From classic cuts to modern styles. Every cut starts with a conversation about what you want.</p>
+        <div class="service-price">From $20</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M4 20h16M4 20V10M20 20V10M8 20v-6a4 4 0 0 1 8 0v6M4 10l8-7 8 7"/></svg>
+        </div>
+        <h3>Skin Fades</h3>
+        <p>Precise fades with clean transitions. Whether you want a high, mid, or low fade, we've got you.</p>
+        <div class="service-price">From $20</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M6 3v6M18 3v6M6 9a6 6 0 0 0 12 0M6 9c0 7 6 12 6 12s6-5 6-12"/></svg>
+        </div>
+        <h3>Beard Trimming</h3>
+        <p>Shape, line-up, and maintain your beard. We'll keep it looking sharp between visits.</p>
+        <div class="service-price">Ask in-shop</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+        </div>
+        <h3>Hot Towel Shave</h3>
+        <p>Old-school straight razor shave with a hot towel. The full barbershop experience.</p>
+        <div class="service-price">Ask in-shop</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider" style="margin: 0 auto;">
+
+<!-- HOW IT WORKS -->
+<section style="background: var(--cream);">
+  <div class="container">
+    <div class="section-label">How It Works</div>
+    <h2 class="section-title">No appointments. No stress.</h2>
+    <p class="section-subtitle">Getting a haircut should be the easiest part of your day.</p>
+    <div class="services-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+      <div class="service-card" style="background: var(--warm-white); text-align: center;">
+        <div style="font-family: 'Space Grotesk', sans-serif; font-size: 2rem; font-weight: 700; color: var(--leather-light); margin-bottom: 12px;">1</div>
+        <h3>Walk In</h3>
+        <p>No booking needed. Just show up during business hours at either location.</p>
+      </div>
+      <div class="service-card" style="background: var(--warm-white); text-align: center;">
+        <div style="font-family: 'Space Grotesk', sans-serif; font-size: 2rem; font-weight: 700; color: var(--leather-light); margin-bottom: 12px;">2</div>
+        <h3>Grab a Coffee</h3>
+        <p>Have a seat, grab a complimentary coffee, and relax while you wait.</p>
+      </div>
+      <div class="service-card" style="background: var(--warm-white); text-align: center;">
+        <div style="font-family: 'Space Grotesk', sans-serif; font-size: 2rem; font-weight: 700; color: var(--leather-light); margin-bottom: 12px;">3</div>
+        <h3>Get the Cut</h3>
+        <p>Your barber will ask what you want, listen carefully, and get it right.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIFFERENTIATOR -->
+<div class="diff-section">
+  <div class="container">
+    <p>We don't rush. We don't upsell. We ask questions, we listen, and we <span><em>get it right</em></span>. That's been the deal for over twenty years.</p>
+  </div>
+</div>
+
+<!-- REVIEWS -->
+<section id="reviews" class="reviews">
+  <div class="container">
+    <div class="section-label">Reviews</div>
+    <h2 class="section-title">What our customers say</h2>
+    <p class="section-subtitle">138 reviews across Google, Yelp, and Facebook. Here are a few favourites.</p>
+    <div class="reviews-grid fade-in">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"First-time customer here. Got selected by Dennis and immediately he started asking several questions about the type of haircut I wanted. I really appreciated him asking all of these questions. It made me feel like he was actually listening! Price is lowest in the city I'd say."</p>
+        <div class="review-author">Jeff C.</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Came into Brothers as a first timer with my sons upon multiple recommendations and they totally lived up to the hype. Both boys and myself were incredibly happy with the cuts. A really good energy and vibe from everyone there."</p>
+        <div class="review-author">Josh D.</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Best barbershop in Victoria hands down. Been going there for a few years now! Never been disappointed. Always get exactly what I'm asking for! Super friendly and they take their time to make sure you look perfect."</p>
+        <div class="review-author">Google Review</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-image">
+        <div class="about-image-text">EST.<br>2004<br>VICTORIA</div>
+      </div>
+      <div class="about-content">
+        <div class="section-label">About</div>
+        <h2 class="section-title">Your neighbourhood barbershop</h2>
+        <p>Brothers Barbershop has been a Victoria staple for over 20 years. We started with a simple idea: give great haircuts at fair prices in a place that feels like home.</p>
+        <p>Our barbers, including longtime favourites Dennis and Khan, bring decades of combined experience. We're walk-in only because we think getting a haircut should be easy, not a scheduling exercise. Grab a coffee, sit down, and we'll take care of the rest.</p>
+        <p>We're family-friendly, dog-friendly (especially at our Langford shop), and we treat every customer like a regular. That's not a slogan. That's just how we do things.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATIONS -->
+<section id="locations" style="background: var(--cream);">
+  <div class="container">
+    <div class="section-label">Locations</div>
+    <h2 class="section-title">Two shops, same great cuts</h2>
+    <p class="section-subtitle">Downtown Victoria and Langford. Walk in anytime we're open.</p>
+    <div class="locations-grid fade-in">
+      <div class="location-card">
+        <iframe class="location-map" src="https://maps.google.com/maps?q=770+Fort+St+Victoria+BC&output=embed" loading="lazy" title="Downtown location"></iframe>
+        <div class="location-info">
+          <h3>Downtown Victoria</h3>
+          <div class="location-detail">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>770 Fort Street, Victoria, BC</span>
+          </div>
+          <div class="location-detail">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span>(250) 590-3949</span>
+          </div>
+          <div class="location-detail">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>Tue–Sat: 8:30 AM – 5:30 PM<br>Sun–Mon: Closed</span>
+          </div>
+        </div>
+      </div>
+      <div class="location-card">
+        <iframe class="location-map" src="https://maps.google.com/maps?q=751+Goldstream+Ave+Langford+BC&output=embed" loading="lazy" title="Langford location"></iframe>
+        <div class="location-info">
+          <h3>Langford</h3>
+          <div class="location-detail">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>751 Goldstream Ave #102, Langford, BC</span>
+          </div>
+          <div class="location-detail">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span>Call downtown: (250) 590-3949</span>
+          </div>
+          <div class="location-detail">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>Tue–Sat: 8:30 AM – 5:30 PM<br>Sun–Mon: Closed</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<div class="final-cta">
+  <div class="container">
+    <h2>Ready for a fresh cut?</h2>
+    <p>No appointment needed. Just walk in and grab a seat.</p>
+    <a href="tel:2505903949" class="btn-primary">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      Call Downtown: (250) 590-3949
+    </a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>&copy; 2026 Brothers Barbershop. Victoria, BC.</div>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/Brothers.VA.Barbershop/" target="_blank" rel="noopener">Facebook</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  });
+});
+
+// Scroll fade-in
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// Noscript fallback
+document.querySelectorAll('.fade-in').forEach(el => { /* observer handles it */ });
+
+// Nav background on scroll
+const nav = document.querySelector('nav');
+window.addEventListener('scroll', () => {
+  nav.style.background = window.scrollY > 50
+    ? 'rgba(26, 23, 20, 0.98)'
+    : 'rgba(26, 23, 20, 0.95)';
+});
+</script>
+
+</body>
+</html>

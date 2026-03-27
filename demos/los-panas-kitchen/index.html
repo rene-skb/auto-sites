@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Los Panas Kitchen — Venezuelan Arepas & Patacones | Victoria, BC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #FBF6ED;
+      --gold: #C08B2D;
+      --gold-light: #E8C76A;
+      --green: #3D6B35;
+      --green-dark: #2A4D24;
+      --charcoal: #2C2418;
+      --charcoal-light: #3D3529;
+      --warm-gray: #8A7E6F;
+      --warm-white: #FEFCF7;
+      --plantain: #D4A843;
+
+      --font-serif: 'DM Serif Display', Georgia, serif;
+      --font-sans: 'Inter', -apple-system, sans-serif;
+
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+
+      --ls-nav: 0.04em;
+      --ls-label: 0.08em;
+      --ls-micro: 0.06em;
+
+      --content-width: 1080px;
+      --section-pad: 96px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      color: var(--charcoal);
+      background: var(--cream);
+      line-height: 1.65;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Noise overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    }
+
+    /* ===== NAV ===== */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 20px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 300ms var(--ease-out), box-shadow 300ms var(--ease-out);
+    }
+
+    nav.scrolled {
+      background: rgba(251, 246, 237, 0.95);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 1px 0 rgba(44, 36, 24, 0.08);
+    }
+
+    .nav-brand {
+      font-family: var(--font-serif);
+      font-size: 20px;
+      color: var(--charcoal);
+      text-decoration: none;
+      letter-spacing: var(--ls-nav);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--charcoal);
+      text-decoration: none;
+      letter-spacing: var(--ls-nav);
+      text-transform: uppercase;
+      opacity: 0.7;
+      transition: opacity 200ms var(--ease-out);
+    }
+
+    .nav-links a:hover { opacity: 1; }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--charcoal);
+      margin: 5px 0;
+      transition: all 200ms var(--ease-out);
+    }
+
+    /* ===== HERO: Full-bleed photo with overlaid text ===== */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 600px;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+    }
+
+    .hero-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(44, 36, 24, 0.85) 0%,
+        rgba(44, 36, 24, 0.4) 40%,
+        rgba(44, 36, 24, 0.1) 70%,
+        transparent 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 64px 48px;
+      max-width: var(--content-width);
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .hero-label {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: var(--ls-label);
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 16px;
+    }
+
+    .hero h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(40px, 7vw, 72px);
+      color: var(--warm-white);
+      line-height: 1.05;
+      max-width: 700px;
+      margin-bottom: 20px;
+    }
+
+    .hero-sub {
+      font-size: 18px;
+      color: rgba(254, 252, 247, 0.8);
+      max-width: 480px;
+      line-height: 1.65;
+    }
+
+    /* ===== EDITORIAL INTRO: Two-column text + image ===== */
+    .editorial-intro {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      padding: var(--section-pad) 32px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .editorial-intro .text-col {
+      max-width: 460px;
+    }
+
+    .section-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: var(--ls-label);
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .editorial-intro h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(28px, 4vw, 38px);
+      line-height: 1.15;
+      margin-bottom: 24px;
+      color: var(--charcoal);
+    }
+
+    .editorial-intro p {
+      color: var(--warm-gray);
+      font-size: 16px;
+      line-height: 1.65;
+      margin-bottom: 16px;
+    }
+
+    .editorial-intro .img-col img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+
+    /* ===== MENU: Magazine-style spread ===== */
+    .menu-section {
+      background: var(--charcoal);
+      color: var(--warm-white);
+      padding: var(--section-pad) 32px;
+      position: relative;
+    }
+
+    .menu-inner {
+      max-width: var(--content-width);
+      margin: 0 auto;
+    }
+
+    .menu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 64px;
+      border-bottom: 1px solid rgba(254, 252, 247, 0.1);
+      padding-bottom: 24px;
+    }
+
+    .menu-header h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(32px, 5vw, 48px);
+      line-height: 1;
+    }
+
+    .menu-header .label {
+      font-size: 12px;
+      letter-spacing: var(--ls-label);
+      text-transform: uppercase;
+      color: var(--gold-light);
+      font-weight: 500;
+    }
+
+    /* Arepa menu: editorial list with descriptions */
+    .menu-category {
+      margin-bottom: 56px;
+    }
+
+    .menu-category-title {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: var(--ls-label);
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 32px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(254, 252, 247, 0.08);
+    }
+
+    .menu-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(254, 252, 247, 0.05);
+    }
+
+    .menu-item-name {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      margin-bottom: 4px;
+    }
+
+    .menu-item-desc {
+      font-size: 14px;
+      color: rgba(254, 252, 247, 0.6);
+      line-height: 1.65;
+    }
+
+    .menu-item-tag {
+      font-size: 11px;
+      letter-spacing: var(--ls-micro);
+      text-transform: uppercase;
+      color: var(--green);
+      background: rgba(61, 107, 53, 0.15);
+      padding: 3px 8px;
+      border-radius: 2px;
+      align-self: start;
+      margin-top: 4px;
+      font-weight: 600;
+    }
+
+    /* ===== PHOTO BREAK ===== */
+    .photo-break {
+      width: 100%;
+      height: 50vh;
+      min-height: 360px;
+      overflow: hidden;
+    }
+
+    .photo-break img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* ===== PULL QUOTE ===== */
+    .pull-quote {
+      background: var(--green-dark);
+      padding: 80px 32px;
+      text-align: center;
+    }
+
+    .pull-quote blockquote {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: clamp(24px, 4vw, 36px);
+      color: var(--warm-white);
+      max-width: 700px;
+      margin: 0 auto 16px;
+      line-height: 1.3;
+    }
+
+    .pull-quote cite {
+      font-family: var(--font-sans);
+      font-style: normal;
+      font-size: 14px;
+      letter-spacing: var(--ls-nav);
+      color: var(--gold-light);
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    /* ===== STORY + IMAGE SIDE-BY-SIDE (reversed) ===== */
+    .story-section {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      padding: var(--section-pad) 32px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .story-section .img-col {
+      order: -1;
+    }
+
+    .story-section .img-col img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+
+    .story-section h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(28px, 4vw, 36px);
+      line-height: 1.15;
+      margin-bottom: 24px;
+    }
+
+    .story-section p {
+      color: var(--warm-gray);
+      font-size: 16px;
+      line-height: 1.65;
+      margin-bottom: 16px;
+    }
+
+    /* ===== TRUST BAR ===== */
+    .trust-bar {
+      border-top: 1px solid rgba(44, 36, 24, 0.1);
+      border-bottom: 1px solid rgba(44, 36, 24, 0.1);
+      padding: 32px;
+    }
+
+    .trust-bar-inner {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      gap: 64px;
+      flex-wrap: wrap;
+    }
+
+    .trust-item {
+      text-align: center;
+    }
+
+    .trust-item .number {
+      font-family: var(--font-serif);
+      font-size: 28px;
+      color: var(--charcoal);
+      margin-bottom: 4px;
+    }
+
+    .trust-item .label {
+      font-size: 13px;
+      letter-spacing: var(--ls-label);
+      text-transform: uppercase;
+      color: var(--warm-gray);
+      font-weight: 500;
+    }
+
+    /* ===== FIND US: Map + Info ===== */
+    .find-us {
+      background: var(--charcoal);
+      color: var(--warm-white);
+      padding: var(--section-pad) 32px;
+    }
+
+    .find-us-inner {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .find-us h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(28px, 4vw, 36px);
+      margin-bottom: 32px;
+    }
+
+    .find-us .info-block {
+      margin-bottom: 28px;
+    }
+
+    .find-us .info-label {
+      font-size: 12px;
+      letter-spacing: var(--ls-label);
+      text-transform: uppercase;
+      color: var(--gold-light);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .find-us .info-text {
+      font-size: 16px;
+      color: rgba(254, 252, 247, 0.7);
+      line-height: 1.6;
+    }
+
+    .find-us .info-text a {
+      color: var(--gold-light);
+      text-decoration: none;
+      transition: opacity 200ms var(--ease-out);
+    }
+
+    .find-us .info-text a:hover { opacity: 0.7; }
+
+    .find-us .map-col {
+      border-radius: 4px;
+      overflow: hidden;
+      height: 360px;
+    }
+
+    .find-us .map-col iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--warm-white);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: var(--ls-nav);
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 14px 32px;
+      border-radius: 3px;
+      transition: transform 160ms var(--ease-out), background 200ms var(--ease-out);
+      margin-top: 16px;
+    }
+
+    .cta-button:active { transform: scale(0.97); }
+    .cta-button:hover { background: var(--plantain); }
+
+    /* ===== FOOTER ===== */
+    footer {
+      padding: 48px 32px;
+      text-align: center;
+      border-top: 1px solid rgba(44, 36, 24, 0.08);
+    }
+
+    .footer-brand {
+      font-family: var(--font-serif);
+      font-size: 20px;
+      letter-spacing: var(--ls-nav);
+      color: var(--charcoal);
+      margin-bottom: 16px;
+    }
+
+    .footer-social {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-bottom: 16px;
+    }
+
+    .footer-social a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--warm-gray);
+      text-decoration: none;
+      letter-spacing: var(--ls-nav);
+      transition: color 200ms var(--ease-out);
+    }
+
+    .footer-social a:hover { color: var(--charcoal); }
+
+    .footer-legal {
+      font-size: 13px;
+      color: var(--warm-gray);
+    }
+
+    /* ===== MOBILE ===== */
+    @media (max-width: 768px) {
+      :root {
+        --section-pad: 64px;
+      }
+
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: var(--cream);
+        justify-content: center;
+        align-items: center;
+        gap: 32px;
+        z-index: 200;
+      }
+      .nav-links.open a {
+        font-size: 20px;
+        opacity: 1;
+      }
+      .nav-toggle { display: block; z-index: 300; }
+
+      .editorial-intro {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .story-section {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .story-section .img-col { order: 0; }
+
+      .find-us-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .find-us .map-col { height: 280px; }
+
+      .menu-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+
+      .trust-bar-inner {
+        gap: 32px;
+      }
+
+      .hero-content { padding: 48px 24px; }
+
+      .hero h1 { max-width: 100%; }
+    }
+
+    /* ===== NAME MEANING ===== */
+    .name-meaning {
+      padding: 80px 32px;
+      text-align: center;
+      background: var(--warm-white);
+    }
+
+    .name-inner {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .name-headline {
+      font-family: var(--font-serif);
+      font-size: clamp(24px, 3.5vw, 32px);
+      line-height: 1.3;
+      color: var(--charcoal);
+      margin-bottom: 12px;
+    }
+
+    .name-headline em {
+      color: var(--gold);
+      font-style: italic;
+    }
+
+    .name-sub {
+      font-size: 16px;
+      color: var(--warm-gray);
+    }
+
+    .name-label {
+      color: var(--gold);
+    }
+
+    /* ===== SEASONAL RIBBON ===== */
+    .seasonal-ribbon {
+      background: var(--gold);
+      padding: 12px 32px;
+      text-align: center;
+    }
+
+    .ribbon-inner {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--charcoal);
+      letter-spacing: var(--ls-micro);
+    }
+
+    .ribbon-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--green);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .ribbon-inner a {
+      color: var(--charcoal);
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    /* ===== SCROLL ANIMATIONS ===== */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 500ms var(--ease-out), transform 500ms var(--ease-out);
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <a href="#" class="nav-brand">Los Panas Kitchen</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#menu" onclick="closeNav()">Menu</a></li>
+      <li><a href="#story" onclick="closeNav()">Our Story</a></li>
+      <li><a href="#find-us" onclick="closeNav()">Find Us</a></li>
+      <li><a href="https://www.instagram.com/lospanaskitchen/" target="_blank" onclick="closeNav()">Instagram</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <img src="arepa-hero.png" alt="Golden Venezuelan arepa with pulled pork and cheese" class="hero-img">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-label">Venezuelan Street Food — Victoria, BC</div>
+      <h1>Arepas made with love, served from the heart</h1>
+      <p class="hero-sub">Handmade corn arepas and crispy patacones. Gluten-free. Always fresh. From Carlos's family kitchen to yours.</p>
+      <div style="display: flex; gap: 16px; margin-top: 28px; flex-wrap: wrap;">
+        <a href="https://www.instagram.com/lospanaskitchen/" target="_blank" class="cta-button">Follow on Instagram</a>
+        <a href="#menu" class="cta-button" style="background: transparent; border: 1px solid rgba(254,252,247,0.4);">See the Menu</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEASONAL RIBBON -->
+  <div class="seasonal-ribbon">
+    <div class="ribbon-inner">
+      <span class="ribbon-dot"></span>
+      <span>Seasonal truck — follow <a href="https://www.instagram.com/lospanaskitchen/" target="_blank">@lospanaskitchen</a> for locations. Take-home arepas at <a href="https://themarketstores.com/" target="_blank">Market on Yates</a> year-round.</span>
+    </div>
+  </div>
+
+  <!-- EDITORIAL INTRO -->
+  <section class="editorial-intro fade-in">
+    <div class="text-col">
+      <div class="section-label">The Food</div>
+      <h2>Comfort food that crossed an ocean</h2>
+      <p>Golden corn dough, shaped by hand, cooked until crisp outside, pillowy inside. Split open and stuffed with slow-pulled pork, black beans, sweet plantain, fresh cheese. That's an arepa.</p>
+      <p>Everything here is gluten-free by nature. The corn dough. The fried plantain patacones. The guasacaca sauce made fresh daily. No substitutions needed. Just real Venezuelan food.</p>
+    </div>
+    <div class="img-col">
+      <img src="patacon.png" alt="Crispy patacones with pulled pork and guasacaca sauce">
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar fade-in">
+    <div class="trust-bar-inner">
+      <div class="trust-item">
+        <div class="number">4.9★</div>
+        <div class="label">Average Rating</div>
+      </div>
+      <div class="trust-item">
+        <div class="number">3,500+</div>
+        <div class="label">Instagram Followers</div>
+      </div>
+      <div class="trust-item">
+        <div class="number">100%</div>
+        <div class="label">Gluten-Free Menu</div>
+      </div>
+      <div class="trust-item">
+        <div class="number">3 Years</div>
+        <div class="label">Feeding Victoria</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MENU -->
+  <section class="menu-section" id="menu">
+    <div class="menu-inner fade-in">
+      <div class="menu-header">
+        <h2>The Menu</h2>
+        <span class="label">Favourites from the truck</span>
+      </div>
+
+      <div class="menu-category">
+        <div class="menu-category-title">Arepas</div>
+
+        <div class="menu-item">
+          <div>
+            <div class="menu-item-name">The King</div>
+            <div class="menu-item-desc">Pulled pork, black beans, sweet plantain, cheese</div>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div>
+            <div class="menu-item-name">Beach Babe</div>
+            <div class="menu-item-desc">Black beans, sweet plantain, caramelized onions, cilantro, cheese</div>
+          </div>
+          <span class="menu-item-tag">Vegetarian</span>
+        </div>
+
+        <div class="menu-item">
+          <div>
+            <div class="menu-item-name">Blondie</div>
+            <div class="menu-item-desc">Pulled chicken, cheese</div>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div>
+            <div class="menu-item-name">Brunette</div>
+            <div class="menu-item-desc">Pulled pork, cheese</div>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div>
+            <div class="menu-item-name">Gaia</div>
+            <div class="menu-item-desc">Sweet plantain, diced tomatoes, cilantro, cheese</div>
+          </div>
+          <span class="menu-item-tag">Vegetarian</span>
+        </div>
+
+        <div class="menu-item">
+          <div>
+            <div class="menu-item-name">Trio</div>
+            <div class="menu-item-desc">Black beans, sweet plantain, cheese</div>
+          </div>
+          <span class="menu-item-tag">Vegan-friendly</span>
+        </div>
+
+        <div class="menu-item">
+          <div>
+            <div class="menu-item-name">Black Jack</div>
+            <div class="menu-item-desc">Black beans, cheese</div>
+          </div>
+          <span class="menu-item-tag">Vegan-friendly</span>
+        </div>
+      </div>
+
+      <div class="menu-category">
+        <div class="menu-category-title">Patacones — served with guasacaca sauce</div>
+
+        <div class="menu-item">
+          <div>
+            <div class="menu-item-name">Pork Patacon</div>
+            <div class="menu-item-desc">Pulled pork, cheese, cilantro, guasacaca sauce</div>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div>
+            <div class="menu-item-name">Chicken Patacon</div>
+            <div class="menu-item-desc">Pulled chicken, cheese, cilantro, guasacaca sauce</div>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div>
+            <div class="menu-item-name">Bean Patacon</div>
+            <div class="menu-item-desc">Black beans, cilantro, cheese, guasacaca sauce</div>
+          </div>
+          <span class="menu-item-tag">Vegetarian</span>
+        </div>
+      </div>
+
+      <div class="menu-category">
+        <div class="menu-category-title">Sides & Extras</div>
+
+        <div class="menu-item">
+          <div>
+            <div class="menu-item-name">Arepa Bites</div>
+            <div class="menu-item-desc">Mini arepas, perfect for sharing</div>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div>
+            <div class="menu-item-name">Plantain Order</div>
+            <div class="menu-item-desc">Sweet fried plantains</div>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div>
+            <div class="menu-item-name">Guasacaca Sauce</div>
+            <div class="menu-item-desc">Our signature avocado-cilantro sauce</div>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div>
+            <div class="menu-item-name">Garlic Sauce</div>
+            <div class="menu-item-desc">House-made garlic sauce</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHOTO BREAK -->
+  <div class="photo-break">
+    <img src="truck-exterior.png" alt="Los Panas Kitchen food truck at a Victoria market">
+  </div>
+
+  <!-- NAME MEANING -->
+  <section class="name-meaning fade-in">
+    <div class="name-inner">
+      <div class="section-label name-label">What does "Panas" mean?</div>
+      <h2 class="name-headline">"Pana" is Venezuelan slang for buddy, pal, your people. Los Panas means <em>the crew.</em></h2>
+      <p class="name-sub">When you eat here, you're part of it.</p>
+    </div>
+  </section>
+
+  <!-- PULL QUOTE -->
+  <section class="pull-quote fade-in">
+    <blockquote>"Run... don't walk! I crave Los Panas weekly. The winters feel too long without them around."</blockquote>
+    <cite>— Danielle T.</cite>
+  </section>
+
+  <!-- STORY -->
+  <section class="story-section fade-in" id="story">
+    <div class="text-col">
+      <div class="section-label">Our Story</div>
+      <h2>Three years from "what's an arepa?" to feeding festivals</h2>
+      <p>Carlos Bermudez moved from Venezuela to Victoria with a dream and a recipe. He started Los Panas Kitchen to share the food he grew up with: the same arepas his family made, the same slow-pulled pork, the same guasacaca sauce.</p>
+      <p>Three years later, he can barely make enough to keep up. Follow the truck at Market Square in summer, or grab a frozen pack from Market on Yates when you can't wait.</p>
+      <a href="tel:6478619446" class="cta-button">Call to Order</a>
+    </div>
+    <div class="img-col">
+      <img src="ingredients.png" alt="Fresh plantains, avocados, cilantro and black beans">
+    </div>
+  </section>
+
+  <!-- FIND US -->
+  <section class="find-us" id="find-us">
+    <div class="find-us-inner fade-in">
+      <div class="info-col">
+        <h2>Find Us</h2>
+
+        <div class="info-block">
+          <div class="info-label">Food Truck</div>
+          <div class="info-text">
+            Market Square area<br>
+            1910 Store St, Victoria, BC<br>
+            Seasonal — follow us on Instagram for daily locations
+          </div>
+        </div>
+
+        <div class="info-block">
+          <div class="info-label">Take-Home Arepas</div>
+          <div class="info-text">
+            <a href="https://themarketstores.com/" target="_blank">Market on Yates</a><br>
+            903 Yates St — frozen section<br>
+            Available year-round, 7am–11pm daily
+          </div>
+        </div>
+
+        <div class="info-block">
+          <div class="info-label">Summer Hours</div>
+          <div class="info-text">
+            Tue–Thu: 11am – 8pm<br>
+            Fri–Sat: 11am – 10:30pm<br>
+            Sun–Mon: Closed
+          </div>
+        </div>
+
+        <div class="info-block">
+          <div class="info-label">Contact</div>
+          <div class="info-text">
+            <a href="tel:6478619446">(647) 861-9446</a><br>
+            <a href="mailto:lospanaskitchen@gmail.com">lospanaskitchen@gmail.com</a>
+          </div>
+        </div>
+
+        <div class="info-block">
+          <div class="info-label">Events & Catering</div>
+          <div class="info-text">
+            Available for festivals, weddings, and private events.<br>
+            Reach out via email or Instagram DM.
+          </div>
+        </div>
+      </div>
+
+      <div class="map-col">
+        <iframe src="https://maps.google.com/maps?q=1910+Store+St+Victoria+BC&output=embed" loading="lazy" title="Los Panas Kitchen location"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-brand">Los Panas Kitchen</div>
+    <div class="footer-social">
+      <a href="https://www.instagram.com/lospanaskitchen/" target="_blank">Instagram</a>
+      <a href="https://www.facebook.com/lospanaskitchen/" target="_blank">Facebook</a>
+    </div>
+    <div class="footer-legal">Venezuelan street food in Victoria, BC. Gluten-free. Made with love.</div>
+  </footer>
+
+  <script>
+    // Scroll nav
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // Mobile toggle
+    const toggle = document.getElementById('navToggle');
+    const links = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => {
+      links.classList.toggle('open');
+    });
+    function closeNav() { links.classList.remove('open'); }
+
+    // Fade in on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>

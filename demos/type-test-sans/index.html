@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hide + Seek Coffee — Victoria, BC</title>
+<meta name="description" content="Specialty coffee in three Victoria neighbourhoods. Oak Bay, Fairfield, Vic West.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --black: #111111;
+  --charcoal: #1C1C1C;
+  --dark: #2A2520;
+  --cream: #F5F0E8;
+  --warm-white: #FEFCF7;
+  --gold: #C8A461;
+  --gold-muted: rgba(200, 164, 97, 0.15);
+  --text: #2C2520;
+  --text-light: #7A6E63;
+  --text-on-dark: #E8E0D4;
+
+  --section-pad: 96px;
+  --content-width: 1080px;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+
+  /* Letter-spacing system */
+  --ls-nav: 0.06em;
+  --ls-label: 0.08em;
+  --ls-micro: 0.04em;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', -apple-system, sans-serif;
+  color: var(--text);
+  background: var(--warm-white);
+  line-height: 1.65;
+  font-size: 17px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Noise overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+a { color: inherit; text-decoration: none; }
+
+img { display: block; width: 100%; height: auto; }
+
+.container {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ═══════════════ NAV ═══════════════ */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(254, 252, 247, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.nav-inner {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 64px;
+}
+
+.nav-brand {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: var(--ls-nav);
+  text-transform: uppercase;
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--text-light);
+  transition: color 200ms var(--ease-out);
+}
+
+.nav-links a:hover { color: var(--text); }
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--text);
+  transition: transform 300ms var(--ease-out);
+}
+
+/* ═══════════════ HERO ═══════════════ */
+.hero {
+  padding: calc(var(--section-pad) + 64px) 0 var(--section-pad);
+  background: var(--warm-white);
+}
+
+/* legacy grid removed — using centered hero */
+
+.hero-full {
+  padding: calc(var(--section-pad) + 64px) 0 var(--section-pad);
+  text-align: center;
+}
+
+.hero-text-centered {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.hero-location-label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 24px;
+}
+
+.hero-display {
+  font-size: clamp(56px, 8vw, 96px);
+  letter-spacing: -0.03em;
+  color: var(--black);
+  margin-bottom: 24px;
+}
+
+.hero-sub {
+  font-size: 18px;
+  color: var(--text-light);
+  max-width: 480px;
+  margin: 0 auto 36px;
+  line-height: 1.65;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: var(--ls-micro);
+  text-transform: uppercase;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: transform 160ms var(--ease-out), background 200ms var(--ease-out);
+}
+
+.btn:active { transform: scale(0.97); }
+
+.btn-primary {
+  background: var(--black);
+  color: var(--cream);
+}
+
+.btn-primary:hover { background: #222; }
+
+.btn-outline {
+  background: transparent;
+  border: 1.5px solid var(--text);
+  color: var(--text);
+}
+
+.btn-outline:hover { background: rgba(0,0,0,0.04); }
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* ═══════════════ TRUST BAR ═══════════════ */
+.trust-bar {
+  background: var(--charcoal);
+  padding: 28px 0;
+}
+
+.trust-items {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+
+.trust-item {
+  text-align: center;
+  color: var(--text-on-dark);
+}
+
+.trust-item .number {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--gold);
+}
+
+.trust-item .label {
+  font-size: 12px;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  margin-top: 4px;
+  opacity: 0.7;
+}
+
+/* ═══════════════ PHOTO STRIP ═══════════════ */
+.photo-strip {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 0;
+}
+
+.photo-strip img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+}
+
+/* ═══════════════ ABOUT ═══════════════ */
+.about {
+  padding: var(--section-pad) 0;
+  background: var(--cream);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.about-img {
+  margin-top: 32px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.about-img img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+}
+
+.about h2 {
+  font-size: clamp(32px, 4vw, 44px);
+  letter-spacing: -0.02em;
+  color: var(--black);
+}
+
+.about-body p {
+  margin-bottom: 16px;
+  color: var(--text);
+}
+
+.about-body p:last-child { margin-bottom: 0; }
+
+/* ═══════════════ BRAND QUOTE ═══════════════ */
+.brand-quote {
+  padding: 72px 0;
+  background: var(--charcoal);
+  text-align: center;
+}
+
+.brand-quote blockquote {
+  font-family: 'DM Sans', sans-serif;
+  font-style: italic;
+  font-size: clamp(22px, 3vw, 30px);
+  color: var(--cream);
+  max-width: 680px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+.brand-quote .attribution {
+  margin-top: 20px;
+  font-size: 13px;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* ═══════════════ MENU ═══════════════ */
+.menu {
+  padding: var(--section-pad) 0;
+  background: var(--warm-white);
+}
+
+.section-label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+
+.menu h2 {
+  font-size: clamp(32px, 4vw, 44px);
+  letter-spacing: -0.02em;
+  color: var(--black);
+  margin-bottom: 48px;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+}
+
+.menu-category h3 {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: var(--ls-micro);
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 1.5px solid var(--black);
+}
+
+.menu-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+.menu-item-name {
+  font-weight: 500;
+}
+
+.menu-item-desc {
+  font-size: 14px;
+  color: var(--text-light);
+  margin-top: 2px;
+}
+
+.menu-item-price {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  white-space: nowrap;
+  margin-left: 16px;
+}
+
+.menu-note {
+  margin-top: 32px;
+  font-size: 14px;
+  color: var(--text-light);
+  font-style: italic;
+}
+
+/* ═══════════════ REVIEWS ═══════════════ */
+.reviews {
+  padding: var(--section-pad) 0;
+  background: var(--cream);
+}
+
+.reviews h2 {
+  font-size: clamp(32px, 4vw, 44px);
+  letter-spacing: -0.02em;
+  color: var(--black);
+  margin-bottom: 48px;
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 24px;
+}
+
+.review-card {
+  padding: 32px;
+  background: var(--warm-white);
+  border-radius: 4px;
+}
+
+.review-card:nth-child(2) {
+  background: var(--charcoal);
+  color: var(--text-on-dark);
+}
+
+.review-stars {
+  color: var(--gold);
+  font-size: 14px;
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+}
+
+.review-text {
+  font-size: 15px;
+  line-height: 1.65;
+  margin-bottom: 16px;
+}
+
+.review-author {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+}
+
+.review-source {
+  font-size: 12px;
+  color: var(--text-light);
+  margin-top: 2px;
+}
+
+.review-card:nth-child(2) .review-source { color: rgba(232,224,212,0.5); }
+
+/* ═══════════════ LOCATIONS ═══════════════ */
+.locations {
+  padding: var(--section-pad) 0;
+  background: var(--warm-white);
+}
+
+.locations h2 {
+  font-size: clamp(32px, 4vw, 44px);
+  letter-spacing: -0.02em;
+  color: var(--black);
+  margin-bottom: 48px;
+}
+
+.locations-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 24px;
+}
+
+.location-card {
+  padding: 32px;
+  background: var(--cream);
+  border-radius: 4px;
+}
+
+.location-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.location-detail {
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: var(--text-light);
+}
+
+.location-detail strong {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.location-hours {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(0,0,0,0.08);
+}
+
+.location-hours p {
+  font-size: 14px;
+  color: var(--text-light);
+  margin-bottom: 4px;
+}
+
+.location-new {
+  border: 2px solid var(--gold);
+}
+
+.new-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  background: var(--gold);
+  color: var(--black);
+  padding: 3px 8px;
+  border-radius: 2px;
+  vertical-align: middle;
+  margin-left: 8px;
+}
+
+/* ═══════════════ MAP ═══════════════ */
+.map {
+  height: 360px;
+  background: var(--cream);
+}
+
+.map iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  filter: grayscale(0.3) contrast(1.05);
+}
+
+/* ═══════════════ CTA ═══════════════ */
+.cta {
+  padding: 80px 0;
+  background: var(--charcoal);
+  text-align: center;
+}
+
+.cta h2 {
+  font-size: clamp(32px, 4vw, 48px);
+  color: var(--cream);
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+
+.cta p {
+  color: var(--text-on-dark);
+  opacity: 0.7;
+  margin-bottom: 32px;
+  font-size: 17px;
+}
+
+.btn-gold {
+  background: var(--gold);
+  color: var(--black);
+  font-weight: 700;
+}
+
+.btn-gold:hover { background: #d4b06e; }
+
+/* ═══════════════ FOOTER ═══════════════ */
+footer {
+  padding: 48px 0;
+  background: var(--black);
+  color: var(--text-on-dark);
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.footer-brand {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: var(--ls-nav);
+  text-transform: uppercase;
+}
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+}
+
+.footer-links a {
+  font-size: 13px;
+  letter-spacing: var(--ls-micro);
+  text-transform: uppercase;
+  color: rgba(232,224,212,0.5);
+  transition: color 200ms var(--ease-out);
+}
+
+.footer-links a:hover { color: var(--cream); }
+
+.footer-copy {
+  font-size: 12px;
+  color: rgba(232,224,212,0.35);
+  width: 100%;
+  text-align: center;
+  margin-top: 24px;
+}
+
+/* ═══════════════ ENTRANCE ANIMATION ═══════════════ */
+.fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 600ms var(--ease-out) forwards;
+}
+
+.fade-up-d1 { animation-delay: 100ms; }
+.fade-up-d2 { animation-delay: 200ms; }
+.fade-up-d3 { animation-delay: 300ms; }
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ═══════════════ MOBILE ═══════════════ */
+@media (max-width: 768px) {
+  :root { --section-pad: 64px; }
+
+  .hamburger { display: flex; }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 64px;
+    left: 0;
+    right: 0;
+    background: rgba(254, 252, 247, 0.98);
+    backdrop-filter: blur(12px);
+    flex-direction: column;
+    padding: 24px;
+    gap: 20px;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+
+  .nav-links.active { display: flex; }
+
+  .hero-display { font-size: clamp(40px, 10vw, 56px); }
+
+  .photo-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .photo-strip img { height: 220px; }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .menu-grid { grid-template-columns: 1fr; }
+
+  .reviews-grid { grid-template-columns: 1fr; }
+
+  .locations-grid { grid-template-columns: 1fr; }
+
+  .footer-inner { flex-direction: column; text-align: center; }
+  .footer-links { justify-content: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">Hide + Seek</a>
+    <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('active')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#locations">Locations</a></li>
+      <li><a href="https://www.instagram.com/hideandseekcoffee/" target="_blank">Instagram</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero hero-full">
+  <div class="container">
+    <div class="hero-text-centered fade-up">
+      <div class="hero-location-label">Oak Bay · Fairfield · Vic West</div>
+      <h1 class="hero-display">Coffee<br>Worth Finding</h1>
+      <p class="hero-sub">Locally roasted specialty coffee, homemade treats, and three neighbourhood spots across Victoria.</p>
+      <div class="hero-actions">
+        <a href="#locations" class="btn btn-primary">Find a Location</a>
+        <a href="#menu" class="btn btn-outline">View Menu</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="container">
+    <div class="trust-items">
+      <div class="trust-item">
+        <div class="number">3</div>
+        <div class="label">Victoria Locations</div>
+      </div>
+      <div class="trust-item">
+        <div class="number">8.9K</div>
+        <div class="label">Instagram Followers</div>
+      </div>
+      <div class="trust-item">
+        <div class="number">4.8★</div>
+        <div class="label">Google Rating</div>
+      </div>
+      <div class="trust-item">
+        <div class="number">7 Days</div>
+        <div class="label">Open Weekly</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PHOTO STRIP -->
+<div class="photo-strip">
+  <img src="hero-coffee.png" alt="Cortado at Hide + Seek Coffee" loading="lazy">
+  <img src="exterior.png" alt="Hide + Seek Coffee storefront" loading="lazy">
+  <img src="pastries.png" alt="Homemade pastries and treats" loading="lazy">
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div>
+        <div class="section-label">About</div>
+        <h2>Hide Out.<br>Seek Friends.</h2>
+        <div class="about-img">
+          <img src="pour.png" alt="Barista pouring a cortado" loading="lazy">
+        </div>
+      </div>
+      <div class="about-body">
+        <p>We built Hide + Seek on a simple idea: great coffee shouldn't feel exclusive. It should feel like your neighbourhood.</p>
+        <p>Our beans come from local Victoria roasters. Our pastries from Empire Donuts and Crust Bakery. Our mugs from local artists. Everything here supports someone nearby.</p>
+        <p>Three locations, three neighbourhoods, same vibe. Whether you're hiding out with a book or seeking friends over cortados, there's always a seat.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BRAND QUOTE -->
+<div class="brand-quote">
+  <div class="container">
+    <blockquote>"Cool music, excellent coffee, made with flair, and run by friendly folks with an interest in you enjoying your drink."</blockquote>
+    <div class="attribution">— Via Google Reviews</div>
+  </div>
+</div>
+
+<!-- MENU -->
+<section class="menu" id="menu">
+  <div class="container">
+    <div class="section-label">What We Pour</div>
+    <h2>The Menu</h2>
+    <div class="menu-grid">
+      <div class="menu-category">
+        <h3>Coffee</h3>
+        <div class="menu-item">
+          <div>
+            <div class="menu-item-name">Cortado</div>
+            <div class="menu-item-desc">Equal parts espresso and steamed milk</div>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div>
+            <div class="menu-item-name">Dry Cappuccino</div>
+            <div class="menu-item-desc">Thick, velvety foam</div>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div>
+            <div class="menu-item-name">Café Bonbon</div>
+            <div class="menu-item-desc">Espresso with condensed milk, served in glass</div>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div>
+            <div class="menu-item-name">Americano</div>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div>
+            <div class="menu-item-name">Drip Coffee</div>
+          </div>
+        </div>
+      </div>
+      <div class="menu-category">
+        <h3>Treats</h3>
+        <div class="menu-item">
+          <div>
+            <div class="menu-item-name">Homemade Pop Tarts</div>
+            <div class="menu-item-desc">Seasonal flavours, baked fresh</div>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div>
+            <div class="menu-item-name">Shortbread Cookies</div>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div>
+            <div class="menu-item-name">Chai White Choc Chip Cookies</div>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div>
+            <div class="menu-item-name">Empire Donuts</div>
+            <div class="menu-item-desc">From our friends at Empire</div>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div>
+            <div class="menu-item-name">Crust Bakery Bread</div>
+            <div class="menu-item-desc">Fresh loaves from Crust</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="menu-note">Prices and seasonal items on our Instagram @hideandseekcoffee</p>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews">
+  <div class="container">
+    <div class="section-label">What People Say</div>
+    <h2>Worth the Visit</h2>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"The coffee is simply excellent, and the homemade treats — especially the pop tart — are amazing. They also bring in Empire donuts, locally made in Victoria."</p>
+        <div class="review-author">TripAdvisor Review</div>
+        <div class="review-source">Via TripAdvisor</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Always a warm and welcoming vibe. The owners and staff are all amazing people, and I feel incredibly lucky to have this coffee shop here in Victoria."</p>
+        <div class="review-author">Google Review</div>
+        <div class="review-source">Via Google</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Makes a killer cortado and dry cappuccino — EXACTLY how you would expect them to be made. Baked goods are dependably yummy."</p>
+        <div class="review-author">Local Blog</div>
+        <div class="review-source">Via PlanetSaipo</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ATMOSPHERE PHOTO -->
+<div style="padding: 0;">
+  <img src="beans.png" alt="Coffee beans and espresso" style="width: 100%; height: 320px; object-fit: cover;" loading="lazy">
+</div>
+
+<!-- LOCATIONS -->
+<section class="locations" id="locations">
+  <div class="container">
+    <div class="section-label">Find Us</div>
+    <h2>Three Neighbourhoods</h2>
+    <div class="locations-grid">
+      <div class="location-card">
+        <h3>Oak Bay</h3>
+        <div class="location-detail"><strong>2207 Oak Bay Ave</strong></div>
+        <div class="location-detail">In the heart of the Village</div>
+        <div class="location-hours">
+          <p><strong>Mon–Fri</strong> 8am – 3pm</p>
+          <p><strong>Sat–Sun</strong> 9am – 4pm</p>
+        </div>
+      </div>
+      <div class="location-card">
+        <h3>Fairfield</h3>
+        <div class="location-detail"><strong>1839 Fairfield Rd</strong></div>
+        <div class="location-detail">Off Irving St, behind Gonzales Pharmacy</div>
+        <div class="location-hours">
+          <p><strong>Mon–Fri</strong> 8am – 3pm</p>
+          <p><strong>Sat–Sun</strong> 9am – 4pm</p>
+        </div>
+      </div>
+      <div class="location-card location-new">
+        <h3>Vic West <span class="new-badge">New</span></h3>
+        <div class="location-detail"><strong>820 Catherine St</strong></div>
+        <div class="location-detail">Our newest neighbourhood spot</div>
+        <div class="location-hours">
+          <p><strong>Mon–Fri</strong> 8am – 5pm</p>
+          <p><strong>Sat–Sun</strong> 9am – 5pm</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAP -->
+<div class="map">
+  <iframe src="https://maps.google.com/maps?q=Hide+and+Seek+Coffee+Victoria+BC&output=embed" loading="lazy" title="Map"></iframe>
+</div>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="container">
+    <h2>Come Find Us</h2>
+    <p>Oak Bay · Fairfield · Vic West</p>
+    <a href="https://www.instagram.com/hideandseekcoffee/" target="_blank" class="btn btn-gold">Follow @hideandseekcoffee</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">Hide + Seek</div>
+      <ul class="footer-links">
+        <li><a href="https://www.instagram.com/hideandseekcoffee/" target="_blank">Instagram</a></li>
+        <li><a href="#locations">Locations</a></li>
+        <li><a href="#menu">Menu</a></li>
+      </ul>
+      <div class="footer-copy">© 2026 Hide + Seek Coffee · Victoria, BC</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

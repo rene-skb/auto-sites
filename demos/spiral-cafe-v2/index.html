@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spiral Cafe — Vic West's Living Room</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: #C8A44E;
+  --cream: #F5F0E8;
+  --brown: #3D2B1F;
+  --warm-white: #FDFBF7;
+  --text: #3D2B1F;
+  --text-light: rgba(61, 43, 31, 0.6);
+  --section-pad: 96px;
+  --content-width: 1120px;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text);
+  background: var(--warm-white);
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  pointer-events: none; z-index: 9999; opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.container { max-width: var(--content-width); margin: 0 auto; padding: 0 24px; }
+
+/* Scroll reveal */
+.reveal { opacity: 1; transform: none; }
+.reveal.will-reveal {
+  opacity: 0; transform: translateY(24px);
+  transition: opacity 650ms var(--ease-out), transform 650ms var(--ease-out);
+}
+.reveal.will-reveal.revealed { opacity: 1; transform: none; }
+.s1 { transition-delay: 0ms !important; }
+.s2 { transition-delay: 60ms !important; }
+.s3 { transition-delay: 120ms !important; }
+.s4 { transition-delay: 180ms !important; }
+.s5 { transition-delay: 240ms !important; }
+.s6 { transition-delay: 300ms !important; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal.will-reveal { opacity: 1; transform: none; transition: none !important; }
+}
+
+/* NAV — starts transparent with light text on dark hero */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 20px 0;
+  transition: background 300ms var(--ease-out), box-shadow 300ms var(--ease-out);
+}
+nav .container { display: flex; align-items: center; justify-content: space-between; }
+
+/* Default (on hero): light text */
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px; font-weight: 600;
+  text-decoration: none; letter-spacing: 0.04em;
+  color: var(--cream);
+  transition: color 300ms var(--ease-out);
+}
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a {
+  text-decoration: none;
+  font-size: 14px; font-weight: 500;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--cream);
+  opacity: 0.75; transition: opacity 200ms var(--ease-out), color 300ms var(--ease-out);
+}
+.nav-links a:hover { opacity: 1; }
+.nav-cta {
+  background: var(--gold) !important; color: var(--brown) !important;
+  padding: 10px 24px; border-radius: 4px; opacity: 1 !important;
+  transition: transform 160ms var(--ease-out);
+}
+.nav-cta:active { transform: scale(0.97); }
+
+/* Scrolled: dark text on light bg */
+nav.scrolled {
+  background: rgba(253, 251, 247, 0.95);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 1px 0 rgba(61, 43, 31, 0.08);
+}
+nav.scrolled .nav-logo { color: var(--text); }
+nav.scrolled .nav-links a { color: var(--text); }
+nav.scrolled .nav-cta { background: var(--brown) !important; color: var(--cream) !important; }
+
+.hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+.hamburger span {
+  display: block; width: 24px; height: 2px; background: var(--cream);
+  margin: 5px 0; transition: all 200ms var(--ease-out);
+}
+nav.scrolled .hamburger span { background: var(--text); }
+
+.mobile-menu {
+  display: none; position: fixed; inset: 0;
+  background: var(--warm-white); z-index: 99;
+  padding: 100px 24px 40px; flex-direction: column; gap: 32px;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a { font-family: 'Playfair Display', serif; font-size: 32px; color: var(--text); text-decoration: none; }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex; align-items: center;
+  position: relative; overflow: hidden;
+}
+.hero-bg { position: absolute; inset: 0; z-index: 1; }
+.hero-bg img { width: 100%; height: 100%; object-fit: cover; }
+.hero-bg::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(61, 43, 31, 0.88) 0%,
+    rgba(61, 43, 31, 0.65) 40%,
+    rgba(61, 43, 31, 0.35) 100%
+  );
+}
+.hero .container {
+  position: relative; z-index: 2;
+  max-width: 640px;
+  margin-left: max(24px, calc((100vw - var(--content-width)) / 2 + 24px));
+  margin-right: auto;
+  padding: 140px 0 120px;
+}
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(52px, 7vw, 88px);
+  font-weight: 400; line-height: 1.08;
+  color: var(--cream); margin-bottom: 24px;
+}
+.hero h1 em { font-style: italic; color: var(--gold); }
+.hero p {
+  font-size: 18px; color: rgba(245, 240, 232, 0.7);
+  max-width: 440px; margin-bottom: 40px; line-height: 1.7;
+}
+.hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+.btn-primary {
+  display: inline-flex; align-items: center;
+  background: var(--gold); color: var(--brown);
+  padding: 14px 32px; text-decoration: none;
+  font-size: 14px; font-weight: 500;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  border-radius: 4px; transition: transform 160ms var(--ease-out);
+}
+.btn-primary:active { transform: scale(0.97); }
+.btn-secondary {
+  display: inline-flex; align-items: center;
+  background: transparent; color: var(--cream);
+  padding: 14px 32px; text-decoration: none;
+  font-size: 14px; font-weight: 500;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  border-radius: 4px;
+  border: 1px solid rgba(245, 240, 232, 0.3);
+  transition: transform 160ms var(--ease-out), border-color 200ms;
+}
+.btn-secondary:hover { border-color: rgba(245, 240, 232, 0.6); }
+.btn-secondary:active { transform: scale(0.97); }
+
+/* INFO BAR */
+.info-bar { background: var(--brown); color: var(--cream); padding: 18px 0; }
+.info-bar .container {
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
+}
+.info-item { font-size: 13px; letter-spacing: 0.06em; opacity: 0.75; }
+.info-item strong { opacity: 1; font-weight: 500; }
+
+/* ABOUT */
+.about { padding: var(--section-pad) 0; }
+.about .container {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center;
+}
+.about-images {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 12px;
+  min-height: 560px;
+}
+.about-img { border-radius: 4px; overflow: hidden; }
+.about-img:first-child { grid-row: 1 / 3; }
+
+.label {
+  font-size: 12px; font-weight: 500;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 16px;
+}
+.about h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 3.5vw, 44px);
+  font-weight: 400; line-height: 1.2; margin-bottom: 20px;
+}
+.about p { color: var(--text-light); max-width: 480px; margin-bottom: 16px; }
+
+/* QUOTE */
+.quote-section { background: var(--gold); padding: 72px 0; }
+.quote-section blockquote {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(24px, 3vw, 36px);
+  font-style: italic; font-weight: 400;
+  line-height: 1.4; text-align: center;
+  color: var(--brown); max-width: 800px; margin: 0 auto;
+}
+.quote-section cite {
+  display: block; font-family: 'DM Sans', sans-serif;
+  font-style: normal; font-size: 13px; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  text-align: center; margin-top: 24px; color: rgba(61, 43, 31, 0.6);
+}
+
+/* MENU — split layout */
+.menu { padding: var(--section-pad) 0; background: var(--cream); }
+.section-header { text-align: center; margin-bottom: 56px; }
+.section-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 3.5vw, 44px); font-weight: 400;
+}
+.menu-layout { display: grid; grid-template-columns: 2fr 3fr; gap: 48px; align-items: start; }
+.menu-photo {
+  border-radius: 4px; overflow: hidden;
+  position: sticky; top: 120px; aspect-ratio: 3/4;
+}
+.menu-list { display: flex; flex-direction: column; }
+.menu-item {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 20px 0; border-bottom: 1px solid rgba(61, 43, 31, 0.1);
+}
+.menu-item-name { font-family: 'Playfair Display', serif; font-size: 20px; }
+.menu-item-desc { font-size: 14px; color: var(--text-light); margin-top: 4px; }
+
+/* MUSIC — dark bg for contrast */
+.music { padding: var(--section-pad) 0; background: var(--brown); color: var(--cream); }
+.music .container { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+.music-image { aspect-ratio: 3/2; border-radius: 4px; overflow: hidden; }
+.music .label { color: var(--gold); }
+.music h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 3.5vw, 44px);
+  font-weight: 400; line-height: 1.2; margin-bottom: 20px;
+  color: var(--cream);
+}
+.music p { color: rgba(245, 240, 232, 0.65); max-width: 480px; margin-bottom: 16px; }
+
+/* REVIEWS */
+.reviews { padding: var(--section-pad) 0; }
+.reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.review-card { background: var(--cream); padding: 32px; border-radius: 4px; }
+.review-stars { color: var(--gold); font-size: 16px; margin-bottom: 16px; letter-spacing: 2px; }
+.review-text { font-size: 16px; line-height: 1.6; margin-bottom: 20px; }
+.review-author {
+  font-size: 12px; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-light);
+}
+
+/* VISIT */
+.visit { padding: var(--section-pad) 0; background: var(--cream); }
+.visit .container { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+.visit h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 3.5vw, 44px);
+  font-weight: 400; margin-bottom: 32px;
+}
+.visit-info { display: flex; flex-direction: column; gap: 24px; }
+.visit-block h3 {
+  font-size: 12px; font-weight: 500;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 8px;
+}
+.visit-block p, .visit-block a { color: var(--text-light); text-decoration: none; font-size: 16px; }
+.visit-block a:hover { color: var(--text); }
+.hours-table { width: 100%; border-collapse: collapse; }
+.hours-table td { padding: 6px 0; font-size: 15px; color: var(--text-light); }
+.hours-table td:last-child { text-align: right; }
+.visit-map { border-radius: 4px; overflow: hidden; min-height: 440px; }
+.visit-map iframe { width: 100%; height: 100%; min-height: 440px; border: 0; filter: saturate(0.8) contrast(1.05); }
+
+/* CTA BAND */
+.cta-band {
+  background: var(--brown); padding: 64px 0; text-align: center;
+}
+.cta-band p {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 400; color: var(--cream);
+  margin-bottom: 28px;
+}
+.cta-band .btn-primary { font-size: 15px; padding: 16px 40px; }
+
+/* FOOTER */
+footer { background: var(--brown); color: var(--cream); padding: 48px 0; border-top: 1px solid rgba(245,240,232,0.08); }
+footer .container { display: flex; justify-content: space-between; align-items: center; }
+.footer-logo { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 600; letter-spacing: 0.04em; }
+.footer-links { display: flex; gap: 24px; list-style: none; }
+.footer-links a { color: var(--cream); text-decoration: none; font-size: 14px; opacity: 0.6; transition: opacity 200ms; }
+.footer-links a:hover { opacity: 1; }
+.footer-copy { font-size: 13px; opacity: 0.4; }
+
+/* HOVER STATES — only on hover-capable devices */
+@media (hover: hover) {
+  .btn-primary:hover { filter: brightness(1.05); }
+  .btn-secondary:hover { border-color: rgba(245, 240, 232, 0.6); }
+  .nav-links a:hover { opacity: 1; }
+  .review-card { transition: transform 250ms var(--ease-out), box-shadow 250ms var(--ease-out); }
+  .visit-block a { transition: color 200ms var(--ease-out); }
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) { :root { --section-pad: 72px; } }
+@media (max-width: 768px) {
+  :root { --section-pad: 56px; }
+  .nav-links { display: none; }
+  .hamburger { display: block; }
+  .hero .container { margin: 0 auto; padding: 120px 24px; max-width: 100%; }
+  .hero-bg::after { background: rgba(61,43,31,0.75); }
+  .hero h1 { font-size: 42px; }
+  .about .container { grid-template-columns: 1fr; gap: 40px; }
+  .about-images { order: -1; min-height: 320px; }
+  .menu-layout { grid-template-columns: 1fr; }
+  .menu-photo { display: none; }
+  .music .container { grid-template-columns: 1fr; gap: 32px; }
+  .reviews-grid { grid-template-columns: 1fr; gap: 16px; }
+  .visit .container { grid-template-columns: 1fr; gap: 40px; }
+  .visit-map { min-height: 280px; }
+  .visit-map iframe { min-height: 280px; }
+  footer .container { flex-direction: column; gap: 24px; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="container">
+    <a href="#" class="nav-logo">Spiral Cafe</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#music">Music</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#visit" class="nav-cta">Get Directions</a></li>
+    </ul>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="toggleMenu()">About</a>
+  <a href="#menu" onclick="toggleMenu()">Menu</a>
+  <a href="#music" onclick="toggleMenu()">Music</a>
+  <a href="#reviews" onclick="toggleMenu()">Reviews</a>
+  <a href="#visit" onclick="toggleMenu()">Visit Us</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <img src="hero.png" alt="Warm coffee at Spiral Cafe" loading="eager">
+  </div>
+  <div class="container">
+    <h1>A place where<br><em>time slows down.</em></h1>
+    <p>Organic coffee, fresh-baked goods, and live music in Vic West's favourite neighbourhood living room. Right across from Banfield Park.</p>
+    <div class="hero-actions">
+      <a href="https://maps.google.com/maps/dir//Spiral+Cafe+418+Craigflower+Rd+Victoria+BC" target="_blank" class="btn-primary">Get Directions</a>
+      <a href="tel:250-386-9303" class="btn-secondary">Call 250-386-9303</a>
+    </div>
+  </div>
+</section>
+
+<!-- INFO BAR -->
+<div class="info-bar">
+  <div class="container">
+    <span class="info-item"><strong>Family-Run</strong> Since Day One</span>
+    <span class="info-item"><strong>Organic</strong> Fair-Trade Coffee</span>
+    <span class="info-item"><strong>Live Music</strong> Weekly</span>
+    <span class="info-item"><strong>Baked Goods</strong> by Mosi's Bakery</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-images reveal">
+      <div class="about-img"><img src="pastries.png" alt="Fresh baked pastries" loading="lazy"></div>
+      <div class="about-img"><img src="coffee-beans.png" alt="Organic coffee beans" loading="lazy"></div>
+      <div class="about-img"><img src="matcha.png" alt="Matcha latte" loading="lazy"></div>
+    </div>
+    <div class="reveal">
+      <span class="label">Our Story</span>
+      <h2>The neighbourhood's<br>living room</h2>
+      <p>Spiral Cafe is a family-run coffee shop in the heart of Vic West, housed in a character-filled old building with big windows and a warmth you feel the moment you walk in.</p>
+      <p>We serve organic, fair-trade coffee alongside baked goods from Mosi's Bakery. Local artists showcase their work on our walls each month, and on select evenings, the cafe fills with live music — no cover, just community.</p>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section class="quote-section">
+  <div class="container reveal">
+    <blockquote>"That yellow wall and hand-lettered menu board, so warm and welcoming. It feels like a little corner of the world where time slows down."</blockquote>
+    <cite>Betty X. · Via Google</cite>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="menu" id="menu">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label">What We're Pouring</span>
+      <h2>Favourites</h2>
+    </div>
+    <div class="menu-layout">
+      <div class="menu-photo reveal">
+        <img src="pastries.png" alt="Baked goods at Spiral Cafe" loading="lazy" style="object-position: center 60%;">
+      </div>
+      <div class="menu-list">
+        <div class="menu-item reveal s1">
+          <div><div class="menu-item-name">Caramel Latte</div><div class="menu-item-desc">Perfectly balanced, a crowd favourite</div></div>
+        </div>
+        <div class="menu-item reveal s2">
+          <div><div class="menu-item-name">Chai Latte</div><div class="menu-item-desc">House-spiced, creamy</div></div>
+        </div>
+        <div class="menu-item reveal s3">
+          <div><div class="menu-item-name">Matcha Latte</div><div class="menu-item-desc">"Actually delicious matcha"</div></div>
+        </div>
+        <div class="menu-item reveal s4">
+          <div><div class="menu-item-name">Brie Croissant</div><div class="menu-item-desc">From Mosi's Bakery, baked fresh</div></div>
+        </div>
+        <div class="menu-item reveal s5">
+          <div><div class="menu-item-name">The Spicy Spiral</div><div class="menu-item-desc">Our signature — heat meets comfort</div></div>
+        </div>
+        <div class="menu-item reveal s6">
+          <div><div class="menu-item-name">Peanut Butter Energy Ball</div><div class="menu-item-desc">Quick boost, not too heavy</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MUSIC — dark section for rhythm -->
+<section class="music" id="music">
+  <div class="container">
+    <div class="music-image reveal">
+      <img src="music.png" alt="Live music at Spiral Cafe" loading="lazy">
+    </div>
+    <div class="reveal">
+      <span class="label">Live Music</span>
+      <h2>No cover.<br>Just community.</h2>
+      <p>On select evenings, local musicians fill the Spiral with everything from folk to jazz. It's intimate, it's free, and it's one of those things that makes this neighbourhood special.</p>
+      <p>Pull up a chair, grab a drink, and let the evening unfold.</p>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label">Kind Words</span>
+      <h2>From the Neighbourhood</h2>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card reveal s1">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"One of the best cafes in greater Victoria! Phenomenal, cozy atmosphere all year round. Organic, fair-trade coffee. Family run business."</p>
+        <span class="review-author">Danna R. · Via Google</span>
+      </div>
+      <div class="review-card reveal s2">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"A gem of a coffee shop. Intimate atmosphere and nothing fancy. No-cover music events, some of which are first rate."</p>
+        <span class="review-author">George K. · Via Google</span>
+      </div>
+      <div class="review-card reveal s3">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"What a hidden gem! So cozy and the first place I've had actually delicious matcha. A really nice community hotspot atmosphere."</p>
+        <span class="review-author">Phebe · Via Google</span>
+      </div>
+      <div class="review-card reveal s4">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"The caramel latte is just on point, perfectly balanced. The brie croissants are also amazing!"</p>
+        <span class="review-author">Clara M. · Via Google</span>
+      </div>
+      <div class="review-card reveal s5">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Super friendly staff. We asked to bring in pastries from next door and they said 'absolutely.' How refreshing."</p>
+        <span class="review-author">John F. · Via Google</span>
+      </div>
+      <div class="review-card reveal s6">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"The live music shows are wonderful, and the baked goods have always been a favourite. It's my go-to place."</p>
+        <span class="review-author">Angela T. · Via Google</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section class="visit" id="visit">
+  <div class="container">
+    <div class="reveal">
+      <h2>Come Say Hello</h2>
+      <div class="visit-info">
+        <div class="visit-block">
+          <h3>Address</h3>
+          <p>418 Craigflower Rd<br>Victoria, BC V9A 2V8</p>
+        </div>
+        <div class="visit-block">
+          <h3>Phone</h3>
+          <a href="tel:250-386-9303">250-386-9303</a>
+        </div>
+        <div class="visit-block">
+          <h3>Hours</h3>
+          <table class="hours-table">
+            <tr><td>Monday</td><td>7:00 AM – 8:30 PM</td></tr>
+            <tr><td>Tuesday</td><td>7:00 AM – 5:00 PM</td></tr>
+            <tr><td>Wednesday</td><td>7:00 AM – 5:00 PM</td></tr>
+            <tr><td>Thursday</td><td>7:00 AM – 8:30 PM</td></tr>
+            <tr><td>Friday</td><td>7:00 AM – 8:30 PM</td></tr>
+            <tr><td>Saturday</td><td>8:00 AM – 5:00 PM</td></tr>
+            <tr><td>Sunday</td><td>8:00 AM – 5:00 PM</td></tr>
+          </table>
+        </div>
+        <div class="visit-block">
+          <h3>Follow Along</h3>
+          <a href="https://www.instagram.com/spiralcafevictoria/" target="_blank">@spiralcafevictoria</a>
+        </div>
+      </div>
+    </div>
+    <div class="visit-map">
+      <iframe src="https://maps.google.com/maps?q=Spiral+Cafe+418+Craigflower+Rd+Victoria+BC&output=embed" allowfullscreen loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <div class="container reveal">
+    <p>We saved you a seat.</p>
+    <a href="https://maps.google.com/maps/dir//Spiral+Cafe+418+Craigflower+Rd+Victoria+BC" target="_blank" class="btn-primary">Get Directions</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <span class="footer-logo">Spiral Cafe</span>
+    <ul class="footer-links">
+      <li><a href="https://www.instagram.com/spiralcafevictoria/" target="_blank">Instagram</a></li>
+      <li><a href="https://www.facebook.com/SpiralCafe/" target="_blank">Facebook</a></li>
+      <li><a href="tel:250-386-9303">250-386-9303</a></li>
+    </ul>
+    <span class="footer-copy">© 2026 Spiral Cafe</span>
+  </div>
+</footer>
+
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
+function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
+document.addEventListener('DOMContentLoaded', () => {
+  const els = document.querySelectorAll('.reveal');
+  els.forEach(el => el.classList.add('will-reveal'));
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('revealed'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  els.forEach(el => obs.observe(el));
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Focus Strength Performance — Personal Training Victoria, BC</title>
+  <meta name="description" content="Victoria's personal training studio. Developing your body and your mind, unlocking your best self. 708 Pembroke St.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-bg: #0f0f0e;
+      --color-bg-warm: #1a1917;
+      --color-bg-card: #232220;
+      --color-cream: #f5f0e8;
+      --color-cream-muted: #c9c2b5;
+      --color-accent: #c89b3c;
+      --color-accent-dim: rgba(200, 155, 60, 0.15);
+      --font-serif: 'Instrument Serif', Georgia, serif;
+      --font-sans: 'Inter', system-ui, sans-serif;
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+      --content-width: 1080px;
+      --section-padding: 96px;
+    }
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--color-bg);
+      color: var(--color-cream);
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    /* ===== NAV ===== */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 20px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(15, 15, 14, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(200, 155, 60, 0.1);
+    }
+
+    .nav-logo {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      color: var(--color-cream);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-logo span {
+      color: var(--color-accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--color-cream-muted);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 200ms var(--ease-out);
+    }
+
+    .nav-links a:hover {
+      color: var(--color-accent);
+    }
+
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--color-cream);
+      transition: transform 300ms var(--ease-out), opacity 200ms;
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(15, 15, 14, 0.97);
+      z-index: 99;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+    }
+
+    .mobile-menu.active {
+      display: flex;
+    }
+
+    .mobile-menu a {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      color: var(--color-cream);
+      text-decoration: none;
+      transition: color 200ms var(--ease-out);
+    }
+
+    .mobile-menu a:hover {
+      color: var(--color-accent);
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 24px 96px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: 
+        radial-gradient(ellipse at 30% 40%, rgba(200, 155, 60, 0.08) 0%, transparent 60%),
+        radial-gradient(ellipse at 70% 60%, rgba(180, 120, 40, 0.06) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 80%, rgba(15, 15, 14, 0.9) 0%, transparent 80%),
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      z-index: 0;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 10%;
+      right: 10%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+      opacity: 0.3;
+    }
+
+    .hero > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      background: var(--color-accent-dim);
+      padding: 8px 20px;
+      border-radius: 2px;
+      margin-bottom: 32px;
+    }
+
+    .hero h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      line-height: 1.05;
+      font-weight: 400;
+      max-width: 800px;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--color-accent);
+    }
+
+    .hero-sub {
+      font-size: 1.125rem;
+      color: var(--color-cream-muted);
+      max-width: 520px;
+      margin-bottom: 40px;
+      line-height: 1.7;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    /* ===== BUTTONS ===== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 32px;
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 3px;
+      letter-spacing: 0.03em;
+      cursor: pointer;
+      border: none;
+      transition: transform 160ms var(--ease-out), box-shadow 200ms var(--ease-out), background 200ms var(--ease-out);
+    }
+
+    .btn:active {
+      transform: scale(0.97);
+    }
+
+    .btn-primary {
+      background: var(--color-accent);
+      color: var(--color-bg);
+    }
+
+    .btn-primary:hover {
+      background: #d4a842;
+      box-shadow: 0 4px 20px rgba(200, 155, 60, 0.25);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--color-cream);
+      border: 1px solid rgba(245, 240, 232, 0.2);
+    }
+
+    .btn-secondary:hover {
+      border-color: rgba(245, 240, 232, 0.4);
+      background: rgba(245, 240, 232, 0.05);
+    }
+
+    /* ===== TRUST BAR ===== */
+    .trust-bar {
+      background: var(--color-bg-warm);
+      border-top: 1px solid rgba(200, 155, 60, 0.08);
+      border-bottom: 1px solid rgba(200, 155, 60, 0.08);
+    }
+
+    .trust-bar-inner {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      padding: 32px 24px;
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+
+    .trust-item {
+      text-align: center;
+    }
+
+    .trust-item strong {
+      display: block;
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      color: var(--color-accent);
+      margin-bottom: 4px;
+    }
+
+    .trust-item span {
+      font-size: 0.8rem;
+      color: var(--color-cream-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    /* ===== SECTIONS ===== */
+    .section {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      padding: var(--section-padding) 24px;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--color-accent);
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 24px;
+    }
+
+    .section-title em {
+      font-style: italic;
+      color: var(--color-accent);
+    }
+
+    .section-text {
+      color: var(--color-cream-muted);
+      max-width: 640px;
+      line-height: 1.8;
+      font-size: 1.05rem;
+    }
+
+    hr.divider {
+      border: none;
+      height: 1px;
+      background: rgba(200, 155, 60, 0.12);
+      max-width: var(--content-width);
+      margin: 0 auto;
+    }
+
+    /* ===== SERVICES ===== */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .service-card {
+      background: var(--color-bg-card);
+      padding: 40px 32px;
+      border-radius: 4px;
+      transition: transform 300ms var(--ease-out), box-shadow 300ms var(--ease-out);
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--color-accent-dim);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+
+    .service-icon svg {
+      width: 24px;
+      height: 24px;
+      stroke: var(--color-accent);
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .service-card h3 {
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      font-weight: 400;
+      margin-bottom: 12px;
+    }
+
+    .service-card p {
+      color: var(--color-cream-muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .service-meta {
+      margin-top: 16px;
+      font-size: 0.8rem !important;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--color-accent) !important;
+    }
+
+    /* ===== HOW IT WORKS ===== */
+    .how-section {
+      background: var(--color-bg-warm);
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-top: 48px;
+    }
+
+    .step {
+      text-align: center;
+    }
+
+    .step-number {
+      font-family: var(--font-serif);
+      font-size: 3rem;
+      color: var(--color-accent);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+
+    .step h3 {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-weight: 400;
+      margin-bottom: 12px;
+    }
+
+    .step p {
+      color: var(--color-cream-muted);
+      font-size: 0.9rem;
+      line-height: 1.7;
+      max-width: 280px;
+      margin: 0 auto;
+    }
+
+    /* ===== ABOUT (editorial two-col) ===== */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      margin-top: 48px;
+    }
+
+    .about-image {
+      aspect-ratio: 4/5;
+      border-radius: 4px;
+      background:
+        radial-gradient(ellipse at 30% 30%, rgba(200, 155, 60, 0.12) 0%, transparent 60%),
+        radial-gradient(ellipse at 70% 70%, rgba(120, 90, 30, 0.08) 0%, transparent 50%),
+        var(--color-bg-card);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+      opacity: 0.5;
+    }
+
+    .about-content .section-text {
+      margin-bottom: 24px;
+    }
+
+    .about-content .section-text + .section-text {
+      margin-bottom: 0;
+    }
+
+    /* ===== REVIEWS ===== */
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .review-card {
+      background: var(--color-bg-card);
+      padding: 36px 32px;
+      border-radius: 4px;
+      transition: transform 300ms var(--ease-out), box-shadow 300ms var(--ease-out);
+    }
+
+    .review-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    .review-card.featured {
+      border-left: 3px solid var(--color-accent);
+    }
+
+    .review-stars {
+      color: var(--color-accent);
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+    }
+
+    .review-card blockquote {
+      font-size: 1rem;
+      line-height: 1.75;
+      color: var(--color-cream);
+      margin-bottom: 16px;
+      font-style: italic;
+    }
+
+    .review-card cite {
+      font-size: 0.85rem;
+      color: var(--color-cream-muted);
+      font-style: normal;
+    }
+
+    .review-stats {
+      background: var(--color-bg-card);
+      padding: 36px 32px;
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .review-stats-number {
+      font-family: var(--font-serif);
+      font-size: 3.5rem;
+      color: var(--color-accent);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .review-stats-label {
+      font-size: 0.85rem;
+      color: var(--color-cream-muted);
+      margin-bottom: 24px;
+    }
+
+    .review-stats a {
+      color: var(--color-accent);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      border-bottom: 1px solid rgba(200, 155, 60, 0.3);
+      transition: border-color 200ms var(--ease-out);
+    }
+
+    .review-stats a:hover {
+      border-color: var(--color-accent);
+    }
+
+    /* ===== DIFFERENTIATOR ===== */
+    .diff-section {
+      background: var(--color-bg-warm);
+      text-align: center;
+      padding: var(--section-padding) 24px;
+    }
+
+    .diff-section .section-title {
+      max-width: 700px;
+      margin: 0 auto;
+      font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    }
+
+    /* ===== LOCATION ===== */
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+      margin-top: 48px;
+    }
+
+    .location-map {
+      border-radius: 4px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+    }
+
+    .location-map iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      filter: grayscale(0.2) contrast(1.05) brightness(0.95);
+    }
+
+    .location-details h3 {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 400;
+      margin-bottom: 24px;
+    }
+
+    .location-info {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .location-info li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      color: var(--color-cream-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .location-info li svg {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      stroke: var(--color-accent);
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      margin-top: 2px;
+    }
+
+    .location-info a {
+      color: var(--color-cream);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(245, 240, 232, 0.2);
+      transition: border-color 200ms var(--ease-out);
+    }
+
+    .location-info a:hover {
+      border-color: var(--color-accent);
+    }
+
+    /* ===== FINAL CTA ===== */
+    .final-cta {
+      text-align: center;
+      padding: var(--section-padding) 24px;
+      background: var(--color-bg-warm);
+      border-top: 1px solid rgba(200, 155, 60, 0.08);
+    }
+
+    .final-cta .section-title {
+      margin-bottom: 16px;
+    }
+
+    .final-cta .section-text {
+      margin: 0 auto 32px;
+      text-align: center;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      border-top: 1px solid rgba(200, 155, 60, 0.08);
+      padding: 48px 24px;
+      text-align: center;
+    }
+
+    .footer-inner {
+      max-width: var(--content-width);
+      margin: 0 auto;
+    }
+
+    .footer-logo {
+      font-family: var(--font-serif);
+      font-size: 1.125rem;
+      color: var(--color-cream);
+      margin-bottom: 16px;
+    }
+
+    .footer-logo span {
+      color: var(--color-accent);
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+
+    .footer-links a {
+      color: var(--color-cream-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 200ms var(--ease-out);
+    }
+
+    .footer-links a:hover {
+      color: var(--color-accent);
+    }
+
+    .footer-copy {
+      font-size: 0.8rem;
+      color: rgba(201, 194, 181, 0.5);
+    }
+
+    /* ===== MOBILE ===== */
+    @media (max-width: 768px) {
+      :root {
+        --section-padding: 64px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .nav-hamburger {
+        display: flex;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .steps {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .about-image {
+        aspect-ratio: 16/9;
+      }
+
+      .reviews-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .location-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .trust-bar-inner {
+        gap: 32px;
+      }
+
+      .hero h1 {
+        font-size: clamp(2.25rem, 8vw, 3.5rem);
+      }
+    }
+    /* ===== SCROLL ANIMATIONS ===== */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .fade-in {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+    }
+
+    noscript .fade-in {
+      opacity: 1;
+      transform: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">Focus <span>Strength</span></a>
+    <ul class="nav-links">
+      <li><a href="#services">Training</a></li>
+      <li><a href="#how">Process</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#location">Visit</a></li>
+      <li><a href="tel:2505801143" class="btn btn-primary" style="padding:10px 24px;font-size:0.8rem;">Call Now</a></li>
+    </ul>
+    <button class="nav-hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('active')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu">
+    <a href="#services" onclick="this.parentElement.classList.remove('active')">Training</a>
+    <a href="#how" onclick="this.parentElement.classList.remove('active')">Process</a>
+    <a href="#about" onclick="this.parentElement.classList.remove('active')">About</a>
+    <a href="#reviews" onclick="this.parentElement.classList.remove('active')">Reviews</a>
+    <a href="#location" onclick="this.parentElement.classList.remove('active')">Visit</a>
+    <a href="tel:2505801143" class="btn btn-primary" onclick="this.parentElement.classList.remove('active')">Call Now</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-badge">Personal Training — Victoria, BC</div>
+    <h1>Unlock Your <em>Strongest</em> Self</h1>
+    <p class="hero-sub">Developing your body and your mind. Personalized coaching in a focused, private studio environment.</p>
+    <div class="hero-ctas">
+      <a href="tel:2505801143" class="btn btn-primary">Call to Book</a>
+      <a href="#location" class="btn btn-secondary">Get Directions</a>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="trust-bar-inner">
+      <div class="trust-item">
+        <strong>100%</strong>
+        <span>Recommend</span>
+      </div>
+      <div class="trust-item">
+        <strong>709+</strong>
+        <span>Visits</span>
+      </div>
+      <div class="trust-item">
+        <strong>1-on-1</strong>
+        <span>Coaching</span>
+      </div>
+      <div class="trust-item">
+        <strong>Rock Bay</strong>
+        <span>Victoria, BC</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="section fade-in" id="services">
+    <p class="section-label">Training</p>
+    <h2 class="section-title">Built Around <em>You</em></h2>
+    <p class="section-text">Every program is designed for your body, your goals, and your life. No cookie-cutter workouts. No crowded gym floor.</p>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <h3>Personal Training</h3>
+        <p>One-on-one sessions tailored to your strength, mobility, and performance goals. Full attention, every rep.</p>
+        <p class="service-meta">1-on-1 · By appointment</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>Small Group Training</h3>
+        <p>The energy of a group with the precision of personal coaching. Small enough to get real attention.</p>
+        <p class="service-meta">Small groups · Coach-led</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <h3>Strength Programming</h3>
+        <p>Structured plans to build real strength. Progressive overload, proper periodization, measurable results.</p>
+        <p class="service-meta">Custom programs · Ongoing</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- HOW IT WORKS -->
+  <section class="how-section" id="how">
+    <div class="section fade-in" style="padding-top:var(--section-padding);padding-bottom:var(--section-padding);">
+      <p class="section-label">Getting Started</p>
+      <h2 class="section-title">Your First Session in <em>Three Steps</em></h2>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">01</div>
+          <h3>Call or Message</h3>
+          <p>Reach out to discuss your goals and schedule your first session. No pressure, just a conversation.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">02</div>
+          <h3>Assessment</h3>
+          <p>Your first visit is about understanding where you are — movement, strength, and what you want to achieve.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">03</div>
+          <h3>Train</h3>
+          <p>Start your personalized program in a private studio built for focus. Show up, put in the work, see results.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section fade-in" id="about">
+    <p class="section-label">About</p>
+    <h2 class="section-title">Strength With <em>Purpose</em></h2>
+
+    <div class="about-grid">
+      <div class="about-image"></div>
+      <div class="about-content">
+        <p class="section-text">Focus Strength Performance is a private personal training studio on Pembroke Street in Victoria's Rock Bay neighborhood. No crowds, no distractions — just you and your coach.</p>
+        <p class="section-text">The philosophy is simple: develop your body and your mind. Training here isn't about aesthetics or ego. It's about building the strength, resilience, and confidence that carries into everything you do.</p>
+        <p class="section-text">Whether you're stepping into a gym for the first time or looking to push past a plateau, this is a space built for genuine progress.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- DIFFERENTIATOR -->
+  <div class="diff-section">
+    <p class="section-label">The Difference</p>
+    <h2 class="section-title">A gym where the coaches know your name, your goals, and exactly where you left off <em>last session</em>.</h2>
+  </div>
+
+  <hr class="divider">
+
+  <!-- REVIEWS -->
+  <section class="section fade-in" id="reviews">
+    <p class="section-label">Reviews</p>
+    <h2 class="section-title">What People <em>Say</em></h2>
+
+    <div class="reviews-grid">
+      <div class="review-card featured">
+        <div class="review-stars">★ ★ ★ ★ ★</div>
+        <blockquote>"I nervously walked to my first ever personal training appointment. The moment I walked in, I felt welcomed. The coaching is personal, encouraging, and genuinely challenging. I'm setting new personal bests I never thought possible."</blockquote>
+        <cite>— Via Facebook</cite>
+      </div>
+
+      <div class="review-stats">
+        <div class="review-stats-number">100%</div>
+        <div class="review-stats-label">Recommended on Facebook<br>11 Reviews · 473 Followers</div>
+        <a href="https://www.facebook.com/victoriapersonaltraining/" target="_blank" rel="noopener">Read All Reviews →</a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- LOCATION -->
+  <section class="section fade-in" id="location">
+    <p class="section-label">Visit</p>
+    <h2 class="section-title">Find the <em>Studio</em></h2>
+
+    <div class="location-grid">
+      <div class="location-map">
+        <iframe src="https://maps.google.com/maps?q=708+Pembroke+St+Victoria+BC&output=embed" allowfullscreen loading="lazy" title="Focus Strength Performance location"></iframe>
+      </div>
+      <div class="location-details">
+        <h3>Focus Strength Performance</h3>
+        <ul class="location-info">
+          <li>
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>708 Pembroke St<br>Victoria, BC V8T 1H8</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <a href="tel:2505801143">(250) 580-1143</a>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <a href="mailto:gordon2533@gmail.com">gordon2533@gmail.com</a>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>Hours vary — <a href="https://www.facebook.com/victoriapersonaltraining/" target="_blank" rel="noopener">check Facebook</a> for current schedule</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <div class="final-cta">
+    <p class="section-label">Ready?</p>
+    <h2 class="section-title">Your Turning Point <em>Starts Here</em></h2>
+    <p class="section-text">One call. One session. That's all it takes to start.</p>
+    <a href="tel:2505801143" class="btn btn-primary">Call to Book</a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">Focus <span>Strength</span> Performance</div>
+      <div class="footer-links">
+        <a href="https://www.facebook.com/victoriapersonaltraining/" target="_blank" rel="noopener">Facebook</a>
+        <a href="tel:2505801143">Call</a>
+        <a href="mailto:gordon2533@gmail.com">Email</a>
+        <a href="#location">Directions</a>
+      </div>
+      <p class="footer-copy">© 2026 Focus Strength Performance. 708 Pembroke St, Victoria, BC.</p>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }});
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>

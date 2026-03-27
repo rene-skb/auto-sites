@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roaming Yak — Tibetan Kitchen, Calgary</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --black: #1A1410;
+    --cream: #FAF5EE;
+    --saffron: #C4873A;
+    --saffron-light: #F5EBD8;
+    --warm-gray: #6B5F54;
+    --alt-bg: #F0EAE0;
+    --dark-bg: #1E1A15;
+    --section-pad: 96px;
+    --content-width: 1080px;
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    --ls-sm: 0.04em;
+    --ls-md: 0.08em;
+    --ls-lg: 0.14em;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--black);
+    background: var(--cream);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 20px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(30, 26, 21, 0.95);
+    backdrop-filter: blur(8px);
+  }
+
+  .nav-brand {
+    font-family: 'Newsreader', serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--cream);
+    letter-spacing: var(--ls-sm);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: rgba(250, 245, 238, 0.7);
+    text-decoration: none;
+    letter-spacing: var(--ls-md);
+    text-transform: uppercase;
+    transition: color 200ms var(--ease-out);
+    position: relative;
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--saffron);
+    transition: width 300ms var(--ease-out);
+  }
+
+  .nav-links a:hover { color: var(--cream); }
+  .nav-links a:hover::after { width: 100%; }
+
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+  }
+
+  .nav-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--cream);
+    margin: 5px 0;
+    transition: all 200ms var(--ease-out);
+  }
+
+  /* HERO — dark immersive */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: var(--dark-bg);
+    position: relative;
+    overflow: hidden;
+    padding: 120px 32px 96px;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('momos.jpg') center/cover no-repeat;
+    opacity: 0.2;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 720px;
+  }
+
+  .hero-label {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: var(--ls-lg);
+    text-transform: uppercase;
+    color: var(--saffron);
+    margin-bottom: 24px;
+  }
+
+  .hero h1 {
+    font-family: 'Newsreader', serif;
+    font-size: clamp(48px, 6vw, 80px);
+    font-weight: 500;
+    line-height: 1.1;
+    color: var(--cream);
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+  }
+
+  .hero-body {
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    color: rgba(250, 245, 238, 0.75);
+    max-width: 540px;
+    margin: 0 auto 40px;
+    font-weight: 400;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    padding: 14px 32px;
+    background: var(--cream);
+    color: var(--dark-bg);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: var(--ls-md);
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: transform 160ms var(--ease-out), background 200ms var(--ease-out);
+  }
+
+  .btn-primary:active { transform: scale(0.97); }
+  .btn-primary:hover { background: #fff; }
+
+  .btn-secondary {
+    display: inline-block;
+    padding: 14px 32px;
+    background: transparent;
+    color: var(--cream);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: var(--ls-md);
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid rgba(250, 245, 238, 0.3);
+    transition: transform 160ms var(--ease-out), border-color 200ms var(--ease-out);
+  }
+
+  .btn-secondary:active { transform: scale(0.97); }
+  .btn-secondary:hover { border-color: var(--cream); }
+
+  /* TRUST BAR */
+  .trust-bar {
+    background: var(--dark-bg);
+    border-top: 1px solid rgba(250, 245, 238, 0.08);
+    padding: 24px 32px;
+  }
+
+  .trust-bar-inner {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+
+  .trust-stat {
+    text-align: center;
+  }
+
+  .trust-stat-number {
+    font-family: 'Newsreader', serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--saffron);
+    letter-spacing: var(--ls-sm);
+  }
+
+  .trust-stat-label {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: var(--ls-lg);
+    text-transform: uppercase;
+    color: rgba(250, 245, 238, 0.5);
+    margin-top: 4px;
+  }
+
+  /* PHOTO STRIP */
+  .photo-strip {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 4px;
+    max-width: 100%;
+  }
+
+  .photo-strip img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .photo-strip-stack {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 4px;
+  }
+
+  .photo-strip-stack img {
+    height: 208px;
+  }
+
+  /* SECTIONS */
+  .section {
+    padding: var(--section-pad) 32px;
+    max-width: var(--content-width);
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: var(--ls-lg);
+    text-transform: uppercase;
+    color: var(--saffron);
+    margin-bottom: 16px;
+  }
+
+  .section h2 {
+    font-family: 'Newsreader', serif;
+    font-size: clamp(32px, 4vw, 44px);
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--black);
+    margin-bottom: 24px;
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    gap: 48px;
+    align-items: start;
+  }
+
+  .about-quote {
+    font-family: 'Newsreader', serif;
+    font-size: 1.25rem;
+    font-style: italic;
+    line-height: 1.6;
+    color: var(--black);
+    border-left: 2px solid var(--saffron);
+    padding-left: 24px;
+  }
+
+  .about-quote cite {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 500;
+    letter-spacing: var(--ls-md);
+    text-transform: uppercase;
+    color: var(--warm-gray);
+    margin-top: 12px;
+  }
+
+  .about-text p {
+    color: var(--warm-gray);
+    margin-bottom: 16px;
+  }
+
+  /* NAME SECTION */
+  .name-section {
+    padding: 120px 32px;
+    text-align: center;
+    background: var(--alt-bg);
+  }
+
+  .name-section .section-label {
+    color: var(--warm-gray);
+  }
+
+  .name-section h2 {
+    font-family: 'Newsreader', serif;
+    font-size: clamp(36px, 5vw, 52px);
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    color: var(--black);
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  /* MENU SECTION */
+  .menu-section {
+    padding: var(--section-pad) 32px;
+    background: var(--dark-bg);
+  }
+
+  .menu-inner {
+    max-width: var(--content-width);
+    margin: 0 auto;
+  }
+
+  .menu-section .section-label { color: var(--saffron); }
+
+  .menu-section h2 {
+    font-family: 'Newsreader', serif;
+    font-size: clamp(32px, 4vw, 44px);
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--cream);
+    margin-bottom: 48px;
+  }
+
+  .menu-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .menu-card {
+    border-top: 1px solid rgba(250, 245, 238, 0.12);
+    padding-top: 20px;
+  }
+
+  .menu-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 8px;
+  }
+
+  .menu-card h3 {
+    font-family: 'Newsreader', serif;
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: var(--cream);
+  }
+
+  .menu-card .price {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--saffron);
+  }
+
+  .menu-card p {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: rgba(250, 245, 238, 0.6);
+  }
+
+  /* QUOTE SECTION */
+  .quote-section {
+    padding: var(--section-pad) 32px;
+    background: var(--saffron);
+    text-align: center;
+  }
+
+  .quote-inner {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .quote-section blockquote {
+    font-family: 'Newsreader', serif;
+    font-size: clamp(24px, 3vw, 32px);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.4;
+    color: var(--dark-bg);
+    margin-bottom: 16px;
+  }
+
+  .quote-section cite {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: var(--ls-md);
+    text-transform: uppercase;
+    color: rgba(30, 26, 21, 0.7);
+  }
+
+  /* REVIEWS */
+  .reviews-section {
+    padding: var(--section-pad) 32px;
+    background: var(--alt-bg);
+  }
+
+  .reviews-inner {
+    max-width: var(--content-width);
+    margin: 0 auto;
+  }
+
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 48px;
+  }
+
+  .review-card {
+    border-top: 2px solid var(--saffron);
+    padding-top: 24px;
+  }
+
+  .review-text {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--black);
+    margin-bottom: 16px;
+  }
+
+  .review-attr {
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: var(--ls-md);
+    text-transform: uppercase;
+    color: var(--warm-gray);
+  }
+
+  /* VISIT */
+  .visit-section {
+    padding: var(--section-pad) 32px;
+  }
+
+  .visit-inner {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+
+  .visit-info h3 {
+    font-family: 'Newsreader', serif;
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-bottom: 24px;
+    color: var(--black);
+  }
+
+  .visit-detail {
+    margin-bottom: 24px;
+  }
+
+  .visit-detail-label {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: var(--ls-lg);
+    text-transform: uppercase;
+    color: var(--warm-gray);
+    margin-bottom: 8px;
+  }
+
+  .visit-detail p, .visit-detail a {
+    color: var(--black);
+    text-decoration: none;
+    font-size: 0.9375rem;
+  }
+
+  .visit-detail a:hover { color: var(--saffron); }
+
+  .hours-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .hours-table td {
+    padding: 6px 0;
+    font-size: 0.9375rem;
+    color: var(--black);
+  }
+
+  .hours-table td:last-child { text-align: right; }
+
+  .hours-closed {
+    color: var(--warm-gray);
+  }
+
+  .visit-map {
+    width: 100%;
+    height: 320px;
+    border: none;
+    filter: grayscale(0.5) contrast(1.1);
+  }
+
+  /* CTA BAND */
+  .cta-band {
+    padding: 80px 32px;
+    background: var(--dark-bg);
+    text-align: center;
+  }
+
+  .cta-band h2 {
+    font-family: 'Newsreader', serif;
+    font-size: clamp(28px, 3.5vw, 40px);
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--cream);
+    margin-bottom: 32px;
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 48px 32px;
+    background: var(--dark-bg);
+    border-top: 1px solid rgba(250, 245, 238, 0.08);
+  }
+
+  .footer-inner {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-brand {
+    font-family: 'Newsreader', serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--cream);
+    letter-spacing: var(--ls-sm);
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+  }
+
+  .footer-links a {
+    font-size: 0.8125rem;
+    color: rgba(250, 245, 238, 0.5);
+    text-decoration: none;
+    transition: color 200ms var(--ease-out);
+  }
+
+  .footer-links a:hover { color: var(--cream); }
+
+  .footer-copy {
+    font-size: 0.75rem;
+    color: rgba(250, 245, 238, 0.3);
+    margin-top: 24px;
+    text-align: center;
+    max-width: var(--content-width);
+    margin: 24px auto 0;
+    padding: 0 32px;
+  }
+
+  /* SCROLL MARGIN */
+  [id] { scroll-margin-top: 80px; }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .nav-toggle { display: block; }
+    .nav-links.open {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--dark-bg);
+      padding: 24px 32px;
+      gap: 16px;
+    }
+    .about-grid { grid-template-columns: 1fr; }
+    .menu-grid { grid-template-columns: 1fr; }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .visit-inner { grid-template-columns: 1fr; }
+    .photo-strip { grid-template-columns: 1fr; }
+    .photo-strip img { height: 280px; }
+    .photo-strip-stack { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+    .photo-strip-stack img { height: 180px; }
+    .trust-bar-inner { gap: 24px; }
+    .hero-ctas { flex-direction: column; align-items: center; }
+    .footer-inner { flex-direction: column; gap: 16px; text-align: center; }
+  }
+
+  /* FOCUS */
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--saffron);
+    outline-offset: 4px;
+  }
+
+  /* ANIMATIONS */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+  }
+
+  body.js-ready .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .stagger-1 { transition-delay: 0ms; }
+  .stagger-2 { transition-delay: 60ms; }
+  .stagger-3 { transition-delay: 120ms; }
+  .stagger-4 { transition-delay: 180ms; }
+  .stagger-5 { transition-delay: 240ms; }
+  .stagger-6 { transition-delay: 300ms; }
+
+  /* Hero entrance */
+  .hero-label { opacity: 0; transform: translateY(16px); transition: opacity 500ms var(--ease-out) 200ms, transform 500ms var(--ease-out) 200ms; }
+  .hero h1 { opacity: 0; transform: translateY(16px); transition: opacity 500ms var(--ease-out) 400ms, transform 500ms var(--ease-out) 400ms; }
+  .hero-body { opacity: 0; transform: translateY(16px); transition: opacity 500ms var(--ease-out) 600ms, transform 500ms var(--ease-out) 600ms; }
+  .hero-ctas { opacity: 0; transform: translateY(16px); transition: opacity 500ms var(--ease-out) 800ms, transform 500ms var(--ease-out) 800ms; }
+
+  body.js-ready .hero-label,
+  body.js-ready .hero h1,
+  body.js-ready .hero-body,
+  body.js-ready .hero-ctas {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* No JS fallback */
+  noscript + style { display: none; }
+
+  /* REDUCED MOTION */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-brand">Roaming Yak</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#visit">Visit</a></li>
+  </ul>
+  <button class="nav-toggle" aria-label="Toggle menu" onclick="document.getElementById('navLinks').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <p class="hero-label">Tibetan Kitchen · Downtown Calgary</p>
+    <h1>You Sit Down. They Bring You Tea.</h1>
+    <p class="hero-body">Complimentary butter tea before you order. Hand-folded momos when you do. Calgary's only Tibetan restaurant. Family-owned since day one.</p>
+    <div class="hero-ctas">
+      <a href="https://maps.google.com/maps?q=512+6+Street+SW+Calgary+AB" class="btn-primary" target="_blank" rel="noopener">Get Directions</a>
+      <a href="https://www.instagram.com/roaming_yak_yyc/" class="btn-secondary" target="_blank" rel="noopener">@roaming_yak_yyc</a>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-bar-inner">
+    <div class="trust-stat">
+      <div class="trust-stat-number">Family-Run</div>
+      <div class="trust-stat-label">Owned & Operated</div>
+    </div>
+    <div class="trust-stat">
+      <div class="trust-stat-number">Tue — Sun</div>
+      <div class="trust-stat-label">Open 6 Days</div>
+    </div>
+    <div class="trust-stat">
+      <div class="trust-stat-number">Only One</div>
+      <div class="trust-stat-label">Tibetan Kitchen in Calgary</div>
+    </div>
+    <div class="trust-stat">
+      <div class="trust-stat-number">Butter Tea</div>
+      <div class="trust-stat-label">Complimentary</div>
+    </div>
+  </div>
+</div>
+
+<!-- PHOTO STRIP -->
+<div class="photo-strip">
+  <img src="momos.jpg" alt="Steamed Tibetan momos" loading="lazy">
+  <div class="photo-strip-stack">
+    <img src="butter-tea.jpg" alt="Tibetan butter tea" loading="lazy">
+    <img src="chili-oil.jpg" alt="Housemade chili garlic oil" loading="lazy">
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="section fade-in" id="about">
+  <p class="section-label">The Story</p>
+  <div class="about-grid">
+    <div>
+      <div class="about-quote">
+        "Roaming Yak is a fantastic spot for authentic Tibetan cuisine and a truly memorable food experience."
+        <cite>Nayan S. · Dec 2024 · Via TripAdvisor</cite>
+      </div>
+    </div>
+    <div class="about-text">
+      <h2>They Grew Up Making This Food. Now They Make It for Calgary.</h2>
+      <p>Roaming Yak opened in late November 2025. The family behind it didn't learn Tibetan cooking in a restaurant. They learned it at home — momos, shabhaley, thukpa. The food of the Himalayas, made the way it's always been made.</p>
+      <p>Every meal starts with complimentary butter tea. Salted, rich, nothing like what you expect. That's the point. Most of what's on this menu will be a first for you.</p>
+    </div>
+  </div>
+</section>
+
+<!-- NAME SECTION -->
+<div class="name-section fade-in">
+  <p class="section-label">The Name</p>
+  <h2>Most People Have Never Tried Tibetan Food. This Is Where That Changes.</h2>
+</div>
+
+<!-- MENU -->
+<section class="menu-section" id="menu">
+  <div class="menu-inner">
+    <p class="section-label">The Menu</p>
+    <h2>Himalayan Comfort, Made by Hand</h2>
+    <div class="menu-grid">
+      <div class="menu-card fade-in stagger-1">
+        <div class="menu-card-header">
+          <h3>Steamed Momo</h3>
+          <span class="price">$14</span>
+        </div>
+        <p>Traditional Tibetan dumplings stuffed with meat or vegetables, onion, and herbs. The way they've always been made.</p>
+      </div>
+      <div class="menu-card fade-in stagger-2">
+        <div class="menu-card-header">
+          <h3>Shabhaley</h3>
+          <span class="price">from $14</span>
+        </div>
+        <p>Tibetan meat pie — crispy, golden, filled with seasoned beef. Street food from Lhasa.</p>
+      </div>
+      <div class="menu-card fade-in stagger-3">
+        <div class="menu-card-header">
+          <h3>Laphing</h3>
+          <span class="price">$8.99</span>
+        </div>
+        <p>Cold mung bean noodles with chili oil and vinegar. Spicy, tangy, refreshing. A Tibetan street classic.</p>
+      </div>
+      <div class="menu-card fade-in stagger-4">
+        <div class="menu-card-header">
+          <h3>Jhol Momo</h3>
+          <span class="price">$15.60</span>
+        </div>
+        <p>Steamed dumplings swimming in a spicy Himalayan broth. Warming, complex, unforgettable.</p>
+      </div>
+      <div class="menu-card fade-in stagger-5">
+        <div class="menu-card-header">
+          <h3>Stir Fried Rice</h3>
+          <span class="price">$14.20</span>
+        </div>
+        <p>Wok-tossed with vegetables and your choice of protein. Their most-ordered dish.</p>
+      </div>
+      <div class="menu-card fade-in stagger-6">
+        <div class="menu-card-header">
+          <h3>Tingmo</h3>
+          <span class="price">$5</span>
+        </div>
+        <p>Tibetan steamed bread — soft, pillowy, meant to soak up every last drop of broth and sauce.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<div class="quote-section fade-in">
+  <div class="quote-inner">
+    <blockquote>"One of the few places in town to get authentic Tibetan cuisine."</blockquote>
+    <cite>Avenue Calgary · Jan 2026</cite>
+  </div>
+</div>
+
+<!-- REVIEWS -->
+<section class="reviews-section" id="reviews">
+  <div class="reviews-inner">
+    <p class="section-label">What People Say</p>
+    <h2>First Impressions</h2>
+    <div class="reviews-grid">
+      <div class="review-card fade-in stagger-1">
+        <p class="review-text">"A must-visit for anyone who loves authentic flavors, spicy food, and Tibetan cuisine done right."</p>
+        <p class="review-attr">Nayan S. · Dec 2024 · Via TripAdvisor</p>
+      </div>
+      <div class="review-card fade-in stagger-2">
+        <p class="review-text">"The steamed momos were soft, fresh, and well-seasoned. What really stood out was their chili garlic oil — incredibly authentic."</p>
+        <p class="review-attr">Nayan S. · Dec 2024 · Via TripAdvisor</p>
+      </div>
+      <div class="review-card fade-in stagger-3">
+        <p class="review-text">"We were pleasantly surprised with complimentary butter tea, rich, comforting, and absolutely delicious. It set the tone for the whole meal."</p>
+        <p class="review-attr">Nayan S. · Dec 2024 · Via TripAdvisor</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section class="visit-section fade-in" id="visit">
+  <div class="visit-inner">
+    <div class="visit-info">
+      <p class="section-label">Find Us</p>
+      <h3>Downtown Calgary</h3>
+      <div class="visit-detail">
+        <p class="visit-detail-label">Address</p>
+        <p>512 6 Street SW, Floor 1<br>Calgary, AB T2P 1X3</p>
+      </div>
+      <div class="visit-detail">
+        <p class="visit-detail-label">Hours</p>
+        <table class="hours-table">
+          <tr><td>Tuesday — Thursday</td><td>11:30 AM — 9:30 PM</td></tr>
+          <tr><td>Friday</td><td>11:30 AM — 10:00 PM</td></tr>
+          <tr><td>Saturday</td><td>12:00 PM — 10:00 PM</td></tr>
+          <tr><td>Sunday</td><td>12:00 PM — 8:30 PM</td></tr>
+          <tr class="hours-closed"><td>Monday</td><td>Closed</td></tr>
+        </table>
+      </div>
+      <div class="visit-detail">
+        <p class="visit-detail-label">Social</p>
+        <a href="https://www.instagram.com/roaming_yak_yyc/" target="_blank" rel="noopener">@roaming_yak_yyc on Instagram</a>
+      </div>
+    </div>
+    <iframe class="visit-map" src="https://maps.google.com/maps?q=512+6+Street+SW+Calgary+AB+T2P+1X3&output=embed" loading="lazy" title="Map to Roaming Yak"></iframe>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<div class="cta-band">
+  <h2>Butter Tea Is Waiting</h2>
+  <a href="https://maps.google.com/maps?q=512+6+Street+SW+Calgary+AB" class="btn-primary" target="_blank" rel="noopener">Get Directions</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <span class="footer-brand">Roaming Yak</span>
+    <ul class="footer-links">
+      <li><a href="https://www.instagram.com/roaming_yak_yyc/" target="_blank" rel="noopener">Instagram</a></li>
+      <li><a href="https://maps.google.com/maps?q=512+6+Street+SW+Calgary+AB" target="_blank" rel="noopener">Directions</a></li>
+    </ul>
+  </div>
+  <p class="footer-copy">© 2026 Roaming Yak. 512 6 Street SW, Calgary, AB.</p>
+</footer>
+
+<noscript><style>.fade-in { opacity: 1; transform: none; } .hero-label, .hero h1, .hero-body, .hero-ctas { opacity: 1; transform: none; }</style></noscript>
+<script>
+document.body.classList.add('js-ready');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Csinos Vintage — Victoria, BC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gloock&family=Jost:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+
+<style>
+  /* ============================================================
+     CSINOS VINTAGE — v5 Final
+     Asymmetric collage hero, Gloock + Jost
+     Warm cream / dusty rose / warm charcoal palette
+  ============================================================ */
+
+  :root {
+    --cream:      #FAF5EF;
+    --alt-bg:     #F0EAE0;
+    --dark:       #1E1A15;
+    --mid:        #3A3430;
+    --warm-gray:  #7A706A;
+    --rose:       #B87B5E;
+    --rose-light: #F0E4DC;
+    --white:      #FFFFFF;
+
+    --ls-sm:    0.04em;
+    --ls-md:    0.08em;
+    --ls-wide:  0.12em;
+    --body-size: 1.0625rem;
+
+    --section-pad: clamp(64px, 8vw, 112px);
+    --max-w: 1200px;
+    --content-w: 72ch;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--dark);
+    background: var(--cream);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  img { display: block; width: 100%; }
+  a { color: inherit; text-decoration: none; }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--cream);
+    border-bottom: 1px solid rgba(30,26,21,0.08);
+    padding: 0 clamp(24px, 5vw, 64px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+  .nav-brand {
+    font-family: 'Gloock', serif;
+    font-size: 1.25rem;
+    letter-spacing: 0.03em;
+    color: var(--dark);
+  }
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 0.8125rem;
+    font-weight: 400;
+    letter-spacing: var(--ls-md);
+    text-transform: uppercase;
+    color: var(--mid);
+    transition: color 200ms;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--rose);
+    transition: width 250ms ease;
+  }
+  .nav-links a:hover { color: var(--dark); }
+  .nav-links a:hover::after { width: 100%; }
+
+  .nav-cta {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: var(--ls-sm);
+    text-transform: uppercase;
+    border: 1px solid var(--dark);
+    padding: 8px 20px;
+    transition: background 200ms, color 200ms;
+  }
+  .nav-cta:hover { background: var(--dark); color: var(--cream); }
+
+  /* Mobile menu */
+  .nav-mobile-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .nav-mobile-toggle span {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background: var(--dark);
+    transition: transform 300ms, opacity 300ms;
+  }
+  .nav-mobile-menu {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: var(--dark);
+    z-index: 200;
+    padding: 24px;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: flex-start;
+    justify-content: center;
+  }
+  .nav-mobile-menu.open { display: flex; }
+  .nav-mobile-close {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: var(--cream);
+  }
+  .nav-mobile-menu a {
+    font-family: 'Gloock', serif;
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    color: var(--cream);
+    letter-spacing: 0.02em;
+  }
+
+  /* ── HERO — ASYMMETRIC COLLAGE ── */
+  .hero {
+    min-height: calc(100svh - 64px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0;
+  }
+
+  .hero-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(48px, 6vw, 96px) clamp(32px, 5vw, 72px);
+    gap: 24px;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: var(--ls-wide);
+    text-transform: uppercase;
+    color: var(--rose);
+  }
+
+  .hero-h1 {
+    font-family: 'Gloock', serif;
+    font-size: clamp(2.5rem, 4.5vw, 4.5rem);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    color: var(--dark);
+  }
+
+  .hero-body {
+    font-size: 1.0625rem;
+    color: var(--warm-gray);
+    max-width: 42ch;
+    line-height: 1.65;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    background: var(--dark);
+    color: var(--cream);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: var(--ls-md);
+    text-transform: uppercase;
+    padding: 14px 28px;
+    transition: background 200ms;
+  }
+  .btn-primary:hover { background: var(--mid); }
+  .btn-primary:active { transform: scale(0.97); transition: transform 160ms ease-out; }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: var(--ls-sm);
+    text-transform: uppercase;
+    color: var(--mid);
+    padding: 14px 0;
+    border-bottom: 1px solid transparent;
+    transition: border-color 200ms;
+  }
+  .btn-secondary:hover { border-color: var(--mid); }
+  .btn-secondary:active { transform: scale(0.97); transition: transform 160ms ease-out; }
+
+  /* Hero collage grid */
+  .hero-collage {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 3px;
+    background: var(--alt-bg);
+    overflow: hidden;
+  }
+  .hero-collage-item {
+    background: var(--alt-bg);
+    overflow: hidden;
+  }
+  .hero-collage-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  /* Asymmetric: first item spans 2 rows */
+  .hero-collage-item:first-child {
+    grid-row: 1 / 3;
+  }
+
+  /* CSS gradient placeholders for images */
+  .img-placeholder-dress {
+    background: linear-gradient(135deg, #E8DDD4 0%, #C9B8AD 100%);
+    aspect-ratio: auto;
+    height: 100%;
+  }
+  .img-placeholder-jacket {
+    background: linear-gradient(135deg, #2A2420 0%, #4A3830 100%);
+  }
+  .img-placeholder-accessories {
+    background: linear-gradient(135deg, #B87B5E 0%, #8B5A42 100%);
+  }
+
+  /* ── SECTION GENERIC ── */
+  .section {
+    padding: var(--section-pad) clamp(24px, 5vw, 64px);
+    max-width: var(--max-w);
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: var(--ls-wide);
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .section-h2 {
+    font-family: 'Gloock', serif;
+    font-size: clamp(1.75rem, 3vw, 2.75rem);
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    color: var(--dark);
+    margin-bottom: 24px;
+  }
+
+  /* Three-level letter-spacing system enforced */
+  .nav-links a { letter-spacing: var(--ls-md); }
+  .section-label, .name-label, .hero-eyebrow, .visit-detail-label { letter-spacing: var(--ls-wide); }
+  .btn-primary, .btn-secondary, .btn-light, .nav-cta, .reviews-source { letter-spacing: var(--ls-md); }
+  .review-meta, .collective-stat-label, .footer-links a, .footer-meta { letter-spacing: var(--ls-sm); }
+
+  /* ── BRAND STRIP ── */
+  .brand-strip {
+    background: var(--dark);
+    padding: clamp(40px, 5vw, 64px) clamp(24px, 5vw, 64px);
+  }
+  .brand-strip-inner {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    text-align: center;
+  }
+  .brand-strip-quote {
+    font-family: 'Gloock', serif;
+    font-size: clamp(1.25rem, 2.5vw, 2rem);
+    font-style: italic;
+    color: rgba(250,245,239,0.4);
+    letter-spacing: 0.01em;
+  }
+  .brand-strip-quote span {
+    color: rgba(250,245,239,0.7);
+  }
+
+  /* ── ABOUT ── */
+  .about {
+    background: var(--cream);
+    padding: var(--section-pad) clamp(24px, 5vw, 64px);
+  }
+  .about-inner {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    gap: clamp(48px, 6vw, 96px);
+    align-items: start;
+  }
+  .about-image {
+    position: relative;
+  }
+  .about-image img {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+  }
+  .img-placeholder-about {
+    background: linear-gradient(160deg, #E0D4C8 0%, #C4B0A0 50%, #A89080 100%);
+    aspect-ratio: 3/4;
+    width: 100%;
+  }
+  .about-caption {
+    font-size: 0.8125rem;
+    font-style: italic;
+    color: var(--warm-gray);
+    margin-top: 12px;
+    line-height: 1.5;
+  }
+  .about-content {}
+  .about-body p {
+    font-size: 1.0625rem;
+    color: var(--mid);
+    line-height: 1.75;
+    margin-bottom: 1.25rem;
+  }
+  .about-body p:last-child { margin-bottom: 0; }
+
+  /* ── NAME SECTION ── */
+  .name-section {
+    background: var(--dark);
+    padding: clamp(80px, 10vw, 128px) clamp(24px, 5vw, 64px);
+  }
+  .name-inner {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    text-align: center;
+  }
+  .name-label {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: var(--ls-wide);
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 24px;
+  }
+  .name-h2 {
+    font-family: 'Gloock', serif;
+    font-size: clamp(2.5rem, 5vw, 5rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--cream);
+    margin-bottom: 32px;
+  }
+  .name-h2 em {
+    color: var(--rose);
+    font-style: italic;
+  }
+  .name-body {
+    font-size: 1.125rem;
+    color: rgba(250,245,239,0.65);
+    line-height: 1.7;
+    max-width: 52ch;
+    margin: 0 auto;
+  }
+
+  /* ── WHAT YOU'LL FIND ── */
+  .find-section {
+    background: var(--alt-bg);
+    padding: var(--section-pad) clamp(24px, 5vw, 64px);
+  }
+  .find-inner {
+    max-width: var(--max-w);
+    margin: 0 auto;
+  }
+  .find-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3px;
+    margin-top: 48px;
+  }
+  .find-card {
+    background: var(--cream);
+    padding: 40px 32px;
+    border-top: 2px solid var(--rose);
+  }
+  .find-num {
+    font-family: 'Gloock', serif;
+    font-size: 2rem;
+    color: rgba(184,123,94,0.25);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+  .find-title {
+    font-family: 'Gloock', serif;
+    font-size: 1.25rem;
+    letter-spacing: -0.01em;
+    color: var(--dark);
+    margin-bottom: 10px;
+  }
+  .find-body {
+    font-size: 0.9375rem;
+    color: var(--warm-gray);
+    line-height: 1.6;
+  }
+
+  /* ── COLLECTIVE ── */
+  .collective {
+    background: var(--rose-light);
+    padding: var(--section-pad) clamp(24px, 5vw, 64px);
+  }
+  .collective-inner {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(48px, 6vw, 96px);
+    align-items: center;
+  }
+  .collective-content .section-h2 { margin-bottom: 20px; }
+  .collective-body {
+    font-size: 1.0625rem;
+    color: var(--mid);
+    line-height: 1.75;
+    margin-bottom: 1.25rem;
+  }
+  .collective-stat {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-top: 24px;
+    border-top: 1px solid rgba(184,123,94,0.3);
+    padding-top: 24px;
+  }
+  .collective-stat-num {
+    font-family: 'Gloock', serif;
+    font-size: 2.5rem;
+    color: var(--dark);
+    letter-spacing: -0.02em;
+  }
+  .collective-stat-label {
+    font-size: 0.875rem;
+    color: var(--warm-gray);
+    letter-spacing: var(--ls-sm);
+  }
+  .collective-quote {
+    background: var(--cream);
+    padding: clamp(32px, 4vw, 56px);
+    border-left: 3px solid var(--rose);
+  }
+  .collective-quote blockquote {
+    font-family: 'Gloock', serif;
+    font-size: clamp(1.125rem, 2vw, 1.5rem);
+    line-height: 1.5;
+    color: var(--dark);
+    font-style: italic;
+    margin-bottom: 20px;
+  }
+  .collective-quote cite {
+    font-size: 0.8125rem;
+    letter-spacing: var(--ls-md);
+    text-transform: uppercase;
+    color: var(--warm-gray);
+    font-style: normal;
+  }
+
+  /* ── REVIEWS ── */
+  .reviews {
+    background: var(--cream);
+    padding: var(--section-pad) clamp(24px, 5vw, 64px);
+  }
+  .reviews-inner {
+    max-width: var(--max-w);
+    margin: 0 auto;
+  }
+  .reviews-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 48px;
+  }
+  .reviews-header .section-h2 { margin-bottom: 0; }
+  .reviews-source {
+    font-size: 0.8125rem;
+    letter-spacing: var(--ls-sm);
+    text-transform: uppercase;
+    color: var(--warm-gray);
+  }
+
+  /* 2-col layout */
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .review-card {
+    background: var(--alt-bg);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    border-top: 2px solid var(--rose);
+  }
+  .review-stars {
+    display: flex;
+    gap: 3px;
+  }
+  .review-star {
+    width: 14px;
+    height: 14px;
+    background: var(--rose);
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  }
+  .review-text {
+    font-size: 1rem;
+    color: var(--mid);
+    line-height: 1.65;
+    font-style: italic;
+  }
+  .review-meta {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: var(--ls-sm);
+    text-transform: uppercase;
+    color: var(--warm-gray);
+    margin-top: auto;
+  }
+
+  /* ── VISIT ── */
+  .visit {
+    background: var(--alt-bg);
+    padding: var(--section-pad) clamp(24px, 5vw, 64px);
+  }
+  .visit-inner {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(48px, 6vw, 96px);
+    align-items: start;
+  }
+  .visit-info .section-h2 { margin-bottom: 32px; }
+
+  .visit-detail {
+    margin-bottom: 24px;
+  }
+  .visit-detail-label {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: var(--ls-wide);
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 6px;
+  }
+  .visit-detail-value {
+    font-size: 1rem;
+    color: var(--dark);
+    line-height: 1.6;
+  }
+  .visit-detail-value a {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: rgba(30,26,21,0.3);
+  }
+  .visit-detail-value a:hover {
+    text-decoration-color: var(--dark);
+  }
+
+  .hours-table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 4px;
+  }
+  .hours-table tr td {
+    padding: 6px 0;
+    font-size: 0.9375rem;
+    color: var(--mid);
+    border-top: 1px solid rgba(30,26,21,0.08);
+  }
+  .hours-table tr:first-child td { border-top: none; }
+  .hours-table td:last-child { text-align: right; color: var(--warm-gray); }
+
+  .visit-map iframe {
+    width: 100%;
+    aspect-ratio: 4/3;
+    border: none;
+    display: block;
+  }
+  .visit-map-placeholder {
+    background: linear-gradient(135deg, #E0D8CC 0%, #C8BEB0 100%);
+    aspect-ratio: 4/3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .visit-map-placeholder span {
+    font-size: 0.875rem;
+    letter-spacing: var(--ls-md);
+    text-transform: uppercase;
+    color: var(--warm-gray);
+  }
+
+  /* ── CTA BAND ── */
+  .cta-band {
+    background: var(--dark);
+    padding: clamp(64px, 8vw, 96px) clamp(24px, 5vw, 64px);
+    text-align: center;
+  }
+  .cta-band-inner {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .cta-band h2 {
+    font-family: 'Gloock', serif;
+    font-size: clamp(1.75rem, 3.5vw, 3rem);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--cream);
+    margin-bottom: 20px;
+  }
+  .cta-band p {
+    font-size: 1rem;
+    color: rgba(250,245,239,0.6);
+    line-height: 1.65;
+    margin-bottom: 36px;
+  }
+  .btn-light {
+    display: inline-flex;
+    align-items: center;
+    background: var(--cream);
+    color: var(--dark);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: var(--ls-md);
+    text-transform: uppercase;
+    padding: 14px 32px;
+    transition: background 200ms;
+  }
+  .btn-light:hover { background: var(--rose-light); }
+  .btn-light:active { transform: scale(0.97); transition: transform 160ms ease-out; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark);
+    border-top: 1px solid rgba(250,245,239,0.08);
+    padding: 40px clamp(24px, 5vw, 64px);
+  }
+  .footer-inner {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 24px;
+  }
+  .footer-brand {
+    font-family: 'Gloock', serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.03em;
+    color: var(--cream);
+  }
+  .footer-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    justify-content: center;
+  }
+  .footer-links a {
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: var(--ls-md);
+    text-transform: uppercase;
+    color: rgba(250,245,239,0.5);
+    transition: color 200ms;
+  }
+  .footer-links a:hover { color: var(--cream); }
+  .footer-meta {
+    text-align: right;
+    font-size: 0.75rem;
+    color: rgba(250,245,239,0.35);
+    letter-spacing: var(--ls-sm);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .nav-links, .nav-cta { display: none; }
+    .nav-mobile-toggle { display: flex; }
+
+    .hero {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+    .hero-collage {
+      height: 55vw;
+      min-height: 280px;
+    }
+    .hero-text {
+      padding: 48px 24px;
+    }
+
+    .about-inner { grid-template-columns: 1fr; }
+    .about-image { max-width: 380px; }
+
+    .collective-inner { grid-template-columns: 1fr; }
+    .find-grid { grid-template-columns: 1fr; }
+
+    .reviews-grid { grid-template-columns: 1fr; }
+    .reviews-header { flex-direction: column; gap: 8px; }
+
+    .visit-inner { grid-template-columns: 1fr; }
+
+    .footer-inner { grid-template-columns: 1fr; text-align: center; }
+    .footer-meta { text-align: center; }
+    .footer-links { flex-wrap: wrap; }
+  }
+
+  @media (max-width: 600px) {
+    .hero-h1 { font-size: 2.25rem; }
+  }
+
+  /* ── MOTION ── */
+  :root {
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  /* Hero entrance — applied via JS on load */
+  .hero-enter {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 400ms var(--ease-out), transform 400ms var(--ease-out);
+  }
+  .hero-enter.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .hero-delay-1 { transition-delay: 80ms; }
+  .hero-delay-2 { transition-delay: 160ms; }
+  .hero-delay-3 { transition-delay: 240ms; }
+
+  /* Scroll reveals */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 500ms var(--ease-out), transform 500ms var(--ease-out);
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .stagger-1 { transition-delay: 40ms; }
+  .stagger-2 { transition-delay: 80ms; }
+  .stagger-3 { transition-delay: 120ms; }
+  .stagger-4 { transition-delay: 160ms; }
+
+  /* Button active feedback */
+  .btn-primary:active,
+  .btn-secondary:active,
+  .btn-light:active,
+  .nav-cta:active {
+    transform: scale(0.97);
+    transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    .hero-enter, .reveal { opacity: 1 !important; transform: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-brand">Csinos</a>
+  <ul class="nav-links">
+    <li><a href="#about">Our Story</a></li>
+    <li><a href="#find">What's Inside</a></li>
+    <li><a href="#collective">Collective</a></li>
+    <li><a href="#visit">Visit</a></li>
+  </ul>
+  <a href="https://www.instagram.com/csinosvintage/" class="nav-cta" target="_blank" rel="noopener">Follow Along</a>
+  <button class="nav-mobile-toggle" aria-label="Open menu" id="menuToggle">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="nav-mobile-menu" id="mobileMenu">
+  <button class="nav-mobile-close" id="menuClose" aria-label="Close menu">✕</button>
+  <a href="#about" onclick="closeMobileMenu()">Our Story</a>
+  <a href="#find" onclick="closeMobileMenu()">What's Inside</a>
+  <a href="#collective" onclick="closeMobileMenu()">Collective</a>
+  <a href="#visit" onclick="closeMobileMenu()">Visit</a>
+  <a href="https://www.instagram.com/csinosvintage/" target="_blank">@csinosvintage</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <p class="hero-eyebrow hero-enter" id="hero-e1">Victoria's Curated Vintage</p>
+    <h1 class="hero-h1 hero-enter hero-delay-1" id="hero-e2">It's sort of a mood.</h1>
+    <p class="hero-body hero-enter hero-delay-2" id="hero-e3">Csinos is Hungarian for beautiful. This is what that looks like in a room — vintage clothing, shoes, and objects chosen for the feeling they carry, not just the label they wear.</p>
+    <div class="hero-ctas hero-enter hero-delay-3" id="hero-e4">
+      <a href="#visit" class="btn-primary">Visit on Yates St</a>
+      <a href="https://www.instagram.com/csinosvintage/" class="btn-secondary" target="_blank" rel="noopener">Follow @csinosvintage ↗</a>
+    </div>
+  </div>
+
+  <div class="hero-collage">
+    <div class="hero-collage-item">
+      <img src="dress-hero.png" alt="Vintage garment, warm studio light" loading="eager">
+    </div>
+    <div class="hero-collage-item">
+      <img src="knitwear.png" alt="Vintage knitwear, earth tones" loading="eager">
+    </div>
+    <div class="hero-collage-item">
+      <img src="accessories.png" alt="Vintage accessories flat lay" loading="eager">
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO STRIP — dark divider with brand quote -->
+<div class="brand-strip reveal">
+  <div class="brand-strip-inner">
+    <p class="brand-strip-quote">"Csinos.<span>&nbsp;It's sort of a mood."</span></p>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about" style="scroll-margin-top: 64px;">
+  <div class="about-inner">
+    <div class="about-image reveal">
+      <img src="homeware.png" alt="Vintage ceramics and objects — Csinos Vintage" style="aspect-ratio:3/4; object-fit:cover;">
+      <p class="about-caption">Vintage objects from Csinos — 770 Yates St, Victoria BC</p>
+    </div>
+    <div class="about-content reveal stagger-1">
+      <p class="section-label">The Story</p>
+      <h2 class="section-h2">Beautiful things have lives.<br>Those lives should continue.</h2>
+      <div class="about-body">
+        <p>Szandi grew up in Eastern Europe, where clothing wasn't disposable — it was inherited, repaired, passed on. When her family moved to Canada, thrift stores were how they built a home. That relationship with second-hand objects as something meaningful, not just affordable, never left her.</p>
+        <p>Csinos Vintage started in Fernwood in 2020 as an Instagram account and grew into a curated shop. The name says everything: the word means beautiful in Hungarian, and it describes both the pieces and the intention behind finding them.</p>
+        <p>"It's sort of a mood," Szandi says. "I'm not selling clothes. I'm selling a feeling."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NAME SECTION -->
+<section class="name-section">
+  <div class="name-inner reveal">
+    <p class="name-label">The Name</p>
+    <h2 class="name-h2">Csinos.<br><em>Pronounced: chee-nosh.</em><br>Hungarian for beautiful.</h2>
+    <p class="name-body">It's the word her grandmother would use about a well-made dress. The word her mother used about a piece worth keeping. Now it's the word over the door — and the standard every item must meet before it comes inside.</p>
+  </div>
+</section>
+
+<!-- WHAT YOU'LL FIND -->
+<section class="find-section" id="find" style="scroll-margin-top: 64px;">
+  <div class="find-inner">
+    <p class="section-label">What's Inside</p>
+    <h2 class="section-h2">Every piece was chosen for a reason.</h2>
+    <div class="find-grid">
+      <div class="find-card reveal">
+        <div class="find-num">01</div>
+        <h3 class="find-title">Clothing</h3>
+        <p class="find-body">Dresses, blouses, trousers, knitwear — decades from the '60s to the '90s. Every garment was chosen for cut and quality, not just age. Nothing lands here by accident.</p>
+      </div>
+      <div class="find-card reveal stagger-1">
+        <div class="find-num">02</div>
+        <h3 class="find-title">Shoes & Accessories</h3>
+        <p class="find-body">Leather boots, heels, bags, belts, jewellery. Things built to last that outlasted their first owners. The same editorial eye, applied to everything you wear with the clothes.</p>
+      </div>
+      <div class="find-card reveal stagger-2">
+        <div class="find-num">03</div>
+        <h3 class="find-title">Household</h3>
+        <p class="find-body">Ceramics, glassware, textiles, small objects with a past. The pieces that make a room feel like someone thought about it rather than just bought it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COLLECTIVE -->
+<section class="collective" id="collective" style="scroll-margin-top: 64px;">
+  <div class="collective-inner">
+    <div class="collective-content">
+      <p class="section-label">Cheers Vintage Collective</p>
+      <h2 class="section-h2">Five women. One address. Five completely different eyes.</h2>
+      <p class="collective-body">Csinos Vintage lives inside Cheers Vintage Collective at 770 Yates Street — five independent sellers, each with their own curated section. You're not choosing from one person's taste. You're in a room with five of them.</p>
+      <p class="collective-body">Every seller here started with Instagram, built a community, and earned a floor in the same building. The result is something no single shop could achieve alone.</p>
+      <div class="collective-stat">
+        <span class="collective-stat-num">5</span>
+        <span class="collective-stat-label">independent sellers under one roof</span>
+      </div>
+    </div>
+    <div class="collective-quote">
+      <blockquote>"I'm not selling clothes. I'm selling a feeling."</blockquote>
+      <cite>Szandi — Founder, Csinos Vintage</cite>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews" style="scroll-margin-top: 64px;">
+  <div class="reviews-inner">
+    <div class="reviews-header">
+      <div>
+        <p class="section-label">What People Say</p>
+        <h2 class="section-h2">65 reviews. All five stars.</h2>
+      </div>
+      <span class="reviews-source">Via Google</span>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card reveal">
+        <div class="review-stars">
+          <div class="review-star"></div><div class="review-star"></div><div class="review-star"></div><div class="review-star"></div><div class="review-star"></div>
+        </div>
+        <p class="review-text">"She offers quality vintage at affordable price points. Always something worth coming back for."</p>
+        <p class="review-meta">FOUND STUDIO · MAR 2025 · Via Google</p>
+      </div>
+      <div class="review-card reveal stagger-1">
+        <div class="review-stars">
+          <div class="review-star"></div><div class="review-star"></div><div class="review-star"></div><div class="review-star"></div><div class="review-star"></div>
+        </div>
+        <p class="review-text">"Always fairly priced, fantastic quality and excellent communication."</p>
+        <p class="review-meta">SARAH S. · APR 2024 · Via Google</p>
+      </div>
+      <div class="review-card reveal stagger-2">
+        <div class="review-stars">
+          <div class="review-star"></div><div class="review-star"></div><div class="review-star"></div><div class="review-star"></div><div class="review-star"></div>
+        </div>
+        <p class="review-text">"Pieces that provide both nostalgia and quality to the new owner."</p>
+        <p class="review-meta">FOUND STUDIO B. · FEB 2025 · Via Google</p>
+      </div>
+      <div class="review-card reveal stagger-3">
+        <div class="review-stars">
+          <div class="review-star"></div><div class="review-star"></div><div class="review-star"></div><div class="review-star"></div><div class="review-star"></div>
+        </div>
+        <p class="review-text">"I love this shop. The curation is thoughtful — you can tell it wasn't just grabbed off a rack somewhere. Came in for one thing and left with three."</p>
+        <p class="review-meta">HANNAH W. · JAN 2025 · Via Google</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section class="visit" id="visit" style="scroll-margin-top: 64px;">
+  <div class="visit-inner">
+    <div class="visit-info">
+      <p class="section-label">Find Us</p>
+      <h2 class="section-h2">Come see what landed this week.</h2>
+
+      <div class="visit-detail">
+        <p class="visit-detail-label">Address</p>
+        <p class="visit-detail-value">
+          770 Yates Street<br>
+          Victoria, BC V8W 1L4<br>
+          Inside Cheers Vintage Collective
+        </p>
+      </div>
+
+      <div class="visit-detail">
+        <p class="visit-detail-label">Hours</p>
+        <table class="hours-table">
+          <tr><td>Thursday – Monday</td><td>11:00 AM onwards</td></tr>
+          <tr><td>Tuesday – Wednesday</td><td>Closed</td></tr>
+        </table>
+        <p style="font-size:0.8125rem; color:var(--warm-gray); margin-top:8px;">Hours may vary — follow <a href="https://www.instagram.com/csinosvintage/" target="_blank">@csinosvintage</a> for updates</p>
+      </div>
+
+      <div class="visit-detail">
+        <p class="visit-detail-label">Follow</p>
+        <p class="visit-detail-value">
+          <a href="https://www.instagram.com/csinosvintage/" target="_blank" rel="noopener">@csinosvintage on Instagram</a><br>
+          <span style="font-size:0.875rem; color:var(--warm-gray);">New arrivals posted daily</span>
+        </p>
+      </div>
+
+      <a href="https://www.google.com/maps/dir/?api=1&destination=770+Yates+St+Victoria+BC" class="btn-primary" target="_blank" rel="noopener" style="margin-top:16px; display:inline-flex;">Get Directions ↗</a>
+    </div>
+
+    <div class="visit-map">
+      <iframe
+        src="https://maps.google.com/maps?q=770+Yates+St+Victoria+BC&output=embed"
+        title="Csinos Vintage on Google Maps"
+        loading="lazy"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <div class="cta-band-inner">
+    <h2>Every week something new arrives.<br>Come before someone else does.</h2>
+    <p>New pieces cycle through constantly. The best way to stay ahead is to follow along on Instagram — or to simply come by on Yates Street.</p>
+    <a href="https://www.instagram.com/csinosvintage/" class="btn-light" target="_blank" rel="noopener">Follow @csinosvintage ↗</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <span class="footer-brand">Csinos Vintage</span>
+    <ul class="footer-links">
+      <li><a href="#about">Story</a></li>
+      <li><a href="#find">Shop</a></li>
+      <li><a href="#visit">Visit</a></li>
+      <li><a href="https://www.instagram.com/csinosvintage/" target="_blank">Instagram ↗</a></li>
+    </ul>
+    <p class="footer-meta">770 Yates St, Victoria BC<br>© 2026 Csinos Vintage</p>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu
+  const toggle = document.getElementById('menuToggle');
+  const menu = document.getElementById('mobileMenu');
+  const closeBtn = document.getElementById('menuClose');
+  toggle.addEventListener('click', () => menu.classList.add('open'));
+  closeBtn.addEventListener('click', () => menu.classList.remove('open'));
+  function closeMobileMenu() { menu.classList.remove('open'); }
+
+  // Hero entrance on load
+  window.addEventListener('load', () => {
+    const heroEls = document.querySelectorAll('.hero-enter');
+    heroEls.forEach(el => {
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => { el.classList.add('visible'); });
+      });
+    });
+  });
+
+  // Scroll-reveal with IntersectionObserver
+  if ('IntersectionObserver' in window) {
+    const revealObs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+  } else {
+    // Fallback: show all immediately
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+  }
+
+  // Focus-visible for keyboard nav
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Tab') document.body.classList.add('keyboard-nav');
+  });
+  document.addEventListener('mousedown', () => {
+    document.body.classList.remove('keyboard-nav');
+  });
+</script>
+
+<noscript>
+  <style>
+    .hero-enter, .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+  </style>
+</noscript>
+
+</body>
+</html>

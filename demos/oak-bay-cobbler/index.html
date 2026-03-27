@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oak Bay Cobbler — Victoria's Last Great Shoe Repair</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --color-cream: #FAF5EE;
+  --color-leather: #6B3A2A;
+  --color-leather-light: #F0E4DC;
+  --color-brass: #B8924A;
+  --color-brass-light: #F5EDDC;
+  --color-black: #1A1610;
+  --color-warm-gray: #6B6560;
+  --color-alt-bg: #F0EBE3;
+  --color-dark-bg: #1E1A15;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --section-pad: 96px;
+  --content-width: 1120px;
+  --ls-sm: 0.04em;
+  --ls-md: 0.08em;
+  --ls-lg: 0.14em;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--color-black);
+  background: var(--color-cream);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4 { font-family: 'Bitter', serif; font-weight: 700; line-height: 1.15; }
+h2 { font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -0.02em; }
+#about, #services, #reviews, #visit { scroll-margin-top: 80px; }
+h3 { font-size: 1.25rem; }
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+.section-label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: var(--ls-lg);
+  text-transform: uppercase;
+  color: var(--color-warm-gray);
+  margin-bottom: 16px;
+}
+
+.content-wrap {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* === NAV === */
+nav {
+  padding: 20px 0;
+  position: relative;
+  z-index: 100;
+}
+nav .content-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav-brand {
+  font-family: 'Bitter', serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: var(--ls-sm);
+  color: var(--color-black);
+}
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-md);
+  text-transform: uppercase;
+  color: var(--color-warm-gray);
+  transition: color 200ms var(--ease-out);
+}
+.nav-links a:hover { color: var(--color-black); }
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--color-black);
+  margin: 5px 0;
+  transition: all 200ms var(--ease-out);
+}
+
+/* === HERO === */
+.hero {
+  padding: 32px 0 var(--section-pad);
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+.hero-content { max-width: 520px; }
+.hero-label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: var(--ls-lg);
+  text-transform: uppercase;
+  color: var(--color-brass);
+  margin-bottom: 24px;
+}
+.hero h1 {
+  font-size: clamp(2.5rem, 5vw, 3.75rem);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: 24px;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--color-leather);
+}
+.hero-body {
+  font-size: 1.0625rem;
+  color: var(--color-warm-gray);
+  margin-bottom: 32px;
+  max-width: 440px;
+}
+.hero-ctas {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+.btn-primary {
+  display: inline-block;
+  padding: 14px 32px;
+  background: var(--color-leather);
+  color: var(--color-cream);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: var(--ls-md);
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: background 200ms var(--ease-out), transform 100ms var(--ease-out);
+}
+.btn-primary:active { transform: scale(0.97); }
+.btn-primary:hover { background: var(--color-black); }
+.btn-secondary {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-warm-gray);
+  border-bottom: 1px solid var(--color-warm-gray);
+  padding-bottom: 2px;
+  transition: color 200ms var(--ease-out);
+}
+.btn-secondary:hover { color: var(--color-black); }
+
+.hero-image {
+  width: 100%;
+  aspect-ratio: 4/5;
+  background: linear-gradient(135deg, var(--color-leather-light) 0%, var(--color-alt-bg) 100%);
+  position: relative;
+  overflow: hidden;
+}
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* === TRUST BAR === */
+.trust-bar {
+  background: var(--color-dark-bg);
+  padding: 28px 0;
+}
+.trust-bar .content-wrap {
+  display: flex;
+  justify-content: center;
+  gap: 64px;
+}
+.trust-stat {
+  text-align: center;
+}
+.trust-number {
+  font-family: 'Bitter', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-brass);
+  letter-spacing: -0.02em;
+}
+.trust-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-md);
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  margin-top: 4px;
+}
+
+/* === PHOTO STRIP === */
+.photo-strip {
+  padding: 0;
+}
+.photo-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 4px;
+  max-height: 400px;
+}
+.photo-grid .photo-large {
+  aspect-ratio: 16/9;
+  background: linear-gradient(135deg, #D4C4B0 0%, #C4A882 100%);
+  overflow: hidden;
+}
+.photo-stack {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 4px;
+}
+.photo-stack .photo-small {
+  background: linear-gradient(135deg, #C4B8A8 0%, #B8A898 100%);
+  overflow: hidden;
+}
+.photo-grid img, .photo-stack img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* === ABOUT === */
+.about {
+  padding: var(--section-pad) 0;
+}
+.about-grid {
+  display: grid;
+  grid-template-columns: 4fr 8fr;
+  gap: 64px;
+  align-items: start;
+}
+.about-quote {
+  font-family: 'Bitter', serif;
+  font-size: 1.25rem;
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--color-leather);
+  border-left: 3px solid var(--color-brass);
+  padding-left: 24px;
+  margin-bottom: 32px;
+}
+.about-quote cite {
+  display: block;
+  font-style: normal;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-md);
+  text-transform: uppercase;
+  color: var(--color-warm-gray);
+  margin-top: 12px;
+}
+.about-text p {
+  color: var(--color-warm-gray);
+  margin-bottom: 16px;
+}
+
+/* === NAME SECTION === */
+.name-section {
+  padding: 120px 0;
+  text-align: center;
+  background: var(--color-alt-bg);
+}
+.name-section h2 {
+  max-width: 720px;
+  margin: 0 auto;
+}
+.name-section .section-label { margin-bottom: 24px; }
+
+/* === SERVICES === */
+.services {
+  padding: var(--section-pad) 0;
+}
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4px;
+  margin-top: 48px;
+}
+.service-card {
+  padding: 40px 32px;
+  background: var(--color-alt-bg);
+  border-top: 2px solid var(--color-leather);
+}
+.service-number {
+  font-family: 'Bitter', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: rgba(107, 58, 42, 0.3);
+  margin-bottom: 16px;
+}
+.service-card h3 {
+  margin-bottom: 8px;
+}
+.service-card p {
+  font-size: 0.9375rem;
+  color: var(--color-warm-gray);
+  line-height: 1.6;
+}
+
+/* === LEATHER QUOTE === */
+.leather-quote {
+  background: var(--color-leather);
+  padding: var(--section-pad) 0;
+}
+.leather-quote blockquote {
+  font-family: 'Bitter', serif;
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--color-cream);
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.leather-quote cite {
+  display: block;
+  font-style: normal;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-md);
+  text-transform: uppercase;
+  color: rgba(250, 245, 238, 0.5);
+  margin-top: 20px;
+}
+
+/* === REVIEWS === */
+.reviews {
+  padding: var(--section-pad) 0;
+  background: var(--color-alt-bg);
+}
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+}
+.review-card {
+  background: var(--color-cream);
+  padding: 32px;
+}
+.review-card.featured {
+  background: var(--color-dark-bg);
+  color: var(--color-cream);
+  transform: translateY(-8px);
+}
+.review-card.featured .review-text { color: rgba(250, 245, 238, 0.85); }
+.review-card.featured .review-attr { color: rgba(250, 245, 238, 0.5); }
+.review-text {
+  font-size: 0.9375rem;
+  color: var(--color-warm-gray);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+.review-attr {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: var(--ls-md);
+  text-transform: uppercase;
+  color: var(--color-warm-gray);
+}
+
+/* === VISIT === */
+.visit {
+  padding: var(--section-pad) 0;
+}
+.visit-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  margin-top: 48px;
+  align-items: start;
+}
+.visit-info h3 {
+  margin-bottom: 16px;
+  font-size: 1.125rem;
+}
+.visit-detail {
+  margin-bottom: 24px;
+}
+.visit-detail-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: var(--ls-lg);
+  text-transform: uppercase;
+  color: var(--color-warm-gray);
+  margin-bottom: 4px;
+}
+.visit-detail-value {
+  font-size: 1rem;
+  color: var(--color-black);
+}
+.visit-detail-value a {
+  color: var(--color-leather);
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+.hours-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.hours-table td {
+  padding: 6px 0;
+  font-size: 0.9375rem;
+}
+.hours-table td:first-child {
+  color: var(--color-warm-gray);
+  width: 120px;
+}
+.hours-closed {
+  color: var(--color-warm-gray);
+  font-style: italic;
+}
+.cash-note {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 8px 16px;
+  background: var(--color-brass-light);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: var(--ls-md);
+  text-transform: uppercase;
+  color: var(--color-brass);
+}
+.visit-map {
+  width: 100%;
+  aspect-ratio: 1;
+  background: var(--color-alt-bg);
+  overflow: hidden;
+}
+.visit-map iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* === CTA BAND === */
+.cta-band {
+  background: var(--color-dark-bg);
+  padding: 80px 0;
+  text-align: center;
+}
+.cta-band h2 {
+  color: var(--color-cream);
+  margin-bottom: 12px;
+}
+.cta-band p {
+  color: rgba(250, 245, 238, 0.6);
+  margin-bottom: 32px;
+  font-size: 1.0625rem;
+}
+.cta-band .btn-primary {
+  background: var(--color-brass);
+  color: var(--color-dark-bg);
+}
+.cta-band .btn-primary:hover {
+  background: var(--color-cream);
+}
+
+/* === FOOTER === */
+footer {
+  padding: 48px 0;
+  border-top: 1px solid var(--color-alt-bg);
+}
+footer .content-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-brand {
+  font-family: 'Bitter', serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: var(--ls-sm);
+}
+.footer-copy {
+  font-size: 0.8125rem;
+  color: var(--color-warm-gray);
+}
+
+/* === MOBILE === */
+@media (max-width: 768px) {
+  :root { --section-pad: 64px; }
+  .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+  .hero-content { max-width: 100%; }
+  .hero-image { aspect-ratio: 3/2; }
+  .about-grid { grid-template-columns: 1fr; gap: 32px; }
+  .services-grid { grid-template-columns: 1fr; }
+  .reviews-grid { grid-template-columns: 1fr; }
+  .review-card.featured { transform: none; }
+  .visit-grid { grid-template-columns: 1fr; }
+  .visit-map { aspect-ratio: 16/9; }
+  .photo-grid { grid-template-columns: 1fr; max-height: none; }
+  .photo-stack { grid-template-columns: 1fr 1fr; }
+  .trust-bar .content-wrap { flex-wrap: wrap; gap: 32px; justify-content: center; }
+  .nav-links { display: none; }
+  .hamburger { display: block; }
+  .nav-links.active {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--color-cream);
+    padding: 24px;
+    gap: 16px;
+    border-bottom: 1px solid var(--color-alt-bg);
+  }
+  footer .content-wrap { flex-direction: column; gap: 12px; text-align: center; }
+  .name-section { padding: 80px 0; }
+  .hero-ctas { flex-direction: column; align-items: flex-start; }
+}
+
+/* === REDUCED MOTION === */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* === SCROLL REVEAL === */
+.js-ready .fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 500ms var(--ease-out), transform 500ms var(--ease-out);
+}
+.js-ready .fade-in.visible {
+  opacity: 1;
+  transform: none;
+}
+.js-ready .fade-in.stagger-1 { transition-delay: 0ms; }
+.js-ready .fade-in.stagger-2 { transition-delay: 60ms; }
+.js-ready .fade-in.stagger-3 { transition-delay: 120ms; }
+.js-ready .fade-in.stagger-4 { transition-delay: 180ms; }
+
+/* Nav link underline */
+.nav-links a {
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--color-black);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 200ms var(--ease-out);
+}
+.nav-links a:hover::after { transform: scaleX(1); }
+
+/* === NO-JS FALLBACK === */
+.fade-in { opacity: 1; transform: none; }
+
+/* === REDUCED MOTION OVERRIDE === */
+@media (prefers-reduced-motion: reduce) {
+  .js-ready .fade-in {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="content-wrap">
+    <a href="#" class="nav-brand">Oak Bay Cobbler</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#visit">Visit</a></li>
+    </ul>
+    <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('active')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="content-wrap">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <div class="hero-label">Oak Bay Village · Est. 40+ Years</div>
+        <h1>The Other Cobblers Said <em>No.</em></h1>
+        <p class="hero-body">Forty years on Oak Bay Avenue. Saving the shoes everyone else gave up on. One man. One shop. Cash only.</p>
+        <div class="hero-ctas">
+          <a href="tel:2505953262" class="btn-primary">Call (250) 595-3262</a>
+          <a href="#visit" class="btn-secondary">Get Directions</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="hero.png" alt="Cobbler hands stitching leather" width="560" height="700">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<section class="trust-bar">
+  <div class="content-wrap">
+    <div class="trust-stat">
+      <div class="trust-number">40+</div>
+      <div class="trust-label">Years in the Chair</div>
+    </div>
+    <div class="trust-stat">
+      <div class="trust-number">Cash</div>
+      <div class="trust-label">Only</div>
+    </div>
+    <div class="trust-stat">
+      <div class="trust-number">Wed — Sat</div>
+      <div class="trust-label">Open Days</div>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO STRIP -->
+<section class="photo-strip">
+  <div class="photo-grid">
+    <div class="photo-large">
+      <img src="workbench.png" alt="Cobbler workbench with tools" width="800" height="400">
+    </div>
+    <div class="photo-stack">
+      <div class="photo-small">
+        <img src="boots-before.png" alt="Worn leather boots" width="400" height="200">
+      </div>
+      <div class="photo-small">
+        <img src="shoes-restored.png" alt="Restored leather shoes" width="400" height="200">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about fade-in" id="about">
+  <div class="content-wrap">
+    <div class="about-grid">
+      <div>
+        <div class="section-label">About</div>
+        <h2>The Miracle Worker on Oak Bay Ave</h2>
+      </div>
+      <div>
+        <blockquote class="about-quote">
+          "I was turned away by another cobbler who told me my Doc Martens were a lost cause. Dave said if I wanted to come back, I could use his tools to work on them myself."
+          <cite>Via Reddit · r/VictoriaBC</cite>
+        </blockquote>
+        <p class="about-text">Dave has been repairing shoes at 2045 Oak Bay Avenue for over four decades. He's slightly gruff, deeply skilled, and will stay late to finish your boots if you need them. In a world of disposable everything, he's the reason your favourite pair lasts another ten years.</p>
+        <p class="about-text">The shop sits across from the butcher, on the stretch of Oak Bay Ave where the village still feels like a village. No website. No app. Just bring your shoes in and Dave will tell you what he can do.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NAME SECTION -->
+<section class="name-section">
+  <div class="content-wrap">
+    <div class="section-label">The Craft</div>
+    <h2>A Good Pair of Shoes Shouldn't End in a Landfill.</h2>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="content-wrap">
+    <div class="section-label">What He Does</div>
+    <h2>The Work</h2>
+    <div class="services-grid">
+      <div class="service-card fade-in stagger-1">
+        <div class="service-number">01</div>
+        <h3>Heels</h3>
+        <p>Stilettos to work boots. New rubber or leather heels fitted and finished.</p>
+      </div>
+      <div class="service-card fade-in stagger-2">
+        <div class="service-number">02</div>
+        <h3>Soles</h3>
+        <p>Half soles, full soles, Vibram or leather. When the bottom's worn through.</p>
+      </div>
+      <div class="service-card fade-in stagger-3">
+        <div class="service-number">03</div>
+        <h3>Leather</h3>
+        <p>Conditioning, recoloring, patching. Dried and cracked leather brought back to life.</p>
+      </div>
+      <div class="service-card fade-in stagger-4">
+        <div class="service-number">04</div>
+        <h3>Structural</h3>
+        <p>Seams, zippers, eyelets, reinforcement. The invisible work that holds everything together.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEATHER QUOTE -->
+<section class="leather-quote fade-in">
+  <div class="content-wrap">
+    <blockquote>
+      "If anyone can fix this, it's the Oak Bay Cobbler. That guy is a miracle worker and saved my boots."
+      <cite>Via Reddit · r/VictoriaBC · Feb 2024</cite>
+    </blockquote>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="content-wrap">
+    <div class="section-label">What People Say</div>
+    <h2>Word of Mouth</h2>
+    <div class="reviews-grid">
+      <div class="review-card fade-in stagger-1">
+        <p class="review-text">"Dave is a master of his trade. Brought in shoes I thought were done for and he brought them back to life. Reasonable prices too."</p>
+        <div class="review-attr">Via Google</div>
+      </div>
+      <div class="review-card featured fade-in stagger-2">
+        <p class="review-text">"I've relied on Dave at Oak Bay Cobbler for decades. Shoe repair, other leather work — quality every single time. He's the best."</p>
+        <div class="review-attr">Via Google</div>
+      </div>
+      <div class="review-card fade-in stagger-3">
+        <p class="review-text">"The slightly gruff guy on Oak Bay Ave across from the butcher has always been good and affordable. His hours are limited but worth jumping through the hoops."</p>
+        <div class="review-attr">Via Reddit · r/VictoriaBC · Apr 2025</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section class="visit" id="visit">
+  <div class="content-wrap">
+    <div class="section-label">Find Dave</div>
+    <h2>Come Say Hello</h2>
+    <div class="visit-grid">
+      <div class="visit-info">
+        <div class="visit-detail">
+          <div class="visit-detail-label">Address</div>
+          <div class="visit-detail-value">2045 Oak Bay Avenue<br>Victoria, BC V8R 1E5</div>
+        </div>
+        <div class="visit-detail">
+          <div class="visit-detail-label">Phone</div>
+          <div class="visit-detail-value"><a href="tel:2505953262">(250) 595-3262</a></div>
+        </div>
+        <div class="visit-detail">
+          <div class="visit-detail-label">Hours</div>
+          <table class="hours-table">
+            <tr><td>Mon — Tue</td><td class="hours-closed">Closed</td></tr>
+            <tr><td>Wed — Thu</td><td>12:00 pm — 4:00 pm</td></tr>
+            <tr><td>Friday</td><td>10:00 am — 1:00 pm, 2:30 — 4:00 pm</td></tr>
+            <tr><td>Saturday</td><td>10:00 am — 1:00 pm, 2:30 — 4:00 pm</td></tr>
+            <tr><td>Sunday</td><td class="hours-closed">Closed</td></tr>
+          </table>
+        </div>
+        <div class="cash-note">Cash Only</div>
+      </div>
+      <div class="visit-map">
+        <iframe src="https://maps.google.com/maps?q=2045+Oak+Bay+Avenue+Victoria+BC&output=embed" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <div class="content-wrap">
+    <h2>Bring Your Shoes In</h2>
+    <p>No appointment needed. Just walk in during shop hours.</p>
+    <a href="tel:2505953262" class="btn-primary">Call (250) 595-3262</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="content-wrap">
+    <div class="footer-brand">Oak Bay Cobbler</div>
+    <div class="footer-copy">2045 Oak Bay Avenue, Victoria, BC · (250) 595-3262</div>
+  </div>
+</footer>
+
+<script>
+document.documentElement.classList.add('js-ready');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

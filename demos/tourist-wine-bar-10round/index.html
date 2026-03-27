@@ -1,0 +1,1292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tourist — Natural Wine Bar · Victoria BC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500;1,600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+  /* ——— Custom Properties ——— */
+  :root {
+    --bg: #0D0C0A;
+    --bg-warm: #141210;
+    --bg-mid: #1C1A17;
+    --text: #E8E2D9;
+    --text-muted: #9A9286;
+    --accent: #8B2533;
+    --accent-light: #A8303F;
+    --gold: #C89B4A;
+    --gold-muted: #8A6B32;
+    --border: rgba(232, 226, 217, 0.10);
+    --section-pad: 96px;
+
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  }
+
+  /* ——— Reset ——— */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; font-size: 16px; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { display: block; max-width: 100%; }
+  a { color: inherit; text-decoration: none; }
+
+  /* ——— Noise Overlay ——— */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.4;
+  }
+
+  /* ——— Navigation ——— */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 900;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 48px;
+    background: linear-gradient(to bottom, rgba(13,12,10,0.95) 0%, rgba(13,12,10,0) 100%);
+  }
+
+  .nav-wordmark {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    transition: color 160ms var(--ease-out);
+  }
+  .nav-links a:hover { color: var(--text); }
+
+  .nav-reserve {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--bg);
+    background: var(--text);
+    padding: 10px 20px;
+    transition: all 160ms var(--ease-out);
+  }
+  .nav-reserve:hover { background: var(--gold); }
+  .nav-reserve:active { transform: scale(0.97); }
+
+  /* Hamburger */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 4px;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--text);
+    transition: all 200ms var(--ease-out);
+  }
+
+  /* Mobile menu */
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: var(--bg);
+    z-index: 850;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    padding: 48px;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40px;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--text);
+    transition: color 160ms;
+  }
+  .mobile-menu a:hover { color: var(--gold); }
+  .mobile-close {
+    position: absolute;
+    top: 32px;
+    right: 40px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text);
+  }
+
+  /* ——— Hero ——— */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+  }
+
+  .hero-image {
+    position: absolute;
+    inset: 0;
+    background-image: url('exterior.png');
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.35) saturate(0.8);
+  }
+  /* Fallback gradient */
+  .hero-image-fallback {
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse at 60% 30%, rgba(139,37,51,0.25) 0%, transparent 60%),
+      radial-gradient(ellipse at 20% 80%, rgba(200,155,74,0.15) 0%, transparent 50%),
+      linear-gradient(160deg, #1A1008 0%, #0A0908 40%, #110A0C 100%);
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(13,12,10,0.85) 0%, rgba(13,12,10,0.2) 60%, rgba(13,12,10,0.4) 100%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 48px 80px 64px;
+    max-width: 900px;
+    border-left: 2px solid rgba(200,155,74,0.65);
+  }
+
+  .hero-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+    display: block;
+  }
+
+  .hero-accent-rule {
+    display: none; /* Removing vertical rule — replacing with left border treatment */
+  }
+  .hero-content {
+    border-left: 2px solid var(--gold);
+    padding-left: 32px;
+  }
+  .hero-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(72px, 12vw, 140px);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 0.92;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin-bottom: 32px;
+  }
+
+  .hero-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    margin-bottom: 48px;
+    max-width: 380px;
+    line-height: 1.8;
+  }
+
+  .hero-cta {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--bg);
+    background: var(--text);
+    padding: 16px 32px;
+    transition: all 160ms var(--ease-out);
+  }
+  .hero-cta:hover { background: var(--gold); }
+  .hero-cta:active { transform: scale(0.97); }
+
+  .hero-scroll {
+    position: absolute;
+    right: 48px;
+    bottom: 80px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  .hero-scroll span {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    writing-mode: vertical-rl;
+  }
+  .hero-scroll-line {
+    width: 1px;
+    height: 48px;
+    background: linear-gradient(to bottom, var(--text-muted), transparent);
+    animation: scroll-line 2s ease-in-out infinite;
+  }
+  @keyframes scroll-line {
+    0%, 100% { opacity: 0.4; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(1.2); }
+  }
+
+  /* ——— Trust Bar ——— */
+  .trust-bar {
+    background: var(--bg-mid);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 20px 48px;
+    display: flex;
+    justify-content: center;
+    gap: 64px;
+    flex-wrap: wrap;
+  }
+  .trust-item {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .trust-item.trust-item-hl {
+    color: var(--text);
+  }
+
+  /* ——— Section Base ——— */
+  section {
+    padding: var(--section-pad) 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    max-width: 120px;
+    height: 1px;
+    background: var(--gold-muted);
+  }
+
+  /* ——— Image Gallery ——— */
+  .gallery {
+    padding: 0;
+    max-width: none;
+  }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 420px 280px;
+    gap: 3px;
+  }
+  .gallery-item {
+    overflow: hidden;
+    background: var(--bg-mid);
+    position: relative;
+  }
+  .gallery-item.tall { grid-row: span 2; }
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.85) saturate(0.9);
+    transition: transform 600ms var(--ease-out), filter 600ms;
+  }
+  .gallery-item:hover img {
+    transform: scale(1.03);
+    filter: brightness(0.95) saturate(1.0);
+  }
+  /* Placeholder gradients */
+  .gallery-placeholder-1 {
+    background: radial-gradient(ellipse at 40% 50%, rgba(139,37,51,0.4) 0%, rgba(13,12,10,0.9) 70%);
+  }
+  .gallery-placeholder-2 {
+    background: radial-gradient(ellipse at 50% 30%, rgba(200,155,74,0.3) 0%, rgba(13,12,10,0.9) 70%);
+  }
+  .gallery-placeholder-3 {
+    background: radial-gradient(ellipse at 60% 70%, rgba(80,50,30,0.5) 0%, rgba(13,12,10,0.9) 70%);
+  }
+  .gallery-placeholder-4 {
+    background: radial-gradient(ellipse at 50% 40%, rgba(139,37,51,0.35) 0%, rgba(13,12,10,0.9) 70%);
+  }
+
+  /* ——— Menu Section ——— */
+  .menu-section {
+    background: var(--bg-warm);
+    max-width: none;
+    padding: var(--section-pad) 0;
+  }
+  .menu-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 48px;
+  }
+  .menu-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    margin-bottom: 64px;
+    align-items: end;
+  }
+  .menu-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(48px, 6vw, 80px);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1;
+    color: var(--text);
+  }
+  .headline-accent {
+    color: var(--gold);
+    font-style: italic;
+  }
+  .menu-note {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 300;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    line-height: 1.8;
+    align-self: end;
+  }
+  .menu-note em {
+    color: var(--gold);
+    font-style: normal;
+  }
+
+  .menu-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-top: 1px solid var(--border);
+  }
+  .menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+    gap: 24px;
+  }
+  .menu-item:nth-child(odd) { padding-right: 64px; }
+  .menu-item:nth-child(even) { padding-left: 64px; border-left: 1px solid var(--border); }
+
+  .menu-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--text);
+    letter-spacing: 0.01em;
+  }
+  .menu-price {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    color: var(--gold);
+    white-space: nowrap;
+  }
+
+  /* ——— About / Philosophy ——— */
+  .about-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 120px;
+    align-items: center;
+  }
+  .about-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.2;
+    color: var(--text);
+    letter-spacing: -0.01em;
+  }
+  .about-quote mark {
+    background: none;
+    color: var(--gold);
+  }
+  .about-text p {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    color: var(--text-muted);
+    line-height: 2;
+    margin-bottom: 24px;
+  }
+  .about-text p:last-child { margin-bottom: 0; }
+
+  /* ——— Wine Section (dark band) ——— */
+  .wine-section-outer {
+    background: var(--bg-mid);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .wine-section {
+    display: grid;
+    grid-template-columns: 1fr 2.5fr;
+    gap: 96px;
+    align-items: start;
+  }
+  .wine-left {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    position: sticky;
+    top: 100px;
+  }
+  .wine-image {
+    width: 100%;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    background: radial-gradient(ellipse at 50% 40%, rgba(139,37,51,0.35) 0%, rgba(13,12,10,0.9) 70%);
+  }
+  .wine-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.8) saturate(0.9);
+  }
+  .wine-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(40px, 5vw, 64px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--text);
+    line-height: 1.05;
+  }
+  .wine-content {
+    padding-top: 8px;
+  }
+  .wine-content p {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    color: var(--text-muted);
+    line-height: 2;
+    margin-bottom: 32px;
+  }
+  .wine-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+  .wine-ig-note {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 300;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    line-height: 2;
+  }
+  .wine-ig-note a {
+    color: var(--gold);
+    transition: color 160ms;
+  }
+  .wine-ig-note a:hover { color: var(--text); }
+  .wine-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    padding: 8px 16px;
+    transition: all 200ms var(--ease-out);
+  }
+  .wine-tag:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* ——— Reviews ——— */
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 48px;
+  }
+  .review-card {
+    padding: 40px 36px;
+    background: var(--bg-warm);
+    position: relative;
+    border: 1px solid transparent;
+    transition: border-color 300ms;
+  }
+  .review-card:nth-child(2) {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  .review-card:nth-child(2) .review-stars { color: rgba(232,226,217,0.7); }
+  .review-card:nth-child(2) .review-text { color: var(--text); }
+  .review-card:nth-child(2) .review-author { color: rgba(232,226,217,0.5); }
+  .review-stars {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+  .review-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.6;
+    color: var(--text);
+    margin-bottom: 24px;
+  }
+  .review-author {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  /* ——— Visit / Hours ——— */
+  .visit-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .hours-block { }
+  .hours-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--text);
+    margin-bottom: 40px;
+  }
+  .hours-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .hours-table tr {
+    border-bottom: 1px solid var(--border);
+  }
+  .hours-table td {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    padding: 16px 0;
+    color: var(--text-muted);
+  }
+  .hours-table td:first-child {
+    color: var(--text);
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .hours-table tr.today td {
+    color: var(--gold);
+  }
+  .hours-table tr.today td:first-child {
+    color: var(--gold);
+  }
+  .closed { color: var(--text-muted) !important; }
+
+  .contact-block { }
+  .contact-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--text);
+    margin-bottom: 40px;
+  }
+  .contact-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .contact-row {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .contact-row-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .contact-row-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    letter-spacing: 0.04em;
+    color: var(--text);
+  }
+  .contact-row-value a {
+    transition: color 160ms;
+  }
+  .contact-row-value a:hover { color: var(--gold); }
+
+  .map-container {
+    margin-top: 40px;
+    height: 200px;
+    background: var(--bg-mid);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    position: relative;
+  }
+  .map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    filter: grayscale(1) invert(0.9) sepia(0.2) brightness(0.4);
+    opacity: 0.8;
+  }
+
+  /* ——— CTA Band ——— */
+  .cta-band {
+    background: var(--bg-mid);
+    padding: 80px 48px;
+    max-width: none;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .cta-band-rule {
+    display: none;
+  }
+  .cta-band-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .cta-band-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--text);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+  .cta-band-right {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: flex-start;
+  }
+  .cta-band-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    line-height: 2;
+  }
+  .cta-band-btn {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--bg);
+    background: var(--text);
+    padding: 16px 40px;
+    transition: all 160ms var(--ease-out);
+  }
+  .cta-band-btn:hover { background: var(--gold); }
+  .cta-band-btn:active { transform: scale(0.97); }
+  .cta-band-ig {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--text-muted);
+    transition: color 160ms;
+  }
+  .cta-band-ig:hover { color: var(--gold); }
+
+  /* ——— Sunday Sandwich Callout ——— */
+  .sandwich-callout {
+    margin-top: 48px;
+    border-top: 1px solid var(--border);
+    padding-top: 40px;
+  }
+  .sandwich-callout-inner {
+    display: flex;
+    gap: 48px;
+    align-items: baseline;
+  }
+  .sandwich-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    white-space: nowrap;
+    min-width: 140px;
+  }
+  .sandwich-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+  .sandwich-link {
+    display: inline-block;
+    margin-left: 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-style: normal;
+    letter-spacing: 0.06em;
+    color: var(--gold);
+    transition: color 160ms;
+  }
+  .sandwich-link:hover { color: var(--text); }
+
+  /* ——— Footer ——— */
+  footer {
+    background: var(--bg);
+    border-top: 1px solid var(--border);
+    padding: 48px 48px 32px;
+  }
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 48px;
+  }
+  .footer-brand {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text);
+    margin-bottom: 12px;
+  }
+  .footer-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+  .footer-col-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+  .footer-col-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .footer-col-links a {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    transition: color 160ms;
+  }
+  .footer-col-links a:hover { color: var(--text); }
+
+  .footer-bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+  }
+  .footer-copy {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+  }
+  .footer-ig {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--text-muted);
+    transition: color 160ms;
+  }
+  .footer-ig:hover { color: var(--gold); }
+
+  /* ——— Scroll Reveal ——— */
+  .js-ready .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+  }
+  .js-ready .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ——— Responsive ——— */
+  @media (max-width: 768px) {
+    nav {
+      padding: 20px 24px;
+    }
+    .nav-links, .nav-reserve {
+      display: none;
+    }
+    .hamburger { display: flex; }
+
+    section { padding: 64px 24px; }
+    .hero-content { padding: 0 24px 64px; }
+    .hero-scroll { display: none; }
+
+    .trust-bar { padding: 16px 24px; gap: 32px; }
+
+    .gallery-grid {
+      grid-template-columns: 1fr;
+      grid-template-rows: 280px 200px 200px;
+    }
+    .gallery-item.tall { grid-row: span 1; }
+
+    .menu-header { grid-template-columns: 1fr; gap: 24px; }
+    .menu-inner { padding: 0 24px; }
+    .menu-grid { grid-template-columns: 1fr; }
+    .menu-item:nth-child(odd), .menu-item:nth-child(even) {
+      padding-left: 0;
+      padding-right: 0;
+      border-left: none;
+    }
+
+    .about-section { grid-template-columns: 1fr; gap: 48px; }
+    .wine-section { grid-template-columns: 1fr; gap: 40px; }
+    .reviews-grid { grid-template-columns: 1fr; gap: 16px; }
+    .visit-section { grid-template-columns: 1fr; gap: 56px; }
+    .footer-inner { grid-template-columns: 1fr; gap: 40px; }
+    .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+
+    .cta-band { padding: 48px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+  <span class="nav-wordmark">Tourist</span>
+  <ul class="nav-links">
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#wine">Wine</a></li>
+    <li><a href="#visit">Visit</a></li>
+  </ul>
+  <a href="mailto:hello@touristwinebar.com" class="nav-reserve">Email Us</a>
+  <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu">
+  <button class="mobile-close" onclick="document.querySelector('.mobile-menu').classList.remove('open')">✕ Close</button>
+  <a href="#menu" onclick="document.querySelector('.mobile-menu').classList.remove('open')">Menu</a>
+  <a href="#wine" onclick="document.querySelector('.mobile-menu').classList.remove('open')">Wine</a>
+  <a href="#visit" onclick="document.querySelector('.mobile-menu').classList.remove('open')">Visit</a>
+  <a href="mailto:hello@touristwinebar.com">Email to Reserve</a>
+</div>
+
+<!-- Hero -->
+<section class="hero" id="home">
+  <div class="hero-image-fallback"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-accent-rule"></div>
+    <span class="hero-label">Victoria, BC — 1002 Blanshard St</span>
+    <h1 class="hero-headline">Wine<br>should<br><em>surprise</em><br>you.</h1>
+    <p class="hero-sub">
+      A natural wine bar in Victoria's Blanshard neighbourhood.<br>
+      Small plates. Curious bottles. Come with an open palate.
+    </p>
+    <a href="mailto:hello@touristwinebar.com" class="hero-cta">Email to Reserve</a>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="hero-scroll-line"></div>
+  </div>
+</section>
+
+<!-- Trust Bar -->
+<div class="trust-bar">
+  <div class="trust-item trust-item-hl">Open Wed–Sun from 5pm</div>
+  <div class="trust-item">Small Plates + Rotating Menu</div>
+  <div class="trust-item">Natural &amp; Low-Intervention Wine</div>
+  <div class="trust-item trust-item-hl">1002 Blanshard St, Victoria BC</div>
+</div>
+
+<!-- Menu -->
+<div class="menu-section" id="menu">
+  <div class="menu-inner">
+    <div class="section-label">The Food</div>
+    <div class="menu-header">
+      <h2 class="menu-headline">Small plates,<br><span class="headline-accent">big flavour.</span></h2>
+      <p class="menu-note">
+        Our menu rotates with the seasons and what's good.<br>
+        The <em>Sunday Sandwich</em> changes every week —<br>
+        come and see what it is this time.
+      </p>
+    </div>
+    <div class="menu-grid">
+      <div class="menu-item">
+        <span class="menu-name">Bread &amp; Butter</span>
+        <span class="menu-price">$12</span>
+      </div>
+      <div class="menu-item">
+        <span class="menu-name">Anchovies</span>
+        <span class="menu-price">$8</span>
+      </div>
+      <div class="menu-item">
+        <span class="menu-name">Olives</span>
+        <span class="menu-price">$10</span>
+      </div>
+      <div class="menu-item">
+        <span class="menu-name">Fries</span>
+        <span class="menu-price">$10</span>
+      </div>
+      <div class="menu-item">
+        <span class="menu-name">Mortadella</span>
+        <span class="menu-price">$16</span>
+      </div>
+      <div class="menu-item">
+        <span class="menu-name">Meat &amp; Cheese</span>
+        <span class="menu-price">$18</span>
+      </div>
+      <div class="menu-item">
+        <span class="menu-name">Chips &amp; Charcuterie</span>
+        <span class="menu-price">Market</span>
+      </div>
+      <div class="menu-item menu-item-featured">
+        <span class="menu-name">The Sunday Sandwich</span>
+        <span class="menu-price">Weekly Special</span>
+      </div>
+    </div>
+    <!-- Sunday Sandwich Callout -->
+    <div class="sandwich-callout">
+      <div class="sandwich-callout-inner">
+        <div class="sandwich-label">A Tourist Ritual</div>
+        <div class="sandwich-text">
+          Every Sunday, a different sandwich. It changes weekly — whatever's interesting, seasonal, and worth eating. Regulars come just for this.
+          <a href="https://instagram.com/touristwinebar" target="_blank" class="sandwich-link">See this week's on Instagram →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- About -->
+<section id="about">
+  <div class="section-label">About</div>
+  <div class="about-section">
+    <div class="about-quote">
+      "You're never supposed to know <mark>everything</mark>. You're just supposed to stay open."
+    </div>
+    <div class="about-text">
+      <p>
+        Tourist is named for the right way to approach wine. Not as an expert, not as a collector — as someone who is genuinely curious about where they are and what's in the glass.
+      </p>
+      <p>
+        We opened on Blanshard with small plates, an honest wine list, and the Sunday Sandwich — which changes every week and has become something regulars plan their week around.
+      </p>
+      <p>
+        The list is built around producers who farm honestly, intervene minimally, and bottle something that tastes like where it came from.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Photo Gallery (after menu info, before wine section) -->
+<div class="gallery">
+  <div class="gallery-grid">
+    <div class="gallery-item tall gallery-placeholder-1">
+      <img src="exterior.png" alt="Tourist Wine Bar exterior" onerror="this.style.display='none'">
+    </div>
+    <div class="gallery-item gallery-placeholder-2">
+      <img src="wine-bottles.png" alt="Natural wine selection" onerror="this.style.display='none'">
+    </div>
+    <div class="gallery-item gallery-placeholder-3">
+      <img src="small-plates.png" alt="Small plates at Tourist" onerror="this.style.display='none'">
+    </div>
+  </div>
+</div>
+
+<!-- Wine Section -->
+<div class="wine-section-outer" id="wine">
+  <section class="wine-section">
+    <div class="wine-left">
+      <h2 class="wine-headline">Curious<br>bottles.</h2>
+      <div class="wine-image">
+        <img src="wine-pour.png" alt="Natural wine" onerror="this.style.display='none'">
+      </div>
+    </div>
+    <div class="wine-content">
+      <div class="section-label">The Wine</div>
+      <p>
+        We believe wine should taste like where it came from — not like a process. Our list is built around makers who farm honestly, intervene minimally, and bottle something alive.
+      </p>
+      <p>
+        The list changes often. Some bottles stay a season. Some become regulars. All of them made us say "you should try this" before they made it on the menu.
+      </p>
+      <div class="wine-tags">
+        <span class="wine-tag">Natural</span>
+        <span class="wine-tag">Low-Intervention</span>
+        <span class="wine-tag">Biodynamic</span>
+        <span class="wine-tag">Orange Wine</span>
+        <span class="wine-tag">Pet Nat</span>
+        <span class="wine-tag">Pét Sec</span>
+        <span class="wine-tag">Small Producers</span>
+      </div>
+      <p class="wine-ig-note">
+        The list changes constantly. 
+        <a href="https://instagram.com/touristwinebar" target="_blank">Follow @touristwinebar</a> 
+        to see what we're pouring.
+      </p>
+    </div>
+  </section>
+</div>
+
+<!-- Reviews -->
+<section>
+  <div class="section-label">What People Say</div>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"A minimalist wine bar-cafe with great attention to detail. One of, if not the best gourmet sandwiches I've ever eaten."</p>
+      <span class="review-author">Tripadvisor Guest, Jan 2025</span>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Always lively and full of energy. The place looks beautiful, and the vibes are just right for a fun night out."</p>
+      <span class="review-author">Wanderlog Review</span>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★</div>
+      <p class="review-text">"Wines are great and the vibe is pretty chill. I love Tourist. Sharing a bottle is the move."</p>
+      <span class="review-author">Reddit · r/VictoriaBC</span>
+    </div>
+  </div>
+</section>
+
+<!-- Visit -->
+<section id="visit">
+  <div class="section-label">Find Us</div>
+  <div class="visit-section">
+    <div class="hours-block">
+      <h3 class="hours-headline">Hours</h3>
+      <table class="hours-table">
+        <tr>
+          <td>Wednesday</td>
+          <td>5:00 – 11:00 pm</td>
+        </tr>
+        <tr>
+          <td>Thursday</td>
+          <td>5:00 – 11:00 pm</td>
+        </tr>
+        <tr>
+          <td>Friday</td>
+          <td>5:00 pm – 1:00 am</td>
+        </tr>
+        <tr>
+          <td>Saturday</td>
+          <td>5:00 pm – 1:00 am</td>
+        </tr>
+        <tr>
+          <td>Sunday</td>
+          <td>5:00 – 10:00 pm</td>
+        </tr>
+      </table>
+    </div>
+    <div class="contact-block">
+      <h3 class="contact-headline">Contact</h3>
+      <div class="contact-detail">
+        <div class="contact-row">
+          <span class="contact-row-label">Address</span>
+          <span class="contact-row-value">
+            <a href="https://maps.google.com/?q=1002+Blanshard+St+Victoria+BC" target="_blank">1002 Blanshard St<br>Victoria, BC V8W 1E1</a>
+          </span>
+        </div>
+        <div class="contact-row">
+          <span class="contact-row-label">Email</span>
+          <span class="contact-row-value">
+            <a href="mailto:hello@touristwinebar.com">hello@touristwinebar.com</a>
+          </span>
+        </div>
+        <div class="contact-row">
+          <span class="contact-row-label">Instagram</span>
+          <span class="contact-row-value">
+            <a href="https://instagram.com/touristwinebar" target="_blank">@touristwinebar</a>
+          </span>
+        </div>
+        <div class="contact-row">
+          <span class="contact-row-label">Reservations</span>
+          <span class="contact-row-value">
+            <a href="mailto:hello@touristwinebar.com">Email us directly</a>
+          </span>
+        </div>
+      </div>
+      <div class="map-container">
+        <iframe
+          src="https://maps.google.com/maps?q=1002+Blanshard+St+Victoria+BC&output=embed&zoom=15"
+          allowfullscreen=""
+          loading="lazy"
+          title="Tourist Wine Bar location">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Band -->
+<div class="cta-band">
+  <div class="cta-band-rule"></div>
+  <div class="cta-band-inner">
+    <div class="cta-band-left">
+      <p class="cta-band-text">A glass of something<br><em>curious</em> is always<br>a good idea.</p>
+    </div>
+    <div class="cta-band-right">
+      <p class="cta-band-sub">Wed–Sun from 5pm<br>1002 Blanshard St, Victoria</p>
+      <a href="mailto:hello@touristwinebar.com" class="cta-band-btn">Email to Reserve</a>
+      <a href="https://instagram.com/touristwinebar" class="cta-band-ig" target="_blank">Follow on Instagram</a>
+    </div>
+  </div>
+  <div class="cta-band-rule"></div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">Tourist</div>
+      <div class="footer-tagline">Natural wine. Good food.<br>Victoria, BC.</div>
+    </div>
+    <div>
+      <div class="footer-col-label">Navigate</div>
+      <ul class="footer-col-links">
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#wine">Wine</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#visit">Visit</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-label">Connect</div>
+      <ul class="footer-col-links">
+        <li><a href="https://instagram.com/touristwinebar" target="_blank">Instagram</a></li>
+        <li><a href="mailto:hello@touristwinebar.com">hello@touristwinebar.com</a></li>
+        <li><a href="https://maps.google.com/?q=1002+Blanshard+St+Victoria+BC" target="_blank">Get Directions</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2025 Tourist Wine Bar · Victoria, BC</span>
+    <a href="https://instagram.com/touristwinebar" class="footer-ig" target="_blank">@touristwinebar</a>
+  </div>
+</footer>
+
+<script>
+// Progressive scroll — only activates once JS is ready
+document.body.classList.add('js-ready');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+// Reveal elements already in viewport immediately
+requestAnimationFrame(() => {
+  document.querySelectorAll('.reveal').forEach(el => {
+    observer.observe(el);
+    // Elements in the initial viewport should show immediately
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight) {
+      el.classList.add('visible');
+    }
+  });
+});
+</script>
+</body>
+</html>

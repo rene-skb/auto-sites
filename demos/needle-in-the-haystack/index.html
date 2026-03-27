@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Needle in the Haystack — European Tailoring & Alterations | Victoria, BC</title>
+<meta name="description" content="Master seamstress Lilia offers European tailoring, alterations, and dressmaking on Hillside Avenue in Victoria, BC. Meticulous craftsmanship since 2015.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --cream: #FAF6F1;
+  --plum: #6B4C5E;
+  --plum-light: #F0E8EC;
+  --gold: #C4A35A;
+  --warm-black: #1A1610;
+  --warm-gray: #6B6560;
+  --alt-bg: #F0EBE3;
+  --section-pad: 96px;
+  --content-width: 1080px;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ls-sm: 0.04em;
+  --ls-md: 0.08em;
+  --ls-lg: 0.14em;
+}
+
+html { scroll-behavior: smooth; }
+section[id] { scroll-margin-top: 88px; }
+
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--warm-black);
+  background: var(--cream);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4 { font-family: 'Cormorant', serif; font-weight: 600; line-height: 1.15; }
+
+a { color: inherit; text-decoration: none; }
+
+img { max-width: 100%; height: auto; display: block; }
+
+.content-wrap {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Noise overlay */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* ===== NAV ===== */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(250, 246, 241, 0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(26, 22, 16, 0.06);
+}
+
+.nav-inner {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+
+.nav-brand {
+  font-family: 'Cormorant', serif;
+  font-weight: 600;
+  font-size: 1.25rem;
+  letter-spacing: var(--ls-sm);
+  color: var(--warm-black);
+}
+
+.nav-brand span { color: var(--plum); }
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-md);
+  text-transform: uppercase;
+  color: var(--warm-gray);
+  transition: color 200ms var(--ease-out);
+}
+
+.nav-links a:hover { color: var(--warm-black); }
+
+.nav-cta {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-md);
+  text-transform: uppercase;
+  color: var(--cream) !important;
+  background: var(--plum);
+  padding: 10px 20px;
+  border-radius: 2px;
+  transition: transform 160ms var(--ease-out), background 200ms var(--ease-out);
+}
+
+.nav-cta:hover { background: #5a3d4e; }
+.nav-cta:active { transform: scale(0.97); }
+
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 28px;
+  height: 20px;
+  position: relative;
+}
+
+.hamburger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--warm-black);
+  position: absolute;
+  left: 0;
+  transition: all 200ms var(--ease-out);
+}
+
+.hamburger span:nth-child(1) { top: 0; }
+.hamburger span:nth-child(2) { top: 9px; }
+.hamburger span:nth-child(3) { top: 18px; }
+
+/* ===== HERO ===== */
+.hero {
+  padding: calc(var(--section-pad) + 72px) 0 var(--section-pad);
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+}
+
+.hero-content {
+  border-left: 3px solid var(--plum);
+  padding-left: 40px;
+  max-width: 680px;
+}
+
+.hero-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: var(--ls-lg);
+  text-transform: uppercase;
+  color: var(--plum);
+  margin-bottom: 24px;
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 5.5vw, 4.25rem);
+  font-weight: 600;
+  color: var(--warm-black);
+  margin-bottom: 24px;
+  letter-spacing: -0.025em;
+}
+
+.hero-body {
+  font-size: 1.125rem;
+  color: var(--warm-gray);
+  max-width: 540px;
+  margin-bottom: 40px;
+  line-height: 1.7;
+}
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: var(--ls-md);
+  text-transform: uppercase;
+  color: var(--cream);
+  background: var(--plum);
+  padding: 16px 32px;
+  border-radius: 2px;
+  transition: transform 160ms var(--ease-out), background 200ms var(--ease-out);
+}
+
+.hero-cta:hover { background: #5a3d4e; }
+.hero-cta:active { transform: scale(0.97); }
+
+.hero-cta-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-md);
+  text-transform: uppercase;
+  color: var(--plum);
+  padding: 16px 0;
+  margin-left: 24px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  transition: opacity 200ms var(--ease-out);
+}
+
+.hero-cta-secondary:hover { opacity: 0.7; }
+
+/* ===== TRUST BAR ===== */
+.trust-bar {
+  background: var(--warm-black);
+  padding: 28px 0;
+}
+
+.trust-bar-inner {
+  display: flex;
+  justify-content: center;
+  gap: 64px;
+  flex-wrap: wrap;
+}
+
+.trust-stat {
+  text-align: center;
+}
+
+.trust-stat-number {
+  font-family: 'Cormorant', serif;
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: var(--ls-md);
+  line-height: 1.2;
+}
+
+.trust-stat-label {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-lg);
+  text-transform: uppercase;
+  color: rgba(250, 246, 241, 0.6);
+  margin-top: 4px;
+}
+
+/* ===== PHOTO STRIP ===== */
+.photo-strip {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 4px;
+  padding: 0;
+}
+
+.photo-strip-item {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+
+.photo-strip-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo-strip-stack {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 4px;
+}
+
+.photo-strip-stack .photo-strip-item {
+  aspect-ratio: auto;
+}
+
+/* ===== ABOUT ===== */
+.about {
+  padding: var(--section-pad) 0;
+}
+
+.section-label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: var(--ls-lg);
+  text-transform: uppercase;
+  color: var(--plum);
+  margin-bottom: 12px;
+}
+
+.about h2 {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  margin-bottom: 32px;
+  letter-spacing: -0.01em;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.about-quote {
+  font-family: 'Cormorant', serif;
+  font-size: 1.5rem;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--plum);
+  border-left: 2px solid var(--gold);
+  padding-left: 24px;
+}
+
+.about-quote-attr {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: var(--ls-md);
+  text-transform: uppercase;
+  color: var(--warm-gray);
+  margin-top: 16px;
+  display: block;
+}
+
+.about-text p {
+  color: var(--warm-gray);
+  margin-bottom: 20px;
+}
+
+.about-text p:last-child { margin-bottom: 0; }
+
+/* ===== NAME SECTION ===== */
+.name-section {
+  background: var(--alt-bg);
+  padding: 120px 0;
+  text-align: center;
+}
+
+.name-section h2 {
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  max-width: 700px;
+  margin: 0 auto 24px;
+  letter-spacing: -0.01em;
+}
+
+.name-section p {
+  font-size: 1.0625rem;
+  color: var(--warm-gray);
+  max-width: 560px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* ===== SERVICES ===== */
+.services {
+  padding: var(--section-pad) 0;
+}
+
+.services h2 {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  margin-bottom: 48px;
+  letter-spacing: -0.01em;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+}
+
+.service-card {
+  background: var(--alt-bg);
+  padding: 40px 32px;
+  position: relative;
+}
+
+.service-number {
+  font-family: 'Cormorant', serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--plum);
+  opacity: 0.4;
+  margin-bottom: 16px;
+}
+
+.service-card h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  letter-spacing: var(--ls-sm);
+}
+
+.service-card p {
+  font-size: 0.9375rem;
+  color: var(--warm-gray);
+  line-height: 1.65;
+}
+
+/* ===== PRESS CALLOUT ===== */
+.press-callout {
+  background: var(--plum-light);
+  padding: 64px 0;
+}
+
+.press-callout-inner {
+  text-align: center;
+}
+
+.press-quote {
+  font-family: 'Cormorant', serif;
+  font-size: 1.5rem;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--plum);
+  max-width: 640px;
+  margin: 0 auto 16px;
+  position: relative;
+}
+
+.press-quote::before {
+  content: '\201C';
+  font-family: 'Cormorant', serif;
+  font-size: 6rem;
+  font-style: normal;
+  font-weight: 700;
+  color: var(--plum);
+  opacity: 0.15;
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  line-height: 1;
+}
+
+.press-attr {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-md);
+  text-transform: uppercase;
+  color: var(--warm-gray);
+}
+
+/* ===== REVIEWS ===== */
+.reviews {
+  padding: var(--section-pad) 0;
+}
+
+.reviews h2 {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  margin-bottom: 48px;
+  letter-spacing: -0.01em;
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 24px;
+}
+
+.review-card {
+  padding: 32px;
+  border-radius: 2px;
+}
+
+.review-card:nth-child(1) {
+  background: var(--warm-black);
+  color: var(--cream);
+  transform: translateY(-8px);
+}
+
+.review-card:nth-child(1) .review-text { color: rgba(250, 246, 241, 0.85); }
+.review-card:nth-child(1) .review-attr { color: rgba(250, 246, 241, 0.5); }
+
+.review-card:nth-child(2) { background: var(--alt-bg); }
+.review-card:nth-child(3) { background: var(--plum-light); }
+
+.review-stars {
+  color: var(--gold);
+  font-size: 0.875rem;
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+}
+
+.review-text {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--warm-gray);
+  margin-bottom: 20px;
+}
+
+.review-attr {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-md);
+  text-transform: uppercase;
+  color: var(--warm-gray);
+}
+
+/* ===== EXTERIOR PHOTO ===== */
+.exterior-photo {
+  width: 100%;
+  aspect-ratio: 21 / 9;
+  overflow: hidden;
+}
+
+.exterior-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ===== VISIT ===== */
+.visit {
+  padding: var(--section-pad) 0;
+}
+
+.visit h2 {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  margin-bottom: 48px;
+  letter-spacing: -0.01em;
+}
+
+.visit-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+}
+
+.visit-info h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: var(--ls-sm);
+  margin-bottom: 12px;
+  margin-top: 32px;
+}
+
+.visit-info h3:first-child { margin-top: 0; }
+
+.visit-info p, .visit-info address {
+  font-style: normal;
+  color: var(--warm-gray);
+  font-size: 0.9375rem;
+  line-height: 1.7;
+}
+
+.visit-info a {
+  color: var(--plum);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.hours-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.hours-table tr td {
+  padding: 6px 0;
+  font-size: 0.9375rem;
+  color: var(--warm-gray);
+}
+
+.hours-table tr td:last-child {
+  text-align: right;
+}
+
+.hours-closed {
+  color: rgba(107, 101, 96, 0.5);
+}
+
+.visit-map {
+  border-radius: 2px;
+  overflow: hidden;
+  height: 100%;
+  min-height: 360px;
+}
+
+.visit-map iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  filter: saturate(0.8) contrast(1.05);
+}
+
+/* ===== CTA BAND ===== */
+.cta-band {
+  background: var(--plum);
+  padding: 64px 0;
+  text-align: center;
+}
+
+.cta-band h2 {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  color: var(--cream);
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+}
+
+.cta-band p {
+  color: rgba(250, 246, 241, 0.7);
+  margin-bottom: 32px;
+  font-size: 1.0625rem;
+}
+
+.cta-band-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: var(--ls-md);
+  text-transform: uppercase;
+  color: var(--warm-black);
+  background: var(--cream);
+  padding: 16px 36px;
+  border-radius: 2px;
+  transition: transform 160ms var(--ease-out), opacity 200ms var(--ease-out);
+}
+
+.cta-band-btn:hover { opacity: 0.9; }
+.cta-band-btn:active { transform: scale(0.97); }
+
+/* ===== FOOTER ===== */
+footer {
+  background: var(--warm-black);
+  padding: 48px 0;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.footer-brand {
+  font-family: 'Cormorant', serif;
+  font-weight: 600;
+  font-size: 1.125rem;
+  color: var(--cream);
+  letter-spacing: var(--ls-sm);
+}
+
+.footer-brand span { color: var(--gold); }
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+}
+
+.footer-links a {
+  font-size: 0.8125rem;
+  color: rgba(250, 246, 241, 0.5);
+  letter-spacing: var(--ls-sm);
+  transition: color 200ms var(--ease-out);
+}
+
+.footer-links a:hover { color: var(--cream); }
+
+.footer-copy {
+  width: 100%;
+  text-align: center;
+  font-size: 0.75rem;
+  color: rgba(250, 246, 241, 0.3);
+  margin-top: 24px;
+  letter-spacing: var(--ls-sm);
+}
+
+/* ===== ANIMATIONS ===== */
+.fade-in {
+  opacity: 1;
+  transform: none;
+}
+
+.js-ready .fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+}
+
+.js-ready .fade-in.visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-in { transition: none !important; opacity: 1 !important; transform: none !important; }
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+  :root { --section-pad: 64px; }
+
+  .nav-links { display: none; }
+  .nav-cta-desktop { display: none; }
+  .hamburger { display: block; }
+
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 72px;
+    left: 0;
+    right: 0;
+    background: rgba(250, 246, 241, 0.98);
+    backdrop-filter: blur(12px);
+    padding: 24px;
+    gap: 20px;
+    border-bottom: 1px solid rgba(26, 22, 16, 0.06);
+  }
+
+  .hero { min-height: auto; padding-top: calc(64px + 72px); }
+
+  .hero h1 { font-size: clamp(2rem, 8vw, 3rem); }
+
+  .hero-content { padding-left: 24px; }
+
+  .trust-bar-inner { gap: 32px; }
+
+  .photo-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .photo-strip-stack {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .name-section { padding: 80px 0; }
+
+  .services-grid { grid-template-columns: 1fr; }
+
+  .reviews-grid { grid-template-columns: 1fr; }
+
+  .visit-grid { grid-template-columns: 1fr; gap: 40px; }
+
+  .visit-map { min-height: 280px; }
+
+  .footer-inner { justify-content: center; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">The Needle <span>✦</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#visit">Visit</a></li>
+    </ul>
+    <a href="tel:+12505901094" class="nav-cta nav-cta-desktop">Call Now</a>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="content-wrap">
+    <div class="hero-content fade-in">
+      <p class="hero-label">European Tailoring & Alterations — Victoria, BC</p>
+      <h1>She Left the Badge. She Kept the&nbsp;Needle.</h1>
+      <p class="hero-body">Lilia was a police officer in Latvia for thirteen years. She moved to Victoria and finally chose the craft she was trained for. Now she runs a one-woman tailoring shop where nothing leaves unless it's right. Drop in or call ahead.</p>
+      <a href="tel:+12505901094" class="hero-cta">Call Now</a>
+      <a href="https://maps.google.com/maps?q=1581+Hillside+Avenue+Victoria+BC" target="_blank" rel="noopener" class="hero-cta-secondary">Get Directions</a>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="content-wrap">
+    <div class="trust-bar-inner">
+      <div class="trust-stat">
+        <div class="trust-stat-number">10+</div>
+        <div class="trust-stat-label">Years on Hillside</div>
+      </div>
+      <div class="trust-stat">
+        <div class="trust-stat-number">5 Days</div>
+        <div class="trust-stat-label">Tuesday to Saturday</div>
+      </div>
+      <div class="trust-stat">
+        <div class="trust-stat-number">Latvia</div>
+        <div class="trust-stat-label">European Trained</div>
+      </div>
+      <div class="trust-stat">
+        <div class="trust-stat-number">2 Days</div>
+        <div class="trust-stat-label">Typical Turnaround</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PHOTO STRIP -->
+<div class="photo-strip">
+  <div class="photo-strip-item">
+    <img src="hero-sewing.png" alt="Close-up of hand-stitching on fabric" loading="lazy">
+  </div>
+  <div class="photo-strip-stack">
+    <div class="photo-strip-item">
+      <img src="fabric-detail.png" alt="Measuring tape and fabric on work table" loading="lazy">
+    </div>
+    <div class="photo-strip-item">
+      <img src="scissors-detail.png" alt="Professional tailoring scissors on linen" loading="lazy">
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="content-wrap">
+    <p class="section-label fade-in">About Lilia</p>
+    <h2 class="fade-in">Thirteen Years in Uniform. Then She Chose This.</h2>
+    <div class="about-grid">
+      <div class="about-quote fade-in">
+        <p>"No, that isn't right. I don't like that."</p>
+        <span class="about-quote-attr">— Lilia, mid-fitting</span>
+      </div>
+      <div class="about-text fade-in">
+        <p>Lilia Chtcherbakova spent 13 years as a police officer in her native Latvia — not because she loved it, but because the pay was better than working as a seamstress. When she moved to Victoria, she finally chose the craft she was trained for.</p>
+        <p>Now she runs The Needle in the Haystack on Hillside Avenue, a one-woman European tailoring shop where the standard is exacting and the turnaround is fast. Customers who've been coming for years say the same thing: Lilia doesn't let anything leave her shop unless it's right.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NAME SECTION -->
+<section class="name-section">
+  <div class="content-wrap">
+    <p class="section-label fade-in">The Name</p>
+    <h2 class="fade-in">The One You Stop Looking&nbsp;After</h2>
+    <p class="fade-in">A needle in a haystack — something rare and hard to find. Most people try two or three tailors before they find the one who actually listens, actually adjusts, actually cares. Lilia built the shop where the search ends.</p>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="content-wrap">
+    <p class="section-label fade-in">Services</p>
+    <h2 class="fade-in">What We Do</h2>
+    <div class="services-grid">
+      <div class="service-card fade-in">
+        <div class="service-number">01</div>
+        <h3>Clothing Alterations</h3>
+        <p>Hemming, taking in, letting out, shortening sleeves, tapering — the everyday adjustments that make clothes actually fit. Most jobs done in two days. Starting from $15.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-number">02</div>
+        <h3>Bridal & Formal Wear</h3>
+        <p>Wedding dress alterations, bridesmaid fittings, and formal wear adjustments. Lilia treats every gown like a once-in-a-lifetime piece, because it is.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-number">03</div>
+        <h3>Dressmaking</h3>
+        <p>Custom dressmaking from scratch. Bring your vision, your fabric, or just an idea — Lilia will figure out the rest.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-number">04</div>
+        <h3>European Tailoring</h3>
+        <p>Structured tailoring in the European tradition — jackets, trousers, coats. Precise fitting, clean lines, proper construction.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRESS CALLOUT -->
+<section class="press-callout">
+  <div class="content-wrap">
+    <div class="press-callout-inner fade-in">
+      <p class="press-quote">"These skirts went from looking dowdy to fitting fabulously. I was smitten — I knew she had set the bar for excellence high."</p>
+      <p class="press-attr">Victoria's Secret Gems</p>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="content-wrap">
+    <p class="section-label fade-in">What People Say</p>
+    <h2 class="fade-in">Why People Stay</h2>
+    <div class="reviews-grid">
+      <div class="review-card fade-in">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Lilia turned an unwearable bridesmaid dress into a dream for me this summer."</p>
+        <p class="review-attr">Via Reddit r/VictoriaBC</p>
+      </div>
+      <div class="review-card fade-in">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"I've been dealing with Lilia for many years and she does wonders for a one-person tailoring and alteration business."</p>
+        <p class="review-attr">Via Facebook</p>
+      </div>
+      <div class="review-card fade-in">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"The work done was meticulous. Being a sewer myself I am very fussy and I couldn't be happier."</p>
+        <p class="review-attr">Via Online Reviews</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXTERIOR PHOTO -->
+<div class="exterior-photo">
+  <img src="storefront.png" alt="The Needle in the Haystack storefront on Hillside Avenue" loading="lazy">
+</div>
+
+<!-- VISIT -->
+<section class="visit" id="visit">
+  <div class="content-wrap">
+    <p class="section-label fade-in">Find Us</p>
+    <h2 class="fade-in">Visit the Shop</h2>
+    <div class="visit-grid">
+      <div class="visit-info fade-in">
+        <h3>Address</h3>
+        <address>
+          Unit F2, 1581 Hillside Avenue<br>
+          Victoria, BC V8T 2C1
+        </address>
+
+        <h3>Phone</h3>
+        <p><a href="tel:+12505901094">250-590-1094</a></p>
+
+        <h3>Hours</h3>
+        <table class="hours-table">
+          <tr><td>Monday</td><td class="hours-closed">Closed</td></tr>
+          <tr><td>Tuesday</td><td>10:00 AM — 6:00 PM</td></tr>
+          <tr><td>Wednesday</td><td>10:00 AM — 6:00 PM</td></tr>
+          <tr><td>Thursday</td><td>10:00 AM — 6:00 PM</td></tr>
+          <tr><td>Friday</td><td>10:00 AM — 6:00 PM</td></tr>
+          <tr><td>Saturday</td><td>10:00 AM — 3:00 PM</td></tr>
+          <tr><td>Sunday</td><td class="hours-closed">Closed</td></tr>
+        </table>
+
+        <h3>Social</h3>
+        <p><a href="https://www.facebook.com/theneedlehillside/" target="_blank" rel="noopener">Facebook →</a></p>
+      </div>
+      <div class="visit-map fade-in">
+        <iframe src="https://maps.google.com/maps?q=1581+Hillside+Avenue+Victoria+BC&output=embed" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <div class="content-wrap">
+    <h2>Your Clothes Deserve Better</h2>
+    <p>Drop by the shop on Hillside or call ahead for a fitting.</p>
+    <a href="tel:+12505901094" class="cta-band-btn">Call 250-590-1094</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="content-wrap">
+    <div class="footer-inner">
+      <div class="footer-brand">The Needle in the Haystack <span>✦</span></div>
+      <ul class="footer-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#visit">Visit</a></li>
+        <li><a href="https://www.facebook.com/theneedlehillside/" target="_blank" rel="noopener">Facebook</a></li>
+      </ul>
+      <p class="footer-copy">© 2026 The Needle in the Haystack — European Tailoring & Alterations. 1581 Hillside Ave, Victoria, BC.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Add JS-ready class for animations
+document.documentElement.classList.add('js-ready');
+document.body.classList.add('js-ready');
+
+// Intersection Observer for fade-ins
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// Mobile hamburger
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+hamburger.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+});
+
+// Close menu on link click
+navLinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => navLinks.classList.remove('open'));
+});
+</script>
+
+<noscript>
+<style>.fade-in { opacity: 1 !important; transform: none !important; }</style>
+</noscript>
+
+</body>
+</html>

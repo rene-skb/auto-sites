@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kid Sister — Frozen Delights, Victoria BC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --cream: #FFF8F0;
+  --cream-dark: #F5EDE3;
+  --green: #3D6B4F;
+  --green-dark: #2C4E39;
+  --coral: #D04E2E;
+  --coral-light: #F07D5E;
+  --text-dark: #2A2A25;
+  --text-mid: #5C5C52;
+  --text-light: #8A8A7E;
+  --white: #FFFFFF;
+
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'DM Sans', -apple-system, sans-serif;
+
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+
+  --section-pad: 96px;
+  --content-width: 1120px;
+}
+
+html { font-size: 16px; scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--cream);
+  color: var(--text-dark);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Noise texture for dark sections */
+.menu::before, .visit::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+.menu, .visit { position: relative; }
+.menu-inner, .visit-inner { position: relative; z-index: 1; }
+
+/* ==================== NAV ==================== */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 20px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+nav.scrolled {
+  background: rgba(255, 248, 240, 0.95);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 1px 0 rgba(0,0,0,0.06);
+}
+
+.nav-logo img {
+  height: 36px;
+  width: auto;
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+  align-items: center;
+}
+
+.nav-links a {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-dark);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: color 0.2s ease;
+}
+
+nav:not(.scrolled) .nav-links a { color: var(--white); }
+nav:not(.scrolled) .nav-logo { filter: brightness(10); }
+
+.nav-links a:hover { color: var(--coral); }
+
+.nav-cta {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--coral);
+  color: var(--white) !important;
+  padding: 10px 20px;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: transform 0.16s var(--ease-out), background 0.2s ease;
+}
+
+.nav-cta:active { transform: scale(0.97); }
+.nav-cta:hover { background: var(--coral-light); }
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  z-index: 101;
+}
+
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--text-dark);
+  transition: all 0.3s var(--ease-out);
+}
+
+nav:not(.scrolled) .hamburger span { background: var(--white); }
+
+.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+/* ==================== HERO ==================== */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-end;
+  padding: 0 32px 80px;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: url('real-images/hero-scooping.jpg') center center / cover no-repeat;
+  z-index: 0;
+}
+
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(42, 42, 37, 0.85) 0%,
+    rgba(42, 42, 37, 0.4) 40%,
+    rgba(42, 42, 37, 0.15) 100%
+  );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: var(--content-width);
+  margin: 0 auto;
+  width: 100%;
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 600;
+  color: var(--white);
+  line-height: 1.1;
+  margin-bottom: 20px;
+  max-width: 680px;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--coral-light);
+}
+
+.hero-sub {
+  font-size: 1.125rem;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 480px;
+  margin-bottom: 32px;
+  line-height: 1.7;
+}
+
+.hero-info {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.hero-info-item {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hero-info-item strong {
+  color: var(--white);
+  font-weight: 600;
+}
+
+/* ==================== INTRO ==================== */
+.intro {
+  padding: var(--section-pad) 32px;
+  text-align: center;
+}
+
+.intro-inner {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.section-label {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--coral);
+  margin-bottom: 16px;
+}
+
+.intro h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: 600;
+  color: var(--green-dark);
+  line-height: 1.2;
+  margin-bottom: 24px;
+}
+
+.intro p {
+  font-size: 1.0625rem;
+  color: var(--text-mid);
+  line-height: 1.75;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.dandelion {
+  width: 40px;
+  height: auto;
+  margin: 40px auto 0;
+  display: block;
+  opacity: 0.45;
+}
+
+/* ==================== PHOTO STRIP ==================== */
+.photo-strip {
+  padding: 0 32px;
+  max-width: calc(var(--content-width) + 64px);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 16px;
+}
+
+.photo-strip img {
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+/* ==================== MENU PREVIEW ==================== */
+.menu {
+  padding: var(--section-pad) 32px;
+  background: var(--green-dark);
+  color: var(--white);
+}
+
+.menu-inner {
+  max-width: var(--content-width);
+  margin: 0 auto;
+}
+
+.menu .section-label { color: var(--coral-light); }
+
+.menu h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+
+.menu-note {
+  font-size: 0.9375rem;
+  color: rgba(255,255,255,0.65);
+  margin-bottom: 48px;
+  max-width: 480px;
+}
+
+.menu h2 + .menu-note { margin-top: 8px; }
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+}
+
+.menu-item {
+  padding: 24px 0;
+  border-top: 1px solid rgba(255,255,255,0.12);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.menu-item:nth-child(odd) { padding-right: 40px; }
+.menu-item:nth-child(even) { padding-left: 40px; border-left: 1px solid rgba(255,255,255,0.12); }
+
+.menu-item-name {
+  font-family: var(--font-display);
+  font-size: 1.0625rem;
+  font-weight: 400;
+}
+
+.menu-item-tag {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(255,255,255,0.1);
+  padding: 2px 8px;
+  border-radius: 100px;
+  margin-left: 8px;
+  vertical-align: middle;
+  color: rgba(255,255,255,0.6);
+}
+
+.menu-item-price {
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.7);
+  white-space: nowrap;
+}
+
+/* ==================== REVIEWS ==================== */
+.reviews {
+  padding: var(--section-pad) 32px;
+  background: var(--cream-dark);
+}
+
+.reviews-inner {
+  max-width: var(--content-width);
+  margin: 0 auto;
+}
+
+.reviews .section-label { text-align: center; }
+
+.reviews h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: 600;
+  color: var(--green-dark);
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.review-card {
+  background: var(--white);
+  padding: 32px;
+  border-radius: 4px;
+}
+
+.review-stars {
+  color: var(--coral);
+  font-size: 0.875rem;
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+}
+
+.review-text {
+  font-size: 0.9375rem;
+  color: var(--text-dark);
+  line-height: 1.7;
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+.review-author {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-light);
+}
+
+/* ==================== ABOUT ==================== */
+.about {
+  padding: var(--section-pad) 32px;
+}
+
+.about-inner {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.about img {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.about h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 600;
+  color: var(--green-dark);
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.about p {
+  font-size: 1rem;
+  color: var(--text-mid);
+  line-height: 1.75;
+  margin-bottom: 16px;
+}
+
+.about p:last-of-type { margin-bottom: 0; }
+
+/* ==================== HOURS + MAP ==================== */
+.visit {
+  padding: var(--section-pad) 32px;
+  background: var(--green-dark);
+  color: var(--white);
+}
+
+.visit-inner {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+}
+
+.visit .section-label { color: var(--coral-light); }
+
+.visit h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 600;
+  margin-bottom: 32px;
+}
+
+.hours-table {
+  width: 100%;
+  margin-bottom: 32px;
+}
+
+.hours-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  font-size: 0.9375rem;
+}
+
+.hours-row .day { font-weight: 500; }
+.hours-row .time { color: rgba(255,255,255,0.7); }
+
+.visit-address {
+  font-size: 0.9375rem;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 24px;
+  line-height: 1.7;
+}
+
+.visit-ctas {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--coral);
+  color: var(--white);
+  padding: 14px 28px;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: transform 0.16s var(--ease-out), background 0.2s ease;
+}
+
+.btn-primary:active { transform: scale(0.97); }
+.btn-primary:hover { background: var(--coral-light); }
+
+.btn-outline {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: transparent;
+  color: var(--white);
+  padding: 14px 28px;
+  border-radius: 100px;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.3);
+  transition: transform 0.16s var(--ease-out), border-color 0.2s ease;
+}
+
+.btn-outline:active { transform: scale(0.97); }
+.btn-outline:hover { border-color: rgba(255,255,255,0.6); }
+
+.visit-map {
+  border-radius: 4px;
+  overflow: hidden;
+  min-height: 400px;
+}
+
+.visit-map iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+  border: 0;
+  filter: saturate(0.8) contrast(1.05);
+}
+
+/* ==================== FOOTER ==================== */
+footer {
+  padding: 48px 32px;
+  background: var(--cream);
+  text-align: center;
+}
+
+.footer-logo img {
+  height: 28px;
+  width: auto;
+  margin-bottom: 16px;
+}
+
+.footer-social {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.footer-social a {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--text-mid);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: color 0.2s ease;
+}
+
+.footer-social a:hover { color: var(--coral); }
+
+.land-acknowledgment {
+  font-size: 0.8125rem;
+  color: var(--text-light);
+  line-height: 1.7;
+  max-width: 520px;
+  margin: 0 auto 16px;
+}
+
+.footer-copy {
+  font-size: 0.75rem;
+  color: var(--text-light);
+}
+
+/* ==================== SCROLL ANIMATIONS ==================== */
+.fade-in {
+  opacity: 1;
+  transform: none;
+}
+
+.js-ready .fade-in.animate {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+.fade-in.animate.visible {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out);
+}
+
+/* Staggered cards */
+.fade-in.animate.stagger-1.visible { transition-delay: 0ms; }
+.fade-in.animate.stagger-2.visible { transition-delay: 60ms; }
+.fade-in.animate.stagger-3.visible { transition-delay: 120ms; }
+
+/* Hero entrance */
+.js-ready .hero-content {
+  opacity: 0;
+  transform: translateY(24px);
+  animation: heroIn 0.8s var(--ease-out) 0.3s forwards;
+}
+
+@keyframes heroIn {
+  to { opacity: 1; transform: none; }
+}
+
+/* Smooth nav transition */
+nav { transition: background 0.4s var(--ease-out), box-shadow 0.4s var(--ease-out); }
+
+/* Photo strip subtle parallax feel */
+.photo-strip img {
+  transition: transform 0.3s var(--ease-out);
+}
+
+/* Menu items entrance */
+.js-ready .menu-item {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.menu-item.visible {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.4s var(--ease-out), transform 0.4s var(--ease-out);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-in.animate { opacity: 1; transform: none; }
+  .fade-in.animate.visible { transition: none !important; }
+}
+
+/* ==================== MOBILE ==================== */
+@media (max-width: 768px) {
+  :root { --section-pad: 64px; }
+
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    inset: 0;
+    background: var(--cream);
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    z-index: 100;
+  }
+
+  .nav-links.open a { color: var(--text-dark) !important; font-size: 1.25rem; }
+
+  .hero { padding-bottom: 48px; min-height: 85vh; }
+  .hero h1 { font-size: 2.25rem; }
+
+  .photo-strip {
+    grid-template-columns: 1fr;
+  }
+  .photo-strip img { height: 240px; }
+
+  .menu-grid {
+    grid-template-columns: 1fr;
+  }
+  .menu-item:nth-child(odd) { padding-right: 0; }
+  .menu-item:nth-child(even) { padding-left: 0; border-left: none; }
+
+  .reviews-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .about img { height: 300px; }
+
+  .visit-inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+/* 1280px laptop */
+@media (max-width: 1280px) and (min-width: 769px) {
+  :root { --section-pad: 80px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#"><img src="real-images/logo.gif" alt="Kid Sister"></a>
+  <ul class="nav-links">
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#visit">Visit</a></li>
+    <li><a href="https://www.instagram.com/kidsistericecream/" target="_blank" rel="noopener">Instagram</a></li>
+    <li><a href="https://maps.google.com/?q=1320+Esquimalt+Road+Victoria+BC" target="_blank" rel="noopener" class="nav-cta">Get Directions</a></li>
+  </ul>
+  <button class="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <h1>Small batch. Seasonal. <em>Gone when it's gone.</em></h1>
+    <p class="hero-sub">Handmade ice cream, vegan sorbet, and pops — scooped fresh from our little shop on Esquimalt Road.</p>
+    <div class="hero-info">
+      <span class="hero-info-item"><strong>Thu–Fri</strong> 3–8pm</span>
+      <span class="hero-info-item"><strong>Sat–Sun</strong> 1–8pm</span>
+      <span class="hero-info-item"><strong>1320 Esquimalt Rd</strong> Victoria BC</span>
+    </div>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="intro fade-in">
+  <div class="intro-inner">
+    <p class="section-label">This Season</p>
+    <h2>Fig & blackberry swirl. Cucumber mint lime pops. Grapefruit aperol sorbet.</h2>
+    <p>Flavors change with what's growing. Follow us on <a href="https://www.instagram.com/kidsistericecream/" target="_blank" rel="noopener" style="color: var(--coral); text-decoration: none; font-weight: 500;">Instagram</a> so you don't miss anything.</p>
+    <img class="dandelion" src="real-images/dandelion-illustration.png" alt="Hand-drawn dandelion">
+  </div>
+</section>
+
+<!-- PHOTO STRIP -->
+<div class="photo-strip fade-in">
+  <img src="real-images/spring-fruits-flowers.jpg" alt="Seasonal fruits, flowers, and Kid Sister frozen treats on a checkered tablecloth">
+  <img src="real-images/sunflowers.jpg" alt="A coral popsicle with edible flowers held up against sunflowers and blue sky">
+</div>
+
+<!-- MENU -->
+<section class="menu" id="menu">
+  <div class="menu-inner fade-in">
+    <p class="section-label">What We're Scooping</p>
+    <h2>The menu changes. That's the point.</h2>
+    <p class="menu-note">Current pricing below. Flavors rotate — follow us on Instagram for this week's lineup.</p>
+    <div class="menu-grid">
+      <div class="menu-item">
+        <span class="menu-item-name">Kids Scoop</span>
+        <span class="menu-item-price">$5</span>
+      </div>
+      <div class="menu-item">
+        <span class="menu-item-name">Single Scoop</span>
+        <span class="menu-item-price">$7</span>
+      </div>
+      <div class="menu-item">
+        <span class="menu-item-name">Split Scoop <span class="menu-item-tag">2 Flavours</span></span>
+        <span class="menu-item-price">$7.50</span>
+      </div>
+      <div class="menu-item">
+        <span class="menu-item-name">Double Scoop</span>
+        <span class="menu-item-price">$8.75</span>
+      </div>
+      <div class="menu-item">
+        <span class="menu-item-name">Pints <span class="menu-item-tag">Take Home</span></span>
+        <span class="menu-item-price">$13</span>
+      </div>
+      <div class="menu-item">
+        <span class="menu-item-name">Fruit Pops <span class="menu-item-tag">Vegan</span></span>
+        <span class="menu-item-price">$6–8</span>
+      </div>
+      <div class="menu-item">
+        <span class="menu-item-name">Oat Milk Fudge Bar <span class="menu-item-tag">Vegan</span></span>
+        <span class="menu-item-price">$7</span>
+      </div>
+      <div class="menu-item">
+        <span class="menu-item-name">Sorbet <span class="menu-item-tag">Vegan</span></span>
+        <span class="menu-item-price">$7</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="reviews-inner">
+    <h2 class="fade-in" style="font-style: italic;">"Best ice cream in Victoria. By far."</h2>
+    <div class="reviews-grid">
+      <div class="review-card fade-in stagger-1">
+        <div class="review-stars" aria-label="5 out of 5 stars">★ ★ ★ ★ ★</div>
+        <p class="review-text">"Great staff, great flavors and fantastic coconut-based vegan options. Best ice cream in Victoria by far."</p>
+        <p class="review-author">Via TripAdvisor</p>
+      </div>
+      <div class="review-card fade-in stagger-2">
+        <div class="review-stars" aria-label="5 out of 5 stars">★ ★ ★ ★ ★</div>
+        <p class="review-text">"You will be amazed how incredible their ice cream is. If you like sesame, be sure to order the black sesame."</p>
+        <p class="review-author">Via TripAdvisor</p>
+      </div>
+      <div class="review-card fade-in stagger-3">
+        <div class="review-stars" aria-label="5 out of 5 stars">★ ★ ★ ★ ★</div>
+        <p class="review-text">"My favourite place for ice cream in all of Victoria. The peach-rhubarb-lime and the coconut-lime were out of this world."</p>
+        <p class="review-author">Melissa W. · Victoria</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <img src="real-images/sunflowers.jpg" alt="A coral popsicle with edible flowers held up against sunflowers" class="fade-in">
+    <div class="fade-in">
+      <p class="section-label">Our Story</p>
+      <h2>A little shop with a lot of flowers.</h2>
+      <p>Kid Sister started as a tiny spot in Fan Tan Alley and grew into Esquimalt's favourite neighbourhood scoop shop. Everything is made from scratch in small batches — organic dairy, local fruit, seasonal everything.</p>
+      <p>We don't do soft serve. We don't do factory ice cream. We scoop by hand, surrounded by fresh flowers, and when a flavor's gone, it's gone. Come early.</p>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section class="visit" id="visit">
+  <div class="visit-inner">
+    <div>
+      <p class="section-label">Come Say Hello</p>
+      <h2>Find us on Esquimalt Road.</h2>
+      <div class="hours-table">
+        <div class="hours-row">
+          <span class="day">Thursday & Friday</span>
+          <span class="time">3:00 pm – 8:00 pm</span>
+        </div>
+        <div class="hours-row">
+          <span class="day">Saturday & Sunday</span>
+          <span class="time">1:00 pm – 8:00 pm</span>
+        </div>
+        <div class="hours-row">
+          <span class="day">Monday – Wednesday</span>
+          <span class="time">Closed</span>
+        </div>
+      </div>
+      <p class="visit-address">1320 Esquimalt Road<br>Victoria, BC</p>
+      <div class="visit-ctas">
+        <a href="https://maps.google.com/?q=1320+Esquimalt+Road+Victoria+BC" target="_blank" rel="noopener" class="btn-primary">Get Directions</a>
+        <a href="https://www.instagram.com/kidsistericecream/" target="_blank" rel="noopener" class="btn-outline">@kidsistericecream</a>
+      </div>
+    </div>
+    <div class="visit-map">
+      <iframe src="https://maps.google.com/maps?q=1320+Esquimalt+Road+Victoria+BC&output=embed" allowfullscreen loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo"><img src="real-images/logo.gif" alt="Kid Sister"></div>
+  <div class="footer-social">
+    <a href="https://www.instagram.com/kidsistericecream/" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.facebook.com/kidsistericecream/" target="_blank" rel="noopener">Facebook</a>
+  </div>
+  <p class="land-acknowledgment">Kid Sister frozen delights are made on the traditional territory of the lək̓ʷəŋən Peoples.</p>
+  <p class="footer-copy">© 2026 Kid Sister Ice Cream. All rights reserved.</p>
+</footer>
+
+<script>
+document.body.classList.add('js-ready');
+// Nav scroll
+const nav = document.querySelector('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// Hamburger
+const hamburger = document.querySelector('.hamburger');
+const navLinks = document.querySelector('.nav-links');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('active');
+  navLinks.classList.toggle('open');
+});
+
+// Close mobile nav on link click
+navLinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    hamburger.classList.remove('active');
+    navLinks.classList.remove('open');
+  });
+});
+
+// Scroll animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.fade-in').forEach(el => {
+  el.classList.add('animate');
+  observer.observe(el);
+});
+
+// Menu item stagger
+const menuObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const items = entry.target.querySelectorAll('.menu-item');
+      items.forEach((item, i) => {
+        setTimeout(() => item.classList.add('visible'), i * 50);
+      });
+      menuObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+const menuGrid = document.querySelector('.menu-grid');
+if (menuGrid) menuObserver.observe(menuGrid);
+</script>
+</body>
+</html>

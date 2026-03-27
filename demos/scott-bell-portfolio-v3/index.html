@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scott Bell — Product Designer</title>
+<meta name="description" content="14 years designing products for millions. Builds AI agent infrastructure daily. The most AI-enabled designer you'll find.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #FAFAFA;
+  --bg-alt: #F0F0EE;
+  --bg-dark: #0F1923;
+  --bg-darker: #0A1118;
+  --text: #0F1923;
+  --text-muted: #5A6570;
+  --text-dim: #8A9099;
+  --accent: #00B894;
+  --accent-hover: #00A080;
+  --white: #FFFFFF;
+  --display: 'Outfit', system-ui, sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ls-tight: 0.04em;
+  --ls-mid: 0.08em;
+  --ls-wide: 0.14em;
+  --content-width: 1200px;
+  --pad: 48px;
+  --section-pad: 120px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { font-size: 16px; scroll-behavior: smooth; -webkit-font-smoothing: antialiased; scroll-padding-top: 80px; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--display);
+  font-weight: 400;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+::selection { background: var(--accent); color: var(--white); }
+a { color: inherit; text-decoration: none; }
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px;
+}
+img { max-width: 100%; height: auto; display: block; }
+
+.wrap { max-width: var(--content-width); margin: 0 auto; padding: 0 var(--pad); }
+
+/* NAV */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(250, 250, 250, 0.92);
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(15, 25, 35, 0.06);
+}
+.nav-inner {
+  max-width: var(--content-width); margin: 0 auto;
+  padding: 18px var(--pad);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.nav-name {
+  font-weight: 700; font-size: 16px; letter-spacing: var(--ls-tight);
+}
+.nav-links { display: flex; gap: 28px; list-style: none; }
+.nav-links a {
+  font-family: var(--mono); font-size: 12px; font-weight: 500;
+  letter-spacing: var(--ls-mid); text-transform: uppercase;
+  color: var(--text-muted); transition: color 0.2s var(--ease-out);
+  position: relative;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
+  height: 1.5px; background: var(--accent); transform: scaleX(0);
+  transition: transform 0.3s var(--ease-out);
+}
+.nav-links a:hover { color: var(--text); }
+.nav-links a:hover::after { transform: scaleX(1); }
+.nav-burger {
+  display: none; background: none; border: none; cursor: pointer; padding: 8px;
+  color: var(--text);
+}
+.nav-burger svg { display: block; }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  padding-top: 140px;
+  padding-bottom: 60px;
+}
+.hero-upper {
+  display: grid;
+  grid-template-columns: 7fr 5fr;
+  gap: 64px;
+  align-items: end;
+  margin-bottom: 48px;
+}
+.hero-label {
+  font-family: var(--mono); font-size: 12px; font-weight: 500;
+  letter-spacing: var(--ls-wide); text-transform: uppercase;
+  color: var(--accent); margin-bottom: 24px;
+  display: flex; align-items: center; gap: 12px;
+}
+.hero-label::before {
+  content: ''; display: block; width: 32px; height: 2px;
+  background: var(--accent);
+}
+.hero h1 {
+  font-size: clamp(44px, 5.5vw, 72px);
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  margin-bottom: 28px;
+}
+.hero h1 .accent { color: var(--accent); }
+.hero-body {
+  font-size: 18px; line-height: 1.65;
+  color: var(--text-muted); margin-bottom: 36px;
+  max-width: 520px;
+}
+.hero-ctas { display: flex; gap: 16px; }
+
+.hero-aside {
+  display: flex; flex-direction: column; gap: 24px;
+  padding-bottom: 8px;
+}
+.hero-stat {
+  border-left: 2px solid var(--accent);
+  padding-left: 20px;
+}
+.hero-stat-num {
+  font-size: 28px; font-weight: 700; line-height: 1;
+  letter-spacing: -0.02em; margin-bottom: 4px;
+}
+.hero-stat-label {
+  font-family: var(--mono); font-size: 11px; font-weight: 500;
+  letter-spacing: var(--ls-mid); text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+/* Hero image strip */
+.hero-strip {
+  display: grid;
+  grid-template-columns: 3fr 2fr 2fr;
+  gap: 12px;
+}
+.hero-strip img {
+  border-radius: 8px;
+  object-fit: cover;
+  width: 100%;
+  height: 220px;
+}
+
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--accent); color: var(--white);
+  padding: 14px 28px; border-radius: 6px;
+  font-family: var(--display); font-size: 14px; font-weight: 600;
+  letter-spacing: var(--ls-tight);
+  transition: background 0.2s var(--ease-out), transform 0.16s var(--ease-out);
+  border: none; cursor: pointer;
+}
+.btn-primary:hover { background: var(--accent-hover); }
+.btn-primary:active { transform: scale(0.97); }
+
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: transparent; color: var(--text);
+  padding: 14px 28px; border-radius: 6px;
+  border: 1.5px solid rgba(15, 25, 35, 0.15);
+  font-family: var(--display); font-size: 14px; font-weight: 600;
+  letter-spacing: var(--ls-tight);
+  transition: border-color 0.2s var(--ease-out), transform 0.16s var(--ease-out);
+  cursor: pointer;
+}
+.btn-secondary:hover { border-color: var(--text); }
+.btn-secondary:active { transform: scale(0.97); }
+
+/* TRUST BAR */
+.trust-bar {
+  background: var(--bg-dark);
+  padding: 28px 0;
+}
+.trust-bar-inner {
+  display: flex; justify-content: center; gap: 48px;
+  flex-wrap: wrap;
+  max-width: var(--content-width); margin: 0 auto;
+  padding: 0 var(--pad);
+}
+.trust-item {
+  font-family: var(--mono); font-size: 12px; font-weight: 500;
+  letter-spacing: var(--ls-mid); text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  display: flex; align-items: center; gap: 8px;
+}
+.trust-item strong {
+  color: rgba(255,255,255,0.85); font-weight: 500;
+}
+
+/* SECTION LABELS */
+.section-label {
+  font-family: var(--mono); font-size: 12px; font-weight: 500;
+  letter-spacing: var(--ls-wide); text-transform: uppercase;
+  color: var(--accent); margin-bottom: 16px;
+  display: flex; align-items: center; gap: 12px;
+}
+.section-label::before {
+  content: ''; display: block; width: 24px; height: 2px;
+  background: var(--accent);
+}
+
+/* PROJECTS */
+.projects {
+  padding: var(--section-pad) 0;
+}
+.projects-header {
+  margin-bottom: 64px;
+}
+.projects h2 {
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.project-card {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 48px;
+  align-items: center;
+  padding: 64px 0;
+  border-top: 1px solid rgba(15, 25, 35, 0.08);
+}
+.project-card:last-child {
+  border-bottom: 1px solid rgba(15, 25, 35, 0.08);
+}
+.project-card:nth-child(even) .project-images { order: -1; }
+
+.project-meta {
+  font-family: var(--mono); font-size: 12px; font-weight: 500;
+  letter-spacing: var(--ls-mid); text-transform: uppercase;
+  color: var(--text-dim); margin-bottom: 12px;
+}
+.project-title {
+  font-size: clamp(24px, 3vw, 32px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+.project-desc {
+  font-size: 16px; line-height: 1.65;
+  color: var(--text-muted); margin-bottom: 24px;
+}
+.project-tags {
+  display: flex; flex-wrap: wrap; gap: 8px;
+}
+.project-tag {
+  font-family: var(--mono); font-size: 11px; font-weight: 500;
+  letter-spacing: var(--ls-tight);
+  padding: 6px 12px;
+  border: 1px solid rgba(15, 25, 35, 0.1);
+  border-radius: 4px;
+  color: var(--text-muted);
+}
+
+.project-images {
+  display: grid;
+  gap: 8px;
+}
+.project-images-2col {
+  grid-template-columns: 1fr 1fr;
+}
+.project-images-featured img {
+  border-radius: 8px;
+}
+.project-images img {
+  border-radius: 8px;
+  object-fit: cover;
+  width: 100%;
+}
+
+/* KOHO inline */
+.koho-bar {
+  padding: 64px 0;
+  border-top: 1px solid rgba(15, 25, 35, 0.08);
+  border-bottom: 1px solid rgba(15, 25, 35, 0.08);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 48px;
+  text-align: center;
+}
+.koho-stat-val {
+  font-size: 36px; font-weight: 700;
+  letter-spacing: -0.02em; margin-bottom: 8px;
+}
+.koho-stat-label {
+  font-family: var(--mono); font-size: 11px; font-weight: 500;
+  letter-spacing: var(--ls-mid); text-transform: uppercase;
+  color: var(--text-dim);
+}
+.koho-stat-context {
+  font-size: 14px; color: var(--text-muted); margin-top: 4px;
+}
+
+/* AI SECTION */
+.ai-section {
+  background: var(--bg-dark);
+  color: var(--white);
+  padding: var(--section-pad) 0;
+}
+.ai-section .section-label { color: var(--accent); }
+.ai-section .section-label::before { background: var(--accent); }
+.ai-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  margin-bottom: 56px;
+  align-items: end;
+}
+.ai-section h2 {
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.ai-header-body {
+  font-size: 17px; line-height: 1.65;
+  color: rgba(255,255,255,0.55);
+}
+
+.ai-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.ai-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px;
+  padding: 32px;
+  transition: border-color 0.3s var(--ease-out);
+}
+.ai-card:hover { border-color: rgba(0, 184, 148, 0.3); }
+@media (hover: none) { .ai-card:hover { border-color: rgba(255,255,255,0.08); } }
+.ai-card-num {
+  font-family: var(--mono); font-size: 12px; font-weight: 500;
+  letter-spacing: var(--ls-mid); color: var(--accent);
+  margin-bottom: 16px;
+}
+.ai-card h3 {
+  font-size: 20px; font-weight: 700;
+  letter-spacing: -0.01em; margin-bottom: 8px;
+}
+.ai-card p {
+  font-size: 15px; line-height: 1.6;
+  color: rgba(255,255,255,0.5);
+}
+
+/* ABOUT */
+.about {
+  padding: var(--section-pad) 0;
+}
+.about-grid {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 64px;
+  align-items: start;
+}
+.about h2 {
+  font-size: clamp(28px, 3.5vw, 42px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+  line-height: 1.15;
+}
+.about-body p {
+  font-size: 16px; line-height: 1.7;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+.about-highlights {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 32px;
+}
+.about-highlight {
+  padding: 20px;
+  background: var(--bg-alt);
+  border-radius: 6px;
+}
+.about-highlight-val {
+  font-size: 24px; font-weight: 700;
+  letter-spacing: -0.02em; margin-bottom: 4px;
+}
+.about-highlight-label {
+  font-family: var(--mono); font-size: 11px; font-weight: 500;
+  letter-spacing: var(--ls-mid); text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.cta-buttons {
+  display: flex; gap: 16px; justify-content: center;
+}
+.btn-dark {
+  color: var(--white) !important;
+  border-color: rgba(255,255,255,0.2) !important;
+}
+.btn-dark:hover {
+  border-color: rgba(255,255,255,0.5) !important;
+}
+
+/* CTA */
+.cta-section {
+  background: var(--bg-dark);
+  color: var(--white);
+  padding: var(--section-pad) 0;
+  text-align: center;
+}
+.cta-section h2 {
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-bottom: 16px;
+}
+.cta-section p {
+  font-size: 18px; color: rgba(255,255,255,0.5);
+  margin-bottom: 32px;
+  max-width: 480px; margin-left: auto; margin-right: auto;
+}
+
+/* FOOTER */
+.footer {
+  padding: 40px 0;
+  border-top: 1px solid rgba(15, 25, 35, 0.06);
+}
+.footer-inner {
+  display: flex; justify-content: space-between; align-items: center;
+}
+.footer-name {
+  font-weight: 600; font-size: 14px;
+  letter-spacing: var(--ls-tight);
+}
+.footer-links {
+  display: flex; gap: 24px; list-style: none;
+}
+.footer-links a {
+  font-family: var(--mono); font-size: 12px; font-weight: 500;
+  letter-spacing: var(--ls-mid); text-transform: uppercase;
+  color: var(--text-muted);
+  transition: color 0.2s var(--ease-out);
+}
+.footer-links a:hover { color: var(--text); }
+
+/* MOBILE */
+@media (max-width: 768px) {
+  :root { --pad: 24px; --section-pad: 80px; }
+
+  .nav-links { display: none; }
+  .nav-burger { display: block; }
+  .nav-links.open {
+    display: flex; flex-direction: column;
+    position: absolute; top: 100%; left: 0; right: 0;
+    background: var(--bg); padding: 24px var(--pad);
+    border-bottom: 1px solid rgba(15, 25, 35, 0.06);
+    gap: 16px;
+  }
+
+  .hero { min-height: auto; padding-top: 100px; padding-bottom: 40px; }
+  .hero-upper {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .hero h1 { font-size: clamp(36px, 8vw, 52px); }
+  .hero-ctas { flex-direction: column; }
+  .hero-aside { flex-direction: row; gap: 20px; }
+  .hero-stat { padding-left: 16px; }
+  .hero-stat-num { font-size: 22px; }
+  .hero-strip {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .hero-strip img { height: 160px; }
+  .hero-strip img:first-child { grid-column: 1 / 3; height: 200px; }
+
+  .project-card,
+  .project-card.reverse {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 48px 0;
+  }
+  .project-card:nth-child(even) .project-images { order: 0; }
+
+  .koho-bar {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    text-align: left;
+    padding: 48px 0;
+  }
+
+  .ai-header { grid-template-columns: 1fr; gap: 16px; }
+  .ai-grid { grid-template-columns: 1fr; }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .about-highlights { grid-template-columns: 1fr; }
+
+  .trust-bar-inner {
+    gap: 20px;
+    justify-content: start;
+    overflow-x: auto;
+  }
+  .trust-item { white-space: nowrap; }
+
+  .footer-inner { flex-direction: column; gap: 16px; text-align: center; }
+}
+
+/* SCROLL ANIMATIONS */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.stagger-1 { transition-delay: 50ms; }
+.stagger-2 { transition-delay: 100ms; }
+.stagger-3 { transition-delay: 150ms; }
+.stagger-4 { transition-delay: 200ms; }
+
+/* Hero entrance */
+.hero-text {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: heroIn 0.8s var(--ease-out) 0.2s forwards;
+}
+.hero-aside {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: heroIn 0.8s var(--ease-out) 0.4s forwards;
+}
+.hero-strip {
+  opacity: 0;
+  transform: translateY(16px);
+  animation: heroIn 0.8s var(--ease-out) 0.5s forwards;
+}
+@keyframes heroIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* No-JS fallback */
+noscript + * .reveal,
+noscript + * .hero-text,
+noscript + * .hero-aside,
+noscript + * .hero-strip {
+  opacity: 1 !important;
+  transform: none !important;
+  animation: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, .reveal, .hero-text, .hero-aside, .hero-strip {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-name">Scott Bell</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#ai">AI Tools</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="nav-burger" aria-label="Toggle menu" onclick="document.getElementById('navLinks').classList.toggle('open')">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/>
+      </svg>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero wrap">
+  <div class="hero-upper">
+    <div class="hero-text">
+      <div class="hero-label">Product Designer · Victoria, BC</div>
+      <h1>The most <span class="accent">AI-enabled</span> designer you'll find.</h1>
+      <p class="hero-body">14 years designing products used by millions. Now building AI agent infrastructure — MCP servers, multi-agent orchestration, the systems that make AI actually work. Full app redesigns at scale, design systems across 8 products, employee #1 at an $800M neobank.</p>
+      <div class="hero-ctas">
+        <a href="mailto:scott.k.bell@gmail.com" class="btn-primary">Get in Touch</a>
+        <a href="#work" class="btn-secondary">See the Work</a>
+      </div>
+    </div>
+    <div class="hero-aside">
+      <div class="hero-stat">
+        <div class="hero-stat-num">14 yrs</div>
+        <div class="hero-stat-label">Product Design</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">1.5M+</div>
+        <div class="hero-stat-label">Users Reached</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">65+</div>
+        <div class="hero-stat-label">Countries</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-strip">
+    <img src="assets/appinphone-Bvo41AS_.png" alt="Strike app on iPhone">
+    <img src="assets/AiozNetwork-1-Bl-Qs-og.png" alt="AIOZ Network dTransfer">
+    <img src="assets/fountain1-BaokBLzA.png" alt="Fountain podcast player">
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar reveal">
+  <div class="trust-bar-inner">
+    <div class="trust-item"><strong>Strike</strong> · 1.5M Users</div>
+    <div class="trust-item"><strong>AIOZ Network</strong> · $1.38B Market Cap</div>
+    <div class="trust-item"><strong>KOHO</strong> · Employee #1 · $800M+</div>
+    <div class="trust-item">Featured by <strong>Apple</strong> Twice</div>
+  </div>
+</div>
+
+<!-- PROJECTS -->
+<section class="projects wrap" id="work">
+  <div class="projects-header reveal">
+    <div class="section-label">Selected Work</div>
+    <h2>Shipped products, real users, measurable impact.</h2>
+  </div>
+
+  <!-- Strike -->
+  <div class="project-card reveal">
+    <div class="project-info">
+      <div class="project-meta">Strike · Senior Product Designer · 2021–2023</div>
+      <h3 class="project-title">Complete mobile app redesign — 450+ screens, 65 countries</h3>
+      <p class="project-desc">Led the complete redesign of Strike's mobile app from the ground up. Onboarding, payments, KYC, account management, in-app support. Co-owned the design system across iOS and Android.</p>
+      <div class="project-tags">
+        <span class="project-tag">Mobile App</span>
+        <span class="project-tag">Design System</span>
+        <span class="project-tag">Bitcoin / Lightning</span>
+      </div>
+    </div>
+    <div class="project-images project-images-2col">
+      <img src="assets/strike1-CjnPLkXo.png" alt="Strike onboarding screen">
+      <img src="assets/strike2-D0UqhuCL.png" alt="Strike Bitcoin wallet">
+    </div>
+  </div>
+
+  <!-- AIOZ -->
+  <div class="project-card reveal">
+    <div class="project-info">
+      <div class="project-meta">AIOZ Network · Principal Product Designer · 2023–2025</div>
+      <h3 class="project-title">Design system across 8 decentralized products</h3>
+      <p class="project-desc">Led UX and design across the full decentralized product suite — AI marketplace, video middleware, IPFS pinning, Chrome multichain wallet, desktop node operator app. Built the unified design system.</p>
+      <div class="project-tags">
+        <span class="project-tag">Web3</span>
+        <span class="project-tag">AI Marketplace</span>
+        <span class="project-tag">Design System</span>
+      </div>
+    </div>
+    <div class="project-images project-images-2col">
+      <img src="assets/aioz2-xlQ6G12l.png" alt="AIOZ AI platform">
+      <img src="assets/aioz3-DImhmR08.png" alt="AIOZ models directory">
+    </div>
+  </div>
+
+  <!-- Fountain -->
+  <div class="project-card reveal">
+    <div class="project-info">
+      <div class="project-meta">Fountain · Design Director · 2023–2024</div>
+      <h3 class="project-title">Full mobile app redesign — shipped in 5 months</h3>
+      <p class="project-desc">Full mobile app redesign shipped in under 5 months. Built a semantic, tokenized design system. Redesigned listening, tipping, onboarding, and wallet UX.</p>
+      <div class="project-tags">
+        <span class="project-tag">Mobile App</span>
+        <span class="project-tag">Bitcoin / Lightning</span>
+        <span class="project-tag">Design System</span>
+      </div>
+    </div>
+    <div class="project-images project-images-2col">
+      <img src="assets/fountain2-hHlXtLUX.png" alt="Fountain social feed">
+      <img src="assets/fountain3-CWGB33it.png" alt="Fountain app screens">
+    </div>
+  </div>
+
+  <!-- KOHO -->
+  <div class="koho-bar reveal">
+    <div>
+      <div class="koho-stat-val">$800M+</div>
+      <div class="koho-stat-label">Valuation</div>
+      <div class="koho-stat-context">KOHO · Canada's top neobank</div>
+    </div>
+    <div>
+      <div class="koho-stat-val">#1</div>
+      <div class="koho-stat-label">Employee</div>
+      <div class="koho-stat-context">Built the product from zero</div>
+    </div>
+    <div>
+      <div class="koho-stat-val">100K+</div>
+      <div class="koho-stat-label">Users at Exit</div>
+      <div class="koho-stat-context">Design lead, 2015–2018</div>
+    </div>
+  </div>
+</section>
+
+<!-- AI SECTION -->
+<section class="ai-section" id="ai">
+  <div class="wrap">
+    <div class="section-label">What I'm Building Now</div>
+    <div class="ai-header">
+      <h2>Most designers talk about AI. I build the infrastructure.</h2>
+      <p class="ai-header-body">MCP servers, multi-agent orchestration, behavior calibration. Not prompting ChatGPT — building the systems underneath. This means I can design AI products AND build them, closing the gap between design intent and technical reality.</p>
+    </div>
+
+    <div class="ai-grid">
+      <div class="ai-card reveal stagger-1">
+        <div class="ai-card-num">01</div>
+        <h3>Clawprint</h3>
+        <p>MCP server that captures UI elements from the browser and pipes them directly to Claude Code. Point at something, click, it's in your coding context.</p>
+      </div>
+      <div class="ai-card reveal stagger-2">
+        <div class="ai-card-num">02</div>
+        <h3>LoopIn</h3>
+        <p>Meeting assistant built on agent architecture. Records, transcribes, extracts action items, and pushes them where they need to go.</p>
+      </div>
+      <div class="ai-card reveal stagger-3">
+        <div class="ai-card-num">03</div>
+        <h3>Deep Self</h3>
+        <p>Three AI agents collaborate through structured conversation to build a detailed psychological profile. Multi-agent orchestration in practice.</p>
+      </div>
+      <div class="ai-card reveal stagger-4">
+        <div class="ai-card-num">04</div>
+        <h3>Auto Design Review</h3>
+        <p>Automated design critique with simulated expert panels. Multiple AI personas evaluate work through different lenses — usability, craft, direction.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about wrap reveal" id="about">
+  <div class="section-label">About</div>
+  <div class="about-grid">
+    <div>
+      <h2>A scientist who became a designer who builds AI tools.</h2>
+    </div>
+    <div class="about-body">
+      <p>Started in microbiology. Crossed into interaction design. Spent 14 years designing digital products — fintech, AI, Web3, Bitcoin. Nine products shipped, five in leadership roles.</p>
+      <p>Now I spend my days building AI agent infrastructure. The gap between what designers need and what AI tools offer is massive. I'm closing it from the inside — building the MCP servers, calibrating agent behavior, designing the systems that make AI actually useful for creative work.</p>
+      <p style="margin-top: 16px; font-size: 16px; line-height: 1.7; color: var(--text-muted);">BSc Microbiology (UVic). BA Interaction Design (Emily Carr). UX instructor at RED Academy. Two Apple features. Ten years of post-secondary because one degree wasn't enough.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section reveal" id="contact">
+  <div class="wrap">
+    <h2>Let's build something that matters.</h2>
+    <p>Available for product design roles at the intersection of AI and real products. Remote from Victoria, BC.</p>
+    <div class="cta-buttons">
+      <a href="mailto:scott.k.bell@gmail.com" class="btn-primary">scott.k.bell@gmail.com</a>
+      <a href="https://linkedin.com/in/scottkbell" target="_blank" rel="noopener" class="btn-secondary btn-dark">LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <span class="footer-name">Scott Bell © 2026</span>
+    <ul class="footer-links">
+      <li><a href="https://linkedin.com/in/scottkbell" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a href="https://github.com/skip5this" target="_blank" rel="noopener">GitHub</a></li>
+      <li><a href="mailto:scott.k.bell@gmail.com">Email</a></li>
+    </ul>
+  </div>
+</footer>
+
+<noscript><style>.reveal,.hero-text,.hero-aside,.hero-strip{opacity:1!important;transform:none!important;animation:none!important;}</style></noscript>
+<script>
+if (window.matchMedia('(prefers-reduced-motion: reduce)').matches === false) {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+}
+</script>
+</body>
+</html>

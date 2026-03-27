@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Little Plant Shop — Houseplant Boutique & Curio Shop | Victoria, BC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --cream: #FAF7F2;
+  --sage: #7A8B6F;
+  --sage-light: #E8EDE4;
+  --terracotta: #C4856A;
+  --earth: #5C4A3A;
+  --warm-black: #1A1610;
+  --warm-gray: #6B6560;
+  --alt-bg: #F0EDE6;
+  --section-pad: 96px;
+  --content-width: 1080px;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ls-sm: 0.04em;
+  --ls-md: 0.08em;
+  --ls-lg: 0.14em;
+}
+
+html { scroll-behavior: smooth; }
+section[id] { scroll-margin-top: 80px; }
+
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--warm-black);
+  background: var(--cream);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Noise texture */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+/* Typography */
+h1, h2, h3 { font-family: 'Cormorant', serif; font-weight: 600; }
+h1 { font-size: clamp(48px, 7vw, 96px); line-height: 1.05; letter-spacing: -0.02em; }
+h2 { font-size: clamp(32px, 3.5vw, 48px); line-height: 1.15; letter-spacing: -0.01em; }
+h3 { font-size: 24px; line-height: 1.3; }
+
+.section-label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: var(--ls-lg);
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 16px;
+}
+
+.section-label + h2 { margin-top: 0; }
+
+/* Navigation */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(250, 247, 242, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(26, 22, 16, 0.06);
+}
+
+.nav-inner {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-brand {
+  font-family: 'Cormorant', serif;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: var(--ls-sm);
+}
+
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: var(--ls-md);
+  text-transform: uppercase;
+  color: var(--warm-gray);
+  transition: color 200ms var(--ease-out);
+}
+.nav-links a:hover { color: var(--warm-black); }
+
+.nav-cta {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: var(--ls-md);
+  text-transform: uppercase;
+  color: var(--cream) !important;
+  background: var(--sage);
+  padding: 10px 20px;
+  border-radius: 4px;
+  transition: transform 160ms var(--ease-out), background 200ms var(--ease-out);
+}
+.nav-cta:active { transform: scale(0.97); }
+.nav-cta:hover { background: var(--earth); }
+
+.hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+.hamburger span { display: block; width: 22px; height: 2px; background: var(--warm-black); margin: 5px 0; transition: all 200ms var(--ease-out); }
+
+/* Hero */
+.hero {
+  padding: calc(var(--section-pad) + 80px) 24px var(--section-pad);
+  max-width: var(--content-width);
+  margin: 0 auto;
+}
+
+.hero-content {
+  border-left: 3px solid var(--sage);
+  padding-left: 32px;
+}
+
+.hero-label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: var(--ls-lg);
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 20px;
+}
+
+.hero h1 { margin-bottom: 24px; color: var(--warm-black); }
+
+.hero-sub {
+  font-size: 1.125rem;
+  color: var(--warm-gray);
+  max-width: 520px;
+  line-height: 1.65;
+  margin-bottom: 32px;
+}
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: var(--ls-md);
+  text-transform: uppercase;
+  color: var(--cream);
+  background: var(--sage);
+  padding: 14px 28px;
+  border-radius: 4px;
+  transition: transform 160ms var(--ease-out), background 200ms var(--ease-out);
+}
+.hero-cta:active { transform: scale(0.97); }
+.hero-cta:hover { background: var(--earth); }
+
+/* Trust Bar */
+.trust-bar {
+  background: var(--warm-black);
+  padding: 28px 24px;
+}
+
+.trust-bar-inner {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  gap: 64px;
+  flex-wrap: wrap;
+}
+
+.trust-stat {
+  text-align: center;
+  color: var(--cream);
+}
+
+.trust-number {
+  font-family: 'Cormorant', serif;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: var(--ls-sm);
+  color: var(--terracotta);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.trust-label {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: var(--ls-lg);
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+/* Photo Strip */
+.photo-strip {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 4px;
+  max-width: var(--content-width);
+  margin: 0 auto;
+}
+
+.photo-strip-item {
+  height: 400px;
+  overflow: hidden;
+}
+
+.photo-strip-stack {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 4px;
+}
+
+.photo-placeholder {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo-gradient {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--sage-light) 0%, var(--sage) 100%);
+}
+
+.photo-gradient-alt {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--terracotta) 0%, var(--earth) 100%);
+}
+
+/* About */
+.about {
+  padding: var(--section-pad) 24px;
+  max-width: var(--content-width);
+  margin: 0 auto;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.about-quote {
+  font-family: 'Cormorant', serif;
+  font-size: 28px;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.4;
+  color: var(--earth);
+  border-left: 3px solid var(--sage);
+  padding-left: 24px;
+}
+
+.about-text { color: var(--warm-gray); }
+.about-text p + p { margin-top: 16px; }
+
+/* Name Meaning Section */
+.name-section {
+  padding: 120px 24px;
+  background: var(--sage-light);
+  text-align: center;
+}
+
+.name-section h2 {
+  max-width: 700px;
+  margin: 0 auto 20px;
+  color: var(--earth);
+}
+
+.name-body {
+  max-width: 560px;
+  margin: 0 auto;
+  color: var(--warm-gray);
+  font-size: 17px;
+}
+
+/* Product Cards */
+.products {
+  padding: var(--section-pad) 24px;
+  max-width: var(--content-width);
+  margin: 0 auto;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.product-card {
+  padding: 32px;
+  background: var(--alt-bg);
+  border-radius: 4px;
+  transition: transform 300ms var(--ease-out);
+}
+
+.product-number {
+  font-family: 'Cormorant', serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--sage);
+  opacity: 0.35;
+  margin-bottom: 12px;
+}
+
+.product-card h3 { margin-bottom: 8px; color: var(--warm-black); }
+.product-desc { color: var(--warm-gray); font-size: 15px; }
+
+/* Press Callout */
+.press-callout {
+  padding: 48px 24px;
+  background: var(--sage);
+  text-align: center;
+}
+
+.press-callout-inner {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.press-quote {
+  font-family: 'Cormorant', serif;
+  font-size: 24px;
+  font-style: italic;
+  color: var(--cream);
+  line-height: 1.4;
+  margin-bottom: 16px;
+}
+
+.press-attr {
+  font-size: 13px;
+  letter-spacing: var(--ls-md);
+  text-transform: uppercase;
+  color: rgba(250, 247, 242, 0.6);
+}
+
+/* Reviews */
+.reviews {
+  padding: var(--section-pad) 24px;
+  max-width: var(--content-width);
+  margin: 0 auto;
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.review-card {
+  padding: 32px;
+  border-radius: 4px;
+}
+
+.review-card:nth-child(odd) { background: var(--alt-bg); }
+.review-card:nth-child(even) { background: var(--cream); border: 1px solid rgba(26, 22, 16, 0.08); }
+
+.review-card.featured {
+  background: var(--warm-black);
+  color: var(--cream);
+  transform: translateY(-8px);
+}
+
+.review-stars {
+  color: var(--terracotta);
+  font-size: 14px;
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+}
+
+.review-card.featured .review-stars { color: var(--terracotta); }
+
+.review-text {
+  font-size: 17px;
+  line-height: 1.65;
+  margin-bottom: 16px;
+  color: var(--warm-gray);
+}
+
+.review-card.featured .review-text { color: rgba(250, 247, 242, 0.85); }
+
+.review-attr {
+  font-size: 13px;
+  letter-spacing: var(--ls-md);
+  text-transform: uppercase;
+  color: var(--warm-gray);
+  opacity: 0.6;
+}
+
+.review-card.featured .review-attr { color: rgba(250, 247, 242, 0.5); }
+
+/* Exterior Photo Break */
+.exterior-break {
+  width: 100%;
+  height: 420px;
+  overflow: hidden;
+}
+
+.exterior-break img,
+.exterior-break .photo-gradient {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Visit Section */
+.visit {
+  padding: var(--section-pad) 24px;
+  max-width: var(--content-width);
+  margin: 0 auto;
+}
+
+.visit-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  margin-top: 40px;
+}
+
+.visit-info h3 { margin-bottom: 16px; }
+
+.visit-detail {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+  color: var(--warm-gray);
+  font-size: 15px;
+}
+
+.visit-detail-label {
+  font-weight: 600;
+  color: var(--warm-black);
+  min-width: 64px;
+}
+
+.hours-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+}
+
+.hours-table td {
+  padding: 8px 0;
+  font-size: 15px;
+  color: var(--warm-gray);
+}
+
+.hours-table td:first-child {
+  font-weight: 500;
+  color: var(--warm-black);
+  width: 120px;
+}
+
+.hours-closed { color: var(--terracotta) !important; font-style: italic; }
+
+.visit-map {
+  border-radius: 4px;
+  overflow: hidden;
+  height: 100%;
+  min-height: 320px;
+}
+
+.visit-map iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  filter: grayscale(30%) contrast(1.05);
+}
+
+/* CTA Band */
+.cta-band {
+  padding: 64px 24px;
+  background: var(--sage);
+  text-align: center;
+}
+
+.cta-band h2 { color: var(--cream); margin-bottom: 12px; }
+
+.cta-band-sub {
+  color: rgba(250, 247, 242, 0.7);
+  margin-bottom: 28px;
+  font-size: 17px;
+}
+
+.cta-band-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: var(--ls-md);
+  text-transform: uppercase;
+  color: var(--sage);
+  background: var(--cream);
+  padding: 14px 28px;
+  border-radius: 4px;
+  transition: transform 160ms var(--ease-out), opacity 200ms var(--ease-out);
+}
+.cta-band-btn:active { transform: scale(0.97); }
+.cta-band-btn:hover { opacity: 0.9; }
+
+.cta-band-secondary {
+  margin-top: 12px;
+}
+.cta-band-secondary a {
+  color: rgba(250, 247, 242, 0.6);
+  font-size: 14px;
+  letter-spacing: var(--ls-md);
+  text-transform: uppercase;
+  transition: color 200ms var(--ease-out);
+}
+.cta-band-secondary a:hover { color: var(--cream); }
+
+/* Footer */
+footer {
+  padding: 48px 24px;
+  background: var(--warm-black);
+  color: rgba(250, 247, 242, 0.5);
+}
+
+.footer-inner {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-brand {
+  font-family: 'Cormorant', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--cream);
+  letter-spacing: var(--ls-sm);
+}
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+}
+
+.footer-links a {
+  font-size: 14px;
+  letter-spacing: var(--ls-sm);
+  color: rgba(250, 247, 242, 0.5);
+  transition: color 200ms var(--ease-out);
+}
+.footer-links a:hover { color: var(--cream); }
+
+.footer-copy { font-size: 13px; width: 100%; text-align: center; margin-top: 24px; }
+
+/* Animations */
+.fade-in {
+  opacity: 1;
+  transform: none;
+}
+
+.js-ready .fade-in {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 500ms var(--ease-out), transform 500ms var(--ease-out);
+}
+
+.js-ready .fade-in.visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-in { transition: none !important; opacity: 1 !important; transform: none !important; }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  :root { --section-pad: 64px; }
+
+  .nav-links { display: none; }
+  .nav-cta-desktop { display: none; }
+  .hamburger { display: block; }
+
+  nav.open .nav-links {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--cream);
+    padding: 24px;
+    gap: 16px;
+    border-bottom: 1px solid rgba(26, 22, 16, 0.08);
+  }
+
+  nav.open .nav-links .nav-cta { display: inline-block; text-align: center; }
+
+  .hero h1 { font-size: clamp(36px, 8vw, 56px); }
+  .hero-content { padding-left: 20px; }
+
+  .trust-bar-inner { gap: 32px; }
+
+  .photo-strip { grid-template-columns: 1fr; }
+  .photo-strip-item { height: 280px; }
+  .photo-strip-stack { grid-template-columns: 1fr 1fr; }
+
+  .about-grid { grid-template-columns: 1fr; gap: 32px; }
+
+  .products-grid { grid-template-columns: 1fr; }
+
+  .reviews-grid { grid-template-columns: 1fr; }
+  .review-card.featured { transform: none; }
+
+  .visit-grid { grid-template-columns: 1fr; gap: 32px; }
+  .visit-map { min-height: 280px; }
+
+  .footer-inner { flex-direction: column; text-align: center; }
+  .footer-links { justify-content: center; }
+}
+
+/* noscript fallback */
+noscript .fade-in { opacity: 1 !important; transform: none !important; }
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">Little Plant Shop</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#plants">Plants</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#visit">Visit</a></li>
+      <li><a href="https://maps.google.com/maps?q=613+Johnson+Street+Victoria+BC" target="_blank" rel="noopener" class="nav-cta">Get Directions</a></li>
+    </ul>
+    <a href="https://maps.google.com/maps?q=613+Johnson+Street+Victoria+BC" target="_blank" rel="noopener" class="nav-cta nav-cta-desktop">Get Directions</a>
+    <button class="hamburger" aria-label="Menu" onclick="document.querySelector('nav').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-content fade-in">
+    <div class="hero-label">Houseplant Boutique · Victoria, BC</div>
+    <h1>We Know Where<br>Every Plant<br>Came From</h1>
+    <p class="hero-sub">Two horticulturalists who met in high school, studied plants together, and crossed the country to open a shop where nothing is mass-imported and every specimen is ethically sourced.</p>
+    <a href="https://maps.google.com/maps?q=613+Johnson+Street+Victoria+BC" target="_blank" rel="noopener" class="hero-cta">Get Directions →</a>
+  </div>
+</section>
+
+<!-- Trust Bar -->
+<div class="trust-bar">
+  <div class="trust-bar-inner">
+    <div class="trust-stat">
+      <span class="trust-number">12+</span>
+      <span class="trust-label">Years in Business</span>
+    </div>
+    <div class="trust-stat">
+      <span class="trust-number">19K</span>
+      <span class="trust-label">Instagram Community</span>
+    </div>
+    <div class="trust-stat">
+      <span class="trust-number">5 Days</span>
+      <span class="trust-label">Open Wed–Sun</span>
+    </div>
+    <div class="trust-stat">
+      <span class="trust-number">100%</span>
+      <span class="trust-label">Canadian Sourced</span>
+    </div>
+  </div>
+</div>
+
+<!-- Photo Strip -->
+<div class="photo-strip">
+  <div class="photo-strip-item">
+    <img src="rare-plants.png" alt="Rare tropical houseplants at Little Plant Shop" class="photo-placeholder">
+  </div>
+  <div class="photo-strip-stack">
+    <img src="carnivorous.png" alt="Carnivorous plants collection" class="photo-placeholder">
+    <img src="curios.png" alt="Local pottery and curios" class="photo-placeholder">
+  </div>
+</div>
+
+<!-- About -->
+<section class="about" id="about">
+  <div class="section-label fade-in">Our Story</div>
+  <div class="about-grid">
+    <blockquote class="about-quote fade-in">
+      "The big trend right now is ordering everything in from overseas and you never know if they're faking the phytosanitary certificate or if it's stolen from the jungle. So we go local. Canadian grown."
+    </blockquote>
+    <div class="about-text fade-in">
+      <p>Eric Gibson and Sara Gies met in high school, both went through the horticulture program at Olds College in Alberta, and have worked every kind of plant job imaginable. Eric was a grower at Edmonton's Muttart Conservatory. Sara ran the University of Alberta's research greenhouses — the cool ones on the rooftops that most people don't even know exist.</p>
+      <p>After a decade in Edmonton — from makers markets to a brick-and-mortar on Whyte Avenue to a bowler trailer doing mobile pop-ups — they took a year off, sold everything, and moved to Vancouver Island. They live out near Sooke now, surrounded by the Pacific Northwest wilderness they'd always wanted.</p>
+      <p>The shop opened on Johnson Street in October 2023, and they've been connecting with Victoria's plant community ever since. They carry the hardy stuff that does well everywhere, but they specialize in the things you won't see at a box store — rare tropicals, carnivorous plants, unusual specimens they propagate themselves.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Name Meaning -->
+<section class="name-section">
+  <div class="section-label fade-in">The Name</div>
+  <h2 class="fade-in">Some Things Work Better<br>When They Don't Scale.</h2>
+  <p class="name-body fade-in">"Little" isn't a limitation — it's a decision. A space small enough that the owners know every plant on every shelf because they grew half of them. Two people, one room, and the things that thrive when you give them undivided attention.</p>
+</section>
+
+<!-- Products -->
+<section class="products" id="plants">
+  <div class="section-label fade-in">What We Carry</div>
+  <h2 class="fade-in">Plants & Curios</h2>
+  <div class="products-grid">
+    <div class="product-card fade-in">
+      <div class="product-number">01</div>
+      <h3>Rare Houseplants</h3>
+      <p class="product-desc">Unusual tropicals, variegated specimens, and hard-to-find species. Sourced from certified Canadian growers — no overseas imports of questionable origin.</p>
+    </div>
+    <div class="product-card fade-in">
+      <div class="product-number">02</div>
+      <h3>Carnivorous Plants</h3>
+      <p class="product-desc">Venus flytraps, sundews, pitcher plants, and more. The weird, wonderful corner of the plant world that most shops won't touch.</p>
+    </div>
+    <div class="product-card fade-in">
+      <div class="product-number">03</div>
+      <h3>Local Pottery & Curios</h3>
+      <p class="product-desc">Handmade planters, geometric stained glass, and plant-themed accessories from Vancouver Island makers. Every piece is locally sourced.</p>
+    </div>
+    <div class="product-card fade-in">
+      <div class="product-number">04</div>
+      <h3>Plant Design Services</h3>
+      <p class="product-desc">In-home consultations from two trained horticulturalists. We'll assess your light, recommend species, and design a living arrangement that actually thrives.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Press Callout -->
+<div class="press-callout">
+  <div class="press-callout-inner fade-in">
+    <p class="press-quote">"We have so much background in horticulture, which definitely helps. We try to specialize in rare stuff, carnivorous plants you don't see everywhere."</p>
+    <p class="press-attr">— Eric Gibson, Victoria Buzz</p>
+  </div>
+</div>
+
+<!-- Reviews -->
+<section class="reviews" id="reviews">
+  <div class="section-label fade-in">What People Say</div>
+  <h2 class="fade-in">From the Community</h2>
+  <div class="reviews-grid">
+    <div class="review-card featured fade-in">
+      <p class="review-text">"In all of downtown Victoria there is only one other plant store, so they chose a good neighbourhood to open up shop in."</p>
+      <p class="review-attr">Victoria Buzz, December 2023</p>
+    </div>
+    <div class="review-card fade-in">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Incredible selection of rare plants you won't find anywhere else in town. Eric and Sara clearly know their stuff — they helped me pick the perfect plants for my low-light apartment."</p>
+      <p class="review-attr">Via Facebook Community</p>
+    </div>
+    <div class="review-card fade-in">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"The cutest plant shop on the island. Unique curios, beautiful local pottery, and plants that are clearly well cared for. The carnivorous plant section alone is worth the visit."</p>
+      <p class="review-attr">Via Facebook Community</p>
+    </div>
+  </div>
+</section>
+
+<!-- Exterior Photo Break -->
+<div class="exterior-break">
+  <img src="storefront.png" alt="Little Plant Shop storefront on Johnson Street" class="photo-placeholder">
+</div>
+
+<!-- Visit -->
+<section class="visit" id="visit">
+  <div class="section-label fade-in">Find Us</div>
+  <h2 class="fade-in">Visit the Shop</h2>
+  <div class="visit-grid">
+    <div class="visit-info fade-in">
+      <div class="visit-detail">
+        <span class="visit-detail-label">Address</span>
+        <span>613 Johnson Street, Victoria, BC V8W 1M5</span>
+      </div>
+      <div class="visit-detail">
+        <span class="visit-detail-label">Phone</span>
+        <span><a href="tel:+17803997817">780-399-7817</a></span>
+      </div>
+      <div class="visit-detail">
+        <span class="visit-detail-label">Email</span>
+        <span><a href="mailto:littleplantshopvic@gmail.com">littleplantshopvic@gmail.com</a></span>
+      </div>
+      <table class="hours-table">
+        <tr><td>Monday</td><td class="hours-closed">Closed</td></tr>
+        <tr><td>Tuesday</td><td class="hours-closed">Closed</td></tr>
+        <tr><td>Wednesday</td><td>11:00 AM – 6:00 PM</td></tr>
+        <tr><td>Thursday</td><td>11:00 AM – 6:00 PM</td></tr>
+        <tr><td>Friday</td><td>11:00 AM – 6:00 PM</td></tr>
+        <tr><td>Saturday</td><td>11:00 AM – 5:00 PM</td></tr>
+        <tr><td>Sunday</td><td>12:00 PM – 5:00 PM</td></tr>
+      </table>
+    </div>
+    <div class="visit-map fade-in">
+      <iframe src="https://maps.google.com/maps?q=613+Johnson+Street+Victoria+BC&output=embed" loading="lazy" title="Map to Little Plant Shop"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Band -->
+<div class="cta-band">
+  <h2>New Plants Drop Weekly</h2>
+  <p class="cta-band-sub">Follow us on Instagram to see what's just arrived. Things move fast — the rare ones don't last.</p>
+  <a href="https://www.instagram.com/littleplantshopvic/" target="_blank" rel="noopener" class="cta-band-btn">@littleplantshopvic →</a>
+  <div class="cta-band-secondary">
+    <a href="https://maps.google.com/maps?q=613+Johnson+Street+Victoria+BC" target="_blank" rel="noopener">Or Get Directions →</a>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">Little Plant Shop</div>
+    <ul class="footer-links">
+      <li><a href="https://www.instagram.com/littleplantshopvic/" target="_blank" rel="noopener">Instagram</a></li>
+      <li><a href="https://www.facebook.com/littlemobileplantshop/" target="_blank" rel="noopener">Facebook</a></li>
+      <li><a href="mailto:littleplantshopvic@gmail.com">Email</a></li>
+      <li><a href="tel:+17803997817">Call</a></li>
+    </ul>
+    <p class="footer-copy">© 2026 Little Plant Shop. 613 Johnson Street, Victoria, BC.</p>
+  </div>
+</footer>
+
+<script>
+document.documentElement.classList.add('js-ready');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+<noscript><style>.fade-in { opacity: 1 !important; transform: none !important; }</style></noscript>
+
+</body>
+</html>

@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scott Bell — Product Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --violet: #6C3AFF;
+    --violet-dark: #5228CC;
+    --lime: #CDFF50;
+    --bg: #FAFAF7;
+    --bg-dark: #0E0E0E;
+    --text: #1A1A1A;
+    --text-mid: #555;
+    --text-light: #888;
+    --text-on-dark: rgba(250, 250, 247, 0.72);
+    --w: 1140px;
+    --pad: 100px;
+    --ease: cubic-bezier(0.23, 1, 0.32, 1);
+    --ls-tight: 0.04em;
+    --ls-mid: 0.08em;
+    --ls-wide: 0.14em;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 14px; line-height: 1.7;
+    color: var(--text); background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 20px 40px;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(250,250,247,0.92);
+    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(0,0,0,0.04);
+  }
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px; letter-spacing: var(--ls-mid);
+    color: var(--violet); text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    font-size: 11px; letter-spacing: var(--ls-wide); text-transform: uppercase;
+    color: var(--text); text-decoration: none;
+    transition: color 200ms var(--ease);
+  }
+  .nav-links a:hover { color: var(--violet); }
+
+  .hamburger {
+    display: none; background: none; border: none; cursor: pointer;
+    width: 28px; height: 20px; position: relative;
+  }
+  .hamburger span {
+    display: block; width: 100%; height: 2px; background: var(--text);
+    position: absolute; left: 0; transition: all 300ms var(--ease);
+  }
+  .hamburger span:nth-child(1) { top: 0; }
+  .hamburger span:nth-child(2) { top: 9px; }
+  .hamburger span:nth-child(3) { top: 18px; }
+  .hamburger.active span:nth-child(1) { top: 9px; transform: rotate(45deg); }
+  .hamburger.active span:nth-child(2) { opacity: 0; }
+  .hamburger.active span:nth-child(3) { top: 9px; transform: rotate(-45deg); }
+
+  .mobile-menu {
+    display: none; position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: var(--bg-dark); z-index: 99;
+    flex-direction: column; justify-content: center; align-items: center; gap: 24px;
+  }
+  .mobile-menu.active { display: flex; }
+  .mobile-menu a {
+    font-family: 'Bebas Neue', sans-serif; font-size: 52px;
+    color: var(--lime); text-decoration: none; letter-spacing: var(--ls-tight);
+  }
+  .mobile-menu .mobile-close {
+    position: absolute; top: 20px; right: 24px;
+    font-family: 'IBM Plex Mono', monospace; font-size: 12px;
+    color: rgba(255,255,255,0.5); letter-spacing: var(--ls-mid);
+    text-transform: uppercase; background: none; border: none; cursor: pointer;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 120px 40px 80px;
+    max-width: var(--w); margin: 0 auto;
+  }
+  .hero-label {
+    font-size: 11px; letter-spacing: var(--ls-wide); text-transform: uppercase;
+    color: var(--violet); margin-bottom: 32px; font-weight: 500;
+  }
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(64px, 11vw, 148px);
+    line-height: 0.92; letter-spacing: -0.01em;
+    color: var(--text); margin-bottom: 40px;
+  }
+  .hero h1 .vi { color: var(--violet); }
+  .hero h1 .hi {
+    background: var(--lime); color: var(--bg-dark);
+    padding: 0 16px; display: inline-block; line-height: 1.05;
+  }
+  .hero-sub {
+    font-size: 15px; max-width: 520px; color: var(--text-mid);
+    margin-bottom: 40px; line-height: 1.85;
+  }
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 14px 32px;
+    font-family: 'IBM Plex Mono', monospace; font-size: 12px;
+    letter-spacing: var(--ls-mid); text-transform: uppercase;
+    text-decoration: none; font-weight: 500;
+    transition: transform 160ms var(--ease), background 200ms var(--ease);
+  }
+  .btn:active { transform: scale(0.97); }
+  .btn-vi { background: var(--violet); color: white; }
+  .btn-vi:hover { background: var(--violet-dark); }
+  .btn-dk { background: var(--bg-dark); color: var(--lime); }
+
+  /* ── STATS ── */
+  .stats-bar { background: var(--violet); color: white; padding: 52px 40px; }
+  .stats-inner {
+    max-width: var(--w); margin: 0 auto;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; text-align: center;
+  }
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif; font-size: 48px;
+    line-height: 1; color: var(--lime);
+  }
+  .stat-lbl {
+    font-size: 11px; letter-spacing: var(--ls-mid); text-transform: uppercase;
+    margin-top: 8px; opacity: 0.7;
+  }
+
+  /* ── SHARED ── */
+  .lbl {
+    font-size: 11px; letter-spacing: var(--ls-wide); text-transform: uppercase;
+    color: var(--violet); margin-bottom: 16px; font-weight: 500; display: block;
+  }
+  .ttl {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(36px, 5vw, 60px);
+    line-height: 1; letter-spacing: 0.02em; margin-bottom: 24px;
+  }
+
+  /* ── WORK ── */
+  .work {
+    padding: var(--pad) 40px;
+    max-width: var(--w); margin: 0 auto;
+  }
+  .work-grid { margin-top: 56px; }
+  .work-item {
+    display: grid; grid-template-columns: 55% 1fr;
+    gap: 48px; align-items: start;
+    padding-bottom: 72px; margin-bottom: 72px;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+  .work-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .work-item.rev { grid-template-columns: 1fr 55%; }
+  .work-item.rev .work-imgs { order: 2; }
+  .work-item.rev .work-meta { order: 1; }
+
+  .work-imgs { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .work-imgs img { width: 100%; height: auto; display: block; border-radius: 3px; }
+  .work-imgs .w2 { grid-column: span 2; }
+
+  .work-meta { padding-top: 8px; }
+  .work-meta .lbl { margin-bottom: 8px; }
+  .work-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px; line-height: 1.1; margin-bottom: 4px; letter-spacing: 0.02em;
+  }
+  .work-role {
+    font-size: 12px; color: var(--violet); letter-spacing: var(--ls-tight);
+    margin-bottom: 16px; font-weight: 500;
+  }
+  .work-desc {
+    color: var(--text-mid); font-size: 13px; margin-bottom: 20px; line-height: 1.8;
+  }
+  .work-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag {
+    font-size: 10px; letter-spacing: var(--ls-tight); padding: 5px 10px;
+    border: 1px solid rgba(108,58,255,0.2); color: var(--violet);
+    text-transform: uppercase;
+  }
+
+  /* ── KOHO ── */
+  .koho {
+    background: var(--bg-dark); color: white;
+    padding: 64px 40px; text-align: center;
+  }
+  .koho-inner { max-width: var(--w); margin: 0 auto; }
+  .koho .lbl { color: var(--lime); }
+  .koho-h {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(28px, 4vw, 52px);
+    line-height: 1.1; letter-spacing: 0.02em; margin-bottom: 12px;
+  }
+  .koho-h .hi2 { color: var(--lime); }
+  .koho-p {
+    font-size: 14px; color: var(--text-on-dark);
+    max-width: 520px; margin: 0 auto; line-height: 1.7;
+  }
+
+  /* ── ABOUT ── */
+  .about {
+    background: var(--violet); color: white;
+    padding: var(--pad) 40px;
+  }
+  .about-inner { max-width: var(--w); margin: 0 auto; }
+  .about .lbl { color: var(--lime); }
+  .about .ttl { color: white; }
+  .about-cols {
+    display: grid; grid-template-columns: 1.2fr 1fr;
+    gap: 64px; margin-top: 40px; align-items: start;
+  }
+  .about-text {
+    font-size: 15px; line-height: 1.9;
+    color: rgba(255,255,255,0.72); font-weight: 400;
+  }
+  .about-text p + p { margin-top: 20px; }
+  .timeline { display: grid; gap: 20px; }
+  .tl-item { padding-left: 20px; border-left: 2px solid var(--lime); }
+  .tl-year { font-size: 11px; color: var(--lime); letter-spacing: var(--ls-mid); margin-bottom: 2px; }
+  .tl-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 19px; letter-spacing: var(--ls-tight); margin-bottom: 1px;
+  }
+  .tl-co { font-size: 12px; color: rgba(255,255,255,0.45); letter-spacing: var(--ls-tight); }
+
+  /* ── AI ── */
+  .ai {
+    background: var(--bg-dark); color: white;
+    padding: var(--pad) 40px;
+  }
+  .ai-inner { max-width: var(--w); margin: 0 auto; }
+  .ai .lbl { color: var(--lime); }
+  .ai .ttl { color: white; }
+  .ai-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 24px; margin-top: 48px;
+  }
+  .ai-card { padding: 32px; border: 1px solid rgba(255,255,255,0.08); }
+  .ai-num {
+    font-family: 'Bebas Neue', sans-serif; font-size: 36px;
+    color: var(--violet); line-height: 1; margin-bottom: 16px; opacity: 0.6;
+  }
+  .ai-card h3 {
+    font-family: 'Bebas Neue', sans-serif; font-size: 22px;
+    letter-spacing: var(--ls-tight); margin-bottom: 10px;
+  }
+  .ai-card p { font-size: 12px; line-height: 1.7; color: rgba(255,255,255,0.55); }
+
+  /* ── QUOTES ── */
+  .quotes {
+    padding: var(--pad) 40px;
+    max-width: var(--w); margin: 0 auto;
+  }
+  .quote-stack { margin-top: 48px; display: grid; gap: 40px; }
+  .quote {
+    padding: 40px 40px 40px 44px;
+    border-left: 3px solid var(--violet);
+  }
+  .quote-text {
+    font-size: 16px; font-style: italic; line-height: 1.85;
+    color: var(--text); margin-bottom: 24px;
+  }
+  .quote-name {
+    font-size: 12px; font-weight: 500; letter-spacing: var(--ls-mid); text-transform: uppercase;
+  }
+  .quote-role {
+    font-size: 11px; color: var(--text-light); letter-spacing: var(--ls-tight); margin-top: 2px;
+  }
+
+  /* ── CTA ── */
+  .cta {
+    background: var(--lime); color: var(--bg-dark);
+    padding: var(--pad) 40px; text-align: center;
+  }
+  .cta-inner { max-width: 600px; margin: 0 auto; }
+  .cta .ttl { color: var(--bg-dark); }
+  .cta p { font-size: 14px; margin-bottom: 32px; color: rgba(14,14,14,0.6); }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 40px; max-width: var(--w); margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 11px; color: var(--text-light); letter-spacing: var(--ls-tight);
+  }
+  footer a { color: var(--violet); text-decoration: none; }
+  footer a:hover { opacity: 0.7; }
+  .foot-links { display: flex; gap: 24px; }
+
+  /* ── MOTION ── */
+  .reveal {
+    opacity: 0; transform: translateY(20px);
+    transition: opacity 550ms var(--ease), transform 550ms var(--ease);
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .stagger-1 { transition-delay: 50ms; }
+  .stagger-2 { transition-delay: 100ms; }
+  .stagger-3 { transition-delay: 150ms; }
+  .stagger-4 { transition-delay: 200ms; }
+
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    :root { --pad: 64px; }
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    .hamburger { display: block; }
+    .hero { padding: 100px 24px 64px; }
+    .stats-bar, .koho { padding: 40px 24px; }
+    .stats-inner { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .work, .quotes { padding: var(--pad) 24px; }
+    .work-item, .work-item.rev { grid-template-columns: 1fr; gap: 24px; }
+    .work-item.rev .work-imgs { order: 0; }
+    .work-item.rev .work-meta { order: 0; }
+    .about, .ai, .cta { padding: var(--pad) 24px; }
+    .about-cols { grid-template-columns: 1fr; gap: 40px; }
+    .ai-grid { grid-template-columns: 1fr; }
+    .quote { padding: 24px 24px 24px 28px; }
+    footer { flex-direction: column; gap: 16px; text-align: center; padding: 32px 24px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">SCOTT BELL</a>
+  <ul class="nav-links">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#ai">AI + Design</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mm">
+  <button class="mobile-close" onclick="toggleMenu()">Close</button>
+  <a href="#work" onclick="toggleMenu()">Work</a>
+  <a href="#about" onclick="toggleMenu()">About</a>
+  <a href="#ai" onclick="toggleMenu()">AI + Design</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <span class="hero-label reveal stagger-1">Product Designer — 14 Years</span>
+  <h1 class="reveal stagger-2">DESIGNING<br><span class="vi">WHAT COMES</span><br><span class="hi">NEXT</span></h1>
+  <p class="hero-sub reveal stagger-3">14 years shipping products across fintech, crypto, and AI. Millions of users, 100+ countries. Now deep in the craft of human-AI collaboration.</p>
+  <a href="mailto:scott.k.bell@gmail.com" class="btn btn-vi reveal stagger-4">Get in Touch →</a>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="reveal stagger-1"><div class="stat-num">14</div><div class="stat-lbl">Years in Design</div></div>
+    <div class="reveal stagger-2"><div class="stat-num">100+</div><div class="stat-lbl">Countries Reached</div></div>
+    <div class="reveal stagger-3"><div class="stat-num">9</div><div class="stat-lbl">Products Shipped</div></div>
+    <div class="reveal stagger-4"><div class="stat-num">5</div><div class="stat-lbl">Leadership Roles</div></div>
+  </div>
+</div>
+
+<!-- WORK -->
+<section class="work" id="work">
+  <span class="lbl reveal">Selected Work</span>
+  <h2 class="ttl reveal">PRODUCTS THAT SHIPPED</h2>
+
+  <div class="work-grid">
+    <!-- Strike -->
+    <div class="work-item reveal">
+      <div class="work-imgs">
+        <img src="assets/strike1-CjnPLkXo.png" alt="Strike app redesign" class="w2">
+        <img src="assets/appinphone-Bvo41AS_.png" alt="Strike on device">
+        <img src="assets/strike3-BJpH3wPc.png" alt="Strike payments">
+      </div>
+      <div class="work-meta">
+        <span class="lbl">2021 — 2023</span>
+        <h3 class="work-name">STRIKE</h3>
+        <div class="work-role">Senior Product Designer</div>
+        <p class="work-desc">Led the complete redesign of Strike's mobile app. 450+ screens across 80+ flows, shipped in 5 months. Scaled to 65+ countries serving 1.5M+ users.</p>
+        <div class="work-tags">
+          <span class="tag">Mobile</span>
+          <span class="tag">Fintech</span>
+          <span class="tag">Design System</span>
+          <span class="tag">450+ Screens</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- AIOZ -->
+    <div class="work-item rev reveal">
+      <div class="work-imgs">
+        <img src="assets/AiozNetwork-1-Bl-Qs-og.png" alt="AIOZ Network" class="w2">
+        <img src="assets/aioz2-xlQ6G12l.png" alt="AIOZ products">
+        <img src="assets/aioz3-DImhmR08.png" alt="AIOZ ecosystem">
+      </div>
+      <div class="work-meta">
+        <span class="lbl">2023 — 2025</span>
+        <h3 class="work-name">AIOZ NETWORK</h3>
+        <div class="work-role">Principal Product Designer</div>
+        <p class="work-desc">Led UX and design across 8 decentralized products. AI marketplace, multichain wallets, and infrastructure. Contributed to a 100x market cap increase to $1.38B.</p>
+        <div class="work-tags">
+          <span class="tag">Web3</span>
+          <span class="tag">AI</span>
+          <span class="tag">8 Products</span>
+          <span class="tag">100x Growth</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fountain -->
+    <div class="work-item reveal">
+      <div class="work-imgs">
+        <img src="assets/fountain1-BaokBLzA.png" alt="Fountain app" class="w2">
+        <img src="assets/fountain2-hHlXtLUX.png" alt="Fountain player">
+        <img src="assets/fountain4-BL4RPF31.png" alt="Fountain wallet">
+      </div>
+      <div class="work-meta">
+        <span class="lbl">2023 — 2024</span>
+        <h3 class="work-name">FOUNTAIN</h3>
+        <div class="work-role">Design Advisor / Director</div>
+        <p class="work-desc">Full mobile app redesign shipped in under 5 months. Built a semantic, tokenized design system. Redesigned listening, tipping, onboarding, and wallet UX.</p>
+        <div class="work-tags">
+          <span class="tag">Bitcoin</span>
+          <span class="tag">Podcasting</span>
+          <span class="tag">Design System</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KOHO -->
+<div class="koho">
+  <div class="koho-inner reveal">
+    <span class="lbl">2015 — 2018</span>
+    <h3 class="koho-h">FIRST EMPLOYEE AT <span class="hi2">KOHO</span></h3>
+    <p class="koho-p">Built the product design foundation from zero for Canada's top-rated neobank. From first user to 100K+. Now valued at $800M+. Featured by Apple twice.</p>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div class="about" id="about">
+  <div class="about-inner">
+    <span class="lbl reveal">About</span>
+    <h2 class="ttl reveal">THE LAYER UNDERNEATH</h2>
+    <div class="about-cols">
+      <div class="about-text reveal">
+        <p>After 14 years designing products across fintech, crypto, and AI, I took a deliberate year to go deep on the thing everyone's talking about but few are actually building with. Not the hype. The craft.</p>
+        <p>I've shipped OpenClaw skills, built browser extensions that bridge AI agents with real interfaces, ran multi-agent systems daily, and designed frameworks for personality-aware AI collaboration. I'm not theorizing about human-AI interaction. I'm living inside it.</p>
+      </div>
+      <div class="timeline reveal">
+        <div class="tl-item">
+          <div class="tl-year">2023 — 2025</div>
+          <div class="tl-title">PRINCIPAL DESIGNER</div>
+          <div class="tl-co">AIOZ Network</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2021 — 2023</div>
+          <div class="tl-title">SENIOR DESIGNER</div>
+          <div class="tl-co">Strike</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2023 — 2024</div>
+          <div class="tl-title">DESIGN DIRECTOR</div>
+          <div class="tl-co">Fountain</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2015 — 2018</div>
+          <div class="tl-title">DESIGN LEAD</div>
+          <div class="tl-co">KOHO — First Employee</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2019 — 2020</div>
+          <div class="tl-title">UX INSTRUCTOR</div>
+          <div class="tl-co">RED Academy</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- AI -->
+<div class="ai" id="ai">
+  <div class="ai-inner">
+    <span class="lbl reveal">Current Focus</span>
+    <h2 class="ttl reveal">WHERE AI MEETS DESIGN</h2>
+    <div class="ai-grid">
+      <div class="ai-card reveal stagger-1">
+        <div class="ai-num">01</div>
+        <h3>AGENT UX</h3>
+        <p>Designing how humans and AI agents collaborate. Not chatbots. Real multi-agent systems with personality and purpose.</p>
+      </div>
+      <div class="ai-card reveal stagger-2">
+        <div class="ai-num">02</div>
+        <h3>BROWSER BRIDGE</h3>
+        <p>Built extensions connecting AI agents to real browser interfaces. Bridging reasoning and action.</p>
+      </div>
+      <div class="ai-card reveal stagger-3">
+        <div class="ai-num">03</div>
+        <h3>AI-NATIVE PATTERNS</h3>
+        <p>Reusable design patterns for AI-native products. Rethinking interaction from first principles.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section class="quotes">
+  <span class="lbl reveal">Collaborators</span>
+  <h2 class="ttl reveal">WHAT PEOPLE SAY</h2>
+  <div class="quote-stack">
+    <div class="quote reveal">
+      <p class="quote-text">"Working with Scott for the past two years has been an absolute pleasure. His easy-going personality and collaborative nature made him a fantastic teammate. When it comes to product design, Scott is exceptional. He played a crucial role in building our mobile app, making it user-friendly and intuitive."</p>
+      <div class="quote-name">Joshua P.</div>
+      <div class="quote-role">Head of Design and Brand, Strike</div>
+    </div>
+    <div class="quote reveal">
+      <p class="quote-text">"Any company would be lucky to work with Scott. His dedication to his craft, exceptional work ethic, and keen eye for design make him a standout professional. What sets him apart is his innate ability to lead projects from inception to completion."</p>
+      <div class="quote-name">Manuela R.</div>
+      <div class="quote-role">President, Strike</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta" id="contact">
+  <div class="cta-inner reveal">
+    <h2 class="ttl">LET'S BUILD SOMETHING</h2>
+    <p>Looking for a designer who's already deep in AI. Not theorizing. Building.</p>
+    <a href="mailto:scott.k.bell@gmail.com" class="btn btn-dk">scott.k.bell@gmail.com →</a>
+  </div>
+</div>
+
+<footer>
+  <span>© 2026 Scott Bell</span>
+  <div class="foot-links">
+    <a href="https://linkedin.com/in/scottkbell" target="_blank">LinkedIn</a>
+    <a href="https://www.scottkbell.com/" target="_blank">Portfolio</a>
+  </div>
+</footer>
+
+<script>
+function toggleMenu() {
+  document.getElementById('mm').classList.toggle('active');
+  document.querySelector('.hamburger').classList.toggle('active');
+}
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -20px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

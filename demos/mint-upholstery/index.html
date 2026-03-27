@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MINT Upholstery — Victoria, BC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #FAF6F0;
+      --sage: #6B7F5E;
+      --sage-light: #E8EDE4;
+      --teal: #4A7C72;
+      --teal-light: #E2EDEB;
+      --warm-black: #1A1610;
+      --warm-gray: #6B6560;
+      --alt-bg: #F0EBE3;
+      --gold: #C4A35A;
+
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+
+      --section-pad: 96px;
+      --section-pad-sm: 64px;
+      --content-width: 1080px;
+
+      --ls-sm: 0.04em;
+      --ls-md: 0.08em;
+      --ls-lg: 0.14em;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      color: var(--warm-black);
+      background: var(--cream);
+      line-height: 1.7;
+      letter-spacing: var(--ls-sm);
+    }
+
+    img { max-width: 100%; display: block; }
+
+    .section-label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: var(--ls-lg);
+      color: var(--warm-gray);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-family: 'Cormorant', serif;
+      font-weight: 600;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--warm-black);
+    }
+
+    h2 {
+      font-family: 'Cormorant', serif;
+      font-weight: 600;
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      margin-bottom: 24px;
+    }
+
+    h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.125rem;
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
+    p { font-size: 1rem; color: var(--warm-gray); }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(250, 246, 240, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(26, 22, 16, 0.06);
+    }
+
+    .nav-inner {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-brand {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: var(--ls-lg);
+    }
+
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+
+    .nav-links a {
+      font-size: 0.8125rem;
+      font-weight: 500;
+      letter-spacing: var(--ls-md);
+      text-transform: uppercase;
+      color: var(--warm-gray);
+      transition: color 200ms var(--ease-out);
+    }
+
+    .nav-links a:hover { color: var(--warm-black); }
+
+    .nav-cta {
+      background: var(--sage);
+      color: var(--cream) !important;
+      padding: 8px 20px;
+      border-radius: 2px;
+      transition: transform 160ms var(--ease-out), background 200ms var(--ease-out);
+    }
+
+    .nav-cta:active { transform: scale(0.97); }
+    .nav-cta:hover { background: #5C7050; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      width: 24px;
+      height: 2px;
+      background: var(--warm-black);
+      transition: transform 300ms var(--ease-out);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 160px 24px var(--section-pad);
+      max-width: var(--content-width);
+      margin: 0 auto;
+    }
+
+    .hero-content {
+      border-left: 3px solid var(--sage);
+      padding-left: 40px;
+      max-width: 640px;
+    }
+
+    .hero h1 { margin-bottom: 24px; }
+
+    .hero p {
+      font-size: 1.125rem;
+      line-height: 1.7;
+      max-width: 520px;
+      margin-bottom: 32px;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--sage);
+      color: var(--cream);
+      padding: 14px 32px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: var(--ls-md);
+      text-transform: uppercase;
+      border-radius: 2px;
+      transition: transform 160ms var(--ease-out), background 200ms var(--ease-out);
+    }
+
+    .hero-cta:active { transform: scale(0.97); }
+    .hero-cta:hover { background: #5C7050; }
+
+    .hero-cta-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--warm-gray);
+      padding: 14px 0;
+      margin-left: 24px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: var(--ls-md);
+      text-transform: uppercase;
+      transition: color 200ms var(--ease-out);
+    }
+
+    .hero-cta-secondary:hover { color: var(--warm-black); }
+
+    /* ── TRUST BAR ── */
+    .trust-bar {
+      background: var(--warm-black);
+      padding: 32px 24px;
+    }
+
+    .trust-bar-inner {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      gap: 64px;
+      flex-wrap: wrap;
+    }
+
+    .trust-stat {
+      text-align: center;
+      color: rgba(250, 246, 240, 0.9);
+    }
+
+    .trust-stat .number {
+      font-family: 'Cormorant', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .trust-stat .label {
+      font-size: 0.6875rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: var(--ls-lg);
+      opacity: 0.65;
+    }
+
+    /* ── PHOTO STRIP ── */
+    .photo-strip {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 4px;
+    }
+
+    .photo-strip-item {
+      aspect-ratio: 3/2;
+      background: var(--alt-bg);
+      overflow: hidden;
+    }
+
+    .photo-strip-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .photo-strip-stacked {
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      gap: 4px;
+    }
+
+    .photo-strip-stacked .photo-strip-item { aspect-ratio: auto; }
+
+    /* ── ABOUT ── */
+    .about {
+      padding: var(--section-pad) 24px;
+      max-width: var(--content-width);
+      margin: 0 auto;
+      scroll-margin-top: 80px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .about-quote {
+      font-family: 'Cormorant', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.5;
+      color: var(--warm-black);
+      margin-bottom: 32px;
+    }
+
+    .about p { margin-bottom: 16px; }
+
+    .about-image {
+      aspect-ratio: 4/5;
+      background: var(--alt-bg);
+      overflow: hidden;
+    }
+
+    .about-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* ── NAME SECTION ── */
+    .name-section {
+      padding: 120px 24px;
+      text-align: center;
+      background: var(--cream);
+    }
+
+    .name-section-inner {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .name-section h2 {
+      font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+      margin-bottom: 24px;
+    }
+
+    .name-section p {
+      font-size: 1.0625rem;
+      line-height: 1.7;
+    }
+
+    /* ── SERVICES ── */
+    .services {
+      padding: var(--section-pad) 24px;
+      background: var(--alt-bg);
+      scroll-margin-top: 80px;
+    }
+
+    .services-inner {
+      max-width: var(--content-width);
+      margin: 0 auto;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px;
+      margin-top: 48px;
+    }
+
+    .service-card {
+      background: var(--cream);
+      padding: 40px 36px;
+      position: relative;
+    }
+
+    .service-number {
+      font-family: 'Cormorant', serif;
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--sage);
+      opacity: 0.6;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .service-card h3 { margin-bottom: 12px; }
+
+    .service-card p {
+      font-size: 0.9375rem;
+      line-height: 1.6;
+    }
+
+    /* ── PROCESS ── */
+    .process {
+      padding: var(--section-pad) 24px;
+      max-width: var(--content-width);
+      margin: 0 auto;
+    }
+
+    .process-inner { }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 4px;
+      margin-top: 48px;
+    }
+
+    .process-step {
+      background: var(--cream);
+      padding: 40px 36px;
+      border: 1px solid rgba(26, 22, 16, 0.08);
+    }
+
+    .process-step h3 { margin-bottom: 12px; }
+    .process-step p { font-size: 0.9375rem; line-height: 1.6; }
+
+    /* ── PRESS CALLOUT ── */
+    .press-callout {
+      padding: var(--section-pad-sm) 24px;
+      background: var(--sage);
+    }
+
+    .press-callout-inner {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .press-callout-quote {
+      font-family: 'Cormorant', serif;
+      font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.5;
+      color: var(--cream);
+      max-width: 640px;
+      margin: 0 auto 16px;
+      position: relative;
+    }
+
+    .press-callout-quote::before {
+      content: '\201C';
+      font-size: 4rem;
+      font-style: normal;
+      line-height: 1;
+      position: absolute;
+      top: -24px;
+      left: -32px;
+      opacity: 0.3;
+    }
+
+    .press-callout-attr {
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: var(--ls-lg);
+      color: rgba(250, 246, 240, 0.6);
+    }
+
+    /* ── REVIEWS ── */
+    .reviews {
+      padding: var(--section-pad) 24px;
+      max-width: var(--content-width);
+      margin: 0 auto;
+      scroll-margin-top: 80px;
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 4px;
+      margin-top: 48px;
+    }
+
+    .review-card {
+      padding: 36px 32px;
+      background: var(--cream);
+    }
+
+    .review-card-featured {
+      background: var(--warm-black);
+      color: var(--cream);
+      transform: translateY(-8px);
+    }
+
+    .review-card-featured .review-text { color: rgba(250, 246, 240, 0.85); }
+    .review-card-featured .review-attr { color: rgba(250, 246, 240, 0.5); }
+
+    .review-stars {
+      color: var(--gold);
+      font-size: 0.875rem;
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+    }
+
+    .review-text {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--warm-gray);
+      margin-bottom: 20px;
+    }
+
+    .review-attr {
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: var(--ls-lg);
+      color: var(--warm-gray);
+      opacity: 0.6;
+    }
+
+    /* ── EXTERIOR PHOTO ── */
+    .exterior-photo {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .exterior-photo-img {
+      width: 100%;
+      aspect-ratio: 21/9;
+      background: var(--alt-bg);
+      overflow: hidden;
+    }
+
+    .exterior-photo-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* ── VISIT ── */
+    .visit {
+      padding: var(--section-pad) 24px;
+      max-width: var(--content-width);
+      margin: 0 auto;
+      scroll-margin-top: 80px;
+    }
+
+    .visit-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      margin-top: 48px;
+    }
+
+    .visit-hours table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .visit-hours td {
+      font-size: 0.9375rem;
+      padding: 10px 0;
+      color: var(--warm-gray);
+    }
+
+    .visit-hours td:last-child { text-align: right; }
+
+    .visit-hours tr.hours-closed td { opacity: 0.4; }
+
+    .visit-info { margin-top: 32px; }
+
+    .visit-info p {
+      font-size: 0.9375rem;
+      margin-bottom: 8px;
+    }
+
+    .visit-info a {
+      color: var(--sage);
+      transition: color 200ms var(--ease-out);
+    }
+
+    .visit-info a:hover { color: #5C7050; }
+
+    .visit-map {
+      aspect-ratio: 1;
+      background: var(--alt-bg);
+      overflow: hidden;
+      border-radius: 2px;
+    }
+
+    .visit-map iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      filter: saturate(0.8) contrast(1.05);
+    }
+
+    /* ── CTA BAND ── */
+    .cta-band {
+      padding: var(--section-pad-sm) 24px;
+      background: var(--sage);
+      text-align: center;
+    }
+
+    .cta-band h2 {
+      color: var(--cream);
+      margin-bottom: 8px;
+    }
+
+    .cta-band p {
+      color: rgba(250, 246, 240, 0.7);
+      margin-bottom: 32px;
+    }
+
+    .cta-band-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--cream);
+      color: var(--warm-black);
+      padding: 14px 32px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: var(--ls-md);
+      text-transform: uppercase;
+      border-radius: 2px;
+      transition: transform 160ms var(--ease-out);
+    }
+
+    .cta-band-btn:active { transform: scale(0.97); }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 48px 24px;
+      background: var(--warm-black);
+    }
+
+    .footer-inner {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-brand {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: var(--ls-lg);
+      color: rgba(250, 246, 240, 0.9);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-size: 0.8125rem;
+      color: rgba(250, 246, 240, 0.5);
+      letter-spacing: var(--ls-md);
+      transition: color 200ms var(--ease-out);
+    }
+
+    .footer-links a:hover { color: rgba(250, 246, 240, 0.9); }
+
+    .footer-copy {
+      font-size: 0.75rem;
+      color: rgba(250, 246, 240, 0.3);
+      margin-top: 32px;
+      text-align: center;
+      max-width: var(--content-width);
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ── NOISE OVERLAY ── */
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.04;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    }
+
+    /* ── ANIMATIONS ── */
+    .fade-in {
+      opacity: 1;
+      transform: none;
+    }
+
+    .js-ready .fade-in {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+    }
+
+    .js-ready .fade-in.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .fade-in { transition: none !important; opacity: 1 !important; transform: none !important; }
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      :root {
+        --section-pad: 64px;
+        --section-pad-sm: 48px;
+      }
+
+      .hamburger { display: flex; }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--cream);
+        flex-direction: column;
+        padding: 24px;
+        gap: 16px;
+        border-bottom: 1px solid rgba(26, 22, 16, 0.06);
+      }
+
+      .nav-links.open { display: flex; }
+
+      .hero { padding: 120px 24px 64px; }
+      .hero-content { padding-left: 24px; }
+
+      .photo-strip { grid-template-columns: 1fr; }
+      .photo-strip-stacked { grid-template-columns: 1fr 1fr; }
+
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+
+      .services-grid { grid-template-columns: 1fr; }
+      .process-grid { grid-template-columns: 1fr; }
+
+      .reviews-grid { grid-template-columns: 1fr; }
+      .review-card-featured { transform: none; }
+
+      .visit-grid { grid-template-columns: 1fr; gap: 40px; }
+
+      .trust-bar-inner { gap: 32px; }
+
+      .footer-inner { flex-direction: column; gap: 24px; text-align: center; }
+
+      .hero-cta-secondary { margin-left: 0; display: flex; margin-top: 8px; }
+
+      .name-section { padding: 80px 24px; }
+    }
+
+    /* noscript fallback */
+    noscript .fade-in { opacity: 1 !important; transform: none !important; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="nav-brand">MINT Upholstery</a>
+      <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#visit">Visit</a></li>
+        <li><a href="mailto:upholsterymint@gmail.com" class="nav-cta">Email Us</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content fade-in">
+      <p class="section-label">Victoria's Upholstery Studio</p>
+      <h1>It Deserves Better Than a Landfill</h1>
+      <p>Your favourite chair doesn't belong in a landfill. MINT restores what matters — better padding, beautiful fabric, the same piece that holds your memories. Just email a photo to get started.</p>
+      <a href="mailto:upholsterymint@gmail.com" class="hero-cta">Email Your Project</a>
+      <a href="tel:+12505163959" class="hero-cta-secondary">Call 250-516-3959</a>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="trust-bar-inner">
+      <div class="trust-stat">
+        <span class="number">4.8 ★</span>
+        <span class="label">Google Rating</span>
+      </div>
+      <div class="trust-stat">
+        <span class="number">Ahead of Schedule</span>
+        <span class="label">Consistently</span>
+      </div>
+      <div class="trust-stat">
+        <span class="number">2021</span>
+        <span class="label">Est. Downtown</span>
+      </div>
+      <div class="trust-stat">
+        <span class="number">Tue–Sat</span>
+        <span class="label">Open Weekly</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHOTO STRIP -->
+  <section class="photo-strip">
+    <div class="photo-strip-item">
+      <img src="hero.png" alt="Hands reupholstering a chair with care" loading="lazy">
+    </div>
+    <div class="photo-strip-stacked">
+      <div class="photo-strip-item">
+        <img src="fabric.png" alt="Fabric swatches and upholstery tools" loading="lazy">
+      </div>
+      <div class="photo-strip-item">
+        <img src="chair.png" alt="Beautifully restored vintage armchair" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="about-grid">
+      <div class="fade-in">
+        <p class="section-label">The Story</p>
+        <p class="about-quote">"Don't be afraid to ask. Worst case, you're told no and you find another way."</p>
+        <p>Marisa first learned to sew from her grandma as a kid. She took sewing lessons through school, tried different careers, and eventually found upholstery — and loved it. She apprenticed for four years in Duncan before opening MINT on Pembroke Street in 2021.</p>
+        <p>Her studio sits on Pembroke Street in what she calls Victoria's "upholstery district" — near Gala Fabrics and McGeachie's Foam, surrounded by the resources and knowledge that make the work better. If a chair can be saved, it should be. Marisa and Joe will walk you through the options and deliver something that looks better than the day you bought it.</p>
+      </div>
+      <div class="about-image fade-in">
+        <img src="fabric.png" alt="Fabric swatches in the MINT studio" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- NAME SECTION -->
+  <section class="name-section">
+    <div class="name-section-inner fade-in">
+      <p class="section-label">The Name</p>
+      <h2>Mint Condition Isn't a Starting Point. It's the Destination.</h2>
+      <p>Every piece that leaves the studio goes out in mint condition. That's the promise. Not close enough, not good enough — mint. It's why Marisa won't send something home unless it's right.</p>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="services-inner">
+      <p class="section-label">What We Do</p>
+      <h2>Give It Another Life</h2>
+      <div class="services-grid">
+        <div class="service-card fade-in">
+          <span class="service-number">01</span>
+          <h3>Full Reupholstery</h3>
+          <p>Strip it down, rebuild the padding, recover in your choice of fabric. Dining chairs, armchairs, sofas, benches — anything with a seat and a story.</p>
+        </div>
+        <div class="service-card fade-in">
+          <span class="service-number">02</span>
+          <h3>Slip Covers & Repairs</h3>
+          <p>Custom slip covers that fit so perfectly you'd never know they weren't original. We also patch, mend, and restore covers that have seen better days.</p>
+        </div>
+        <div class="service-card fade-in">
+          <span class="service-number">03</span>
+          <h3>Cushion & Foam Work</h3>
+          <p>New high-density foam cuts, cushion refills, and reshaping. Bring back the comfort without replacing the whole piece.</p>
+        </div>
+        <div class="service-card fade-in">
+          <span class="service-number">04</span>
+          <h3>Fabric Selection</h3>
+          <p>Not sure what material? Marisa walks you through the options — durability, texture, colour — without pressure. Get it right the first time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process">
+    <div class="process-inner">
+      <p class="section-label">How It Works</p>
+      <h2>Three Steps to Mint Condition</h2>
+      <div class="process-grid">
+        <div class="process-step fade-in">
+          <span class="service-number">01</span>
+          <h3>Email a Photo</h3>
+          <p>Send a picture of your piece to upholsterymint@gmail.com. Tell us what you're thinking — or ask for ideas.</p>
+        </div>
+        <div class="process-step fade-in">
+          <span class="service-number">02</span>
+          <h3>Pick Your Fabric</h3>
+          <p>Visit the studio or browse samples. Marisa helps you choose the right material for your piece and your life.</p>
+        </div>
+        <div class="process-step fade-in">
+          <span class="service-number">03</span>
+          <h3>We Get to Work</h3>
+          <p>Drop it off, we'll handle the rest. Most projects come back ahead of schedule — and looking better than new.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRESS CALLOUT -->
+  <section class="press-callout">
+    <div class="press-callout-inner fade-in">
+      <p class="press-callout-quote">We need everybody to make a great community — people are the fabric of society!</p>
+      <p class="press-callout-attr">Marisa — DVBA Small Business Month Feature, 2022</p>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="reviews" id="reviews">
+    <p class="section-label">What People Say</p>
+    <h2>They Keep Coming Back for More</h2>
+    <div class="reviews-grid">
+      <div class="review-card fade-in">
+        <p class="review-stars">★★★★★</p>
+        <p class="review-text">Our kitchen chairs and bench were sad and worn out. We didn't want to buy a new dining set. Marissa made them look new again. The price was super reasonable! Now we're looking around the house for more things to refresh!</p>
+        <p class="review-attr">Via Google</p>
+      </div>
+      <div class="review-card review-card-featured fade-in">
+        <p class="review-stars">★★★★★</p>
+        <p class="review-text">Best little upholstery shop in Victoria. Marissa and Joe are knowledgeable, friendly and very customer oriented. They completed our work ahead of schedule and even gave us a discount we weren't expecting.</p>
+        <p class="review-attr">Via Google — July 2025</p>
+      </div>
+      <div class="review-card fade-in">
+        <p class="review-stars">★★★★★</p>
+        <p class="review-text">Marisa did an absolutely perfect and beautiful job of making slip covers for our six dining room chairs. The matching fabric and the job is so perfect that you cannot even tell the chairs have been remediated.</p>
+        <p class="review-attr">Via Google</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXTERIOR PHOTO -->
+  <section class="exterior-photo">
+    <div class="exterior-photo-img">
+      <img src="exterior.png" alt="MINT Upholstery storefront on Pembroke Street" loading="lazy">
+    </div>
+  </section>
+
+  <!-- VISIT -->
+  <section class="visit" id="visit">
+    <p class="section-label">Find Us</p>
+    <h2>Pembroke Street, Downtown Victoria</h2>
+    <div class="visit-grid">
+      <div>
+        <div class="visit-hours">
+          <table>
+            <tr class="hours-closed"><td>Monday</td><td>Closed</td></tr>
+            <tr><td>Tuesday</td><td>9 AM — 5 PM</td></tr>
+            <tr><td>Wednesday</td><td>9 AM — 5 PM</td></tr>
+            <tr><td>Thursday</td><td>9 AM — 5 PM</td></tr>
+            <tr><td>Friday</td><td>9 AM — 5 PM</td></tr>
+            <tr><td>Saturday</td><td>12 PM — 4 PM</td></tr>
+            <tr class="hours-closed"><td>Sunday</td><td>Closed</td></tr>
+          </table>
+        </div>
+        <div class="visit-info">
+          <p><strong>649a Pembroke St</strong>, Victoria, BC V8T 4L1</p>
+          <p>Phone: <a href="tel:+12505163959">250-516-3959</a></p>
+          <p>Email: <a href="mailto:upholsterymint@gmail.com">upholsterymint@gmail.com</a></p>
+          <p><a href="https://www.instagram.com/mintupholstery/" target="_blank" rel="noopener">@mintupholstery on Instagram</a></p>
+          <p><a href="https://www.facebook.com/p/MINT-upholstery-100078686342591/" target="_blank" rel="noopener">MINT Upholstery on Facebook</a></p>
+        </div>
+      </div>
+      <div class="visit-map">
+        <iframe src="https://maps.google.com/maps?q=649a+Pembroke+St+Victoria+BC&output=embed" loading="lazy" title="Map to MINT Upholstery"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <section class="cta-band">
+    <h2>Ready to Bring Something Back?</h2>
+    <p>Email a photo of your project. Marisa will get back to you with options.</p>
+    <a href="mailto:upholsterymint@gmail.com" class="cta-band-btn">Email Your Project</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-brand">MINT Upholstery</span>
+      <ul class="footer-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#visit">Visit</a></li>
+      </ul>
+    </div>
+    <p class="footer-copy">© 2026 MINT Upholstery. 649a Pembroke St, Victoria, BC.</p>
+  </footer>
+
+  <script>
+    document.documentElement.classList.add('js-ready');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>

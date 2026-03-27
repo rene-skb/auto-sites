@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kid Sister Ice Cream — Esquimalt, Victoria BC</title>
+  <meta name="description" content="Handmade ice cream, vegan sorbet, and pops. Made from scratch with organic dairy and local fruit. 1320 Esquimalt Road, Victoria BC.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #FFF5EB;
+      --cream-alt: #FAEBD7;
+      --green: #2D5A3D;
+      --coral: #E94E1B;
+      --warm-black: #1A1610;
+      --warm-gray: #6B6560;
+      --section-pad: 96px;
+      --content-width: 1140px;
+      --ls-sm: 0.04em;
+      --ls-md: 0.08em;
+      --ls-lg: 0.14em;
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 400;
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--green);
+      background: var(--cream);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    .content-wrap {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 600; line-height: 1.15; }
+    h2 { font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -0.02em; }
+    h3 { font-size: 1.25rem; letter-spacing: -0.01em; }
+
+    .section-label {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.6875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: var(--ls-lg);
+      color: var(--coral);
+      margin-bottom: 16px;
+    }
+
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid var(--coral);
+      outline-offset: 4px;
+    }
+
+    /* --- Animations --- */
+    .js-ready .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 500ms var(--ease-out), transform 500ms var(--ease-out);
+    }
+
+    .js-ready .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .js-ready .stagger-1 { transition-delay: 0ms; }
+    .js-ready .stagger-2 { transition-delay: 60ms; }
+    .js-ready .stagger-3 { transition-delay: 120ms; }
+
+    .js-ready .hero-image {
+      opacity: 0;
+      transition: opacity 600ms var(--ease-out);
+    }
+
+    .js-ready .hero-image.loaded { opacity: 1; }
+
+    .js-ready .hero-h1 {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 500ms var(--ease-out), transform 500ms var(--ease-out);
+    }
+
+    .js-ready .hero-body-anim {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 500ms var(--ease-out) 80ms, transform 500ms var(--ease-out) 80ms;
+    }
+
+    .js-ready .hero-ctas-anim {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 500ms var(--ease-out) 160ms, transform 500ms var(--ease-out) 160ms;
+    }
+
+    .js-ready .hero-text.entered .hero-h1,
+    .js-ready .hero-text.entered .hero-body-anim,
+    .js-ready .hero-text.entered .hero-ctas-anim {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* --- Nav --- */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(255, 245, 235, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(45, 90, 61, 0.08);
+    }
+
+    .nav-inner {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-brand { height: 40px; }
+    .nav-brand img { height: 100%; width: auto; }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: 0.8125rem;
+      font-weight: 500;
+      letter-spacing: var(--ls-md);
+      text-transform: uppercase;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 0; height: 1.5px;
+      background: var(--coral);
+      transition: width 300ms var(--ease-out);
+    }
+
+    .nav-links a:hover::after { width: 100%; }
+
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px; height: 1.5px;
+      background: var(--green);
+      margin: 5px 0;
+    }
+
+    /* --- Hero --- */
+    .hero { padding-top: 72px; }
+
+    .hero-image {
+      width: 100%;
+      height: 70vh;
+      min-height: 400px;
+      max-height: 640px;
+      overflow: hidden;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+    }
+
+    .hero-text {
+      padding: var(--section-pad) 24px 64px;
+      max-width: var(--content-width);
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .hero-text h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+    }
+
+    .hero-body {
+      font-size: 1.0625rem;
+      color: var(--warm-gray);
+      max-width: 520px;
+      margin: 0 auto 32px;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* --- Buttons --- */
+    .btn-primary {
+      display: inline-block;
+      padding: 14px 32px;
+      background: var(--coral);
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: var(--ls-md);
+      border-radius: 40px;
+      transition: transform 160ms var(--ease-out), background 200ms ease;
+    }
+
+    .btn-primary:active { transform: scale(0.97); }
+    .btn-primary:hover { background: #D4440F; }
+
+    .btn-secondary {
+      display: inline-block;
+      padding: 14px 32px;
+      border: 1.5px solid var(--green);
+      color: var(--green);
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: var(--ls-md);
+      border-radius: 40px;
+      transition: transform 160ms var(--ease-out), background 200ms ease, color 200ms ease;
+    }
+
+    .btn-secondary:active { transform: scale(0.97); }
+    .btn-secondary:hover { background: var(--green); color: var(--cream); }
+
+    /* --- Trust Bar --- */
+    .trust-bar {
+      background: var(--green);
+      color: var(--cream);
+      padding: 20px 24px;
+    }
+
+    .trust-bar-inner {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+
+    .trust-stat { text-align: center; }
+
+    .trust-stat-value {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.9375rem;
+      font-weight: 500;
+      letter-spacing: var(--ls-sm);
+    }
+
+    .trust-stat-label {
+      font-size: 0.6875rem;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: var(--ls-lg);
+      opacity: 0.6;
+      margin-top: 2px;
+    }
+
+    /* --- Photo Strip --- */
+    .photo-strip {
+      padding: 4px 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px;
+    }
+
+    .photo-strip img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+    }
+
+    /* --- About --- */
+    .about {
+      padding: var(--section-pad) 0 64px;
+      scroll-margin-top: 80px;
+    }
+
+    .about-inner {
+      max-width: 680px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .about-inner h2 { margin-bottom: 24px; }
+    .about-inner p { margin-bottom: 16px; color: var(--warm-gray); }
+
+    /* --- Offerings --- */
+    .offerings { padding: 0 0 var(--section-pad); }
+
+    .offerings-header { text-align: center; margin-bottom: 40px; }
+
+    .offerings-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 32px;
+      text-align: center;
+    }
+
+    .offering-item {
+      padding: 32px 16px;
+      border-top: 2px solid var(--coral);
+    }
+
+    .offering-item h3 { margin-bottom: 8px; }
+
+    .offering-item p {
+      font-size: 0.9375rem;
+      color: var(--warm-gray);
+      line-height: 1.6;
+    }
+
+    /* --- Name Section --- */
+    .name-section {
+      padding: 120px 24px;
+      text-align: center;
+      background: var(--coral);
+      color: #fff;
+    }
+
+    .name-section .section-label { color: rgba(255,255,255,0.6); }
+
+    .name-section h2 {
+      font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+      max-width: 720px;
+      margin: 0 auto;
+      font-style: italic;
+      color: #fff;
+      letter-spacing: -0.03em;
+    }
+
+    /* --- Flavours --- */
+    .flavours-section {
+      padding: var(--section-pad) 0;
+      text-align: center;
+      scroll-margin-top: 80px;
+    }
+
+    .flavours-section h2 { margin-bottom: 16px; }
+
+    .flavours-section p {
+      color: var(--warm-gray);
+      max-width: 520px;
+      margin: 0 auto 32px;
+    }
+
+    .instagram-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 500;
+      font-size: 1rem;
+      color: var(--coral);
+      transition: opacity 200ms ease;
+    }
+
+    .instagram-link:hover { opacity: 0.7; }
+
+    /* --- Visit --- */
+    .visit {
+      padding: var(--section-pad) 0;
+      background: var(--cream-alt);
+      scroll-margin-top: 80px;
+    }
+
+    .visit-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      margin-top: 48px;
+    }
+
+    .visit-info h3 { font-size: 1.125rem; margin-bottom: 16px; }
+    .visit-address { font-size: 1rem; margin-bottom: 24px; color: var(--warm-gray); }
+
+    .visit-hours table { width: 100%; border-collapse: collapse; }
+
+    .visit-hours td {
+      padding: 8px 0;
+      font-size: 0.9375rem;
+      border-bottom: 1px solid rgba(45, 90, 61, 0.08);
+    }
+
+    .visit-hours td:last-child { text-align: right; color: var(--warm-gray); }
+
+    .visit-map {
+      border-radius: 4px;
+      overflow: hidden;
+      min-height: 320px;
+    }
+
+    .visit-map iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 320px;
+      border: 0;
+      filter: saturate(0.8) contrast(1.05);
+    }
+
+    .visit-cta { margin-top: 24px; }
+
+    /* --- Footer --- */
+    footer {
+      background: var(--warm-black);
+      color: var(--cream);
+      padding: 48px 24px;
+    }
+
+    .footer-inner {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      flex-wrap: wrap;
+      gap: 32px;
+    }
+
+    .footer-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-size: 0.8125rem;
+      opacity: 0.6;
+      transition: opacity 200ms ease;
+    }
+
+    .footer-links a:hover { opacity: 1; }
+
+    .footer-meta {
+      width: 100%;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .footer-gift {
+      font-size: 0.8125rem;
+      opacity: 0.5;
+    }
+
+    .footer-gift a {
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .footer-land {
+      font-size: 0.75rem;
+      opacity: 0.35;
+      line-height: 1.6;
+    }
+
+    /* --- Mobile --- */
+    @media (max-width: 768px) {
+      :root { --section-pad: 64px; }
+
+      .nav-links { display: none; }
+      .hamburger { display: block; }
+
+      .nav-links.active {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%; left: 0; right: 0;
+        background: var(--cream);
+        padding: 24px;
+        gap: 20px;
+        border-bottom: 1px solid rgba(45, 90, 61, 0.08);
+      }
+
+      .hero-image { height: 50vh; min-height: 300px; }
+      .hero-text h1 { font-size: clamp(2rem, 7vw, 3rem); }
+      .offerings-list { grid-template-columns: 1fr; }
+      .photo-strip { grid-template-columns: 1fr; }
+      .photo-strip img { height: 240px; }
+      .visit-grid { grid-template-columns: 1fr; }
+      .trust-bar-inner { gap: 24px; }
+      .footer-inner { flex-direction: column; align-items: center; text-align: center; }
+      .footer-links { flex-wrap: wrap; justify-content: center; }
+      .hero-ctas { flex-direction: column; align-items: center; }
+      .name-section { padding: 80px 24px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+      html { scroll-behavior: auto; }
+      .js-ready .reveal,
+      .js-ready .hero-image,
+      .js-ready .hero-h1,
+      .js-ready .hero-body-anim,
+      .js-ready .hero-ctas-anim {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+  <noscript>
+    <style>
+      .reveal, .hero-image, .hero-h1, .hero-body-anim, .hero-ctas-anim {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    </style>
+  </noscript>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="nav-brand">
+        <img src="real-images/logo.gif" alt="Kid Sister Ice Cream">
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#flavours">Flavours</a></li>
+        <li><a href="#visit">Visit</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Menu" onclick="document.getElementById('navLinks').classList.toggle('active')">
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero: Image Top, Text Below -->
+  <section class="hero">
+    <div class="hero-image">
+      <img src="real-images/hero-scooping.jpg" alt="Scooping handmade ice cream at Kid Sister, surrounded by flowers and a chalkboard menu">
+    </div>
+    <div class="hero-text">
+      <h1 class="hero-h1">The Flowers Aren't Decoration. They're Ingredients.</h1>
+      <p class="hero-body hero-body-anim">Organic dairy. Local fruit. Edible petals. Everything made by hand on Esquimalt Road, four days a week.</p>
+      <div class="hero-ctas hero-ctas-anim">
+        <a href="https://maps.app.goo.gl/4PwNxC3V8S4rkQqVA" class="btn-primary" target="_blank" rel="noopener">Get Directions</a>
+        <a href="https://www.instagram.com/kidsistericecream/" class="btn-secondary" target="_blank" rel="noopener">@kidsistericecream</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Bar -->
+  <div class="trust-bar">
+    <div class="trust-bar-inner">
+      <div class="trust-stat">
+        <div class="trust-stat-value">Hand-Scooped</div>
+        <div class="trust-stat-label">No Soft Serve</div>
+      </div>
+      <div class="trust-stat">
+        <div class="trust-stat-value">Organic Dairy</div>
+        <div class="trust-stat-label">Local Farms</div>
+      </div>
+      <div class="trust-stat">
+        <div class="trust-stat-value">Vegan</div>
+        <div class="trust-stat-label">Sorbet &amp; Pops</div>
+      </div>
+      <div class="trust-stat">
+        <div class="trust-stat-value">Thu — Sun</div>
+        <div class="trust-stat-label">Esquimalt Road</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Photo Strip -->
+  <div class="photo-strip">
+    <img src="real-images/spring-fruits-flowers.jpg" alt="Kid Sister treats, flowers, and spring fruits on checkered paper" class="reveal stagger-1">
+    <img src="real-images/sunflowers.jpg" alt="Popsicle with edible flowers held before sunflowers" class="reveal stagger-2">
+  </div>
+
+  <!-- About -->
+  <section class="about" id="about">
+    <div class="content-wrap">
+      <div class="about-inner reveal">
+        <div class="section-label">About</div>
+        <h2>Made Here. Not Shipped Here.</h2>
+        <p>Every batch of Kid Sister ice cream is made from scratch on Esquimalt Road. Organic dairy from local farms, fruit that's actually in season, and real flowers you can eat.</p>
+        <p>When the strawberries are gone, they're gone. When the dahlias bloom, they end up in a pop. That's how seasons work.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Offerings -->
+  <section class="offerings">
+    <div class="content-wrap">
+      <div class="offerings-header reveal">
+        <div class="section-label">What We Make</div>
+      </div>
+      <div class="offerings-list">
+        <div class="offering-item reveal stagger-1">
+          <h3>Ice Cream Scoops</h3>
+          <p>Hand-scooped small batches. Organic dairy, seasonal flavours, made that week.</p>
+        </div>
+        <div class="offering-item reveal stagger-2">
+          <h3>Vegan Sorbet</h3>
+          <p>Dairy-free and fruit-forward. Same care, same local ingredients.</p>
+        </div>
+        <div class="offering-item reveal stagger-3">
+          <h3>Frozen Pops</h3>
+          <p>Fruit and flower pops with edible petals frozen inside.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Name / Brand Moment -->
+  <section class="name-section">
+    <div class="reveal">
+      <div class="section-label">The Spirit</div>
+      <h2>"She shows up with something sweet and makes the whole day better."</h2>
+    </div>
+  </section>
+
+  <!-- Flavours -->
+  <section class="flavours-section" id="flavours">
+    <div class="content-wrap">
+      <div class="reveal">
+        <div class="section-label">This Week's Flavours</div>
+        <h2>Check Instagram for the Latest</h2>
+        <p>Flavours rotate with what's fresh and local. Follow along to see what's in the case right now.</p>
+        <a href="https://www.instagram.com/kidsistericecream/" class="instagram-link" target="_blank" rel="noopener">
+          @kidsistericecream →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Visit -->
+  <section class="visit" id="visit">
+    <div class="content-wrap">
+      <div class="reveal">
+        <div class="section-label">Visit</div>
+        <h2>Find Kid Sister</h2>
+      </div>
+      <div class="visit-grid">
+        <div class="visit-info reveal">
+          <h3>1320 Esquimalt Road</h3>
+          <p class="visit-address">Victoria, BC</p>
+          <div class="visit-hours">
+            <table>
+              <tr><td>Thursday</td><td>3pm — 8pm</td></tr>
+              <tr><td>Friday</td><td>3pm — 8pm</td></tr>
+              <tr><td>Saturday</td><td>1pm — 8pm</td></tr>
+              <tr><td>Sunday</td><td>1pm — 8pm</td></tr>
+            </table>
+          </div>
+          <div class="visit-cta">
+            <a href="https://maps.app.goo.gl/4PwNxC3V8S4rkQqVA" class="btn-primary" target="_blank" rel="noopener">Get Directions</a>
+          </div>
+        </div>
+        <div class="visit-map reveal">
+          <iframe src="https://maps.google.com/maps?q=1320+Esquimalt+Road+Victoria+BC&output=embed" allowfullscreen loading="lazy"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">Kid Sister</div>
+      <ul class="footer-links">
+        <li><a href="https://www.instagram.com/kidsistericecream/" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://www.kidsistericecream.com/" target="_blank" rel="noopener">Website</a></li>
+        <li><a href="https://maps.app.goo.gl/4PwNxC3V8S4rkQqVA" target="_blank" rel="noopener">Directions</a></li>
+      </ul>
+      <div class="footer-meta">
+        <p class="footer-gift">Gift cards available — <a href="https://www.instagram.com/kidsistericecream/" target="_blank" rel="noopener">message us on Instagram</a>.</p>
+        <p class="footer-land">Kid Sister frozen delights are made on the traditional territory of the lək̓ʷəŋən Peoples.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.body.classList.add('js-ready');
+
+    // Hero image fade-in
+    const heroImg = document.querySelector('.hero-image img');
+    if (heroImg) {
+      const showHero = () => document.querySelector('.hero-image').classList.add('loaded');
+      heroImg.complete ? showHero() : heroImg.addEventListener('load', showHero);
+    }
+
+    // Hero text stagger entrance
+    setTimeout(() => {
+      document.querySelector('.hero-text')?.classList.add('entered');
+    }, 300);
+
+    // Scroll-reveal via IntersectionObserver
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>

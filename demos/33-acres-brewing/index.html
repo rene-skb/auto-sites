@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>33 Acres Brewing Company</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --white: #FAFAFA;
+    --black: #111111;
+    --gray: #666666;
+    --light-gray: #E8E8E8;
+    --mid-gray: #767676;
+    --bg-alt: #F2F2F0;
+    --section-pad: 96px;
+    --content-width: 1120px;
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  }
+
+  html { font-size: 16px; scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--white);
+    color: var(--black);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .content { max-width: var(--content-width); margin: 0 auto; padding: 0 24px; }
+
+  /* ---- NAV ---- */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    background: rgba(250, 250, 250, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 100;
+    border-bottom: 1px solid var(--light-gray);
+  }
+  .nav-inner {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 64px;
+  }
+  .nav-logo {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--black);
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--gray);
+    text-decoration: none;
+    transition: color 200ms var(--ease-out);
+  }
+  .nav-links a:hover { color: var(--black); }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+  .hamburger span {
+    width: 24px; height: 1.5px;
+    background: var(--black);
+    transition: all 200ms var(--ease-out);
+  }
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 64px; left: 0; right: 0; bottom: 0;
+    background: var(--white);
+    z-index: 99;
+    padding: 48px 24px;
+  }
+  .mobile-menu.active { display: block; }
+  .mobile-menu a {
+    display: block;
+    font-family: 'Space Mono', monospace;
+    font-size: 1.25rem;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--black);
+    text-decoration: none;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--light-gray);
+  }
+
+  /* ---- HERO ---- */
+  .hero {
+    padding: 200px 24px 120px;
+    text-align: center;
+    min-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .hero-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--mid-gray);
+    margin-bottom: 32px;
+  }
+  .hero h1 {
+    font-family: 'Space Mono', monospace;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: var(--black);
+    max-width: 800px;
+    margin-bottom: 32px;
+  }
+  .hero-sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.125rem;
+    font-weight: 400;
+    color: var(--gray);
+    max-width: 480px;
+    line-height: 1.7;
+  }
+
+  /* ---- ETHOS STRIP ---- */
+  .ethos-strip {
+    border-top: 1px solid var(--light-gray);
+    border-bottom: 1px solid var(--light-gray);
+    padding: 24px 0;
+  }
+  .ethos-inner {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+  .ethos-item {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--mid-gray);
+  }
+
+  /* ---- ABOUT (moved up) ---- */
+  .about {
+    padding: var(--section-pad) 0;
+  }
+  .about-inner {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 0 24px;
+    display: grid;
+    grid-template-columns: 5fr 4fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .about .section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--mid-gray);
+    margin-bottom: 24px;
+  }
+  .about h2 {
+    font-family: 'Space Mono', monospace;
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 32px;
+  }
+  .about p {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--gray);
+    line-height: 1.8;
+    margin-bottom: 24px;
+  }
+  .about-detail {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: var(--mid-gray);
+    line-height: 1.7;
+    font-style: italic;
+    margin-top: 8px;
+  }
+
+  .values-list { list-style: none; }
+  .values-list li {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.875rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--light-gray);
+    display: flex;
+    gap: 16px;
+    align-items: baseline;
+  }
+  .values-list li:first-child { border-top: 1px solid var(--light-gray); }
+  .value-num {
+    font-size: 0.6875rem;
+    color: var(--mid-gray);
+    letter-spacing: 0.08em;
+    min-width: 24px;
+  }
+
+  /* ---- QUOTE ---- */
+  .quote-section {
+    padding: var(--section-pad) 0;
+    text-align: center;
+    background: var(--bg-alt);
+  }
+  .quote-section blockquote {
+    font-family: 'Space Mono', monospace;
+    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+    font-weight: 400;
+    line-height: 1.6;
+    max-width: 720px;
+    margin: 0 auto;
+    color: var(--black);
+  }
+  .quote-section cite {
+    display: block;
+    margin-top: 24px;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--mid-gray);
+    font-style: normal;
+  }
+
+  /* ---- PHOTO STRIP ---- */
+  .photo-strip {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+  }
+  .photo-strip-item {
+    aspect-ratio: 4/3;
+    position: relative;
+    overflow: hidden;
+  }
+  .photo-strip-item {
+    background: var(--bg-alt);
+  }
+  .photo-strip-item img {
+    width: 100%; height: 100%; object-fit: cover;
+  }
+
+  /* ---- BEERS ---- */
+  .beers { padding: var(--section-pad) 0; }
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 64px;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--mid-gray);
+  }
+  .section-title {
+    font-family: 'Space Mono', monospace;
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .beer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  .beer-card {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--light-gray);
+    padding-top: 24px;
+  }
+  .beer-name {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .beer-style {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--mid-gray);
+    margin-bottom: 16px;
+  }
+  .beer-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: var(--gray);
+    line-height: 1.6;
+    flex: 1;
+  }
+  .beer-meta {
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid var(--light-gray);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .beer-abv {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    color: var(--mid-gray);
+  }
+  .beer-price {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+
+  /* ---- REVIEWS ---- */
+  .reviews { padding: var(--section-pad) 0; background: var(--bg-alt); }
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-top: 64px;
+  }
+  .review-card {
+    padding: 0;
+    padding-top: 24px;
+    border-top: 1px solid var(--light-gray);
+  }
+  .review-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9375rem;
+    font-weight: 400;
+    color: var(--black);
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+  .review-attr {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--mid-gray);
+  }
+
+  /* ---- LOCATIONS ---- */
+  .locations {
+    background: var(--black);
+    color: var(--white);
+    padding: var(--section-pad) 0;
+  }
+  .locations-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+    margin-top: 64px;
+  }
+  .location-card h3 {
+    font-family: 'Space Mono', monospace;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    color: var(--white);
+  }
+  .location-card p {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: var(--mid-gray);
+    line-height: 1.7;
+    margin-bottom: 4px;
+  }
+  .location-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6875rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--mid-gray);
+    margin-top: 24px;
+    margin-bottom: 8px;
+  }
+  .location-hours {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 400;
+    color: var(--mid-gray);
+    line-height: 1.8;
+  }
+
+  /* ---- MAP ---- */
+  .map-container {
+    width: 100%;
+    height: 400px;
+  }
+  .map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    filter: grayscale(100%) invert(1) contrast(1.05);
+    opacity: 0.7;
+  }
+
+  /* ---- CTA ---- */
+  .cta-section {
+    padding: var(--section-pad) 0;
+    text-align: center;
+    border-top: 1px solid var(--light-gray);
+  }
+  .cta-section h2 {
+    font-family: 'Space Mono', monospace;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  .cta-section p {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--gray);
+    margin-bottom: 40px;
+  }
+  .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .btn {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 16px 40px;
+    transition: all 160ms var(--ease-out);
+    cursor: pointer;
+    border: none;
+  }
+  .btn:active { transform: scale(0.97); }
+  .btn-primary {
+    background: var(--black);
+    color: var(--white);
+  }
+  .btn-primary:hover { background: #333; }
+  .btn-secondary {
+    background: transparent;
+    color: var(--black);
+    border: 1px solid var(--black);
+  }
+  .btn-secondary:hover { background: var(--black); color: var(--white); }
+
+  /* ---- FOOTER ---- */
+  footer {
+    padding: 48px 0;
+    border-top: 1px solid var(--light-gray);
+  }
+  .footer-inner {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .footer-left {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    color: var(--mid-gray);
+  }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--gray);
+    text-decoration: none;
+    transition: color 200ms var(--ease-out);
+  }
+  .footer-links a:hover { color: var(--black); }
+
+  /* ---- SCROLL REVEAL ---- */
+  .fade-in {
+    opacity: 1;
+    transform: none;
+  }
+  .fade-in.reveal-ready {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+  }
+  .fade-in.revealed {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Stagger children */
+  .stagger-children.reveal-ready > * {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 500ms var(--ease-out), transform 500ms var(--ease-out);
+  }
+  .stagger-children.revealed > * {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Nav link underline animation */
+  .nav-links a {
+    position: relative;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--black);
+    transition: width 200ms var(--ease-out);
+  }
+  .nav-links a:hover::after {
+    width: 100%;
+  }
+
+  /* Button hover brightness */
+  .btn-primary:hover {
+    background: #222;
+  }
+
+  /* ---- RESPONSIVE ---- */
+  @media (max-width: 1024px) {
+    .beer-grid { grid-template-columns: repeat(2, 1fr); }
+    .about-inner { grid-template-columns: 1fr; gap: 48px; }
+    .locations-grid { grid-template-columns: 1fr; gap: 32px; }
+    .reviews-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 768px) {
+    :root { --section-pad: 64px; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .hero { padding: 140px 24px 80px; min-height: 70vh; }
+    .hero h1 { font-size: clamp(2rem, 8vw, 3rem); }
+    .beer-grid { grid-template-columns: 1fr; }
+    .photo-strip { grid-template-columns: 1fr; }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .ethos-inner { flex-direction: column; gap: 12px; align-items: center; }
+    .section-header { flex-direction: column; gap: 8px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fade-in { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">33 Acres</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#beers">Beers</a></li>
+      <li><a href="#community">Community</a></li>
+      <li><a href="#locations">Visit</a></li>
+      <li><a href="https://shop.33acresbrewing.com" target="_blank">Shop</a></li>
+    </ul>
+    <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('active')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu">
+  <a href="#about" onclick="document.querySelector('.mobile-menu').classList.remove('active')">About</a>
+  <a href="#beers" onclick="document.querySelector('.mobile-menu').classList.remove('active')">Beers</a>
+  <a href="#community" onclick="document.querySelector('.mobile-menu').classList.remove('active')">Community</a>
+  <a href="#locations" onclick="document.querySelector('.mobile-menu').classList.remove('active')">Visit</a>
+  <a href="https://shop.33acresbrewing.com" target="_blank">Shop</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-label">Mount Pleasant, Vancouver · Est. 2013</div>
+  <h1>Where the neighborhood comes to think.</h1>
+  <p class="hero-sub">Espresso at 10. Beer at 5. Conversation the whole time. A family-owned brewery and gathering space in the heart of Mount Pleasant.</p>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="fade-in">
+      <div class="section-label">The Space</div>
+      <h2>The binding elements of life.</h2>
+      <p>33 Acres was born from one belief: the best things happen when people share space, drinks, and ideas. We're influenced by the forests and Pacific that surround us, fueled by creative thinking, driven to make the highest quality product.</p>
+      <p>We've been doing this since 2013 and the formula hasn't changed because it doesn't need to.</p>
+      <div class="about-detail">Opening day, Josh's dad Brian looked around and said, "So I guess we can take the paper off the windows now?" They ripped it down. The room filled in minutes.</div>
+    </div>
+    <div class="fade-in">
+      <ul class="values-list stagger-children">
+        <li><span class="value-num">01</span> Brew beers we actually want to drink</li>
+        <li><span class="value-num">02</span> Design is as important as the product</li>
+        <li><span class="value-num">03</span> Take cues from the forests and the Pacific</li>
+        <li><span class="value-num">04</span> Everyone's welcome at the table</li>
+        <li><span class="value-num">05</span> Small business builds the neighbourhood</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section class="quote-section">
+  <div class="content">
+    <blockquote class="fade-in">"Small business is the community builder in any neighbourhood."</blockquote>
+    <cite>Joshua Michnik · Founder & Creative Director</cite>
+  </div>
+</section>
+
+<!-- PHOTO STRIP -->
+<div class="photo-strip">
+  <div class="photo-strip-item"><img src="beer-flight.png" alt="Craft beer flight on minimalist table" loading="lazy"></div>
+  <div class="photo-strip-item"><img src="taps.png" alt="Brewery tap handles" loading="lazy"></div>
+  <div class="photo-strip-item"><img src="ingredients.png" alt="Hops and barley brewing ingredients" loading="lazy"></div>
+</div>
+
+<!-- BEERS -->
+<section class="beers content" id="beers">
+  <div class="section-header">
+    <div>
+      <div class="section-label">The Lineup</div>
+      <h2 class="section-title">Eight beers. Each one named for a feeling.</h2>
+    </div>
+    <a href="https://shop.33acresbrewing.com" class="btn btn-secondary" target="_blank">Order Online</a>
+  </div>
+  <div class="beer-grid stagger-children">
+    <div class="beer-card">
+      <div class="beer-name">Life</div>
+      <div class="beer-style">Amber Lager · 4.8%</div>
+      <div class="beer-desc">California Common born out of Gold Rush ingenuity. Northern Brewer hops, crisp finish, hints of evergreen.</div>
+      <div class="beer-meta">
+        <span class="beer-abv">Glass $8.50 · Pint $11</span>
+        <span class="beer-price">6pk $14</span>
+      </div>
+    </div>
+    <div class="beer-card">
+      <div class="beer-name">Ocean</div>
+      <div class="beer-style">West Coast Pale Ale · 5.3%</div>
+      <div class="beer-desc">Pacific Northwest hops front and center. Citrus and pine aromatics with a light body that pulls you back.</div>
+      <div class="beer-meta">
+        <span class="beer-abv">Glass $8.50 · Pint $11</span>
+        <span class="beer-price">6pk $14</span>
+      </div>
+    </div>
+    <div class="beer-card">
+      <div class="beer-name">Sunshine</div>
+      <div class="beer-style">French Blanche · 5.0%</div>
+      <div class="beer-desc">Silky, spiced with orange peel, coriander and anise seed. Built for golden afternoons.</div>
+      <div class="beer-meta">
+        <span class="beer-abv">Glass $8.50 · Pint $11</span>
+        <span class="beer-price">6pk $14</span>
+      </div>
+    </div>
+    <div class="beer-card">
+      <div class="beer-name">Darkness</div>
+      <div class="beer-style">Black Lager · 5.0%</div>
+      <div class="beer-desc">This Schwarzbier is light on its feet. Tantalizing taste beyond the usual weight.</div>
+      <div class="beer-meta">
+        <span class="beer-abv">Glass $8.50 · Pint $11</span>
+        <span class="beer-price">6pk $14</span>
+      </div>
+    </div>
+    <div class="beer-card">
+      <div class="beer-name">Nirvana</div>
+      <div class="beer-style">West Coast IPA · 7.0%</div>
+      <div class="beer-desc">The line between traditional and modern. Juicy orange zest and forest pine from an abundance of hops.</div>
+      <div class="beer-meta">
+        <span class="beer-abv">Glass $8.75 · Pint $12</span>
+        <span class="beer-price">6pk $15</span>
+      </div>
+    </div>
+    <div class="beer-card">
+      <div class="beer-name">Euphoria</div>
+      <div class="beer-style">Belgian Tripel · 9.2%</div>
+      <div class="beer-desc">World Beer Cup Silver, 2016 and 2018. Complex, citrus peel, spice. Good things in the power of threes.</div>
+      <div class="beer-meta">
+        <span class="beer-abv">12oz $7</span>
+        <span class="beer-price">750ml $12</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="community">
+  <div class="content">
+    <div class="section-header">
+      <div>
+        <div class="section-label">Community</div>
+        <h2 class="section-title">What people are saying.</h2>
+      </div>
+    </div>
+    <div class="reviews-grid stagger-children">
+      <div class="review-card">
+        <p class="review-text">"By far my favourite local brewery. Many other good ones but nothing quite like 33. Lived about a 12 minute walk away for years."</p>
+        <div class="review-attr">Mount Pleasant Resident · 2023 · Via Reddit</div>
+      </div>
+      <div class="review-card">
+        <p class="review-text">"33 Acres of Sunshine is goddamn divine. Holy shitballs I'm getting fatter by the day."</p>
+        <div class="review-attr">Via r/Vancouver · Apr 2022</div>
+      </div>
+      <div class="review-card">
+        <p class="review-text">"Consistently laid-back atmosphere where I can enjoy a wide variety of fresh, flavorful beers, including my favorite cloudy IPA and Sunshine beer."</p>
+        <div class="review-attr">Krista P. · Nov 2025 · Via Google</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATIONS -->
+<section class="locations" id="locations">
+  <div class="content">
+    <div class="section-header">
+      <div>
+        <div class="section-label" style="color: var(--mid-gray);">Visit</div>
+        <h2 class="section-title" style="color: var(--white);">Three spaces. One feeling.</h2>
+      </div>
+    </div>
+    <div class="locations-grid">
+      <div class="location-card">
+        <h3>33A — The Brewery</h3>
+        <p>15 W 8th Ave, Vancouver, BC</p>
+        <p>Mount Pleasant</p>
+        <div class="location-label">Hours</div>
+        <div class="location-hours">
+          Mon–Thu: 11am–11pm<br>
+          Fri: 11am–12am<br>
+          Sat: 10am–12am<br>
+          Sun: 10am–10pm
+        </div>
+      </div>
+      <div class="location-card">
+        <h3>33B — The Experiment</h3>
+        <p>25 W 8th Ave, Vancouver, BC</p>
+        <p>Mount Pleasant</p>
+        <div class="location-label">Hours</div>
+        <div class="location-hours">
+          Mon–Thu: 11am–11pm<br>
+          Fri: 11am–12am<br>
+          Sat: 10am–12am<br>
+          Sun: 10am–10pm
+        </div>
+      </div>
+      <div class="location-card">
+        <h3>33C — Calgary</h3>
+        <p>#120, 224 12 Ave SW</p>
+        <p>Calgary, AB</p>
+        <div class="location-label">Hours</div>
+        <div class="location-hours">
+          Mon–Thu: 11am–10pm<br>
+          Fri–Sat: 11am–11pm<br>
+          Sun: 11am–9pm
+        </div>
+      </div>
+    </div>
+    <div class="map-container" style="margin-top: 64px;">
+      <iframe src="https://maps.google.com/maps?q=33+Acres+Brewing+Company+15+W+8th+Ave+Vancouver&output=embed" loading="lazy" title="33 Acres Brewing Location"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="content">
+    <h2>Pull up a chair.</h2>
+    <p>No reservations needed. Just walk in.</p>
+    <div class="cta-buttons">
+      <a href="https://maps.google.com/maps?q=33+Acres+Brewing+Company+Vancouver" target="_blank" class="btn btn-primary">Get Directions</a>
+      <a href="https://shop.33acresbrewing.com" target="_blank" class="btn btn-secondary">Order Beer</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-left">© 2026 33 Acres Brewing Company Inc.</div>
+    <div class="footer-links">
+      <a href="https://www.instagram.com/33acresbrewing/" target="_blank">Instagram</a>
+      <a href="mailto:beer@33acresbrewing.com">beer@33acresbrewing.com</a>
+      <a href="https://shop.33acresbrewing.com" target="_blank">Shop</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  (function() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const els = document.querySelectorAll('.fade-in, .stagger-children');
+    els.forEach(el => el.classList.add('reveal-ready'));
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          el.classList.add('revealed');
+
+          // Stagger children
+          if (el.classList.contains('stagger-children')) {
+            Array.from(el.children).forEach((child, i) => {
+              child.style.transitionDelay = (i * 60) + 'ms';
+            });
+          }
+
+          observer.unobserve(el);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+    els.forEach(el => observer.observe(el));
+  })();
+</script>
+</body>
+</html>

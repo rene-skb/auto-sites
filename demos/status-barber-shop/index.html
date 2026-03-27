@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Status Barber Shop — Victoria BC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black: #0A0A0A;
+      --dark: #111111;
+      --dark-alt: #1A1A1A;
+      --gold: #C4A35A;
+      --gold-light: #D4B36A;
+      --cream: #F5F0E8;
+      --cream-alt: #EDE7DC;
+      --warm-gray: #8A8078;
+      --mid-gray: #4A4540;
+      --section-pad: 96px;
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      line-height: 1.65;
+      color: var(--dark);
+      background: var(--cream);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 64px;
+      background: var(--black);
+    }
+
+    .nav-brand {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.375rem;
+      letter-spacing: 0.14em;
+      color: var(--cream);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+      text-decoration: none;
+      position: relative;
+      transition: color 200ms var(--ease-out);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 250ms var(--ease-out);
+    }
+
+    .nav-links a:hover { color: var(--cream); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+
+    .nav-cta {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--black);
+      background: var(--gold);
+      padding: 10px 20px;
+      border: none;
+      text-decoration: none;
+      transition: background 160ms var(--ease-out), transform 100ms var(--ease-out);
+    }
+
+    .nav-cta:hover { background: var(--gold-light); }
+    .nav-cta:active { transform: scale(0.97); }
+
+    /* Mobile nav */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--cream);
+      transition: all 200ms var(--ease-out);
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 64px;
+      left: 0;
+      right: 0;
+      background: var(--black);
+      padding: 32px 24px;
+      z-index: 99;
+      border-top: 1px solid var(--dark-alt);
+    }
+
+    .mobile-menu.open { display: block; }
+
+    .mobile-menu a {
+      display: block;
+      padding: 16px 0;
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+      text-decoration: none;
+      border-bottom: 1px solid var(--dark-alt);
+      transition: color 150ms;
+    }
+
+    .mobile-menu a:hover { color: var(--cream); }
+
+    .mobile-cta {
+      display: block;
+      margin-top: 24px;
+      text-align: center;
+      padding: 14px;
+      background: var(--gold);
+      color: var(--black);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+
+    /* ─── HERO — Giant Display Type ─── */
+    .hero {
+      background: var(--black);
+      padding-top: 64px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-inner {
+      padding: 80px 64px 80px;
+      max-width: 1400px;
+    }
+
+    .hero-label {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+      display: block;
+    }
+
+    .hero-h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(5rem, 14vw, 13rem);
+      line-height: 0.9;
+      letter-spacing: 0.02em;
+      color: var(--cream);
+      margin-bottom: 40px;
+    }
+
+    .hero-h1 .accent-line {
+      color: var(--gold);
+      display: block;
+    }
+
+    .hero-body {
+      font-size: 1.0625rem;
+      font-weight: 400;
+      color: var(--warm-gray);
+      max-width: 520px;
+      line-height: 1.7;
+      margin-bottom: 48px;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 14px 28px;
+      background: var(--gold);
+      color: var(--black);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 160ms var(--ease-out), transform 100ms var(--ease-out);
+    }
+
+    .btn-primary:hover { background: var(--gold-light); }
+    .btn-primary:active { transform: scale(0.97); }
+
+    .btn-ghost {
+      display: inline-block;
+      padding: 13px 27px;
+      border: 1px solid var(--mid-gray);
+      color: var(--warm-gray);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: border-color 160ms var(--ease-out), color 160ms var(--ease-out), transform 100ms var(--ease-out);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--cream);
+      color: var(--cream);
+    }
+
+    .btn-ghost:active { transform: scale(0.97); }
+
+    .hero-award {
+      position: absolute;
+      top: 96px;
+      right: 64px;
+      text-align: right;
+    }
+
+    .hero-award-badge {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      border: 1px solid var(--mid-gray);
+      padding: 20px 24px;
+    }
+
+    .hero-award-badge .award-years {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3rem;
+      line-height: 1;
+      color: var(--gold);
+      letter-spacing: 0.04em;
+    }
+
+    .hero-award-badge .award-label {
+      font-size: 0.5625rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+      text-align: center;
+      line-height: 1.4;
+    }
+
+    /* ─── TRUST BAR (light-bar) ─── */
+    .trust-bar {
+      background: var(--cream-alt);
+      border-top: 1px solid #D8D0C4;
+      border-bottom: 1px solid #D8D0C4;
+    }
+
+    .trust-bar-inner {
+      display: flex;
+      align-items: stretch;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .trust-item {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 36px 24px;
+      border-right: 1px solid #D8D0C4;
+      text-align: center;
+      gap: 6px;
+    }
+
+    .trust-item:last-child { border-right: none; }
+
+    .trust-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.5rem;
+      letter-spacing: 0.04em;
+      color: var(--dark);
+      line-height: 1;
+    }
+
+    .trust-number .trust-unit {
+      font-size: 1.25rem;
+    }
+
+    .trust-label {
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+    }
+
+    /* ─── PHOTO STRIP ─── */
+    .photo-strip {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 3px;
+      background: var(--black);
+      height: 480px;
+    }
+
+    .photo-strip img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .photo-strip-right {
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      gap: 3px;
+    }
+
+    /* ─── SECTION COMMON ─── */
+    .section-label {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .section-h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      letter-spacing: -0.01em;
+      line-height: 1;
+      color: var(--dark);
+      margin-bottom: 24px;
+    }
+
+    section, [id] { scroll-margin-top: 64px; }
+
+    /* ─── ABOUT ─── */
+    .about {
+      padding: var(--section-pad) 64px;
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 5fr 7fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .about-left .section-h2 { margin-bottom: 0; }
+
+    .about-right p {
+      font-size: 1rem;
+      color: #3D3830;
+      margin-bottom: 20px;
+      max-width: 540px;
+    }
+
+    .about-right p:last-child { margin-bottom: 0; }
+
+    .about-quote {
+      margin-top: 32px;
+      padding-left: 20px;
+      border-left: 2px solid var(--gold);
+    }
+
+    .about-quote p {
+      font-size: 1.0625rem;
+      font-style: italic;
+      color: var(--dark);
+      font-weight: 400;
+      margin-bottom: 12px !important;
+    }
+
+    .about-quote cite {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+      font-style: normal;
+    }
+
+    /* ─── NAME SECTION ─── */
+    .name-section {
+      background: var(--dark);
+      padding: 120px 64px;
+      text-align: center;
+    }
+
+    .name-section-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .name-h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 7vw, 6.5rem);
+      letter-spacing: -0.01em;
+      line-height: 1;
+      color: var(--cream);
+      margin-bottom: 24px;
+    }
+
+    .name-h2 span { color: var(--gold); }
+
+    .name-body {
+      font-size: 1.0625rem;
+      color: var(--warm-gray);
+      max-width: 540px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* ─── SERVICES ─── */
+    .services {
+      padding: var(--section-pad) 64px;
+      background: var(--cream-alt);
+      scroll-margin-top: 64px;
+    }
+
+    .services-header {
+      max-width: 1400px;
+      margin: 0 auto 56px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 40px;
+    }
+
+    .services-header-left .section-h2 { margin-bottom: 0; }
+
+    .services-note {
+      font-size: 0.8125rem;
+      color: var(--warm-gray);
+      max-width: 280px;
+      text-align: right;
+      line-height: 1.6;
+    }
+
+    .services-grid {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3px;
+    }
+
+    .service-card {
+      background: var(--cream);
+      padding: 36px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 24px;
+    }
+
+    .service-card-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      letter-spacing: 0.04em;
+      color: var(--gold);
+      opacity: 0.5;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+
+    .service-info { flex: 1; }
+
+    .service-name {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 6px;
+      letter-spacing: -0.01em;
+    }
+
+    .service-desc {
+      font-size: 0.875rem;
+      color: var(--mid-gray);
+      line-height: 1.5;
+    }
+
+    .service-price {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.875rem;
+      letter-spacing: 0.04em;
+      color: var(--dark);
+      flex-shrink: 0;
+      line-height: 1;
+    }
+
+    /* ─── REVIEWS ─── */
+    .reviews {
+      padding: var(--section-pad) 64px;
+      max-width: 1400px;
+      margin: 0 auto;
+      scroll-margin-top: 64px;
+    }
+
+    .reviews-header {
+      margin-bottom: 56px;
+    }
+
+    .reviews-h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      letter-spacing: 0.02em;
+      line-height: 1;
+      color: var(--dark);
+      margin-bottom: 0;
+    }
+
+    /* Featured large quote + 2 supporting cards */
+    .reviews-layout {
+      display: grid;
+      grid-template-rows: auto auto;
+      gap: 3px;
+    }
+
+    .review-featured {
+      background: var(--dark);
+      padding: 64px;
+      position: relative;
+    }
+
+    .review-featured-mark {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 8rem;
+      line-height: 0.7;
+      color: var(--gold);
+      opacity: 0.2;
+      position: absolute;
+      top: 40px;
+      left: 48px;
+    }
+
+    .review-featured-text {
+      font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+      font-weight: 400;
+      color: var(--cream);
+      line-height: 1.5;
+      font-style: italic;
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin-bottom: 32px;
+    }
+
+    .review-featured-meta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .review-stars {
+      color: var(--gold);
+      font-size: 0.875rem;
+      letter-spacing: 2px;
+    }
+
+    .review-name {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+    }
+
+    .reviews-supporting {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3px;
+    }
+
+    .review-card {
+      background: var(--cream-alt);
+      padding: 40px;
+    }
+
+    .review-card-stars {
+      color: var(--gold);
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+    }
+
+    .review-card-text {
+      font-size: 0.9375rem;
+      color: #3D3830;
+      line-height: 1.65;
+      font-style: italic;
+      margin-bottom: 20px;
+    }
+
+    .review-card-meta {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+    }
+
+    .review-card-meta .review-date {
+      font-weight: 400;
+      opacity: 0.7;
+      margin-left: 6px;
+    }
+
+    /* ─── VISIT ─── */
+    .visit {
+      background: var(--dark-alt);
+      padding: var(--section-pad) 64px;
+      scroll-margin-top: 64px;
+    }
+
+    .visit-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .visit-left .section-label { color: var(--gold); }
+
+    .visit-h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 4vw, 3.75rem);
+      letter-spacing: 0.02em;
+      line-height: 1;
+      color: var(--cream);
+      margin-bottom: 40px;
+    }
+
+    .visit-detail {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .visit-row {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+      padding-bottom: 24px;
+      border-bottom: 1px solid #2A2A2A;
+    }
+
+    .visit-row:last-child { border-bottom: none; padding-bottom: 0; }
+
+    .visit-row-label {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+      min-width: 80px;
+      padding-top: 2px;
+    }
+
+    .visit-row-value {
+      font-size: 0.9375rem;
+      color: var(--cream);
+      line-height: 1.6;
+    }
+
+    .visit-row-value a {
+      color: var(--cream);
+      text-decoration: none;
+      transition: color 150ms;
+    }
+
+    .visit-row-value a:hover { color: var(--gold); }
+
+    .visit-phone-link {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      letter-spacing: 0.04em;
+      color: var(--gold) !important;
+      display: block;
+      margin-top: 4px;
+    }
+
+    .visit-right {
+      height: 480px;
+    }
+
+    .visit-right iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      filter: grayscale(100%) invert(90%) contrast(90%);
+    }
+
+    /* ─── CTA BAND ─── */
+    .cta-band {
+      background: var(--gold);
+      padding: 80px 64px;
+      text-align: center;
+    }
+
+    .cta-band-h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      letter-spacing: 0.02em;
+      line-height: 1;
+      color: var(--black);
+      margin-bottom: 16px;
+    }
+
+    .cta-band-sub {
+      font-size: 1rem;
+      color: rgba(0,0,0,0.65);
+      max-width: 440px;
+      margin: 0 auto 40px;
+      line-height: 1.6;
+    }
+
+    .btn-dark {
+      display: inline-block;
+      padding: 16px 36px;
+      background: var(--black);
+      color: var(--cream);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 160ms var(--ease-out), transform 100ms var(--ease-out);
+      margin: 0 8px;
+    }
+
+    .btn-dark:hover { background: var(--dark-alt); }
+    .btn-dark:active { transform: scale(0.97); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--black);
+      padding: 48px 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+    }
+
+    .footer-brand {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.25rem;
+      letter-spacing: 0.14em;
+      color: var(--cream);
+      opacity: 0.9;
+    }
+
+    .footer-meta {
+      font-size: 0.75rem;
+      color: var(--warm-gray);
+      letter-spacing: 0.04em;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+      text-decoration: none;
+      transition: color 150ms;
+    }
+
+    .footer-links a:hover { color: var(--cream); }
+
+    /* ─── NOISE ─── */
+    .noise {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1000;
+      opacity: 0.025;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .nav-links, .nav-cta { display: none; }
+      .nav-hamburger { display: flex; }
+      nav { padding: 0 24px; }
+
+      .hero-inner { padding: 64px 24px; }
+      .hero-award { display: none; }
+      .hero-h1 { font-size: clamp(4rem, 18vw, 8rem); }
+
+      .trust-bar-inner { flex-wrap: wrap; }
+      .trust-item { flex: 1 1 50%; border-right: none; border-bottom: 1px solid #D8D0C4; }
+      .trust-item:nth-child(odd) { border-right: 1px solid #D8D0C4; }
+
+      .photo-strip { height: 320px; grid-template-columns: 1fr; }
+      .photo-strip-right { display: none; }
+
+      .about { grid-template-columns: 1fr; gap: 40px; padding: 64px 24px; }
+      .name-section { padding: 80px 24px; }
+      .services { padding: 64px 24px; }
+      .services-header { flex-direction: column; align-items: flex-start; }
+      .services-note { text-align: left; }
+      .services-grid { grid-template-columns: 1fr; }
+      .reviews { padding: 64px 24px; }
+      .review-featured { padding: 40px 24px; }
+      .reviews-supporting { grid-template-columns: 1fr; }
+      .visit { padding: 64px 24px; }
+      .visit-inner { grid-template-columns: 1fr; gap: 48px; }
+      .visit-right { height: 320px; }
+      .cta-band { padding: 64px 24px; }
+      footer { flex-direction: column; align-items: flex-start; padding: 40px 24px; gap: 20px; }
+      .footer-links { flex-wrap: wrap; }
+    }
+
+
+
+    /* ─── HERO ENTRANCE ─── */
+    .hero-enter {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    body.js-ready .hero-enter {
+      animation: heroEnter 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+    }
+
+    @keyframes heroEnter {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    body.js-ready .hero-delay-1 { animation-delay: 0.05s; }
+    body.js-ready .hero-delay-2 { animation-delay: 0.13s; }
+    body.js-ready .hero-delay-3 { animation-delay: 0.21s; }
+    body.js-ready .hero-delay-4 { animation-delay: 0.33s; }
+    body.js-ready .hero-delay-5 { animation-delay: 0.45s; }
+
+    /* ─── SCROLL REVEAL ─── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s cubic-bezier(0.23, 1, 0.32, 1), transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    body:not(.js-ready) .reveal { opacity: 1; transform: none; }
+    .stagger-1 { transition-delay: 0ms; }
+    .stagger-2 { transition-delay: 40ms; }
+    .stagger-3 { transition-delay: 80ms; }
+    .stagger-4 { transition-delay: 120ms; }
+    .stagger-5 { transition-delay: 160ms; }
+    .stagger-6 { transition-delay: 200ms; }
+
+
+    /* ─── FOCUS ─── */
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 3px;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Noise texture -->
+  <svg class="noise" xmlns="http://www.w3.org/2000/svg">
+    <filter id="noise-filter">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch"/>
+    </filter>
+    <rect width="100%" height="100%" filter="url(#noise-filter)"/>
+  </svg>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-brand">Status</a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#visit">Visit</a></li>
+    </ul>
+    <a href="https://statusbarbershop.com" target="_blank" rel="noopener" class="nav-cta">Book Now</a>
+    <button class="nav-hamburger" aria-label="Menu" onclick="document.getElementById('mobile-menu').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div id="mobile-menu" class="mobile-menu">
+    <a href="#services" onclick="document.getElementById('mobile-menu').classList.remove('open')">Services</a>
+    <a href="#reviews" onclick="document.getElementById('mobile-menu').classList.remove('open')">Reviews</a>
+    <a href="#visit" onclick="document.getElementById('mobile-menu').classList.remove('open')">Visit</a>
+    <a href="https://statusbarbershop.com" target="_blank" rel="noopener" class="mobile-cta">Book Now</a>
+  </div>
+
+  <!-- HERO — Giant Display Type -->
+  <section class="hero">
+    <div class="hero-inner">
+      <span class="hero-label hero-enter hero-delay-1">Victoria, BC · Yates Street</span>
+      <h1 class="hero-h1 hero-enter hero-delay-2">
+        The Freshest<br>
+        <span class="accent-line">Fades in BC.</span>
+      </h1>
+      <p class="hero-body hero-enter hero-delay-3">
+        Victoria's most-reviewed barbershop. 1,193 people have sat in our chairs — 
+        most of them came back. Walk in or book ahead.
+      </p>
+      <div class="hero-ctas hero-enter hero-delay-4">
+        <a href="https://statusbarbershop.com" target="_blank" rel="noopener" class="btn-primary">Book a Cut</a>
+        <a href="tel:+12505907828" class="btn-ghost">Call (250) 590-7828</a>
+      </div>
+    </div>
+
+    <!-- Award badge -->
+    <div class="hero-award" aria-hidden="true">
+      <div class="hero-award-badge">
+        <span class="award-years">15×</span>
+        <span class="award-label">Best of the City<br>Victoria News</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR — light-bar -->
+  <div class="trust-bar" aria-label="Trust signals">
+    <div class="trust-bar-inner">
+      <div class="trust-item">
+        <span class="trust-number">4.8<span class="trust-unit">★</span></span>
+        <span class="trust-label">1,193 Google Reviews</span>
+      </div>
+      <div class="trust-item">
+        <span class="trust-number">15<span class="trust-unit">×</span></span>
+        <span class="trust-label">Best of the City — Victoria News</span>
+      </div>
+      <div class="trust-item">
+        <span class="trust-number" style="font-size: 1.625rem; letter-spacing: 0.04em;">Mon–Sat</span>
+        <span class="trust-label">10 AM – 7 PM · Sat till 6 · Sun Closed</span>
+      </div>
+      <div class="trust-item">
+        <span class="trust-number" style="font-size: 1.625rem; letter-spacing: 0.04em;">Walk-In</span>
+        <span class="trust-label">Or book at statusbarbershop.com</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHOTO STRIP -->
+  <div class="photo-strip" aria-hidden="true">
+    <img src="fade-hero.png" alt="Close-up of a precise fade haircut, warm studio lighting" loading="lazy" onerror="this.style.background='#1A1A1A'; this.removeAttribute('src')">
+    <div class="photo-strip-right">
+      <img src="barber-tools.png" alt="Classic barber tools — straight razor, comb, scissors" loading="lazy" onerror="this.style.background='#222222'; this.removeAttribute('src')">
+      <img src="scissor-cut.png" alt="Close-up of scissors during a precision scissor cut" loading="lazy" onerror="this.style.background='#181818'; this.removeAttribute('src')">
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="about-left">
+      <span class="section-label">The Shop</span>
+      <h2 class="section-h2">The Music Is Half the Haircut.</h2>
+    </div>
+    <div class="about-right reveal">
+      <p>Status has been on Yates Street for over 15 years. Walk through the door and you'll immediately know why 1,193 people have made the trip. The music hits first. Then the energy of a shop that genuinely loves what it does.</p>
+      <p>Tbone, John, and the crew are the kind of barbers who'll ask questions before they pick up the scissors. They read faces and hair types. The hot towel finish isn't an add-on — it's part of the standard.</p>
+      <p>"Atmosphere" is the word that appears in reviews more than any other. 105 times and counting. There's a reason people recommend this place to their whole family.</p>
+      <div class="about-quote">
+        <p>"Good prices, nice music playing and the freshest fades in BC!"</p>
+        <cite>Via Google · 5-Star Review</cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- NAME SECTION -->
+  <div class="name-section">
+    <div class="name-section-inner reveal">
+      <h2 class="name-h2">Best of the City.<br><span>Fifteen Years Running.</span></h2>
+      <p class="name-body">
+        The Victoria News has named Status the best barbershop in the city 15 times. 
+        Not by accident. By showing up, cutting well, and making every chair worth sitting in.
+      </p>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="services-header">
+      <div class="services-header-left">
+        <span class="section-label">What We Do</span>
+        <h2 class="section-h2">The Cuts</h2>
+      </div>
+      <p class="services-note">Prices from the booking page. Book online or call to confirm availability.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal stagger-1">
+        <span class="service-card-num">01</span>
+        <div class="service-info">
+          <div class="service-name">Platinum Men's Haircut</div>
+          <div class="service-desc">Clipper fade, taper, or scissor blend with a clean finish.</div>
+        </div>
+        <div class="service-price">$54</div>
+      </div>
+      <div class="service-card reveal stagger-2">
+        <span class="service-card-num">02</span>
+        <div class="service-info">
+          <div class="service-name">Platinum All-Scissor Cut</div>
+          <div class="service-desc">Full scissor cut for those who want a softer, more natural finish.</div>
+        </div>
+        <div class="service-price">$64</div>
+      </div>
+      <div class="service-card reveal stagger-3">
+        <span class="service-card-num">03</span>
+        <div class="service-info">
+          <div class="service-name">Buzz Cut</div>
+          <div class="service-desc">Clean clipper shave from top to taper. Low maintenance, sharp result.</div>
+        </div>
+        <div class="service-price">$27</div>
+      </div>
+      <div class="service-card reveal stagger-4">
+        <span class="service-card-num">04</span>
+        <div class="service-info">
+          <div class="service-name">Children's Haircut</div>
+          <div class="service-desc">Basic or scissor cut for kids 14 and under. Relaxed, no rush.</div>
+        </div>
+        <div class="service-price">$33</div>
+      </div>
+      <div class="service-card reveal stagger-5">
+        <span class="service-card-num">05</span>
+        <div class="service-info">
+          <div class="service-name">Beard Trim & Straight Razor</div>
+          <div class="service-desc">Hot towel prep, straight razor shave, clean edge. The full treatment.</div>
+        </div>
+        <div class="service-price">$40+</div>
+      </div>
+      <div class="service-card reveal stagger-6">
+        <span class="service-card-num">06</span>
+        <div class="service-info">
+          <div class="service-name">Hair Tattoo / Designs</div>
+          <div class="service-desc">Freestyle razor art and custom line designs. Ask your barber.</div>
+        </div>
+        <div class="service-price">$15+</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS — Featured quote + 2 supporting cards -->
+  <section class="reviews" id="reviews">
+    <div class="reviews-header">
+      <span class="section-label">What People Say</span>
+      <h2 class="reviews-h2">1,193 Cuts.<br>4.8 Stars. 15 Awards.</h2>
+    </div>
+    <div class="reviews-layout">
+      <div class="review-featured reveal">
+        <span class="review-featured-mark" aria-hidden="true">"</span>
+        <p class="review-featured-text">
+          "The atmosphere is amazing, best experience and service hands down!!!"
+        </p>
+        <div class="review-featured-meta">
+          <span class="review-stars">★★★★★</span>
+          <span class="review-name">Google Reviewer · Via Google · 2024</span>
+        </div>
+      </div>
+      <div class="reviews-supporting">
+        <div class="review-card reveal stagger-3">
+          <div class="review-card-stars">★★★★★</div>
+          <p class="review-card-text">"John gave me a wonderful haircut, exactly what I was hoping for! He also gave some very helpful tips on how to style my hair — greatly appreciated."</p>
+          <div class="review-card-meta">OLIVER B. <span class="review-date">· 5 months ago · Via Google</span></div>
+        </div>
+        <div class="review-card reveal stagger-5">
+          <div class="review-card-stars">★★★★★</div>
+          <p class="review-card-text">"Each of my children got a haircut plus my husband at this place. Loved the experience. Will definitely be back."</p>
+          <div class="review-card-meta">Google Reviewer <span class="review-date">· 2024 · Via Google</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISIT -->
+  <section class="visit" id="visit">
+    <div class="visit-inner">
+      <div class="visit-left reveal">
+        <span class="section-label">Come In</span>
+        <h2 class="visit-h2">Find Us on Yates</h2>
+        <div class="visit-detail">
+          <div class="visit-row">
+            <span class="visit-row-label">Address</span>
+            <div class="visit-row-value">
+              <a href="https://maps.google.com/?q=Status+Barber+Shop+1010+Yates+St+Victoria+BC" target="_blank" rel="noopener">
+                1010 Yates St #4<br>Victoria, BC V8V 4Y4
+              </a>
+            </div>
+          </div>
+          <div class="visit-row">
+            <span class="visit-row-label">Hours</span>
+            <div class="visit-row-value">
+              Mon – Fri &nbsp; 10 AM – 7 PM<br>
+              Saturday &nbsp;&nbsp; 10 AM – 6 PM<br>
+              Sunday &nbsp;&nbsp;&nbsp;&nbsp; Closed
+            </div>
+          </div>
+          <div class="visit-row">
+            <span class="visit-row-label">Phone</span>
+            <div class="visit-row-value">
+              <a href="tel:+12505907828" class="visit-phone-link">(250) 590-7828</a>
+            </div>
+          </div>
+          <div class="visit-row">
+            <span class="visit-row-label">Book</span>
+            <div class="visit-row-value">
+              <a href="https://statusbarbershop.com" target="_blank" rel="noopener">Walk in or book at statusbarbershop.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="visit-right reveal stagger-4">
+        <iframe
+          src="https://maps.google.com/maps?q=Status+Barber+Shop+1010+Yates+St+Victoria+BC&output=embed"
+          title="Status Barber Shop map"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          aria-label="Map showing Status Barber Shop location"
+        ></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <div class="cta-band">
+    <h2 class="cta-band-h2">Your Chair Is Waiting.</h2>
+    <p class="cta-band-sub">Walk in Mon – Sat or book online. The freshest fades in BC, any day of the week.</p>
+    <a href="https://statusbarbershop.com" target="_blank" rel="noopener" class="btn-dark">Book Online</a>
+    <a href="tel:+12505907828" class="btn-dark">Call (250) 590-7828</a>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="background:#0A0A0A; padding: 16px 64px; border-top: 1px solid #1A1A1A; display:flex; align-items:center; gap:12px;">
+    <span style="font-size:0.6875rem; color: #4A4540; letter-spacing: 0.04em; line-height: 1.6;">Status Barber Shop operates on the traditional territory of the lək̓ʷəŋən Peoples, including the Songhees and Esquimalt Nations.</span>
+  </div>
+  <footer>
+    <span class="footer-brand">Status Barber Shop</span>
+    <span class="footer-meta">1010 Yates St #4, Victoria, BC · (250) 590-7828</span>
+    <ul class="footer-links">
+      <li><a href="https://statusbarbershop.com" target="_blank" rel="noopener">Book</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#visit">Hours &amp; Location</a></li>
+    </ul>
+  </footer>
+
+  <noscript>
+    <style>
+      .hero-inner, .about, .services-grid .service-card, .review-featured, .review-card { opacity: 1 !important; transform: none !important; }
+    </style>
+  </noscript>
+
+
+  <script>
+    // Apply js-ready class for progressive enhancement
+    document.body.classList.add('js-ready');
+
+    // IntersectionObserver for scroll reveals
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

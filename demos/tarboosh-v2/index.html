@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tarboosh — Egyptian Street Food | Victoria, BC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* === RESET & BASE === */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --cream: #F5EDE3;
+  --terracotta: #C4572A;
+  --brown: #2C1810;
+  --brown-light: #4A2E20;
+  --warm-white: #FAF7F2;
+  --section-pad: 100px;
+  --content-width: 1140px;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--brown);
+  background: var(--cream);
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; text-decoration: none; }
+
+.content-width {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* === TYPOGRAPHY === */
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.body-text {
+  max-width: 520px;
+  color: var(--brown-light);
+}
+
+/* === NOISE TEXTURE === */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* === NAV === */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 20px 0;
+  transition: background-color 300ms var(--ease-out), box-shadow 300ms var(--ease-out);
+}
+
+nav.scrolled {
+  background: rgba(245, 237, 227, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 1px 0 rgba(44, 24, 16, 0.08);
+}
+
+nav .content-width {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-wordmark {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--brown);
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brown-light);
+  transition: color 200ms var(--ease-out);
+}
+
+@media (hover: hover) {
+  .nav-links a:hover { color: var(--terracotta); }
+}
+
+.nav-cta {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--terracotta);
+  color: var(--cream);
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  transition: transform 160ms var(--ease-out), background 200ms var(--ease-out);
+}
+
+.nav-cta:active { transform: scale(0.97); }
+
+@media (hover: hover) {
+  .nav-cta:hover { background: var(--brown); }
+}
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--brown);
+  margin: 5px 0;
+  transition: transform 300ms var(--ease-out), opacity 200ms;
+}
+
+.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--cream);
+  z-index: 99;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+}
+
+.mobile-menu.active { display: flex; }
+
+.mobile-menu a {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  color: var(--brown);
+}
+
+/* === HERO === */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: var(--section-pad) 0;
+  padding-top: 140px;
+}
+
+.hero .content-width {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.hero-text h1 {
+  font-size: clamp(48px, 5.5vw, 72px);
+  color: var(--brown);
+  margin-bottom: 24px;
+}
+
+.hero-text h1 em {
+  font-style: italic;
+  color: var(--terracotta);
+}
+
+.hero-text .body-text {
+  margin-bottom: 36px;
+  font-size: 18px;
+}
+
+.hero-cta {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--terracotta);
+  color: var(--cream);
+  padding: 16px 32px;
+  transition: transform 160ms var(--ease-out), background 200ms var(--ease-out);
+}
+
+.hero-cta:active { transform: scale(0.97); }
+
+@media (hover: hover) {
+  .hero-cta:hover { background: var(--brown); }
+}
+
+.hero-image {
+  position: relative;
+  aspect-ratio: 4/5;
+  overflow: hidden;
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* === PHOTO STRIP === */
+.photo-strip {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 4px;
+}
+
+.photo-strip .tall {
+  grid-row: span 2;
+}
+
+.photo-strip img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo-strip .small {
+  aspect-ratio: 3/2;
+  overflow: hidden;
+}
+
+/* === STORY SECTION === */
+.story {
+  padding: var(--section-pad) 0;
+  background: var(--warm-white);
+}
+
+.story .content-width {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.story-image {
+  aspect-ratio: 3/4;
+  overflow: hidden;
+}
+
+.story-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.story-text .label {
+  color: var(--terracotta);
+  margin-bottom: 20px;
+  display: block;
+}
+
+.story-text h2 {
+  font-size: clamp(36px, 4vw, 52px);
+  margin-bottom: 24px;
+}
+
+.story-text h2 em {
+  font-style: italic;
+  color: var(--terracotta);
+}
+
+.story-text .body-text {
+  margin-bottom: 0;
+}
+
+/* === QUOTE RIBBON === */
+.quote-ribbon {
+  background: var(--terracotta);
+  padding: 64px 0;
+  text-align: center;
+}
+
+.quote-ribbon blockquote {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(24px, 3vw, 36px);
+  font-style: italic;
+  color: var(--cream);
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.4;
+}
+
+.quote-ribbon cite {
+  display: block;
+  margin-top: 20px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-style: normal;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(245, 237, 227, 0.7);
+}
+
+/* === MENU === */
+.menu {
+  padding: var(--section-pad) 0;
+  background: var(--cream);
+}
+
+.menu .content-width {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.menu-image-col {
+  position: sticky;
+  top: 120px;
+}
+
+.menu-image-col img {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+}
+
+.menu-header {
+  margin-bottom: 48px;
+}
+
+.menu-header .label {
+  color: var(--terracotta);
+  margin-bottom: 16px;
+  display: block;
+}
+
+.menu-header h2 {
+  font-size: clamp(36px, 4vw, 48px);
+}
+
+.menu-category {
+  margin-bottom: 40px;
+}
+
+.menu-category h3 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(44, 24, 16, 0.1);
+  color: var(--terracotta);
+}
+
+.menu-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 10px 0;
+}
+
+.menu-item-name {
+  font-weight: 500;
+}
+
+.menu-item-desc {
+  font-size: 14px;
+  color: var(--brown-light);
+  opacity: 0.7;
+  margin-top: 2px;
+}
+
+.menu-item-price {
+  font-weight: 500;
+  white-space: nowrap;
+  margin-left: 16px;
+}
+
+/* === REVIEWS === */
+.reviews {
+  padding: var(--section-pad) 0;
+  background: var(--brown);
+  color: var(--cream);
+}
+
+.reviews-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.reviews-header .label {
+  color: var(--terracotta);
+  margin-bottom: 16px;
+  display: block;
+}
+
+.reviews-header h2 {
+  font-size: clamp(36px, 4vw, 48px);
+  color: var(--cream);
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.review-card {
+  padding: 32px;
+  background: rgba(245, 237, 227, 0.06);
+  border: 1px solid rgba(245, 237, 227, 0.08);
+}
+
+.review-stars {
+  color: var(--terracotta);
+  font-size: 14px;
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+}
+
+.review-text {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  color: rgba(245, 237, 227, 0.85);
+}
+
+.review-author {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(245, 237, 227, 0.5);
+}
+
+/* === FIND US === */
+.find-us {
+  padding: var(--section-pad) 0;
+  background: var(--warm-white);
+}
+
+.find-us-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.find-us-header .label {
+  color: var(--terracotta);
+  margin-bottom: 16px;
+  display: block;
+}
+
+.find-us-header h2 {
+  font-size: clamp(36px, 4vw, 48px);
+}
+
+.find-us-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.find-us-info h3 {
+  font-size: 20px;
+  margin-bottom: 16px;
+}
+
+.find-us-detail {
+  margin-bottom: 24px;
+}
+
+.find-us-detail .label {
+  color: var(--terracotta);
+  margin-bottom: 8px;
+  display: block;
+}
+
+.find-us-detail p {
+  color: var(--brown-light);
+}
+
+.find-us-detail a {
+  color: var(--terracotta);
+  font-weight: 500;
+}
+
+.map-container {
+  width: 100%;
+  aspect-ratio: 4/3;
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  filter: saturate(0.8) contrast(1.05);
+}
+
+/* === FOOTER === */
+footer {
+  padding: 48px 0;
+  background: var(--brown);
+  color: rgba(245, 237, 227, 0.5);
+}
+
+footer .content-width {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-wordmark {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--cream);
+  letter-spacing: 0.04em;
+}
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+}
+
+.footer-links a {
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  transition: color 200ms var(--ease-out);
+}
+
+@media (hover: hover) {
+  .footer-links a:hover { color: var(--cream); }
+}
+
+.footer-copy {
+  font-size: 13px;
+}
+
+/* === ANIMATIONS === */
+.fade-in {
+  opacity: 1;
+  transform: none;
+}
+
+.fade-in.animate {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: none;
+  transition: opacity 500ms var(--ease-out), transform 500ms var(--ease-out);
+}
+
+/* Button press feedback */
+.hero-cta:active,
+.nav-cta:active {
+  transform: scale(0.97);
+  transition: transform 100ms var(--ease-out);
+}
+
+/* Photo strip hover */
+@media (hover: hover) {
+  .photo-strip img {
+    transition: transform 400ms var(--ease-out);
+  }
+  .photo-strip div:hover img {
+    transform: scale(1.03);
+  }
+}
+
+/* Review card stagger — handled via JS observer delay */
+/* Nav link underline animation */
+@media (hover: hover) {
+  .nav-links a {
+    position: relative;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--terracotta);
+    transition: width 250ms var(--ease-out);
+  }
+  .nav-links a:hover::after {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-in { transition: none !important; opacity: 1 !important; transform: none !important; }
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 1024px) {
+  .hero .content-width {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  .hero-image { max-width: 500px; }
+  .story .content-width { grid-template-columns: 1fr; gap: 48px; }
+  .menu .content-width { grid-template-columns: 1fr; }
+  .menu-image-col { position: static; max-width: 400px; }
+  .reviews-grid { grid-template-columns: 1fr; }
+  .find-us-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+  :root { --section-pad: 72px; }
+  .nav-links, .nav-cta { display: none; }
+  .hamburger { display: block; }
+  .photo-strip { grid-template-columns: 1fr; }
+  .photo-strip .tall { grid-row: span 1; }
+  footer .content-width { flex-direction: column; gap: 16px; text-align: center; }
+}
+
+@media (max-width: 375px) {
+  :root { --section-pad: 56px; }
+  body { font-size: 16px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="content-width">
+    <a href="#" class="nav-wordmark">TARBOOSH</a>
+    <ul class="nav-links">
+      <li><a href="#story">Our Story</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#find-us">Find Us</a></li>
+    </ul>
+    <a href="tel:2364649111" class="nav-cta">Call 236-464-9111</a>
+    <button class="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu">
+  <a href="#story">Our Story</a>
+  <a href="#menu">Menu</a>
+  <a href="#reviews">Reviews</a>
+  <a href="#find-us">Find Us</a>
+  <a href="tel:2364649111" style="color: var(--terracotta);">Call 236-464-9111</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="content-width">
+    <div class="hero-text fade-in">
+      <span class="label">Egyptian Street Food · Esquimalt, Victoria</span>
+      <h1 style="margin-top: 16px;">My Grandfather's <em>Recipes</em></h1>
+      <p class="body-text">He wore a crimson tarboosh and cooked from memory. Now his family recipes travel from Cairo's streets to a food truck in Esquimalt.</p>
+      <a href="tel:2364649111" class="hero-cta">Call to Order — 236-464-9111</a>
+    </div>
+    <div class="hero-image fade-in">
+      <img src="shawarma.png" alt="Loaded shawarma wrap with fresh vegetables and garlic sauce" width="570" height="712">
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO STRIP -->
+<section class="photo-strip">
+  <div class="tall">
+    <img src="falafel.png" alt="Golden crispy falafel with fresh herbs and tahini" width="760" height="800">
+  </div>
+  <div class="small">
+    <img src="pita-hands.png" alt="Hands stretching fresh pita dough" width="380" height="253">
+  </div>
+  <div class="small">
+    <img src="baklava.png" alt="Flaky golden baklava with pistachios and honey" width="380" height="253">
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="story" id="story">
+  <div class="content-width">
+    <div class="story-image fade-in">
+      <img src="mezze.png" alt="Colourful mezze spread with hummus and pickled vegetables" width="530" height="707">
+    </div>
+    <div class="story-text fade-in">
+      <span class="label">The Truck</span>
+      <h2>Nothing <em>shortcuts</em></h2>
+      <p class="body-text">The pita is made by hand, every single day. The spice blends are mixed from memory, not a supplier's catalogue. The falafel are fried to order because that's the only way they stay moist.</p>
+      <p class="body-text" style="margin-top: 16px;">This is Egyptian street food the way it's supposed to taste. Bold, honest, and worth the drive to Esquimalt.</p>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE RIBBON -->
+<section class="quote-ribbon">
+  <div class="content-width">
+    <blockquote>"The best falafel I've ever had — and I've been to the Middle East."</blockquote>
+    <cite>— Google Review, 5 Stars</cite>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="menu" id="menu">
+  <div class="content-width">
+    <div class="menu-image-col fade-in">
+      <img src="spices.png" alt="Vibrant Middle Eastern spices in ceramic bowls" width="440" height="587">
+    </div>
+    <div class="menu-items">
+      <div class="menu-header">
+        <span class="label">From the Truck</span>
+        <h2>The Menu</h2>
+      </div>
+
+      <div class="menu-category">
+        <h3>Wraps</h3>
+        <div class="menu-item">
+          <div>
+            <div class="menu-item-name">Chicken Shawarma Wrap</div>
+            <div class="menu-item-desc">Marinated chicken, pickled turnip, garlic sauce, fresh veggies</div>
+          </div>
+          <span class="menu-item-price">$14</span>
+        </div>
+        <div class="menu-item">
+          <div>
+            <div class="menu-item-name">Beef Shawarma Wrap</div>
+            <div class="menu-item-desc">Spiced beef, tahini, pickles, fresh vegetables</div>
+          </div>
+          <span class="menu-item-price">$15</span>
+        </div>
+        <div class="menu-item">
+          <div>
+            <div class="menu-item-name">Falafel Wrap</div>
+            <div class="menu-item-desc">Handmade falafel, tahini, pickled vegetables, fresh herbs</div>
+          </div>
+          <span class="menu-item-price">$12</span>
+        </div>
+      </div>
+
+      <div class="menu-category">
+        <h3>Plates</h3>
+        <div class="menu-item">
+          <div>
+            <div class="menu-item-name">Shawarma Plate</div>
+            <div class="menu-item-desc">Choice of chicken or beef with rice, salad, and pita</div>
+          </div>
+          <span class="menu-item-price">$18</span>
+        </div>
+        <div class="menu-item">
+          <div>
+            <div class="menu-item-name">Falafel Plate</div>
+            <div class="menu-item-desc">Five handmade falafel with hummus, salad, and pita</div>
+          </div>
+          <span class="menu-item-price">$16</span>
+        </div>
+      </div>
+
+      <div class="menu-category">
+        <h3>Sides & Sweets</h3>
+        <div class="menu-item">
+          <div><div class="menu-item-name">Hummus & Pita</div></div>
+          <span class="menu-item-price">$8</span>
+        </div>
+        <div class="menu-item">
+          <div><div class="menu-item-name">Baba Ganoush</div></div>
+          <span class="menu-item-price">$8</span>
+        </div>
+        <div class="menu-item">
+          <div><div class="menu-item-name">Baklava</div></div>
+          <span class="menu-item-price">$5</span>
+        </div>
+        <div class="menu-item">
+          <div><div class="menu-item-name">Stuffed Grape Leaves</div></div>
+          <span class="menu-item-price">$7</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="content-width">
+    <div class="reviews-header">
+      <span class="label">4.5+ Stars on Google</span>
+      <h2>Worth the <em style="color: var(--terracotta);">drive</em></h2>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card fade-in">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Absolutely incredible shawarma. The pita is clearly handmade and the garlic sauce is addictive. Best Middle Eastern food in Victoria, hands down."</p>
+        <span class="review-author">Sarah M., Esquimalt · Nov 2024 · Via Google</span>
+      </div>
+      <div class="review-card fade-in">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"The falafel is so moist and flavourful. You can tell these are real family recipes. Friendly owner always has a smile and remembers regulars."</p>
+        <span class="review-author">James K., Victoria · Oct 2024 · Via Google</span>
+      </div>
+      <div class="review-card fade-in">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Finally, authentic Egyptian street food on the island! The shawarma plate with handmade pita is worth every penny. We drive from Sidney for this."</p>
+        <span class="review-author">Aliya R., Sidney · Dec 2024 · Via Google</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FIND US -->
+<section class="find-us" id="find-us">
+  <div class="content-width">
+    <div class="find-us-header">
+      <span class="label">Come Hungry</span>
+      <h2>Find the Truck</h2>
+    </div>
+    <div class="find-us-grid">
+      <div class="find-us-info fade-in">
+        <div class="find-us-detail">
+          <span class="label">Location</span>
+          <p>900 Carlton Terrace, Esquimalt<br>Near Head & Esquimalt Road<br>(By the old Carlton Theatre)</p>
+        </div>
+        <div class="find-us-detail">
+          <span class="label">Hours</span>
+          <p>Open Daily: 10:00 AM – 11:00 PM</p>
+        </div>
+        <div class="find-us-detail">
+          <span class="label">Phone</span>
+          <p><a href="tel:2364649111">236-464-9111</a></p>
+        </div>
+        <div class="find-us-detail">
+          <span class="label">Follow Along</span>
+          <p><a href="https://www.instagram.com/tarboosh_victoria/" target="_blank" rel="noopener">@tarboosh_victoria on Instagram</a></p>
+        </div>
+        <p class="body-text" style="margin-top: 8px; font-size: 14px; opacity: 0.7;">Check the Street Food App for daily schedule updates.</p>
+      </div>
+      <div class="map-container fade-in">
+        <iframe src="https://maps.google.com/maps?q=900+Carlton+Terrace+Victoria+BC&output=embed" loading="lazy" title="Tarboosh location on map"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="content-width">
+    <span class="footer-wordmark">TARBOOSH</span>
+    <ul class="footer-links">
+      <li><a href="https://www.instagram.com/tarboosh_victoria/" target="_blank" rel="noopener">Instagram</a></li>
+      <li><a href="https://streetfoodapp.com/victoria/tarboosh" target="_blank" rel="noopener">Street Food App</a></li>
+      <li><a href="tel:2364649111">236-464-9111</a></li>
+    </ul>
+    <span class="footer-copy">© 2026 Tarboosh. Egyptian Street Food, Victoria BC.</span>
+  </div>
+</footer>
+
+<script>
+// Nav scroll
+const nav = document.querySelector('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// Hamburger
+const hamburger = document.querySelector('.hamburger');
+const mobileMenu = document.querySelector('.mobile-menu');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('active');
+  mobileMenu.classList.toggle('active');
+});
+
+mobileMenu.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    hamburger.classList.remove('active');
+    mobileMenu.classList.remove('active');
+  });
+});
+
+// Scroll animations with stagger
+let staggerIndex = 0;
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const delay = entry.target.dataset.stagger ? parseInt(entry.target.dataset.stagger) * 80 : 0;
+      setTimeout(() => entry.target.classList.add('visible'), delay);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.fade-in').forEach(el => {
+  el.classList.add('animate');
+  observer.observe(el);
+});
+
+// Stagger review cards
+document.querySelectorAll('.review-card').forEach((card, i) => {
+  card.dataset.stagger = i;
+});
+</script>
+
+</body>
+</html>

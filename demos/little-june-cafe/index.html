@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Little June Cafe — Fernwood's Favourite</title>
+<meta name="description" content="House-roasted coffee, pastries, and light fare in the heart of Fernwood. Open 7 days, 7AM–5PM.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F4EDE4;
+    --brown: #2C1810;
+    --terracotta: #C2704A;
+    --brown-light: #5C3D2E;
+    --cream-dark: #E8DDD0;
+    --section-pad: 100px;
+    --content-width: 1080px;
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--brown);
+    font-size: 17px;
+    line-height: 1.65;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Noise texture overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  img { max-width: 100%; height: auto; display: block; }
+
+  a { color: inherit; text-decoration: none; }
+
+  .container {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* ═══════ NAV ═══════ */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 20px 0;
+    transition: background 0.3s ease, padding 0.2s ease;
+  }
+
+  nav.scrolled {
+    background: rgba(244, 237, 228, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 14px 0;
+  }
+
+  nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav-logo {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--brown);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+    align-items: center;
+  }
+
+  .nav-links a {
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--brown-light);
+    transition: color 0.2s ease;
+  }
+
+  .nav-links a:hover { color: var(--terracotta); }
+
+  .nav-cta {
+    background: var(--brown);
+    color: var(--cream) !important;
+    padding: 10px 22px;
+    border-radius: 4px;
+    transition: transform 160ms var(--ease-out), background 0.2s ease;
+  }
+
+  .nav-cta:active { transform: scale(0.97); }
+  .nav-cta:hover { background: var(--brown-light); }
+
+  /* Mobile menu */
+  .menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+  }
+
+  .menu-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--brown);
+    margin: 5px 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  /* ═══════ HERO ═══════ */
+  .hero {
+    padding: 160px 0 var(--section-pad);
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+  }
+
+  .hero .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .hero-text h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(42px, 5.5vw, 72px);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 28px;
+    color: var(--brown);
+  }
+
+  .hero-text h1 em {
+    font-style: italic;
+    color: var(--terracotta);
+    font-weight: 300;
+  }
+
+  .hero-text p {
+    font-size: 18px;
+    color: var(--brown-light);
+    max-width: 420px;
+    margin-bottom: 36px;
+    line-height: 1.7;
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 32px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--brown-light);
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(44, 24, 16, 0.12);
+  }
+
+  .hero-image {
+    position: relative;
+    border-radius: 6px;
+    overflow: hidden;
+    aspect-ratio: 4/5;
+  }
+
+  .hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--brown);
+    color: var(--cream);
+    padding: 16px 36px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: transform 160ms var(--ease-out), background 0.2s ease;
+  }
+
+  .btn-primary:active { transform: scale(0.97); }
+  .btn-primary:hover { background: var(--brown-light); }
+
+  /* ═══════ INFO BAR ═══════ */
+  .info-bar {
+    background: var(--brown);
+    color: var(--cream);
+    padding: 24px 0;
+  }
+
+  .info-bar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .info-bar-item {
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .info-bar-item strong {
+    color: var(--terracotta);
+    font-weight: 500;
+  }
+
+  /* ═══════ ABOUT ═══════ */
+  .about {
+    padding: var(--section-pad) 0;
+  }
+
+  .about .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .about-label {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 20px;
+  }
+
+  .about h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(32px, 3.5vw, 48px);
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin-bottom: 24px;
+  }
+
+  .about p {
+    color: var(--brown-light);
+    max-width: 480px;
+    font-size: 17px;
+  }
+
+  .about p + p { margin-top: 16px; }
+
+  .about-image {
+    border-radius: 6px;
+    overflow: hidden;
+    aspect-ratio: 3/4;
+  }
+
+  .about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* ═══════ PHOTO STRIP ═══════ */
+  .photo-strip {
+    padding: 0 32px;
+  }
+
+  .photo-strip-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 16px;
+    height: 420px;
+  }
+
+  .photo-strip-grid img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+  }
+
+  /* ═══════ MENU HIGHLIGHTS ═══════ */
+  .menu {
+    padding: var(--section-pad) 0;
+  }
+
+  .menu-header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+
+  .menu-header .about-label { margin-bottom: 16px; }
+
+  .menu-header h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(32px, 3.5vw, 48px);
+    font-weight: 400;
+    line-height: 1.15;
+  }
+
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+  }
+
+  .menu-category h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(44, 24, 16, 0.12);
+  }
+
+  .menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 10px 0;
+  }
+
+  .menu-item-name {
+    font-size: 16px;
+    font-weight: 400;
+  }
+
+  .menu-item-price {
+    font-size: 15px;
+    color: var(--brown-light);
+    font-weight: 400;
+    white-space: nowrap;
+    margin-left: 16px;
+  }
+
+  /* ═══════ QUOTE ═══════ */
+  .quote-section {
+    background: var(--brown);
+    color: var(--cream);
+    padding: 80px 0;
+    text-align: center;
+  }
+
+  .quote-section blockquote {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(24px, 3vw, 36px);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.45;
+    max-width: 780px;
+    margin: 0 auto 24px;
+  }
+
+  .quote-section cite {
+    font-family: 'DM Sans', sans-serif;
+    font-style: normal;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+  }
+
+  /* ═══════ REVIEWS ═══════ */
+  .reviews {
+    padding: var(--section-pad) 0;
+  }
+
+  .reviews-header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+
+  .reviews-header h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(32px, 3.5vw, 48px);
+    font-weight: 400;
+  }
+
+  .reviews-header .about-label { margin-bottom: 16px; }
+
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+
+  .review-card {
+    padding: 36px;
+    background: var(--cream-dark);
+    border-radius: 6px;
+  }
+
+  .review-stars {
+    color: var(--terracotta);
+    font-size: 14px;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+  }
+
+  .review-text {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--brown);
+    margin-bottom: 24px;
+    font-style: italic;
+  }
+
+  .review-author {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--brown-light);
+  }
+
+  /* ═══════ FIND US ═══════ */
+  .find-us {
+    padding: var(--section-pad) 0;
+    background: var(--cream-dark);
+  }
+
+  .find-us .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .find-us h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(32px, 3.5vw, 44px);
+    font-weight: 400;
+    margin-bottom: 32px;
+  }
+
+  .find-us-details {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .find-us-item h4 {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 8px;
+  }
+
+  .find-us-item p {
+    font-size: 16px;
+    color: var(--brown);
+    line-height: 1.6;
+  }
+
+  .find-us-item a {
+    color: var(--brown);
+    transition: color 0.2s ease;
+  }
+
+  .find-us-item a:hover { color: var(--terracotta); }
+
+  .map-container {
+    border-radius: 6px;
+    overflow: hidden;
+    height: 400px;
+  }
+
+  .map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    filter: saturate(0.8) contrast(1.05);
+  }
+
+  /* ═══════ CTA CLOSE ═══════ */
+  .cta-close {
+    padding: 80px 0;
+    text-align: center;
+    background: var(--brown);
+    color: var(--cream);
+  }
+
+  .cta-close h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(28px, 3.5vw, 44px);
+    font-weight: 400;
+    margin-bottom: 12px;
+  }
+
+  .cta-close p {
+    font-size: 17px;
+    color: rgba(244, 237, 228, 0.7);
+    margin-bottom: 32px;
+  }
+
+  .btn-light {
+    display: inline-block;
+    background: var(--cream);
+    color: var(--brown);
+    padding: 16px 36px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: transform 160ms var(--ease-out), opacity 0.2s ease;
+  }
+
+  .btn-light:active { transform: scale(0.97); }
+  .btn-light:hover { opacity: 0.9; }
+
+  /* ═══════ FOOTER ═══════ */
+  footer {
+    padding: 40px 0;
+    text-align: center;
+    font-size: 13px;
+    color: var(--brown-light);
+    letter-spacing: 0.04em;
+  }
+
+  footer a {
+    color: var(--terracotta);
+    transition: opacity 0.2s ease;
+  }
+
+  footer a:hover { opacity: 0.7; }
+
+  /* ═══════ SCROLL ANIMATIONS ═══════ */
+  .fade-in {
+    opacity: 1;
+    transform: none;
+  }
+
+  .fade-in.animate {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  .fade-in.animate.visible {
+    opacity: 1;
+    transform: none;
+    transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fade-in, .fade-in.animate, .fade-in.animate.visible {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+  }
+
+  /* ═══════ RESPONSIVE ═══════ */
+  @media (max-width: 1024px) {
+    .hero .container {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+
+    .hero {
+      min-height: auto;
+      padding: 140px 0 80px;
+    }
+
+    .hero-image {
+      aspect-ratio: 16/9;
+      max-height: 400px;
+    }
+
+    .about .container {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+
+    .about-image { aspect-ratio: 16/9; }
+
+    .menu-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    .find-us .container {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+
+    .photo-strip-grid { height: 300px; }
+  }
+
+  @media (max-width: 768px) {
+    :root { --section-pad: 72px; }
+
+    .nav-links { display: none; }
+    .menu-toggle { display: block; }
+
+    .nav-links.open {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      left: 0; right: 0;
+      background: var(--cream);
+      padding: 24px 32px;
+      gap: 20px;
+      border-bottom: 1px solid rgba(44, 24, 16, 0.1);
+    }
+
+    .hero { padding: 120px 0 60px; }
+
+    .hero-text h1 { font-size: 38px; }
+
+    .hero-meta {
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .info-bar .container {
+      flex-direction: column;
+      text-align: center;
+      gap: 8px;
+    }
+
+    .menu-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .reviews-grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    .photo-strip-grid {
+      grid-template-columns: 1fr;
+      height: auto;
+    }
+
+    .photo-strip-grid img {
+      height: 240px;
+    }
+
+    .map-container { height: 300px; }
+  }
+
+  @media (max-width: 375px) {
+    body { font-size: 16px; }
+    .container { padding: 0 20px; }
+    .hero-text h1 { font-size: 34px; }
+    .review-card { padding: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="container">
+    <a href="#" class="nav-logo">Little June</a>
+    <button class="menu-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#find-us">Find Us</a></li>
+      <li><a href="tel:250-590-7307" class="nav-cta">Call Now</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-text">
+      <h1>The cafe that's <em>always full</em> for a reason</h1>
+      <p>House-roasted beans, baked-fresh pastries, and a Fernwood welcome. No pretence, just really good coffee and the kind of warmth you can't fake.</p>
+      <a href="https://maps.google.com/?q=Little+June+Cafe+1301+Gladstone+Ave+Victoria+BC" target="_blank" class="btn-primary">Get Directions</a>
+      <div class="hero-meta">
+        <span>Fernwood Square</span>
+        <span>Open 7 Days</span>
+        <span>4.6★ · 589 Reviews</span>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="hero.png" alt="Cortado at Little June Cafe" width="540" height="675" loading="eager">
+    </div>
+  </div>
+</section>
+
+<!-- INFO BAR -->
+<div class="info-bar">
+  <div class="container">
+    <span class="info-bar-item"><strong>Hours</strong> &nbsp;7 AM – 5 PM Daily</span>
+    <span class="info-bar-item"><strong>Location</strong> &nbsp;1301 Gladstone Ave, Victoria BC</span>
+    <span class="info-bar-item"><strong>Phone</strong> &nbsp;<a href="tel:250-590-7307">250-590-7307</a></span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="fade-in">
+      <div class="about-label">The Story</div>
+      <h2>Fernwood's living room since day one</h2>
+      <p>Little June is the kind of place where regulars have a usual and newcomers feel like regulars. Tucked into Fernwood Square, it's small on purpose — every seat earned, every coffee made with beans roasted in house.</p>
+      <p>The menu is tight: baked eggs, breakfast sandwiches, pastries that don't last till noon. Specialty drinks like the maple Shay Shay have a quiet cult following. Come early or make peace with the alley patio.</p>
+    </div>
+    <div class="about-image fade-in">
+      <img src="beans.png" alt="Hands warming around a coffee mug at Little June" width="480" height="640" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO STRIP -->
+<div class="photo-strip fade-in">
+  <div class="photo-strip-grid">
+    <img src="pastries.png" alt="Fresh pastries at Little June" loading="lazy">
+    <img src="matcha.png" alt="Matcha latte" loading="lazy">
+  </div>
+</div>
+
+<!-- MENU HIGHLIGHTS -->
+<section class="menu" id="menu">
+  <div class="container">
+    <div class="menu-header fade-in">
+      <div class="about-label">What We're Pouring</div>
+      <h2>The short list</h2>
+    </div>
+    <div class="menu-grid fade-in">
+      <div class="menu-category">
+        <h3>Coffee</h3>
+        <div class="menu-item"><span class="menu-item-name">Drip Coffee</span></div>
+        <div class="menu-item"><span class="menu-item-name">Cortado</span></div>
+        <div class="menu-item"><span class="menu-item-name">Americano</span></div>
+        <div class="menu-item"><span class="menu-item-name">Latte</span></div>
+        <div class="menu-item"><span class="menu-item-name">Cappuccino</span></div>
+      </div>
+      <div class="menu-category">
+        <h3>Specialties</h3>
+        <div class="menu-item"><span class="menu-item-name">Maple Shay Shay</span></div>
+        <div class="menu-item"><span class="menu-item-name">Matcha Latte</span></div>
+        <div class="menu-item"><span class="menu-item-name">Chai Latte</span></div>
+      </div>
+      <div class="menu-category">
+        <h3>Kitchen</h3>
+        <div class="menu-item"><span class="menu-item-name">Baked Eggs</span></div>
+        <div class="menu-item"><span class="menu-item-name">Breakfast Sandwich</span></div>
+        <div class="menu-item"><span class="menu-item-name">Light Sandwiches</span></div>
+        <div class="menu-item"><span class="menu-item-name">Daily Pastries</span></div>
+        <div class="menu-item"><span class="menu-item-name">Muffins</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section class="quote-section">
+  <div class="container fade-in">
+    <blockquote>"This cafe brings it whether it's food, atmosphere, or service — everything is a five-star affair."</blockquote>
+    <cite>Via Google Reviews</cite>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="container">
+    <div class="reviews-header fade-in">
+      <div class="about-label">What People Say</div>
+      <h2>Every review here is real</h2>
+    </div>
+    <div class="reviews-grid fade-in">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"One of the best cafes in town! This beautiful coffee shop in the heart of Fernwood is an absolute delight. The ambience is lovely for a study session or some casual sipping, and the coffee is obviously well-sourced and rich in flavor."</p>
+        <div class="review-author">Arin S. · Via Google</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Little June is a hidden little gem in Fernwood! I stopped in on a whim and got the breakfast egg bite and a maple Shay Shay. Everything was incredible."</p>
+        <div class="review-author">Via Google</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"We sat outside in a little alley because the place was packed inside. It always seems to be full. The matcha and muffin were great."</p>
+        <div class="review-author">Via Google</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FIND US -->
+<section class="find-us" id="find-us">
+  <div class="container">
+    <div class="fade-in">
+      <h2>Come say hello</h2>
+      <div class="find-us-details">
+        <div class="find-us-item">
+          <h4>Address</h4>
+          <p>1301 Gladstone Ave<br>Victoria, BC · Fernwood Square</p>
+        </div>
+        <div class="find-us-item">
+          <h4>Hours</h4>
+          <p>7 AM – 5 PM, every day</p>
+        </div>
+        <div class="find-us-item">
+          <h4>Phone</h4>
+          <p><a href="tel:250-590-7307">250-590-7307</a></p>
+        </div>
+        <div class="find-us-item">
+          <h4>Follow Along</h4>
+          <p><a href="https://instagram.com/littlejunecafe" target="_blank" rel="noopener">@littlejunecafe</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="map-container fade-in">
+      <iframe src="https://maps.google.com/maps?q=Little+June+Cafe+1301+Gladstone+Ave+Victoria+BC&output=embed" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- CTA CLOSE -->
+<section class="cta-close">
+  <div class="container fade-in">
+    <h2>There's a seat with your name on it</h2>
+    <p>Probably. Get here early just in case.</p>
+    <a href="https://maps.google.com/?q=Little+June+Cafe+1301+Gladstone+Ave+Victoria+BC" target="_blank" class="btn-light">Get Directions</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <p>© 2025 Little June Cafe · 1301 Gladstone Ave, Victoria BC · <a href="https://littlejune.ca" target="_blank" rel="noopener">littlejune.ca</a></p>
+  </div>
+</footer>
+
+<script>
+  // Scroll animations
+  document.querySelectorAll('.fade-in').forEach(el => el.classList.add('animate'));
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.fade-in.animate').forEach(el => observer.observe(el));
+
+  // Nav scroll effect
+  window.addEventListener('scroll', () => {
+    document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
+  });
+</script>
+
+</body>
+</html>

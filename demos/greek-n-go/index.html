@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Greek n Go — Victoria's Best Food Truck</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #FAF6F0;
+  --warm-black: #1A1610;
+  --greek-blue: #2B5A7C;
+  --gold: #C4A35A;
+  --warm-gray: #6B6560;
+  --alt-bg: #F0EBE3;
+  --blue-light: #E4EDF2;
+  --section-pad: 96px;
+  --content-width: 1080px;
+  --ls-sm: 0.04em;
+  --ls-md: 0.08em;
+  --ls-lg: 0.14em;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Work Sans', sans-serif;
+  background: var(--cream);
+  color: var(--warm-black);
+  font-size: 17px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* NAV */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.nav-brand {
+  font-family: 'Lora', serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--warm-black);
+  text-decoration: none;
+  letter-spacing: var(--ls-sm);
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--warm-gray);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-md);
+  text-transform: uppercase;
+  transition: color 200ms var(--ease-out);
+}
+
+.nav-links a:hover { color: var(--warm-black); }
+
+.nav-toggle { display: none; background: none; border: none; cursor: pointer; }
+
+/* HERO — image-top-text-below */
+.hero-image {
+  width: 100%;
+  height: 60vh;
+  min-height: 400px;
+  background: linear-gradient(135deg, #C4A35A 0%, #8B6F4E 50%, #2B5A7C 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-content {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 64px 40px 80px;
+}
+
+.hero-label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: var(--ls-lg);
+  text-transform: uppercase;
+  color: var(--greek-blue);
+  margin-bottom: 16px;
+}
+
+.hero h1 {
+  font-family: 'Lora', serif;
+  font-size: clamp(40px, 5vw, 64px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--warm-black);
+  margin-bottom: 24px;
+  max-width: 700px;
+}
+
+.hero-body {
+  font-size: 1.125rem;
+  color: var(--warm-gray);
+  max-width: 560px;
+  margin-bottom: 32px;
+}
+
+.hero-ctas {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  display: inline-block;
+  padding: 14px 32px;
+  background: var(--greek-blue);
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  letter-spacing: var(--ls-sm);
+  transition: transform 160ms var(--ease-out), background 200ms var(--ease-out);
+}
+
+.btn-primary:active { transform: scale(0.97); }
+.btn-primary:hover { background: #1E4A6A; }
+
+.btn-secondary {
+  display: inline-block;
+  padding: 14px 32px;
+  background: transparent;
+  color: var(--warm-black);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  letter-spacing: var(--ls-sm);
+  border: 1.5px solid var(--warm-black);
+  transition: transform 160ms var(--ease-out), background 200ms var(--ease-out);
+}
+
+.btn-secondary:active { transform: scale(0.97); }
+.btn-secondary:hover { background: rgba(0,0,0,0.04); }
+
+/* TRUST BAR */
+.trust-bar {
+  background: var(--warm-black);
+  color: var(--cream);
+  padding: 24px 40px;
+}
+
+.trust-bar-inner {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.trust-stat {
+  text-align: center;
+}
+
+.trust-number {
+  font-family: 'Lora', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  display: block;
+}
+
+.trust-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-md);
+  text-transform: uppercase;
+  color: rgba(250, 246, 240, 0.6);
+  margin-top: 4px;
+}
+
+/* SECTIONS */
+section {
+  scroll-margin-top: 80px;
+}
+
+.section-label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: var(--ls-lg);
+  text-transform: uppercase;
+  color: var(--greek-blue);
+  margin-bottom: 16px;
+}
+
+.section-heading {
+  font-family: 'Lora', serif;
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--warm-black);
+}
+
+/* PHOTO STRIP */
+.photo-strip {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 4px;
+}
+
+.photo-strip-large {
+  height: 420px;
+  background: linear-gradient(135deg, #D4A843 0%, #8B6F4E 100%);
+  overflow: hidden;
+}
+
+.photo-strip-stack {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 4px;
+}
+
+.photo-strip-small {
+  background: linear-gradient(135deg, #C4856A 0%, #6B7F5E 100%);
+  overflow: hidden;
+}
+
+.photo-strip img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ABOUT */
+.about {
+  padding: var(--section-pad) 40px;
+  max-width: var(--content-width);
+  margin: 0 auto;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 48px;
+  margin-top: 32px;
+}
+
+.about-quote {
+  font-family: 'Lora', serif;
+  font-size: 1.25rem;
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--warm-black);
+}
+
+.about-quote-attr {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-md);
+  text-transform: uppercase;
+  color: var(--warm-gray);
+  margin-top: 16px;
+  font-style: normal;
+}
+
+.about-body p {
+  margin-bottom: 16px;
+  color: var(--warm-gray);
+}
+
+/* NAME SECTION */
+.name-section {
+  padding: 120px 40px;
+  text-align: center;
+  max-width: var(--content-width);
+  margin: 0 auto;
+}
+
+.name-section .section-label {
+  color: var(--greek-blue);
+}
+
+.name-section .section-heading {
+  font-size: clamp(28px, 4vw, 48px);
+  max-width: 700px;
+  margin: 0 auto 16px;
+}
+
+.name-section-body {
+  font-size: 1rem;
+  color: var(--warm-gray);
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+/* MENU SECTION */
+.menu-section {
+  background: var(--alt-bg);
+  padding: var(--section-pad) 40px;
+}
+
+.menu-inner {
+  max-width: var(--content-width);
+  margin: 0 auto;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.menu-card {
+  padding: 32px;
+  background: var(--cream);
+}
+
+.menu-number {
+  font-family: 'Lora', serif;
+  font-size: 1rem;
+  color: rgba(26, 22, 16, 0.2);
+  margin-bottom: 12px;
+}
+
+.menu-card h3 {
+  font-family: 'Lora', serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.menu-card p {
+  font-size: 0.9375rem;
+  color: var(--warm-gray);
+}
+
+/* QUOTE SECTION */
+.quote-section {
+  background: var(--greek-blue);
+  padding: var(--section-pad) 40px;
+  text-align: center;
+}
+
+.quote-inner {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.quote-mark {
+  font-family: 'Lora', serif;
+  font-size: 4rem;
+  color: rgba(250, 246, 240, 0.2);
+  line-height: 1;
+}
+
+.quote-text {
+  font-family: 'Lora', serif;
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  font-style: italic;
+  color: var(--cream);
+  line-height: 1.5;
+  margin-bottom: 24px;
+}
+
+.quote-attr {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: var(--ls-md);
+  text-transform: uppercase;
+  color: rgba(250, 246, 240, 0.6);
+}
+
+/* REVIEWS */
+.reviews-section {
+  padding: var(--section-pad) 40px;
+  max-width: var(--content-width);
+  margin: 0 auto;
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.review-card {
+  padding: 32px;
+  background: var(--alt-bg);
+  display: flex;
+  flex-direction: column;
+}
+
+.review-stars {
+  color: var(--gold);
+  font-size: 0.875rem;
+  margin-bottom: 16px;
+  letter-spacing: 2px;
+}
+
+.review-text {
+  font-size: 1rem;
+  color: var(--warm-black);
+  line-height: 1.7;
+  flex: 1;
+  margin-bottom: 16px;
+}
+
+.review-attr {
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: var(--ls-md);
+  text-transform: uppercase;
+  color: var(--warm-gray);
+}
+
+/* VISIT */
+.visit-section {
+  background: var(--alt-bg);
+  padding: var(--section-pad) 40px;
+}
+
+.visit-inner {
+  max-width: var(--content-width);
+  margin: 0 auto;
+}
+
+.visit-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-top: 32px;
+}
+
+.visit-card {
+  background: var(--cream);
+  padding: 32px;
+}
+
+.visit-card h3 {
+  font-family: 'Lora', serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.visit-hours {
+  list-style: none;
+  margin-bottom: 24px;
+}
+
+.visit-hours li {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  font-size: 0.9375rem;
+  color: var(--warm-gray);
+}
+
+.visit-hours li .day { font-weight: 500; color: var(--warm-black); }
+
+.visit-map {
+  width: 100%;
+  height: 240px;
+  border: none;
+  filter: grayscale(0.5) contrast(1.1);
+  margin-top: 16px;
+}
+
+/* CTA BAND */
+.cta-band {
+  background: var(--warm-black);
+  padding: 64px 40px;
+  text-align: center;
+}
+
+.cta-band h2 {
+  font-family: 'Lora', serif;
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 600;
+  color: var(--cream);
+  margin-bottom: 8px;
+  letter-spacing: -0.02em;
+}
+
+.cta-band p {
+  color: rgba(250, 246, 240, 0.6);
+  margin-bottom: 24px;
+  font-size: 1rem;
+}
+
+.cta-band .btn-primary {
+  background: var(--cream);
+  color: var(--warm-black);
+}
+
+.cta-band .btn-primary:hover {
+  background: #F0EBE3;
+}
+
+/* FOOTER */
+footer {
+  padding: 40px;
+  max-width: var(--content-width);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-brand {
+  font-family: 'Lora', serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: var(--ls-sm);
+}
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: var(--warm-gray);
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: color 200ms var(--ease-out);
+}
+
+.footer-links a:hover { color: var(--warm-black); }
+
+.visit-address { color: var(--warm-gray); margin-bottom: 16px; font-size: 0.9375rem; }
+.visit-note { text-align: center; margin-top: 24px; font-size: 0.9375rem; color: var(--warm-gray); }
+.visit-social { color: var(--greek-blue); font-weight: 600; }
+.btn-block { display: block; text-align: center; }
+
+a:focus-visible { outline: 2px solid var(--greek-blue); outline-offset: 2px; }
+.about-quote-spaced { margin-top: 24px; }
+.stagger-1 { transition-delay: 60ms; }
+.stagger-2 { transition-delay: 120ms; }
+.stagger-3 { transition-delay: 180ms; }
+.trust-text { font-size: 1.25rem; }
+
+.nav-links a { position: relative; }
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: var(--warm-black);
+  transition: width 300ms var(--ease-out);
+}
+.nav-links a:hover::after { width: 100%; }
+
+.footer-copy {
+  width: 100%;
+  text-align: center;
+  font-size: 0.8125rem;
+  color: var(--warm-gray);
+  margin-top: 24px;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  nav { padding: 16px 20px; }
+  .nav-links { display: none; flex-direction: column; gap: 16px; }
+  .nav-links.active { display: flex; position: absolute; top: 60px; left: 0; right: 0; background: var(--cream); padding: 20px; z-index: 100; }
+  .nav-toggle { display: block; font-size: 1.5rem; color: var(--warm-black); }
+
+  .hero-content { padding: 40px 20px 60px; }
+  .hero-ctas { flex-direction: column; }
+  .btn-primary, .btn-secondary { text-align: center; }
+
+  .trust-bar { padding: 20px; }
+  .trust-bar-inner { justify-content: center; gap: 32px; }
+
+  .photo-strip { grid-template-columns: 1fr; }
+  .photo-strip-large { height: 280px; }
+  .photo-strip-stack { grid-template-columns: 1fr 1fr; }
+  .photo-strip-small { height: 140px; }
+
+  .about { padding: 64px 20px; }
+  .about-grid { grid-template-columns: 1fr; gap: 32px; }
+
+  .name-section { padding: 80px 20px; }
+
+  .menu-section { padding: 64px 20px; }
+  .menu-grid { grid-template-columns: 1fr; }
+
+  .quote-section { padding: 64px 20px; }
+
+  .reviews-section { padding: 64px 20px; }
+  .reviews-grid { grid-template-columns: 1fr; }
+
+  .visit-section { padding: 64px 20px; }
+  .visit-grid { grid-template-columns: 1fr; }
+
+  footer { padding: 32px 20px; flex-direction: column; text-align: center; }
+}
+
+/* NOISE TEXTURE */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* ANIMATIONS */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-image img {
+  animation: heroEntrance 1200ms var(--ease-out) forwards;
+}
+
+@keyframes heroEntrance {
+  from { transform: scale(1.03); opacity: 0.8; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  .fade-in { opacity: 1; transform: none; }
+}
+
+/* NO-JS FALLBACK */
+noscript + * .fade-in,
+.no-js .fade-in {
+  opacity: 1;
+  transform: none;
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-brand">Greek n Go</a>
+  <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('active')">☰</button>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#visit">Visit</a></li>
+  </ul>
+</nav>
+
+<!-- HERO — image-top-text-below -->
+<section class="hero">
+  <div class="hero-image">
+    <img src="hero-souvlaki.jpg" alt="Greek souvlaki wrap with fresh vegetables and tzatziki" onerror="this.style.display='none'">
+  </div>
+  <div class="hero-content">
+    <p class="hero-label">Victoria's Best Food Truck · 2025</p>
+    <h1>She Taught Us to Cook. We Brought It Here.</h1>
+    <p class="hero-body">Eirini runs the window. Dad Jerry works the grill. Anna and Christo prep. Mum Martha makes sure the baklava's right. A Greek family from Nafpaktos, cooking together on Cook Street. Voted best food truck in the city. Twice.</p>
+    <div class="hero-ctas">
+      <a href="https://maps.google.com/maps?q=1580+Cook+Street+Victoria+BC" class="btn-primary">Get Directions</a>
+      <a href="https://instagram.com/greek_n_go" class="btn-secondary">Follow @greek_n_go</a>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-bar-inner">
+    <div class="trust-stat">
+      <span class="trust-number">4.7 ★</span>
+      <span class="trust-label">475+ Reviews</span>
+    </div>
+    <div class="trust-stat">
+      <span class="trust-number trust-text">Open Late</span>
+      <span class="trust-label">Till Midnight Fri & Sat</span>
+    </div>
+    <div class="trust-stat">
+      <span class="trust-number">2</span>
+      <span class="trust-label">Daily Locations</span>
+    </div>
+    <div class="trust-stat">
+      <span class="trust-number trust-text">GF & Vegan</span>
+      <span class="trust-label">Options on Every Visit</span>
+    </div>
+  </div>
+</div>
+
+<!-- PHOTO STRIP -->
+<div class="photo-strip">
+  <div class="photo-strip-large">
+    <img src="calamari-wrap.jpg" alt="Calamari wrap with fresh herbs" onerror="this.style.display='none'">
+  </div>
+  <div class="photo-strip-stack">
+    <div class="photo-strip-small">
+      <img src="baklava.jpg" alt="Freshly made baklava" onerror="this.style.display='none'">
+    </div>
+    <div class="photo-strip-small">
+      <img src="spices.jpg" alt="Mediterranean spices and herbs" onerror="this.style.display='none'">
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about" class="about fade-in">
+  <div class="about-grid">
+    <div>
+      <p class="section-label">The Family</p>
+      <h2 class="section-heading">From Nafpaktos to Cook Street</h2>
+      <blockquote class="about-quote about-quote-spaced">
+        "Our Greek food truck is truly one-of-a-kind. We proudly serve authentic dishes made from my grandma's cherished recipes, offering a taste of genuine Greek cuisine."
+        <cite class="about-quote-attr">— Eirini S., Founder</cite>
+      </blockquote>
+    </div>
+    <div>
+      <p class="about-body">Eirini and her dad Jerry opened the first truck. Then Anna and Christo joined. Then mum Martha. Now three trucks roam Vancouver Island, and the family still cooks together every day.</p>
+      <p class="about-body">The recipes are from Nafpaktos, a port town on the Gulf of Corinth. Grandma's spanakopita. Her baklava. The souvlaki marinade she never wrote down but everyone remembers.</p>
+    </div>
+  </div>
+</section>
+
+<!-- NAME SECTION -->
+<div class="name-section fade-in">
+  <p class="section-label">The Name</p>
+  <h2 class="section-heading">Five People. Three Trucks. One Grandmother's Kitchen.</h2>
+  <p class="name-section-body">Every recipe came across the ocean in someone's memory. Nothing was written down. Everything was passed on.</p>
+</div>
+
+<!-- MENU -->
+<section id="menu" class="menu-section">
+  <div class="menu-inner">
+    <p class="section-label">The Food</p>
+    <h2 class="section-heading">Grandma's Menu</h2>
+    <div class="menu-grid">
+      <div class="menu-card fade-in">
+        <span class="menu-number">01</span>
+        <h3>Souvlaki Wraps · $14–16</h3>
+        <p>Chicken, lamb, or falafel in warm pita with tzatziki. The thing everyone orders first. The thing everyone orders again.</p>
+      </div>
+      <div class="menu-card fade-in stagger-1">
+        <span class="menu-number">02</span>
+        <h3>Calamari Wrap · $16</h3>
+        <p>Crispy calamari in warm pita. This is the one that turns first-timers into regulars. "10/10" appears in the reviews more than any other phrase.</p>
+      </div>
+      <div class="menu-card fade-in stagger-2">
+        <span class="menu-number">03</span>
+        <h3>Skewer Boxes · $16–20</h3>
+        <p>Souvlaki skewers with rice, Greek salad, pita. The regulars get the meat platter with lamb and don't share.</p>
+      </div>
+      <div class="menu-card fade-in stagger-3">
+        <span class="menu-number">04</span>
+        <h3>Spanakopita & Baklava · $4–6</h3>
+        <p>Grandma's flaky spinach pie and honey-walnut baklava. Plus bougatsa — the custard pastry nobody expects from a food truck.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REDDIT QUOTE -->
+<div class="quote-section fade-in">
+  <div class="quote-inner">
+    <span class="quote-mark">"</span>
+    <p class="quote-text">I was drunk the other night and I was craving good food and found out Greek n Go is open till 3 AM on Fridays and Saturdays. Best discovery of my life.</p>
+    <span class="quote-attr">Via Reddit · r/VictoriaBC · 82 Upvotes</span>
+  </div>
+</div>
+
+<!-- REVIEWS -->
+<section id="reviews" class="reviews-section">
+  <p class="section-label">What People Say</p>
+  <h2 class="section-heading">475+ Google Reviews</h2>
+  <div class="reviews-grid">
+    <div class="review-card fade-in">
+      <span class="review-stars">★★★★★</span>
+      <p class="review-text">We had to get two extra orders after the initial adult order because it's really that great. One of the neighbours is a regular and he recommended the meat platter with lamb.</p>
+      <span class="review-attr">Anna · Via Google</span>
+    </div>
+    <div class="review-card fade-in stagger-1">
+      <span class="review-stars">★★★★★</span>
+      <p class="review-text">Love the calamari wraps! They also always have great deals. The flavours are super delicious and fresh! 10/10 recommend trying if you are in Vic.</p>
+      <span class="review-attr">Olivia · Via Google</span>
+    </div>
+    <div class="review-card fade-in stagger-2">
+      <span class="review-stars">★★★★★</span>
+      <p class="review-text">The food is absolutely amazing. I got the chicken souvlaki wrap with a side of fries and everything was perfectly seasoned and so warm and delicious. They wrote a nice message on my bag.</p>
+      <span class="review-attr">Vanessa M. · Via Google</span>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section id="visit" class="visit-section">
+  <div class="visit-inner">
+    <p class="section-label">Find Us</p>
+    <h2 class="section-heading">Two Locations, Open Daily</h2>
+    <div class="visit-grid">
+      <div class="visit-card">
+        <h3>Cook Street Village</h3>
+        <p class="visit-address">1580 Cook Street, Victoria, BC</p>
+        <ul class="visit-hours">
+          <li><span class="day">Mon — Thu</span><span>11 AM — 9 PM</span></li>
+          <li><span class="day">Friday</span><span>11 AM — Midnight</span></li>
+          <li><span class="day">Saturday</span><span>11 AM — Midnight</span></li>
+          <li><span class="day">Sunday</span><span>12 PM — 8 PM</span></li>
+        </ul>
+        <a href="https://maps.google.com/maps?q=1580+Cook+Street+Victoria+BC" class="btn-primary btn-block">Get Directions</a>
+        <iframe class="visit-map" src="https://maps.google.com/maps?q=1580+Cook+Street+Victoria+BC&output=embed" loading="lazy" title="Map to Cook Street location"></iframe>
+      </div>
+      <div class="visit-card">
+        <h3>Keating Cross Road</h3>
+        <p class="visit-address">2046 Keating Cross Rd, Saanichton, BC</p>
+        <ul class="visit-hours">
+          <li><span class="day">Greek Truck</span><span>Open Daily</span></li>
+          <li><span class="day">Hours</span><span>Follow @greek_n_go</span></li>
+        </ul>
+        <a href="https://maps.google.com/maps?q=2046+Keating+Cross+Road+Saanichton+BC" class="btn-primary btn-block">Get Directions</a>
+        <iframe class="visit-map" src="https://maps.google.com/maps?q=2046+Keating+Cross+Road+Saanichton+BC&output=embed" loading="lazy" title="Map to Keating Cross Road location"></iframe>
+      </div>
+    </div>
+    <p class="visit-note">
+      Follow <a href="https://instagram.com/greek_n_go" class="visit-social">@greek_n_go</a> for daily updates, specials, and event locations.
+    </p>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<div class="cta-band">
+  <h2>The Truck Is Waiting</h2>
+  <p>Cook Street Village, open daily.</p>
+  <a href="https://maps.google.com/maps?q=1580+Cook+Street+Victoria+BC" class="btn-primary">Get Directions</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-brand">Greek n Go</span>
+  <ul class="footer-links">
+    <li><a href="https://instagram.com/greek_n_go">Instagram</a></li>
+    <li><a href="https://facebook.com/GreeknGo">Facebook</a></li>
+    <li><a href="mailto:contact@greekngo.ca">Email</a></li>
+  </ul>
+  <p class="footer-copy">© 2025 Greek n Go. Victoria's Best Food Truck.</p>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReducedMotion) {
+    document.querySelectorAll('.fade-in').forEach(function(el) { el.classList.add('visible'); });
+    return;
+  }
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.fade-in').forEach(function(el) { observer.observe(el); });
+});
+</script>
+<noscript><style>.fade-in { opacity: 1; transform: none; }</style></noscript>
+</body>
+</html>

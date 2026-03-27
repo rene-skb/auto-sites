@@ -1,0 +1,1336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>One Mind and Body — Wellness & Fitness | Victoria, BC</title>
+<meta name="description" content="Personal training, kickboxing, self-defense, and holistic wellness in Greater Victoria, BC. Founded by Linda Watson. Progress over perfection.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --cream: #F5F0E8;
+  --dark: #1A1A18;
+  --warm-dark: #2A2520;
+  --gold: #C8965A;
+  --gold-light: rgba(200, 150, 90, 0.12);
+  --sage: #7A8B6F;
+  --sage-light: rgba(122, 139, 111, 0.08);
+  --terracotta: #B07156;
+  --text: #3A3530;
+  --text-light: #7A7570;
+  --content-width: 1080px;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  color: var(--text);
+  background: var(--cream);
+  line-height: 1.65;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Noise texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+a { color: inherit; text-decoration: none; }
+
+.content-width {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ============ NAV ============ */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: rgba(26, 26, 24, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(200, 150, 90, 0.15);
+}
+
+.nav-inner {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+.nav-brand {
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.25rem;
+  color: var(--cream);
+  letter-spacing: -0.02em;
+}
+
+.nav-brand span { color: var(--gold); }
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: rgba(245, 240, 232, 0.7);
+  font-size: 0.85rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: color 200ms var(--ease-out);
+}
+
+.nav-links a:hover { color: var(--gold); }
+
+.nav-cta {
+  background: var(--gold);
+  color: var(--dark) !important;
+  padding: 8px 20px;
+  border-radius: 4px;
+  font-weight: 500;
+  transition: transform 160ms var(--ease-out), opacity 160ms var(--ease-out);
+}
+
+.nav-cta:hover { opacity: 0.9; }
+.nav-cta:active { transform: scale(0.97); }
+
+/* Mobile menu */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--cream);
+  transition: transform 300ms var(--ease-out), opacity 200ms;
+}
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 64px; left: 0; right: 0; bottom: 0;
+  background: rgba(26, 26, 24, 0.98);
+  backdrop-filter: blur(16px);
+  z-index: 999;
+  padding: 48px 24px;
+}
+
+.mobile-menu.active { display: block; }
+
+.mobile-menu a {
+  display: block;
+  color: var(--cream);
+  font-family: 'Instrument Serif', serif;
+  font-size: 2rem;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(245, 240, 232, 0.08);
+  transition: color 200ms var(--ease-out);
+}
+
+.mobile-menu a:hover { color: var(--gold); }
+
+/* ============ HERO ============ */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background: var(--dark);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background:
+    radial-gradient(ellipse at 30% 40%, rgba(200, 150, 90, 0.15) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 60%, rgba(122, 139, 111, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, rgba(176, 113, 86, 0.08) 0%, transparent 40%);
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0.4;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 120px 24px 96px;
+}
+
+.hero-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: rgba(200, 150, 90, 0.1);
+  padding: 8px 16px;
+  border-radius: 4px;
+  margin-bottom: 32px;
+}
+
+.hero h1 {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  font-weight: 400;
+  line-height: 1.05;
+  color: var(--cream);
+  letter-spacing: -0.03em;
+  max-width: 800px;
+  margin-bottom: 28px;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.hero-sub {
+  font-size: 1.1rem;
+  color: rgba(245, 240, 232, 0.6);
+  max-width: 500px;
+  line-height: 1.75;
+  margin-bottom: 40px;
+  font-weight: 300;
+  letter-spacing: 0.01em;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--gold);
+  color: var(--dark);
+  padding: 14px 32px;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transition: transform 160ms var(--ease-out), opacity 160ms;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary:hover { opacity: 0.92; }
+.btn-primary:active { transform: scale(0.97); transition-duration: 100ms; }
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--cream);
+  padding: 14px 32px;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  border: 1px solid rgba(245, 240, 232, 0.2);
+  transition: border-color 200ms var(--ease-out), transform 160ms var(--ease-out);
+  cursor: pointer;
+}
+
+.btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+.btn-secondary:active { transform: scale(0.97); }
+
+/* ============ TRUST BAR ============ */
+.trust-bar {
+  background: var(--warm-dark);
+  border-bottom: 1px solid rgba(200, 150, 90, 0.1);
+}
+
+.trust-bar-inner {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 18px 24px;
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(245, 240, 232, 0.6);
+  font-size: 0.85rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.trust-item strong {
+  color: var(--gold);
+  font-weight: 600;
+}
+
+/* ============ SERVICES ============ */
+.services {
+  padding: 96px 0;
+}
+
+.section-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+
+.section-subtitle {
+  font-size: 1rem;
+  color: var(--text-light);
+  max-width: 540px;
+  line-height: 1.7;
+  margin-bottom: 56px;
+  font-weight: 300;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.service-card {
+  background: white;
+  padding: 36px 32px;
+  border-radius: 8px;
+  transition: transform 300ms var(--ease-out), box-shadow 300ms var(--ease-out);
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--sage));
+  opacity: 0;
+  transition: opacity 300ms var(--ease-out);
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+}
+
+.service-card:hover::before {
+  opacity: 1;
+}
+
+.service-icon {
+  width: 48px;
+  height: 48px;
+  background: var(--gold-light);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.service-icon svg {
+  width: 24px;
+  height: 24px;
+  stroke: var(--gold);
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.service-card h3 {
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.35rem;
+  font-weight: 400;
+  margin-bottom: 10px;
+  letter-spacing: -0.01em;
+}
+
+.service-card p {
+  font-size: 0.95rem;
+  color: var(--text-light);
+  line-height: 1.65;
+  margin-bottom: 16px;
+}
+
+.service-meta {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* ============ BUDDHA CAMP ============ */
+.buddha-camp {
+  background: var(--dark);
+  padding: 96px 0;
+  position: relative;
+}
+
+.buddha-camp .section-label { color: var(--sage); }
+.buddha-camp .section-title { color: var(--cream); }
+
+.buddha-camp-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.buddha-camp-text p {
+  font-size: 1.05rem;
+  color: rgba(245, 240, 232, 0.65);
+  line-height: 1.75;
+  margin-bottom: 20px;
+  font-weight: 300;
+}
+
+.buddha-camp-details {
+  background: rgba(245, 240, 232, 0.04);
+  border: 1px solid rgba(245, 240, 232, 0.08);
+  border-radius: 8px;
+  padding: 32px;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(245, 240, 232, 0.06);
+}
+
+.detail-row:last-child { border-bottom: none; }
+
+.detail-label {
+  font-size: 0.8rem;
+  color: rgba(245, 240, 232, 0.45);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 500;
+}
+
+.detail-value {
+  font-size: 0.95rem;
+  color: var(--cream);
+  font-weight: 400;
+}
+
+.detail-value strong {
+  color: var(--gold);
+}
+
+/* ============ HOW IT WORKS ============ */
+.how-it-works {
+  padding: 96px 0;
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-top: 56px;
+}
+
+.step {
+  padding: 0;
+}
+
+.step-number {
+  font-family: 'Instrument Serif', serif;
+  font-size: 3rem;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 16px;
+  opacity: 0.6;
+}
+
+.step h3 {
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+.step p {
+  font-size: 0.95rem;
+  color: var(--text-light);
+  line-height: 1.65;
+}
+
+/* ============ DIFFERENTIATOR ============ */
+.differentiator {
+  background: var(--warm-dark);
+  padding: 96px 0;
+  text-align: center;
+  border-top: 1px solid rgba(200, 150, 90, 0.1);
+  border-bottom: 1px solid rgba(200, 150, 90, 0.1);
+}
+
+.differentiator blockquote {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-style: italic;
+  color: var(--cream);
+  line-height: 1.4;
+  max-width: 700px;
+  margin: 0 auto 16px;
+  letter-spacing: -0.01em;
+}
+
+.differentiator cite {
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-size: 0.85rem;
+  color: var(--gold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+/* ============ 30-DAY CHALLENGE ============ */
+.challenge {
+  padding: 96px 0;
+  background: var(--cream);
+  border-top: 1px solid rgba(122, 139, 111, 0.12);
+}
+
+.challenge-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.challenge-features {
+  list-style: none;
+  margin: 24px 0 32px;
+}
+
+.challenge-features li {
+  padding: 10px 0;
+  font-size: 0.95rem;
+  color: var(--text);
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  line-height: 1.5;
+}
+
+.check-icon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  background: var(--sage);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+}
+
+.check-icon svg {
+  width: 12px;
+  height: 12px;
+  stroke: white;
+  fill: none;
+  stroke-width: 2.5;
+}
+
+.challenge-card {
+  background: white;
+  padding: 48px 40px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+  border-top: 3px solid var(--sage);
+  position: relative;
+}
+
+.challenge-card .price {
+  font-family: 'Instrument Serif', serif;
+  font-size: 3.5rem;
+  color: var(--text);
+  margin: 16px 0 4px;
+  letter-spacing: -0.03em;
+}
+
+.challenge-card .price-note {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  margin-bottom: 24px;
+}
+
+.challenge-card .price-original {
+  font-size: 1rem;
+  color: var(--text-light);
+  text-decoration: line-through;
+  margin-bottom: 4px;
+}
+
+/* ============ ABOUT ============ */
+.about {
+  padding: 96px 0;
+}
+
+.about-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.about-image {
+  aspect-ratio: 4/5;
+  border-radius: 8px;
+  background:
+    radial-gradient(ellipse at 40% 30%, rgba(200, 150, 90, 0.2) 0%, transparent 60%),
+    radial-gradient(ellipse at 60% 70%, rgba(122, 139, 111, 0.15) 0%, transparent 50%),
+    var(--warm-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-image-text {
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.5rem;
+  color: rgba(245, 240, 232, 0.3);
+  text-align: center;
+  padding: 24px;
+}
+
+.about-text h2 {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+}
+
+.about-text p {
+  font-size: 1.05rem;
+  color: var(--text-light);
+  line-height: 1.75;
+  margin-bottom: 20px;
+  font-weight: 300;
+}
+
+.about-text p strong {
+  color: var(--text);
+  font-weight: 500;
+}
+
+/* ============ REVIEWS ============ */
+.reviews {
+  background: var(--dark);
+  padding: 96px 0;
+}
+
+.reviews .section-title { color: var(--cream); }
+.reviews .section-subtitle { color: rgba(245, 240, 232, 0.5); }
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.review-card {
+  background: rgba(245, 240, 232, 0.04);
+  border: 1px solid rgba(245, 240, 232, 0.08);
+  padding: 32px;
+  border-radius: 8px;
+}
+
+.review-card:first-child {
+  border-left: 3px solid var(--gold);
+}
+
+.review-stars {
+  color: var(--gold);
+  font-size: 0.9rem;
+  margin-bottom: 16px;
+  letter-spacing: 2px;
+}
+
+.review-text {
+  font-size: 1rem;
+  color: rgba(245, 240, 232, 0.7);
+  line-height: 1.7;
+  margin-bottom: 16px;
+  font-style: italic;
+  font-weight: 300;
+}
+
+.review-author {
+  font-size: 0.85rem;
+  color: rgba(245, 240, 232, 0.4);
+  font-weight: 400;
+}
+
+.stats-card {
+  background: rgba(200, 150, 90, 0.08);
+  border: 1px solid rgba(200, 150, 90, 0.15);
+  padding: 32px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.stat-number {
+  font-family: 'Instrument Serif', serif;
+  font-size: 3rem;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: rgba(245, 240, 232, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 24px;
+}
+
+.stat-cta {
+  font-size: 0.85rem;
+  color: var(--gold);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ============ LOCATION ============ */
+.location {
+  padding: 96px 0;
+}
+
+.location-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.location-info h3 {
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.location-detail {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+  font-size: 0.95rem;
+  color: var(--text-light);
+  line-height: 1.5;
+}
+
+.location-detail svg {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  stroke: var(--gold);
+  fill: none;
+  stroke-width: 1.5;
+  margin-top: 2px;
+}
+
+.location-detail a {
+  color: var(--gold);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.map-container {
+  border-radius: 8px;
+  overflow: hidden;
+  aspect-ratio: 16/10;
+  background: var(--warm-dark);
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* ============ FINAL CTA ============ */
+.final-cta {
+  background: var(--sage);
+  padding: 96px 0;
+  text-align: center;
+}
+
+.final-cta h2 {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 400;
+  color: white;
+  margin-bottom: 12px;
+}
+
+.final-cta p {
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 32px;
+  font-weight: 300;
+}
+
+.btn-white {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: white;
+  color: var(--text);
+  padding: 14px 32px;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: transform 160ms var(--ease-out), opacity 160ms;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-white:hover { opacity: 0.9; }
+.btn-white:active { transform: scale(0.97); }
+
+/* ============ FOOTER ============ */
+footer {
+  background: var(--dark);
+  padding: 40px 0 28px;
+  border-top: 1px solid rgba(200, 150, 90, 0.1);
+}
+
+.footer-inner {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.footer-brand {
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.25rem;
+  color: var(--cream);
+  letter-spacing: -0.02em;
+}
+
+.footer-brand span { color: var(--gold); }
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+}
+
+.footer-links a {
+  color: rgba(245, 240, 232, 0.5);
+  font-size: 0.85rem;
+  transition: color 200ms var(--ease-out);
+}
+
+.footer-links a:hover { color: var(--gold); }
+
+.footer-copy {
+  width: 100%;
+  text-align: center;
+  color: rgba(245, 240, 232, 0.3);
+  font-size: 0.75rem;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(245, 240, 232, 0.06);
+}
+
+/* ============ ANIMATIONS ============ */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-in[data-delay="1"] { transition-delay: 80ms; }
+.fade-in[data-delay="2"] { transition-delay: 160ms; }
+.fade-in[data-delay="3"] { transition-delay: 240ms; }
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  
+  .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+  .hamburger.active span:nth-child(2) { opacity: 0; }
+  .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+  .hero-content { padding: 100px 24px 64px; }
+  .hero h1 { font-size: 2.5rem; }
+
+  .trust-bar-inner { gap: 24px; justify-content: flex-start; }
+
+  .services-grid { grid-template-columns: 1fr; gap: 16px; }
+  
+  .buddha-camp-content,
+  .challenge-content,
+  .about-content,
+  .location-content,
+  .reviews-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .steps-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .about-image { aspect-ratio: 16/9; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-in { opacity: 1; transform: none; transition: none; }
+}
+
+noscript .fade-in,
+.no-js .fade-in { opacity: 1; transform: none; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">One Mind <span>&</span> Body</a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#buddha-camp">Buddha Camp</a></li>
+      <li><a href="#challenge">30-Day Challenge</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="tel:+17785871387" class="nav-cta">Call Now</a></li>
+    </ul>
+    <button class="hamburger" aria-label="Menu" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services" onclick="toggleMenu()">Services</a>
+  <a href="#buddha-camp" onclick="toggleMenu()">Buddha Camp</a>
+  <a href="#challenge" onclick="toggleMenu()">30-Day Challenge</a>
+  <a href="#about" onclick="toggleMenu()">About</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
+  <a href="tel:+17785871387" onclick="toggleMenu()">Call Now</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">Greater Victoria, BC</div>
+    <h1>Stronger body. <em>Quieter mind.</em></h1>
+    <p class="hero-sub">Personal training, kickboxing, self-defense, and holistic wellness. A mind-body approach to fitness since 2010.</p>
+    <div class="hero-actions">
+      <a href="tel:+17785871387" class="btn-primary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Call Linda
+      </a>
+      <a href="#services" class="btn-secondary">Explore Services</a>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-bar-inner">
+    <div class="trust-item"><strong>15+</strong> Years Experience</div>
+    <div class="trust-item"><strong>334</strong> Facebook Community</div>
+    <div class="trust-item"><strong>All</strong> Levels Welcome</div>
+    <div class="trust-item"><strong>$10</strong> Drop-In Classes</div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services" class="services">
+  <div class="content-width">
+    <div class="section-label fade-in">What We Offer</div>
+    <h2 class="section-title fade-in">Train your body. <em>Empower your mind.</em></h2>
+    <p class="section-subtitle fade-in">Every program is built around you. Whether you want to build strength, learn to defend yourself, or find some peace in the chaos, we'll meet you where you are.</p>
+    
+    <div class="services-grid">
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M6 7v10M18 7v10M2 9v6M22 9v6M6 12h12M2 12h4M18 12h4"/></svg>
+        </div>
+        <h3>Personal Training</h3>
+        <p>One-on-one sessions tailored to your goals. Strength, weight loss, functional fitness, or sport-specific training with full accountability.</p>
+        <div class="service-meta">1-on-1 &middot; All levels</div>
+      </div>
+
+      <div class="service-card fade-in" data-delay="1">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="3"/><path d="M12 8v4M8 20l2-8M16 20l-2-8M9 12h6"/></svg>
+        </div>
+        <h3>Kickboxing</h3>
+        <p>High-energy sessions combining cardio, strength, and technique. Build confidence while getting a full-body workout that never gets boring.</p>
+        <div class="service-meta">High intensity &middot; Stress relief</div>
+      </div>
+
+      <div class="service-card fade-in" data-delay="2">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Self-Protection</h3>
+        <p>Practical self-defense skills for real-world situations. Empowerment seminars available for teens and adults. Awareness, boundaries, and physical technique.</p>
+        <div class="service-meta">Empowerment &middot; Practical skills</div>
+      </div>
+
+      <div class="service-card fade-in" data-delay="3">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="none"/><path d="M7 12l2-6M17 12l-2-6M7 12c0 2.76 2.24 5 5 5s5-2.24 5-5"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </div>
+        <h3>Nutrition Coaching</h3>
+        <p>Meal planning, healthy recipes, and real-world nutrition guidance. Because training is only half the equation. No fads, just food that fuels you.</p>
+        <div class="service-meta">Holistic &middot; Sustainable</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BUDDHA CAMP -->
+<section id="buddha-camp" class="buddha-camp">
+  <div class="content-width">
+    <div class="section-label fade-in">Signature Program</div>
+    <h2 class="section-title fade-in" style="margin-bottom: 48px;">Buddha Camp</h2>
+    
+    <div class="buddha-camp-content">
+      <div class="buddha-camp-text fade-in">
+        <p>A unique fusion of cardio, strength training, mindful movement, and meditation. Buddha Camp isn't your typical fitness class. It's designed to challenge your body while quieting your mind.</p>
+        <p>Classes move outdoors in summer to central locations across Greater Victoria, making it easy for everyone to join. All levels welcome. Bring water and a mat.</p>
+        <p style="color: var(--sage); font-weight: 400;">Progress over perfection. Always.</p>
+      </div>
+      
+      <div class="buddha-camp-details fade-in">
+        <div class="detail-row">
+          <span class="detail-label">When</span>
+          <span class="detail-value">Tuesdays & Thursdays, <strong>9:30 AM</strong></span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">Where</span>
+          <span class="detail-value">Rivers Edge Clubhouse, Sunriver</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">Summer</span>
+          <span class="detail-value">Outdoor locations (check Facebook)</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">Drop-In</span>
+          <span class="detail-value"><strong>$10</strong></span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">Level</span>
+          <span class="detail-value">All levels welcome</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-it-works">
+  <div class="content-width">
+    <div class="section-label fade-in">Getting Started</div>
+    <h2 class="section-title fade-in">Your first step is the <em>hardest</em> one</h2>
+    <p class="section-subtitle fade-in">We make it easy. No intimidation, no judgment, no gym bro energy. Just real people showing up for themselves.</p>
+    
+    <div class="steps-grid">
+      <div class="step fade-in">
+        <div class="step-number">01</div>
+        <h3>Reach out</h3>
+        <p>Call or message Linda. Tell her your goals, your schedule, and what's been holding you back. She'll listen.</p>
+      </div>
+      <div class="step fade-in" data-delay="1">
+        <div class="step-number">02</div>
+        <h3>Find your fit</h3>
+        <p>Whether it's one-on-one training, Buddha Camp, or a 30-day challenge, we'll match you with the right program.</p>
+      </div>
+      <div class="step fade-in" data-delay="2">
+        <div class="step-number">03</div>
+        <h3>Show up</h3>
+        <p>That's it. No contracts, no pressure. Just show up, put in the work, and let the results speak for themselves.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIFFERENTIATOR -->
+<section class="differentiator">
+  <div class="content-width fade-in">
+    <blockquote>"We're not big on resolutions. We believe in getting up every day and setting goals to be better than the day before."</blockquote>
+    <cite>Linda Watson, Founder</cite>
+  </div>
+</section>
+
+<!-- 30-DAY CHALLENGE -->
+<section id="challenge" class="challenge">
+  <div class="content-width">
+    <div class="challenge-content">
+      <div class="fade-in">
+        <div class="section-label">Featured Program</div>
+        <h2 class="section-title">30-Day Challenge</h2>
+        <p style="font-size: 1.05rem; color: var(--text-light); line-height: 1.75; margin-bottom: 8px; font-weight: 300;">A month-long transformation combining twice-weekly group classes with nutrition coaching, accountability, and community support.</p>
+        
+        <ul class="challenge-features">
+          <li>
+            <span class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Classes twice a week (Tuesdays & Thursdays)
+          </li>
+          <li>
+            <span class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Private Facebook group for recipes and support
+          </li>
+          <li>
+            <span class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Personal coaching and accountability
+          </li>
+          <li>
+            <span class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Mind-body holistic approach to wellness
+          </li>
+          <li>
+            <span class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Healthy recipes and nutrition tips
+          </li>
+        </ul>
+      </div>
+      
+      <div class="challenge-card fade-in">
+        <div class="section-label" style="margin-bottom: 8px;">Next Challenge</div>
+        <p style="font-size: 0.95rem; color: var(--text-light);">New groups start monthly</p>
+        <div class="price-original">$249</div>
+        <div class="price">$199</div>
+        <p class="price-note">Early bird for first 10 sign-ups</p>
+        <a href="tel:+17785871387" class="btn-primary" style="width: 100%; justify-content: center;">
+          Reserve Your Spot
+        </a>
+        <p style="font-size: 0.8rem; color: var(--text-light); margin-top: 12px;">Message Linda on Facebook or call to register</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="about">
+  <div class="content-width">
+    <div class="about-content">
+      <div class="about-image fade-in">
+        <span class="about-image-text">Linda Watson<br>Founder & Trainer</span>
+      </div>
+      <div class="about-text fade-in">
+        <div class="section-label">About Linda</div>
+        <h2>West coast roots. <em>Whole-person</em> approach.</h2>
+        <p>One Mind and Body was founded in 2010 in Toronto by <strong>Linda Watson</strong>, a west coast woman with a deep passion for healthy living. Now back on Vancouver Island, she brings over 15 years of experience in personal training, kickboxing, and holistic wellness to Greater Victoria.</p>
+        <p>Linda's approach goes beyond sets and reps. She believes in the <strong>mind-body connection</strong>, combining physical training with mindful movement, nutrition guidance, and genuine personal empowerment. She's known for pushing her clients hard while keeping things real, supportive, and fun.</p>
+        <p>Whether she's leading a Buddha Camp class at sunrise or coaching someone through their first kickboxing session, Linda meets everyone exactly where they are.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews">
+  <div class="content-width">
+    <div class="section-label fade-in">Community</div>
+    <h2 class="section-title fade-in" style="color: var(--cream);">What people are saying</h2>
+    <p class="section-subtitle fade-in" style="color: rgba(245,240,232,0.5); margin-bottom: 48px;">Real words from real members of the One Mind and Body community.</p>
+    
+    <div class="reviews-grid">
+      <div class="review-card fade-in">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Linda Watson worked me so hard I actually puked. I think I deserve a gold star for today... and a nap. Naps are good."</p>
+        <p class="review-author">— Community Member, Facebook</p>
+      </div>
+      <div class="stats-card fade-in">
+        <div class="stat-number">334</div>
+        <div class="stat-label">Facebook Followers</div>
+        <div class="stat-number" style="font-size: 2rem;">15+</div>
+        <div class="stat-label">Years of Experience</div>
+        <a href="https://www.facebook.com/OneMindandBody/" target="_blank" rel="noopener" class="stat-cta">Follow on Facebook →</a>
+        <p style="font-size: 0.8rem; color: rgba(245,240,232,0.35); margin-top: 16px; line-height: 1.5;">Join our community for recipes, tips, and class updates</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<div style="height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); opacity: 0.2;"></div>
+<section id="contact" class="location">
+  <div class="content-width">
+    <div class="section-label fade-in">Find Us</div>
+    <h2 class="section-title fade-in" style="margin-bottom: 48px;">Get in touch</h2>
+    
+    <div class="location-content">
+      <div class="location-info fade-in">
+        <h3>One Mind and Body</h3>
+        
+        <div class="location-detail">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div>
+            <strong>Rivers Edge Clubhouse</strong><br>
+            Sunriver, Greater Victoria, BC
+          </div>
+        </div>
+
+        <div class="location-detail">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"/></svg>
+          <div>
+            <a href="tel:+17785871387">778-587-1387</a>
+          </div>
+        </div>
+
+        <div class="location-detail">
+          <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>
+          <div>
+            <a href="mailto:watsonlindac@gmail.com">watsonlindac@gmail.com</a>
+          </div>
+        </div>
+
+        <div class="location-detail">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          <div>
+            <strong>Buddha Camp Schedule</strong><br>
+            Tuesdays & Thursdays, 9:30 AM<br>
+            <span style="font-size: 0.85rem; color: var(--text-light);">Check <a href="https://www.facebook.com/OneMindandBody/" target="_blank" rel="noopener">Facebook</a> for summer outdoor locations</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="map-container fade-in">
+        <iframe src="https://maps.google.com/maps?q=Sunriver+Victoria+BC&output=embed" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="content-width fade-in">
+    <h2>Ready to show up for yourself?</h2>
+    <p>Your first Buddha Camp class is just $10. No commitment, no judgment.</p>
+    <a href="tel:+17785871387" class="btn-white">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      Call Linda — 778-587-1387
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">One Mind <span>&</span> Body</div>
+    <div class="footer-links">
+      <a href="https://www.facebook.com/OneMindandBody/" target="_blank" rel="noopener">Facebook</a>
+      <a href="mailto:watsonlindac@gmail.com">Email</a>
+      <a href="tel:+17785871387">778-587-1387</a>
+    </div>
+    <div class="footer-copy">
+      &copy; 2026 One Mind and Body Wellness and Fitness. Greater Victoria, BC.
+    </div>
+  </div>
+</footer>
+
+<script>
+function toggleMenu() {
+  document.getElementById('mobileMenu').classList.toggle('active');
+  document.querySelector('.hamburger').classList.toggle('active');
+}
+
+// Scroll fade-in
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WAIRUA Cafe — Of One's Spirit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* ── Reset & Variables ── */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    /* Palette — warm cream, deep teal, sage, terracotta accent */
+    --cream: #FAF7F2;
+    --deep: #1A2E2A;
+    --sage: #7A8B6F;
+    --terracotta: #C8755B;
+    --warm-white: #FFFDF9;
+    --text: #2C2C2C;
+    --text-light: #6B6B6B;
+    --border: rgba(0,0,0,0.06);
+
+    /* Typography system */
+    --font-serif: 'Instrument Serif', Georgia, serif;
+    --font-sans: 'Inter', -apple-system, sans-serif;
+    --ls-nav: 0.08em;
+    --ls-label: 0.06em;
+    --ls-micro: 0.04em;
+
+    /* Spacing system */
+    --section-pad: 96px;
+    --section-pad-mobile: 64px;
+    --content-width: 1120px;
+
+    /* Motion */
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--text);
+    background: var(--cream);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  img { display: block; max-width: 100%; height: auto; }
+  a { color: inherit; text-decoration: none; }
+
+  .container {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ── Noise texture overlay ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* ── Navigation ── */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: rgba(250, 247, 242, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  nav .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+
+  .nav-brand {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    letter-spacing: var(--ls-nav);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+    align-items: center;
+  }
+
+  .nav-links a {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: var(--ls-label);
+    text-transform: uppercase;
+    color: var(--text-light);
+    transition: color 200ms var(--ease-out);
+  }
+
+  .nav-links a:hover { color: var(--text); }
+
+  .nav-cta {
+    background: var(--deep);
+    color: var(--warm-white) !important;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 12px !important;
+    letter-spacing: var(--ls-label) !important;
+    transition: transform 160ms var(--ease-out);
+  }
+
+  .nav-cta:active { transform: scale(0.97); }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--text);
+    transition: transform 300ms var(--ease-out);
+  }
+
+  /* ── Hero ── */
+  .hero {
+    padding: calc(var(--section-pad) + 64px) 0 var(--section-pad);
+    text-align: center;
+  }
+
+  .hero .section-label {
+    margin-bottom: 24px;
+    display: block;
+  }
+
+  .hero h1 {
+    font-family: var(--font-serif);
+    font-size: clamp(56px, 8vw, 96px);
+    font-weight: 400;
+    line-height: 1.05;
+    color: var(--deep);
+    margin-bottom: 16px;
+  }
+
+  .hero-pronunciation {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 16px;
+    color: var(--sage);
+    margin-bottom: 32px;
+  }
+
+  .hero-subtitle {
+    font-size: 18px;
+    line-height: 1.65;
+    color: var(--text-light);
+    max-width: 520px;
+    margin: 0 auto 40px;
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--deep);
+    color: var(--warm-white);
+    padding: 14px 32px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: var(--ls-label);
+    text-transform: uppercase;
+    transition: transform 160ms var(--ease-out);
+  }
+
+  .hero-cta:active { transform: scale(0.97); }
+
+  .hero-ctas {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .hero-cta-secondary {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--sage);
+    border-bottom: 1px solid var(--sage);
+    padding-bottom: 2px;
+    transition: color 200ms var(--ease-out);
+  }
+
+  .hero-cta-secondary:hover { color: var(--deep); }
+
+  /* ── Photo Strip ── */
+  .photo-strip {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 0;
+    overflow: hidden;
+  }
+
+  .photo-strip img {
+    width: 100%;
+    height: 340px;
+    object-fit: cover;
+  }
+
+  /* ── About / Spirit Section ── */
+  .about {
+    padding: var(--section-pad) 0;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .section-label {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: var(--ls-label);
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 16px;
+  }
+
+  .about h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(36px, 4vw, 48px);
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--deep);
+  }
+
+  .about p {
+    color: var(--text-light);
+    margin-bottom: 16px;
+  }
+
+  .about p:last-child { margin-bottom: 0; }
+
+  /* ── Name Meaning Section (dark bg) ── */
+  .meaning {
+    background: var(--deep);
+    padding: var(--section-pad) 0;
+    text-align: center;
+  }
+
+  .meaning .section-label {
+    margin-bottom: 32px;
+  }
+
+  .meaning blockquote {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(28px, 3.5vw, 40px);
+    line-height: 1.35;
+    color: var(--cream);
+    max-width: 700px;
+    margin: 0 auto 24px;
+  }
+
+  .meaning cite {
+    font-family: var(--font-sans);
+    font-style: normal;
+    font-size: 13px;
+    letter-spacing: var(--ls-micro);
+    color: var(--sage);
+  }
+
+  /* ── Menu Section ── */
+  .menu {
+    padding: var(--section-pad) 0;
+  }
+
+  .menu-header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+
+  .menu-header h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(36px, 4vw, 48px);
+    font-weight: 400;
+    color: var(--deep);
+    margin-bottom: 12px;
+  }
+
+  .menu-header p {
+    color: var(--text-light);
+    font-size: 16px;
+  }
+
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+  }
+
+  .menu-category h3 {
+    font-family: var(--font-serif);
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--deep);
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .menu-item {
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .menu-featured {
+    background: rgba(122, 139, 111, 0.08);
+    padding: 32px;
+    border-radius: 4px;
+  }
+
+  .menu-featured h3 {
+    color: var(--sage);
+  }
+
+  .menu-item-name {
+    font-size: 15px;
+    color: var(--text);
+  }
+
+  .menu-item-detail {
+    font-size: 13px;
+    color: var(--text-light);
+    font-style: italic;
+  }
+
+  /* ── Featured Photo ── */
+  .featured-photo {
+    padding: 0;
+  }
+
+  .featured-photo img {
+    width: 100%;
+    height: 480px;
+    object-fit: cover;
+  }
+
+  /* ── Press / Social Proof ── */
+  .press {
+    background: var(--warm-white);
+    padding: var(--section-pad) 0;
+  }
+
+  .press-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+
+  .press-quote {
+    border-left: 3px solid var(--terracotta);
+    padding-left: 32px;
+  }
+
+  .press-quote blockquote {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 22px;
+    line-height: 1.45;
+    color: var(--deep);
+    margin-bottom: 16px;
+  }
+
+  .press-quote cite {
+    font-style: normal;
+    font-size: 13px;
+    letter-spacing: var(--ls-micro);
+    color: var(--text-light);
+    text-transform: uppercase;
+  }
+
+  .press-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    text-align: center;
+  }
+
+  .stat-number {
+    font-family: var(--font-serif);
+    font-size: 36px;
+    color: var(--deep);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .stat-label {
+    font-size: 12px;
+    letter-spacing: var(--ls-label);
+    text-transform: uppercase;
+    color: var(--text-light);
+  }
+
+  /* ── Reviews ── */
+  .reviews {
+    padding: var(--section-pad) 0;
+  }
+
+  .reviews-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .reviews-header h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(36px, 4vw, 48px);
+    font-weight: 400;
+    color: var(--deep);
+  }
+
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+
+  .review-card {
+    padding: 32px;
+    border-radius: 4px;
+  }
+
+  .review-card:nth-child(odd) {
+    background: var(--warm-white);
+  }
+
+  .review-card:nth-child(even) {
+    background: rgba(122, 139, 111, 0.06);
+  }
+
+  .review-stars {
+    color: var(--terracotta);
+    font-size: 14px;
+    margin-bottom: 16px;
+    letter-spacing: 2px;
+  }
+
+  .review-text {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--text);
+    margin-bottom: 16px;
+  }
+
+  .review-source {
+    font-size: 12px;
+    letter-spacing: var(--ls-micro);
+    color: var(--text-light);
+    text-transform: uppercase;
+  }
+
+  /* ── Visit Section ── */
+  .visit {
+    background: var(--deep);
+    padding: var(--section-pad) 0;
+  }
+
+  .visit-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .visit h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(36px, 4vw, 48px);
+    font-weight: 400;
+    color: var(--cream);
+    margin-bottom: 32px;
+  }
+
+  .visit-detail {
+    margin-bottom: 24px;
+  }
+
+  .visit-detail-label {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: var(--ls-label);
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 6px;
+  }
+
+  .visit-detail-value {
+    font-size: 16px;
+    color: var(--cream);
+    line-height: 1.65;
+  }
+
+  .visit-detail-value a {
+    color: var(--terracotta);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .visit-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--terracotta);
+    color: var(--warm-white);
+    padding: 14px 32px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: var(--ls-label);
+    text-transform: uppercase;
+    margin-top: 8px;
+    transition: transform 160ms var(--ease-out);
+  }
+
+  .visit-cta:active { transform: scale(0.97); }
+
+  .visit-map {
+    border-radius: 4px;
+    overflow: hidden;
+    height: 100%;
+    min-height: 320px;
+  }
+
+  .visit-map iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    filter: grayscale(0.3) contrast(1.05);
+  }
+
+  /* ── Footer ── */
+  footer {
+    padding: 32px 0;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    background: var(--deep);
+  }
+
+  footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-brand {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    letter-spacing: var(--ls-nav);
+    color: var(--cream);
+  }
+
+  .footer-social {
+    display: flex;
+    gap: 24px;
+  }
+
+  .footer-social a {
+    font-size: 13px;
+    letter-spacing: var(--ls-micro);
+    text-transform: uppercase;
+    color: var(--sage);
+    transition: color 200ms var(--ease-out);
+  }
+
+  .footer-social a:hover { color: var(--cream); }
+
+  .footer-note {
+    font-size: 12px;
+    color: rgba(250, 247, 242, 0.4);
+  }
+
+  /* ── Entrance Animation ── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 600ms var(--ease-out) forwards;
+  }
+
+  .fade-up:nth-child(1) { animation-delay: 0ms; }
+  .fade-up:nth-child(2) { animation-delay: 100ms; }
+  .fade-up:nth-child(3) { animation-delay: 200ms; }
+  .fade-up:nth-child(4) { animation-delay: 300ms; }
+  .fade-up:nth-child(5) { animation-delay: 400ms; }
+
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 768px) {
+    :root {
+      --section-pad: var(--section-pad-mobile);
+    }
+
+    .nav-links { display: none; }
+    .nav-links.open {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 64px;
+      left: 0;
+      right: 0;
+      background: rgba(250, 247, 242, 0.98);
+      backdrop-filter: blur(12px);
+      padding: 24px;
+      gap: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hamburger { display: flex; }
+
+    .hero h1 { font-size: clamp(40px, 10vw, 56px); }
+
+    .photo-strip {
+      grid-template-columns: 1fr;
+    }
+
+    .photo-strip img { height: 240px; }
+    .photo-strip img:nth-child(2),
+    .photo-strip img:nth-child(3) { display: none; }
+
+    .about-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .menu-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .press-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .reviews-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .visit-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .visit-map { min-height: 240px; }
+
+    .featured-photo img { height: 280px; }
+
+    footer .container {
+      flex-direction: column;
+      gap: 16px;
+      text-align: center;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+  <div class="container">
+    <a href="#" class="nav-brand">WAIRUA</a>
+    <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#visit">Visit</a></li>
+      <li><a href="https://www.instagram.com/wairuacafe/" target="_blank" class="nav-cta">Follow on Instagram</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container">
+    <span class="section-label fade-up">North Park, Victoria</span>
+    <h1 class="fade-up">WAIRUA</h1>
+    <p class="hero-pronunciation fade-up">/why · roo · a/</p>
+    <p class="hero-subtitle fade-up">A Māori word meaning "of one's spirit." A neighbourhood cafe where you nurture yours.</p>
+    <div class="hero-ctas fade-up">
+      <a href="https://maps.google.com/maps?q=1040+North+Park+St+Victoria+BC&z=16" target="_blank" class="hero-cta">
+        Get Directions
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="https://www.instagram.com/wairuacafe/" target="_blank" class="hero-cta-secondary">
+        @wairuacafe
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Photo Strip -->
+<div class="photo-strip">
+  <img src="storefront.png" alt="WAIRUA Cafe storefront on North Park Street">
+  <img src="matcha.png" alt="Artisan matcha latte">
+  <img src="pastries.png" alt="Fresh baked pastries">
+</div>
+
+<!-- Name Meaning -->
+<section class="meaning">
+  <div class="container">
+    <p class="section-label">The Name</p>
+    <blockquote>"Wairua means your spirit. We wanted a place where people can nurture their spirit and just connect — either with yourself or others."</blockquote>
+    <cite>— Wilson North, Co-founder</cite>
+  </div>
+</section>
+
+<!-- About -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div>
+        <p class="section-label">Our Story</p>
+        <h2>A dream born during a pandemic</h2>
+      </div>
+      <div>
+        <p>Wilson and Hanisa North always knew they wanted to work together, work for themselves. The shape of that dream became clear during the quiet of COVID — a coffee shop was their destiny.</p>
+        <p>Wilson is from New Zealand, and brought with him a Māori philosophy of spirit and connection. Hanisa brought the drive to build something real. Together they created WAIRUA — a place where the community could gather, slow down, and nurture something quiet inside themselves.</p>
+        <p>They opened in late March 2025, expecting a slow start. The North Park community had other plans — the support, they say, has been heartwarming.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Menu -->
+<section class="menu" id="menu">
+  <div class="container">
+    <div class="menu-header">
+      <h2>What We Pour</h2>
+      <p>Coffee roasted by Modus (Vancouver). Tea sourced from Genuine Tea.<br>
+      <span style="font-size: 13px; color: var(--sage);">Current menu and prices on <a href="https://www.instagram.com/wairuacafe/" target="_blank" style="color: var(--sage); text-decoration: underline; text-underline-offset: 2px;">Instagram</a>.</span></p>
+    </div>
+    <div class="menu-grid">
+      <div class="menu-category">
+        <h3>Coffee</h3>
+        <div class="menu-item">
+          <span class="menu-item-name">Americano</span>
+        </div>
+        <div class="menu-item">
+          <span class="menu-item-name">Latte</span>
+        </div>
+        <div class="menu-item">
+          <span class="menu-item-name">Cappuccino</span>
+        </div>
+        <div class="menu-item">
+          <span class="menu-item-name">Flat White</span>
+        </div>
+        <div class="menu-item">
+          <span class="menu-item-name">Pour Over</span>
+        </div>
+      </div>
+      <div class="menu-category menu-featured">
+        <h3>Matcha & Tea</h3>
+        <div class="menu-item">
+          <span class="menu-item-name">Matcha Latte</span>
+        </div>
+        <div class="menu-item">
+          <span class="menu-item-name">Iced Strawberry Matcha</span>
+          <span class="menu-item-detail">fan favourite</span>
+        </div>
+        <div class="menu-item">
+          <span class="menu-item-name">Hojicha Latte</span>
+        </div>
+        <div class="menu-item">
+          <span class="menu-item-name">Loose Leaf Teas</span>
+        </div>
+      </div>
+      <div class="menu-category">
+        <h3>Baked Goods</h3>
+        <div class="menu-item">
+          <span class="menu-item-name">Rotating Pastries</span>
+        </div>
+        <div class="menu-item">
+          <span class="menu-item-name">Croissants</span>
+        </div>
+        <div class="menu-item">
+          <span class="menu-item-name">Savoury Options</span>
+        </div>
+        <p class="menu-item-detail" style="margin-top: 12px; font-size: 13px;">Our baked goods rotate frequently. Follow <a href="https://www.instagram.com/wairuacafe/" target="_blank" style="color: var(--terracotta); text-decoration: underline; text-underline-offset: 2px;">@wairuacafe</a> for today's menu and pricing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Featured Photo -->
+<div class="featured-photo">
+  <img src="pourover.png" alt="Pour over coffee being prepared">
+</div>
+
+<!-- Press / Social Proof -->
+<section class="press">
+  <div class="container">
+    <div class="press-grid">
+      <div class="press-quote">
+        <blockquote>"The community support has just blown us away. We wanted to create a space for the community and they have entirely taken us in."</blockquote>
+        <cite>Featured on CHEK News — Order Up</cite>
+      </div>
+      <div class="press-stats">
+        <div>
+          <span class="stat-number">4,000+</span>
+          <span class="stat-label">Instagram Followers</span>
+        </div>
+        <div>
+          <span class="stat-number" style="font-family: var(--font-sans); font-weight: 500; font-size: 28px; letter-spacing: var(--ls-label);">NZ</span>
+          <span class="stat-label">Roots</span>
+        </div>
+        <div>
+          <span class="stat-number">6</span>
+          <span class="stat-label">Days a Week</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Reviews -->
+<section class="reviews" id="reviews">
+  <div class="container">
+    <div class="reviews-header">
+      <h2>From the Community</h2>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Super cute and cozy and has really good coffee and their iced matcha is so yummy."</p>
+        <span class="review-source">Via Reddit · r/VictoriaBC</span>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"The coffee is excellent and the food is also very good. Atmosphere is lovely and spacious, quiet enough to work or read."</p>
+        <span class="review-source">Via Google</span>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"I really love the New Zealand theme and honoring their ancestors. A charming coffee shop with a welcoming vibe."</p>
+        <span class="review-source">Via Yelp</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Visit -->
+<section class="visit" id="visit">
+  <div class="container">
+    <div class="visit-grid">
+      <div>
+        <h2>Come Say Hello</h2>
+        <div class="visit-detail">
+          <p class="visit-detail-label">Address</p>
+          <p class="visit-detail-value">1040 North Park St #2<br>Victoria, BC</p>
+        </div>
+        <div class="visit-detail">
+          <p class="visit-detail-label">Hours</p>
+          <p class="visit-detail-value">
+            Tue – Fri: 8:00am – 3:00pm<br>
+            Saturday: 9:00am – 3:00pm<br>
+            Sunday: 9:30am – 3:00pm<br>
+            Monday: Closed
+          </p>
+        </div>
+        <div class="visit-detail">
+          <p class="visit-detail-label">Follow Us</p>
+          <p class="visit-detail-value">
+            <a href="https://www.instagram.com/wairuacafe/" target="_blank">@wairuacafe on Instagram</a>
+          </p>
+        </div>
+        <a href="https://maps.google.com/maps?q=1040+North+Park+St+Victoria+BC&z=16" target="_blank" class="visit-cta">
+          Get Directions
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+      <div class="visit-map">
+        <iframe src="https://maps.google.com/maps?q=1040+North+Park+St+Victoria+BC&output=embed" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <span class="footer-brand">WAIRUA</span>
+    <div class="footer-social">
+      <a href="https://www.instagram.com/wairuacafe/" target="_blank">Instagram</a>
+    </div>
+    <span class="footer-note">&copy; 2025 WAIRUA Cafe. All rights reserved.</span>
+  </div>
+</footer>
+
+</body>
+</html>

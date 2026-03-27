@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roast Coffee Co — Small Batch Specialty Coffee | Calgary, AB</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --color-dark: #1A1410;
+  --color-cream: #FAF3EB;
+  --color-copper: #B8612A;
+  --color-warm-gray: #6B5F54;
+  --color-alt-bg: #F0EAE0;
+  --section-pad: 96px;
+  --content-width: 1120px;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+html { scroll-behavior: smooth; }
+[id] { scroll-margin-top: 80px; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  color: var(--color-dark);
+  background: var(--color-cream);
+  font-size: 17px;
+  line-height: 1.65;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container { max-width: var(--content-width); margin: 0 auto; padding: 0 24px; }
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 20px 0;
+  background: rgba(26, 20, 16, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+nav .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo {
+  font-family: 'Instrument Serif', serif;
+  font-size: 20px;
+  color: var(--color-cream);
+  text-decoration: none;
+  letter-spacing: 0.06em;
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--color-cream);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.7;
+  transition: opacity 200ms var(--ease-out);
+}
+
+.nav-links a:hover { opacity: 1; }
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--color-cream);
+  margin: 5px 0;
+  transition: transform 300ms var(--ease-out), opacity 200ms;
+}
+
+/* HERO — full-viewport-bg */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: url('hero.png') center/cover no-repeat;
+}
+
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(26, 20, 16, 0.7) 0%,
+    rgba(26, 20, 16, 0.5) 50%,
+    rgba(26, 20, 16, 0.8) 100%
+  );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 0 24px;
+}
+
+.hero h1 {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(48px, 8vw, 96px);
+  color: var(--color-cream);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+  font-weight: 400;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--color-copper);
+}
+
+.hero-sub {
+  font-size: 18px;
+  color: rgba(250, 243, 235, 0.7);
+  max-width: 480px;
+  margin: 0 auto 40px;
+  line-height: 1.6;
+}
+
+.btn {
+  display: inline-block;
+  padding: 14px 32px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 160ms var(--ease-out), opacity 200ms var(--ease-out);
+}
+
+.btn:active { transform: scale(0.97); }
+
+.btn-primary {
+  background: var(--color-copper);
+  color: var(--color-cream);
+}
+
+.btn-primary:hover { opacity: 0.9; }
+
+.btn-outline {
+  background: transparent;
+  color: var(--color-cream);
+  border: 1px solid rgba(250, 243, 235, 0.3);
+}
+
+.btn-outline:hover { border-color: rgba(250, 243, 235, 0.6); }
+
+/* TRUST BAR */
+.trust-bar {
+  padding: 20px 0;
+  background: var(--color-dark);
+  border-bottom: 1px solid rgba(250, 243, 235, 0.08);
+}
+
+.trust-items {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-copper);
+}
+
+@media (max-width: 768px) {
+  .trust-items {
+    flex-wrap: wrap;
+    gap: 16px 32px;
+  }
+}
+
+/* INTRO */
+.intro {
+  padding: var(--section-pad) 0;
+  text-align: center;
+}
+
+/* Shared label style */
+.label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-copper);
+  margin-bottom: 16px;
+}
+
+.intro-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-copper);
+  margin-bottom: 24px;
+}
+
+.intro h2 {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 400;
+  line-height: 1.2;
+  max-width: 640px;
+  margin: 0 auto 24px;
+  letter-spacing: -0.01em;
+}
+
+.intro p {
+  max-width: 520px;
+  margin: 0 auto;
+  color: var(--color-warm-gray);
+}
+
+/* PHOTO STRIP */
+.photo-strip {
+  padding: 0 24px;
+}
+
+.photo-strip-grid {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 16px;
+}
+
+.photo-strip-grid img {
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+  display: block;
+}
+
+/* ABOUT */
+.about {
+  padding: var(--section-pad) 0;
+  background: var(--color-alt-bg);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 4fr 8fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.about-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-copper);
+  margin-bottom: 16px;
+}
+
+.about h2 {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.about-body p {
+  color: var(--color-warm-gray);
+  margin-bottom: 16px;
+}
+
+.about-body p:last-child { margin-bottom: 0; }
+
+/* QUOTE */
+.quote-section {
+  padding: var(--section-pad) 0;
+  background: var(--color-dark);
+  text-align: center;
+}
+
+.quote-section blockquote {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(24px, 3.5vw, 36px);
+  font-style: italic;
+  color: var(--color-cream);
+  line-height: 1.4;
+  max-width: 720px;
+  margin: 0 auto 24px;
+  font-weight: 400;
+}
+
+.quote-attr {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-copper);
+}
+
+/* OFFERINGS */
+.offerings {
+  padding: var(--section-pad) 0;
+}
+
+.offerings-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.offerings-header .intro-label { margin-bottom: 16px; }
+
+.offerings h2 {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.offerings-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px;
+}
+
+.offering-card {
+  text-align: center;
+}
+
+.offering-card h3 {
+  font-family: 'Instrument Serif', serif;
+  font-size: 24px;
+  font-weight: 400;
+  margin-bottom: 12px;
+}
+
+.offering-card .origin {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-copper);
+  margin-bottom: 8px;
+}
+
+.offering-card p {
+  color: var(--color-warm-gray);
+  font-size: 15px;
+}
+
+.offering-card .price {
+  margin-top: 12px;
+  font-weight: 600;
+  color: var(--color-dark);
+  font-size: 14px;
+  letter-spacing: 0.04em;
+}
+
+/* PRODUCT IMAGE */
+.product-img {
+  padding: 0;
+}
+
+/* REVIEWS */
+.reviews {
+  padding: var(--section-pad) 0;
+  background: var(--color-alt-bg);
+}
+
+.reviews-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.reviews h2 {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.review-card {
+  background: var(--color-cream);
+  padding: 32px;
+}
+
+.review-card p {
+  font-style: italic;
+  color: var(--color-dark);
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.review-attr {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-warm-gray);
+}
+
+/* VISIT */
+.visit {
+  padding: var(--section-pad) 0;
+}
+
+.visit-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.visit-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-copper);
+  margin-bottom: 16px;
+}
+
+.visit h2 {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: 32px;
+}
+
+.visit-info p {
+  color: var(--color-warm-gray);
+  margin-bottom: 8px;
+}
+
+.visit-info a {
+  color: var(--color-copper);
+  text-decoration: none;
+}
+
+.visit-info a:hover { text-decoration: underline; }
+
+.visit-hours {
+  margin-top: 32px;
+}
+
+.visit-hours h3 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-dark);
+  margin-bottom: 16px;
+}
+
+.hours-table {
+  width: 100%;
+}
+
+.hours-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  color: var(--color-warm-gray);
+  font-size: 15px;
+}
+
+.visit-map {
+  width: 100%;
+  height: 400px;
+  border: none;
+  filter: grayscale(0.3) contrast(1.1);
+}
+
+/* CTA BAND */
+.cta-band {
+  padding: var(--section-pad) 0;
+  background: var(--color-dark);
+  text-align: center;
+}
+
+.cta-band h2 {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 400;
+  color: var(--color-cream);
+  line-height: 1.2;
+  margin-bottom: 32px;
+}
+
+.cta-band .btn { margin: 0 8px; }
+
+/* FOOTER */
+footer {
+  padding: 48px 0;
+  background: var(--color-dark);
+  border-top: 1px solid rgba(250, 243, 235, 0.08);
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-logo {
+  font-family: 'Instrument Serif', serif;
+  font-size: 18px;
+  color: var(--color-cream);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+}
+
+.footer-social {
+  display: flex;
+  gap: 24px;
+}
+
+.footer-social a {
+  color: rgba(250, 243, 235, 0.5);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color 200ms var(--ease-out);
+}
+
+.footer-social a:hover { color: var(--color-cream); }
+
+.footer-copy {
+  color: rgba(250, 243, 235, 0.3);
+  font-size: 13px;
+  text-align: center;
+  margin-top: 32px;
+}
+
+/* NOISE OVERLAY */
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 999;
+  opacity: 0.035;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  :root { --section-pad: 64px; }
+
+  .nav-links { display: none; }
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(26, 20, 16, 0.98);
+    padding: 24px;
+    gap: 20px;
+  }
+  .nav-toggle { display: block; }
+
+  .photo-strip-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .photo-strip-grid img { height: 240px; }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .offerings-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .reviews-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .visit-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .visit-map { height: 280px; }
+
+  .footer-content {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+}
+
+/* SCROLL REVEAL — visible by default, JS adds animation */
+.fade-in {
+  opacity: 1;
+  transform: none;
+}
+
+.fade-in.sr-init {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+}
+
+.fade-in.sr-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Stagger children */
+.stagger-children.sr-visible > * {
+  opacity: 0;
+  transform: translateY(16px);
+  animation: stagger-in 500ms var(--ease-out) forwards;
+}
+
+.stagger-children.sr-visible > *:nth-child(1) { animation-delay: 0ms; }
+.stagger-children.sr-visible > *:nth-child(2) { animation-delay: 60ms; }
+.stagger-children.sr-visible > *:nth-child(3) { animation-delay: 120ms; }
+.stagger-children.sr-visible > *:nth-child(4) { animation-delay: 180ms; }
+
+@keyframes stagger-in {
+  to { opacity: 1; transform: none; }
+}
+
+/* Hero entrance */
+.hero-content {
+  opacity: 0;
+  transform: translateY(24px);
+  animation: hero-enter 800ms var(--ease-out) 300ms forwards;
+}
+
+@keyframes hero-enter {
+  to { opacity: 1; transform: none; }
+}
+
+/* Nav link underline */
+.nav-links a {
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--color-cream);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 250ms var(--ease-out);
+}
+
+.nav-links a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-in.sr-init {
+    opacity: 1;
+    transform: none;
+    transition: none !important;
+  }
+  .hero-content {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+  .stagger-children.sr-visible > * {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- Noise overlay -->
+<svg class="noise-overlay" width="100%" height="100%">
+  <filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="4" stitchTiles="stitch"/></filter>
+  <rect width="100%" height="100%" filter="url(#noise)"/>
+</svg>
+
+<!-- Nav -->
+<nav>
+  <div class="container">
+    <a href="#" class="nav-logo">Roast Coffee Co</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#offerings">Offerings</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#visit">Visit</a></li>
+    </ul>
+    <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <h1>We Don't Blend.<br>We Don't <em>Rush.</em></h1>
+    <p class="hero-sub">Single-origin beans, roasted weekly in Calgary. Every bag is a limited run.</p>
+    <a href="#offerings" class="btn btn-primary">See This Week's Roast</a>
+  </div>
+</section>
+
+<!-- Trust Bar -->
+<section class="trust-bar fade-in">
+  <div class="container">
+    <div class="trust-items fade-in stagger-children">
+      <span>Roasted Weekly</span>
+      <span>Single Origin Only</span>
+      <span>Seasonal Rotations</span>
+      <span>Zero Blends</span>
+    </div>
+  </div>
+</section>
+
+<!-- Photo Strip -->
+<section class="photo-strip fade-in">
+  <div class="photo-strip-grid">
+    <img src="beans.png" alt="Green coffee beans being sorted before roasting">
+    <img src="pourover.png" alt="Pour-over coffee brewing">
+  </div>
+</section>
+
+<!-- About -->
+<section class="about fade-in" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div>
+        <p class="about-label">The Roastery</p>
+        <h2>Fewer beans, more attention.</h2>
+      </div>
+      <div class="about-body">
+        <p>Most roasters blend to create consistency. We don't. Every bag is a single origin, roasted in small batches the same week it ships. You taste the farm, the altitude, the season.</p>
+        <p>Our menu rotates. When a harvest is gone, it's gone. That's not scarcity marketing. That's how coffee actually works when you pay attention to it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Quote -->
+<section class="quote-section fade-in">
+  <div class="container">
+    <blockquote>"I stopped buying grocery store coffee. Once you taste what fresh-roasted single origin is like, there's no going back."</blockquote>
+    <p class="quote-attr">Sarah M. · January 2025 · Via Google</p>
+  </div>
+</section>
+
+<!-- Offerings -->
+<section class="offerings fade-in" id="offerings">
+  <div class="container">
+    <div class="offerings-header">
+      <p class="intro-label">This Week's Drop</p>
+      <h2>Three origins. Limited bags. Gone when they're gone.</h2>
+    </div>
+    <div class="offerings-grid fade-in stagger-children">
+      <div class="offering-card">
+        <p class="origin">Ethiopia · Yirgacheffe</p>
+        <h3>Bright Side</h3>
+        <p>Citrus, jasmine, black tea. A light roast that wakes up quietly and sticks around.</p>
+        <p class="price">$22 · 340g</p>
+      </div>
+      <div class="offering-card">
+        <p class="origin">Colombia · Huila</p>
+        <h3>Steady State</h3>
+        <p>Caramel, red apple, brown sugar. Our most approachable medium roast.</p>
+        <p class="price">$20 · 340g</p>
+      </div>
+      <div class="offering-card">
+        <p class="origin">Guatemala · Antigua</p>
+        <h3>Basecamp</h3>
+        <p>Dark chocolate, walnut, smoky. Full-bodied dark roast for people who mean it.</p>
+        <p class="price">$21 · 340g</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Product Image -->
+<section class="product-img fade-in">
+  <div class="container">
+    <img src="bag.png" alt="Roast Coffee Co bag next to a fresh cup" style="width: 100%; height: 400px; object-fit: cover; display: block;">
+  </div>
+</section>
+
+<!-- Reviews -->
+<section class="reviews fade-in" id="reviews">
+  <div class="container">
+    <div class="reviews-header">
+      <p class="intro-label">What People Say</p>
+      <h2>Word gets around.</h2>
+    </div>
+    <div class="reviews-grid fade-in stagger-children">
+      <div class="review-card">
+        <p>"Best coffee in Calgary and it's not even close. The Ethiopian is unreal. I buy two bags at a time now."</p>
+        <span class="review-attr">James T. · March 2025 · Via Google</span>
+      </div>
+      <div class="review-card">
+        <p>"Finally, a local roaster that lets the coffee taste like coffee. No flavoring, no gimmicks. Just good beans done right."</p>
+        <span class="review-attr">Michelle R. · February 2025 · Via Google</span>
+      </div>
+      <div class="review-card">
+        <p>"Switched from the big chains and I can't go back. The seasonal rotations keep things interesting. Genuinely look forward to new drops."</p>
+        <span class="review-attr">Dan K. · December 2024 · Via Google</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Visit -->
+<section class="visit fade-in" id="visit">
+  <div class="container">
+    <div class="visit-grid">
+      <div class="visit-info">
+        <p class="visit-label">Come Say Hello</p>
+        <h2>Find us in Calgary.</h2>
+        <p>Roast Coffee Co<br>Calgary, AB</p>
+        <p><a href="https://www.instagram.com/roastcoffeeco/" target="_blank" rel="noopener">@roastcoffeeco</a></p>
+        <div class="visit-hours">
+          <h3>Hours</h3>
+          <div class="hours-table">
+            <div class="hours-row"><span>Monday — Friday</span><span>7:00 AM — 5:00 PM</span></div>
+            <div class="hours-row"><span>Saturday</span><span>8:00 AM — 4:00 PM</span></div>
+            <div class="hours-row"><span>Sunday</span><span>Closed</span></div>
+          </div>
+        </div>
+      </div>
+      <iframe class="visit-map" src="https://maps.google.com/maps?q=Roast+Coffee+Co+Calgary+AB&output=embed" loading="lazy" title="Map to Roast Coffee Co"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Band -->
+<section class="cta-band fade-in">
+  <div class="container">
+    <h2>Life's too short for<br>stale coffee.</h2>
+    <a href="https://www.instagram.com/roastcoffeeco/" target="_blank" rel="noopener" class="btn btn-primary">Follow @roastcoffeeco</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <a href="#" class="footer-logo">Roast Coffee Co</a>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/roastcoffeeco/" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+    <p class="footer-copy">&copy; 2025 Roast Coffee Co. Calgary, AB.</p>
+  </div>
+</footer>
+
+<script>
+// Scroll reveal
+(function() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const els = document.querySelectorAll('.fade-in');
+  els.forEach(el => el.classList.add('sr-init'));
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('sr-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+  els.forEach(el => observer.observe(el));
+})();
+</script>
+</body>
+</html>

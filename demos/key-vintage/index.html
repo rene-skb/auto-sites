@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Key Vintage — Victoria, BC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --cream: #FAF7F2;
+  --off-white: #F5F3EF;
+  --warm-black: #1A1A18;
+  --warm-gray: #6B6560;
+  --amber: #D4870F;
+  --amber-light: #FBF0DC;
+  --alt-bg: #F0EBE3;
+  --section-pad: 96px;
+  --content-width: 960px;
+  --ls-label: 0.08em;
+  --ls-heading: -0.02em;
+  --ls-caps: 0.14em;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  color: var(--warm-black);
+  background: var(--cream);
+  line-height: 1.7;
+  font-size: 17px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Noise texture */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+a { color: inherit; }
+
+.section-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--ls-caps);
+  color: var(--warm-gray);
+  margin-bottom: 16px;
+}
+
+h2 {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: var(--ls-heading);
+  margin-bottom: 24px;
+}
+
+/* ==================== NAV ==================== */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  background: rgba(250, 247, 242, 0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(26, 26, 24, 0.06);
+}
+
+.nav-inner {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-brand {
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.nav-links { display: flex; gap: 28px; list-style: none; }
+.nav-links a {
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--warm-gray);
+  transition: color 200ms var(--ease-out);
+}
+.nav-links a:hover { color: var(--warm-black); }
+
+.nav-cta {
+  background: var(--warm-black);
+  color: var(--cream) !important;
+  padding: 8px 20px;
+  border-radius: 4px;
+  transition: transform 160ms var(--ease-out);
+}
+.nav-cta:active { transform: scale(0.97); }
+
+.hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+.hamburger span { display: block; width: 20px; height: 2px; background: var(--warm-black); margin: 4px 0; transition: all 200ms; }
+
+/* ==================== HERO ==================== */
+.hero {
+  padding: calc(var(--section-pad) + 72px) 24px var(--section-pad);
+  max-width: var(--content-width);
+  margin: 0 auto;
+  border-left: 3px solid var(--amber);
+  padding-left: 40px;
+}
+
+.hero-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--ls-caps);
+  color: var(--amber);
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: var(--ls-heading);
+  margin-bottom: 24px;
+}
+
+.hero-body {
+  font-size: 1.125rem;
+  color: var(--warm-gray);
+  max-width: 540px;
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+
+.hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+.cta-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--warm-black);
+  color: var(--cream);
+  padding: 14px 28px;
+  text-decoration: none;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  border-radius: 4px;
+  transition: transform 160ms var(--ease-out);
+}
+.cta-primary:active { transform: scale(0.97); }
+
+.cta-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--warm-black);
+  padding: 14px 28px;
+  text-decoration: none;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  border: 1px solid rgba(26, 26, 24, 0.15);
+  border-radius: 4px;
+  transition: transform 160ms var(--ease-out);
+}
+.cta-secondary:active { transform: scale(0.97); }
+
+/* ==================== TRUST BAR ==================== */
+.trust-bar {
+  background: var(--warm-black);
+  color: var(--cream);
+  padding: 28px 24px;
+}
+
+.trust-bar-inner {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+
+.trust-stat {
+  text-align: center;
+}
+
+.trust-number {
+  font-size: 1.375rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin-bottom: 2px;
+}
+
+.trust-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: var(--ls-caps);
+  opacity: 0.6;
+}
+
+/* ==================== PHOTO STRIP ==================== */
+.photo-strip {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 4px;
+  max-width: 100%;
+}
+
+.photo-strip-large {
+  aspect-ratio: 16/9;
+  background: linear-gradient(135deg, #D4870F22, #8B6F4E33);
+  position: relative;
+  overflow: hidden;
+}
+
+.photo-strip-stack {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 4px;
+}
+
+.photo-strip-small {
+  background: linear-gradient(135deg, #6B656022, #D4870F11);
+  position: relative;
+  overflow: hidden;
+}
+
+.photo-strip img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ==================== ABOUT ==================== */
+.about {
+  padding: var(--section-pad) 24px;
+  max-width: var(--content-width);
+  margin: 0 auto;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.about-quote {
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.5rem;
+  font-style: italic;
+  line-height: 1.4;
+  color: var(--warm-black);
+  margin-bottom: 24px;
+}
+
+.about-quote-attr {
+  font-size: 0.8125rem;
+  color: var(--warm-gray);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-caps);
+}
+
+.about-text p {
+  margin-bottom: 16px;
+  color: var(--warm-gray);
+}
+
+/* ==================== NAME MEANING ==================== */
+.name-section {
+  padding: 120px 24px;
+  background: var(--alt-bg);
+  text-align: center;
+}
+
+.name-section h2 {
+  max-width: 640px;
+  margin: 0 auto 16px;
+  letter-spacing: var(--ls-heading);
+}
+
+.name-section p {
+  max-width: 520px;
+  margin: 0 auto;
+  color: var(--warm-gray);
+  font-size: 1rem;
+}
+
+/* ==================== WHAT YOU'LL FIND ==================== */
+.find {
+  padding: var(--section-pad) 24px;
+  max-width: var(--content-width);
+  margin: 0 auto;
+}
+
+.find-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.find-card {
+  padding: 32px;
+  border: 1px solid rgba(26, 26, 24, 0.08);
+  border-radius: 4px;
+  position: relative;
+}
+
+.find-number {
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.5rem;
+  color: rgba(26, 26, 24, 0.1);
+  margin-bottom: 12px;
+}
+
+.find-card h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  letter-spacing: 0.02em;
+}
+
+.find-card p {
+  font-size: 0.9375rem;
+  color: var(--warm-gray);
+  line-height: 1.6;
+}
+
+/* ==================== PRESS ==================== */
+.press {
+  padding: var(--section-pad) 24px;
+  background: var(--amber);
+  color: var(--warm-black);
+}
+
+.press-inner {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.press-quote {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  font-style: normal;
+  line-height: 1.5;
+  max-width: 640px;
+  margin: 0 auto 20px;
+  position: relative;
+}
+
+.press-quote::before {
+  content: '\201C';
+  font-family: 'Instrument Serif', serif;
+  font-size: 5rem;
+  position: absolute;
+  top: -40px;
+  left: -20px;
+  opacity: 0.2;
+  line-height: 1;
+}
+
+.press-attr {
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: var(--ls-caps);
+  font-weight: 600;
+  opacity: 0.7;
+}
+
+/* ==================== REVIEWS ==================== */
+.reviews {
+  padding: var(--section-pad) 24px;
+  max-width: var(--content-width);
+  margin: 0 auto;
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.review-card {
+  padding: 28px;
+  background: var(--off-white);
+  border-radius: 4px;
+}
+
+.review-card.featured {
+  background: var(--warm-black);
+  color: var(--cream);
+  transform: translateY(-8px);
+}
+
+.review-stars {
+  font-size: 0.875rem;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+  color: var(--amber);
+}
+
+.review-card.featured .review-stars { color: var(--amber); }
+
+.review-text {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.review-card.featured .review-text { color: rgba(250, 247, 242, 0.85); }
+
+.review-attr {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: var(--ls-caps);
+  color: var(--warm-gray);
+}
+
+.review-card.featured .review-attr { color: rgba(250, 247, 242, 0.5); }
+
+/* ==================== EXTERIOR PHOTO ==================== */
+.exterior-photo {
+  width: 100%;
+  aspect-ratio: 21/9;
+  background: linear-gradient(135deg, #D4870F11, #6B656022);
+  position: relative;
+  overflow: hidden;
+}
+
+.exterior-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ==================== VISIT ==================== */
+.visit {
+  padding: var(--section-pad) 24px;
+  max-width: var(--content-width);
+  margin: 0 auto;
+}
+
+.visit-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  margin-top: 40px;
+}
+
+.visit-info h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--ls-label);
+  margin-bottom: 12px;
+  margin-top: 28px;
+}
+
+.visit-info h3:first-child { margin-top: 0; }
+
+.visit-info p, .visit-info address {
+  font-style: normal;
+  color: var(--warm-gray);
+  font-size: 0.9375rem;
+  line-height: 1.7;
+}
+
+.visit-map {
+  border-radius: 4px;
+  overflow: hidden;
+  aspect-ratio: 1;
+}
+
+.visit-map iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  filter: grayscale(0.3);
+}
+
+.hours-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.hours-table td {
+  padding: 6px 0;
+  font-size: 0.9375rem;
+  color: var(--warm-gray);
+}
+
+.hours-table td:last-child { text-align: right; }
+
+/* ==================== CTA BAND ==================== */
+.cta-band {
+  padding: 64px 24px;
+  background: var(--warm-black);
+  color: var(--cream);
+  text-align: center;
+}
+
+.cta-band h2 {
+  color: var(--cream);
+  margin-bottom: 8px;
+  letter-spacing: var(--ls-heading);
+}
+
+.cta-band p {
+  color: rgba(250, 247, 242, 0.6);
+  margin-bottom: 28px;
+  font-size: 1rem;
+}
+
+.cta-band .cta-primary {
+  background: var(--cream);
+  color: var(--warm-black);
+}
+
+/* ==================== FOOTER ==================== */
+footer {
+  padding: 40px 24px;
+  border-top: 1px solid rgba(26, 26, 24, 0.06);
+}
+
+.footer-inner {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-brand {
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+}
+
+.footer-links a {
+  text-decoration: none;
+  font-size: 0.8125rem;
+  color: var(--warm-gray);
+  letter-spacing: 0.04em;
+}
+
+.footer-copy {
+  width: 100%;
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--warm-gray);
+  margin-top: 24px;
+}
+
+/* ==================== MOBILE ==================== */
+@media (max-width: 768px) {
+  :root { --section-pad: 64px; }
+
+  .nav-links { display: none; }
+  .hamburger { display: block; }
+
+  .nav-links.active {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--cream);
+    padding: 24px;
+    gap: 16px;
+    border-bottom: 1px solid rgba(26, 26, 24, 0.06);
+  }
+
+  .hero {
+    padding-left: 24px;
+    border-left: none;
+    border-top: 3px solid var(--amber);
+    padding-top: calc(var(--section-pad) + 72px);
+  }
+
+  .hero h1 { font-size: clamp(2rem, 8vw, 3rem); }
+
+  .hero-ctas { flex-direction: column; }
+  .cta-primary, .cta-secondary { text-align: center; justify-content: center; }
+
+  .photo-strip { grid-template-columns: 1fr; }
+  .photo-strip-stack { grid-template-columns: 1fr 1fr; }
+
+  .about-grid { grid-template-columns: 1fr; gap: 32px; }
+  .find-grid { grid-template-columns: 1fr; }
+  .reviews-grid { grid-template-columns: 1fr; }
+  .review-card.featured { transform: none; }
+  .visit-grid { grid-template-columns: 1fr; }
+
+  .trust-bar-inner { gap: 24px; }
+
+  .footer-inner { justify-content: center; text-align: center; }
+}
+
+/* Scroll margin for nav */
+section[id] { scroll-margin-top: 72px; }
+
+/* Fade-in defaults — visible without JS */
+.fade-in { opacity: 1; transform: none; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .fade-in { transition: none !important; }
+}
+
+/* Noscript fallback */
+noscript .fade-in { opacity: 1; transform: none; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">Key Vintage</a>
+    <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('active')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#find">What We Carry</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#visit" class="nav-cta">Get Directions</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="hero-label">614 Johnson Street · Victoria, BC</p>
+  <h1>They Were 19, 20, and 21. They Opened a Store Instead.</h1>
+  <p class="hero-body">Three childhood friends skipped student life for store life. Key Vintage is their bet on downtown Victoria — hand-picked clothing and accessories from every decade, new stock daily. No filler. No bulk buys. Just the pieces worth keeping.</p>
+  <div class="hero-ctas">
+    <a href="https://www.instagram.com/keyvintage.ca/" target="_blank" rel="noopener" class="cta-primary">Follow @keyvintage.ca</a>
+    <a href="https://maps.google.com/maps?q=614+Johnson+St+Victoria+BC" target="_blank" rel="noopener" class="cta-secondary">Get Directions</a>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-bar-inner">
+    <div class="trust-stat">
+      <div class="trust-number">Open Daily</div>
+      <div class="trust-label">11 AM – 7 PM</div>
+    </div>
+    <div class="trust-stat">
+      <div class="trust-number">Johnson St</div>
+      <div class="trust-label">Victoria's Vintage Strip</div>
+    </div>
+    <div class="trust-stat">
+      <div class="trust-number">Est. 2025</div>
+      <div class="trust-label">By Three Friends</div>
+    </div>
+  </div>
+</div>
+
+<!-- PHOTO STRIP -->
+<div class="photo-strip">
+  <div class="photo-strip-large"><img src="hero.png" alt="Vintage clothing racks at Key Vintage" loading="lazy"></div>
+  <div class="photo-strip-stack">
+    <div class="photo-strip-small"><img src="jacket.png" alt="Vintage leather jacket on wooden hanger" loading="lazy"></div>
+    <div class="photo-strip-small"><img src="accessories.png" alt="Vintage accessories flat lay" loading="lazy"></div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about" class="about">
+  <div class="about-grid">
+    <div>
+      <p class="section-label">The Story</p>
+      <h2>Everyone Saw Empty Storefronts. They Saw an Opening.</h2>
+    </div>
+    <div>
+      <p class="about-quote">"We're on the hook for nearly $10,000 a month in downtown rent. But look at this block — it's happening."</p>
+      <p class="about-quote-attr">Brady Oneill, 21 — Victoria News</p>
+      <div class="about-text">
+        <p>Brady was 21. Gideon was 20. Daniel was 19. While their friends started university, they signed a lease on Johnson Street. The 600 block was already becoming something — Second Degree Vintage, Lonely Roads, Goodnews Skateshop — and they wanted in.</p>
+        <p>Every piece in the shop is sourced by hand. They know the difference between vintage and old. Between rare and overpriced. Between a find and a reject. That eye is the whole business.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NAME SECTION -->
+<section class="name-section">
+  <p class="section-label">The Name</p>
+  <h2>The Key Piece Changes Everything</h2>
+  <p>One jacket. One find you didn't know you needed until you tried it on. That's the key piece — the one that makes the whole fit click. They hunt for those pieces every single day so you can walk in and find yours.</p>
+</section>
+
+<!-- WHAT YOU'LL FIND -->
+<section id="find" class="find">
+  <p class="section-label">What We Carry</p>
+  <h2>Curated, Not Collected</h2>
+  <div class="find-grid">
+    <div class="find-card">
+      <div class="find-number">01</div>
+      <h3>The Racks</h3>
+      <p>70s corduroy, 80s band tees, 90s streetwear, Y2K pieces. Every era, hand-sourced. New stock daily.</p>
+    </div>
+    <div class="find-card">
+      <div class="find-number">02</div>
+      <h3>The Jackets</h3>
+      <p>Leather, varsity, denim, parkas. The kind you see someone wearing and ask where they got it.</p>
+    </div>
+    <div class="find-card">
+      <div class="find-number">03</div>
+      <h3>The Details</h3>
+      <p>Hats, bags, belts, chains. The pieces that take a fit from "I got dressed" to "I got style."</p>
+    </div>
+    <div class="find-card">
+      <div class="find-number">04</div>
+      <h3>The Kicks</h3>
+      <p>Vintage sneakers, boots, loafers. Already broken in, already impossible to find online.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRESS -->
+<section class="press">
+  <div class="press-inner">
+    <p class="section-label">In the Press</p>
+    <blockquote class="press-quote">Three childhood friends just turned a shared dream into reality with the launch of Key Vintage... The trio are the newest and youngest faces on a street quickly becoming a magnet for trendsetters.</blockquote>
+    <p class="press-attr">Victoria News · June 2025</p>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews" class="reviews">
+  <p class="section-label">What People Say</p>
+  <h2>Straight from the Community</h2>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">Charming vintage store with a friendly atmosphere and a curated selection of unique clothing and accessories.</p>
+      <p class="review-attr">Via Community Reviews</p>
+    </div>
+    <div class="review-card featured">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">The newest and youngest faces on a street quickly becoming a magnet for trendsetters.</p>
+      <p class="review-attr">Victoria News · June 2025</p>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">Part of the 600-block of Johnson that's seeing its own burst of style and creativity.</p>
+      <p class="review-attr">Victoria Buzz · July 2025</p>
+    </div>
+  </div>
+</section>
+
+<!-- EXTERIOR PHOTO -->
+<div class="exterior-photo"><img src="storefront.png" alt="Key Vintage storefront on Johnson Street" loading="lazy"></div>
+
+<!-- VISIT -->
+<section id="visit" class="visit">
+  <p class="section-label">Visit Us</p>
+  <h2>Find Us on Johnson Street</h2>
+  <div class="visit-grid">
+    <div class="visit-info">
+      <h3>Address</h3>
+      <address>614 Johnson Street<br>Victoria, BC V8V 1M4</address>
+
+      <h3>Phone</h3>
+      <p><a href="tel:+12365620427">236-562-0427</a></p>
+
+      <h3>Hours</h3>
+      <table class="hours-table">
+        <tr><td>Monday</td><td>11 AM – 7 PM</td></tr>
+        <tr><td>Tuesday</td><td>11 AM – 7 PM</td></tr>
+        <tr><td>Wednesday</td><td>11 AM – 7 PM</td></tr>
+        <tr><td>Thursday</td><td>11 AM – 7 PM</td></tr>
+        <tr><td>Friday</td><td>11 AM – 7 PM</td></tr>
+        <tr><td>Saturday</td><td>11 AM – 7 PM</td></tr>
+        <tr><td>Sunday</td><td>11 AM – 7 PM</td></tr>
+      </table>
+
+      <h3>Follow</h3>
+      <p><a href="https://www.instagram.com/keyvintage.ca/" target="_blank" rel="noopener">@keyvintage.ca on Instagram</a></p>
+    </div>
+    <div class="visit-map">
+      <iframe src="https://maps.google.com/maps?q=614+Johnson+St+Victoria+BC&output=embed" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<div class="cta-band">
+  <h2>New Finds Every Day</h2>
+  <p>Follow us on Instagram for daily drops and first dibs.</p>
+  <a href="https://www.instagram.com/keyvintage.ca/" target="_blank" rel="noopener" class="cta-primary">Follow @keyvintage.ca</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">Key Vintage</div>
+    <ul class="footer-links">
+      <li><a href="https://www.instagram.com/keyvintage.ca/" target="_blank" rel="noopener">Instagram</a></li>
+      <li><a href="tel:+12365620427">236-562-0427</a></li>
+      <li><a href="https://maps.google.com/maps?q=614+Johnson+St+Victoria+BC" target="_blank" rel="noopener">Directions</a></li>
+    </ul>
+    <p class="footer-copy">© 2025 Key Vintage. 614 Johnson Street, Victoria, BC.</p>
+  </div>
+</footer>
+
+<noscript>
+<style>.fade-in { opacity: 1 !important; transform: none !important; }</style>
+</noscript>
+
+</body>
+</html>

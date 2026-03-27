@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tarboosh — Middle Eastern Street Food | Esquimalt, Victoria BC</title>
+  <meta name="description" content="Authentic Middle Eastern street food made from scratch. Crispy falafel, tender shawarma, freshly baked pita. Family-run food truck in Esquimalt, Victoria BC.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #F5F0E8;
+      --warm-white: #FDFBF7;
+      --charcoal: #2A2420;
+      --deep-red: #8B2E1F;
+      --terracotta: #C4613A;
+      --gold: #C5963A;
+      --sage: #6B7B5E;
+      --warm-gray: #9A9088;
+      --light-border: rgba(42, 36, 32, 0.08);
+
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+
+      --ls-nav: 0.04em;
+      --ls-label: 0.08em;
+      --ls-micro: 0.06em;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { 
+      font-size: 16px; 
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      color: var(--charcoal);
+      background: var(--warm-white);
+      line-height: 1.65;
+    }
+
+    /* Noise overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    img { display: block; max-width: 100%; height: auto; }
+
+    /* Entrance animation */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .opening-label { animation: fadeUp 600ms var(--ease-out) both; animation-delay: 100ms; }
+    .opening h1 { animation: fadeUp 600ms var(--ease-out) both; animation-delay: 200ms; }
+    .opening-line { animation: fadeUp 600ms var(--ease-out) both; animation-delay: 350ms; }
+    .opening-sub { animation: fadeUp 600ms var(--ease-out) both; animation-delay: 450ms; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(253, 251, 247, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--light-border);
+    }
+
+    .nav-brand {
+      font-family: 'Instrument Serif', serif;
+      font-size: 1.5rem;
+      color: var(--charcoal);
+      text-decoration: none;
+      letter-spacing: var(--ls-nav);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--warm-gray);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: var(--ls-label);
+      transition: color 200ms var(--ease-out);
+    }
+
+    .nav-links a:hover { color: var(--charcoal); }
+
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--charcoal);
+      margin: 5px 0;
+      transition: all 200ms var(--ease-out);
+    }
+
+    /* ── OPENING: TYPE-DRIVEN ── */
+    .opening {
+      padding: 180px 40px 48px;
+      text-align: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .opening-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: var(--ls-label);
+      color: var(--terracotta);
+      margin-bottom: 24px;
+    }
+
+    .opening h1 {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(3.5rem, 10vw, 8rem);
+      font-weight: 400;
+      line-height: 0.95;
+      color: var(--charcoal);
+      margin-bottom: 24px;
+    }
+
+    .opening h1 em {
+      font-style: italic;
+      color: var(--terracotta);
+    }
+
+    .opening-line {
+      width: 48px;
+      height: 3px;
+      background: var(--terracotta);
+      margin: 28px auto;
+      border-radius: 2px;
+    }
+
+    .opening-sub {
+      font-size: 1.15rem;
+      color: var(--warm-gray);
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.65;
+    }
+
+    /* ── TRUCK PHOTO ── */
+    .truck-photo {
+      padding: 40px 40px 0;
+    }
+
+    .truck-photo img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+
+    /* ── STORY (EDITORIAL SPLIT) ── */
+    .story {
+      padding: 96px 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+      align-items: center;
+    }
+
+    .story-image {
+      position: relative;
+    }
+
+    .story-image img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+
+    .story-image::after {
+      content: '';
+      position: absolute;
+      bottom: -16px;
+      right: -16px;
+      width: 120px;
+      height: 120px;
+      border: 2px solid var(--gold);
+      border-radius: 4px;
+      z-index: -1;
+    }
+
+    .story-text {
+      padding: 24px 0;
+    }
+
+    .story-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: var(--ls-label);
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .story-text h2 {
+      font-family: 'Instrument Serif', serif;
+      font-size: 2.5rem;
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 24px;
+    }
+
+    .story-text h2 em {
+      font-style: italic;
+      color: var(--terracotta);
+    }
+
+    .story-text p {
+      color: var(--warm-gray);
+      font-size: 1rem;
+      margin-bottom: 16px;
+      line-height: 1.65;
+    }
+
+    .story-text p:last-of-type { margin-bottom: 0; }
+
+    /* ── NAME MEANING (DARK BAND) ── */
+    .name-section {
+      background: var(--charcoal);
+      padding: 96px 40px;
+      text-align: center;
+    }
+
+    .name-section .fez-icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 24px;
+    }
+
+    .name-section blockquote {
+      font-family: 'Instrument Serif', serif;
+      font-size: 1.75rem;
+      font-style: italic;
+      color: var(--cream);
+      max-width: 640px;
+      margin: 0 auto 16px;
+      line-height: 1.5; /* display text: slightly tighter than body (1.65) */
+    }
+
+    .name-section .attribution {
+      font-size: 0.85rem;
+      color: var(--warm-gray);
+      letter-spacing: var(--ls-micro);
+    }
+
+    /* ── SECTION DIVIDER ── */
+    .fez-divider {
+      text-align: center;
+      padding: 8px 0;
+      color: var(--terracotta);
+      opacity: 0.3;
+      font-size: 1.2rem;
+    }
+
+    /* ── FOOD PHOTO STRIP ── */
+    .food-strip-header {
+      text-align: center;
+      padding: 96px 40px 32px;
+    }
+
+    .food-strip-header h2 {
+      font-family: 'Instrument Serif', serif;
+      font-size: 2rem;
+      font-weight: 400;
+      color: var(--charcoal);
+    }
+
+    .food-strip-header p {
+      font-size: 0.9rem;
+      color: var(--warm-gray);
+      margin-top: 8px;
+    }
+
+    .food-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4px;
+      padding: 0 40px;
+      margin-top: 0;
+    }
+
+    .food-strip-item {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .food-strip-item img {
+      width: 100%;
+      height: 360px;
+      object-fit: cover;
+    }
+
+    .food-strip-label {
+      position: absolute;
+      bottom: 16px;
+      left: 16px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: var(--ls-label);
+      color: white;
+      background: rgba(42, 36, 32, 0.7);
+      backdrop-filter: blur(4px);
+      padding: 6px 14px;
+      border-radius: 2px;
+    }
+
+    /* ── MENU FAVOURITES ── */
+    .menu {
+      background: var(--cream);
+      padding: 96px 40px;
+    }
+
+    .menu-inner {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .menu-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .menu-header .label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: var(--ls-label);
+      color: var(--terracotta);
+      margin-bottom: 12px;
+    }
+
+    .menu-header h2 {
+      font-family: 'Instrument Serif', serif;
+      font-size: 2.5rem;
+      font-weight: 400;
+      line-height: 1.15;
+    }
+
+    .menu-header p {
+      color: var(--warm-gray);
+      font-size: 0.95rem;
+      margin-top: 12px;
+      line-height: 1.65;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .menu-category {
+      margin-bottom: 40px;
+    }
+
+    .menu-category-title {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: var(--ls-label);
+      color: var(--gold);
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(42, 36, 32, 0.1);
+      margin-bottom: 16px;
+    }
+
+    .menu-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(42, 36, 32, 0.06);
+    }
+
+    .menu-item:last-child { border-bottom: none; }
+
+    .menu-item-name {
+      font-weight: 500;
+      font-size: 1rem;
+    }
+
+    .menu-item-desc {
+      font-size: 0.85rem;
+      color: var(--warm-gray);
+      margin-top: 4px;
+      line-height: 1.65;
+    }
+
+    .menu-note {
+      text-align: center;
+      margin-top: 32px;
+      font-size: 0.85rem;
+      color: var(--warm-gray);
+    }
+
+    .menu-note a {
+      color: var(--terracotta);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 200ms var(--ease-out);
+    }
+
+    .menu-note a:hover { color: var(--deep-red); }
+
+    /* ── TRUST BAR ── */
+    .trust {
+      padding: 48px 40px;
+      border-top: 1px solid var(--light-border);
+      border-bottom: 1px solid var(--light-border);
+    }
+
+    .trust-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+
+    .trust-item {
+      text-align: center;
+    }
+
+    .trust-value {
+      font-family: 'Instrument Serif', serif;
+      font-size: 1.5rem;
+      color: var(--charcoal);
+    }
+
+    .trust-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: var(--ls-label);
+      color: var(--warm-gray);
+      margin-top: 4px;
+    }
+
+    .trust-divider {
+      width: 1px;
+      height: 40px;
+      background: var(--light-border);
+    }
+
+    /* ── FEATURED ON ── */
+    .featured {
+      padding: 96px 40px;
+      text-align: center;
+    }
+
+    .featured-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: var(--ls-label);
+      color: var(--warm-gray);
+      margin-bottom: 16px;
+    }
+
+    .featured-quote {
+      font-family: 'Instrument Serif', serif;
+      font-size: 1.35rem;
+      font-style: italic;
+      color: var(--charcoal);
+      max-width: 560px;
+      margin: 0 auto 12px;
+      line-height: 1.5;
+    }
+
+    .featured-source {
+      font-size: 0.8rem;
+      color: var(--warm-gray);
+      letter-spacing: var(--ls-micro);
+    }
+
+    /* ── FIND US ── */
+    .find-us {
+      background: var(--charcoal);
+      padding: 96px 40px;
+    }
+
+    .find-us-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .find-us-info h2 {
+      font-family: 'Instrument Serif', serif;
+      font-size: 2.5rem;
+      font-weight: 400;
+      color: var(--cream);
+      margin-bottom: 32px;
+    }
+
+    .find-us-detail {
+      margin-bottom: 24px;
+    }
+
+    .find-us-detail-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: var(--ls-label);
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .find-us-detail p,
+    .find-us-detail a {
+      color: var(--cream);
+      font-size: 1rem;
+      text-decoration: none;
+      line-height: 1.65;
+    }
+
+    .find-us-detail a:hover {
+      color: var(--gold);
+    }
+
+    .find-us-cta {
+      margin-top: 32px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 32px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: var(--ls-label);
+      text-decoration: none;
+      border-radius: 3px;
+      transition: transform 160ms var(--ease-out), background 200ms var(--ease-out);
+    }
+
+    .btn:active { transform: scale(0.97); }
+
+    .btn-primary {
+      background: var(--terracotta);
+      color: white;
+    }
+
+    .btn-primary:hover { background: var(--deep-red); }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--cream);
+      border: 1px solid rgba(245, 240, 232, 0.3);
+      margin-left: 12px;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--cream);
+    }
+
+    .find-us-map {
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .find-us-map iframe {
+      width: 100%;
+      height: 380px;
+      border: 0;
+      filter: grayscale(0.2) contrast(1.05);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 32px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--light-border);
+    }
+
+    .footer-brand {
+      font-family: 'Instrument Serif', serif;
+      font-size: 1.5rem;
+      color: var(--charcoal);
+      letter-spacing: var(--ls-nav);
+    }
+
+    .footer-right {
+      font-size: 0.8rem;
+      color: var(--warm-gray);
+    }
+
+    .footer-right a {
+      color: var(--warm-gray);
+      text-decoration: none;
+      transition: color 200ms var(--ease-out);
+    }
+
+    .footer-right a:hover { color: var(--charcoal); }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      nav { padding: 16px 24px; }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(253, 251, 247, 0.97);
+        backdrop-filter: blur(12px);
+        flex-direction: column;
+        padding: 24px;
+        gap: 20px;
+        border-bottom: 1px solid var(--light-border);
+      }
+
+      .nav-links.open { display: flex; }
+
+      .hamburger { display: block; }
+
+      .opening { padding: 120px 24px 32px; }
+      .opening h1 { font-size: clamp(2.5rem, 12vw, 4.5rem); }
+
+      .truck-photo { padding: 24px; }
+      .truck-photo img { height: 280px; }
+
+      .story {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 64px 24px;
+      }
+
+      .story-image img { height: 320px; }
+      .story-image::after { display: none; }
+
+      .name-section { padding: 64px 24px; }
+      .name-section blockquote { font-size: 1.35rem; }
+
+      .food-strip {
+        grid-template-columns: 1fr;
+        padding: 0 24px;
+        gap: 4px;
+      }
+      .food-strip-item img { height: 240px; }
+
+      .menu { padding: 64px 24px; }
+
+      .trust-inner { gap: 32px; }
+      .trust-divider { display: none; }
+
+      .featured { padding: 64px 24px; }
+
+      .find-us { padding: 64px 24px; }
+      .find-us-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .btn-secondary { margin-left: 0; margin-top: 12px; }
+
+      footer {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-brand">Tarboosh</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#story">Our Story</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#find-us">Find Us</a></li>
+      <li><a href="https://www.instagram.com/tarboosh_victoria/" target="_blank" rel="noopener">Instagram</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- OPENING -->
+  <section class="opening">
+    <p class="opening-label">Esquimalt, Victoria BC</p>
+    <h1>Taste of <em>Cairo</em><br>on the Street</h1>
+    <div class="opening-line"></div>
+    <p class="opening-sub">Authentic Middle Eastern street food, made from scratch by a family that believes no one should leave hungry.</p>
+  </section>
+
+  <!-- TRUCK EXTERIOR -->
+  <section class="truck-photo">
+    <img src="truck-exterior.png" alt="Tarboosh food truck parked on a tree-lined street in Esquimalt, Victoria BC" loading="lazy">
+  </section>
+
+  <!-- STORY -->
+  <section class="story" id="story">
+    <div class="story-image">
+      <img src="pita.png" alt="Freshly baked pita bread stacked on a wooden board" loading="lazy">
+    </div>
+    <div class="story-text">
+      <p class="story-label">Our Story</p>
+      <h2>A family recipe,<br>a <em>grandmother's</em> kitchen</h2>
+      <p>Tarboosh is a mother-and-son operation. Halah Abouhassan and her son Basil bring the flavours of their Egyptian heritage to the streets of Esquimalt, cooking everything from scratch: the sauces, the marinades, the falafel mix, even the pita.</p>
+      <p>"People will come here and say 'I just want to check your menu,' and I say, 'You know what? I'm going to feed you as well. You're on my door so I can't let you go.'"</p>
+    </div>
+  </section>
+
+  <!-- NAME MEANING -->
+  <section class="name-section">
+    <svg class="fez-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M16 44h32c0 0 2-20-2-28H18c-4 8-2 28-2 28z" fill="#C4613A"/>
+      <path d="M14 44h36v4H14v-4z" fill="#8B2E1F"/>
+      <circle cx="32" cy="12" r="3" fill="#C5963A"/>
+      <path d="M32 12c4-2 8 0 10 2" stroke="#C5963A" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+    <blockquote>"Tarboosh is the fez hat. It inspired me when I saw my grandpa wearing it as a uniform in the Egyptian military."</blockquote>
+    <p class="attribution">Halah Abouhassan, Owner</p>
+  </section>
+
+  <!-- FOOD STRIP -->
+  <div class="food-strip-header">
+    <h2>Made Fresh, Every Day</h2>
+    <p>Sauces, marinades, falafel mix, pita — all from scratch.</p>
+  </div>
+  <section class="food-strip">
+    <div class="food-strip-item">
+      <img src="falafel.png" alt="Crispy golden falafel balls with fresh herbs" loading="lazy">
+      <span class="food-strip-label">Crispy Falafel</span>
+    </div>
+    <div class="food-strip-item">
+      <img src="shawarma.png" alt="Shawarma wrap with tender spiced meat and tahini" loading="lazy">
+      <span class="food-strip-label">Shawarma Wraps</span>
+    </div>
+    <div class="food-strip-item">
+      <img src="sides.png" alt="Colorful Middle Eastern dips and sides" loading="lazy">
+      <span class="food-strip-label">House-Made Sides</span>
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section class="menu" id="menu">
+    <div class="menu-inner">
+      <div class="menu-header">
+        <p class="label">What We Serve</p>
+        <h2>Favourites</h2>
+        <p>Everything is made from scratch daily. Check our Instagram for specials and current pricing.</p>
+      </div>
+
+      <div class="menu-category">
+        <h3 class="menu-category-title">Wraps</h3>
+        <div class="menu-item">
+          <div>
+            <p class="menu-item-name">Chicken Shawarma Wrap</p>
+            <p class="menu-item-desc">Marinated chicken, garlic sauce, pickles, fresh vegetables in house-baked pita</p>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div>
+            <p class="menu-item-name">Beef Shawarma Wrap</p>
+            <p class="menu-item-desc">Slow-roasted seasoned beef, tahini, pickled turnip, tomato, parsley</p>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div>
+            <p class="menu-item-name">Falafel Wrap</p>
+            <p class="menu-item-desc">Crispy house-made falafel, tahini, fresh vegetables, pickles</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-category">
+        <h3 class="menu-category-title">Plates</h3>
+        <div class="menu-item">
+          <div>
+            <p class="menu-item-name">Shawarma Rice Plate</p>
+            <p class="menu-item-desc">Choice of chicken or beef shawarma over seasoned rice with salad and sauces</p>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div>
+            <p class="menu-item-name">Falafel Plate</p>
+            <p class="menu-item-desc">Falafel, hummus, tabbouleh, pita, pickled vegetables</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-category">
+        <h3 class="menu-category-title">Sides &amp; Extras</h3>
+        <div class="menu-item">
+          <div>
+            <p class="menu-item-name">Hummus &amp; Pita</p>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div>
+            <p class="menu-item-name">Tabbouleh</p>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div>
+            <p class="menu-item-name">Grilled Specials</p>
+            <p class="menu-item-desc">Rotating daily. Follow us on Instagram for today's special.</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="menu-note">Prices and specials updated on <a href="https://www.instagram.com/tarboosh_victoria/" target="_blank" rel="noopener">@tarboosh_victoria</a></p>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <section class="trust">
+    <div class="trust-inner">
+      <div class="trust-item">
+        <p class="trust-value">Mother &amp; Son</p>
+        <p class="trust-label">Family Operated</p>
+      </div>
+      <div class="trust-divider"></div>
+      <div class="trust-item">
+        <p class="trust-value">Egyptian Heritage</p>
+        <p class="trust-label">Authentic Recipes</p>
+      </div>
+      <div class="trust-divider"></div>
+      <div class="trust-item">
+        <p class="trust-value">CHEK News</p>
+        <p class="trust-label">Featured On TV</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED -->
+  <section class="featured">
+    <p class="featured-label">As Seen On</p>
+    <p class="featured-quote">"For a taste of tradition, served with a side of family pride, this food truck is worth the stop."</p>
+    <p class="featured-source">CHEK News — Order Up, September 2025</p>
+  </section>
+
+  <!-- FIND US -->
+  <section class="find-us" id="find-us">
+    <div class="find-us-inner">
+      <div class="find-us-info">
+        <h2>Find the Truck</h2>
+        <div class="find-us-detail">
+          <p class="find-us-detail-label">Location</p>
+          <p>900 Carlton Terrace, Esquimalt<br>Near Head &amp; Esquimalt Road<br>(by the old Carlton Theatre)</p>
+        </div>
+        <div class="find-us-detail">
+          <p class="find-us-detail-label">Hours</p>
+          <p>Open daily, 10 AM – 11 PM<br>Location may vary — check <a href="https://www.instagram.com/tarboosh_victoria/" target="_blank" rel="noopener" style="color: var(--gold);">Instagram</a> or <a href="https://streetfoodapp.com/victoria/tarboosh" target="_blank" rel="noopener" style="color: var(--gold);">StreetFoodApp</a> for daily updates</p>
+        </div>
+        <div class="find-us-detail">
+          <p class="find-us-detail-label">Call</p>
+          <a href="tel:+12364649111">(236) 464-9111</a>
+        </div>
+        <div class="find-us-cta">
+          <a href="https://www.instagram.com/tarboosh_victoria/" target="_blank" rel="noopener" class="btn btn-primary">Follow on Instagram</a>
+          <a href="tel:+12364649111" class="btn btn-secondary">Call to Order</a>
+        </div>
+      </div>
+      <div class="find-us-map">
+        <iframe src="https://maps.google.com/maps?q=900+Carlton+Terrace+Esquimalt+Victoria+BC&output=embed" allowfullscreen loading="lazy" title="Tarboosh location map"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-brand">Tarboosh</span>
+    <div class="footer-right">
+      <a href="https://www.instagram.com/tarboosh_victoria/" target="_blank" rel="noopener">@tarboosh_victoria</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('hamburger').addEventListener('click', function() {
+      document.getElementById('navLinks').classList.toggle('open');
+    });
+  </script>
+
+</body>
+</html>

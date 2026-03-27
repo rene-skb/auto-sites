@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yoka's Coffee — Small-Batch Roasters Since 1983</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --black: #0A0A0A;
+  --charcoal: #1A1A1A;
+  --mid: #2A2A2A;
+  --warm-gray: #8A8078;
+  --sand: #C4B5A0;
+  --cream: #F0E8DC;
+  --amber: #D4A04A;
+  --white: #FAF8F5;
+
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --ls-nav: 0.12em;
+  --ls-label: 0.08em;
+  --ls-micro: 0.04em;
+
+  --section-pad: 96px;
+  --content-width: 1080px;
+
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  color: var(--cream);
+  background: var(--black);
+  line-height: 1.65;
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* NOISE OVERLAY */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 20px 0;
+  background: rgba(10, 10, 10, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(212, 160, 74, 0.1);
+}
+
+nav .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-brand {
+  font-family: var(--font-display);
+  font-size: 28px;
+  letter-spacing: var(--ls-nav);
+  color: var(--cream);
+  text-decoration: none;
+}
+
+.nav-brand span {
+  color: var(--amber);
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--warm-gray);
+  text-decoration: none;
+  transition: color 300ms var(--ease-out);
+}
+
+.nav-links a:hover { color: var(--cream); }
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+
+.hamburger span {
+  width: 24px;
+  height: 1.5px;
+  background: var(--cream);
+  transition: transform 300ms var(--ease-out), opacity 200ms;
+}
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 120px 0 var(--section-pad);
+}
+
+.hero-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.hero-text {
+  opacity: 0;
+  transform: translateY(24px);
+  animation: fadeUp 800ms var(--ease-out) 200ms forwards;
+}
+
+.hero-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.hero-label::before {
+  content: '';
+  width: 32px;
+  height: 1px;
+  background: var(--amber);
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(64px, 8vw, 120px);
+  line-height: 0.9;
+  letter-spacing: 0.02em;
+  color: var(--cream);
+  margin-bottom: 32px;
+}
+
+.hero h1 em {
+  font-style: normal;
+  color: var(--amber);
+  display: block;
+}
+
+.hero-sub {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--warm-gray);
+  line-height: 1.7;
+  max-width: 400px;
+  margin-bottom: 40px;
+}
+
+.hero-image {
+  position: relative;
+  opacity: 0;
+  transform: translateY(24px);
+  animation: fadeUp 800ms var(--ease-out) 400ms forwards;
+}
+
+.hero-image img {
+  width: 100%;
+  height: 520px;
+  object-fit: cover;
+}
+
+.hero-image::after {
+  content: 'EST. 1983';
+  position: absolute;
+  bottom: -16px;
+  right: -16px;
+  font-family: var(--font-display);
+  font-size: 64px;
+  color: var(--amber);
+  opacity: 0.12;
+  letter-spacing: 0.02em;
+  pointer-events: none;
+}
+
+/* CTA */
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--black);
+  background: var(--amber);
+  padding: 16px 32px;
+  text-decoration: none;
+  transition: transform 160ms var(--ease-out), background 300ms var(--ease-out);
+}
+
+.cta-btn:active { transform: scale(0.97); }
+.cta-btn:hover { background: #e0ad55; }
+
+.cta-btn::after {
+  content: '→';
+  font-size: 14px;
+}
+
+/* TRUST BAR */
+.trust-bar {
+  padding: 64px 0;
+  border-top: 1px solid rgba(196, 181, 160, 0.1);
+  border-bottom: 1px solid rgba(196, 181, 160, 0.1);
+}
+
+.trust-bar .container {
+  display: flex;
+  justify-content: center;
+  gap: 64px;
+}
+
+.trust-item {
+  text-align: center;
+}
+
+.trust-value {
+  font-family: var(--font-display);
+  font-size: 36px;
+  color: var(--amber);
+  letter-spacing: 0.02em;
+}
+
+.trust-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--warm-gray);
+  margin-top: 4px;
+}
+
+/* SECTION DEFAULTS */
+section { padding: var(--section-pad) 0; }
+
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.section-label::before {
+  content: '';
+  width: 24px;
+  height: 1px;
+  background: var(--amber);
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 5vw, 64px);
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: var(--cream);
+  margin-bottom: 24px;
+}
+
+/* ABOUT */
+.about {
+  background: var(--charcoal);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.about-image img {
+  width: 100%;
+  height: 440px;
+  object-fit: cover;
+}
+
+.about-body {
+  font-size: 14px;
+  color: var(--sand);
+  line-height: 1.7;
+}
+
+.about-body p + p { margin-top: 16px; }
+
+.about-detail {
+  margin-top: 32px;
+  display: flex;
+  gap: 48px;
+}
+
+.about-detail-item {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--warm-gray);
+}
+
+.about-detail-value {
+  font-family: var(--font-display);
+  font-size: 24px;
+  color: var(--cream);
+  letter-spacing: 0.02em;
+  margin-bottom: 4px;
+}
+
+/* BRAND QUOTE */
+.brand-quote {
+  padding: var(--section-pad) 0;
+  background: var(--black);
+  text-align: center;
+  position: relative;
+}
+
+.brand-quote blockquote {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4vw, 56px);
+  line-height: 1.15;
+  color: var(--cream);
+  max-width: 800px;
+  margin: 0 auto;
+  letter-spacing: 0.02em;
+}
+
+.brand-quote cite {
+  display: block;
+  margin-top: 24px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--amber);
+  font-style: normal;
+}
+
+/* COFFEES */
+.coffees { background: var(--black); }
+
+.coffee-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin-top: 48px;
+}
+
+.coffee-card:first-child {
+  grid-column: span 2;
+}
+
+.coffee-card {
+  background: var(--charcoal);
+  padding: 36px 28px;
+  position: relative;
+}
+
+.coffee-card.featured {
+  background: var(--mid);
+  border-left: 2px solid var(--amber);
+}
+
+.coffee-num {
+  font-family: var(--font-display);
+  font-size: 16px;
+  color: var(--warm-gray);
+  opacity: 0.35;
+  margin-bottom: 12px;
+}
+
+.coffee-name {
+  font-family: var(--font-display);
+  font-size: 22px;
+  letter-spacing: var(--ls-micro);
+  color: var(--cream);
+  margin-bottom: 8px;
+}
+
+.coffee-origin {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 12px;
+}
+
+.coffee-desc {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--warm-gray);
+  line-height: 1.6;
+}
+
+.coffee-note {
+  margin-top: 48px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--warm-gray);
+  text-align: center;
+}
+
+/* PHOTO STRIP */
+.photo-strip {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 0;
+}
+
+.photo-strip img {
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+}
+
+/* REVIEWS */
+.reviews { background: var(--charcoal); }
+
+.reviews-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 48px;
+}
+
+.reviews-score {
+  text-align: right;
+}
+
+.reviews-score .score {
+  font-family: var(--font-display);
+  font-size: 48px;
+  color: var(--amber);
+}
+
+.reviews-score .source {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--warm-gray);
+}
+
+.review-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+}
+
+.review-card {
+  padding: 36px;
+  background: var(--mid);
+}
+
+.review-card:nth-child(even) {
+  background: var(--black);
+}
+
+.review-text {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--sand);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.review-author {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--warm-gray);
+}
+
+/* VISIT */
+.visit { background: var(--black); }
+
+.visit-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  margin-top: 48px;
+}
+
+.visit-info h3 {
+  font-family: var(--font-display);
+  font-size: 32px;
+  letter-spacing: 0.02em;
+  color: var(--cream);
+  margin-bottom: 24px;
+}
+
+.visit-detail {
+  margin-bottom: 24px;
+}
+
+.visit-detail-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 8px;
+}
+
+.visit-detail-value {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--sand);
+  line-height: 1.6;
+}
+
+.visit-detail-value a {
+  color: var(--sand);
+  text-decoration: none;
+}
+
+.cash-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--amber);
+  border: 1px solid rgba(212, 160, 74, 0.3);
+  padding: 8px 16px;
+  margin-top: 8px;
+}
+
+.visit-map {
+  height: 100%;
+  min-height: 360px;
+}
+
+.visit-map iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  filter: grayscale(0.8) contrast(1.1) brightness(0.7);
+}
+
+/* FOOTER */
+footer {
+  padding: 48px 0;
+  border-top: 1px solid rgba(196, 181, 160, 0.08);
+  background: var(--black);
+}
+
+footer .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-brand {
+  font-family: var(--font-display);
+  font-size: 28px;
+  letter-spacing: var(--ls-nav);
+  color: var(--cream);
+}
+
+.footer-brand span { color: var(--amber); }
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+}
+
+.footer-links a {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--warm-gray);
+  text-decoration: none;
+  transition: color 300ms var(--ease-out);
+}
+
+.footer-links a:hover { color: var(--cream); }
+
+.footer-copy {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--warm-gray);
+  letter-spacing: var(--ls-micro);
+  text-align: center;
+  margin-top: 32px;
+}
+
+/* NAME SECTION */
+.name-section .name-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.name-pronunciation {
+  text-align: right;
+  border-right: 2px solid var(--amber);
+  padding-right: 48px;
+}
+
+.name-ipa {
+  font-family: var(--font-mono);
+  font-size: 28px;
+  font-weight: 300;
+  color: var(--amber);
+  letter-spacing: 0.06em;
+}
+
+.name-section blockquote {
+  text-align: left;
+}
+
+.name-section cite {
+  text-align: left;
+}
+
+@media (max-width: 768px) {
+  .name-section .name-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .name-pronunciation {
+    text-align: center;
+    border-right: none;
+    border-bottom: 2px solid var(--amber);
+    padding-right: 0;
+    padding-bottom: 24px;
+  }
+  .name-section blockquote,
+  .name-section cite { text-align: center; }
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  :root { --section-pad: 64px; }
+
+  .hamburger { display: flex; }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(10, 10, 10, 0.96);
+    flex-direction: column;
+    padding: 24px;
+    gap: 20px;
+    border-bottom: 1px solid rgba(212, 160, 74, 0.1);
+  }
+
+  .nav-links.active { display: flex; }
+
+  .hero-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .hero-image { order: -1; }
+  .hero-image img { height: 320px; }
+  .hero-image::after { display: none; }
+
+  .hero h1 { font-size: 56px; }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .about-image img { height: 280px; }
+
+  .about-detail {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .coffee-grid { grid-template-columns: 1fr; }
+
+  .photo-strip { grid-template-columns: 1fr; }
+  .photo-strip img { height: 240px; }
+
+  .review-cards { grid-template-columns: 1fr; }
+
+  .reviews-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .reviews-score { text-align: left; }
+
+  .visit-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .visit-map { min-height: 280px; }
+
+  .trust-bar .container {
+    flex-wrap: wrap;
+    gap: 32px;
+  }
+
+  footer .container {
+    flex-direction: column;
+    gap: 24px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .trust-bar .container { gap: 24px; }
+  .trust-item { flex: 1 1 40%; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <a href="#" class="nav-brand">YOKA<span>'</span>S</a>
+    <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('active')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="#coffees">Coffees</a></li>
+      <li><a href="#about">Our Story</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#visit">Visit</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="hero-label">North Park, Victoria BC</div>
+        <h1>ROASTED<br>BY<br><em>HAND.</em></h1>
+        <p class="hero-sub">Ma and pa roaster since 1983. Twenty single-origin coffees, roasted on a 1930s Royal in our shop. Fair trade. Organic. Cash only.</p>
+        <a href="tel:+12503840905" class="cta-btn">Call to Order</a>
+      </div>
+      <div class="hero-image">
+        <img src="roaster.jpg" alt="Vintage coffee roaster at Yoka's Coffee">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="container">
+    <div class="trust-item">
+      <div class="trust-value">40+</div>
+      <div class="trust-label">Years Roasting</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-value">20+</div>
+      <div class="trust-label">Single Origins</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-value">1930s</div>
+      <div class="trust-label">Royal Roaster</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-value">4.8★</div>
+      <div class="trust-label">53 Reviews</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-value">CASH</div>
+      <div class="trust-label">Only</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-image">
+        <img src="beans.jpg" alt="Fresh roasted coffee beans at Yoka's">
+      </div>
+      <div>
+        <div class="section-label">Our Story</div>
+        <div class="section-title">OLD-WORLD<br>CRAFT</div>
+        <div class="about-body">
+          <p>Established in 1983, Yoka's Coffee is a ma and pa roaster in the North Park neighbourhood of Victoria, British Columbia. We've always had a simple objective: fresh-roasted, premium coffee at affordable prices.</p>
+          <p>Originally operating in Vancouver, we relocated to Victoria in 2010. Stop by during the week and you'll likely find us roasting — all our beans are roasted in the shop on our mid-1930s Royal roaster. We're proud to have one of the widest selections of medium and dark-roasted, certified organic and fair traded coffees in the city.</p>
+          <p>We also sell green beans for home roasters, loose tea, local honey, and chocolate.</p>
+        </div>
+        <div class="about-detail">
+          <div class="about-detail-item">
+            <div class="about-detail-value">VANCOUVER</div>
+            Founded
+          </div>
+          <div class="about-detail-item">
+            <div class="about-detail-value">VICTORIA</div>
+            Since 2010
+          </div>
+          <div class="about-detail-item">
+            <div class="about-detail-value">ORGANIC</div>
+            Fair Trade
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NAME MEANING -->
+<section class="brand-quote name-section">
+  <div class="container">
+    <div class="name-grid">
+      <div class="name-pronunciation">
+        <span class="name-ipa">/ˈjoː.kɑ/</span>
+      </div>
+      <div class="name-text">
+        <blockquote>"YOKA" IS THE DUTCH NAME<br>"JOKE" — PRONOUNCED YO-KA.<br>A FAMILY NAME, NOT A BRAND.</blockquote>
+        <cite>— Roasting under the same name since 1983</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COFFEES -->
+<section class="coffees" id="coffees">
+  <div class="container">
+    <div class="section-label">The Beans</div>
+    <div class="section-title">FAVOURITES</div>
+    <div class="coffee-grid">
+      <div class="coffee-card featured">
+        <div class="coffee-num">01</div>
+        <div class="coffee-name">ESPRESSO BLEND</div>
+        <div class="coffee-origin">House Blend</div>
+        <div class="coffee-desc">Our signature blend — bold, balanced, the one that keeps people coming back.</div>
+      </div>
+      <div class="coffee-card">
+        <div class="coffee-num">02</div>
+        <div class="coffee-name">SUMATRA</div>
+        <div class="coffee-origin">Indonesia</div>
+        <div class="coffee-desc">Full-bodied with earthy, herbal notes. One of our biggest sellers.</div>
+      </div>
+      <div class="coffee-card">
+        <div class="coffee-num">03</div>
+        <div class="coffee-name">INDIAN MALABAR</div>
+        <div class="coffee-origin">India</div>
+        <div class="coffee-desc">Monsoon-processed for a smooth, low-acid cup with chocolaty depth.</div>
+      </div>
+      <div class="coffee-card">
+        <div class="coffee-num">04</div>
+        <div class="coffee-name">ETHIOPIA HARRAR</div>
+        <div class="coffee-origin">Ethiopia</div>
+        <div class="coffee-desc">Wild, fruity, wine-like. Dry-processed with complex berry notes.</div>
+      </div>
+      <div class="coffee-card featured">
+        <div class="coffee-num">05</div>
+        <div class="coffee-name">KENYA AA</div>
+        <div class="coffee-origin">Kenya</div>
+        <div class="coffee-desc">Bright acidity, citrus and blackcurrant. A staff favourite.</div>
+      </div>
+      <div class="coffee-card">
+        <div class="coffee-num">06</div>
+        <div class="coffee-name">GUATEMALA</div>
+        <div class="coffee-origin">Central America</div>
+        <div class="coffee-desc">Balanced sweetness with cocoa and spice. Approachable and versatile.</div>
+      </div>
+    </div>
+    <p class="coffee-note">Current prices available by phone: (250) 384-0905. We also carry Yemen Mocha, Kona, New Guinea, Yirgacheffe, Swiss Water Decaf, and green beans for home roasters.</p>
+  </div>
+</section>
+
+<!-- PHOTO STRIP -->
+<div class="photo-strip">
+  <img src="pourover.jpg" alt="Hand-poured coffee at Yoka's">
+  <img src="storefront.jpg" alt="Yoka's Coffee storefront in North Park, Victoria">
+</div>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="container">
+    <div class="reviews-header">
+      <div>
+        <div class="section-label">What People Say</div>
+        <div class="section-title">WORD OF MOUTH</div>
+      </div>
+      <div class="reviews-score">
+        <div class="score">4.8</div>
+        <div class="source">Google Reviews</div>
+      </div>
+    </div>
+    <div class="review-cards">
+      <div class="review-card">
+        <div class="review-text">"The best combination of quality, customer service and price. They are awesome to deal with and will answer all your questions with care."</div>
+        <div class="review-author">Via Google</div>
+      </div>
+      <div class="review-card">
+        <div class="review-text">"Top quality at a good price and wonderful people in the shop! When Yoka roasts the coffee the aroma is inebriating. Don't forget to get some chocolate when you go there."</div>
+        <div class="review-author">Via Google</div>
+      </div>
+      <div class="review-card">
+        <div class="review-text">"The best dark roast coffee beans in Victoria. Roasted on-site and ground to order. I was so happy to find them — bought a few pounds of their incredible House Espresso."</div>
+        <div class="review-author">Via Yelp</div>
+      </div>
+      <div class="review-card">
+        <div class="review-text">"Lived in the area for almost a decade but never stopped by. One day I did a Google search and found it. A couple months later I was hooked. Lovely coffee."</div>
+        <div class="review-author">Via Google</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section class="visit" id="visit">
+  <div class="container">
+    <div class="section-label">Find Us</div>
+    <div class="section-title">COME BY THE SHOP</div>
+    <div class="visit-grid">
+      <div class="visit-info">
+        <h3>NORTH PARK</h3>
+        <div class="visit-detail">
+          <div class="visit-detail-label">Address</div>
+          <div class="visit-detail-value">#5 - 1046 Mason Street<br>Victoria, BC V8T 1A3</div>
+        </div>
+        <div class="visit-detail">
+          <div class="visit-detail-label">Hours</div>
+          <div class="visit-detail-value">
+            Tues – Fri: 9:00am – 6:00pm<br>
+            Saturday: 9:00am – 5:00pm<br>
+            Sun – Mon: Closed
+          </div>
+        </div>
+        <div class="visit-detail">
+          <div class="visit-detail-label">Phone</div>
+          <div class="visit-detail-value"><a href="tel:+12503840905">(250) 384-0905</a></div>
+        </div>
+        <div class="cash-badge">Cash Only</div>
+        <div style="margin-top: 32px;">
+          <a href="tel:+12503840905" class="cta-btn">Call to Order</a>
+        </div>
+      </div>
+      <div class="visit-map">
+        <iframe src="https://maps.google.com/maps?q=1046+Mason+Street+Victoria+BC&output=embed" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-brand">YOKA<span>'</span>S</div>
+    <ul class="footer-links">
+      <li><a href="https://www.instagram.com/yokascoffee/" target="_blank" rel="noopener">Instagram</a></li>
+      <li><a href="tel:+12503840905">Call</a></li>
+      <li><a href="https://maps.google.com/maps?q=1046+Mason+Street+Victoria+BC" target="_blank" rel="noopener">Directions</a></li>
+    </ul>
+  </div>
+  <div class="footer-copy container">
+    &copy; 2026 Yoka's Coffee. Roasting since 1983.
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scott Bell — Product Designer</title>
+<meta name="description" content="Product designer who builds AI agent infrastructure. 14 years across fintech, crypto, and AI.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0c0c0c;
+    --bg-elevated: #111111;
+    --bg-card: #181818;
+    --text: #e8e4df;
+    --text-muted: #908a84;
+    --text-dim: #605a54;
+    --accent: #d9a840;
+    --accent-muted: rgba(217, 168, 64, 0.1);
+    --warm-white: #f5f0e8;
+    --serif: 'Instrument Serif', Georgia, serif;
+    --sans: 'Space Grotesk', system-ui, sans-serif;
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+    --ls-tight: 0.04em;
+    --ls-mid: 0.08em;
+    --ls-wide: 0.14em;
+    --content-width: 1200px;
+    --content-padding: 48px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  ::selection { background: var(--accent); color: var(--bg); }
+  a { color: inherit; text-decoration: none; }
+
+  .content-wrap {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 0 var(--content-padding);
+  }
+
+  /* ---- NAV ---- */
+  .nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(12, 12, 12, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .nav-inner {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 20px var(--content-padding);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav-logo {
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: var(--ls-mid);
+    text-transform: uppercase;
+    color: var(--warm-white);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: var(--ls-mid);
+    text-transform: uppercase;
+    color: var(--text-muted);
+    transition: color 0.2s var(--ease-out);
+  }
+
+  .nav-links a:hover { color: var(--warm-white); }
+
+  .nav-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--warm-white);
+    cursor: pointer;
+    padding: 8px;
+  }
+
+  /* ---- HERO ---- */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+  }
+
+  .hero-eyebrow {
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: var(--ls-mid);
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: var(--text-dim);
+  }
+
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(56px, 9vw, 130px);
+    font-weight: 400;
+    line-height: 0.95;
+    color: var(--warm-white);
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 48px;
+  }
+
+  .hero-sub {
+    font-size: 17px;
+    color: var(--text-muted);
+    max-width: 440px;
+    line-height: 1.7;
+  }
+
+  .hero-cta {
+    font-size: 14px;
+    color: var(--accent);
+    letter-spacing: var(--ls-tight);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: gap 0.3s var(--ease-out);
+  }
+
+  .hero-cta:hover { gap: 14px; }
+
+  .hero-cta svg { width: 16px; height: 16px; }
+
+  /* ---- SHARED ---- */
+  .section { padding: 120px 0; }
+
+  .section-label {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: var(--ls-wide);
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 48px;
+  }
+
+  /* ---- WORK ---- */
+  .work-list { display: flex; flex-direction: column; }
+
+  .work-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    padding: 56px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    align-items: start;
+  }
+
+  .work-item:first-child { border-top: 1px solid rgba(255,255,255,0.06); }
+
+  .work-item {
+    transition: padding 0.4s var(--ease-out);
+  }
+
+  .work-item:hover {
+    padding-left: 8px;
+  }
+
+  .work-item:hover .work-title {
+    color: var(--accent);
+    transition: color 0.3s var(--ease-out);
+  }
+
+  .work-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 6px;
+  }
+
+  .work-title {
+    font-family: var(--serif);
+    font-size: clamp(28px, 3.5vw, 48px);
+    font-weight: 400;
+    color: var(--warm-white);
+  }
+
+  .work-year {
+    font-size: 14px;
+    color: var(--text-dim);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: var(--ls-tight);
+  }
+
+  .work-role {
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: var(--ls-mid);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .work-desc {
+    font-size: 15px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    max-width: 440px;
+  }
+
+  .work-stats {
+    display: flex;
+    gap: 40px;
+    padding-top: 16px;
+  }
+
+  .work-stat-value {
+    font-family: var(--sans);
+    font-size: 28px;
+    font-weight: 300;
+    color: var(--warm-white);
+    line-height: 1.2;
+  }
+
+  .work-stat-label {
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: var(--ls-tight);
+    margin-top: 4px;
+  }
+
+  /* ---- AI SECTION ---- */
+  .ai-section-wrap {
+    background: var(--bg-elevated);
+    border-top: 1px solid rgba(255,255,255,0.04);
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .ai-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 72px;
+    align-items: end;
+  }
+
+  .ai-header h2 {
+    font-family: var(--serif);
+    font-size: clamp(32px, 4.5vw, 60px);
+    color: var(--warm-white);
+    line-height: 1.1;
+  }
+
+  .ai-header h2 em { font-style: italic; color: var(--accent); }
+
+  .ai-header p {
+    color: var(--text-muted);
+    font-size: 16px;
+    line-height: 1.7;
+    max-width: 420px;
+  }
+
+  .ai-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .ai-card {
+    background: var(--bg);
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 220px;
+    transition: background 0.3s var(--ease-out);
+  }
+
+  .ai-card:hover { background: var(--bg-card); }
+
+  .ai-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .ai-card-name {
+    font-family: 'SF Mono', SFMono-Regular, ui-monospace, Menlo, monospace;
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--warm-white);
+    letter-spacing: var(--ls-tight);
+  }
+
+  .ai-card-status {
+    font-size: 10px;
+    letter-spacing: var(--ls-mid);
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 100px;
+  }
+
+  .ai-card-status.live { color: #4adeac; background: rgba(74, 222, 172, 0.08); }
+  .ai-card-status.dev { color: var(--accent); background: var(--accent-muted); }
+
+  .ai-card-desc {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* ---- ABOUT ---- */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .about-text h2 {
+    font-family: var(--serif);
+    font-size: clamp(32px, 4vw, 52px);
+    color: var(--warm-white);
+    margin-bottom: 32px;
+    line-height: 1.15;
+  }
+
+  .about-text h2 em { font-style: italic; color: var(--accent); }
+
+  .about-text p {
+    color: var(--text-muted);
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+
+  .about-details { padding-top: 8px; }
+
+  .about-facts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+
+  .fact {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 16px;
+  }
+
+  .fact-number {
+    font-family: var(--sans);
+    font-size: 32px;
+    font-weight: 300;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+
+  .fact-label {
+    font-size: 13px;
+    color: var(--text-dim);
+    letter-spacing: var(--ls-tight);
+  }
+
+  .about-experience {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 24px;
+  }
+
+  .exp-label {
+    font-size: 11px;
+    letter-spacing: var(--ls-wide);
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 12px;
+  }
+
+  .exp-list { display: flex; flex-wrap: wrap; gap: 6px; }
+
+  .exp-tag {
+    font-size: 12px;
+    color: var(--text-muted);
+    padding: 5px 12px;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 100px;
+    letter-spacing: var(--ls-tight);
+  }
+
+  /* ---- RIBBON ---- */
+  .ribbon {
+    background: var(--accent);
+    padding: 80px var(--content-padding);
+    text-align: center;
+  }
+
+  .ribbon-text {
+    font-family: var(--serif);
+    font-size: clamp(24px, 3.5vw, 42px);
+    font-style: italic;
+    color: var(--bg);
+    max-width: 780px;
+    margin: 0 auto;
+    line-height: 1.4;
+  }
+
+  /* ---- RECOGNITION ---- */
+  .recognition-wrap { background: var(--bg-elevated); }
+
+  .recog-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .recog-item {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 32px;
+    padding: 24px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    align-items: baseline;
+  }
+
+  .recog-item:first-child { border-top: 1px solid rgba(255,255,255,0.06); }
+
+  .recog-source {
+    font-size: 11px;
+    letter-spacing: var(--ls-wide);
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+
+  .recog-text {
+    font-size: 16px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  /* ---- CONTACT ---- */
+  .contact-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .contact-heading {
+    font-family: var(--serif);
+    font-size: clamp(48px, 8vw, 110px);
+    color: var(--warm-white);
+    line-height: 0.95;
+    margin-bottom: 28px;
+  }
+
+  .contact-heading em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .contact-email {
+    font-size: 18px;
+    color: var(--accent);
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+    transition: border-color 0.2s var(--ease-out);
+  }
+
+  .contact-email:hover { border-bottom-color: var(--accent); }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-end;
+  }
+
+  .contact-links a {
+    font-size: 14px;
+    color: var(--text-muted);
+    letter-spacing: var(--ls-tight);
+    transition: color 0.2s var(--ease-out);
+  }
+
+  .contact-links a:hover { color: var(--accent); }
+
+  /* ---- FOOTER ---- */
+  .footer-inner {
+    padding: 32px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .footer-text {
+    font-size: 12px;
+    color: var(--text-dim);
+    letter-spacing: var(--ls-tight);
+  }
+
+  /* ---- MOBILE MENU ---- */
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: var(--bg);
+    z-index: 99;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .mobile-menu.open { display: flex; }
+
+  .mobile-menu a {
+    font-family: var(--serif);
+    font-size: 32px;
+    color: var(--warm-white);
+  }
+
+  .mobile-close {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    background: none;
+    border: none;
+    color: var(--warm-white);
+    cursor: pointer;
+    padding: 8px;
+  }
+
+  /* ---- RESPONSIVE ---- */
+  @media (max-width: 1024px) {
+    :root { --content-padding: 24px; }
+    .section { padding: 80px 0; }
+    .ribbon { padding: 64px var(--content-padding); }
+  }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .nav-menu-btn { display: block; }
+
+    .hero h1 { font-size: clamp(40px, 12vw, 72px); }
+    .hero-bottom { flex-direction: column; gap: 24px; }
+
+    .work-item { grid-template-columns: 1fr; gap: 24px; }
+    .work-stats { gap: 28px; }
+
+    .ai-header { grid-template-columns: 1fr; gap: 24px; }
+    .ai-grid { grid-template-columns: 1fr; }
+    .ai-card { padding: 32px; min-height: auto; }
+
+    .about-grid { grid-template-columns: 1fr; gap: 48px; }
+
+    .recog-item { grid-template-columns: 1fr; gap: 8px; }
+
+    .contact-inner { flex-direction: column; align-items: flex-start; gap: 40px; }
+    .contact-links { align-items: flex-start; }
+
+    .footer-inner { flex-direction: column; gap: 12px; text-align: center; }
+  }
+
+  @media (max-width: 480px) {
+    :root { --content-padding: 16px; }
+    .section { padding: 64px 0; }
+    .ribbon { padding: 48px var(--content-padding); }
+    .about-facts { grid-template-columns: 1fr; }
+  }
+
+  /* ---- SUBTLE HERO LINE ---- */
+  .hero-line {
+    position: absolute;
+    right: var(--content-padding);
+    top: 20%;
+    bottom: 20%;
+    width: 1px;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(217, 168, 64, 0.2) 30%,
+      rgba(217, 168, 64, 0.4) 50%,
+      rgba(217, 168, 64, 0.2) 70%,
+      transparent 100%
+    );
+  }
+
+  /* ---- SCROLL INDICATOR ---- */
+  .scroll-hint {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .scroll-hint-line {
+    width: 1px;
+    height: 32px;
+    background: var(--text-dim);
+    animation: scroll-pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scroll-pulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(0.6); transform-origin: top; }
+    50% { opacity: 0.8; transform: scaleY(1); }
+  }
+
+  /* ---- SCROLL REVEAL ---- */
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+  }
+
+  .reveal.hidden {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  .reveal-stagger { transition-delay: var(--stagger, 0ms); }
+
+  .fade-in { opacity: 1; transform: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fade-in, .reveal, .reveal.hidden { 
+      transition: none !important; 
+      opacity: 1 !important;
+      transform: none !important;
+    }
+    .scroll-hint-line { animation: none !important; }
+  }
+
+  a:active, button:active {
+    transform: scale(0.97);
+    transition: transform 160ms var(--ease-out);
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Scott Bell</a>
+    <ul class="nav-links">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#tools">AI Tools</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="nav-menu-btn" onclick="document.querySelector('.mobile-menu').classList.toggle('open')" aria-label="Menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu">
+  <button class="mobile-close" onclick="this.parentElement.classList.remove('open')" aria-label="Close">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <a href="#work" onclick="this.parentElement.classList.remove('open')">Work</a>
+  <a href="#tools" onclick="this.parentElement.classList.remove('open')">AI Tools</a>
+  <a href="#about" onclick="this.parentElement.classList.remove('open')">About</a>
+  <a href="#contact" onclick="this.parentElement.classList.remove('open')">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-line"></div>
+  <div class="content-wrap">
+    <div class="hero-eyebrow reveal hidden"><span>Product Designer · Victoria, BC</span></div>
+    <h1 class="reveal hidden" style="--stagger: 80ms">The layer<br><em>underneath</em></h1>
+    <div class="hero-bottom">
+      <p class="hero-sub">14 years designing products that reach millions. Now building the infrastructure where design meets AI agents.</p>
+      <a href="#work" class="hero-cta">
+        See the work
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <div class="scroll-hint-line"></div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section class="section" id="work">
+  <div class="content-wrap">
+    <div class="section-label reveal hidden">Selected Work</div>
+    <div class="work-list">
+      <div class="work-item">
+        <div>
+          <div class="work-header">
+            <span class="work-title">Strike</span>
+            <span class="work-year">2021–23</span>
+          </div>
+          <div class="work-role">Senior Product Designer</div>
+          <p class="work-desc">Led the complete mobile redesign. 450+ screens, 80+ flows in 5 months. Every major user flow from onboarding through payments, KYC, and in-app support.</p>
+        </div>
+        <div class="work-stats">
+          <div><div class="work-stat-value">1.5M+</div><div class="work-stat-label">Users</div></div>
+          <div><div class="work-stat-value">65+</div><div class="work-stat-label">Countries</div></div>
+          <div><div class="work-stat-value">450+</div><div class="work-stat-label">Screens</div></div>
+        </div>
+      </div>
+      <div class="work-item">
+        <div>
+          <div class="work-header">
+            <span class="work-title">AIOZ Network</span>
+            <span class="work-year">2023–25</span>
+          </div>
+          <div class="work-role">Principal Product Designer</div>
+          <p class="work-desc">Led UX/design across 8 decentralized products. AI marketplace, Chrome multichain wallet, desktop node app, and a unified design system.</p>
+        </div>
+        <div class="work-stats">
+          <div><div class="work-stat-value">100x</div><div class="work-stat-label">Market cap growth</div></div>
+          <div><div class="work-stat-value">8</div><div class="work-stat-label">Products</div></div>
+        </div>
+      </div>
+      <div class="work-item">
+        <div>
+          <div class="work-header">
+            <span class="work-title">Fountain</span>
+            <span class="work-year">2023–24</span>
+          </div>
+          <div class="work-role">Design Director</div>
+          <p class="work-desc">Full mobile app redesign shipped in under 5 months. Semantic, tokenized design system. Advisory role with hands-on execution.</p>
+        </div>
+        <div class="work-stats">
+          <div><div class="work-stat-value">5mo</div><div class="work-stat-label">Ship time</div></div>
+        </div>
+      </div>
+      <div class="work-item">
+        <div>
+          <div class="work-header">
+            <span class="work-title">KOHO</span>
+            <span class="work-year">2015–18</span>
+          </div>
+          <div class="work-role">Design Lead · First Employee</div>
+          <p class="work-desc">Built the design foundation from zero. Core banking flows, brand strategy, onboarding through transactions. Canada's top-rated neobank.</p>
+        </div>
+        <div class="work-stats">
+          <div><div class="work-stat-value">$800M+</div><div class="work-stat-label">Valuation today</div></div>
+          <div><div class="work-stat-value">100K+</div><div class="work-stat-label">Users at departure</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI TOOLS -->
+<div class="ai-section-wrap">
+  <section class="section" id="tools">
+    <div class="content-wrap">
+      <div class="ai-header reveal hidden">
+        <h2>I don't just design<br>for AI. I <em>build</em> it.</h2>
+        <p>Open source tools at the intersection of design and agent infrastructure. MCP servers, multi-agent orchestration, browser bridges. The work most designers can't do because they stopped at Figma.</p>
+      </div>
+      <div class="ai-grid">
+        <div class="ai-card">
+          <div class="ai-card-top">
+            <span class="ai-card-name">LoopIn</span>
+            <span class="ai-card-status dev">Dev</span>
+          </div>
+          <div class="ai-card-desc">Browser-to-agent bridge via MCP server. Click any UI element, send it to Claude Code. The missing link between what you see and what agents understand.</div>
+        </div>
+        <div class="ai-card">
+          <div class="ai-card-top">
+            <span class="ai-card-name">Clawprint</span>
+            <span class="ai-card-status dev">Dev</span>
+          </div>
+          <div class="ai-card-desc">Multi-agent design orchestration. Agents that build sites, review their own work, accumulate taste, and get better with every build.</div>
+        </div>
+        <div class="ai-card">
+          <div class="ai-card-top">
+            <span class="ai-card-name">mix-id</span>
+            <span class="ai-card-status live">Live</span>
+          </div>
+          <div class="ai-card-desc">Audio fingerprinting for DJ mixes. Paste a URL, get a tracklist. Built because Shazam doesn't work on hour-long sets.</div>
+        </div>
+        <div class="ai-card">
+          <div class="ai-card-top">
+            <span class="ai-card-name">Designer Persona</span>
+            <span class="ai-card-status live">Live</span>
+          </div>
+          <div class="ai-card-desc">Design thinking for LLMs. Taste profiles, principles, and review panels that make AI genuinely useful for design work.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- PHILOSOPHY -->
+<section class="ribbon">
+  <p class="ribbon-text">"Design as a way of making sense — and making things make sense."</p>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="content-wrap">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="section-label">About</div>
+        <h2>Designer who <em>builds</em></h2>
+        <p>14 years making complex things feel simple. Fintech, AI, Web3, Bitcoin. The domains change but the throughline doesn't: find the structure underneath, then make it visible.</p>
+        <p>Right now I'm deep in AI agent infrastructure. Not chatbots. The kind where agents run autonomously, build things, review their own work, and learn. I design the systems and I build them.</p>
+      </div>
+      <div class="about-details">
+        <div class="about-facts">
+          <div class="fact"><div class="fact-number">14</div><div class="fact-label">Years in design</div></div>
+          <div class="fact"><div class="fact-number">9</div><div class="fact-label">Products shipped</div></div>
+          <div class="fact"><div class="fact-number">100+</div><div class="fact-label">Countries reached</div></div>
+          <div class="fact"><div class="fact-number">$2B+</div><div class="fact-label">Combined market cap</div></div>
+        </div>
+        <div class="about-experience">
+          <div class="exp-label">Domains</div>
+          <div class="exp-list">
+            <span class="exp-tag">Fintech</span>
+            <span class="exp-tag">AI / ML</span>
+            <span class="exp-tag">Bitcoin / Lightning</span>
+            <span class="exp-tag">Web3 / DeFi</span>
+            <span class="exp-tag">Consumer Apps</span>
+            <span class="exp-tag">Design Systems</span>
+            <span class="exp-tag">Agent Infrastructure</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RECOGNITION -->
+<div class="recognition-wrap">
+  <section class="section">
+    <div class="content-wrap">
+      <div class="section-label">Recognition & Background</div>
+      <div class="recog-list">
+        <div class="recog-item">
+          <div class="recog-source">Apple</div>
+          <div class="recog-text">Featured twice on App Store — "New app we love" and "Featured app"</div>
+        </div>
+        <div class="recog-item">
+          <div class="recog-source">Education</div>
+          <div class="recog-text">UX Instructor at RED Academy. BSc Microbiology + BA Interaction Design — 10 years post-secondary.</div>
+        </div>
+        <div class="recog-item">
+          <div class="recog-source">Radio</div>
+          <div class="recog-text">Dynamic Quality on Bside.Radio — because music is the other design language.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- CONTACT -->
+<section class="section" id="contact">
+  <div class="content-wrap">
+    <div class="contact-inner">
+      <div>
+        <h2 class="contact-heading reveal hidden">Let's <em>talk</em></h2>
+        <a href="mailto:hi.scottkbell@gmail.com" class="contact-email">hi.scottkbell@gmail.com</a>
+      </div>
+      <div class="contact-links">
+        <a href="https://github.com/skip5this" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/scottkbell" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://x.com/skb_btc" target="_blank" rel="noopener">X / Twitter</a>
+        <a href="https://www.mixcloud.com/dynamicquality/" target="_blank" rel="noopener">Mixcloud</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="content-wrap">
+    <div class="footer-inner">
+      <span class="footer-text">© 2026 Scott Bell · Nakamoto Design Corp</span>
+      <span class="footer-text">Victoria, BC</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Scroll reveal
+(function() {
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReduced) {
+    document.querySelectorAll('.reveal.hidden').forEach(el => el.classList.remove('hidden'));
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.remove('hidden');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal.hidden').forEach(el => observer.observe(el));
+})();
+
+// Smooth scroll for nav links
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', e => {
+    const target = document.querySelector(link.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      const offset = 80;
+      const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  });
+});
+</script>
+</body>
+</html>

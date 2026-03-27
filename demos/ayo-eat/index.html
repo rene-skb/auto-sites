@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ayo Eat — Indonesian Food, Victoria BC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* === RESET & BASE === */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --cream: #FAF5EE;
+  --turmeric: #C49A3A;
+  --turmeric-light: #F5EDD6;
+  --warm-black: #1A1610;
+  --warm-gray: #6B6055;
+  --warm-gray-light: #A09585;
+  --alt-bg: #F0EAE0;
+  --dark-bg: #1E1A14;
+  --section-pad: 96px;
+  --content-width: 1080px;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ls-sm: 0.04em;
+  --ls-md: 0.08em;
+  --ls-lg: 0.14em;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  background: var(--cream);
+  color: var(--warm-black);
+  font-size: 17px;
+  line-height: 1.65;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; height: auto; }
+
+/* === NAV === */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(250, 245, 238, 0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(26, 22, 16, 0.06);
+}
+.nav-inner {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-brand {
+  font-family: 'Fraunces', serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: var(--ls-sm);
+}
+.nav-links {
+  display: flex; gap: 32px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-md);
+  text-transform: uppercase;
+  color: var(--warm-gray);
+  transition: color 200ms var(--ease-out);
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 0; height: 1.5px;
+  background: var(--turmeric);
+  transition: width 300ms var(--ease-out);
+}
+.nav-links a:hover { color: var(--warm-black); }
+.nav-links a:hover::after { width: 100%; }
+
+/* Hamburger */
+.nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+.nav-toggle span {
+  display: block; width: 24px; height: 2px;
+  background: var(--warm-black);
+  margin: 5px 0;
+  transition: all 200ms var(--ease-out);
+}
+
+/* === HERO — split-image-right === */
+.hero {
+  padding: calc(var(--section-pad) + 64px) 24px var(--section-pad);
+  max-width: var(--content-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+  min-height: 85vh;
+}
+.hero-content {
+  border-left: 3px solid var(--turmeric);
+  padding-left: 32px;
+}
+.hero-label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--ls-lg);
+  color: var(--turmeric);
+  margin-bottom: 20px;
+}
+.hero h1 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+  color: var(--warm-black);
+}
+.hero-body {
+  font-size: 1.0625rem;
+  color: var(--warm-gray);
+  line-height: 1.7;
+  margin-bottom: 28px;
+  max-width: 480px;
+}
+.hero-ctas {
+  display: flex; gap: 16px; align-items: center; flex-wrap: wrap;
+}
+.btn-primary {
+  display: inline-flex; align-items: center;
+  padding: 14px 28px;
+  background: var(--turmeric);
+  color: #fff;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: var(--ls-md);
+  border: none; border-radius: 2px;
+  cursor: pointer;
+  transition: transform 160ms var(--ease-out), background 200ms var(--ease-out);
+}
+.btn-primary:active { transform: scale(0.97); }
+.btn-primary:hover { background: #b08a30; }
+.btn-secondary {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--warm-gray);
+  letter-spacing: var(--ls-sm);
+  transition: color 200ms var(--ease-out);
+}
+.btn-secondary:hover { color: var(--warm-black); }
+.hero-image {
+  border-radius: 2px;
+  overflow: hidden;
+  aspect-ratio: 4/5;
+}
+.hero-image img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+
+/* === TRUST BAR === */
+.trust-bar {
+  background: var(--dark-bg);
+  color: #fff;
+  padding: 28px 24px;
+}
+.trust-bar-inner {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+.trust-stat {
+  text-align: center;
+}
+.trust-stat-number {
+  font-family: 'Fraunces', serif;
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: var(--ls-sm);
+  margin-bottom: 4px;
+}
+.trust-stat-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: var(--ls-lg);
+  color: rgba(255,255,255,0.6);
+}
+
+/* === PHOTO STRIP === */
+.photo-strip {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: var(--section-pad) 24px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 4px;
+}
+.photo-strip-large {
+  border-radius: 2px;
+  overflow: hidden;
+}
+.photo-strip-large img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.photo-strip-stack {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 4px;
+}
+.photo-strip-stack-item {
+  border-radius: 2px;
+  overflow: hidden;
+}
+.photo-strip-stack-item img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+
+/* === ABOUT === */
+.about {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 24px var(--section-pad);
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 48px;
+  align-items: start;
+}
+.about-quote {
+  font-family: 'Fraunces', serif;
+  font-size: 1.375rem;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--warm-gray);
+  border-left: 2px solid var(--turmeric);
+  padding-left: 24px;
+}
+.about-quote cite {
+  display: block;
+  margin-top: 12px;
+  font-style: normal;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-md);
+  text-transform: uppercase;
+  color: var(--warm-gray-light);
+}
+.section-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--ls-lg);
+  color: var(--turmeric);
+  margin-bottom: 16px;
+}
+.about-text h2 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+}
+.about-text p {
+  color: var(--warm-gray);
+  margin-bottom: 16px;
+}
+
+/* === NAME SECTION === */
+.name-section {
+  padding: 120px 24px;
+  text-align: center;
+}
+.name-section .section-label {
+  margin-bottom: 20px;
+}
+.name-section h2 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(28px, 5vw, 52px);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.035em;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* === MENU === */
+.menu-section {
+  background: var(--alt-bg);
+  padding: var(--section-pad) 24px;
+}
+.menu-inner {
+  max-width: var(--content-width);
+  margin: 0 auto;
+}
+.menu-section .section-label { margin-bottom: 16px; }
+.menu-section h2 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 40px;
+}
+.menu-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.menu-card {
+  background: var(--cream);
+  padding: 32px;
+  border-radius: 2px;
+}
+.menu-card-number {
+  font-family: 'Fraunces', serif;
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--warm-gray-light);
+  opacity: 0.4;
+  margin-bottom: 12px;
+}
+.menu-card h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.menu-card-desc {
+  font-size: 0.9375rem;
+  color: var(--warm-gray);
+  line-height: 1.6;
+}
+.menu-card-price {
+  margin-top: 12px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--turmeric);
+}
+
+/* === QUOTE SECTION === */
+.quote-section {
+  background: var(--turmeric);
+  color: #fff;
+  padding: var(--section-pad) 24px;
+  text-align: center;
+}
+.quote-section blockquote {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(20px, 3vw, 28px);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.5;
+  max-width: 720px;
+  margin: 0 auto 20px;
+}
+.quote-section cite {
+  font-style: normal;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-md);
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+/* === REVIEWS === */
+.reviews {
+  padding: var(--section-pad) 24px;
+  max-width: var(--content-width);
+  margin: 0 auto;
+}
+.reviews .section-label { margin-bottom: 16px; }
+.reviews h2 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 40px;
+}
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.review-card {
+  background: var(--alt-bg);
+  padding: 32px;
+  border-radius: 2px;
+}
+.review-card-featured {
+  background: var(--dark-bg);
+  color: #fff;
+}
+.review-card-featured .review-text { color: rgba(255,255,255,0.85); }
+.review-card-featured .review-attr { color: rgba(255,255,255,0.5); }
+.review-stars {
+  color: var(--turmeric);
+  font-size: 0.875rem;
+  margin-bottom: 16px;
+  letter-spacing: 2px;
+}
+.review-text {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--warm-gray);
+  margin-bottom: 16px;
+}
+.review-attr {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: var(--ls-md);
+  text-transform: uppercase;
+  color: var(--warm-gray-light);
+}
+
+/* === VISIT === */
+.visit {
+  background: var(--alt-bg);
+  padding: var(--section-pad) 24px;
+}
+.visit-inner {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+}
+.visit .section-label { margin-bottom: 16px; }
+.visit h2 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+}
+.visit-details p {
+  color: var(--warm-gray);
+  margin-bottom: 12px;
+}
+.visit-phone {
+  font-family: 'Fraunces', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--turmeric);
+  display: inline-block;
+  margin-bottom: 16px;
+}
+.visit-note {
+  font-size: 0.9375rem;
+  color: var(--warm-gray-light);
+  font-style: italic;
+}
+.visit-hours {
+  margin-top: 24px;
+}
+.visit-hours table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.visit-hours td {
+  padding: 8px 0;
+  font-size: 0.9375rem;
+  color: var(--warm-gray);
+}
+.visit-hours td:first-child {
+  font-weight: 500;
+  color: var(--warm-black);
+}
+.visit-hours .hours-closed td {
+  color: var(--warm-gray-light);
+}
+.visit-map {
+  border-radius: 2px;
+  overflow: hidden;
+  min-height: 300px;
+}
+.visit-map iframe {
+  width: 100%; height: 100%;
+  border: none;
+  filter: saturate(0.8) contrast(1.05);
+}
+
+/* === CTA BAND === */
+.cta-band {
+  background: var(--dark-bg);
+  color: #fff;
+  padding: var(--section-pad) 24px;
+  text-align: center;
+}
+.cta-band h2 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(24px, 3.5vw, 40px);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+.cta-band p {
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 28px;
+}
+.cta-band .btn-primary {
+  background: var(--turmeric);
+}
+.cta-band .btn-primary:hover { background: #b08a30; }
+
+/* === FOOTER === */
+.footer {
+  padding: 48px 24px;
+  text-align: center;
+}
+.footer-brand {
+  font-family: 'Fraunces', serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: var(--ls-sm);
+  margin-bottom: 8px;
+}
+.footer-copy {
+  font-size: 0.8125rem;
+  color: var(--warm-gray-light);
+}
+.footer-social {
+  margin-top: 12px;
+}
+.footer-social a {
+  font-size: 0.8125rem;
+  color: var(--warm-gray);
+  font-weight: 500;
+  letter-spacing: var(--ls-md);
+  text-transform: uppercase;
+  transition: color 200ms var(--ease-out);
+}
+.footer-social a:hover { color: var(--turmeric); }
+
+/* === MOBILE === */
+@media (max-width: 768px) {
+  :root { --section-pad: 64px; }
+  
+  .nav-links { display: none; }
+  .nav-toggle { display: block; }
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%; left: 0; right: 0;
+    background: var(--cream);
+    padding: 24px;
+    gap: 20px;
+    border-bottom: 1px solid rgba(26, 22, 16, 0.06);
+  }
+  
+  .hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    padding-top: calc(var(--section-pad) + 48px);
+  }
+  .hero-image { order: -1; aspect-ratio: 3/2; }
+  .hero-content { border-left: none; padding-left: 0; border-top: 3px solid var(--turmeric); padding-top: 24px; }
+  
+  .photo-strip { grid-template-columns: 1fr; }
+  .photo-strip-stack { grid-template-columns: 1fr 1fr; }
+  
+  .about { grid-template-columns: 1fr; }
+  
+  .name-section { padding: 80px 24px; }
+  
+  .menu-grid { grid-template-columns: 1fr; }
+  
+  .reviews-grid { grid-template-columns: 1fr; }
+  
+  .visit-inner { grid-template-columns: 1fr; }
+  
+  .trust-bar-inner { gap: 24px; }
+}
+
+/* === FOCUS === */
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--turmeric);
+  outline-offset: 2px;
+}
+
+/* === SCROLL REVEAL === */
+body.js-ready .reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+}
+body.js-ready .reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+body.js-ready .stagger-1 { transition-delay: 0ms; }
+body.js-ready .stagger-2 { transition-delay: 60ms; }
+body.js-ready .stagger-3 { transition-delay: 120ms; }
+body.js-ready .stagger-4 { transition-delay: 180ms; }
+
+/* Hero entrance */
+body.js-ready .hero-content {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+}
+body.js-ready .hero-image {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 800ms var(--ease-out), transform 800ms var(--ease-out);
+  transition-delay: 200ms;
+}
+body.js-ready .hero-content.visible,
+body.js-ready .hero-image.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Scroll margin */
+section[id] { scroll-margin-top: 80px; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html { scroll-behavior: auto; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">Ayo Eat</div>
+    <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#visit">Find Bana</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-label">Victoria's Only Indonesian Kitchen</div>
+    <h1>He Doesn't Advertise. He Just Cooks.</h1>
+    <p class="hero-body">Traditional West Sumatran recipes made from scratch by one cook who learned them at home. People who've been to Indonesia say they can't tell the difference.</p>
+    <div class="hero-ctas">
+      <a href="tel:+12505904231" class="btn-primary">Call to Order</a>
+      <a href="#visit" class="btn-secondary">Get Directions →</a>
+    </div>
+  </div>
+  <div class="hero-image">
+    <img src="hero-satay.png" alt="Chicken satay with peanut sauce over rice">
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-bar-inner">
+    <div class="trust-stat">
+      <div class="trust-stat-number">4.8 ★</div>
+      <div class="trust-stat-label">224+ Reviews</div>
+    </div>
+    <div class="trust-stat">
+      <div class="trust-stat-number">One Cook</div>
+      <div class="trust-stat-label">Everything by Bana</div>
+    </div>
+    <div class="trust-stat">
+      <div class="trust-stat-number">Made to Order</div>
+      <div class="trust-stat-label">From Scratch</div>
+    </div>
+    <div class="trust-stat">
+      <div class="trust-stat-number">Mon — Thu + Sat</div>
+      <div class="trust-stat-label">Closed Fri &amp; Sun</div>
+    </div>
+  </div>
+</div>
+
+<!-- PHOTO STRIP -->
+<section class="photo-strip reveal">
+  <div class="photo-strip-large">
+    <img src="rendang-plate.png" alt="Beef rendang with coconut rice and sambal">
+  </div>
+  <div class="photo-strip-stack">
+    <div class="photo-strip-stack-item">
+      <img src="spring-rolls.png" alt="Fresh spring rolls with peanut dipping sauce">
+    </div>
+    <div class="photo-strip-stack-item">
+      <img src="spices-prep.png" alt="Indonesian spices and cooking preparation">
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="about reveal">
+  <div class="about-left">
+    <blockquote class="about-quote">
+      "My family from Sumatra comes from the same ethnic group as Bana. The food reminds me of the celebrations back home — Eid al-Fitr, when the faithful break their fast."
+      <cite>Satria B. · UVic Student from Jakarta</cite>
+    </blockquote>
+  </div>
+  <div class="about-text">
+    <div class="section-label">The Story</div>
+    <h2>"Authentic Food Is Made as Original"</h2>
+    <p>Ali Syahbana — everyone calls him Bana — cooks the recipes he grew up with in West Sumatra. Traditional rendang soaked in coconut milk and 17 spices. Satay smothered in his secret peanut sauce. Sambal eggs that make homesick students smile.</p>
+    <p>Ayo Eat is the only Indonesian eatery in Victoria. "Ayo" means "come" in Indonesian. That's the whole pitch. Come eat.</p>
+  </div>
+</section>
+
+<!-- NAME SECTION -->
+<section class="name-section reveal">
+  <div class="section-label">The Name</div>
+  <h2>Ayo Means "Come." That's the Whole Pitch.</h2>
+</section>
+
+<!-- MENU -->
+<section id="menu" class="menu-section">
+  <div class="menu-inner">
+    <div class="section-label">The Food</div>
+    <h2>Five Dishes. All From Scratch.</h2>
+    <div class="menu-grid">
+      <div class="menu-card reveal stagger-1">
+        <div class="menu-card-number">01</div>
+        <h3>Chicken Satay</h3>
+        <p class="menu-card-desc">Grilled skewers with Bana's secret peanut sauce, coconut rice, and bright pickled vegetables.</p>
+        <div class="menu-card-price">$16</div>
+      </div>
+      <div class="menu-card reveal stagger-2">
+        <div class="menu-card-number">02</div>
+        <h3>Nasi Campur Rendang</h3>
+        <p class="menu-card-desc">Beef slow-cooked in coconut milk and 17 spices, served with rice, sambal, and crispy shrimp chips.</p>
+        <div class="menu-card-price">$18</div>
+      </div>
+      <div class="menu-card reveal stagger-3">
+        <div class="menu-card-number">03</div>
+        <h3>Telor Sambal</h3>
+        <p class="menu-card-desc">Spicy hard-boiled eggs in sambal sauce with coconut rice. The dish that makes homesick students close their eyes and smile.</p>
+        <div class="menu-card-price">$15</div>
+      </div>
+      <div class="menu-card reveal stagger-4">
+        <div class="menu-card-number">04</div>
+        <h3>Gado Gado Wrap</h3>
+        <p class="menu-card-desc">Fresh vegetables wrapped with peanut sauce and crispy tempeh. Light, bright, and deeply satisfying.</p>
+        <div class="menu-card-price">$14</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section class="quote-section reveal">
+  <blockquote>"This is absolutely on par with the best Indonesian food I've had anywhere — including in Indonesia."</blockquote>
+  <cite>Via TripAdvisor</cite>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews" class="reviews">
+  <div class="section-label">What People Say</div>
+  <h2>224 Reviews. 4.8 Stars.</h2>
+  <div class="reviews-grid">
+    <div class="review-card reveal stagger-1">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"I lived in Indonesia for a few months, and the flavours here took me straight back. If you're looking for authentic Indonesian food in Victoria, this place is amazing!"</p>
+      <div class="review-attr">Carlos V. · Nov 2025 · Via Google</div>
+    </div>
+    <div class="review-card review-card-featured reveal stagger-2">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"I've come here for many years, and this place is my favourite place to eat in Victoria to make life happy. Thank you, Bana!"</p>
+      <div class="review-attr">Sophie · Jan 2026 · Via Google</div>
+    </div>
+    <div class="review-card reveal stagger-3">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"My sister was so happy with this dish. It reminded her of when she was in Indonesia and Sumatra. Very authentic and friendly service and absolutely delicious!"</p>
+      <div class="review-attr">Serena A. · Nov 2025 · Via Google</div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section id="visit" class="visit reveal">
+  <div class="visit-inner">
+    <div class="visit-details">
+      <div class="section-label">Find Bana</div>
+      <h2>Second Floor. Turn Left.</h2>
+      <p>Market Square, 560 Johnson St #140<br>Victoria, BC V8W 3C6</p>
+      <a href="tel:+12505904231" class="visit-phone">(250) 590-4231</a>
+      <p class="visit-note">Phone orders welcome. Everything is made to order — allow a little time.</p>
+      <div class="visit-hours">
+        <table>
+          <tr><td>Monday</td><td>12:30 — 6:30 PM</td></tr>
+          <tr><td>Tuesday</td><td>11:30 AM — 6:30 PM</td></tr>
+          <tr><td>Wednesday</td><td>11:30 AM — 6:30 PM</td></tr>
+          <tr><td>Thursday</td><td>11:30 AM — 6:30 PM</td></tr>
+          <tr class="hours-closed"><td>Friday</td><td>Closed</td></tr>
+          <tr><td>Saturday</td><td>12:30 — 5:00 PM</td></tr>
+          <tr class="hours-closed"><td>Sunday</td><td>Closed</td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="visit-map">
+      <iframe src="https://maps.google.com/maps?q=Ayo+Eat+560+Johnson+St+Victoria+BC&output=embed" loading="lazy" title="Map to Ayo Eat"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <h2>Ayo. Come Eat.</h2>
+  <p>Market Square, second floor. Phone orders welcome.</p>
+  <a href="tel:+12505904231" class="btn-primary">Call to Order</a>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-brand">Ayo Eat</div>
+  <div class="footer-copy">Indonesian Food · Market Square, Victoria BC</div>
+  <div class="footer-social">
+    <a href="https://www.instagram.com/ayoeat.victoria/" target="_blank" rel="noopener noreferrer">Instagram</a>
+  </div>
+</footer>
+
+<script>
+// Mark JS ready for progressive enhancement
+document.body.classList.add('js-ready');
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal, .hero-content, .hero-image').forEach(el => observer.observe(el));
+</script>
+<noscript>
+<style>.reveal, .hero-content, .hero-image { opacity: 1 !important; transform: none !important; }</style>
+</noscript>
+</body>
+</html>

@@ -1,5 +1,105 @@
 # Auto-Sites Build Log
 
+## Build 59 — Painted Lotus Studios
+- **Category:** Tattoo Studio
+- **City:** Victoria, BC (910 Gordon St, downtown)
+- **Date:** 2026-03-27
+- **Model:** claude-sonnet-4-6 (cron)
+- **Agent:** Lucy
+- **Hero pattern:** dark-immersive
+- **Typography:** Spectral 400/600/700/800/400i (display) + Space Grotesk 300/400/500/600 (body/UI)
+- **Review layout:** Stacked full-width reviews (all same treatment — no checkerboard)
+- **Stats bar style:** dark-bar (dark bg strip after hero: 4.8★ / 2009 / 7 / Walk-In / Voted)
+- **Score:** 6.67 (v0 WHY avg) → 7.5 (v5 self-review)
+- **Live URL:** https://auto-sites.pages.dev/demos/painted-lotus-studios/
+- **Key decisions:** "Sixteen Years. Seven Artists. One Address." — conviction headline that's specific, earned, and immediately differentiating. Dark-immersive hero on near-black with lotus rose accent `#C47078/CE8A90` — warm without being cold, avoids tattoo shop cliché (no skulls, no blackletter). Spectral chosen for its letterpress/ink energy — it literally evokes the craft. "The Tattoo Outlasts Everything Else." as name section — the best copy moment, reframing permanence as a value proposition. Artist collective structure surfaced as a feature: "you're not getting whoever's available — you're choosing your artist." 2-column dark artist cards against ink background. Single CTA in footer (removed competing dual buttons per Rams). Score ceiling: real photography would push this to 8.5+.
+
+### Business
+Painted Lotus Studios. Real Victoria BC business. Website paintedlotustattoo.com (exists but is a minimal nav-hub, not a designed marketing site). Address: 910 Gordon St, Victoria, BC V8W 1X5. Phone: (250) 590-1831. Email: paintedlotustattoo@gmail.com. Instagram: @paintedlotusstudios (8.2K+ followers, 1.4K+ posts). Facebook: paintedlotusstudios (6K+ followers, 4.8/5 154 votes). Google: 4.8 stars, 290 reviews. Custom tattooing since 2009. Award-winning — voted Victoria's Best Tattoo Shop. 7 resident artists: Shannon Hayward, Ro Curran, Mr. Megs, Genghis Shawn, Emily Shoichet, Scott Robertson, Gwendolyn Williams. Walk-ins always welcome by availability. Tattoo only — no piercing. 
+
+### Scores
+| Round | Phase | Reviewers | Avg |
+|-------|-------|-----------|-----|
+| v0→v1 | WHY | Jobs 7.5, Cagan 6.0, Ogilvy 6.5 | 6.67 |
+| v1→v2 | WHAT | Norman 7.0, Krug 6.5, Nielsen 5.5 | 6.33 |
+| v2→v3 | HOW | Vignelli 5.0, Spiekermann 4.0, Rams 6.0 | 5.0 |
+| v4→v5 | Motion + Self | Emil + Lucy | 7.5 |
+
+### Key improvements
+- v0→v1: Added work gallery section (major gap — no tattoo work visible); availability badges on artist cards; how booking works process section; review text from verbatim Google sources with name+initial
+- v1→v2: Artist cards moved to dark background (2-col layout vs 3-col cream); lightened lotus accent for WCAG compliance on dark (`#CE8A90`); consistent button system (3 tiers); single CTA in footer; removed redundant photo strip; trust items staggered via JS data-delay
+- v2→v3: Full spacing system (8px base unit, CSS vars); letter-spacing audit (all uppercase labels at `--ls-lg: 0.14em`); consistent `--content-px` and `--max-w` for grid discipline; artist cards cut to name + one-line note + link (removed info bloat); `scroll-margin-top: 80px` on all anchors
+- v3→v4: Emil's motion plan — trust bar count-up animation (count up 4.8, 2009, 7); process steps stagger (120ms); review items stagger (150ms); artist cards column stagger; all timing standardized to cubic-bezier(0.25, 0.1, 0.25, 1)
+- v4→v5: Removed small photo strip (self-review: "commit or kill"); added 2-col work gallery with tall left + 2-row right; review text bumped to 1.25rem; single decisive CTA in CTA band
+
+### What worked
+- Spectral: first use in builds. The letterpress/printing energy is perfect for tattooing — thick-thin strokes evoke needle craft. Distinctive from every recent Cormorant/Fraunces/Playfair build.
+- Dark ink `#1A1614` as base: creates the right gallery/studio atmosphere — warm, not cold, and completely distinct from the cream-heavy recent builds.
+- Lotus rose `#C47078`/`#CE8A90` (two values for light vs dark contexts): unexpected for tattoo category, reads as sophisticated not feminine. Avoids red/black/chrome cliché.
+- "Sixteen Years. Seven Artists. One Address." — six words covering longevity + variety + specificity. All three things a client needs to know.
+- "The Tattoo Outlasts Everything Else." — strongest line on the page. Three reviewers all called it out positively.
+- Artist collective as differentiator: "You're not getting whoever's available. You're choosing your artist." — this is the unique UX of a collective studio.
+- Counter animation on trust stats (4.8★, 2009, 7) — adds life to the credibility bar without gimmickry.
+- Stacked full-width reviews with large Spectral italic quotes (1.25rem) — more presence than small-card format.
+- "Tattoo only — because that's all we do" — the no-piercing constraint turned into a brand conviction.
+
+### Files
+- index-v0.html through index-v5.html (6 versions)
+- index.html (copy of v5)
+- tattoo-detail.png, tattoo-work.png, ink-close.png, needle-detail.png, flash-art.png, studio-atmosphere.png (6 AI-generated images)
+
+---
+
+## Build 58 — GoodSide Pastry House
+- **Category:** Bakery / Pastry
+- **City:** Victoria, BC (1805 Fort St)
+- **Date:** 2026-03-27
+- **Model:** claude-sonnet-4-6 (cron)
+- **Agent:** Lucy
+- **Hero pattern:** editorial-spread
+- **Typography:** DM Serif Display 400/400i (display) + DM Sans 300/400/500/600 (body/UI)
+- **Review layout:** 3-col equal cards, all same treatment (cream-alt bg, honey border-top)
+- **Stats bar style:** accent-bar (honey/amber bg, warm black text)
+- **Score:** 7.33 (v0 WHY avg) → 8.5 (v5 self-review)
+- **Live URL:** https://auto-sites.pages.dev/demos/goodside-pastry-house/
+- **Key decisions:** "The Menu Is Different Every Month. The Line Isn't." — conviction hero that captures both the rotation AND the demand. Editorial-spread (dark left / croissant right). DM Serif Display first use — clean, modern French elegance. Honey/amber `#C4924A` accent evokes croissant warmth and butter. Curtis's own quote ("We Scrap the Menu. We Start Again.") as the name/philosophy section. Rotating menu as core UX insight: points visitors to the website/Instagram for what's current. Quick-visit info strip surfaces hours/address early. YAM 2025 Best Pastry Chefs in accent bar. Takeout-only + sell-out-daily note near address sets honest expectations.
+
+### Business
+GoodSide Pastry House. Real Victoria BC business. Website at goodsidepastryhouse.ca (exists but is a basic ordering/menu tool, not a designed marketing page). Address: 1805 Fort St, Victoria, BC V8R 4R7. Phone: (250) 880-1540. Instagram: @goodsidepastryhouse (15K+ followers). Facebook: goodsidepastryhouse. TikTok: @goodsidepastryhouse. Google: 4.9 stars, 339 reviews. Owners: Haley Landa + Curtis Helm — met in culinary school in Vancouver 14 years ago; spent a decade in Vancouver's high-intensity kitchens; moved to Victoria in 2020 for community. Hours: Thu–Sun from 10am. Takeout only. Rotating monthly menu (they scrap and restart every month). Organic flour, Lockwood Farms eggs. Award: YAM Magazine 2025 Best Pastry Chefs. Press: CHEK News "Order Up" feature (Sept 2025). Signature items: croissant, passionfruit brioche bomb, lychee-raspberry cheesecake mousse, coffee and dulcey tart. Cake orders at goodsidepastryhouse.ca/cake-order. People line up before opening — every day, three years running.
+
+### Scores
+| Round | Phase | Reviewers | Avg |
+|-------|-------|-----------|-----|
+| v0→v1 | WHY | Jobs 7.0, Cagan 7.5, Ogilvy 7.5 | 7.33 |
+| v1→v2 | WHAT | Norman 7.5, Krug 7.0, Nielsen 7.0 | 7.17 |
+| v2→v3 | HOW | Vignelli 7.5, Spiekermann 7.5, Rams 7.5 | 7.5 |
+| v4→v5 | Motion + Self | Emil + Lucy | 8.5 |
+
+### Key improvements
+- v0→v1: Fixed image duplication (pastry-detail.png in both about and photo strip — about → pastry-assortment.png); split combined review attribution; name section replaced description with Curtis's actual quote; about headline simplified from ad copy to earned; coffee card → rotating menu; generated 5th image (pastry-assortment)
+- v1→v2: Added quick-visit info strip (hours/address surfaced earlier); focus-visible states; accent bar label contrast fixed (removed opacity); sig-cards gained images but THEN images removed per non-negotiable (would have duplicated); photo strip updated to croissant-layers/pastry-assortment/tart-closeup
+- v2→v3: review-text unified to 1rem (from 0.9375rem); review-meta bumped to 0.8125rem; about-quote cite bumped to 0.8125rem; "The Coffee" → "Custom Cakes" (more specific, links to cake order page); removed sig-card-image CSS transition
+- v3→v4: Full motion system — hero entrance stagger (double-rAF pattern, 80ms intervals); IntersectionObserver scroll-reveals (reveal/reveal-img); sig-card and review-card stagger (60ms/50ms); noscript fallback; prefers-reduced-motion
+- v4→v5: Removed review stars (redundant with "4.9 Stars. 339 Times." header); warmed sig-cards to honey-light bg; name-body widened to 60ch; map fallback "Open in Google Maps ↗" link; sig-note hover states
+
+### What worked
+- "The Menu Is Different Every Month. The Line Isn't." — the single best headline in recent builds. Two sentences, captures demand + creativity simultaneously. Completely specific to this business.
+- DM Serif Display + DM Sans: first use of this pairing. The display weight has clean, modern French elegance without Cormorant's formality or Fraunces' warmth. Right register for a technically-skilled but approachable bakery.
+- Honey/amber `#C4924A`: evokes croissant color, butter, warmth. More specific than generic gold. Three-color palette (cream/dark/honey) is tight and cohesive throughout.
+- Editorial-spread hero: dark conviction panel + bright croissant photo creates magazine-quality first impression.
+- Curtis's quote as name section: "We Scrap the Menu. We Start Again." — using actual owner words makes the section feel earned, not designed.
+- Quick-visit info strip: surfacing hours/address/format early addressed the primary visitor need (when can I go?) without disrupting the editorial flow.
+- YAM 2025 Best Pastry Chefs in accent bar: this is meaningful local press credibility, not a vanity stat.
+- Custom Cakes card: more specific than "the coffee" — has real price data ($21 for 4") and a real URL (cake-order page). Turns a weak sig-card slot into a conversion point.
+- Accent-bar color choice: honey/amber accent as the full bar background makes it pop against the cream/dark section rhythm. Different from every dark-bar and light-bar in recent builds.
+
+### Files
+- index-v0.html through index-v5.html (6 versions)
+- index.html (copy of v5)
+- hero-croissant.png, croissant-layers.png, pastry-detail.png, tart-closeup.png, pastry-assortment.png (5 AI-generated images)
+
+---
+
 ## Build 57 — Kid Sister Ice Cream
 - **Category:** Food & Beverage — Artisan Ice Cream
 - **City:** Victoria, BC (Esquimalt — 1320 Esquimalt Road)

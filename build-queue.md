@@ -5,19 +5,49 @@
 
 ## Queue
 
-### GoodSide Pastry House
-- **City:** Victoria, BC
-- **Category:** Bakery / Pastry
-- **Rating:** 4.9★ (338 reviews)
-- **Notes:** Near-perfect rating, no website. Found via Outscraper.
+### Lynnwood Barber Shop
+- **City:** Edmonton, AB
+- **Category:** Barbershop
+- **Address:** 15004 87 Ave NW, Edmonton, AB T5R 1E4
+- **Phone:** +1 780-489-5911
+- **Hours:** Mon-Wed 10:30AM-6PM | Thu-Fri 10:30AM-6:30PM | Sat 10:30AM-6PM | Sun 12-5PM
+- **Rating:** 5★ (982 reviews)
+- **Social:** None found — runs entirely on word of mouth and Google
+- **Top Reviews (with names):**
+  - "You can tell this is more than just a job for him. Kelly always makes you feel like a friend." — Gates G.
+  - "Kelly is hands down one of the best barbers I've ever been to. He takes his time, listens exactly, and absolutely nails it every time." — Michael D.
+  - "Kelly was able to fix a bad haircut from somewhere else perfectly. Also incredibly friendly and welcoming." — Hk L.
+- **What makes them interesting:** One-man shop run by Kelly, a barber with near-mythological neighbourhood loyalty in West Edmonton. 982 reviews at a perfect 5 stars — essentially unheard of for a solo barbershop. Zero web presence. The brand story is already written: Kelly IS the shop. His name appears in nearly every review.
+- **Brand observations:** No logo, no Instagram, no website. Warm, neighbourhood-institution energy. Classic amber tones, serif type, "since [year]" pride.
+
+### Juhee's Closet
+- **City:** Montreal, QC
+- **Category:** Clothing Alterations / Tailor
+- **Address:** 5726 Sherbrooke St W #219, Montreal, Quebec H4A 1W8
+- **Phone:** +1 514-800-0065
+- **Hours:** Wed 11AM-6PM | Sat 11AM-5PM
+- **Rating:** 4.9★ (83 reviews)
+- **Social:** None found
+- **Top Reviews (with names):**
+  - "Juhee is the sweetest person ever! Her seams were way better than the original cosplay." — Aki
+  - "Her seams are a class above." — David G.
+  - "I will be going back with all my suits." — Evan S.
+- **What makes them interesting:** Korean-owned boutique alteration shop in NDG, Montreal. Works only 2 days/week, creating an artisan mystique. Unusual range: does both high-end suit alterations AND cosplay. No web presence at all.
+- **Brand observations:** Two-days-a-week is a positioning gift — "The tailor who only works when it matters." Soft, personal brand: sage green or cream tones, handwritten-feel type, artisan craft aesthetic.
+
+## Built
 
 ### Painted Lotus Studios
 - **City:** Victoria, BC
 - **Category:** Tattoo Studio
-- **Rating:** 4.8★ (290 reviews)
-- **Notes:** Well-reviewed tattoo studio, no website. Found via Outscraper.
+- **Built:** 2026-03-27
+- **Demo:** `projects/auto-sites/demos/painted-lotus-studios/`
 
-## Built
+### GoodSide Pastry House
+- **City:** Victoria, BC
+- **Category:** Bakery / Pastry
+- **Built:** 2026-03-27
+- **Demo:** `projects/auto-sites/demos/goodside-pastry-house/`
 
 ### Flowers On Top
 - **City:** Victoria, BC

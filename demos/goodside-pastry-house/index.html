@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GoodSide Pastry House — Victoria, BC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+  /* ── Reset ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-size: 16px; -webkit-font-smoothing: antialiased; }
+  img { display: block; max-width: 100%; }
+  a { color: inherit; text-decoration: none; }
+
+  /* ── Tokens ── */
+  :root {
+    --cream:      #FAF7F2;
+    --cream-alt:  #F2EBE0;
+    --dark:       #1A1610;
+    --dark-soft:  #2C2620;
+    --honey:      #C4924A;
+    --honey-light:#F5E8D0;
+    --gray:       #6B6258;
+    --gray-light: #9A9088;
+
+    --section-pad: clamp(64px, 8vw, 112px);
+    --content-w:   1200px;
+    --col-pad:     clamp(20px, 5vw, 80px);
+
+    --ls-sm:  0.04em;
+    --ls-md:  0.08em;
+    --ls-lg:  0.14em;
+
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  /* ── Base ── */
+  body {
+    background: var(--cream);
+    color: var(--dark);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  /* ── Nav ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 var(--col-pad);
+    height: 64px;
+    background: rgba(26, 22, 16, 0.97);
+    backdrop-filter: blur(8px);
+  }
+  .nav-brand {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.0625rem;
+    color: var(--cream);
+    letter-spacing: var(--ls-sm);
+  }
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+  .nav-links a {
+    color: rgba(250,247,242,0.75);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: var(--ls-md);
+    text-transform: uppercase;
+    transition: color 200ms var(--ease-out);
+    position: relative;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px; left: 0; right: 100%;
+    height: 1px;
+    background: var(--honey);
+    transition: right 240ms var(--ease-out);
+  }
+  .nav-links a:hover { color: var(--cream); }
+  .nav-links a:hover::after { right: 0; }
+  .nav-cta {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: var(--ls-md);
+    text-transform: uppercase;
+    color: var(--honey);
+    transition: opacity 200ms;
+  }
+  .nav-cta:hover { opacity: 0.8; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--cream); }
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: var(--dark);
+    z-index: 99;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem;
+    color: var(--cream);
+  }
+  .mobile-close {
+    position: absolute;
+    top: 24px; right: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: var(--cream);
+    line-height: 1;
+  }
+
+  /* ── Section label ── */
+  .section-label {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: var(--ls-lg);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  /* ── Hero (editorial-spread) ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 64px;
+  }
+  .hero-left {
+    background: var(--dark);
+    padding: clamp(48px, 6vw, 96px) clamp(32px, 5vw, 72px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0;
+  }
+  .hero-label {
+    color: var(--honey);
+    letter-spacing: var(--ls-lg);
+    margin-bottom: 28px;
+  }
+  .hero-h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.5rem, 3.5vw, 4rem);
+    line-height: 1.1;
+    color: var(--cream);
+    letter-spacing: -0.02em;
+    margin-bottom: 28px;
+  }
+  .hero-h1 em {
+    font-style: italic;
+    color: var(--honey);
+  }
+  .hero-body {
+    color: rgba(250,247,242,0.72);
+    font-size: 1rem;
+    line-height: 1.75;
+    max-width: 42ch;
+    margin-bottom: 40px;
+    font-weight: 400;
+  }
+  .hero-ctas {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    display: inline-block;
+    background: var(--honey);
+    color: var(--dark);
+    font-weight: 600;
+    font-size: 0.8125rem;
+    letter-spacing: var(--ls-md);
+    text-transform: uppercase;
+    padding: 14px 28px;
+    transition: opacity 200ms var(--ease-out), transform 160ms var(--ease-out);
+  }
+  .btn-primary:hover { opacity: 0.9; }
+  .btn-primary:active { transform: scale(0.97); }
+  .btn-secondary {
+    display: inline-block;
+    border: 1px solid rgba(250,247,242,0.3);
+    color: rgba(250,247,242,0.8);
+    font-weight: 500;
+    font-size: 0.8125rem;
+    letter-spacing: var(--ls-md);
+    text-transform: uppercase;
+    padding: 14px 28px;
+    transition: border-color 200ms, color 200ms;
+  }
+  .btn-secondary:hover {
+    border-color: var(--cream);
+    color: var(--cream);
+  }
+  .btn-secondary:active { transform: scale(0.97); }
+  .hero-right {
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-right img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  /* ── Accent bar ── */
+  .accent-bar {
+    background: var(--honey);
+    padding: 24px var(--col-pad);
+  }
+  .accent-bar-inner {
+    max-width: var(--content-w);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: clamp(24px, 4vw, 64px);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .accent-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+  }
+  .accent-stat-value {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    color: var(--dark);
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .accent-stat-label {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: var(--ls-lg);
+    text-transform: uppercase;
+    color: rgba(26, 22, 16, 0.65);
+  }
+  .accent-bar-divider {
+    width: 1px;
+    height: 32px;
+    background: rgba(26,22,16,0.2);
+  }
+
+  /* ── Photo strip ── */
+  .photo-strip {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 4px;
+    height: 280px;
+  }
+  .photo-strip img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* ── Quick visit strip ── */
+  .quick-visit {
+    background: var(--cream-alt);
+    border-top: 1px solid rgba(26,22,16,0.08);
+    border-bottom: 1px solid rgba(26,22,16,0.08);
+    padding: 20px var(--col-pad);
+  }
+  .quick-visit-inner {
+    max-width: var(--content-w);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .quick-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+  }
+  .quick-label {
+    font-size: 0.625rem;
+    font-weight: 600;
+    letter-spacing: var(--ls-lg);
+    text-transform: uppercase;
+    color: var(--gray);
+  }
+  .quick-value {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--dark);
+  }
+  .quick-phone {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--honey);
+    letter-spacing: -0.01em;
+    transition: opacity 200ms;
+  }
+  .quick-phone:hover { opacity: 0.8; }
+  .quick-divider {
+    width: 1px;
+    height: 28px;
+    background: rgba(26,22,16,0.12);
+  }
+
+  /* ── About ── */
+  .about {
+    padding: var(--section-pad) var(--col-pad);
+    max-width: var(--content-w);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    gap: clamp(40px, 6vw, 96px);
+    align-items: start;
+  }
+  .about-image {
+    position: relative;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+  }
+  .about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .about-content .section-label { color: var(--honey); }
+  .about-h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.75rem, 2.5vw, 2.5rem);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+  }
+  .about-body {
+    color: var(--gray);
+    margin-bottom: 20px;
+    font-size: 1rem;
+  }
+  .about-quote {
+    border-left: 2px solid var(--honey);
+    padding-left: 20px;
+    margin-top: 32px;
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-size: 1.125rem;
+    line-height: 1.5;
+    color: var(--dark);
+  }
+  .about-quote cite {
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-style: normal;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: var(--ls-md);
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-top: 10px;
+  }
+
+  /* ── Section wrapper ── */
+  .section-wrap {
+    padding: var(--section-pad) var(--col-pad);
+    max-width: var(--content-w);
+    margin: 0 auto;
+  }
+  .section-h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.75rem, 2.5vw, 2.5rem);
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    margin-bottom: 48px;
+  }
+
+  /* ── Name section ── */
+  .name-section {
+    background: var(--dark);
+    padding: clamp(72px, 10vw, 120px) var(--col-pad);
+    text-align: center;
+  }
+  .name-section .section-label { color: var(--honey); margin-bottom: 24px; }
+  .name-h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(3rem, 6vw, 6rem);
+    color: var(--cream);
+    letter-spacing: -0.03em;
+    line-height: 1.0;
+    margin-bottom: 28px;
+  }
+  .name-h2 em { font-style: italic; color: var(--honey); }
+  .name-body {
+    max-width: 60ch;
+    margin: 0 auto;
+    color: rgba(250,247,242,0.65);
+    font-size: 1.0625rem;
+    line-height: 1.75;
+  }
+  .name-cta {
+    margin-top: 40px;
+  }
+
+  /* ── Signature items ── */
+  .sig-items {
+    padding: var(--section-pad) var(--col-pad);
+    background: var(--cream-alt);
+  }
+  .sig-inner {
+    max-width: var(--content-w);
+    margin: 0 auto;
+  }
+  .sig-header {
+    margin-bottom: 48px;
+  }
+  .sig-header .section-label { color: var(--honey); }
+  .sig-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+  }
+  .sig-card {
+    background: var(--honey-light);
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+  }
+  .sig-card-image {
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    margin: -32px -28px 24px;
+  }
+  .sig-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .sig-number {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.5rem;
+    color: var(--honey);
+    opacity: 0.35;
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+  .sig-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1875rem;
+    line-height: 1.3;
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+  .sig-desc {
+    font-size: 0.875rem;
+    color: var(--gray);
+    line-height: 1.65;
+  }
+  .sig-note {
+    margin-top: 32px;
+    font-size: 0.875rem;
+    color: var(--gray);
+    text-align: center;
+  }
+  .sig-note a {
+    color: var(--honey);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: opacity 180ms;
+  }
+  .sig-note a:hover { opacity: 0.75; }
+
+  /* ── Reviews ── */
+  .reviews {
+    padding: var(--section-pad) var(--col-pad);
+    max-width: var(--content-w);
+    margin: 0 auto;
+  }
+  .reviews-header {
+    margin-bottom: 48px;
+  }
+  .reviews-header .section-label { color: var(--honey); }
+  .reviews-h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.75rem, 2.5vw, 2.5rem);
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+  }
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+  }
+  .review-card {
+    background: var(--cream-alt);
+    padding: 32px 28px;
+    border-top: 2px solid var(--honey);
+  }
+  .review-stars {
+    color: var(--honey);
+    font-size: 0.875rem;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+  }
+  .review-text {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--dark);
+    margin-bottom: 20px;
+  }
+  .review-meta {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: var(--ls-md);
+    text-transform: uppercase;
+    color: var(--gray);
+  }
+
+  /* ── Press strip ── */
+  .press-strip {
+    background: var(--dark-soft);
+    padding: 40px var(--col-pad);
+  }
+  .press-inner {
+    max-width: var(--content-w);
+    margin: 0 auto;
+    text-align: center;
+  }
+  .press-quote {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-size: clamp(1.125rem, 2vw, 1.5rem);
+    color: var(--cream);
+    line-height: 1.5;
+    max-width: 60ch;
+    margin: 0 auto 16px;
+  }
+  .press-source {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: var(--ls-lg);
+    text-transform: uppercase;
+    color: var(--honey);
+  }
+
+  /* ── Visit ── */
+  .visit {
+    padding: var(--section-pad) var(--col-pad);
+    max-width: var(--content-w);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(40px, 6vw, 80px);
+    align-items: start;
+  }
+  .visit-content .section-label { color: var(--honey); }
+  .visit-h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.75rem, 2.5vw, 2.5rem);
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+    margin-bottom: 32px;
+  }
+  .visit-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 32px;
+  }
+  .visit-row {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .visit-row-label {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: var(--ls-lg);
+    text-transform: uppercase;
+    color: var(--gray);
+  }
+  .visit-row-value {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--dark);
+  }
+  .visit-row-value a { color: inherit; transition: color 180ms; }
+  .visit-row-value a:hover { color: var(--honey); }
+  .visit-note {
+    font-size: 0.875rem;
+    color: var(--gray);
+    margin-top: 8px;
+    font-style: italic;
+  }
+  .visit-map {
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background: #e0d8cc;
+  }
+  .visit-map iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    filter: grayscale(20%) contrast(0.95);
+  }
+  .visit-social {
+    display: flex;
+    gap: 16px;
+    margin-top: 24px;
+  }
+  .social-link {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: var(--ls-md);
+    text-transform: uppercase;
+    color: var(--gray);
+    padding: 10px 20px;
+    border: 1px solid #D8CFC4;
+    transition: border-color 200ms, color 200ms;
+  }
+  .social-link:hover { border-color: var(--honey); color: var(--honey); }
+
+  /* ── CTA band ── */
+  .cta-band {
+    background: var(--dark);
+    padding: clamp(64px, 8vw, 96px) var(--col-pad);
+    text-align: center;
+  }
+  .cta-band-label { color: var(--honey); margin-bottom: 20px; }
+  .cta-band-h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 3vw, 3.5rem);
+    color: var(--cream);
+    letter-spacing: -0.025em;
+    line-height: 1.15;
+    margin-bottom: 40px;
+    max-width: 20ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .cta-band-btns {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* ── Footer ── */
+  footer {
+    background: var(--dark-soft);
+    padding: 40px var(--col-pad);
+  }
+  .footer-inner {
+    max-width: var(--content-w);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .footer-brand {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.0625rem;
+    color: var(--cream);
+  }
+  .footer-meta {
+    font-size: 0.75rem;
+    color: rgba(250,247,242,0.4);
+    letter-spacing: var(--ls-sm);
+    text-align: right;
+  }
+  .footer-meta a { color: rgba(250,247,242,0.6); }
+
+  /* ── Responsive ── */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-right { height: 50vw; min-height: 280px; }
+    .about { grid-template-columns: 1fr; }
+    .about-image { aspect-ratio: 16/9; max-height: 320px; }
+    .sig-grid { grid-template-columns: 1fr; }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .visit { grid-template-columns: 1fr; }
+    .photo-strip { grid-template-columns: 1fr 1fr; height: auto; }
+    .photo-strip img { aspect-ratio: 1; }
+    .nav-links, .nav-cta { display: none; }
+    .hamburger { display: flex; }
+  }
+  @media (max-width: 600px) {
+    .accent-bar-inner { gap: 16px; }
+    .accent-bar-divider { display: none; }
+    .hero-ctas { flex-direction: column; }
+    .photo-strip { grid-template-columns: 1fr; height: auto; }
+    .photo-strip img { aspect-ratio: 4/3; }
+  }
+
+  /* Anchor scroll offsets */
+  #about, #bakes, #reviews, #visit { scroll-margin-top: 80px; }
+
+  /* Map fallback link */
+  .map-fallback-link {
+    display: block;
+    margin-top: 12px;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: var(--ls-md);
+    text-transform: uppercase;
+    color: var(--honey);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: opacity 180ms;
+  }
+  .map-fallback-link:hover { opacity: 0.75; }
+
+  /* Focus-visible states */
+  :focus-visible {
+    outline: 2px solid var(--honey);
+    outline-offset: 3px;
+  }
+
+  /* ── Motion ── */
+  /* Scroll reveals: hidden by default when JS enabled */
+  body.js-ready .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+  }
+  body.js-ready .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  body.js-ready .reveal-img {
+    opacity: 0;
+    transition: opacity 800ms var(--ease-out);
+  }
+  body.js-ready .reveal-img.is-visible {
+    opacity: 1;
+  }
+  /* Stagger delays */
+  .stagger-1 { transition-delay: 60ms; }
+  .stagger-2 { transition-delay: 120ms; }
+  .stagger-3 { transition-delay: 180ms; }
+  /* Hero entrance: hidden when JS ready, shown after */
+  body.js-ready .hero-entrance {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+  }
+  body.js-ready.js-loaded .hero-entrance { opacity: 1; transform: translateY(0); }
+  .hero-delay-1 { transition-delay: 0ms; }
+  .hero-delay-2 { transition-delay: 80ms; }
+  .hero-delay-3 { transition-delay: 160ms; }
+  .hero-delay-4 { transition-delay: 240ms; }
+  body.js-ready .hero-img {
+    opacity: 0;
+    transition: opacity 800ms var(--ease-out);
+  }
+  body.js-ready.js-loaded .hero-img { opacity: 1; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav>
+  <a href="#" class="nav-brand">GoodSide</a>
+  <ul class="nav-links">
+    <li><a href="#about">Our Story</a></li>
+    <li><a href="#bakes">This Month</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#visit">Visit</a></li>
+  </ul>
+  <a href="https://goodsidepastryhouse.ca/menu" target="_blank" rel="noopener" class="nav-cta">View Menu ↗</a>
+  <button class="hamburger" aria-label="Open menu" onclick="document.querySelector('.mobile-menu').classList.add('open')">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu">
+  <button class="mobile-close" onclick="document.querySelector('.mobile-menu').classList.remove('open')">✕</button>
+  <a href="#about" onclick="document.querySelector('.mobile-menu').classList.remove('open')">Our Story</a>
+  <a href="#bakes" onclick="document.querySelector('.mobile-menu').classList.remove('open')">This Month</a>
+  <a href="#reviews" onclick="document.querySelector('.mobile-menu').classList.remove('open')">Reviews</a>
+  <a href="#visit" onclick="document.querySelector('.mobile-menu').classList.remove('open')">Visit</a>
+  <a href="https://goodsidepastryhouse.ca/menu" target="_blank" rel="noopener">View Menu ↗</a>
+</div>
+
+<!-- Hero (editorial-spread) -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="section-label hero-label hero-entrance hero-delay-1">Goodside Pastry House · Victoria, BC</p>
+    <h1 class="hero-h1 hero-entrance hero-delay-2">The Menu Is Different<br>Every Month.<br><em>The Line Isn't.</em></h1>
+    <p class="hero-body hero-entrance hero-delay-3">Haley and Curtis met in culinary school fourteen years ago. They spent a decade in Vancouver's most demanding kitchens. They came to Victoria for community. You've been lining up on Fort Street ever since.</p>
+    <div class="hero-ctas hero-entrance hero-delay-4">
+      <a href="https://goodsidepastryhouse.ca/menu" target="_blank" rel="noopener" class="btn-primary">See This Month's Menu ↗</a>
+      <a href="https://maps.google.com/?q=1805+Fort+St,+Victoria+BC" target="_blank" rel="noopener" class="btn-secondary">Get Directions</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="hero-croissant.png" alt="A perfect golden croissant from GoodSide Pastry House" loading="eager" class="hero-img">
+  </div>
+</section>
+
+<!-- Accent bar -->
+<div class="accent-bar">
+  <div class="accent-bar-inner">
+    <div class="accent-stat">
+      <span class="accent-stat-value">4.9★</span>
+      <span class="accent-stat-label">339 Reviews</span>
+    </div>
+    <div class="accent-bar-divider"></div>
+    <div class="accent-stat">
+      <span class="accent-stat-value">Thu–Sun</span>
+      <span class="accent-stat-label">Open from 10am</span>
+    </div>
+    <div class="accent-bar-divider"></div>
+    <div class="accent-stat">
+      <span class="accent-stat-value">YAM 2025</span>
+      <span class="accent-stat-label">Best Pastry Chefs</span>
+    </div>
+    <div class="accent-bar-divider"></div>
+    <div class="accent-stat">
+      <span class="accent-stat-value">3 Years</span>
+      <span class="accent-stat-label">The Line Holds</span>
+    </div>
+  </div>
+</div>
+
+<!-- Photo strip -->
+<div class="photo-strip reveal-img">
+  <img src="croissant-layers.png" alt="Laminated croissant layers showing the craft">
+  <img src="pastry-assortment.png" alt="Assortment of GoodSide pastries">
+  <img src="tart-closeup.png" alt="Elegant seasonal tart">
+</div>
+
+<!-- Quick visit strip -->
+<div class="quick-visit reveal">
+  <div class="quick-visit-inner">
+    <div class="quick-item">
+      <span class="quick-label">Where</span>
+      <span class="quick-value">1805 Fort St · Victoria</span>
+    </div>
+    <div class="quick-divider"></div>
+    <div class="quick-item">
+      <span class="quick-label">When</span>
+      <span class="quick-value">Thu–Sun · Open from 10am</span>
+    </div>
+    <div class="quick-divider"></div>
+    <div class="quick-item">
+      <span class="quick-label">Format</span>
+      <span class="quick-value">Takeout only · Sell out daily</span>
+    </div>
+    <div class="quick-divider"></div>
+    <div class="quick-item">
+      <a href="tel:+12508801540" class="quick-phone">(250) 880-1540</a>
+    </div>
+  </div>
+</div>
+
+<!-- About -->
+<section class="about reveal" id="about">
+  <div class="about-image">
+    <img src="pastry-assortment.png" alt="A selection of GoodSide pastries">
+  </div>
+  <div class="about-content">
+    <p class="section-label">The Story</p>
+    <h2 class="about-h2">They Had Every Reason to Stay in Vancouver. They Didn't.</h2>
+    <p class="about-body">After a decade running the stations in Vancouver's high-pressure kitchens, Haley Landa and Curtis Helm arrived in Victoria in 2020 with one goal: to build something that belonged to a neighborhood, not a dining trend.</p>
+    <p class="about-body">Their flour is organic. Their eggs are from Lockwood Farms. Every month, they throw out the menu and start again — not because the old one wasn't good, but because staying creative is how they stay honest.</p>
+    <div class="about-quote">
+      "We thought the newness would wear off. It never did. We're really, really grateful that after two-and-a-half years people are still willing to line up."
+      <cite>— Haley Landa, Co-Owner · CHEK News</cite>
+    </div>
+  </div>
+</section>
+
+<!-- Name section -->
+<section class="name-section reveal">
+  <p class="section-label">Every Month</p>
+  <h2 class="name-h2">"We Scrap the Menu.<br><em>We Start Again.</em>"</h2>
+  <p class="name-body">Curtis Helm, co-owner. Every month they throw out what worked and build something new. Not because the old menu wasn't good — because staying creative is the whole point. This is what it looks like when two chefs who love cooking keep cooking for the love of it.</p>
+  <div class="name-cta">
+    <a href="https://goodsidepastryhouse.ca/menu" target="_blank" rel="noopener" class="btn-primary">See What's On Now ↗</a>
+  </div>
+</section>
+
+<!-- Signature items -->
+<section class="sig-items" id="bakes">
+  <div class="sig-inner">
+    <div class="sig-header">
+      <p class="section-label">The Bakes</p>
+      <h2 class="section-h2">The Menu Changes Monthly.<br>These Are the Kinds of Things You'll Find.</h2>
+    </div>
+    <div class="sig-grid">
+      <div class="sig-card reveal stagger-1">
+        <div class="sig-number">01</div>
+        <h3 class="sig-name">The Croissant</h3>
+        <p class="sig-desc">The one that started the line. Organic flour, Lockwood Farms eggs, properly laminated. It's the baseline — and it's as good as any you'd find in a Paris arrondissement.</p>
+      </div>
+      <div class="sig-card reveal stagger-2">
+        <div class="sig-number">02</div>
+        <h3 class="sig-name">The Rotating Menu</h3>
+        <p class="sig-desc">Passionfruit brioche bombs. Lychee-raspberry cheesecake mousse. Coffee and dulcey tarts. Whatever's on the website right now is this month's menu. Next month it won't exist.</p>
+      </div>
+      <div class="sig-card reveal stagger-3">
+        <div class="sig-number">03</div>
+        <h3 class="sig-name">Custom Cakes</h3>
+        <p class="sig-desc">4" cakes (serves 2–3) from $21. 6" cakes (serves 6–8) and up. Order through the website — same French technique, just with your occasion in mind.</p>
+      </div>
+    </div>
+    <p class="sig-note">Full menu at <a href="https://goodsidepastryhouse.ca/menu" target="_blank" rel="noopener">goodsidepastryhouse.ca/menu</a> · Cake orders at <a href="https://goodsidepastryhouse.ca/cake-order" target="_blank" rel="noopener">goodsidepastryhouse.ca/cake-order</a> · Follow <a href="https://www.instagram.com/goodsidepastryhouse/" target="_blank" rel="noopener">@goodsidepastryhouse</a> for what's on this week.</p>
+  </div>
+</section>
+
+<!-- Reviews -->
+<section id="reviews">
+  <div class="reviews">
+    <div class="reviews-header">
+      <p class="section-label">What People Say</p>
+      <h2 class="reviews-h2">4.9 Stars. 339 Times.</h2>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card reveal stagger-1">
+        <p class="review-text">"The pastries are carefully crafted — each like a piece of jewellery and an elegant work of art. Not only are they visually beautiful, but the flavours complement each other perfectly."</p>
+        <div class="review-meta">Via Tripadvisor · 2023</div>
+      </div>
+      <div class="review-card reveal stagger-2">
+        <p class="review-text">"Delicious baked goods and amazing service — warm and super nice staff."</p>
+        <div class="review-meta">Yassmina E. · Via Google</div>
+      </div>
+      <div class="review-card reveal stagger-3">
+        <p class="review-text">"Possibly my favourite place for tasty treats in town."</p>
+        <div class="review-meta">Jerald W. · Via Google</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Press strip -->
+<div class="press-strip reveal">
+  <div class="press-inner">
+    <p class="press-quote">"From buttery croissants to savoury pastries, Goodside Pastry House has made a name for itself by using high-quality, locally sourced ingredients — and on any given day you can find a line growing outside its door before it opens."</p>
+    <p class="press-source">CHEK News — Order Up, September 2025</p>
+  </div>
+</div>
+
+<!-- Visit -->
+<section class="visit reveal" id="visit">
+  <div class="visit-content">
+    <p class="section-label">Find Us</p>
+    <h2 class="visit-h2">1805 Fort Street. Thursday Through Sunday.</h2>
+    <div class="visit-detail">
+      <div class="visit-row">
+        <span class="visit-row-label">Address</span>
+        <span class="visit-row-value">1805 Fort St, Victoria, BC V8R 4R7</span>
+      </div>
+      <div class="visit-row">
+        <span class="visit-row-label">Hours</span>
+        <span class="visit-row-value">Thu–Sun · Open from 10am</span>
+        <span class="visit-note">Sell out daily — arrive early.</span>
+      </div>
+      <div class="visit-row">
+        <span class="visit-row-label">Phone</span>
+        <span class="visit-row-value"><a href="tel:+12508801540">(250) 880-1540</a></span>
+      </div>
+      <div class="visit-row">
+        <span class="visit-row-label">Format</span>
+        <span class="visit-row-value">Takeout only</span>
+      </div>
+    </div>
+    <div class="visit-social">
+      <a href="https://www.instagram.com/goodsidepastryhouse/" target="_blank" rel="noopener" class="social-link">Instagram ↗</a>
+      <a href="https://goodsidepastryhouse.ca" target="_blank" rel="noopener" class="social-link">Website ↗</a>
+    </div>
+  </div>
+  <div>
+    <div class="visit-map">
+      <iframe
+        src="https://maps.google.com/maps?q=1805+Fort+St+Victoria+BC+V8R+4R7&output=embed"
+        title="GoodSide Pastry House on Google Maps"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+    <a href="https://maps.google.com/?q=1805+Fort+St,+Victoria+BC+V8R+4R7" target="_blank" rel="noopener" class="map-fallback-link">Open in Google Maps ↗</a>
+  </div>
+</section>
+
+<!-- CTA band -->
+<section class="cta-band">
+  <p class="section-label cta-band-label">Come Find Us</p>
+  <h2 class="cta-band-h2">The Line Forms Before We Open. Join It.</h2>
+  <div class="cta-band-btns">
+    <a href="https://maps.google.com/?q=1805+Fort+St,+Victoria+BC" target="_blank" rel="noopener" class="btn-primary">Get Directions</a>
+    <a href="https://goodsidepastryhouse.ca/menu" target="_blank" rel="noopener" class="btn-secondary">View This Month's Menu ↗</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-inner">
+    <span class="footer-brand">GoodSide Pastry House</span>
+    <div class="footer-meta">
+      <p>1805 Fort St · Victoria, BC · Thu–Sun from 10am</p>
+      <p style="margin-top:6px;">GoodSide Pastry House is on the traditional territory of the lək̓ʷəŋən Peoples.</p>
+    </div>
+  </div>
+</footer>
+
+<noscript><style>
+  .reveal, .reveal-img { opacity: 1 !important; transform: none !important; }
+  .hero-entrance { opacity: 1 !important; transform: none !important; }
+  .hero-img { opacity: 1 !important; }
+</style></noscript>
+
+<script>
+  // Hero entrance
+  document.documentElement.style.setProperty('--ease-out', 'cubic-bezier(0.23, 1, 0.32, 1)');
+  document.body.classList.add('js-ready');
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      document.body.classList.add('js-loaded');
+    });
+  });
+
+  // Scroll reveals
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal, .reveal-img').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

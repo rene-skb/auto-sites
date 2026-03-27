@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scott Bell — Product Designer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,300;0,9..144,400;1,9..144,200;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:          #0C0B09;
+      --surface:     #141210;
+      --surface-2:   #1C1A16;
+      --img-bg:      #0F0E0C;
+      --text:        #F0EBE3;
+      --muted:       #807870;
+      --subtle:      #2A2825;
+      --accent:      #C8963A;
+      --accent-dim:  rgba(200, 150, 58, 0.09);
+      --border:      rgba(240, 235, 227, 0.07);
+
+      --font-serif: 'Fraunces', Georgia, serif;
+      --font-sans:  'Inter', system-ui, sans-serif;
+
+      --ls-wide: 0.13em;
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+
+      --content-width: 1200px;
+      --gutter: 48px;
+      --section-pad: 128px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+
+    .wrap {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: var(--ls-wide);
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .eyebrow-accent { color: var(--accent); }
+
+    /* ===== NAV ===== */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(12, 11, 9, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-mark {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .nav-links {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 13px;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+      transition: color 160ms var(--ease-out);
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta { color: var(--accent) !important; font-weight: 500; }
+    .nav-cta:active { transform: scale(0.97); display: inline-block; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--text);
+    }
+    .mob-menu {
+      display: none;
+      position: fixed;
+      top: 60px; left: 0; right: 0;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      padding: 20px var(--gutter) 28px;
+      z-index: 99;
+    }
+    .mob-menu.open { display: block; }
+    .mob-menu a {
+      display: block;
+      padding: 14px 0;
+      font-size: 18px;
+      color: var(--muted);
+      border-bottom: 1px solid var(--border);
+      transition: color 160ms;
+    }
+    .mob-menu a:hover { color: var(--text); }
+    .mob-menu a.cta-link { color: var(--accent); }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 128px 0 96px;
+    }
+    .hero-inner {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+      width: 100%;
+    }
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 48px;
+    }
+    .eyebrow-rule {
+      width: 28px;
+      height: 1px;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+    .hero-headline {
+      font-family: var(--font-serif);
+      font-size: clamp(58px, 7.8vw, 112px);
+      font-weight: 200;
+      line-height: 0.95;
+      letter-spacing: -0.025em;
+      color: var(--text);
+      max-width: 980px;
+      margin-bottom: 72px;
+    }
+    .hl-line {
+      display: block;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 700ms var(--ease-out), transform 700ms var(--ease-out);
+    }
+    .hl-line.in { opacity: 1; transform: translateY(0); }
+    .hl-italic { font-style: italic; }
+    .hl-accent { font-style: italic; color: var(--accent); }
+
+    .hero-bottom {
+      display: grid;
+      grid-template-columns: 1.25fr 1fr;
+      gap: 80px;
+      align-items: end;
+    }
+    .hero-sub {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.85;
+    }
+    .hero-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px 40px;
+    }
+    .stat-num {
+      display: block;
+      font-family: var(--font-serif);
+      font-size: 40px;
+      font-weight: 300;
+      color: var(--text);
+      line-height: 1;
+      margin-bottom: 7px;
+    }
+    .stat-lbl {
+      display: block;
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    /* ===== WORK ===== */
+    .work {
+      padding: var(--section-pad) 0;
+    }
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 96px;
+    }
+    .section-name {
+      font-family: var(--font-serif);
+      font-size: 26px;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--text);
+    }
+
+    .cs {
+      padding-top: 80px;
+      border-top: 1px solid var(--border);
+    }
+    .cs:first-child { padding-top: 0; border-top: none; }
+    .cs + .cs { margin-top: 0; padding-top: 80px; }
+
+    /* Spacer between case studies */
+    .cs-spacer {
+      height: 80px;
+    }
+
+    .cs-intro {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 56px;
+      margin-bottom: 40px;
+      align-items: start;
+    }
+    .cs-left {}
+    .cs-num {
+      font-family: var(--font-serif);
+      font-size: 13px;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--muted);
+      margin-bottom: 10px;
+      letter-spacing: 0.04em;
+    }
+    .cs-name {
+      font-family: var(--font-serif);
+      font-size: 52px;
+      font-weight: 300;
+      line-height: 1.0;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 14px;
+    }
+    .cs-tag {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      line-height: 1.6;
+    }
+    .cs-right {}
+    .cs-desc {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.85;
+      margin-bottom: 18px;
+    }
+    .cs-desc strong { color: var(--text); font-weight: 500; }
+    .cs-outcome {
+      padding: 16px 20px;
+      border-left: 2px solid var(--accent);
+      background: var(--surface);
+      margin-bottom: 20px;
+    }
+    .cs-outcome p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .cs-outcome p strong { color: var(--text); font-weight: 500; }
+    .cs-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--accent);
+      transition: gap 200ms var(--ease-out);
+    }
+    .cs-more:hover { gap: 14px; }
+    .cs-more:active { transform: scale(0.97); display: inline-flex; }
+
+    /* Image grids — give them a warm bg frame */
+    .img-frame {
+      background: var(--img-bg);
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .cs-imgs-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 4px;
+      background: var(--img-bg);
+    }
+    .cs-imgs-wide {
+      background: var(--img-bg);
+      display: grid;
+      gap: 4px;
+    }
+    .cs-imgs-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px;
+    }
+    .cs-img {
+      width: 100%;
+      display: block;
+      background: var(--img-bg);
+    }
+
+    /* ===== AI SECTION ===== */
+    .ai-sec {
+      padding: var(--section-pad) 0;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .ai-top {
+      margin-bottom: 64px;
+    }
+    .ai-top h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(44px, 6.5vw, 88px);
+      font-weight: 200;
+      font-style: italic;
+      color: var(--text);
+      line-height: 0.96;
+      letter-spacing: -0.025em;
+      max-width: 800px;
+      margin-top: 14px;
+    }
+    .ai-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+    }
+    .ai-text p {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.85;
+      margin-bottom: 20px;
+    }
+    .ai-text p strong { color: var(--text); font-weight: 500; }
+    .ai-text p:last-of-type { margin-bottom: 28px; }
+    .ai-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-bottom: 28px;
+    }
+    .ai-tag {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+    .ai-tag.lit {
+      border-color: rgba(200, 150, 58, 0.4);
+      color: var(--accent);
+      background: var(--accent-dim);
+    }
+    .ai-terminal {
+      background: #080706;
+      border: 1px solid var(--border);
+      padding: 28px 32px;
+      font-family: 'Menlo', 'Courier New', monospace;
+      font-size: 12.5px;
+      line-height: 1.9;
+    }
+    .t-comment { color: var(--muted); }
+    .t-prompt { color: var(--accent); }
+    .t-out { color: var(--text); }
+    .t-dim { color: #3A3530; padding-left: 1.5em; display: block; }
+    .t-spacer { display: block; height: 8px; }
+
+    /* ===== ABOUT ===== */
+    .about {
+      padding: var(--section-pad) 0;
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .about-left h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(42px, 5.5vw, 68px);
+      font-weight: 200;
+      font-style: italic;
+      line-height: 1.0;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-top: 16px;
+      margin-bottom: 44px;
+    }
+    .work-history {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .work-item {
+      padding: 14px 0;
+      border-top: 1px solid var(--border);
+    }
+    .work-item.full { grid-column: span 2; border-bottom: 1px solid var(--border); }
+    .work-co {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 3px;
+    }
+    .work-sub {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+    .about-right p {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.9;
+      margin-bottom: 24px;
+    }
+    .about-right p strong { color: var(--text); font-weight: 500; }
+
+    /* ===== CONTACT ===== */
+    .contact {
+      padding: var(--section-pad) 0;
+      border-top: 1px solid var(--border);
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: 96px;
+      align-items: end;
+    }
+    .contact-hl {
+      font-family: var(--font-serif);
+      font-size: clamp(48px, 6.5vw, 88px);
+      font-weight: 200;
+      font-style: italic;
+      line-height: 0.97;
+      letter-spacing: -0.025em;
+      color: var(--text);
+      margin-top: 16px;
+      margin-bottom: 28px;
+    }
+    .contact-sub {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 440px;
+      margin-bottom: 40px;
+    }
+    .contact-email {
+      display: inline-block;
+      font-family: var(--font-serif);
+      font-size: 22px;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--accent);
+      border-bottom: 1px solid rgba(200, 150, 58, 0.3);
+      padding-bottom: 4px;
+      transition: opacity 200ms var(--ease-out);
+    }
+    .contact-email:hover { opacity: 0.65; }
+    .contact-links { display: flex; flex-direction: column; }
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 14px;
+      color: var(--muted);
+      padding: 18px 0;
+      border-bottom: 1px solid var(--border);
+      transition: color 160ms var(--ease-out);
+    }
+    .contact-link:hover { color: var(--text); }
+    .contact-link svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+    /* ===== FOOTER ===== */
+    footer {
+      padding: 28px 0;
+      border-top: 1px solid var(--border);
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-note { font-size: 12px; color: var(--muted); }
+
+    /* ===== ANIMATIONS ===== */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 720ms var(--ease-out), transform 720ms var(--ease-out);
+    }
+    .fade-up.in { opacity: 1; transform: translateY(0); }
+
+    .fade-left {
+      opacity: 0;
+      transform: translateX(-16px);
+      transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+    }
+    .fade-left.in { opacity: 1; transform: translateX(0); }
+
+    /* Stagger for 4-image rows */
+    .stagger .s-item {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+    }
+    .stagger.in .s-item:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: 0ms; }
+    .stagger.in .s-item:nth-child(2) { opacity: 1; transform: translateY(0); transition-delay: 60ms; }
+    .stagger.in .s-item:nth-child(3) { opacity: 1; transform: translateY(0); transition-delay: 120ms; }
+    .stagger.in .s-item:nth-child(4) { opacity: 1; transform: translateY(0); transition-delay: 180ms; }
+
+    /* ===== SCROLL HINT ===== */
+    .scroll-hint {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      opacity: 0;
+      transition: opacity 1s var(--ease-out);
+    }
+    .scroll-hint.in { opacity: 0.35; }
+    .scroll-hint-label {
+      font-size: 10px;
+      letter-spacing: var(--ls-wide);
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .scroll-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--muted);
+      animation: sdrop 2s ease-in-out infinite;
+    }
+    @keyframes sdrop {
+      0%, 100% { opacity: 0.3; transform: translateY(0); }
+      50% { opacity: 1; transform: translateY(7px); }
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      :root { --gutter: 32px; --section-pad: 80px; }
+      .hero-bottom { grid-template-columns: 1fr; gap: 48px; }
+      .cs-intro { grid-template-columns: 1fr; gap: 24px; }
+      .ai-body { grid-template-columns: 1fr; gap: 48px; }
+      .about-grid { grid-template-columns: 1fr; gap: 48px; }
+      .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+    }
+
+    @media (max-width: 768px) {
+      :root { --gutter: 20px; --section-pad: 60px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .cs-imgs-4 { grid-template-columns: 1fr 1fr; }
+      .cs-name { font-size: 40px; }
+      .work-history { grid-template-columns: 1fr; }
+      .work-item.full { grid-column: span 1; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .fade-up, .fade-left, .stagger .s-item, .hl-line {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <span class="nav-mark">Scott Bell</span>
+      <ul class="nav-links">
+        <li><a href="#work">Work</a></li>
+        <li><a href="#now">Now</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact" class="nav-cta">Get in touch</a></li>
+      </ul>
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mob-menu" id="mobMenu">
+    <a href="#work" onclick="closeMob()">Work</a>
+    <a href="#now" onclick="closeMob()">Now</a>
+    <a href="#about" onclick="closeMob()">About</a>
+    <a href="#contact" class="cta-link" onclick="closeMob()">Get in touch</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" style="position:relative">
+    <div class="hero-inner">
+      <div class="hero-eyebrow fade-up">
+        <div class="eyebrow-rule"></div>
+        <span class="eyebrow eyebrow-accent">Product Designer · 14+ Years</span>
+      </div>
+
+      <h1 class="hero-headline" id="heroHL">
+        <span class="hl-line">I find the logic</span>
+        <span class="hl-line hl-accent">underneath —</span>
+        <span class="hl-line hl-italic">then make it</span>
+        <span class="hl-line">impossible to ignore.</span>
+      </h1>
+
+      <div class="hero-bottom">
+        <p class="hero-sub fade-up" style="transition-delay:360ms">
+          Fintech, AI, Web3, consumer. Products I've designed reached millions of users across 100+ countries. Now designing how humans think <em>with</em> AI agents — and building the tools to do it.
+        </p>
+        <div class="hero-stats fade-up" style="transition-delay:440ms">
+          <div>
+            <span class="stat-num">14+</span>
+            <span class="stat-lbl">Years designing</span>
+          </div>
+          <div>
+            <span class="stat-num">9</span>
+            <span class="stat-lbl">Digital products</span>
+          </div>
+          <div>
+            <span class="stat-num">100+</span>
+            <span class="stat-lbl">Countries reached</span>
+          </div>
+          <div>
+            <span class="stat-num">$1B+</span>
+            <span class="stat-lbl">Market cap scale</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-hint" id="scrollHint">
+      <span class="scroll-hint-label">Scroll</span>
+      <div class="scroll-dot"></div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section class="work" id="work">
+    <div class="wrap">
+      <div class="section-head fade-left">
+        <h2 class="section-name">Selected work</h2>
+        <span class="eyebrow">2021–2025</span>
+      </div>
+
+      <!-- Strike -->
+      <div class="cs">
+        <div class="cs-intro fade-up">
+          <div class="cs-left">
+            <p class="cs-num">01 —</p>
+            <h3 class="cs-name">Strike</h3>
+            <p class="cs-tag">Fintech<br>Bitcoin Payments<br>2021–23</p>
+          </div>
+          <div class="cs-right">
+            <p class="cs-desc">Strike needed UX that could move as fast as money does. <strong>The Lightning Network is technically remarkable — but entirely invisible to users.</strong> Every screen was a translation problem: make instant global payments feel as natural as texting someone $20.</p>
+            <p class="cs-desc">I designed the core payment experience across send, receive, and currency exchange — systems that worked across US, El Salvador, and Argentina, each with completely different monetary contexts.</p>
+            <div class="cs-outcome">
+              <p><strong>Outcome:</strong> Strike reached $1B+ valuation. The UX I designed is used by millions across 100+ countries, including El Salvador's national Bitcoin rollout.</p>
+            </div>
+            <a href="https://www.scottkbell.com/strike-case-study" target="_blank" class="cs-more">Full case study →</a>
+          </div>
+        </div>
+        <div class="cs-imgs-4 stagger fade-up" style="transition-delay: 100ms">
+          <img class="cs-img s-item" src="assets/strike1.png" alt="Strike — money transfer" loading="lazy" />
+          <img class="cs-img s-item" src="assets/strike2.png" alt="Strike — balance" loading="lazy" />
+          <img class="cs-img s-item" src="assets/strike3.png" alt="Strike — Lightning" loading="lazy" />
+          <img class="cs-img s-item" src="assets/strike4.png" alt="Strike — receive" loading="lazy" />
+        </div>
+      </div>
+
+      <!-- Fountain -->
+      <div class="cs" style="margin-top: 80px">
+        <div class="cs-intro fade-up">
+          <div class="cs-left">
+            <p class="cs-num">02 —</p>
+            <h3 class="cs-name">Fountain</h3>
+            <p class="cs-tag">Consumer<br>Bitcoin Podcasting<br>2023</p>
+          </div>
+          <div class="cs-right">
+            <p class="cs-desc">Fountain sat at the intersection of something genuinely new: <strong>streaming micropayments woven into the act of listening.</strong> Every minute you listen, sats flow to the creator. The design challenge wasn't payments — it was making them feel invisible until they were magical.</p>
+            <p class="cs-desc">I redesigned the core listening experience, discovery system, and social layer — keeping Bitcoin as the empowering undercurrent, not the attention-grabbing feature.</p>
+            <div class="cs-outcome">
+              <p><strong>Outcome:</strong> Shipped a redesigned app that made value-for-value podcasting feel natural for an audience encountering Bitcoin payments for the first time.</p>
+            </div>
+          </div>
+        </div>
+        <div class="cs-imgs-4 stagger fade-up" style="transition-delay: 100ms">
+          <img class="cs-img s-item" src="assets/fountain1.png" alt="Fountain — player" loading="lazy" />
+          <img class="cs-img s-item" src="assets/fountain2.png" alt="Fountain — library" loading="lazy" />
+          <img class="cs-img s-item" src="assets/fountain3.png" alt="Fountain — discovery" loading="lazy" />
+          <img class="cs-img s-item" src="assets/fountain4.png" alt="Fountain — boost" loading="lazy" />
+        </div>
+      </div>
+
+      <!-- AIOZ -->
+      <div class="cs" style="margin-top: 80px">
+        <div class="cs-intro fade-up">
+          <div class="cs-left">
+            <p class="cs-num">03 —</p>
+            <h3 class="cs-name">AIOZ<br>Network</h3>
+            <p class="cs-tag">AI Infrastructure<br>Web3<br>2024–25</p>
+          </div>
+          <div class="cs-right">
+            <p class="cs-desc">AIOZ builds AI infrastructure for a decentralized world — where users are both <strong>developers building tools and non-technical participants providing compute.</strong> Designing across that spectrum required holding contradictory user models simultaneously.</p>
+            <p class="cs-desc">I designed dTransfer (decentralized file delivery), the community platform, and the AI models interface — each requiring a different register of complexity made accessible.</p>
+            <div class="cs-outcome">
+              <p><strong>Outcome:</strong> Multiple product surfaces shipped at a $1B+ market cap AI/Web3 infrastructure company, bridging technical depth with accessible UX across developer and consumer audiences.</p>
+            </div>
+          </div>
+        </div>
+        <div class="cs-imgs-wide fade-up" style="transition-delay: 100ms">
+          <img class="cs-img" src="assets/aioz1.png" alt="AIOZ Network — dTransfer" loading="lazy" style="margin-bottom: 4px" />
+          <div class="cs-imgs-2">
+            <img class="cs-img" src="assets/aioz2.png" alt="AIOZ Network — community" loading="lazy" />
+            <img class="cs-img" src="assets/aioz3.png" alt="AIOZ Network — AI Models" loading="lazy" />
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- AI / NOW -->
+  <section class="ai-sec" id="now">
+    <div class="wrap">
+      <div class="ai-top fade-up">
+        <span class="eyebrow eyebrow-accent">Current direction</span>
+        <h2>Designing the gap<br>between humans<br>and agents.</h2>
+      </div>
+      <div class="ai-body">
+        <div class="ai-text fade-up">
+          <p>The shift from tools to agents changes everything about how we design. <strong>Users aren't just interacting anymore — they're collaborating.</strong> The interface isn't a form. The output isn't a file. The relationship is ongoing.</p>
+          <p>I'm building LoopIn — a browser bookmarklet that captures UI context and routes it directly to Claude Code via MCP server. It's a hands-on exploration of the question consuming me: <strong>how do you give an AI agent the right context at the right moment?</strong></p>
+          <p>This is where my background — translating hidden structure into usable interfaces — meets the hardest UX problems of the next decade.</p>
+          <div class="ai-tags">
+            <span class="ai-tag lit">Agent UX</span>
+            <span class="ai-tag lit">Human-AI Collaboration</span>
+            <span class="ai-tag lit">AI Product Design</span>
+            <span class="ai-tag">Context &amp; Intent</span>
+            <span class="ai-tag">MCP / Tool Use</span>
+          </div>
+          <a href="https://github.com/skip5this" target="_blank" class="cs-more">See what I'm building →</a>
+        </div>
+        <div class="ai-terminal fade-up" style="transition-delay: 80ms">
+          <span class="t-comment"># LoopIn — browser → Claude Code via MCP</span><br>
+          <span class="t-spacer"></span>
+          <span class="t-prompt">→</span> <span class="t-out"> click element in browser</span><br>
+          <span class="t-dim">captures DOM context</span>
+          <span class="t-dim">extracts design tokens</span>
+          <span class="t-dim">maps component tree</span>
+          <span class="t-spacer"></span>
+          <span class="t-prompt">→</span> <span class="t-out"> routes to MCP server</span><br>
+          <span class="t-dim">agent receives full context</span>
+          <span class="t-dim">no copy-paste required</span>
+          <span class="t-spacer"></span>
+          <span class="t-prompt">→</span> <span class="t-out"> claude: "fix the spacing here"</span><br>
+          <span class="t-spacer"></span>
+          <span class="t-out">The gap between seeing</span><br>
+          <span class="t-out">and changing — closed.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="wrap">
+      <div class="about-grid">
+        <div class="about-left fade-up">
+          <span class="eyebrow">About</span>
+          <h2>The layer<br>beneath<br>the surface.</h2>
+          <span class="eyebrow" style="display:block; margin-bottom: 18px">Where I've worked</span>
+          <div class="work-history">
+            <div class="work-item">
+              <p class="work-co">Strike</p>
+              <p class="work-sub">Bitcoin Payments · 2021–23</p>
+            </div>
+            <div class="work-item">
+              <p class="work-co">AIOZ Network</p>
+              <p class="work-sub">AI Infrastructure · 2024–25</p>
+            </div>
+            <div class="work-item">
+              <p class="work-co">Fountain</p>
+              <p class="work-sub">Bitcoin Podcasting · 2023</p>
+            </div>
+            <div class="work-item">
+              <p class="work-co">KOHO</p>
+              <p class="work-sub">Fintech</p>
+            </div>
+            <div class="work-item full">
+              <p class="work-co">Nakamoto Design Corporation</p>
+              <p class="work-sub">Founded · Design Studio</p>
+            </div>
+          </div>
+        </div>
+        <div class="about-right fade-up" style="transition-delay: 80ms">
+          <p>I'm a product designer with over a decade of making the complex feel simple. <strong>My process starts with the hidden structure</strong> — the logic underneath the surface — and works outward to something that feels inevitable once you see it.</p>
+          <p>I've led at $1B+ market cap scale, built design systems from scratch, taught professionally, and mentored teams. I work across research, UX, and visual design — not as separate disciplines, but as one continuous act of making sense.</p>
+          <p>Right now I'm focused on the most interesting design problem of our moment: <strong>how do humans and AI agents work together well?</strong> Not AI features. Not chatbot UX. The full texture of collaboration between a person and a system that can think.</p>
+          <p>I believe good design reveals structure, invites clarity, and brings coherence to complexity. That's as true for a Bitcoin wallet as it is for an agent interface.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div class="contact-grid">
+        <div class="fade-up">
+          <span class="eyebrow">Get in touch</span>
+          <h2 class="contact-hl">Let's talk<br>about what's<br>next.</h2>
+          <p class="contact-sub">If you're building at the intersection of humans and AI — product design, agent UX, systems thinking — I'd genuinely like to hear what you're working on.</p>
+          <a href="mailto:hi.scottkbell@gmail.com" class="contact-email">hi.scottkbell@gmail.com</a>
+        </div>
+        <div class="contact-links fade-up" style="transition-delay: 80ms">
+          <a href="https://www.linkedin.com/in/scottkbell" target="_blank" class="contact-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </a>
+          <a href="https://github.com/skip5this" target="_blank" class="contact-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            GitHub
+          </a>
+          <a href="https://x.com/skb_btc" target="_blank" class="contact-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.259 5.63 5.905-5.63zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            Twitter / X
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-inner">
+        <span class="footer-note">© 2025 Scott Bell — Designed, built, and deployed in-house (my house).</span>
+        <span class="footer-note" style="color: var(--subtle)">Victoria, BC</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu
+    const mobMenu = document.getElementById('mobMenu');
+    document.getElementById('hamburger').addEventListener('click', () => {
+      mobMenu.classList.toggle('open');
+    });
+    function closeMob() { mobMenu.classList.remove('open'); }
+
+    // Hero headline stagger
+    const hlLines = document.querySelectorAll('.hl-line');
+    setTimeout(() => {
+      hlLines.forEach((line, i) => {
+        setTimeout(() => line.classList.add('in'), 100 + i * 90);
+      });
+      document.querySelectorAll('.hero .fade-up').forEach(el => el.classList.add('in'));
+    }, 80);
+
+    // Scroll hint
+    const scrollHint = document.getElementById('scrollHint');
+    if (scrollHint) {
+      setTimeout(() => scrollHint.classList.add('in'), 1200);
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 60) {
+          scrollHint.style.opacity = '0';
+          scrollHint.style.transition = 'opacity 400ms';
+        }
+      }, { once: true });
+    }
+
+    // Scroll-triggered reveals
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.06, rootMargin: '0px 0px -24px 0px' });
+
+    document.querySelectorAll('.fade-up, .fade-left, .stagger').forEach(el => {
+      // Skip hero elements (already triggered)
+      if (!el.closest('.hero')) obs.observe(el);
+    });
+  </script>
+
+</body>
+</html>

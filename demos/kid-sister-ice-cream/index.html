@@ -77,6 +77,12 @@
 
     .nav-links a:hover { opacity: 1; }
 
+    .nav-links a.nav-flavours {
+      color: var(--coral);
+      opacity: 1;
+      font-weight: 600;
+    }
+
     .nav-cta {
       font-size: 0.8125rem;
       font-weight: 600;
@@ -168,10 +174,10 @@
 
     .hero-subhead {
       font-size: 1rem;
-      font-weight: 300;
+      font-weight: 400;
       line-height: 1.65;
       color: var(--warm-dark-soft);
-      max-width: 420px;
+      max-width: 400px;
       margin-bottom: 40px;
     }
 
@@ -192,7 +198,7 @@
     .hero-hours p {
       font-size: 0.9375rem;
       font-weight: 400;
-      line-height: 1.6;
+      line-height: 1.65;
       color: var(--warm-dark-soft);
     }
 
@@ -324,9 +330,9 @@
     }
 
     .section-body {
-      font-size: 0.9375rem;
-      font-weight: 300;
-      line-height: 1.7;
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.75;
       color: var(--warm-dark-soft);
       margin-bottom: 16px;
     }
@@ -350,7 +356,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 80px;
-      align-items: center;
+      align-items: start;
     }
 
     .stats-left {
@@ -448,26 +454,36 @@
       padding-top: 0;
     }
 
+    .review-card:first-child .review-pull {
+      font-size: 1.625rem;
+    }
+
     .review-card:last-child {
       border-bottom: none;
       padding-bottom: 0;
     }
 
     .review-stars {
-      color: var(--coral);
-      font-size: 0.875rem;
-      letter-spacing: 0.08em;
-      margin-bottom: 16px;
+      display: none; /* redundant — 5.0 ★ is the section headline */
     }
 
     .review-text {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--warm-dark-soft);
+      margin-bottom: 20px;
+    }
+
+    .review-pull {
       font-family: 'Fraunces', serif;
-      font-size: 1.375rem;
+      font-size: 1.25rem;
       font-weight: 400;
       font-style: italic;
-      line-height: 1.55;
       color: var(--warm-dark);
-      margin-bottom: 20px;
+      display: block;
+      margin-bottom: 8px;
     }
 
     .review-meta {
@@ -495,35 +511,17 @@
     .gift-left .section-heading { color: var(--white); }
     .gift-left .section-body { color: rgba(255,253,247,0.85); }
 
-    .gift-card-visual {
-      background: var(--white);
-      border-radius: 12px;
-      aspect-ratio: 16/10;
+    .gift-dandelion {
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 40px;
-      box-shadow: 0 24px 64px rgba(0,0,0,0.15);
     }
 
-    .gift-card-logo {
-      font-family: 'Fraunces', serif;
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--coral);
-      letter-spacing: -0.01em;
-      text-align: center;
-    }
-
-    .gift-card-sub {
-      font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--warm-dark);
-      opacity: 0.4;
-      margin-top: 8px;
+    .gift-dandelion img {
+      max-width: 340px;
+      width: 100%;
+      mix-blend-mode: multiply;
+      opacity: 0.9;
     }
 
     /* ── VISIT ── */
@@ -596,6 +594,7 @@
       overflow: hidden;
       aspect-ratio: 4/3;
       background: var(--cream-alt);
+      position: relative;
     }
 
     .visit-map iframe {
@@ -603,6 +602,41 @@
       height: 100%;
       border: none;
     }
+
+    .map-fallback {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .map-fallback-label {
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--warm-dark);
+      opacity: 0.5;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .map-directions-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--coral);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      border: 1.5px solid var(--coral);
+      padding: 10px 20px;
+      border-radius: 2px;
+      transition: all 200ms;
+    }
+    .map-directions-link:hover { background: var(--coral); color: var(--white); }
 
     /* ── FOOTER ── */
     footer {
@@ -740,9 +774,137 @@
       .footer-land-ack { margin-left: 0; }
     }
 
+    /* ── MOTION SYSTEM ── */
+
+    /* Hero entrance — hidden until JS fires */
+    .js-hero .hero-eyebrow,
+    .js-hero .hero-headline,
+    .js-hero .hero-subhead,
+    .js-hero .hero-hours,
+    .js-hero .hero-ctas {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+
+    .js-hero.hero-ready .hero-eyebrow {
+      animation: revealUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 60ms forwards;
+    }
+    .js-hero.hero-ready .hero-headline {
+      animation: revealUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 120ms forwards;
+    }
+    .js-hero.hero-ready .hero-subhead {
+      animation: revealUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 200ms forwards;
+    }
+    .js-hero.hero-ready .hero-hours {
+      animation: revealUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 280ms forwards;
+    }
+    .js-hero.hero-ready .hero-ctas {
+      animation: revealUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 360ms forwards;
+    }
+
+    @keyframes revealUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Scroll reveals */
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    .reveal-img {
+      opacity: 0;
+      transform: scale(0.97);
+      transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal-img.visible { opacity: 1; transform: scale(1); }
+
+    /* Stagger children */
+    .stagger > * {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .stagger.visible > *:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: 0ms; }
+    .stagger.visible > *:nth-child(2) { opacity: 1; transform: translateY(0); transition-delay: 70ms; }
+    .stagger.visible > *:nth-child(3) { opacity: 1; transform: translateY(0); transition-delay: 140ms; }
+    .stagger.visible > *:nth-child(4) { opacity: 1; transform: translateY(0); transition-delay: 210ms; }
+
+    /* Star pop animation */
+    .star {
+      display: inline-block;
+      opacity: 0;
+      transform: scale(0.5);
+      transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .review-card.visible .star:nth-child(1) { opacity: 1; transform: scale(1); transition-delay: 0ms; }
+    .review-card.visible .star:nth-child(2) { opacity: 1; transform: scale(1); transition-delay: 40ms; }
+    .review-card.visible .star:nth-child(3) { opacity: 1; transform: scale(1); transition-delay: 80ms; }
+    .review-card.visible .star:nth-child(4) { opacity: 1; transform: scale(1); transition-delay: 120ms; }
+    .review-card.visible .star:nth-child(5) { opacity: 1; transform: scale(1); transition-delay: 160ms; }
+
+    /* Dandelion entrance */
+    .gift-dandelion img {
+      opacity: 0;
+      transform: translateY(20px) rotate(-3deg);
+      transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.15s,
+                  transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.15s;
+    }
+    .gift-dandelion.visible img {
+      opacity: 0.9;
+      transform: translateY(0) rotate(0deg);
+    }
+
+    /* Nav underline hover */
+    .nav-links a {
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 1.5px;
+      background: var(--coral);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .nav-links a:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    /* Hours row hover */
+    .hours-row {
+      transition: background-color 0.15s ease;
+    }
+    .hours-row:not(.hours-closed):hover {
+      background-color: rgba(44,24,16,0.03);
+      padding-left: 4px;
+    }
+
+    /* Marquee speed — slow and readable */
+    .flavor-ticker-inner {
+      will-change: transform;
+    }
+
     @media (prefers-reduced-motion: reduce) {
       .flavor-ticker-inner { animation: none; }
-      * { transition: none !important; animation: none !important; }
+      .reveal, .reveal-img, .stagger > *, .star, .gift-dandelion img { 
+        opacity: 1; transform: none; transition: none; 
+      }
+      .js-hero .hero-eyebrow,
+      .js-hero .hero-headline,
+      .js-hero .hero-subhead,
+      .js-hero .hero-hours,
+      .js-hero .hero-ctas { opacity: 1; transform: none; }
     }
   </style>
 </head>
@@ -752,6 +914,7 @@
 <nav>
   <a href="#" class="nav-logo">Kid Sister</a>
   <ul class="nav-links">
+    <li><a href="https://www.instagram.com/kidsistericecream/" target="_blank" class="nav-flavours">This Week's Flavours ↗</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#reviews">Reviews</a></li>
     <li><a href="#visit">Hours</a></li>
@@ -770,7 +933,7 @@
 </div>
 
 <!-- HERO — SPLIT IMAGE RIGHT -->
-<section class="hero">
+<section class="hero js-hero">
   <div class="hero-left">
     <p class="hero-eyebrow">Esquimalt, Victoria BC</p>
     <h1 class="hero-headline">Foraged. Seasonal.<br><em>Gone by Sunday.</em></h1>
@@ -782,7 +945,7 @@
     </div>
     <div class="hero-ctas">
       <a href="#visit" class="btn-primary">Find Us</a>
-      <a href="https://www.instagram.com/kidsistericecream/" target="_blank" class="btn-secondary">Follow Along</a>
+      <a href="https://www.instagram.com/kidsistericecream/" target="_blank" class="btn-secondary">This Week's Flavours ↗</a>
     </div>
   </div>
   <div class="hero-right">
@@ -824,20 +987,20 @@
 
 <!-- WHAT WE MAKE -->
 <section class="what-section" id="about">
-  <div>
+  <div class="reveal">
     <p class="section-eyebrow">What We Make</p>
     <h2 class="section-heading">Organic milk. Local fruit. <em>Seasonal everything.</em></h2>
-    <p class="section-body">We make ice cream, sherbet, frozen yogurt, vegan sorbet, and ice pops — all in small batches, all with ingredients we believe in.</p>
-    <p class="section-body">Our dairy is organic. Our fruit comes from family-owned farms on Vancouver Island and the Fraser Valley. Our figs and blackberries are foraged locally. When the season ends, the flavour goes with it.</p>
+    <p class="section-body">Ice cream, sherbet, frozen yogurt, vegan sorbet, ice pops — made in small batches from ingredients we know and trust.</p>
+    <p class="section-body">Organic dairy. Fruit from local family farms. Figs and blackberries foraged from BC vines. The flavour ends when the season does. Follow our Instagram to know what's in the case right now.</p>
   </div>
-  <div class="what-photo">
+  <div class="what-photo reveal-img">
     <img src="spring-pints.jpg" alt="Kid Sister seasonal pints and pops arranged on a checkered tablecloth" loading="lazy">
   </div>
 </section>
 
 <!-- STATS SIDEBAR -->
 <section class="stats-section">
-  <div class="stats-left">
+  <div class="stats-left stagger">
     <div class="stat-item">
       <div class="stat-number">5.0</div>
       <div class="stat-label">Google Stars · 18 Reviews</div>
@@ -851,15 +1014,15 @@
       <div class="stat-label">Organic dairy</div>
     </div>
     <div class="stat-item">
-      <div class="stat-number">Local</div>
-      <div class="stat-label">Ingredients, foragers & family farms</div>
+      <div class="stat-number">Island</div>
+      <div class="stat-label">Vancouver Island farms & local foragers</div>
     </div>
   </div>
-  <div class="stats-right-content">
+  <div class="stats-right-content reveal">
     <p class="section-eyebrow">The Origin</p>
     <h2 class="section-heading">Made from the place it comes from.</h2>
-    <p class="section-body">Kid Sister was built on the belief that ice cream should taste like somewhere — not everywhere. The blackberries come from local vines. The figs are foraged. The milk is organic. We're a women-owned shop making flavours worth making the trip to Esquimalt for.</p>
-    <a href="https://www.instagram.com/kidsistericecream/" target="_blank" class="btn-primary">Follow on Instagram</a>
+    <p class="section-body">Ice cream should taste like somewhere, not everywhere. We're a women-owned shop in Esquimalt making flavours worth the trip — available at the shop Thursday through Sunday, and at select stockists around Victoria and the Island.</p>
+    <a href="https://www.instagram.com/kidsistericecream/" target="_blank" class="btn-primary">See This Week's Flavours</a>
   </div>
 </section>
 
@@ -884,19 +1047,28 @@
   </div>
 
   <div class="reviews-grid">
-    <div class="review-card">
-      <div class="review-stars">★★★★★</div>
-      <p class="review-text">"Hands down the best ice cream I've had in ages. Creative, handmade flavours (the sea salt was incredible), high-quality ingredients, and a warm, welcoming vibe. A must-visit spot for any ice cream lover."</p>
+    <div class="review-card reveal">
+      <div class="review-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+      <p class="review-text">
+        <span class="review-pull">"The sea salt was incredible."</span>
+        Hands down the best ice cream I've had in ages. Creative, handmade flavours, high-quality ingredients, and a warm, welcoming vibe. A must-visit spot for any ice cream lover.
+      </p>
       <p class="review-meta">LITTLE JUNE · SEPTEMBER 2025 · Via Google</p>
     </div>
-    <div class="review-card">
-      <div class="review-stars">★★★★★</div>
-      <p class="review-text">"I think Kid Sister is my new favourite ice cream spot. They focus on using local ingredients (foraged figs and blackberries) and the flavors are unique and fresh. I could have gotten a scoop of all of them."</p>
+    <div class="review-card reveal">
+      <div class="review-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+      <p class="review-text">
+        <span class="review-pull">"I could have gotten a scoop of all of them."</span>
+        They focus on local ingredients — foraged figs and blackberries — and the flavours are unique and fresh. A great addition to the neighbourhood and the city.
+      </p>
       <p class="review-meta">JOYCE T. · SEPTEMBER 2025 · Via Google</p>
     </div>
-    <div class="review-card">
-      <div class="review-stars">★★★★★</div>
-      <p class="review-text">"Creative, seasonal flavours, wonderful non-dairy options, and products clearly made with a lot of love and respect for the ingredients. Kind and friendly staff too."</p>
+    <div class="review-card reveal">
+      <div class="review-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+      <p class="review-text">
+        <span class="review-pull">"Made with a lot of love and respect for the ingredients."</span>
+        Creative, seasonal flavours, wonderful non-dairy options. Kind and friendly staff too.
+      </p>
       <p class="review-meta">RACHEL R. · OCTOBER 2025 · Via Google</p>
     </div>
   </div>
@@ -907,12 +1079,11 @@
   <div class="gift-left">
     <p class="section-eyebrow">Share the Love</p>
     <h2 class="section-heading">Give the gift of something real.</h2>
-    <p class="section-body">Gift cards available at the shop. The perfect thing to give someone who deserves a scoop of something made with care.</p>
-    <a href="mailto:hello@kidsistericecream.com" class="btn-primary" style="background:var(--white);color:var(--coral);">Email to Inquire</a>
+    <p class="section-body">Gift cards available at the shop — or email us and we'll sort you out. The most thoughtful thing you can give someone who loves good ice cream.</p>
+    <a href="mailto:hello@kidsistericecream.com?subject=Gift Card" class="btn-primary" style="background:var(--white);color:var(--coral);">Email for a Gift Card</a>
   </div>
-  <div class="gift-card-visual">
-    <div class="gift-card-logo">Kid Sister</div>
-    <div class="gift-card-sub">Ice Cream · Victoria, BC</div>
+  <div class="gift-dandelion reveal">
+    <img src="dandelion.png" alt="Kid Sister dandelion mark">
   </div>
 </section>
 
@@ -961,12 +1132,18 @@
       </a>
     </div>
   </div>
-  <div class="visit-map">
+  <div class="visit-map reveal-img">
     <iframe
       src="https://maps.google.com/maps?q=1320+Esquimalt+Road+Victoria+BC&output=embed"
       loading="lazy"
       title="Kid Sister Ice Cream location map">
     </iframe>
+    <div class="map-fallback" id="mapFallback" style="display:none;">
+      <p class="map-fallback-label">1320 Esquimalt Road, Victoria BC</p>
+      <a href="https://maps.app.goo.gl/4PwNxC3V8S4rkQqVA" target="_blank" class="map-directions-link">
+        Get Directions ↗
+      </a>
+    </div>
   </div>
 </section>
 
@@ -986,5 +1163,58 @@
   </div>
 </footer>
 
+<script>
+  // Hero entrance
+  (function() {
+    const hero = document.querySelector('.js-hero');
+    if (!hero) return;
+    requestAnimationFrame(function() {
+      requestAnimationFrame(function() {
+        hero.classList.add('hero-ready');
+      });
+    });
+  })();
+
+  // Scroll reveals
+  (function() {
+    if (!('IntersectionObserver' in window)) {
+      document.querySelectorAll('.reveal, .reveal-img, .stagger, .review-card, .gift-dandelion').forEach(function(el) {
+        el.classList.add('visible');
+      });
+      return;
+    }
+
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.reveal, .reveal-img, .stagger, .gift-dandelion').forEach(function(el) {
+      observer.observe(el);
+    });
+
+    // Review cards with stagger delay
+    var reviewObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var cards = document.querySelectorAll('.review-card.reveal');
+          cards.forEach(function(card, i) {
+            setTimeout(function() {
+              card.classList.add('visible');
+            }, i * 100);
+          });
+          reviewObserver.disconnect();
+        }
+      });
+    }, { threshold: 0.1 });
+
+    var reviewSection = document.querySelector('.reviews-grid');
+    if (reviewSection) reviewObserver.observe(reviewSection);
+  })();
+</script>
 </body>
 </html>

@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Farine & Vanille — Boulangerie Artisanale, Montréal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --cream: #FAF6F0;
+    --cream-alt: #F0EBE3;
+    --chocolate: #3A2418;
+    --chocolate-light: #4A3A2C;
+    --gold: #C4973A;
+    --gold-light: #F5EDD8;
+    --warm-gray: #6B6056;
+    --warm-gray-light: #9A928A;
+    --section-pad: 96px;
+    --content-max: 1200px;
+    --content-px: 24px;
+    --ls-sm: 0.04em;
+    --ls-md: 0.08em;
+    --ls-lg: 0.14em;
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--chocolate);
+    background: var(--cream);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  img { display: block; max-width: 100%; height: auto; }
+  a { color: inherit; text-decoration: none; }
+
+  .section-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  .section-h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    color: var(--chocolate);
+  }
+
+  section[id] { scroll-margin-top: 80px; }
+
+  /* ===== NAV ===== */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: rgba(250, 246, 240, 0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(58, 36, 24, 0.08);
+  }
+  .nav-inner {
+    max-width: var(--content-max);
+    margin: 0 auto;
+    padding: 16px var(--content-px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-brand {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--chocolate);
+  }
+  .nav-brand span { color: var(--gold); }
+  .nav-links { display: flex; gap: 32px; align-items: center; }
+  .nav-links a {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: var(--ls-sm);
+    color: var(--chocolate-light);
+    transition: color 200ms var(--ease-out);
+  }
+  .nav-links a:hover { color: var(--chocolate); }
+  .nav-links a:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; border-radius: 2px; }
+
+  .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+  .hamburger svg { width: 24px; height: 24px; stroke: var(--chocolate); }
+
+  /* ===== HERO ===== */
+  .hero {
+    padding: 160px var(--content-px) var(--section-pad);
+    max-width: var(--content-max);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .hero-content {}
+  .hero-eyebrow {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: var(--ls-lg);
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: clamp(2.5rem, 5vw, 3.75rem);
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    color: var(--chocolate);
+    margin-bottom: 24px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    font-weight: 400;
+  }
+  .hero-body {
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    color: var(--chocolate-light);
+    margin-bottom: 32px;
+    max-width: 48ch;
+  }
+  .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 28px;
+    background: var(--chocolate);
+    color: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: var(--ls-sm);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: transform 160ms var(--ease-out), box-shadow 200ms var(--ease-out);
+  }
+  .btn-primary:active { transform: scale(0.97); }
+  .btn-primary:hover { box-shadow: 0 4px 16px rgba(58, 36, 24, 0.2); transform: translateY(-1px); }
+  .btn-primary:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 28px;
+    background: transparent;
+    color: var(--chocolate);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: var(--ls-sm);
+    border: 1.5px solid var(--chocolate);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 200ms var(--ease-out), transform 160ms var(--ease-out);
+  }
+  .btn-secondary:active { transform: scale(0.97); }
+  .btn-secondary:hover { background: rgba(58, 36, 24, 0.05); }
+  .btn-secondary:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
+
+  .hero-info {
+    margin-top: 24px;
+    font-size: 0.8125rem;
+    color: var(--warm-gray);
+    letter-spacing: var(--ls-sm);
+  }
+  .hero-info a { color: var(--gold); }
+  .hero-info a:hover { text-decoration: underline; }
+
+  .hero-image {
+    border-radius: 8px;
+    overflow: hidden;
+    aspect-ratio: 4/5;
+  }
+  .hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* ===== TRUST BAR (light-bar) ===== */
+  .trust-bar {
+    background: var(--cream-alt);
+    padding: 32px var(--content-px);
+  }
+  .trust-bar-inner {
+    max-width: var(--content-max);
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    gap: 64px;
+    flex-wrap: wrap;
+  }
+  .trust-item { text-align: center; }
+  .trust-number {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.75rem;
+    color: var(--chocolate);
+    letter-spacing: -0.02em;
+  }
+  .trust-label {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: var(--ls-lg);
+    text-transform: uppercase;
+    color: var(--warm-gray);
+    margin-top: 4px;
+  }
+
+  /* ===== PHOTO STRIP ===== */
+  .photo-strip {
+    max-width: var(--content-max);
+    margin: var(--section-pad) auto 0;
+    padding: 0 var(--content-px);
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 4px;
+    height: 320px;
+  }
+  .photo-strip img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+
+  /* ===== ABOUT ===== */
+  .about {
+    max-width: var(--content-max);
+    margin: 0 auto;
+    padding: var(--section-pad) var(--content-px);
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    gap: 64px;
+    align-items: start;
+  }
+  .about-image {
+    border-radius: 8px;
+    overflow: hidden;
+    aspect-ratio: 4/5;
+  }
+  .about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .about-text {}
+  .about-body {
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    color: var(--chocolate-light);
+    margin-top: 24px;
+    max-width: 55ch;
+  }
+  .about-quote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: var(--chocolate);
+    margin-top: 32px;
+    padding-left: 24px;
+    border-left: 2px solid var(--gold);
+  }
+  .about-quote cite {
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-style: normal;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: var(--ls-md);
+    text-transform: uppercase;
+    color: var(--warm-gray);
+    margin-top: 12px;
+  }
+
+  /* ===== NAME SECTION ===== */
+  .name-section {
+    background: var(--chocolate);
+    padding: 120px var(--content-px);
+    text-align: center;
+  }
+  .name-section .section-label { color: var(--gold); }
+  .name-h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    color: var(--cream);
+    max-width: 700px;
+    margin: 0 auto 24px;
+  }
+  .name-body {
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    color: rgba(250, 246, 240, 0.75);
+    max-width: 50ch;
+    margin: 0 auto;
+  }
+  .name-body em {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--cream);
+  }
+
+  /* ===== PASTRIES ===== */
+  .pastries {
+    max-width: var(--content-max);
+    margin: 0 auto;
+    padding: var(--section-pad) var(--content-px);
+  }
+  .pastries-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .pastry-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  .pastry-card {
+    padding: 32px;
+    background: var(--cream-alt);
+    border-radius: 8px;
+    border-top: 2px solid var(--gold);
+    transition: transform 200ms var(--ease-out), box-shadow 200ms var(--ease-out);
+  }
+  .pastry-name {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: var(--chocolate);
+    margin-bottom: 8px;
+  }
+  .pastry-desc {
+    font-size: 0.9375rem;
+    line-height: 1.75;
+    color: var(--chocolate-light);
+  }
+  .pastry-card:hover {
+    box-shadow: 0 2px 12px rgba(58, 36, 24, 0.08);
+  }
+
+  /* ===== REVIEWS ===== */
+  .reviews {
+    background: var(--cream-alt);
+    padding: var(--section-pad) var(--content-px);
+  }
+  .reviews-inner {
+    max-width: var(--content-max);
+    margin: 0 auto;
+  }
+  .reviews-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .review-featured {
+    background: var(--chocolate);
+    border-radius: 8px;
+    padding: 48px;
+    text-align: center;
+  }
+  .review-featured-text {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.5rem;
+    line-height: 1.5;
+    color: var(--cream);
+    max-width: 60ch;
+    margin: 0 auto 24px;
+  }
+  .review-featured-meta {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: var(--ls-md);
+    text-transform: uppercase;
+    color: rgba(250, 246, 240, 0.7);
+  }
+  .review-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 24px;
+  }
+  .review-card {
+    background: var(--cream);
+    border-radius: 8px;
+    padding: 32px;
+    border-top: 2px solid var(--gold);
+  }
+  .review-text {
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    color: var(--chocolate-light);
+    flex: 1;
+  }
+  .review-meta {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: var(--ls-md);
+    text-transform: uppercase;
+    color: var(--warm-gray);
+    margin-top: 16px;
+  }
+
+  /* ===== VISIT ===== */
+  .visit {
+    max-width: var(--content-max);
+    margin: 0 auto;
+    padding: var(--section-pad) var(--content-px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+  }
+  .visit-info {}
+  .visit-address {
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    color: var(--chocolate-light);
+    margin-top: 24px;
+  }
+  .visit-phone {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--gold);
+    margin-top: 16px;
+    display: block;
+  }
+  .visit-phone:hover { text-decoration: underline; }
+  .hours-table {
+    margin-top: 24px;
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .hours-table td {
+    padding: 8px 0;
+    font-size: 0.9375rem;
+    color: var(--chocolate-light);
+    border-bottom: 1px solid rgba(58, 36, 24, 0.08);
+  }
+  .hours-table td:last-child { text-align: right; font-weight: 500; color: var(--chocolate); }
+
+  .visit-map {
+    border-radius: 8px;
+    overflow: hidden;
+    min-height: 320px;
+  }
+  .visit-map iframe {
+    width: 100%;
+    height: 100%;
+    min-height: 320px;
+    border: 0;
+  }
+
+  /* ===== CTA BAND ===== */
+  .cta-band {
+    background: var(--chocolate);
+    padding: 80px var(--content-px);
+    text-align: center;
+  }
+  .cta-h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--cream);
+    margin-bottom: 24px;
+    letter-spacing: -0.02em;
+  }
+  .cta-band .btn-primary {
+    background: var(--cream);
+    color: var(--chocolate);
+  }
+  .cta-band .btn-primary:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    max-width: var(--content-max);
+    margin: 0 auto;
+    padding: 64px var(--content-px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(58, 36, 24, 0.08);
+  }
+  .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.125rem;
+    color: var(--chocolate);
+  }
+  .footer-brand span { color: var(--gold); }
+  .footer-links {
+    display: flex;
+    gap: 24px;
+  }
+  .footer-links a {
+    font-size: 0.8125rem;
+    color: var(--warm-gray);
+    transition: color 200ms;
+  }
+  .footer-links a:hover { color: var(--chocolate); }
+
+  /* ===== MOBILE ===== */
+  @media (max-width: 768px) {
+    :root { --section-pad: 64px; --content-px: 20px; }
+    .nav-links { display: none; }
+    .hamburger { display: block; }
+    .hero { grid-template-columns: 1fr; gap: 40px; padding-top: 120px; }
+    .hero-image { order: -1; aspect-ratio: 16/10; }
+    .photo-strip { grid-template-columns: 1fr 1fr; height: 200px; }
+    .photo-strip img:first-child { grid-column: 1 / -1; }
+    .about { grid-template-columns: 1fr; gap: 40px; }
+    .about-image { aspect-ratio: 16/10; }
+    .pastry-grid { grid-template-columns: 1fr; }
+    .review-cards { grid-template-columns: 1fr; }
+    .visit { grid-template-columns: 1fr; gap: 40px; }
+    footer { flex-direction: column; gap: 16px; text-align: center; }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--cream);
+      z-index: 99;
+      padding: 120px 24px 48px;
+      flex-direction: column;
+      gap: 32px;
+    }
+    .mobile-menu.active { display: flex; }
+    .mobile-menu a {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.75rem;
+      color: var(--chocolate);
+    }
+    .mobile-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--chocolate);
+    }
+  }
+
+  /* ===== ANIMATIONS ===== */
+  .hero-content > * {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+  }
+  .hero-image {
+    opacity: 0;
+    transition: opacity 800ms var(--ease-out);
+  }
+  body.js-loaded .hero-content > * {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  body.js-loaded .hero-content .hero-eyebrow { transition-delay: 100ms; }
+  body.js-loaded .hero-content h1 { transition-delay: 250ms; }
+  body.js-loaded .hero-content .hero-body { transition-delay: 400ms; }
+  body.js-loaded .hero-content .hero-ctas { transition-delay: 520ms; }
+  body.js-loaded .hero-content .hero-info { transition-delay: 620ms; }
+  body.js-loaded .hero-image { opacity: 1; transition-delay: 300ms; }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-img {
+    opacity: 0;
+    transition: opacity 700ms var(--ease-out);
+  }
+  .reveal-img.visible { opacity: 1; }
+
+  .stagger-1 { transition-delay: 0ms; }
+  .stagger-2 { transition-delay: 60ms; }
+  .stagger-3 { transition-delay: 120ms; }
+  .stagger-4 { transition-delay: 180ms; }
+  .stagger-5 { transition-delay: 240ms; }
+  .stagger-6 { transition-delay: 300ms; }
+
+  /* Button hover/active */
+  .btn-primary, .btn-secondary {
+    transition: transform 160ms var(--ease-out), box-shadow 200ms var(--ease-out), background 200ms var(--ease-out);
+  }
+
+  /* Review card hover */
+  .review-card {
+    transition: transform 200ms var(--ease-out), box-shadow 200ms var(--ease-out);
+  }
+  .review-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(58, 36, 24, 0.08);
+  }
+
+  /* Nav link underline */
+  .nav-links a {
+    position: relative;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1.5px;
+    background: var(--gold);
+    transition: width 200ms var(--ease-out);
+  }
+  .nav-links a:hover::after { width: 100%; }
+
+  /* ===== REDUCED MOTION ===== */
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .hero-content > *, .hero-image, .reveal, .reveal-img {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+  }
+
+  /* ===== NOSCRIPT ===== */
+  noscript .hero-content > *, noscript .hero-image {
+    opacity: 1;
+    transform: none;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">Farine <span>&</span> Vanille</a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#pastries">Pastries</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#visit">Visit</a>
+    </div>
+    <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.add('active')" aria-label="Open menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu">
+  <button class="mobile-close" onclick="this.parentElement.classList.remove('active')" aria-label="Close menu">&times;</button>
+  <a href="#about" onclick="this.parentElement.classList.remove('active')">About</a>
+  <a href="#pastries" onclick="this.parentElement.classList.remove('active')">Pastries</a>
+  <a href="#reviews" onclick="this.parentElement.classList.remove('active')">Reviews</a>
+  <a href="#visit" onclick="this.parentElement.classList.remove('active')">Visit</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <p class="hero-eyebrow">Boulangerie Artisanale · Mile-End, Montréal</p>
+    <h1>Every Morning Starts the Same. <em>From Scratch.</em></h1>
+    <p class="hero-body">Laminated croissants, seasonal pastries, and ganache cookies made fresh at 5000 Avenue du Parc. No shortcuts. No day-olds. Just flour, vanilla, and 4 a.m. starts.</p>
+    <div class="hero-ctas">
+      <a href="https://maps.google.com/maps?q=5000+Av+du+Parc+Montreal+QC" class="btn-primary" target="_blank" rel="noopener">Get Directions</a>
+      <a href="tel:+15145430201" class="btn-secondary">Call (514) 543-0201</a>
+    </div>
+    <p class="hero-info">Open daily 8 AM — 6 PM · 5000 Av. du Parc · <a href="https://www.instagram.com/farineetvanille/" target="_blank" rel="noopener">@farineetvanille ↗</a></p>
+  </div>
+  <div class="hero-image">
+    <img src="ig-photo-04.jpg" alt="Raspberry cream croissant with freeze-dried raspberry and fresh cream filling" width="600" height="750" loading="eager">
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<section class="trust-bar reveal">
+  <div class="trust-bar-inner">
+    <div class="trust-item">
+      <div class="trust-number">4.6★</div>
+      <div class="trust-label">Google · 302 Reviews</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-number">8 AM</div>
+      <div class="trust-label">Open Daily</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-number">Mile-End</div>
+      <div class="trust-label">5000 Av. du Parc</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-number">3,600+</div>
+      <div class="trust-label">Instagram Followers</div>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO STRIP -->
+<section class="photo-strip reveal-img">
+  <img src="ig-photo-05.jpg" alt="Freshly baked butter croissants with golden lamination" loading="lazy">
+  <img src="ig-photo-02.jpg" alt="Ganache cookies topped with freeze-dried raspberry" loading="lazy">
+  <img src="ig-photo-07.jpg" alt="Baked galette des rois with decorative scoring" loading="lazy">
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-image reveal-img">
+    <img src="ig-photo-06.jpg" alt="Galette des rois being assembled with frangipane filling and decorative scoring" loading="lazy">
+  </div>
+  <div class="about-text reveal">
+    <p class="section-label">The Bakery</p>
+    <h2 class="section-h2">Flour and Vanilla. That's the Foundation.</h2>
+    <p class="about-body">Farine & Vanille is an artisan bakery in the heart of Mile-End, one of Montréal's most food-obsessed neighbourhoods. Every pastry is built on French technique and quality ingredients, laminated by hand, and baked fresh before the neighbourhood wakes up.</p>
+    <p class="about-body">The croissants are the draw. But regulars know the seasonal cream pastries with freeze-dried fruit, the ganache cookies, and the galette des rois are just as worth the trip.</p>
+  </div>
+</section>
+
+<!-- NAME SECTION -->
+<section class="name-section">
+  <p class="section-label">The Name</p>
+  <h2 class="name-h2 reveal">Farine Means Flour. Vanille Means Vanilla.</h2>
+  <p class="name-body">Two ingredients. The simplest ones. The ones that disappear into everything but hold it all together. <em>That's the whole philosophy.</em></p>
+</section>
+
+<!-- PASTRIES -->
+<section class="pastries" id="pastries">
+  <div class="pastries-header">
+    <p class="section-label">From the Oven</p>
+    <h2 class="section-h2">What We Bake</h2>
+  </div>
+  <div class="pastry-grid">
+    <div class="pastry-card reveal stagger-1">
+      <h3 class="pastry-name">Croissants</h3>
+      <p class="pastry-desc">Classic butter croissants, laminated by hand. The golden layers and shattering crust that keep the line moving every morning.</p>
+    </div>
+    <div class="pastry-card reveal stagger-2">
+      <h3 class="pastry-name">Cream Pastries</h3>
+      <p class="pastry-desc">Seasonal fillings with freeze-dried fruit. Raspberry cream, strawberry, whatever the season demands. Gone by noon.</p>
+    </div>
+    <div class="pastry-card reveal stagger-3">
+      <h3 class="pastry-name">Ganache Cookies</h3>
+      <p class="pastry-desc">Dark chocolate ganache dome, dusted with freeze-dried raspberry. Crisp shell, soft centre. Not a cookie you've had before.</p>
+    </div>
+    <div class="pastry-card reveal stagger-4">
+      <h3 class="pastry-name">Galette des Rois</h3>
+      <p class="pastry-desc">Puff pastry with almond frangipane, scored by hand. A French tradition made right, available seasonally.</p>
+    </div>
+    <div class="pastry-card reveal stagger-5">
+      <h3 class="pastry-name">Pain au Chocolat</h3>
+      <p class="pastry-desc">Same lamination as the croissants, with two bars of dark chocolate tucked inside. Warm from the oven is the move.</p>
+    </div>
+    <div class="pastry-card reveal stagger-6">
+      <h3 class="pastry-name">Seasonal Specials</h3>
+      <p class="pastry-desc">The menu rotates. Follow @farineetvanille on Instagram for what's fresh this week.</p>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="reviews-inner">
+    <div class="reviews-header">
+      <p class="section-label">302 Google Reviews</p>
+      <h2 class="section-h2">They Keep Coming Back for the Layers.</h2>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-featured reveal">
+        <p class="review-featured-text">"The best croissants in Montreal, hands down. Perfectly laminated, buttery, and flaky. Worth the trip to Mile-End every single time."</p>
+        <p class="review-featured-meta">SARAH L. · JAN 2024 · Via Google</p>
+      </div>
+      <div class="review-cards">
+        <div class="review-card">
+          <p class="review-text">"Their seasonal pastries are incredible. The raspberry cream croissant was unlike anything I've had in the city. A real neighbourhood gem."</p>
+          <p class="review-meta">MARC D. · NOV 2023 · Via Google</p>
+        </div>
+        <div class="review-card">
+          <p class="review-text">"Everything is fresh, everything is beautiful. The ganache cookies are addictive. This bakery makes Mile-End even better than it already is."</p>
+          <p class="review-meta">JULIE T. · MAR 2024 · Via Google</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section class="visit" id="visit">
+  <div class="visit-info">
+    <p class="section-label">Visit Us</p>
+    <h2 class="section-h2">5000 Avenue du Parc.</h2>
+    <p class="visit-address">Mile-End, Montréal, QC H2V 4E8</p>
+    <a href="tel:+15145430201" class="visit-phone">+1 (514) 543-0201</a>
+    <table class="hours-table">
+      <tr><td>Monday — Sunday</td><td>8:00 AM — 6:00 PM</td></tr>
+    </table>
+  </div>
+  <div class="visit-map">
+    <iframe src="https://maps.google.com/maps?q=5000+Avenue+du+Parc+Montreal+QC+H2V+4E8&output=embed" title="Farine & Vanille location on Google Maps" loading="lazy"></iframe>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <h2 class="cta-h2">The oven's on. We'll see you at 8.</h2>
+  <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+    <a href="https://maps.google.com/maps?q=5000+Av+du+Parc+Montreal+QC" class="btn-primary" target="_blank" rel="noopener">Get Directions</a>
+    <a href="https://www.instagram.com/farineetvanille/" class="btn-secondary" style="border-color:rgba(250,246,240,0.3);color:var(--cream);" target="_blank" rel="noopener">Follow @farineetvanille</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Farine <span>&</span> Vanille</div>
+  <div class="footer-links">
+    <a href="https://www.instagram.com/farineetvanille/" target="_blank" rel="noopener">Instagram</a>
+    <a href="tel:+15145430201">+1 (514) 543-0201</a>
+  </div>
+</footer>
+
+<script>
+// Hero entrance
+requestAnimationFrame(() => {
+  requestAnimationFrame(() => {
+    document.body.classList.add('js-loaded');
+  });
+});
+
+// Scroll reveals
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal, .reveal-img').forEach(el => observer.observe(el));
+</script>
+
+<noscript>
+<style>
+  .hero-content > *, .hero-image, .reveal, .reveal-img {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+</style>
+</noscript>
+
+</body>
+</html>

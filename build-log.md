@@ -1,5 +1,88 @@
 # Auto-Sites Build Log
 
+## Build 62 — Nakamoto Design Co.
+- **Category:** Design Studio Landing Page
+- **City:** Victoria, BC
+- **Date:** 2026-03-28
+- **Model:** claude-opus-4-6 (subagent)
+- **Agent:** Lucy
+- **Hero pattern:** centered-minimal (type-driven, no hero image)
+- **Typography:** Space Grotesk 400/500/600/700 (display/headings) + Inter 300/400/500/600 (body/UI)
+- **Review layout:** N/A (studio portfolio)
+- **Stats bar style:** no-stats
+- **Score:** 5.7 (v0 WHY avg) → 7.5 (v5 self-review)
+- **Live URL:** https://auto-sites.pages.dev/demos/nakamoto-design/
+- **Key decisions:** Dark warm theme (#0C0B09 + gold #D4A33A). Portfolio-first structure — 6 project screenshots in 2-col grid as the hero of the page. Featured: Farine & Vanille, Status Barber Shop, GoodSide Pastry House, Kid Sister Ice Cream, Flowers On Top, Vintage Glory. Anti-template positioning ("Not a freelancer with a Squarespace account"). Closing CTA: "Your competitors have templates. Let's make sure visitors can tell." About section split with border-left divider. Full motion: hero entrance stagger, IntersectionObserver scroll-reveals on all sections, card stagger (80ms). No AI/automation mentions anywhere. Space Grotesk for all display type (technical precision), Inter for body (clean readability).
+
+### Scores
+| Round | Phase | Reviewers | Avg |
+|-------|-------|-----------|-----|
+| v0→v1 | WHY | Jobs 6.0, Cagan 5.0, Ogilvy 7.0 | 6.0 |
+| v1→v2 | WHAT | Norman 7.0, Krug 6.0, Nielsen 5.0 | 6.0 |
+| v2→v3 | HOW | Vignelli 6.0, Spiekermann 5.0, Rams 7.0, Emil 4.0 | 5.5 |
+| v4→v5 | Self | Lucy | 7.5 |
+
+### Files
+- index-v0.html through index-v5.html (6 versions, gitignored)
+- index.html (copy of v5)
+- 6 portfolio screenshots (*-preview.png)
+- 4 review screenshots (screenshot-v*.png)
+
+---
+
+## Build 61 — Scott Bell Portfolio (Codex)
+- **Category:** Portfolio / Personal Brand
+- **City:** Victoria, BC
+- **Date:** 2026-03-27
+- **Model:** claude-opus-4-6 (subagent)
+- **Agent:** Lucy
+- **Hero pattern:** centered-minimal (type-driven, no hero image)
+- **Typography:** Syne 600/700/800 (display) + IBM Plex Mono 300/400/500 (body/UI)
+- **Review layout:** N/A (portfolio)
+- **Stats bar style:** no-stats (inline hero stats instead)
+- **Score:** 6.7 (v0 WHY avg) → 7.5 (v5 self-review)
+- **Live URL:** https://auto-sites.pages.dev/demos/scott-bell-codex/
+- **Key decisions:** Teal accent (#00C9A7) on dark warm (#0D0C0A) — completely different from all prior portfolio builds (amber, copper, violet, gold). Syne 800 for massive display type + IBM Plex Mono for technical precision body — the "designer who codes" tension in the typography itself. "He finds the hidden layer and makes it real" hero headline in third person (Ogilvy: "feels like a recommendation rather than a résumé"). AI/Now section moved above About per Cagan feedback (most differentiating content should come earlier). Each case study headline rewritten to lead with outcomes: "450 screens in 5 months. Then it went to 65 countries." / "The market cap went 100×. The design system held." / "Employee #1. Zero users. Now it's worth $800M." Companies strip removed per Rams (redundant with case studies below). Real screenshots from scottkbell.com for Strike, AIOZ, Fountain. About section uses same 240px meta column as case studies for grid consistency. Subtle noise texture (0.03 opacity) for analog warmth on dark bg. Full motion: hero entrance stagger, IntersectionObserver scroll-reveals, case image stagger, AI card stagger, nav underline hover.
+
+### Scores
+| Round | Phase | Reviewers | Avg |
+|-------|-------|-----------|-----|
+| v0→v1 | WHY | Jobs 7.0, Cagan 6.0, Ogilvy 7.0 | 6.7 |
+| v1→v2 | WHAT | Norman 6.0, Krug 5.0, Nielsen 5.0 | 5.3 |
+| v2→v3 | HOW | Vignelli 7.0, Spiekermann 6.0, Rams 8.0, Emil 5.0 | 6.5 |
+| v4→v5 | Self | Lucy | 7.5 |
+
+### Key improvements
+- v0→v1: Hero body rewritten with personal voice (microbiology→design throughline); all case study titles rewritten as outcome-first surprises; AI section moved above About; LoopIn card rewritten to explain what the user does not what the tool is
+- v1→v2: Explicit role subtitle added ("Senior Product Designer · AI, Design Systems, 0-to-1"); body text contrast improved (#807870→#9A9490); alternating section backgrounds (var(--surface) on AIOZ/KOHO); scroll-margin-top on all anchors; hero subtitle entrance animation added
+- v2→v3: Body font 15→16px; companies strip removed (redundant); case images from 4-col→2-col (larger, readable); about section unified to same 240px meta grid; section-h3 intermediate size added
+- v3→v4: Full motion: hero entrance stagger, case header reveals, case image stagger (80ms), AI card stagger (60ms), nav underline hover animation; prefers-reduced-motion respected
+- v4→v5: About blockquote scaled up (2→2.5rem clamp); CTA section enlarged (5vw headline, 160px padding); button padding increased; noise texture overlay (0.03 opacity)
+
+### What worked
+- **Syne 800 + IBM Plex Mono:** Bold indie display + technical monospace creates genuine tension. The "designer who codes" identity is IN the typography. Different from every prior portfolio build (Fraunces, Outfit, Bebas Neue, Cormorant).
+- **Teal (#00C9A7):** Fresh, technical, warm-enough. Avoids the amber/gold/copper palette that dominated prior portfolio versions. Reads as AI/tech-forward.
+- **Third-person hero headline:** "He finds the hidden layer and makes it real" — Ogilvy noted this makes the reader feel like they're reading a recommendation. Bold choice that worked.
+- **Case study titles as outcomes:** "The market cap went 100×. The design system held." — these are miniature stories, not descriptions. Strongest copy element.
+- **AI section before About:** Cagan was right — the most differentiating content needs to come earlier. This is what separates Scott from every other product designer.
+- **No companies strip:** Rams was right — the case studies already prove the companies. The strip was redundant social proof.
+- **Real screenshots from scottkbell.com:** Strike, AIOZ, Fountain images give immediate visual proof. KOHO placeholder is honest ("case study in progress").
+- **Noise texture on dark:** Very subtle (0.03 opacity) but adds analog warmth that prevents the dark theme from feeling cold/digital.
+
+### What limited score
+- KOHO has no screenshots — placeholder reads as unfinished
+- Body text in IBM Plex Mono can feel dense at longer reads — serif body might have been warmer
+- Score ceiling: 7.5 — room for 8.5+ with more visual variety between sections and KOHO images
+- Panel noted consistent case study structure is good but "feels like a wall" without more visual differentiation
+
+### Files
+- index-v0.html through index-v5.html (6 versions)
+- index.html (copy of v5)
+- assets/: strike1-4.png, aioz1-3.png, fountain1-4.png (11 real screenshots from scottkbell.com)
+- screenshot-v0.png through screenshot-v4.png (5 review screenshots)
+
+---
+
 ## Build 60 — Farine & Vanille
 - **Category:** Bakery / Café
 - **City:** Montreal, QC (5000 Avenue du Parc, Mile-End)

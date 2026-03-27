@@ -1,6 +1,3 @@
-# Only keep final index.html per demo, skip version files and PNGs
+# Skip version files only
 demos/**/index-v*.html
-demos/**/*.png
-demos/**/*.jpg
-demos/**/*.gif
 demos/**/assets/

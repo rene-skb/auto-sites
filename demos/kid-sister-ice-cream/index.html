@@ -1,752 +1,990 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kid Sister — Small Batches, Big Flavours | Victoria, BC</title>
-<meta name="description" content="Locally made small-batch ice cream, sorbet, and paletas in Victoria, BC. Organic dairy, local fruit, seasonal flavours since 2010.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kid Sister Ice Cream — Esquimalt, Victoria BC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,500&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  :root {
-    --cream: #FFF8F0;
-    --pink: #E8A0BF;
-    --pink-deep: #D4729A;
-    --berry: #9B3E6F;
-    --warm-brown: #5C3D2E;
-    --dark: #2E1A12;
-    --peach: #FDDCBF;
-    --mint: #B8E0D2;
-    --gold: #D4A056;
-    --lavender: #C5B4E3;
-    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
-    --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
-  }
+    :root {
+      --coral: #E8573B;
+      --coral-dark: #C94220;
+      --cream: #F5F0DC;
+      --cream-alt: #EDE6CB;
+      --green: #3E7A45;
+      --green-light: #4A8A50;
+      --warm-dark: #2C1810;
+      --warm-dark-soft: #4A2E22;
+      --white: #FFFDF7;
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --section-pad: 96px;
+    }
 
-  html { scroll-behavior: smooth; }
-  body {
-    font-family: 'DM Sans', sans-serif;
-    color: var(--warm-brown);
-    background: var(--cream);
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-  }
+    html { scroll-behavior: smooth; }
 
-  .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--cream);
+      color: var(--warm-dark);
+      -webkit-font-smoothing: antialiased;
+    }
 
-  /* NAV */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(255, 248, 240, 0.92);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(92, 61, 46, 0.08);
-  }
-  .nav-inner {
-    max-width: 1100px; margin: 0 auto; padding: 16px 24px;
-    display: flex; align-items: center; justify-content: space-between;
-  }
-  .nav-logo {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.4rem; color: var(--berry);
-    text-decoration: none; letter-spacing: -0.02em;
-  }
-  .nav-links { display: flex; gap: 32px; list-style: none; }
-  .nav-links a {
-    text-decoration: none; color: var(--warm-brown);
-    font-size: 0.9rem; font-weight: 500; letter-spacing: 0.02em;
-    transition: color 200ms var(--ease-out);
-  }
-  .nav-links a:hover { color: var(--berry); }
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: var(--cream);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 64px;
+      border-bottom: 1px solid rgba(44,24,16,0.1);
+    }
 
-  .hamburger {
-    display: none; background: none; border: none; cursor: pointer;
-    width: 28px; height: 20px; position: relative; z-index: 200;
-  }
-  .hamburger span {
-    display: block; width: 100%; height: 2px; background: var(--warm-brown);
-    position: absolute; left: 0; transition: all 300ms var(--ease-out);
-  }
-  .hamburger span:nth-child(1) { top: 0; }
-  .hamburger span:nth-child(2) { top: 9px; }
-  .hamburger span:nth-child(3) { top: 18px; }
-  .hamburger.active span:nth-child(1) { top: 9px; transform: rotate(45deg); }
-  .hamburger.active span:nth-child(2) { opacity: 0; }
-  .hamburger.active span:nth-child(3) { top: 9px; transform: rotate(-45deg); }
+    .nav-logo {
+      font-family: 'Fraunces', serif;
+      font-weight: 700;
+      font-size: 1.35rem;
+      color: var(--coral);
+      letter-spacing: -0.01em;
+      text-decoration: none;
+    }
 
-  .mobile-menu {
-    display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-    background: var(--cream); z-index: 99;
-    flex-direction: column; align-items: center; justify-content: center; gap: 32px;
-  }
-  .mobile-menu.active { display: flex; }
-  .mobile-menu a {
-    font-family: 'DM Serif Display', serif; font-size: 1.8rem;
-    color: var(--warm-brown); text-decoration: none;
-  }
-  .mobile-menu a:hover { color: var(--berry); }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
 
-  @media (max-width: 768px) {
-    .nav-links { display: none; }
-    .hamburger { display: block; }
-  }
+    .nav-links a {
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--warm-dark);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      opacity: 0.7;
+      transition: opacity 200ms;
+    }
 
-  /* HERO */
-  .hero {
-    padding: 160px 24px 120px;
-    text-align: center;
-    position: relative; overflow: hidden;
-    background: var(--cream);
-  }
-  .hero::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-    background: 
-      radial-gradient(ellipse 600px 500px at 20% 80%, rgba(232, 160, 191, 0.35) 0%, transparent 70%),
-      radial-gradient(ellipse 500px 400px at 80% 20%, rgba(253, 220, 191, 0.4) 0%, transparent 70%),
-      radial-gradient(ellipse 400px 400px at 50% 60%, rgba(184, 224, 210, 0.25) 0%, transparent 70%),
-      radial-gradient(ellipse 300px 300px at 70% 80%, rgba(197, 180, 227, 0.2) 0%, transparent 70%);
-    pointer-events: none;
-  }
-  .hero::after {
-    content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-    opacity: 0.03; pointer-events: none;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    background-size: 200px;
-  }
-  .hero-badge {
-    display: inline-block; background: rgba(155, 62, 111, 0.1);
-    color: var(--berry); padding: 6px 18px; border-radius: 20px;
-    font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em;
-    text-transform: uppercase; margin-bottom: 28px;
-    position: relative;
-  }
-  .hero h1 {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(3rem, 8vw, 5.5rem);
-    color: var(--dark); line-height: 1.05;
-    margin-bottom: 24px; letter-spacing: -0.02em;
-    position: relative;
-  }
-  .hero h1 em {
-    color: var(--berry); font-style: italic;
-    display: inline-block;
-    transform: rotate(-2deg);
-    transform-origin: left bottom;
-  }
-  .hero-sub {
-    font-size: 1.2rem; max-width: 500px; margin: 0 auto 40px;
-    color: var(--warm-brown); opacity: 0.8; position: relative;
-    line-height: 1.6;
-  }
-  .hero-ctas {
-    display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
-    position: relative;
-  }
-  .btn {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 14px 28px; border-radius: 30px;
-    font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 600;
-    text-decoration: none; cursor: pointer; border: none;
-    transition: transform 160ms var(--ease-out), box-shadow 200ms var(--ease-out);
-  }
-  .btn:active { transform: scale(0.97); }
-  .btn-primary {
-    background: var(--berry); color: #fff;
-    box-shadow: 0 4px 20px rgba(155, 62, 111, 0.3);
-  }
-  .btn-primary:hover { box-shadow: 0 6px 28px rgba(155, 62, 111, 0.4); }
-  .btn-secondary {
-    background: rgba(255, 255, 255, 0.7); color: var(--warm-brown);
-    border: 1px solid rgba(92, 61, 46, 0.15);
-  }
-  .btn-secondary:hover { background: #fff; }
+    .nav-links a:hover { opacity: 1; }
 
-  /* TRUST BAR */
-  .trust-bar {
-    background: var(--dark); padding: 22px 24px;
-    display: flex; justify-content: center; gap: 48px; flex-wrap: wrap;
-  }
-  .trust-item {
-    display: flex; align-items: center; gap: 10px;
-    color: var(--peach); font-size: 0.82rem; font-weight: 500;
-    letter-spacing: 0.04em; text-transform: uppercase;
-  }
-  .trust-item strong { color: #fff; font-size: 0.95rem; }
+    .nav-cta {
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--coral);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
 
-  /* SECTION BASICS */
-  .section-label {
-    font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em;
-    text-transform: uppercase; color: var(--pink-deep); margin-bottom: 12px;
-    text-align: center;
-  }
-  .section-title {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(2rem, 4vw, 2.8rem);
-    color: var(--dark); text-align: center;
-    margin-bottom: 16px; letter-spacing: -0.02em;
-  }
-  .section-subtitle {
-    text-align: center; max-width: 480px; margin: 0 auto 56px;
-    color: var(--warm-brown); opacity: 0.7; font-size: 1.05rem;
-  }
+    /* Mobile hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .hamburger span {
+      width: 24px;
+      height: 2px;
+      background: var(--warm-dark);
+      display: block;
+      transition: all 200ms;
+    }
 
-  /* FLAVOURS */
-  .flavours { padding: 96px 24px; background: var(--cream); }
-  .flavour-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr);
-    gap: 20px; max-width: 860px; margin: 0 auto;
-  }
-  .flavour-card {
-    background: #fff; border-radius: 16px; padding: 32px 24px;
-    text-align: center;
-    transition: transform 250ms var(--ease-out), box-shadow 250ms var(--ease-out);
-    position: relative; overflow: hidden;
-  }
-  .flavour-card::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
-    border-radius: 16px 16px 0 0;
-  }
-  .flavour-card:nth-child(1)::before { background: linear-gradient(90deg, #F5D76E, #F0C27F); }
-  .flavour-card:nth-child(2)::before { background: linear-gradient(90deg, #C4A882, #8B6F4E); }
-  .flavour-card:nth-child(3)::before { background: linear-gradient(90deg, #E8A0BF, #F5C6AA); }
-  .flavour-card:nth-child(4)::before { background: linear-gradient(90deg, #7B5B3A, #5C3D2E); }
-  .flavour-card:nth-child(5)::before { background: linear-gradient(90deg, #8B2252, #C94277); }
-  .flavour-card:nth-child(6)::before { background: linear-gradient(90deg, #D4A056, #C17F3E); }
-  .flavour-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(92, 61, 46, 0.1); }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 64px;
+      left: 0;
+      right: 0;
+      background: var(--cream);
+      padding: 24px 24px 32px;
+      border-bottom: 1px solid rgba(44,24,16,0.1);
+      z-index: 99;
+    }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a {
+      display: block;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--warm-dark);
+      text-decoration: none;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(44,24,16,0.08);
+    }
 
-  .flavour-swatch {
-    width: 44px; height: 44px; border-radius: 50%;
-    margin: 0 auto 16px;
-    transition: transform 300ms var(--ease-out);
-  }
-  .flavour-card:hover .flavour-swatch { transform: scale(1.15); }
-  .flavour-card:nth-child(1) .flavour-swatch { background: linear-gradient(135deg, #F5D76E, #FFF5D6); }
-  .flavour-card:nth-child(2) .flavour-swatch { background: linear-gradient(135deg, #C4A882, #E8D5BE); }
-  .flavour-card:nth-child(3) .flavour-swatch { background: linear-gradient(135deg, #E8A0BF, #F5C6AA); }
-  .flavour-card:nth-child(4) .flavour-swatch { background: linear-gradient(135deg, #5C3D2E, #8B6F4E); }
-  .flavour-card:nth-child(5) .flavour-swatch { background: linear-gradient(135deg, #8B2252, #C94277); }
-  .flavour-card:nth-child(6) .flavour-swatch { background: linear-gradient(135deg, #D4A056, #F0C27F); }
+    /* ── HERO — SPLIT IMAGE RIGHT ── */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 100vh;
+      padding-top: 64px;
+    }
 
-  .flavour-card h3 {
-    font-family: 'DM Serif Display', serif; font-size: 1.05rem;
-    color: var(--dark); margin-bottom: 6px;
-  }
-  .flavour-card p {
-    font-size: 0.83rem; color: var(--warm-brown); opacity: 0.7;
-    line-height: 1.5;
-  }
-  .flavour-tag {
-    display: inline-block; margin-top: 12px; padding: 3px 10px;
-    border-radius: 10px; font-size: 0.68rem; font-weight: 600;
-    text-transform: uppercase; letter-spacing: 0.05em;
-  }
-  .tag-vegan { background: rgba(184, 224, 210, 0.4); color: #3D7A5F; }
-  .tag-seasonal { background: rgba(212, 160, 86, 0.2); color: #A07A3F; }
-  .tag-classic { background: rgba(232, 160, 191, 0.25); color: var(--pink-deep); }
+    .hero-left {
+      background: var(--cream);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 64px 80px 80px;
+    }
 
-  @media (max-width: 700px) {
-    .flavour-grid { grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (max-width: 440px) {
-    .flavour-grid { grid-template-columns: 1fr; max-width: 320px; }
-  }
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--coral);
+      margin-bottom: 24px;
+    }
 
-  /* DIFFERENTIATOR */
-  .differentiator {
-    padding: 72px 24px;
-    background: var(--dark);
-    text-align: center;
-    border-top: 3px solid var(--gold);
-  }
-  .differentiator blockquote {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(1.4rem, 3.5vw, 2rem);
-    color: #fff; line-height: 1.4;
-    max-width: 700px; margin: 0 auto;
-    font-style: italic;
-  }
-  .differentiator blockquote em { color: var(--pink); font-style: normal; }
+    .hero-headline {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(3rem, 4.5vw, 5rem);
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      color: var(--warm-dark);
+      margin-bottom: 24px;
+    }
 
-  /* TREATS */
-  .treats {
-    padding: 96px 24px;
-    background: #fff;
-  }
-  .treats-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr);
-    gap: 24px; max-width: 900px; margin: 0 auto;
-  }
-  .treat-card {
-    padding: 36px 28px; text-align: center;
-    border-radius: 16px;
-    background: var(--cream);
-    border: 1px solid rgba(92, 61, 46, 0.05);
-    transition: transform 250ms var(--ease-out);
-  }
-  .treat-card:hover { transform: translateY(-3px); }
-  .treat-icon {
-    width: 56px; height: 56px; border-radius: 14px;
-    margin: 0 auto 20px;
-    display: flex; align-items: center; justify-content: center;
-  }
-  .treat-icon svg { width: 28px; height: 28px; }
-  .treat-card:nth-child(1) .treat-icon { background: rgba(232, 160, 191, 0.2); }
-  .treat-card:nth-child(2) .treat-icon { background: rgba(184, 224, 210, 0.3); }
-  .treat-card:nth-child(3) .treat-icon { background: rgba(212, 160, 86, 0.2); }
-  .treat-card h3 {
-    font-family: 'DM Serif Display', serif; font-size: 1.2rem;
-    color: var(--dark); margin-bottom: 8px;
-  }
-  .treat-card p {
-    font-size: 0.88rem; color: var(--warm-brown); opacity: 0.75;
-    line-height: 1.55;
-  }
-  @media (max-width: 700px) {
-    .treats-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
-  }
+    .hero-headline em {
+      font-style: italic;
+      color: var(--coral);
+    }
 
-  /* ABOUT */
-  .about { padding: 96px 24px; background: var(--cream); }
-  .about-inner {
-    display: grid; grid-template-columns: 1fr 1.1fr; gap: 64px;
-    align-items: center; max-width: 1000px; margin: 0 auto;
-  }
-  .about-image {
-    aspect-ratio: 4/5; border-radius: 20px; overflow: hidden;
-    position: relative;
-    background: 
-      linear-gradient(135deg, rgba(232, 160, 191, 0.6) 0%, rgba(253, 220, 191, 0.5) 40%, rgba(184, 224, 210, 0.4) 100%);
-  }
-  .about-image::before {
-    content: ''; position: absolute; inset: 0;
-    background: radial-gradient(circle at 40% 60%, rgba(155, 62, 111, 0.15) 0%, transparent 60%);
-  }
-  .about-image::after {
-    content: 'Since 2010'; position: absolute;
-    bottom: 28px; left: 28px;
-    font-family: 'DM Serif Display', serif; font-size: 1.2rem;
-    color: rgba(255, 255, 255, 0.85); font-style: italic;
-    background: rgba(46, 26, 18, 0.25);
-    padding: 6px 16px; border-radius: 8px;
-    backdrop-filter: blur(8px);
-  }
-  .about-text h2 {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(1.8rem, 3.5vw, 2.4rem);
-    color: var(--dark); margin-bottom: 24px; letter-spacing: -0.02em;
-  }
-  .about-text p {
-    font-size: 1rem; line-height: 1.75; margin-bottom: 16px;
-    color: var(--warm-brown);
-  }
-  .about-text p:last-of-type { opacity: 0.8; }
-  @media (max-width: 768px) {
-    .about-inner { grid-template-columns: 1fr; gap: 40px; }
-  }
+    .hero-subhead {
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1.65;
+      color: var(--warm-dark-soft);
+      max-width: 420px;
+      margin-bottom: 40px;
+    }
 
-  /* REVIEWS */
-  .reviews { padding: 96px 24px; background: #fff; }
-  .review-grid {
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 24px; max-width: 800px; margin: 0 auto;
-  }
-  .review-card {
-    padding: 32px 28px; border-radius: 16px;
-    background: var(--cream);
-    transition: transform 250ms var(--ease-out);
-  }
-  .review-card:nth-child(2) { border-left: 3px solid var(--pink); }
-  .review-card:hover { transform: translateY(-2px); }
-  .review-stars { color: var(--gold); font-size: 0.9rem; margin-bottom: 12px; letter-spacing: 2px; }
-  .review-card blockquote {
-    font-size: 0.93rem; line-height: 1.6; margin-bottom: 16px;
-    color: var(--warm-brown); font-style: italic;
-  }
-  .review-author { font-size: 0.8rem; font-weight: 600; color: var(--berry); }
-  .review-source { font-size: 0.72rem; color: var(--warm-brown); opacity: 0.5; margin-top: 2px; }
+    .hero-hours {
+      margin-bottom: 40px;
+    }
 
-  /* Stats card instead of fabricated review */
-  .stats-card {
-    padding: 32px 28px; border-radius: 16px;
-    background: var(--dark); color: #fff;
-    display: flex; flex-direction: column; justify-content: center;
-  }
-  .stats-card h4 {
-    font-family: 'DM Serif Display', serif; font-size: 1.1rem;
-    margin-bottom: 20px; color: var(--peach);
-  }
-  .stat-row {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 10px 0;
-    border-bottom: 1px solid rgba(253, 220, 191, 0.1);
-  }
-  .stat-row:last-child { border-bottom: none; }
-  .stat-label { font-size: 0.82rem; color: var(--peach); opacity: 0.7; }
-  .stat-value { font-size: 0.95rem; font-weight: 600; color: var(--pink); }
+    .hero-hours-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--warm-dark);
+      opacity: 0.5;
+      margin-bottom: 8px;
+    }
 
-  @media (max-width: 600px) {
-    .review-grid { grid-template-columns: 1fr; }
-  }
+    .hero-hours p {
+      font-size: 0.9375rem;
+      font-weight: 400;
+      line-height: 1.6;
+      color: var(--warm-dark-soft);
+    }
 
-  /* VISIT */
-  .visit {
-    padding: 96px 24px;
-    background: linear-gradient(180deg, var(--cream) 0%, rgba(253, 220, 191, 0.4) 100%);
-  }
-  .visit-inner {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
-    max-width: 1000px; margin: 0 auto;
-  }
-  .visit-info h2 {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(1.8rem, 3.5vw, 2.4rem);
-    color: var(--dark); margin-bottom: 28px;
-  }
-  .visit-detail { margin-bottom: 24px; }
-  .visit-detail h4 {
-    font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em;
-    text-transform: uppercase; color: var(--pink-deep); margin-bottom: 8px;
-  }
-  .visit-detail p, .visit-detail a {
-    font-size: 1rem; color: var(--warm-brown); text-decoration: none; line-height: 1.6;
-  }
-  .visit-detail a:hover { color: var(--berry); }
-  .visit-map {
-    border-radius: 20px; overflow: hidden;
-    min-height: 350px; border: 1px solid rgba(92, 61, 46, 0.08);
-  }
-  .visit-map iframe { width: 100%; height: 100%; min-height: 350px; border: 0; }
-  @media (max-width: 768px) {
-    .visit-inner { grid-template-columns: 1fr; }
-  }
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
 
-  /* FINAL CTA */
-  .final-cta {
-    padding: 80px 24px;
-    background: var(--berry); text-align: center;
-    position: relative; overflow: hidden;
-  }
-  .final-cta::before {
-    content: ''; position: absolute; inset: 0;
-    background: radial-gradient(ellipse at 30% 50%, rgba(232, 160, 191, 0.2) 0%, transparent 60%);
-  }
-  .final-cta h2 {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(1.8rem, 4vw, 2.6rem);
-    color: #fff; margin-bottom: 12px; position: relative;
-  }
-  .final-cta p {
-    color: rgba(255, 255, 255, 0.75); margin-bottom: 28px;
-    font-size: 1.05rem; position: relative;
-  }
-  .btn-white {
-    background: #fff; color: var(--berry);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-    position: relative;
-  }
-  .btn-white:hover { box-shadow: 0 6px 28px rgba(0, 0, 0, 0.2); }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      background: var(--coral);
+      color: var(--white);
+      padding: 14px 28px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      border-radius: 2px;
+      transition: background 200ms var(--ease-out), transform 160ms var(--ease-out);
+    }
+    .btn-primary:hover { background: var(--coral-dark); }
+    .btn-primary:active { transform: scale(0.97); }
 
-  /* FOOTER */
-  footer {
-    background: var(--dark); padding: 48px 24px;
-    text-align: center; color: var(--peach);
-  }
-  .footer-logo {
-    font-family: 'DM Serif Display', serif; font-size: 1.3rem;
-    color: #fff; margin-bottom: 16px;
-  }
-  .footer-links { display: flex; gap: 24px; justify-content: center; margin-bottom: 16px; flex-wrap: wrap; }
-  .footer-links a {
-    color: var(--peach); text-decoration: none; font-size: 0.85rem;
-    transition: color 200ms var(--ease-out);
-  }
-  .footer-links a:hover { color: var(--pink); }
-  .footer-copy { font-size: 0.75rem; opacity: 0.5; }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      background: transparent;
+      color: var(--warm-dark);
+      padding: 14px 28px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      border: 1.5px solid rgba(44,24,16,0.25);
+      border-radius: 2px;
+      transition: border-color 200ms, transform 160ms var(--ease-out);
+    }
+    .btn-secondary:hover { border-color: var(--warm-dark); }
+    .btn-secondary:active { transform: scale(0.97); }
 
-  /* WAVY DIVIDER */
-  .wave-divider {
-    height: 60px; width: 100%; overflow: hidden;
-    position: relative;
-  }
-  .wave-divider svg {
-    position: absolute; bottom: 0; width: 100%; height: 60px;
-  }
+    .hero-right {
+      position: relative;
+      overflow: hidden;
+    }
 
-  /* SCROLL ANIMATIONS */
-  .fade-in {
-    opacity: 0; transform: translateY(20px);
-    transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
-  }
-  .fade-in.visible { opacity: 1; transform: translateY(0); }
-  @media (prefers-reduced-motion: reduce) {
-    .fade-in { opacity: 1; transform: none; transition: none; }
-  }
-</style>
+    .hero-right img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    /* ── FLAVOUR STRIP ── */
+    .flavor-strip {
+      background: var(--coral);
+      padding: 24px 0;
+      overflow: hidden;
+    }
+
+    .flavor-ticker {
+      display: flex;
+      gap: 0;
+      white-space: nowrap;
+    }
+
+    .flavor-ticker-inner {
+      display: flex;
+      gap: 48px;
+      animation: ticker 20s linear infinite;
+    }
+
+    .flavor-item {
+      font-family: 'Fraunces', serif;
+      font-size: 1.25rem;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--white);
+      opacity: 0.9;
+      flex-shrink: 0;
+    }
+
+    .flavor-dot {
+      color: var(--white);
+      opacity: 0.4;
+      font-size: 0.5rem;
+      margin-left: -24px;
+      align-self: center;
+      flex-shrink: 0;
+    }
+
+    @keyframes ticker {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ── WHAT WE MAKE ── */
+    .what-section {
+      padding: var(--section-pad) 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .section-eyebrow {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--coral);
+      margin-bottom: 20px;
+    }
+
+    .section-heading {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(2rem, 3vw, 3.25rem);
+      font-weight: 600;
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      color: var(--warm-dark);
+      margin-bottom: 24px;
+    }
+
+    .section-heading em {
+      font-style: italic;
+      color: var(--coral);
+    }
+
+    .section-body {
+      font-size: 0.9375rem;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--warm-dark-soft);
+      margin-bottom: 16px;
+    }
+
+    .what-photo {
+      border-radius: 4px;
+      overflow: hidden;
+      aspect-ratio: 4/5;
+    }
+
+    .what-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* ── STATS SIDEBAR ── */
+    .stats-section {
+      background: var(--green);
+      padding: 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .stats-left {
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+    }
+
+    .stat-item {}
+
+    .stat-number {
+      font-family: 'Fraunces', serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      font-size: 0.8125rem;
+      font-weight: 400;
+      color: rgba(255,253,247,0.7);
+      letter-spacing: 0.04em;
+    }
+
+    .stats-right-content {
+      color: var(--white);
+    }
+
+    .stats-right-content .section-eyebrow {
+      color: rgba(255,253,247,0.6);
+    }
+
+    .stats-right-content .section-heading {
+      color: var(--white);
+    }
+
+    .stats-right-content .section-body {
+      color: rgba(255,253,247,0.8);
+    }
+
+    .stats-right-content .btn-primary {
+      background: var(--white);
+      color: var(--green);
+    }
+
+    .stats-right-content .btn-primary:hover {
+      background: var(--cream);
+    }
+
+    /* ── PHOTO STRIP ── */
+    .photo-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      height: 380px;
+    }
+
+    .photo-strip-item {
+      overflow: hidden;
+    }
+
+    .photo-strip-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 600ms var(--ease-out);
+    }
+
+    /* ── REVIEWS ── */
+    .reviews-section {
+      padding: var(--section-pad) 80px;
+      background: var(--cream-alt);
+    }
+
+    .reviews-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .reviews-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .review-card {
+      padding: 48px 0;
+      border-bottom: 1px solid rgba(44,24,16,0.12);
+    }
+
+    .review-card:first-child {
+      padding-top: 0;
+    }
+
+    .review-card:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .review-stars {
+      color: var(--coral);
+      font-size: 0.875rem;
+      letter-spacing: 0.08em;
+      margin-bottom: 16px;
+    }
+
+    .review-text {
+      font-family: 'Fraunces', serif;
+      font-size: 1.375rem;
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.55;
+      color: var(--warm-dark);
+      margin-bottom: 20px;
+    }
+
+    .review-meta {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--warm-dark);
+      opacity: 0.45;
+    }
+
+    /* ── GIFT CARDS ── */
+    .gift-section {
+      background: var(--coral);
+      padding: var(--section-pad) 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .gift-left {}
+
+    .gift-left .section-eyebrow { color: rgba(255,253,247,0.7); }
+    .gift-left .section-heading { color: var(--white); }
+    .gift-left .section-body { color: rgba(255,253,247,0.85); }
+
+    .gift-card-visual {
+      background: var(--white);
+      border-radius: 12px;
+      aspect-ratio: 16/10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.15);
+    }
+
+    .gift-card-logo {
+      font-family: 'Fraunces', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--coral);
+      letter-spacing: -0.01em;
+      text-align: center;
+    }
+
+    .gift-card-sub {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--warm-dark);
+      opacity: 0.4;
+      margin-top: 8px;
+    }
+
+    /* ── VISIT ── */
+    .visit-section {
+      padding: var(--section-pad) 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .visit-info {}
+
+    .visit-address {
+      font-size: 0.9375rem;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--warm-dark-soft);
+      margin-bottom: 32px;
+    }
+
+    .hours-table {
+      border-top: 1px solid rgba(44,24,16,0.12);
+    }
+
+    .hours-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(44,24,16,0.08);
+      font-size: 0.875rem;
+    }
+
+    .hours-day {
+      font-weight: 500;
+      color: var(--warm-dark);
+    }
+
+    .hours-time {
+      font-weight: 300;
+      color: var(--warm-dark-soft);
+    }
+
+    .hours-closed {
+      opacity: 0.35;
+    }
+
+    .contact-block {
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .contact-link {
+      font-size: 0.875rem;
+      font-weight: 400;
+      color: var(--coral);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: opacity 200ms;
+    }
+    .contact-link:hover { opacity: 0.7; }
+
+    .visit-map {
+      border-radius: 4px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      background: var(--cream-alt);
+    }
+
+    .visit-map iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--green);
+      padding: 64px 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: end;
+    }
+
+    .footer-logo {
+      font-family: 'Fraunces', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+
+    .footer-tagline {
+      font-size: 0.8125rem;
+      font-weight: 300;
+      color: rgba(255,253,247,0.6);
+      line-height: 1.6;
+      max-width: 320px;
+    }
+
+    .footer-right {
+      text-align: right;
+    }
+
+    .footer-land-ack {
+      font-size: 0.75rem;
+      font-weight: 300;
+      color: rgba(255,253,247,0.5);
+      line-height: 1.6;
+      max-width: 360px;
+      margin-left: auto;
+      margin-bottom: 24px;
+    }
+
+    .footer-bottom {
+      font-size: 0.75rem;
+      color: rgba(255,253,247,0.4);
+    }
+
+    .footer-ig {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: rgba(255,253,247,0.7);
+      text-decoration: none;
+      margin-bottom: 24px;
+      transition: color 200ms;
+    }
+    .footer-ig:hover { color: var(--white); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      nav { padding: 0 32px; }
+      .hero-left { padding: 64px 40px 64px 48px; }
+      .what-section, .stats-section, .gift-section, .visit-section { 
+        padding: 80px 48px; 
+        gap: 48px;
+      }
+      .reviews-section { padding: 80px 48px; }
+      footer { padding: 48px; }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      .nav-cta { display: none; }
+      .hamburger { display: flex; }
+
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+      .hero-left {
+        padding: 64px 24px 56px;
+        order: 2;
+      }
+      .hero-right {
+        order: 1;
+        height: 380px;
+      }
+      .hero-headline { font-size: 2.75rem; }
+
+      .what-section {
+        grid-template-columns: 1fr;
+        padding: 64px 24px;
+        gap: 40px;
+      }
+      .what-photo { aspect-ratio: 16/9; }
+
+      .stats-section {
+        grid-template-columns: 1fr;
+        padding: 64px 24px;
+        gap: 48px;
+      }
+      .stats-left {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+      }
+
+      .photo-strip { grid-template-columns: 1fr; height: auto; }
+      .photo-strip-item { height: 260px; }
+      .photo-strip-item:not(:first-child) { display: none; }
+
+      .reviews-section { padding: 64px 24px; }
+      .review-text { font-size: 1.125rem; }
+
+      .gift-section {
+        grid-template-columns: 1fr;
+        padding: 64px 24px;
+        gap: 40px;
+      }
+
+      .visit-section {
+        grid-template-columns: 1fr;
+        padding: 64px 24px;
+        gap: 40px;
+      }
+
+      footer {
+        grid-template-columns: 1fr;
+        padding: 48px 24px;
+        gap: 40px;
+      }
+      .footer-right { text-align: left; }
+      .footer-land-ack { margin-left: 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .flavor-ticker-inner { animation: none; }
+      * { transition: none !important; animation: none !important; }
+    }
+  </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
-  <div class="nav-inner">
-    <a href="#" class="nav-logo">Kid Sister</a>
-    <ul class="nav-links">
-      <li><a href="#flavours">Flavours</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#reviews">Reviews</a></li>
-      <li><a href="#visit">Visit</a></li>
-    </ul>
-    <button class="hamburger" aria-label="Menu" onclick="this.classList.toggle('active'); document.querySelector('.mobile-menu').classList.toggle('active');">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
+  <a href="#" class="nav-logo">Kid Sister</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#visit">Hours</a></li>
+  </ul>
+  <a href="https://www.instagram.com/kidsistericecream/" target="_blank" class="nav-cta">@kidsistericecream</a>
+  <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
 <div class="mobile-menu">
-  <a href="#flavours" onclick="document.querySelector('.hamburger').classList.remove('active'); this.parentElement.classList.remove('active');">Flavours</a>
-  <a href="#about" onclick="document.querySelector('.hamburger').classList.remove('active'); this.parentElement.classList.remove('active');">About</a>
-  <a href="#reviews" onclick="document.querySelector('.hamburger').classList.remove('active'); this.parentElement.classList.remove('active');">Reviews</a>
-  <a href="#visit" onclick="document.querySelector('.hamburger').classList.remove('active'); this.parentElement.classList.remove('active');">Visit</a>
+  <a href="#about">About</a>
+  <a href="#reviews">Reviews</a>
+  <a href="#visit">Hours & Location</a>
+  <a href="https://www.instagram.com/kidsistericecream/" target="_blank">Instagram</a>
 </div>
 
-<!-- HERO -->
+<!-- HERO — SPLIT IMAGE RIGHT -->
 <section class="hero">
-  <div class="hero-badge">Victoria, BC — Since 2010</div>
-  <h1>Small Batches,<br><em>Big Flavours</em></h1>
-  <p class="hero-sub">Locally made ice cream, sorbet, and paletas crafted with organic dairy and fruit from family farms.</p>
-  <div class="hero-ctas">
-    <a href="https://maps.app.goo.gl/4PwNxC3V8S4rkQqVA" class="btn btn-primary" target="_blank">Get Directions</a>
-    <a href="tel:2505145760" class="btn btn-secondary">Call Us</a>
+  <div class="hero-left">
+    <p class="hero-eyebrow">Esquimalt, Victoria BC</p>
+    <h1 class="hero-headline">Foraged. Seasonal.<br><em>Gone by Sunday.</em></h1>
+    <p class="hero-subhead">Kid Sister is a small-batch ice cream shop making flavours you can't find anywhere else — because the ingredients come from right here.</p>
+    <div class="hero-hours">
+      <p class="hero-hours-label">Current Hours</p>
+      <p>Thursday & Friday: 3pm – 8pm</p>
+      <p>Saturday & Sunday: 1pm – 8pm</p>
+    </div>
+    <div class="hero-ctas">
+      <a href="#visit" class="btn-primary">Find Us</a>
+      <a href="https://www.instagram.com/kidsistericecream/" target="_blank" class="btn-secondary">Follow Along</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="hero-counter.jpg" alt="Scooping ice cream at Kid Sister, Esquimalt" loading="eager">
   </div>
 </section>
 
-<div class="wave-divider" style="background: var(--cream);">
-  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" fill="var(--dark)">
-    <path d="M0,30 C360,60 720,0 1080,30 C1260,45 1380,40 1440,30 L1440,60 L0,60 Z"/>
-  </svg>
+<!-- FLAVOUR TICKER -->
+<div class="flavor-strip">
+  <div class="flavor-ticker">
+    <div class="flavor-ticker-inner" aria-hidden="true">
+      <span class="flavor-item">Blackberry Fig</span>
+      <span class="flavor-dot">·</span>
+      <span class="flavor-item">Roasted Strawberry</span>
+      <span class="flavor-dot">·</span>
+      <span class="flavor-item">Matcha Lemon</span>
+      <span class="flavor-dot">·</span>
+      <span class="flavor-item">Sea Salt</span>
+      <span class="flavor-dot">·</span>
+      <span class="flavor-item">Double Chocolate</span>
+      <span class="flavor-dot">·</span>
+      <span class="flavor-item">Vegan Sorbet</span>
+      <span class="flavor-dot">·</span>
+      <span class="flavor-item">Blackberry Fig</span>
+      <span class="flavor-dot">·</span>
+      <span class="flavor-item">Roasted Strawberry</span>
+      <span class="flavor-dot">·</span>
+      <span class="flavor-item">Matcha Lemon</span>
+      <span class="flavor-dot">·</span>
+      <span class="flavor-item">Sea Salt</span>
+      <span class="flavor-dot">·</span>
+      <span class="flavor-item">Double Chocolate</span>
+      <span class="flavor-dot">·</span>
+      <span class="flavor-item">Vegan Sorbet</span>
+      <span class="flavor-dot">·</span>
+    </div>
+  </div>
 </div>
 
-<!-- TRUST BAR -->
-<div class="trust-bar">
-  <div class="trust-item"><strong>15+</strong> Years Scooping</div>
-  <div class="trust-item"><strong>100%</strong> From Scratch</div>
-  <div class="trust-item"><strong>Organic</strong> Dairy</div>
-  <div class="trust-item"><strong>Local</strong> Fruit</div>
+<!-- WHAT WE MAKE -->
+<section class="what-section" id="about">
+  <div>
+    <p class="section-eyebrow">What We Make</p>
+    <h2 class="section-heading">Organic milk. Local fruit. <em>Seasonal everything.</em></h2>
+    <p class="section-body">We make ice cream, sherbet, frozen yogurt, vegan sorbet, and ice pops — all in small batches, all with ingredients we believe in.</p>
+    <p class="section-body">Our dairy is organic. Our fruit comes from family-owned farms on Vancouver Island and the Fraser Valley. Our figs and blackberries are foraged locally. When the season ends, the flavour goes with it.</p>
+  </div>
+  <div class="what-photo">
+    <img src="spring-pints.jpg" alt="Kid Sister seasonal pints and pops arranged on a checkered tablecloth" loading="lazy">
+  </div>
+</section>
+
+<!-- STATS SIDEBAR -->
+<section class="stats-section">
+  <div class="stats-left">
+    <div class="stat-item">
+      <div class="stat-number">5.0</div>
+      <div class="stat-label">Google Stars · 18 Reviews</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">Thu–Sun</div>
+      <div class="stat-label">Open four days a week</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">100%</div>
+      <div class="stat-label">Organic dairy</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">Local</div>
+      <div class="stat-label">Ingredients, foragers & family farms</div>
+    </div>
+  </div>
+  <div class="stats-right-content">
+    <p class="section-eyebrow">The Origin</p>
+    <h2 class="section-heading">Made from the place it comes from.</h2>
+    <p class="section-body">Kid Sister was built on the belief that ice cream should taste like somewhere — not everywhere. The blackberries come from local vines. The figs are foraged. The milk is organic. We're a women-owned shop making flavours worth making the trip to Esquimalt for.</p>
+    <a href="https://www.instagram.com/kidsistericecream/" target="_blank" class="btn-primary">Follow on Instagram</a>
+  </div>
+</section>
+
+<!-- PHOTO STRIP -->
+<div class="photo-strip">
+  <div class="photo-strip-item">
+    <img src="christen-truck.jpg" alt="Christen with the Kid Sister truck" loading="lazy">
+  </div>
+  <div class="photo-strip-item">
+    <img src="farm-cows.jpg" alt="Local farm — where the organic dairy comes from" loading="lazy">
+  </div>
+  <div class="photo-strip-item">
+    <img src="sixpacks.jpg" alt="Kid Sister pint six-packs" loading="lazy">
+  </div>
 </div>
-
-<!-- FLAVOURS -->
-<section class="flavours" id="flavours">
-  <div class="container">
-    <div class="section-label fade-in">What's Scooping</div>
-    <h2 class="section-title fade-in">Seasonal Flavours</h2>
-    <p class="section-subtitle fade-in">Our menu rotates with the seasons. Here are some favourites.</p>
-    <div class="flavour-grid">
-      <div class="flavour-card fade-in">
-        <div class="flavour-swatch"></div>
-        <h3>Lemon Meringue</h3>
-        <p>Tart lemon curd swirled with toasted meringue</p>
-        <span class="flavour-tag tag-seasonal">Seasonal</span>
-      </div>
-      <div class="flavour-card fade-in">
-        <div class="flavour-swatch"></div>
-        <h3>Tiramisu</h3>
-        <p>Espresso-soaked layers of creamy bliss</p>
-        <span class="flavour-tag tag-classic">Classic</span>
-      </div>
-      <div class="flavour-card fade-in">
-        <div class="flavour-swatch"></div>
-        <h3>Rhubarb & Ginger</h3>
-        <p>Tangy rhubarb with a warm ginger kick</p>
-        <span class="flavour-tag tag-seasonal">Seasonal</span>
-      </div>
-      <div class="flavour-card fade-in">
-        <div class="flavour-swatch"></div>
-        <h3>Vegan Chocolate Coconut</h3>
-        <p>Rich dark chocolate meets creamy coconut</p>
-        <span class="flavour-tag tag-vegan">Vegan</span>
-      </div>
-      <div class="flavour-card fade-in">
-        <div class="flavour-swatch"></div>
-        <h3>Organic Black Cherry</h3>
-        <p>Sweet, dark, and impossibly smooth</p>
-        <span class="flavour-tag tag-classic">Classic</span>
-      </div>
-      <div class="flavour-card fade-in">
-        <div class="flavour-swatch"></div>
-        <h3>Maple Pecan</h3>
-        <p>Canadian maple with crunchy candied pecans</p>
-        <span class="flavour-tag tag-seasonal">Seasonal</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- DIFFERENTIATOR -->
-<section class="differentiator">
-  <div class="container fade-in">
-    <blockquote>"Inspired by the <em>paleta culture of Mexico</em> and a love for frozen treats made the right way."</blockquote>
-  </div>
-</section>
-
-<!-- TREATS -->
-<section class="treats">
-  <div class="container">
-    <div class="section-label fade-in">More to Love</div>
-    <h2 class="section-title fade-in">Frozen Delights</h2>
-    <p class="section-subtitle fade-in">Beyond scoops — a whole world of frozen happiness.</p>
-    <div class="treats-grid">
-      <div class="treat-card fade-in">
-        <div class="treat-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--pink-deep);">
-            <rect x="8" y="2" width="8" height="14" rx="4"/><line x1="12" y1="16" x2="12" y2="22"/>
-          </svg>
-        </div>
-        <h3>Paletas & Pops</h3>
-        <p>Mexican-inspired fruit pops made with real fruit and natural ingredients. The treat that started it all.</p>
-      </div>
-      <div class="treat-card fade-in">
-        <div class="treat-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: #3D7A5F;">
-            <path d="M7 12c0-3 2.5-7 5-7s5 4 5 7"/><path d="M5 12h14"/><path d="M6 12c-.5 4 1 8 6 8s6.5-4 6-8"/>
-          </svg>
-        </div>
-        <h3>Vegan Sorbet</h3>
-        <p>Dairy-free, fruit-forward, and bursting with flavour. Always at least two options available.</p>
-      </div>
-      <div class="treat-card fade-in">
-        <div class="treat-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--gold);">
-            <path d="M6 4h12l-1 16H7L6 4z"/><line x1="4" y1="4" x2="20" y2="4"/><path d="M9 4V2h6v2"/>
-          </svg>
-        </div>
-        <h3>Pints & Half-Pints</h3>
-        <p>Take the joy home. Seasonal flavours available to grab and go.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section class="about" id="about">
-  <div class="about-inner container">
-    <div class="about-image fade-in"></div>
-    <div class="about-text fade-in">
-      <h2>Inspired by Fruit,<br>Made with Love</h2>
-      <p>Kid Sister started in 2010, born from a love of Mexican paleta culture and a belief that frozen treats should be made with real, honest ingredients.</p>
-      <p>Every batch is made from scratch in Victoria using organic dairy and fruit from local family farms. Visit us at our Esquimalt Road shop for scoops and pops, or find our pints and paletas at our mini outlet in Cook St Village. Seasonal flavours come and go quickly — that's part of the magic.</p>
-    </div>
-  </div>
-</section>
 
 <!-- REVIEWS -->
-<section class="reviews" id="reviews">
-  <div class="container">
-    <div class="section-label fade-in">What People Say</div>
-    <h2 class="section-title fade-in">Loved by Victoria</h2>
-    <p class="section-subtitle fade-in">Don't just take our word for it.</p>
-    <div class="review-grid">
-      <div class="review-card fade-in">
-        <div class="review-stars">★★★★★</div>
-        <blockquote>"Love this place for cold treats! The Aperol and grapefruit flavour was something light and absolutely perfect."</blockquote>
-        <div class="review-author">Foursquare Visitor</div>
-        <div class="review-source">84 visitors checked in</div>
-      </div>
-      <div class="review-card fade-in">
-        <div class="review-stars">★★★★★</div>
-        <blockquote>"Ice cream cups and cones, fresh fruit paletas, milkshakes — all made in house with local, natural ingredients. A Victoria gem."</blockquote>
-        <div class="review-author">Yelp Reviewer</div>
-        <div class="review-source">46 reviews on Yelp</div>
-      </div>
-      <div class="stats-card fade-in">
-        <h4>The Numbers</h4>
-        <div class="stat-row">
-          <span class="stat-label">Yelp Reviews</span>
-          <span class="stat-value">46</span>
-        </div>
-        <div class="stat-row">
-          <span class="stat-label">Foursquare Check-ins</span>
-          <span class="stat-value">84</span>
-        </div>
-        <div class="stat-row">
-          <span class="stat-label">Facebook Likes</span>
-          <span class="stat-value">1,850</span>
-        </div>
-        <div class="stat-row">
-          <span class="stat-label">Scooping Since</span>
-          <span class="stat-value">2010</span>
-        </div>
-      </div>
+<section class="reviews-section" id="reviews">
+  <div class="reviews-header">
+    <p class="section-eyebrow">What People Say</p>
+    <h2 class="section-heading" style="text-align:center;">5.0 ★ on Google.</h2>
+  </div>
+
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Hands down the best ice cream I've had in ages. Creative, handmade flavours (the sea salt was incredible), high-quality ingredients, and a warm, welcoming vibe. A must-visit spot for any ice cream lover."</p>
+      <p class="review-meta">LITTLE JUNE · SEPTEMBER 2025 · Via Google</p>
     </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"I think Kid Sister is my new favourite ice cream spot. They focus on using local ingredients (foraged figs and blackberries) and the flavors are unique and fresh. I could have gotten a scoop of all of them."</p>
+      <p class="review-meta">JOYCE T. · SEPTEMBER 2025 · Via Google</p>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Creative, seasonal flavours, wonderful non-dairy options, and products clearly made with a lot of love and respect for the ingredients. Kind and friendly staff too."</p>
+      <p class="review-meta">RACHEL R. · OCTOBER 2025 · Via Google</p>
+    </div>
+  </div>
+</section>
+
+<!-- GIFT CARDS -->
+<section class="gift-section">
+  <div class="gift-left">
+    <p class="section-eyebrow">Share the Love</p>
+    <h2 class="section-heading">Give the gift of something real.</h2>
+    <p class="section-body">Gift cards available at the shop. The perfect thing to give someone who deserves a scoop of something made with care.</p>
+    <a href="mailto:hello@kidsistericecream.com" class="btn-primary" style="background:var(--white);color:var(--coral);">Email to Inquire</a>
+  </div>
+  <div class="gift-card-visual">
+    <div class="gift-card-logo">Kid Sister</div>
+    <div class="gift-card-sub">Ice Cream · Victoria, BC</div>
   </div>
 </section>
 
 <!-- VISIT -->
-<section class="visit" id="visit">
-  <div class="visit-inner container">
-    <div class="visit-info fade-in">
-      <h2>Come Say Hi</h2>
-      <div class="visit-detail">
-        <h4>Address</h4>
-        <p>1320 Esquimalt Road<br>Victoria, BC</p>
+<section class="visit-section" id="visit">
+  <div class="visit-info">
+    <p class="section-eyebrow">Find Us</p>
+    <h2 class="section-heading">1320 Esquimalt Road</h2>
+    <p class="visit-address">Victoria, BC V9A 3P6<br>Esquimalt · 5 min from downtown</p>
+
+    <div class="hours-table">
+      <div class="hours-row">
+        <span class="hours-day">Thursday</span>
+        <span class="hours-time">3pm – 8pm</span>
       </div>
-      <div class="visit-detail">
-        <h4>Hours</h4>
-        <p>Thursday & Friday: 3pm – 8pm<br>Saturday & Sunday: 1pm – 8pm<br>Mon–Wed: Closed (we're making ice cream!)</p>
+      <div class="hours-row">
+        <span class="hours-day">Friday</span>
+        <span class="hours-time">3pm – 8pm</span>
       </div>
-      <div class="visit-detail">
-        <h4>Phone</h4>
-        <a href="tel:2505145760">(250) 514-5760</a>
+      <div class="hours-row">
+        <span class="hours-day">Saturday</span>
+        <span class="hours-time">1pm – 8pm</span>
       </div>
-      <div class="visit-detail">
-        <h4>Email</h4>
-        <a href="mailto:hello@kidsistericecream.com">hello@kidsistericecream.com</a>
+      <div class="hours-row">
+        <span class="hours-day">Sunday</span>
+        <span class="hours-time">1pm – 8pm</span>
       </div>
-      <div class="visit-detail">
-        <h4>Follow Along</h4>
-        <a href="https://www.instagram.com/kidsistericecream/" target="_blank">@kidsistericecream on Instagram</a>
-      </div>
-      <div class="visit-detail">
-        <h4>Wholesale & Events</h4>
-        <a href="mailto:hello@kidsistericecream.com">hello@kidsistericecream.com</a>
+      <div class="hours-row hours-closed">
+        <span class="hours-day">Mon – Wed</span>
+        <span class="hours-time">Closed</span>
       </div>
     </div>
-    <div class="visit-map fade-in">
-      <iframe src="https://maps.google.com/maps?q=1320+Esquimalt+Road+Victoria+BC&output=embed" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <div class="contact-block">
+      <a href="tel:+12505909777" class="contact-link">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.5 12.37 19.79 19.79 0 01.46 3.8 2 2 0 012.43 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 9.4a16 16 0 006.41 6.41l.86-.87a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+        (250) 590-9777
+      </a>
+      <a href="mailto:hello@kidsistericecream.com" class="contact-link">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        hello@kidsistericecream.com
+      </a>
+      <a href="https://www.instagram.com/kidsistericecream/" target="_blank" class="contact-link">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        @kidsistericecream
+      </a>
     </div>
   </div>
-</section>
-
-<!-- FINAL CTA -->
-<section class="final-cta">
-  <h2>Life's Short. Eat Ice Cream.</h2>
-  <p>Seasonal flavours come and go quickly. Follow along so you never miss a drop.</p>
-  <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; position: relative;">
-    <a href="https://www.instagram.com/kidsistericecream/" class="btn btn-white" target="_blank">Follow on Instagram</a>
-    <a href="https://www.kidsistericecream.com/" class="btn btn-secondary" style="border-color: rgba(255,255,255,0.45); color: #fff; background: rgba(255,255,255,0.1);" target="_blank">Gift Cards Available</a>
+  <div class="visit-map">
+    <iframe
+      src="https://maps.google.com/maps?q=1320+Esquimalt+Road+Victoria+BC&output=embed"
+      loading="lazy"
+      title="Kid Sister Ice Cream location map">
+    </iframe>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo">Kid Sister</div>
-  <div class="footer-links">
-    <a href="#flavours">Flavours</a>
-    <a href="#about">About</a>
-    <a href="#reviews">Reviews</a>
-    <a href="#visit">Visit</a>
-    <a href="https://www.instagram.com/kidsistericecream/" target="_blank">Instagram</a>
-    <a href="https://www.facebook.com/kidsistericecream/" target="_blank">Facebook</a>
+  <div>
+    <div class="footer-logo">Kid Sister</div>
+    <p class="footer-tagline">Small-batch ice cream made from local, organic ingredients in Esquimalt, Victoria BC. Women-owned. LGBTQ+ friendly.</p>
   </div>
-  <div class="footer-copy">&copy; 2025 Kid Sister Ice Cream. Made with love in Victoria, BC.</div>
+  <div class="footer-right">
+    <a href="https://www.instagram.com/kidsistericecream/" target="_blank" class="footer-ig">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+      @kidsistericecream
+    </a>
+    <p class="footer-land-ack">Kid Sister frozen delights are made on the traditional territory of the lək̓ʷəŋən People, the Esquimalt and Songhees Nations.</p>
+    <p class="footer-bottom">© 2025 Kid Sister Ice Cream · 1320 Esquimalt Road, Victoria BC</p>
+  </div>
 </footer>
-
-<script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-</script>
-<noscript><style>.fade-in { opacity: 1; transform: none; }</style></noscript>
 
 </body>
 </html>

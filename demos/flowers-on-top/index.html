@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flowers On Top — Victoria Florist Since 1990</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* === TOKENS === */
+:root {
+  --cream: #FAF8F5;
+  --cream-alt: #F2EDE8;
+  --sage: #5C7A62;
+  --sage-light: #E8EEE9;
+  --petal: #8A3D44;
+  --petal-light: #F5E8E8;
+  --ink: #1A1410;
+  --mid: #6B6058;
+  --light-mid: #9B9188;
+  --section-pad: 96px;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+/* === RESET === */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; -webkit-font-smoothing: antialiased; }
+body { background: var(--cream); color: var(--ink); font-family: 'Jost', sans-serif; font-weight: 400; line-height: 1.6; }
+img { display: block; width: 100%; object-fit: cover; }
+a { color: inherit; text-decoration: none; }
+
+/* === TYPE SCALE === */
+.display { font-family: 'Playfair Display', serif; font-size: clamp(2.75rem, 5.5vw, 4.5rem); font-weight: 600; line-height: 1.1; letter-spacing: -0.02em; }
+.section-h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 600; line-height: 1.15; letter-spacing: -0.03em; }
+.section-label { font-family: 'Jost', sans-serif; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--sage); }
+.body-lg { font-size: 1.0625rem; line-height: 1.7; color: var(--mid); }
+.body-sm { font-size: 0.9375rem; line-height: 1.65; color: var(--mid); }
+
+/* === NAV === */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--cream);
+  border-bottom: 1px solid rgba(26,20,16,0.08);
+  padding: 0 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+.nav-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+.nav-links { display: flex; align-items: center; gap: 32px; }
+.nav-links a {
+  font-size: 0.875rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: var(--mid);
+  transition: color 200ms var(--ease-out);
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: 0; right: 0;
+  height: 1px;
+  background: var(--sage);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 200ms var(--ease-out);
+}
+.nav-links a:hover { color: var(--ink); }
+.nav-links a:hover::after { transform: scaleX(1); }
+.nav-cta {
+  background: var(--ink);
+  color: var(--cream) !important;
+  padding: 8px 20px;
+  border-radius: 2px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  transition: background 180ms var(--ease-out), transform 100ms var(--ease-out) !important;
+}
+.nav-cta::after { display: none !important; }
+.nav-cta:hover { background: var(--sage) !important; }
+.nav-cta:active { transform: scale(0.97); }
+
+.nav-mobile { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+.nav-mobile span { display: block; width: 22px; height: 1.5px; background: var(--ink); margin: 5px 0; transition: all 200ms var(--ease-out); }
+
+/* === HERO (ASYMMETRIC COLLAGE) === */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: calc(100vh - 64px);
+  overflow: hidden;
+}
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 64px 80px 64px;
+  gap: 24px;
+}
+.hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.hero-eyebrow .section-label { color: var(--sage); }
+.hero-eyebrow-line {
+  width: 32px;
+  height: 1px;
+  background: var(--sage);
+}
+.hero-content h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.75rem, 5vw, 4.25rem);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  max-width: 520px;
+}
+.hero-content h1 em {
+  font-style: italic;
+  color: var(--sage);
+}
+.hero-body {
+  max-width: 420px;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--mid);
+}
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+.btn-primary {
+  background: var(--ink);
+  color: var(--cream);
+  padding: 13px 28px;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  border-radius: 2px;
+  transition: background 180ms var(--ease-out);
+}
+.btn-primary:hover { background: var(--sage); }
+.btn-primary:active { transform: scale(0.97); }
+.btn-secondary {
+  color: var(--ink);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border-bottom: 1px solid rgba(26,20,16,0.3);
+  padding-bottom: 2px;
+  transition: border-color 180ms var(--ease-out), color 180ms var(--ease-out);
+}
+.btn-secondary:hover { color: var(--sage); border-color: var(--sage); }
+.hero-collage {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 4px;
+  overflow: hidden;
+}
+.hero-collage .img-main {
+  grid-row: 1 / 3;
+  height: 100%;
+}
+.hero-collage .img-sm { height: 100%; }
+.hero-collage img { width: 100%; height: 100%; object-fit: cover; }
+
+/* === PHOTO STRIP === */
+.photo-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+  overflow: hidden;
+}
+.photo-strip img { height: 160px; object-fit: cover; }
+
+/* === ABOUT === */
+.about {
+  padding: var(--section-pad) 64px;
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 80px;
+  align-items: start;
+}
+.about-image-wrap {
+  position: relative;
+}
+.about-image-wrap img { border-radius: 2px; height: 480px; object-fit: cover; }
+.about-badge {
+  position: absolute;
+  bottom: 24px;
+  left: -24px;
+  background: var(--sage);
+  color: var(--cream);
+  padding: 16px 20px;
+  font-family: 'Playfair Display', serif;
+  font-size: 0.9375rem;
+  font-style: italic;
+  max-width: 200px;
+  line-height: 1.5;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+}
+.about-text { padding-top: 16px; }
+.about-text .section-label { display: block; margin-bottom: 16px; }
+.about-text .section-h2 { margin-bottom: 24px; }
+.about-text p { font-size: 1.0625rem; line-height: 1.75; color: var(--mid); margin-bottom: 20px; }
+.about-text p:last-child { margin-bottom: 0; }
+
+/* === NAME SECTION === */
+.name-section {
+  background: var(--ink);
+  padding: 120px 64px;
+  text-align: center;
+}
+.name-section .section-label { color: var(--sage); margin-bottom: 24px; display: block; }
+.name-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--cream);
+  max-width: 800px;
+  margin: 0 auto 24px;
+}
+.name-section h2 em { font-style: italic; color: var(--petal); }
+.name-section p {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: rgba(250,248,245,0.65);
+  max-width: 580px;
+  margin: 0 auto;
+}
+
+/* === SERVICES === */
+.services {
+  padding: var(--section-pad) 64px;
+  background: var(--cream-alt);
+}
+.services-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: end;
+  margin-bottom: 64px;
+}
+.services-header .section-label { display: block; margin-bottom: 16px; }
+.services-intro { font-size: 1rem; line-height: 1.7; color: var(--mid); }
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+}
+.service-card {
+  background: var(--cream);
+  padding: 40px 40px 40px 40px;
+  border-top: 2px solid var(--sage);
+}
+.service-card-img {
+  overflow: hidden;
+  margin: -40px -40px 28px -40px;
+  border-bottom: none;
+  aspect-ratio: 4/3;
+}
+.service-card-img img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 4/3; }
+.service-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  font-weight: 400;
+  color: rgba(92,122,98,0.25);
+  line-height: 1;
+  margin-bottom: 16px;
+}
+.service-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  letter-spacing: -0.01em;
+}
+.service-card p { font-size: 0.9375rem; line-height: 1.65; color: var(--mid); }
+
+/* === REVIEWS === */
+.reviews {
+  padding: var(--section-pad) 64px;
+}
+.reviews-header { margin-bottom: 56px; }
+.reviews-header .section-label { display: block; margin-bottom: 16px; }
+.reviews-header .section-h2 { max-width: 520px; }
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4px;
+}
+.review-card {
+  background: var(--cream-alt);
+  padding: 40px;
+  border-top: 2px solid var(--petal);
+}
+.review-stars {
+  display: flex;
+  gap: 3px;
+  margin-bottom: 20px;
+}
+.review-star { color: var(--petal); font-size: 0.875rem; }
+.review-card blockquote {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.0625rem;
+  font-style: italic;
+  line-height: 1.65;
+  color: var(--ink);
+  margin-bottom: 24px;
+}
+.review-meta {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--light-mid);
+}
+
+/* === VISIT === */
+.visit {
+  padding: var(--section-pad) 64px;
+  background: var(--cream-alt);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+.visit-text .section-label { display: block; margin-bottom: 16px; }
+.visit-text .section-h2 { margin-bottom: 32px; }
+.visit-details { display: flex; flex-direction: column; gap: 24px; }
+.visit-row { display: flex; flex-direction: column; gap: 4px; }
+.visit-row-label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--light-mid);
+}
+.visit-row-value {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.visit-row-value a { color: var(--sage); transition: color 180ms; }
+.visit-row-value a:hover { color: var(--ink); }
+.visit-row-note {
+  font-size: 0.875rem;
+  color: var(--mid);
+  margin-top: 4px;
+  line-height: 1.5;
+}
+.visit-map { border-radius: 2px; overflow: hidden; height: 380px; background: #e8e3de; }
+.visit-map iframe { width: 100%; height: 100%; border: 0; }
+
+/* === CTA BAND === */
+.cta-band {
+  background: var(--sage);
+  padding: 80px 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+.cta-band-text .section-label { color: rgba(250,248,245,0.7); margin-bottom: 12px; display: block; }
+.cta-band-text h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--cream);
+}
+.cta-band-actions { display: flex; align-items: center; gap: 16px; flex-shrink: 0; }
+.btn-light {
+  background: var(--cream);
+  color: var(--ink);
+  padding: 13px 28px;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  border-radius: 2px;
+  transition: background 180ms var(--ease-out);
+}
+.btn-light:hover { background: #EDE8E3; }
+.btn-light:active { transform: scale(0.97); }
+.btn-ghost {
+  color: var(--cream);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  border-bottom: 1px solid rgba(250,248,245,0.4);
+  padding-bottom: 2px;
+  transition: border-color 180ms;
+}
+.btn-ghost:hover { border-color: var(--cream); }
+
+/* === FOOTER === */
+footer {
+  background: var(--ink);
+  color: rgba(250,248,245,0.55);
+  padding: 64px 64px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+.footer-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--cream);
+  margin-bottom: 8px;
+}
+.footer-tagline { font-size: 0.875rem; line-height: 1.6; }
+.footer-links {
+  display: flex;
+  justify-content: flex-end;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.footer-links a {
+  font-size: 0.8125rem;
+  letter-spacing: 0.04em;
+  color: rgba(250,248,245,0.55);
+  transition: color 180ms;
+}
+.footer-links a:hover { color: var(--cream); }
+
+/* === MOBILE MENU === */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: var(--cream);
+  z-index: 200;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+}
+.mobile-close {
+  position: absolute;
+  top: 20px; right: 24px;
+  background: none; border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--ink);
+  padding: 8px;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 1024px) {
+  nav { padding: 0 32px; }
+  .hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero-content { padding: 64px 32px; }
+  .hero-collage { height: 480px; grid-template-rows: 1fr; grid-template-columns: 2fr 1fr; }
+  .hero-collage .img-main { grid-row: auto; }
+  .about { grid-template-columns: 1fr; padding: 64px 32px; gap: 48px; }
+  .about-image-wrap img { height: 360px; }
+  .about-badge { left: 0; }
+  .name-section { padding: 80px 32px; }
+  .services { padding: 64px 32px; }
+  .services-header { grid-template-columns: 1fr; }
+  .reviews { padding: 64px 32px; }
+  .visit { grid-template-columns: 1fr; padding: 64px 32px; gap: 48px; }
+  .cta-band { flex-direction: column; padding: 64px 32px; text-align: center; }
+  .cta-band-actions { justify-content: center; }
+  footer { grid-template-columns: 1fr; padding: 40px 32px; }
+  .footer-links { justify-content: flex-start; }
+}
+
+@media (max-width: 768px) {
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .nav-mobile { display: block; }
+  .hero-content { padding: 48px 20px; }
+  .hero-collage { height: 340px; }
+  .photo-strip { grid-template-columns: repeat(2, 1fr); }
+  .photo-strip img { height: 200px; }
+  .about { padding: 56px 20px; }
+  .name-section { padding: 64px 20px; }
+  .services { padding: 56px 20px; }
+  .services-grid { grid-template-columns: 1fr; }
+  .reviews { padding: 56px 20px; }
+  .reviews-grid { grid-template-columns: 1fr; }
+  .visit { padding: 56px 20px; }
+  .cta-band { padding: 56px 20px; }
+  footer { padding: 32px 20px; }
+}
+
+/* === ACCESSIBILITY === */
+:focus-visible { outline: 2px solid var(--sage); outline-offset: 3px; }
+section[id] { scroll-margin-top: 80px; }
+
+/* === MOTION === */
+@media (prefers-reduced-motion: no-preference) {
+  /* Hero entrance — JS adds .js-loaded first (hides), then .js-ready (animates) */
+  body.js-loaded .hero-entrance {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out);
+  }
+  body.js-loaded .hero-entrance.img-settle {
+    transform: scale(1.03);
+    transition: opacity 0.5s var(--ease-out), transform 0.6s var(--ease-out);
+  }
+  body.js-ready .hero-entrance { opacity: 1; transform: translateY(0); }
+  body.js-ready .hero-entrance.img-settle { opacity: 1; transform: scale(1); }
+
+  /* Scroll-reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out);
+  }
+  .reveal.revealed { opacity: 1; transform: translateY(0); }
+
+  .reveal-img {
+    opacity: 0;
+    transform: scale(1.02);
+    transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+  }
+  .reveal-img.revealed { opacity: 1; transform: scale(1); }
+
+  .reveal-fade {
+    opacity: 0;
+    transition: opacity 0.35s var(--ease-out);
+  }
+  .reveal-fade.revealed { opacity: 1; }
+
+  /* Stagger delays */
+  .stagger-1 { transition-delay: 0.08s; }
+  .stagger-2 { transition-delay: 0.16s; }
+  .stagger-3 { transition-delay: 0.24s; }
+  .stagger-4 { transition-delay: 0.32s; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-entrance, .reveal, .reveal-img, .reveal-fade { opacity: 1 !important; transform: none !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">Flowers On Top</div>
+  <div class="nav-links">
+    <a href="#about">Our Story</a>
+    <a href="#services">What We Offer</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#visit">Order</a>
+    <a href="tel:2503835262" class="nav-cta">Call (250) 383-5262</a>
+  </div>
+  <button class="nav-mobile" id="menuBtn" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="menuClose">✕</button>
+  <a href="#about" onclick="document.getElementById('mobileMenu').classList.remove('open')">Our Story</a>
+  <a href="#services" onclick="document.getElementById('mobileMenu').classList.remove('open')">What We Offer</a>
+  <a href="#reviews" onclick="document.getElementById('mobileMenu').classList.remove('open')">Reviews</a>
+  <a href="#visit" onclick="document.getElementById('mobileMenu').classList.remove('open')">Order</a>
+  <a href="tel:2503835262">Call (250) 383-5262</a>
+</div>
+
+<!-- HERO (ASYMMETRIC COLLAGE) -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-eyebrow hero-entrance" style="transition-delay:0ms">
+      <span class="section-label">Victoria, BC · Est. 1990</span>
+      <div class="hero-eyebrow-line"></div>
+    </div>
+    <h1 class="hero-entrance" style="transition-delay:80ms">The Flowers Are <em>Never</em> Just Flowers.</h1>
+    <p class="hero-body hero-entrance" style="transition-delay:200ms">Clean, abundant, and European in style — made by people who go to the BC flower auction every single week so your arrangement arrives at its peak. We deliver across all of Greater Victoria, Monday–Saturday.</p>
+    <div class="hero-actions hero-entrance" style="transition-delay:320ms">
+      <a href="https://flowersontop.ca" target="_blank" rel="noopener" class="btn-primary">Order Online</a>
+      <a href="tel:2503835262" class="btn-secondary">Call (250) 383-5262</a>
+    </div>
+    <p class="hero-entrance" style="transition-delay:400ms; font-size:0.8125rem; color:var(--mid); letter-spacing:0.04em;">Same-day delivery available · Order by 1pm · Greater Victoria &amp; surroundings</p>
+  </div>
+  <div class="hero-collage">
+    <div class="img-main">
+      <img src="bouquet-hero.png" alt="Lush floral arrangement by Flowers On Top" loading="eager" class="hero-entrance img-settle" style="transition-delay:100ms">
+    </div>
+    <div class="img-sm">
+      <img src="flowers-detail.png" alt="Fresh flower close-up" loading="eager">
+    </div>
+    <div class="img-sm">
+      <img src="arrangement-close.png" alt="European style floral arrangement" loading="eager">
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO STRIP -->
+<div class="photo-strip">
+  <img src="peonies-closeup.png" alt="Peonies in bloom" loading="lazy">
+  <img src="bouquet-hero.png" alt="Fresh bouquet detail" loading="lazy">
+  <img src="flowers-detail.png" alt="Flower arrangement detail" loading="lazy">
+  <img src="stems-fresh.png" alt="Fresh flower stems" loading="lazy">
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-header reveal">
+    <div>
+      <span class="section-label">What We Offer</span>
+      <h2 class="section-h2">This Week's Flowers.<br>Your Occasion.</h2>
+    </div>
+    <p class="services-intro">We order from the United Flower Growers auction in Burnaby every week — which means what you receive depends on what BC growers actually have at their best. Never a catalogue. Always what's in season.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-card-img"><img src="bouquet-hero.png" alt="Fresh floral arrangement" loading="lazy"></div>
+      <div class="service-num">01</div>
+      <h3>Fresh Bouquets & Vases</h3>
+      <p>Low and full vases, tall vases, loose bouquets. We design to let the flower be the thing — abundant without being fussy, structured without being stiff.</p>
+    </div>
+    <div class="service-card reveal stagger-1">
+      <div class="service-card-img"><img src="stems-fresh.png" alt="Wedding flower arrangement" loading="lazy"></div>
+      <div class="service-num">02</div>
+      <h3>Wedding Flowers</h3>
+      <p>Generations of Victoria weddings. Centrepieces, bouquets, arch pieces. You bring us the idea — we make it a million times better.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-card-img"><img src="arrangement-close.png" alt="Plants and planters" loading="lazy"></div>
+      <div class="service-num">03</div>
+      <h3>Plants & Planters</h3>
+      <p>Indoor plants and planters that last. A thoughtful alternative to cut flowers when the occasion calls for something that keeps growing after the celebration.</p>
+    </div>
+    <div class="service-card reveal stagger-1">
+      <div class="service-card-img"><img src="peonies-closeup.png" alt="Flower subscription" loading="lazy"></div>
+      <div class="service-num">04</div>
+      <h3>Subscriptions & Bulk</h3>
+      <p>Weekly or bi-weekly flower subscriptions for homes and offices — that week's best from the growers. Bulk flowers available for those who love to arrange their own.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-image-wrap reveal-img">
+    <img src="flowers-detail.png" alt="Fresh BC-grown flowers" loading="lazy">
+    <div class="about-badge">"Flowers On Top are artists."</div>
+  </div>
+  <div class="about-text reveal stagger-1">
+    <span class="section-label">Our Story</span>
+    <h2 class="section-h2">Thirty-Five Years of Getting It Right.</h2>
+    <p>Flowers On Top began in 1990 as a flower cart at Fort and Government Street. The name came naturally — we put flowers on top of restaurant tables. People kept asking where to get them.</p>
+    <p>Now working from our North Park warehouse, we go to the United Flower Growers auction in Burnaby every single week — sourcing from BC growers in the Fraser Valley and Vancouver Island so your arrangement arrives at its peak.</p>
+    <p>A family business entering its second generation. Simone and Jacqueline are here, and they're answering the phone when you call.</p>
+  </div>
+</section>
+
+<!-- NAME SECTION -->
+<section class="name-section">
+  <span class="section-label reveal">The Name</span>
+  <h2 class="reveal stagger-1">They Put Flowers on Restaurant Tables. <em>People Kept Asking Where to Get Them.</em></h2>
+  <p>In 1990, a flower cart at Fort and Government Street. The flowers went on top — of tables, of celebrations, of the ordinary. Thirty-five years later, nothing has changed about that instinct.</p>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="reviews-header reveal">
+    <span class="section-label">What Customers Say</span>
+    <h2 class="section-h2">4.9 Stars. 134 Reviews. Every Word Earned.</h2>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card reveal">
+      <div class="review-stars">
+        <span class="review-star">★</span><span class="review-star">★</span><span class="review-star">★</span><span class="review-star">★</span><span class="review-star">★</span>
+      </div>
+      <blockquote>"Flowers On Top are artists. Their medium is flowers and plants, and they are truly exceptional at producing jaw-dropping arrangements that won't be seen anywhere else."</blockquote>
+      <div class="review-meta">MIKE H. · JAN 2024 · Via Google</div>
+    </div>
+    <div class="review-card reveal stagger-1">
+      <div class="review-stars">
+        <span class="review-star">★</span><span class="review-star">★</span><span class="review-star">★</span><span class="review-star">★</span><span class="review-star">★</span>
+      </div>
+      <blockquote>"They took the idea we wanted and made it a million times better. Our flowers looked like they were from a magazine. The arch pieces were just breathtaking."</blockquote>
+      <div class="review-meta">JESSICA H. · AUG 2023 · WEDDING · Via Google</div>
+    </div>
+    <div class="review-card reveal stagger-2">
+      <div class="review-stars">
+        <span class="review-star">★</span><span class="review-star">★</span><span class="review-star">★</span><span class="review-star">★</span><span class="review-star">★</span>
+      </div>
+      <blockquote>"Anthony and Simone consistently have provided excellent customer service, beautiful arrangements, and are a pleasure to give my business to. The recipients are always overwhelmed."</blockquote>
+      <div class="review-meta">MARILYN M. · MAR 2024 · Via Google</div>
+    </div>
+    <div class="review-card reveal stagger-3">
+      <div class="review-stars">
+        <span class="review-star">★</span><span class="review-star">★</span><span class="review-star">★</span><span class="review-star">★</span><span class="review-star">★</span>
+      </div>
+      <blockquote>"Beautiful, unique, and creative floral arrangements. They create stunning bouquets with artistry that surpasses any 'standard' bouquets. Highly recommend."</blockquote>
+      <div class="review-meta">NICOLE S. · OCT 2023 · Via Google</div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT / ORDER -->
+<section class="visit" id="visit" scroll-margin-top="80px">
+  <div class="visit-text">
+    <span class="section-label">Order & Delivery</span>
+    <h2 class="section-h2">Delivered Monday–Saturday. Order Online or by Phone.</h2>
+    <div class="visit-details">
+      <div class="visit-row">
+        <div class="visit-row-label">Phone</div>
+        <div class="visit-row-value"><a href="tel:2503835262">(250) 383-5262</a></div>
+        <div class="visit-row-note">Simone and Jacqueline answer. They'll take your order and talk flowers with you.</div>
+      </div>
+      <div class="visit-row">
+        <div class="visit-row-label">Online Orders</div>
+        <div class="visit-row-value"><a href="https://flowersontop.ca" target="_blank" rel="noopener">flowersontop.ca</a></div>
+      </div>
+      <div class="visit-row">
+        <div class="visit-row-label">Pickup Location</div>
+        <div class="visit-row-value">1818 Vancouver St, Victoria, BC V8T 5E3</div>
+        <div class="visit-row-note">North Park warehouse. Monday–Friday, 8am–2pm.</div>
+      </div>
+      <div class="visit-row">
+        <div class="visit-row-label">Delivery</div>
+        <div class="visit-row-value">Monday–Saturday</div>
+        <div class="visit-row-note">All of Greater Victoria — Victoria, Oak Bay, Saanich, Esquimalt, Langford, Colwood, View Royal, and more.</div>
+      </div>
+      <div class="visit-row">
+        <div class="visit-row-label">Instagram</div>
+        <div class="visit-row-value"><a href="https://instagram.com/flowersontop" target="_blank" rel="noopener">@flowersontop</a></div>
+      </div>
+    </div>
+  </div>
+  <div class="visit-map">
+    <iframe
+      src="https://maps.google.com/maps?q=1818+Vancouver+St+Victoria+BC&output=embed"
+      allowfullscreen
+      loading="lazy"
+      title="Flowers On Top warehouse location"
+    ></iframe>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <div class="cta-band-text">
+    <span class="section-label">Ready to Order?</span>
+    <h2>Victoria's Freshest Flowers.<br>Delivered to Your Door.</h2>
+  </div>
+  <div class="cta-band-actions">
+    <a href="https://flowersontop.ca" target="_blank" rel="noopener" class="btn-light">Order Online</a>
+    <a href="tel:2503835262" class="btn-ghost">Call (250) 383-5262</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-brand">Flowers On Top</div>
+    <p class="footer-tagline">Victoria's flower artists since 1990.<br>Fresh from BC growers, every week.</p>
+    <p style="font-size:0.75rem; margin-top:16px; line-height:1.6; opacity:0.7;">Flowers On Top operates on the traditional territory of the lək̓ʷəŋən Peoples.</p>
+  </div>
+  <div class="footer-links">
+    <a href="https://flowersontop.ca" target="_blank" rel="noopener">Order Online</a>
+    <a href="tel:2503835262">Call Us</a>
+    <a href="https://instagram.com/flowersontop" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.facebook.com/flowersontop" target="_blank" rel="noopener">Facebook</a>
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script>
+// Mobile menu
+const menuBtn = document.getElementById('menuBtn');
+const menuClose = document.getElementById('menuClose');
+const mobileMenu = document.getElementById('mobileMenu');
+menuBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
+menuClose.addEventListener('click', () => mobileMenu.classList.remove('open'));
+
+// Hero entrance — hide first, then trigger animation in next frame
+document.body.classList.add('js-loaded');
+requestAnimationFrame(() => requestAnimationFrame(() => {
+  document.body.classList.add('js-ready');
+}));
+
+// Scroll reveals
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('revealed');
+      observer.unobserve(entry.target);
+    }
+  });
+}, {
+  threshold: 0.15,
+  rootMargin: '0px 0px -15% 0px'
+});
+
+document.querySelectorAll('.reveal, .reveal-img, .reveal-fade').forEach(el => {
+  observer.observe(el);
+});
+</script>
+
+<noscript>
+<style>
+.hero-entrance, .reveal, .reveal-img, .reveal-fade { opacity: 1 !important; transform: none !important; }
+</style>
+</noscript>
+
+</body>
+</html>

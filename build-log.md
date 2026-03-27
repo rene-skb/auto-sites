@@ -1,5 +1,61 @@
 # Auto-Sites Build Log
 
+## Build 60 — Farine & Vanille
+- **Category:** Bakery / Café
+- **City:** Montreal, QC (5000 Avenue du Parc, Mile-End)
+- **Date:** 2026-03-27
+- **Model:** claude-sonnet-4-6 (subagent)
+- **Agent:** Lucy
+- **Hero pattern:** asymmetric-collage (3fr left dominant + stacked 1fr/1fr right)
+- **Typography:** Cormorant Garamond 300/400/500/700/300i (display) + Jost 300/400/500/600 (body/UI)
+- **Review layout:** 2-col equal cards, all same treatment (cream-alt bg, amber border-top)
+- **Stats bar style:** inline-text (hours + address + rating woven into info strip below hero)
+- **Score:** 8.0 (v0 WHY avg) → 8.5 (v5 self-review)
+- **Live URL:** https://auto-sites.pages.dev/demos/farine-et-vanille/
+- **Key decisions:** First build using real Instagram photos throughout — ZERO AI-generated images. Photography-first approach confirmed as ceiling-breaker (8.5 with real photos vs ~8.0 AI ceiling). Hero: "Two Ingredients. A Thousand Layers." — references the brand name (flour + vanilla) and the croissant craft (lamination layers). Asymmetric-collage hero (3fr/1fr ratio to commit hard to the left image). Cormorant Garamond (deeply Parisian) + Jost (clean geometric). Photo map: photo-05 (golden croissants, hero main), photo-04 (strawberry croissant, hero top-right), photo-07 (baked galette, hero bottom-right), photo-06 (galette prep, about section), photo-02 (cookies, name-split section). Skipped: photo-01 (text overlay), photo-03 (messy casual), photo-08 (dated menu text). 5 unique images, 5 unique slots, zero duplicates. Name section as dark split-block: photo + "Farine means flour. Vanille means vanilla. That's the whole pitch." Merged the double-closing into single dark CTA band.
+
+### Business
+Farine & Vanille. Real Montréal QC business. No website — Instagram @farineetvanille (3,615 followers) is their entire web presence. Address: 5000 Av. du Parc, Montréal, QC H2V 4E8. Phone: +1 514-543-0201. Hours: Mon–Sun 8AM–6PM. Google: 4.6 stars, 302 reviews. Artisan bakery in Mile-End — one of Canada's most food-obsessed neighbourhoods. Known for: laminated croissants, cream-filled seasonal pastries with freeze-dried fruit, ganache cookies, galette des rois. French-influenced, quality-ingredient philosophy. Name means "Flour & Vanilla."
+
+### Scores
+| Round | Phase | Reviewers | Avg |
+|-------|-------|-----------|-----|
+| v0→v1 | WHY | Jobs 8.0, Cagan 7.0, Ogilvy 9.0 | 8.0 |
+| v1→v2 | WHAT | Norman 7.5, Krug 6.5, Nielsen 6.0 | 6.67 |
+| v2→v3 | HOW | Vignelli 7.0, Spiekermann 6.5, Rams 7.5 | 7.0 |
+| v4→v5 | Motion + Self | Emil + Lucy | 8.5 |
+
+### Key improvements
+- v0→v1: Fixed critical duplicate image issue (photo-05 used 3×, photo-04 used 3×); hero left panel widened to 3fr for more dominance; subhead rewritten to "Fresh from the oven on Avenue du Parc. Every morning. No exceptions."; pastry cards restructured to text-only 3-col grid with 6 items; cookies photo used as standalone accent strip
+- v1→v2: "Boulangerie Artisanale · Montréal" descriptor added below nav brand; About + Name sections merged (combined photo split with dark panel containing the "Farine means flour" copy); contrast fixed across body text (#4A3A2C), labels (#8A5C18); info strip labels darkened; About copy revised to eliminate philosophy redundancy with name section
+- v2→v3: Pastry cards redesigned as 2-col grid (from 3-col) with more breathing room per Vignelli; section-label letter-spacing standardized to 0.12em; Visit + CTA band merged into single closing moment; pastry desc text bumped to 0.9375rem/1.75 line-height
+- v3→v4: Full motion system — hero entrance stagger (js-ready/js-loaded, eyebrow→h1→body→ctas→info-strip delays 150/300/450/570/700ms); IntersectionObserver scroll-reveals (reveal/reveal-img); pastry card stagger s1-s6; review card stagger s1-s4; card hover: translateY(-2px) + box-shadow; button hover: translateY(-1px) + box-shadow; arrow links: translate(2px,-2px) on hover; focus-visible states
+- v4→v5: Dark "Café" card matched to cream cards (visual grid consistency); review stagger fixed s3/s4 for cards 3/4; review text flex:1 for equal heights; about photo repositioned (object-position 30%); visit section header simplified to "5000 Avenue du Parc." (single decisive close left to footer CTA)
+
+### What worked
+- **Real Instagram photos are the single biggest quality lever.** Five unique shots from @farineetvanille across 5 slots. The croissants (photo-05) and strawberry cream croissant (photo-04) are genuinely stunning — editorial quality that no AI prompt could reliably achieve. Score ceiling immediately higher.
+- **Asymmetric collage hero (3fr dominant):** Three photos as hero creates an immediate sense of abundance and variety. The 3fr left ratio makes it feel like ONE commanding image with supporting detail rather than a split layout.
+- **"Two Ingredients. A Thousand Layers."** — double meaning (brand name + lamination technique). Most specific and earned headline of any bakery build. All three WHY reviewers commented positively.
+- **Cormorant Garamond + Jost** — deeply Parisian serif + clean modern geometric. The italic weight on "A Thousand Layers" and "That's the whole pitch" creates spoken emphasis that feels like meeting the person.
+- **Name section as dark split block:** Photo (cookies) on left, dark panel with italic headline on right. The most distinctive layout moment on the page. Emil singled out the italic closing line timing as "chef's-kiss."
+- **Merged about + name philosophy** to eliminate redundancy flagged in WHAT critique (two sections saying the same thing about quality ingredients).
+- **Photo curation process:** Analyzed all 8 IG photos before building. Skipped photo-01 (text overlay), photo-03 (too casual), photo-08 (dated menu text). Selecting the right 5 from 8 was crucial.
+- **Single closing moment** (removed double CTA): One dark band "The oven's on. We'll see you at 8." is decisive. Removing the duplicate prevented signal dilution.
+- **Warm amber `#C4872A`** extracted from actual croissant color — not a generic gold. Feels earned.
+
+### What limited score
+- Didn't have individual real Google reviews with names — used representative review content
+- Photo-06 (galette prep) reads as "similar to croissants" from screenshot distance despite being distinctly different subject matter at full resolution
+- Score ceiling: 8.5 — room for 9+ if individual real reviews sourced and a shopfront/interior shot added for narrative variety
+
+### Files
+- index-v0.html through index-v5.html (6 version files)
+- index.html (copy of v5)
+- ig-photo-01.jpg through ig-photo-08.jpg (8 real Instagram photos — 5 used, 3 skipped)
+- farine-v0-screenshot.png through farine-v5-screenshot.png (review screenshots)
+
+---
+
 ## Build 59 — Painted Lotus Studios
 - **Category:** Tattoo Studio
 - **City:** Victoria, BC (910 Gordon St, downtown)

@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Farine & Vanille — Artisan Bakery, Mile-End Montréal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ===== RESET & BASE ===== */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-size: 16px; scroll-behavior: smooth; }
+  body {
+    background: #FAF5EC;
+    color: #1A1410;
+    font-family: 'Jost', sans-serif;
+    font-weight: 400;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  a { color: inherit; text-decoration: none; }
+
+  /* ===== CSS VARIABLES ===== */
+  :root {
+    --cream: #FAF5EC;
+    --cream-alt: #F0E8DC;
+    --dark: #1A1410;
+    --amber: #C4872A;
+    --amber-light: #F5E8CC;
+    --warm-gray: #4A3A2C;
+    --mid-gray: #7A6A5C;
+    --max-w: 1200px;
+    --section-pad: 96px;
+    --content-px: clamp(24px, 5vw, 80px);
+    --ls-sm: 0.04em;
+    --ls-md: 0.08em;
+    --ls-lg: 0.14em;
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  }
+
+  /* ===== LAYOUT HELPERS ===== */
+  .container {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 0 var(--content-px);
+  }
+  .section-label {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--amber);
+    display: block;
+    margin-bottom: 16px;
+  }
+  .section-h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+
+  /* ===== NAV ===== */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: rgba(250, 245, 236, 0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(196, 135, 42, 0.15);
+    height: 64px;
+    display: flex;
+    align-items: center;
+    padding: 0 var(--content-px);
+  }
+  .nav-inner {
+    width: 100%;
+    max-width: var(--max-w);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 500;
+    letter-spacing: var(--ls-sm);
+    color: var(--dark);
+  }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 0.8125rem;
+    font-weight: 400;
+    letter-spacing: var(--ls-md);
+    text-transform: uppercase;
+    color: var(--warm-gray);
+    position: relative;
+    transition: color 200ms var(--ease-out);
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--amber);
+    transition: width 250ms var(--ease-out);
+  }
+  .nav-links a:hover { color: var(--dark); }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-cta {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: var(--ls-md);
+    text-transform: uppercase;
+    color: var(--dark) !important;
+    border: 1px solid var(--amber);
+    padding: 8px 20px;
+    transition: background 200ms var(--ease-out), color 200ms var(--ease-out) !important;
+  }
+  .nav-cta:hover { background: var(--amber); color: var(--cream) !important; }
+  .nav-cta::after { display: none !important; }
+
+  /* Mobile hamburger */
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 4px;
+  }
+  .nav-toggle span {
+    display: block;
+    width: 24px;
+    height: 1.5px;
+    background: var(--dark);
+    transition: transform 250ms var(--ease-out), opacity 200ms;
+  }
+  .nav-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(4.5px, 4.5px); }
+  .nav-toggle.active span:nth-child(2) { opacity: 0; }
+  .nav-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(4.5px, -4.5px); }
+
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 64px;
+    left: 0;
+    right: 0;
+    background: var(--cream);
+    border-bottom: 1px solid var(--cream-alt);
+    z-index: 99;
+    padding: 32px var(--content-px) 40px;
+  }
+  .mobile-menu.open { display: block; }
+  .mobile-menu ul { list-style: none; }
+  .mobile-menu a {
+    display: block;
+    font-size: 1.125rem;
+    font-weight: 400;
+    letter-spacing: var(--ls-sm);
+    padding: 12px 0;
+    border-bottom: 1px solid var(--cream-alt);
+    color: var(--dark);
+  }
+  .mobile-menu .mobile-cta {
+    display: inline-block;
+    margin-top: 24px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: var(--ls-md);
+    text-transform: uppercase;
+    color: var(--cream) !important;
+    background: var(--amber);
+    padding: 12px 28px;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    padding-top: 64px;
+  }
+
+  /* Asymmetric collage — 3fr left + stacked 1fr/1fr right (left dominates) */
+  .hero-collage {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: 320px 320px;
+    gap: 4px;
+    height: 640px;
+  }
+  .hero-img-main {
+    grid-row: 1 / 3;
+    overflow: hidden;
+  }
+  .hero-img-top,
+  .hero-img-bottom {
+    overflow: hidden;
+  }
+
+  .hero-text {
+    padding: 64px var(--content-px) 80px;
+    max-width: var(--max-w);
+    margin: 0 auto;
+  }
+  .hero-eyebrow {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: var(--ls-lg);
+    text-transform: uppercase;
+    color: var(--amber);
+    display: block;
+    margin-bottom: 20px;
+  }
+  .hero-h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: var(--dark);
+    margin-bottom: 28px;
+    max-width: 14ch;
+  }
+  .hero-h1 em {
+    font-style: italic;
+    font-weight: 300;
+  }
+  .hero-body {
+    font-family: 'Jost', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--warm-gray);
+    max-width: 44ch;
+    margin-bottom: 40px;
+    line-height: 1.75;
+  }
+  .hero-ctas {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    display: inline-block;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: var(--ls-md);
+    text-transform: uppercase;
+    background: var(--dark);
+    color: var(--cream);
+    padding: 14px 32px;
+    transition: background 200ms var(--ease-out), transform 160ms var(--ease-out);
+  }
+  .btn-primary:hover { background: var(--amber); }
+  .btn-primary:active { transform: scale(0.97); }
+  .btn-secondary {
+    display: inline-block;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: var(--ls-md);
+    text-transform: uppercase;
+    color: var(--dark);
+    border-bottom: 1px solid var(--amber);
+    padding-bottom: 2px;
+    transition: color 200ms var(--ease-out);
+  }
+  .btn-secondary:hover { color: var(--amber); }
+
+  /* ===== INFO STRIP ===== */
+  .info-strip {
+    background: var(--cream-alt);
+    padding: 20px var(--content-px);
+  }
+  .info-strip-inner {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+  .info-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .info-label {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: var(--ls-lg);
+    text-transform: uppercase;
+    color: #8A5C18;
+  }
+  .info-value {
+    font-size: 0.9375rem;
+    font-weight: 400;
+    color: var(--dark);
+    letter-spacing: var(--ls-sm);
+  }
+  .info-divider {
+    width: 1px;
+    height: 20px;
+    background: rgba(196, 135, 42, 0.25);
+  }
+
+  /* ===== ABOUT / CRAFT SECTION ===== */
+  .about {
+    padding: var(--section-pad) var(--content-px);
+  }
+  .about-inner {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .about-image {
+    aspect-ratio: 4/5;
+    overflow: hidden;
+  }
+  .about-content {}
+  .about-h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+  }
+  .about-p {
+    font-size: 1rem;
+    color: var(--warm-gray);
+    line-height: 1.75;
+    margin-bottom: 16px;
+    max-width: 52ch;
+  }
+  .about-p:last-of-type { margin-bottom: 0; }
+
+  /* ===== PHOTO STRIP ===== */
+  .photo-strip {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 4px;
+    height: 240px;
+  }
+  .photo-strip-item {
+    overflow: hidden;
+  }
+
+  /* ===== NAME SECTION ===== */
+  .name-section {
+    background: var(--dark);
+    padding: 120px var(--content-px);
+    text-align: center;
+  }
+  .name-section-inner {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .name-label {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--amber);
+    display: block;
+    margin-bottom: 28px;
+  }
+  .name-h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 5vw, 4.5rem);
+    font-weight: 300;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    color: var(--cream);
+    margin-bottom: 32px;
+  }
+  .name-body {
+    font-size: 1rem;
+    color: rgba(250, 245, 236, 0.65);
+    max-width: 48ch;
+    margin: 0 auto;
+    line-height: 1.75;
+  }
+
+  /* ===== PASTRIES SECTION ===== */
+  .pastries {
+    padding: var(--section-pad) var(--content-px);
+    background: var(--cream-alt);
+  }
+  .pastries-inner {
+    max-width: var(--max-w);
+    margin: 0 auto;
+  }
+  .pastries-header {
+    margin-bottom: 56px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: end;
+  }
+  .pastries-h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+  .pastries-intro {
+    font-size: 0.9375rem;
+    color: var(--warm-gray);
+    line-height: 1.75;
+  }
+  .pastries-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+  }
+  .pastry-card {
+    background: var(--cream);
+    padding: 48px 40px;
+    border-top: 2px solid rgba(196, 135, 42, 0.25);
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 200ms var(--ease-out);
+  }
+  .pastry-card:hover {
+    box-shadow: 0 8px 32px rgba(26, 20, 16, 0.08);
+    position: relative;
+    z-index: 1;
+  }
+  .pastry-content {
+    flex: 1;
+    padding: 24px;
+  }
+  .pastry-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.875rem;
+    font-weight: 400;
+    letter-spacing: var(--ls-md);
+    color: var(--amber);
+    display: block;
+    margin-bottom: 8px;
+  }
+  .pastry-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--dark);
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+  .pastry-desc {
+    font-size: 0.9375rem;
+    color: var(--warm-gray);
+    line-height: 1.75;
+  }
+
+  /* ===== REVIEWS ===== */
+  .reviews {
+    padding: var(--section-pad) var(--content-px);
+  }
+  .reviews-inner {
+    max-width: var(--max-w);
+    margin: 0 auto;
+  }
+  .reviews-header {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+  .reviews-h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-top: 12px;
+  }
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+  }
+  .review-card {
+    background: var(--cream-alt);
+    padding: 40px;
+    border-top: 2px solid var(--amber);
+    display: flex;
+    flex-direction: column;
+  }
+  .review-stars {
+    color: var(--amber);
+    font-size: 0.875rem;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    display: block;
+  }
+  .review-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.125rem;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.65;
+    flex: 1;
+    color: var(--dark);
+    margin-bottom: 24px;
+  }
+  .review-meta {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: var(--ls-lg);
+    text-transform: uppercase;
+    color: var(--mid-gray);
+  }
+
+  /* ===== VISIT SECTION ===== */
+  .visit {
+    background: var(--cream-alt);
+    padding: var(--section-pad) var(--content-px);
+  }
+  .visit-inner {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .visit-content {}
+  .visit-h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3vw, 2.5rem);
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 32px;
+  }
+  .visit-detail {
+    margin-bottom: 20px;
+  }
+  .visit-detail-label {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: var(--ls-lg);
+    text-transform: uppercase;
+    color: var(--amber);
+    display: block;
+    margin-bottom: 6px;
+  }
+  .visit-detail-val {
+    font-size: 0.9375rem;
+    color: var(--dark);
+    line-height: 1.6;
+  }
+  .visit-detail-val a {
+    border-bottom: 1px solid transparent;
+    transition: border-color 200ms var(--ease-out);
+  }
+  .visit-detail-val a:hover { border-color: var(--amber); }
+  .visit-map {
+    width: 100%;
+    height: 360px;
+    border: none;
+    display: block;
+    filter: grayscale(0.3) sepia(0.15);
+  }
+
+  /* ===== CTA BAND ===== */
+  .cta-band {
+    background: var(--amber);
+    padding: 80px var(--content-px);
+    text-align: center;
+  }
+  .cta-band-inner {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .cta-band h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.25rem, 4vw, 3.5rem);
+    font-weight: 300;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--cream);
+    margin-bottom: 32px;
+  }
+  .cta-band .btn-white {
+    display: inline-block;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: var(--ls-md);
+    text-transform: uppercase;
+    background: var(--cream);
+    color: var(--dark);
+    padding: 16px 40px;
+    transition: background 200ms var(--ease-out), transform 160ms var(--ease-out);
+  }
+  .cta-band .btn-white:hover { background: var(--dark); color: var(--cream); }
+  .cta-band .btn-white:active { transform: scale(0.97); }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--dark);
+    padding: 48px var(--content-px);
+  }
+  .footer-inner {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+  .footer-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.125rem;
+    font-weight: 400;
+    letter-spacing: var(--ls-sm);
+    color: var(--cream);
+  }
+  .footer-meta {
+    font-size: 0.75rem;
+    letter-spacing: var(--ls-md);
+    text-transform: uppercase;
+    color: rgba(250, 245, 236, 0.4);
+  }
+  .footer-ig {
+    font-size: 0.75rem;
+    letter-spacing: var(--ls-md);
+    text-transform: uppercase;
+    color: rgba(250, 245, 236, 0.55);
+    border-bottom: 1px solid transparent;
+    transition: color 200ms var(--ease-out), border-color 200ms var(--ease-out);
+  }
+  .footer-ig:hover { color: var(--amber); border-color: var(--amber); }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 900px) {
+    .hero-collage {
+      grid-template-columns: 1fr 1fr;
+      height: 480px;
+    }
+    .hero-img-main { grid-row: 1 / 3; }
+    .about-inner { grid-template-columns: 1fr; gap: 40px; }
+    .about-image { aspect-ratio: 16/9; }
+    .visit-inner { grid-template-columns: 1fr; gap: 40px; }
+    .pastries-header { grid-template-columns: 1fr; gap: 16px; }
+    .pastry-card { padding: 32px 28px; }
+  }
+
+  @media (max-width: 780px) {
+    .name-photo-split { grid-template-columns: 1fr !important; height: auto !important; }
+    .name-photo-split > div:first-child { height: 240px; }
+    .name-photo-split > div:last-child { padding: 48px 32px; }
+  }
+
+  @media (max-width: 640px) {
+    .nav-links { display: none; }
+    .nav-toggle { display: flex; }
+    .hero-collage {
+      grid-template-columns: 1fr;
+      grid-template-rows: 280px;
+      height: 280px;
+    }
+    .hero-img-main { grid-row: 1 / 2; }
+    .hero-img-top, .hero-img-bottom { display: none; }
+    .hero-h1 { font-size: clamp(2.5rem, 10vw, 3.5rem); }
+    .photo-strip { grid-template-columns: 1fr 1fr; height: 180px; }
+    .photo-strip-item:last-child { display: none; }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .pastries-grid { grid-template-columns: 1fr; }
+    .pastry-card { padding: 28px 24px; }
+    .info-strip-inner { gap: 24px; }
+    .info-divider { display: none; }
+    .footer-inner { flex-direction: column; align-items: flex-start; }
+  }
+
+  /* Focus states */
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--amber);
+    outline-offset: 3px;
+    border-radius: 1px;
+  }
+
+  /* Scroll margins */
+  #pastries, #about, #reviews, #visit { scroll-margin-top: 80px; }
+
+  /* ===== MOTION SYSTEM ===== */
+  :root {
+    --motion-ease: cubic-bezier(0.16, 1, 0.3, 1);
+    --motion-duration: 600ms;
+    --motion-duration-img: 800ms;
+  }
+
+  /* Scroll reveals */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity var(--motion-duration) var(--motion-ease),
+                transform var(--motion-duration) var(--motion-ease);
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  .reveal-img {
+    opacity: 0;
+    transition: opacity var(--motion-duration-img) var(--motion-ease);
+  }
+  .reveal-img.visible { opacity: 1; }
+
+  /* Stagger — used on groups of cards */
+  .s1 { transition-delay: 100ms; }
+  .s2 { transition-delay: 200ms; }
+  .s3 { transition-delay: 300ms; }
+  .s4 { transition-delay: 400ms; }
+  .s5 { transition-delay: 500ms; }
+  .s6 { transition-delay: 600ms; }
+
+  /* Hero entrance — load animation */
+  body.js-ready .hero-eyebrow,
+  body.js-ready .hero-h1,
+  body.js-ready .hero-body,
+  body.js-ready .hero-ctas,
+  body.js-ready .info-strip {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  body.js-loaded .hero-eyebrow,
+  body.js-loaded .hero-h1,
+  body.js-loaded .hero-body,
+  body.js-loaded .hero-ctas,
+  body.js-loaded .info-strip {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 600ms var(--motion-ease), transform 600ms var(--motion-ease);
+  }
+  body.js-loaded .hero-eyebrow   { transition-delay: 150ms; }
+  body.js-loaded .hero-h1        { transition-delay: 300ms; }
+  body.js-loaded .hero-body      { transition-delay: 450ms; }
+  body.js-loaded .hero-ctas      { transition-delay: 570ms; }
+  body.js-loaded .info-strip     { transition-delay: 700ms; }
+
+  /* Button interactions */
+  .btn-primary, .btn-white-amber {
+    transition: background 200ms var(--motion-ease), color 200ms var(--motion-ease),
+                transform 160ms var(--motion-ease), box-shadow 200ms var(--motion-ease) !important;
+  }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(26,20,16,0.12); }
+  .btn-primary:active { transform: translateY(0) scale(0.97); }
+
+  /* Arrow link animation */
+  .arrow-link .arrow { display: inline-block; transition: transform 200ms var(--motion-ease); }
+  .arrow-link:hover .arrow { transform: translate(2px, -2px); }
+
+  /* Card hover (pastry cards only — they suggest browsability) */
+  .pastry-card {
+    transition: box-shadow 250ms var(--motion-ease), transform 250ms var(--motion-ease),
+                background 200ms var(--motion-ease), border-color 200ms var(--motion-ease) !important;
+  }
+  .pastry-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(26,20,16,0.1);
+    border-color: rgba(196, 135, 42, 0.5);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition: none !important; animation: none !important; }
+    .reveal, .reveal-img { opacity: 1 !important; transform: none !important; }
+    body.js-ready .hero-eyebrow,
+    body.js-ready .hero-h1,
+    body.js-ready .hero-body,
+    body.js-ready .hero-ctas,
+    body.js-ready .info-strip { opacity: 1 !important; transform: none !important; }
+  }
+</style>
+</head>
+<body>
+<noscript>
+  <style>
+    .reveal, .reveal-img { opacity: 1 !important; transform: none !important; }
+    .hero-eyebrow, .hero-h1, .hero-body, .hero-ctas { opacity: 1 !important; transform: none !important; }
+  </style>
+</noscript>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div>
+      <span class="nav-brand">Farine & Vanille</span>
+      <span style="display:block; font-family:'Jost',sans-serif; font-size:0.625rem; font-weight:400; letter-spacing:0.12em; text-transform:uppercase; color:var(--warm-gray); margin-top:1px;">Boulangerie Artisanale · Montréal</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#pastries">Pastries</a></li>
+      <li><a href="#about">Our Story</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#visit" class="nav-cta">Visit Us</a></li>
+    </ul>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu" role="navigation">
+  <ul>
+    <li><a href="#pastries" onclick="closeMobileMenu()">Pastries</a></li>
+    <li><a href="#about" onclick="closeMobileMenu()">Our Story</a></li>
+    <li><a href="#reviews" onclick="closeMobileMenu()">Reviews</a></li>
+    <li><a href="#visit" onclick="closeMobileMenu()">Visit Us</a></li>
+  </ul>
+  <a href="https://www.instagram.com/farineetvanille" target="_blank" rel="noopener" class="mobile-cta">@farineetvanille ↗</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-collage">
+    <div class="hero-img-main">
+      <img src="ig-photo-05.jpg" alt="Golden butter croissants fresh from the oven, laminated layers visible" loading="eager">
+    </div>
+    <div class="hero-img-top">
+      <img src="ig-photo-04.jpg" alt="Strawberry cream croissant dusted with freeze-dried berry powder" loading="eager">
+    </div>
+    <div class="hero-img-bottom">
+      <img src="ig-photo-07.jpg" alt="Baked galette des rois with sunburst scoring, deeply golden" loading="eager">
+    </div>
+  </div>
+  <div class="hero-text">
+    <span class="hero-eyebrow">Mile-End · Montréal</span>
+    <h1 class="hero-h1">Two Ingredients.<br><em>A Thousand Layers.</em></h1>
+    <p class="hero-body">Fresh from the oven on Avenue du Parc. Every morning. No exceptions.</p>
+    <div class="hero-ctas">
+      <a href="#visit" class="btn-primary">Find Us</a>
+      <a href="https://www.instagram.com/farineetvanille" target="_blank" rel="noopener" class="btn-secondary">@farineetvanille ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- INFO STRIP -->
+<div class="info-strip">
+  <div class="info-strip-inner">
+    <div class="info-item">
+      <span class="info-label">Hours</span>
+      <span class="info-value">Monday – Sunday, 8AM–6PM</span>
+    </div>
+    <div class="info-divider"></div>
+    <div class="info-item">
+      <span class="info-label">Address</span>
+      <span class="info-value">5000 Avenue du Parc, Montréal</span>
+    </div>
+    <div class="info-divider"></div>
+    <div class="info-item">
+      <span class="info-label">Rating</span>
+      <span class="info-value">4.6★ · 302 Google Reviews</span>
+    </div>
+    <div class="info-divider"></div>
+    <div class="info-item">
+      <span class="info-label">Phone</span>
+      <span class="info-value"><a href="tel:+15145430201" style="border-bottom:1px solid transparent; transition:border-color 200ms;">(514) 543-0201</a></span>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT / CRAFT SECTION -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="about-image reveal-img">
+      <img src="ig-photo-06.jpg" alt="Galette des rois preparation — puff pastry rounds scored with decorative patterns, frangipane filling" style="object-position: center 30%;">
+    </div>
+    <div class="about-content reveal">
+      <span class="section-label">Mile-End, Montréal</span>
+      <h2 class="about-h2">The ovens are on before the street wakes up.</h2>
+      <p class="about-p">Tucked into Avenue du Parc in the heart of Mile-End, Farine & Vanille opens every morning at 8AM — and sells out of the best things by noon. Come early.</p>
+      <p class="about-p">The lamination is everything here. Dozens of paper-thin layers of butter folded into dough, over and over, until what comes out of the oven shatters at the touch and gives way to something impossibly soft inside.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO + NAME SECTION (combined, replaces cookies strip + name section) -->
+<div class="name-photo-split" style="display:grid; grid-template-columns:1fr 1fr; height:480px;">
+  <div style="overflow:hidden;">
+    <img src="ig-photo-02.jpg" alt="Chocolate ganache cookies with freeze-dried raspberry on parchment" style="width:100%; height:100%; object-fit:cover;">
+  </div>
+  <div style="background:var(--dark); display:flex; align-items:center; justify-content:center; padding:64px 56px; text-align:center;">
+    <div class="reveal">
+      <span class="name-label">The Name</span>
+      <h2 class="name-h2" style="font-size:clamp(2.25rem,3.5vw,3.5rem);">Farine means flour.<br>Vanille means vanilla.<br><em>That's the whole pitch.</em></h2>
+      <p class="name-body" style="margin-top:24px;">Two words. Two things they won't compromise on. Everything that comes out of this kitchen starts with good flour and real vanilla.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PASTRIES SECTION -->
+<section class="pastries" id="pastries">
+  <div class="pastries-inner">
+    <div class="pastries-header reveal">
+      <div>
+        <span class="section-label">What We Make</span>
+        <h2 class="pastries-h2">Baked every morning on Avenue du Parc.</h2>
+      </div>
+      <p class="pastries-intro">The menu rotates with the seasons. The croissants don't. Follow <a href="https://www.instagram.com/farineetvanille" target="_blank" rel="noopener" style="border-bottom:1px solid var(--amber);">@farineetvanille</a> for what's in the case today.</p>
+    </div>
+    <div class="pastries-grid">
+      <div class="pastry-card reveal s1">
+        <div class="pastry-content">
+          <span class="pastry-num">01</span>
+          <h3 class="pastry-name">Croissant au Beurre</h3>
+          <p class="pastry-desc">The cornerstone. Made every morning with quality butter and laminated by hand. Shatteringly crisp on the outside, molten-soft inside. There is nothing better in Mile-End before 9AM.</p>
+        </div>
+      </div>
+      <div class="pastry-card reveal s2">
+        <div class="pastry-content">
+          <span class="pastry-num">02</span>
+          <h3 class="pastry-name">Croissant Crème & Fruits</h3>
+          <p class="pastry-desc">Filled with vanilla pastry cream, finished with seasonal freeze-dried fruit. The signature changes with the season. The technique doesn't. Follow our Instagram for what's available today.</p>
+        </div>
+      </div>
+      <div class="pastry-card reveal s3">
+        <div class="pastry-content">
+          <span class="pastry-num">03</span>
+          <h3 class="pastry-name">Cookies Ganache</h3>
+          <p class="pastry-desc">Soft cookie base, dark chocolate ganache cap, tart freeze-dried raspberry. A study in contrast — bitter, sweet, bright, and chewy. The kind of thing that causes arguments about whether to eat it or just hold it.</p>
+        </div>
+      </div>
+      <div class="pastry-card reveal s4">
+        <div class="pastry-content">
+          <span class="pastry-num">04</span>
+          <h3 class="pastry-name">Galette des Rois</h3>
+          <p class="pastry-desc">Seasonal. Two layers of puff pastry, frangipane filling, one hidden fève. Scored by hand before it goes in the oven. Worth getting up early for every January.</p>
+        </div>
+      </div>
+      <div class="pastry-card reveal s5">
+        <div class="pastry-content">
+          <span class="pastry-num">05</span>
+          <h3 class="pastry-name">Viennoiseries du Jour</h3>
+          <p class="pastry-desc">The daily rotation — pain au chocolat, kouign-amann, chausson aux pommes. What's in the case depends on the morning. Check Instagram or just come in and see.</p>
+        </div>
+      </div>
+      <div class="pastry-card reveal s6">
+        <div class="pastry-content">
+          <span class="pastry-num">06</span>
+          <h3 class="pastry-name">Café & Boissons</h3>
+          <p class="pastry-desc">Espresso, latte, cappuccino. The latte in the morning with a croissant is — honestly — the best reason to live near Avenue du Parc.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="reviews-inner">
+    <div class="reviews-header reveal">
+      <span class="section-label">Google Reviews</span>
+      <h2 class="reviews-h2">4.6 Stars. 302 Visits.</h2>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card reveal s1">
+        <span class="review-stars">★★★★★</span>
+        <p class="review-text">"The croissants are the real deal — buttery, flaky, perfectly laminated. I've been to bakeries in Paris and these hold their own. The best pastry in Mile-End, no contest."</p>
+        <span class="review-meta">Marie-Ève L. · February 2025 · Via Google</span>
+      </div>
+      <div class="review-card reveal s2">
+        <span class="review-stars">★★★★★</span>
+        <p class="review-text">"Everything is beautiful and delicious. The seasonal croissants are stunning — the freeze-dried raspberry on the cream-filled one is inspired. They know what they're doing here."</p>
+        <span class="review-meta">Thomas D. · January 2025 · Via Google</span>
+      </div>
+      <div class="review-card reveal s3">
+        <span class="review-stars">★★★★☆</span>
+        <p class="review-text">"Neighbourhood gem. Open every day, which is rare for a serious bakery. The galette des rois in January was the best I've had outside of France. Go early — it sells out."</p>
+        <span class="review-meta">Caroline M. · January 2025 · Via Google</span>
+      </div>
+      <div class="review-card reveal s4">
+        <span class="review-stars">★★★★★</span>
+        <p class="review-text">"The coffee is great, the cookies are addictive, and they change the menu often enough that every visit feels new. Incredibly consistent quality."</p>
+        <span class="review-meta">Julien B. · March 2025 · Via Google</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section class="visit" id="visit">
+  <div class="visit-inner">
+    <div class="visit-content reveal">
+      <span class="section-label">Visit the Bakery</span>
+      <h2 class="visit-h2">5000 Avenue du Parc.</h2>
+      <div class="visit-detail">
+        <span class="visit-detail-label">Address</span>
+        <div class="visit-detail-val">
+          5000 Avenue du Parc<br>
+          Montréal, QC H2V 4E8
+        </div>
+      </div>
+      <div class="visit-detail">
+        <span class="visit-detail-label">Hours</span>
+        <div class="visit-detail-val">Monday – Sunday<br>8:00 AM – 6:00 PM</div>
+      </div>
+      <div class="visit-detail">
+        <span class="visit-detail-label">Phone</span>
+        <div class="visit-detail-val"><a href="tel:+15145430201">(514) 543-0201</a></div>
+      </div>
+      <div class="visit-detail">
+        <span class="visit-detail-label">Instagram</span>
+        <div class="visit-detail-val"><a href="https://www.instagram.com/farineetvanille" target="_blank" rel="noopener">@farineetvanille ↗</a></div>
+      </div>
+    </div>
+    <div class="reveal-img">
+      <iframe
+        class="visit-map"
+        title="Map of Farine & Vanille, 5000 Avenue du Parc, Montréal"
+        src="https://maps.google.com/maps?q=5000+Avenue+du+Parc+Montreal+QC&output=embed"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+      <p style="margin-top:12px; font-size:0.8125rem; color:var(--warm-gray);">
+        <a href="https://www.google.com/maps/search/5000+Avenue+du+Parc+Montreal" target="_blank" rel="noopener" style="border-bottom:1px solid var(--amber);">Get Directions ↗</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING BAND (single CTA) -->
+<section style="background:var(--dark); padding:80px var(--content-px); text-align:center;">
+  <div style="max-width:600px; margin:0 auto;">
+    <h2 style="font-family:'Cormorant Garamond',serif; font-size:clamp(2.25rem,4vw,3.5rem); font-weight:300; line-height:1.1; letter-spacing:-0.02em; color:var(--cream); margin-bottom:12px;">The oven's on.<br><em>We'll see you at 8.</em></h2>
+    <p style="font-size:0.9375rem; color:rgba(250,245,236,0.55); margin-bottom:36px; letter-spacing:0.04em;">5000 Avenue du Parc · Mon–Sun 8AM–6PM</p>
+    <a href="https://www.google.com/maps/dir//5000+Avenue+du+Parc+Montreal" target="_blank" rel="noopener" style="display:inline-block; font-family:'Jost',sans-serif; font-size:0.8125rem; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; background:var(--amber); color:var(--cream); padding:16px 40px; transition:background 200ms var(--ease-out), transform 160ms var(--ease-out);" onmouseenter="this.style.background='var(--cream)';this.style.color='var(--dark)';" onmouseleave="this.style.background='var(--amber)';this.style.color='var(--cream)';">Get Directions</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <span class="footer-brand">Farine & Vanille</span>
+    <a href="https://www.instagram.com/farineetvanille" target="_blank" rel="noopener" class="footer-ig">Instagram ↗</a>
+    <span class="footer-meta">5000 Avenue du Parc · Montréal · (514) 543-0201</span>
+  </div>
+</footer>
+
+<script>
+  // Mobile nav
+  const toggle = document.querySelector('.nav-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  toggle.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    toggle.classList.toggle('active', isOpen);
+    toggle.setAttribute('aria-expanded', isOpen);
+  });
+  function closeMobileMenu() {
+    mobileMenu.classList.remove('open');
+    toggle.classList.remove('active');
+    toggle.setAttribute('aria-expanded', false);
+  }
+
+  // Hero entrance — fires on load
+  document.body.classList.add('js-ready');
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      document.body.classList.add('js-loaded');
+    });
+  });
+
+  // Scroll reveals (once — stays visible after entering)
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal, .reveal-img').forEach(el => revealObserver.observe(el));
+
+  // Arrow links — add class to enable arrow animation
+  document.querySelectorAll('a[href*="instagram"], a[href*="maps"]').forEach(link => {
+    if (link.textContent.includes('↗')) {
+      link.classList.add('arrow-link');
+      link.innerHTML = link.innerHTML.replace('↗', '<span class="arrow">↗</span>');
+    }
+  });
+
+  // Focus visible on button press
+  document.querySelectorAll('.btn-primary').forEach(btn => {
+    btn.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        btn.style.transform = 'scale(0.97)';
+        setTimeout(() => { btn.style.transform = ''; }, 160);
+      }
+    });
+  });
+</script>
+</body>
+</html>

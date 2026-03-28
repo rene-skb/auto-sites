@@ -1,0 +1,572 @@
+<!--
+  DELTA: v4 → v5 (final polish)
+  Changes:
+  1. Hero subhead → more human, less keyword-listy
+  2. About section → removed formulaic "started with an idea" opener
+  3. Events photo → swapped to founders at market (site-img-24) for better brand storytelling
+  4. Copy audit pass per humanizer.md
+  Self-review: 7.5
+  Hypothesis: Rams' reduction notes (hero declutter, events compression, stockists 2-col) will move his score +1.5
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kid Sister Ice Cream — Victoria, BC</title>
+  <meta name="description" content="Small-batch ice cream, sherbet, and vegan sorbet on Esquimalt Road. Open Thursday to Sunday.">
+  <meta property="og:title" content="Kid Sister Ice Cream">
+  <meta property="og:description" content="Small-batch ice cream, sherbet, and vegan sorbet. Thursday to Sunday on Esquimalt Road, Victoria BC.">
+  <meta property="og:image" content="assets/site-img-07.jpg">
+  <meta property="og:url" content="https://auto-sites.pages.dev/demos/kid-sister-v5/">
+  <meta property="og:type" content="website">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    :root {
+      --red: #C41E2A;
+      --cream: #FFF8F0;
+      --green: #2D5A3D;
+      --charcoal: #2A2A2A;
+      --warm-white: #FFFDF9;
+      --soft-pink: #FFF0EE;
+      --section-pad: 96px;
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--charcoal);
+      background: var(--cream);
+      line-height: 1.65;
+      font-size: 17px;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 600; line-height: 1.15; }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; width: 100%; height: auto; }
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+    .section-label {
+      font-size: 12px; font-weight: 600; letter-spacing: 0.14em;
+      text-transform: uppercase; margin-bottom: 16px;
+    }
+    
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(255,248,240,0.92);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    nav .container { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .nav-logo { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 20px; color: var(--red); }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { font-size: 14px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; color: var(--charcoal); transition: color 0.2s var(--ease-out); }
+    .nav-links a:hover { color: var(--red); }
+    .nav-hamburger { display: none; background: none; border: none; cursor: pointer; width: 44px; height: 44px; flex-direction: column; justify-content: center; align-items: center; gap: 6px; }
+    .nav-hamburger span { display: block; width: 24px; height: 2px; background: var(--charcoal); }
+    .mobile-menu { display: none; position: fixed; top: 64px; left: 0; right: 0; background: var(--cream); padding: 24px; border-bottom: 1px solid rgba(0,0,0,0.06); z-index: 99; }
+    .mobile-menu.active { display: block; }
+    .mobile-menu a { display: block; padding: 16px 0; font-size: 16px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; }
+    
+    /* ─── HERO ─── */
+    .hero {
+      position: relative; min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; overflow: hidden; background: var(--charcoal);
+    }
+    .hero-img {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; object-position: center 30%;
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.6) 100%);
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 680px; padding: 0 24px; }
+    .hero-label {
+      font-size: 13px; font-weight: 600; letter-spacing: 0.14em;
+      text-transform: uppercase; color: #fff; opacity: 0.75; margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: clamp(40px, 6vw, 66px);
+      color: #fff; margin-bottom: 20px; font-weight: 700;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.25);
+    }
+    .hero h1 em { font-style: italic; font-weight: 400; }
+    .hero-sub {
+      font-size: 20px; color: #fff; opacity: 0.9;
+      max-width: 520px; margin: 0 auto; line-height: 1.7;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.15);
+    }
+    
+    /* ─── THE SHOP ─── */
+    .shop { background: var(--cream); padding: var(--section-pad) 0; }
+    .shop-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+    .shop-images { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .shop-images img { border-radius: 8px; object-fit: cover; }
+    .shop-images img:first-child { grid-column: 1 / -1; aspect-ratio: 16/10; }
+    .shop-images img:nth-child(2), .shop-images img:nth-child(3) { aspect-ratio: 1/1; }
+    .shop .section-label { color: var(--red); }
+    .shop-text h2 { font-size: clamp(28px, 3vw, 38px); margin-bottom: 16px; }
+    .shop-text p { color: rgba(42,42,42,0.85); margin-bottom: 14px; max-width: 440px; }
+    
+    .hours-list {
+      list-style: none; margin-top: 20px; padding: 16px 20px;
+      background: var(--warm-white); border-radius: 8px; border-left: 3px solid var(--red);
+    }
+    .hours-list li { display: flex; justify-content: space-between; padding: 6px 0; font-size: 15px; }
+    .hours-list li span:first-child { font-weight: 600; }
+    .hours-list li.closed { color: rgba(42,42,42,0.4); }
+    
+    .link-arrow {
+      display: inline-flex; align-items: center; gap: 4px;
+      color: var(--red); font-weight: 600; font-size: 15px;
+      padding: 6px 0; margin-top: 16px;
+      border-bottom: 1px solid var(--red);
+      transition: opacity 0.2s var(--ease-out);
+    }
+    .link-arrow:hover { opacity: 0.7; }
+    
+    /* ─── FLAVOURS ─── */
+    .flavours { background: var(--green); color: #fff; padding: var(--section-pad) 0; }
+    .flavours-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .flavours .section-label { color: rgba(255,255,255,0.5); }
+    .flavours-text h2 { font-size: clamp(28px, 3vw, 38px); margin-bottom: 16px; color: #fff; }
+    .flavours-text p { color: rgba(255,255,255,0.88); margin-bottom: 14px; max-width: 440px; }
+    
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px; font-weight: 600; font-size: 15px;
+      border-radius: 6px; border: none; cursor: pointer;
+      transition: transform 160ms var(--ease-out), box-shadow 160ms var(--ease-out);
+    }
+    .btn:active { transform: scale(0.97); }
+    .btn-cream { background: var(--cream); color: var(--green); margin-top: 16px; }
+    .btn-cream:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.15); }
+    
+    .flavours-images { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .flavours-images img { border-radius: 8px; object-fit: cover; }
+    .flavours-images img:first-child { grid-column: 1 / -1; aspect-ratio: 4/3; }
+    .flavours-images img:nth-child(2), .flavours-images img:nth-child(3) { aspect-ratio: 1/1; }
+    
+    /* ─── EVENTS + STOCKISTS (combined chapter) ─── */
+    .find-us { background: var(--soft-pink); padding: var(--section-pad) 0; }
+    .find-us .section-label { color: var(--red); }
+    .find-us-header { margin-bottom: 56px; }
+    .find-us-header h2 { font-size: clamp(28px, 3vw, 38px); margin-bottom: 12px; }
+    .find-us-header p { color: rgba(42,42,42,0.7); max-width: 500px; }
+    
+    .find-us-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+    
+    .events-col h3 { font-size: 22px; margin-bottom: 20px; }
+    .event-list { list-style: none; margin-bottom: 20px; }
+    .event-item { padding: 12px 0; border-bottom: 1px solid rgba(42,42,42,0.1); }
+    .event-item:last-child { border-bottom: none; }
+    .event-name { font-weight: 600; font-size: 16px; }
+    .event-details { font-size: 14px; color: rgba(42,42,42,0.55); }
+    
+    .photo-break { margin-top: 24px; }
+    .photo-break img { border-radius: 8px; aspect-ratio: 4/3; object-fit: cover; }
+    
+    /* ─── STOCKISTS (dark) ─── */
+    .stockists { background: var(--charcoal); color: #fff; padding: var(--section-pad) 0; }
+    .stockists .section-label { color: rgba(255,255,255,0.4); }
+    .stockists-header { margin-bottom: 40px; }
+    .stockists-header h2 { font-size: clamp(28px, 3vw, 38px); margin-bottom: 8px; }
+    .stockists-header p { color: rgba(255,255,255,0.7); max-width: 500px; }
+    
+    .stockists-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+    
+    .stockist-col { }
+    .stockist-group { margin-bottom: 20px; }
+    .stockist-group-label {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: rgba(255,255,255,0.35);
+      margin-bottom: 10px; padding-bottom: 6px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .stockist-list { list-style: none; }
+    .stockist-item { padding: 10px 0; }
+    .stockist-name { font-weight: 600; font-size: 15px; color: #fff; }
+    .stockist-address { font-size: 13px; color: rgba(255,255,255,0.5); }
+    
+    .stockists-note {
+      margin-top: 24px; padding: 16px 20px;
+      background: rgba(255,255,255,0.05); border-radius: 8px;
+      font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.65;
+    }
+    
+    .stockists-side { display: flex; flex-direction: column; gap: 16px; }
+    .stockists-side img { border-radius: 8px; object-fit: cover; }
+    .stockists-side img:first-child { aspect-ratio: 3/4; }
+    
+    /* ─── ABOUT ─── */
+    .about { background: var(--cream); padding: var(--section-pad) 0; }
+    .about-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .about .section-label { color: var(--red); }
+    .about-images { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .about-images img { border-radius: 8px; object-fit: cover; }
+    .about-images img:first-child { grid-column: 1 / -1; aspect-ratio: 16/10; }
+    .about-images img:nth-child(2), .about-images img:nth-child(3) { aspect-ratio: 3/4; }
+    .about-text h2 { font-size: clamp(28px, 3vw, 38px); margin-bottom: 16px; }
+    .about-text p { color: rgba(42,42,42,0.85); margin-bottom: 14px; max-width: 440px; }
+    
+    /* ─── FOOTER ─── */
+    footer { background: var(--charcoal); color: #fff; padding: 48px 0; border-top: 1px solid rgba(255,255,255,0.06); }
+    .footer-inner { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 40px; }
+    .footer-brand { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 24px; margin-bottom: 8px; }
+    .footer-tagline { font-size: 14px; color: rgba(255,255,255,0.5); }
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 12px; }
+    .footer-links a { font-size: 15px; color: rgba(255,255,255,0.6); padding: 4px 0; transition: color 0.2s var(--ease-out); }
+    .footer-links a:hover { color: #fff; }
+    .footer-contact a { display: block; font-size: 15px; color: rgba(255,255,255,0.6); margin-bottom: 12px; padding: 4px 0; transition: color 0.2s var(--ease-out); }
+    .footer-contact a:hover { color: #fff; }
+    .footer-bottom { margin-top: 32px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.08); font-size: 13px; color: rgba(255,255,255,0.4); text-align: center; }
+    
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      :root { --section-pad: 64px; }
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .shop-grid, .flavours-inner, .find-us-grid, .stockists-grid, .about-inner { grid-template-columns: 1fr; gap: 32px; }
+      .hero h1 { font-size: 34px; }
+      .hero-sub { font-size: 17px; }
+      .footer-inner { flex-direction: column; }
+    }
+    
+    /* ─── MOTION: Hero Stagger ─── */
+    .hero-label, .hero h1, .hero-sub {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 700ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    .hero-label { animation-delay: 100ms; }
+    .hero h1 { animation-delay: 250ms; }
+    .hero-sub { animation-delay: 450ms; }
+    
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    /* ─── MOTION: Scroll Reveal ─── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 600ms cubic-bezier(0.23, 1, 0.32, 1),
+                  transform 600ms cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 100ms; }
+    .reveal-delay-2 { transition-delay: 200ms; }
+    .reveal-delay-3 { transition-delay: 300ms; }
+    
+    /* ─── MOTION: Hours Row Cascade ─── */
+    .hours-list li {
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 400ms var(--ease-out), transform 400ms var(--ease-out);
+    }
+    .hours-list.visible li:nth-child(1) { transition-delay: 0ms; opacity: 1; transform: translateY(0); }
+    .hours-list.visible li:nth-child(2) { transition-delay: 40ms; opacity: 1; transform: translateY(0); }
+    .hours-list.visible li:nth-child(3) { transition-delay: 80ms; opacity: 1; transform: translateY(0); }
+    
+    /* ─── MOTION: Nav Link Underline ─── */
+    .nav-links a {
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 1.5px;
+      background: var(--red);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 200ms var(--ease-out);
+    }
+    .nav-links a:hover::after { transform: scaleX(1); }
+    
+    /* ─── MOTION: CTA Arrow Hover ─── */
+    .btn svg, .link-arrow svg {
+      transition: transform 200ms var(--ease-out);
+    }
+    .btn:hover svg, .link-arrow:hover svg {
+      transform: translate(4px, -4px);
+    }
+    
+    /* ─── MOTION: Stockist Items Stagger ─── */
+    .stockist-item {
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity 400ms var(--ease-out), transform 400ms var(--ease-out);
+    }
+    .stockist-col.visible .stockist-item { opacity: 1; transform: translateY(0); }
+    .stockist-col.visible .stockist-item:nth-child(1) { transition-delay: 0ms; }
+    .stockist-col.visible .stockist-item:nth-child(2) { transition-delay: 30ms; }
+    .stockist-col.visible .stockist-item:nth-child(3) { transition-delay: 60ms; }
+    .stockist-col.visible .stockist-item:nth-child(4) { transition-delay: 90ms; }
+    
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+      .hero-label, .hero h1, .hero-sub, .reveal, .hours-list li, .stockist-item { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="container">
+      <a href="#" class="nav-logo">Kid Sister</a>
+      <ul class="nav-links">
+        <li><a href="#shop">The Shop</a></li>
+        <li><a href="#flavours">Flavours</a></li>
+        <li><a href="#find-us">Find Us</a></li>
+        <li><a href="#stockists">Stockists</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+      <button class="nav-hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('active')" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="mobile-menu">
+    <a href="#shop" onclick="this.parentElement.classList.remove('active')">The Shop</a>
+    <a href="#flavours" onclick="this.parentElement.classList.remove('active')">Flavours</a>
+    <a href="#find-us" onclick="this.parentElement.classList.remove('active')">Find Us</a>
+    <a href="#stockists" onclick="this.parentElement.classList.remove('active')">Stockists</a>
+    <a href="#about" onclick="this.parentElement.classList.remove('active')">About</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <img src="assets/site-img-07.jpg" alt="Kid Sister Ice Cream truck on a summer lawn" class="hero-img">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-label">Kid Sister Ice Cream · Esquimalt Road, Victoria</div>
+      <h1>Seasonal. Small-batch.<br><em>Gone when it's gone.</em></h1>
+      <p class="hero-sub">Small-batch ice cream made with island milk and whatever fruit is ripe right now. Plus sherbet, frozen yogurt, and vegan sorbet.</p>
+    </div>
+  </section>
+
+  <!-- THE SHOP -->
+  <section class="shop" id="shop">
+    <div class="container">
+      <div class="shop-grid">
+        <div class="shop-images reveal">
+          <img src="assets/site-img-02.jpg" alt="Scooping ice cream at the Kid Sister counter">
+          <img src="ig-photo-10.jpg" alt="Chocolate and vanilla double scoop cone">
+          <img src="ig-photo-09.jpg" alt="Caramel swirl double scoop cone">
+        </div>
+        <div class="shop-text reveal reveal-delay-1">
+          <div class="section-label">The Scoop Shop</div>
+          <h2>Walk in, pick a flavour, take your cone to the water</h2>
+          <p>The shop is small, the line is friendly, and the chalkboard changes every week. Kids scoop $5. Singles $7.</p>
+          <ul class="hours-list">
+            <li><span>Thursday & Friday</span><span>3 – 8 pm</span></li>
+            <li><span>Saturday & Sunday</span><span>1 – 8 pm</span></li>
+            <li class="closed"><span>Monday – Wednesday</span><span>Closed</span></li>
+          </ul>
+          <a href="https://maps.google.com/maps?q=1320+Esquimalt+Road+Victoria+BC" target="_blank" rel="noopener" class="link-arrow">1320 Esquimalt Road, Victoria →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FLAVOURS -->
+  <section class="flavours" id="flavours">
+    <div class="container">
+      <div class="flavours-inner">
+        <div class="flavours-text reveal">
+          <div class="section-label">The Flavours</div>
+          <h2>Roasted strawberry in July. Fig and blackberry in September.</h2>
+          <p>Everything is made from what's growing right now. When the plums are perfect, there's golden plum sorbet. When they're done, it's gone until next year.</p>
+          <p>The menu lives on Instagram because it changes faster than any website could keep up.</p>
+          <a href="https://www.instagram.com/kidsistericecream/" target="_blank" rel="noopener" class="btn btn-cream">
+            See What's On Right Now
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          </a>
+        </div>
+        <div class="flavours-images reveal reveal-delay-1">
+          <img src="assets/site-img-21.jpg" alt="Five Kid Sister ice cream tubs on red gingham">
+          <img src="ig-photo-06.jpg" alt="Cherry blossom seasonal flatlay">
+          <img src="ig-photo-02.jpg" alt="Kiwi colada sorbet with kombucha">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FIND US (Events) -->
+  <section class="find-us" id="find-us">
+    <div class="container">
+      <div class="find-us-header reveal">
+        <div class="section-label">Events & Markets</div>
+        <h2>Find Us Out There</h2>
+        <p>When we're not at the shop, we're at markets and festivals with the truck and a freezer full of pops.</p>
+      </div>
+      <div class="find-us-grid">
+        <div class="events-col reveal">
+          <ul class="event-list">
+            <li class="event-item">
+              <div class="event-name">Second Nature Market</div>
+              <div class="event-details">2026 Season</div>
+            </li>
+            <li class="event-item">
+              <div class="event-name">Esquimalt Buccaneer Days</div>
+              <div class="event-details">2026 Season</div>
+            </li>
+            <li class="event-item">
+              <div class="event-name">The Village Block Party</div>
+              <div class="event-details">2026 Season</div>
+            </li>
+          </ul>
+          <a href="mailto:hello@kidsistericecream.com" class="link-arrow">Want Kid Sister at your event? →</a>
+        </div>
+        <div class="photo-break reveal reveal-delay-1">
+          <img src="assets/site-img-24.jpg" alt="Kid Sister founders at a pop-up market with the truck">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STOCKISTS -->
+  <section class="stockists" id="stockists">
+    <div class="container">
+      <div class="stockists-header reveal">
+        <div class="section-label">Stockists</div>
+        <h2>Take Some Home</h2>
+        <p>Find Kid Sister pints and pops at these shops around Victoria and Saanich.</p>
+      </div>
+      <div class="stockists-grid">
+        <div class="stockist-col">
+          <div class="stockist-group">
+            <div class="stockist-group-label">Victoria</div>
+            <ul class="stockist-list">
+              <li class="stockist-item">
+                <div class="stockist-name">Routine Coffee</div>
+                <div class="stockist-address">1036 Fort St</div>
+              </li>
+              <li class="stockist-item">
+                <div class="stockist-name">The Local General Store</div>
+                <div class="stockist-address">1440 Haultain St</div>
+              </li>
+              <li class="stockist-item">
+                <div class="stockist-name">Belle General Store</div>
+                <div class="stockist-address">846 Fort St</div>
+              </li>
+              <li class="stockist-item">
+                <div class="stockist-name">Victoria Olive Oil Co</div>
+                <div class="stockist-address">619 Broughton St</div>
+              </li>
+            </ul>
+          </div>
+          <div class="stockist-group">
+            <div class="stockist-group-label">Esquimalt & Saanich</div>
+            <ul class="stockist-list">
+              <li class="stockist-item">
+                <div class="stockist-name">The Market Garden</div>
+                <div class="stockist-address">810 Catherine St, Esquimalt</div>
+              </li>
+              <li class="stockist-item">
+                <div class="stockist-name">Charlotte & the Quail</div>
+                <div class="stockist-address">505 Quayle Rd, Saanich</div>
+              </li>
+            </ul>
+          </div>
+          <div class="stockist-group">
+            <div class="stockist-group-label">Saanichton</div>
+            <ul class="stockist-list">
+              <li class="stockist-item">
+                <div class="stockist-name">Neighbourly Wine</div>
+                <div class="stockist-address">6409B Oldfield Rd</div>
+              </li>
+              <li class="stockist-item">
+                <div class="stockist-name">Dan's Farm & Country Market</div>
+                <div class="stockist-address">2030 Bear Hill Rd</div>
+              </li>
+            </ul>
+          </div>
+          <div class="stockists-note">
+            Due to the Milk Industry Act, dairy-based ice cream is only available at the scoop shop and events. Stockists carry dairy-free and fruit-based pints and pops.
+          </div>
+        </div>
+        <div class="stockists-side reveal reveal-delay-1">
+          <img src="assets/site-img-10.jpg" alt="Artisan popsicles on patchwork fabric">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-inner">
+        <div class="about-images reveal">
+          <img src="assets/site-img-09.jpg" alt="Dairy cows grazing on Vancouver Island farmland">
+          <img src="assets/site-img-22.jpg" alt="Peach popsicle by the lake">
+          <img src="ig-photo-03.jpg" alt="Flower popsicle against hydrangea blooms">
+        </div>
+        <div class="about-text reveal reveal-delay-1">
+          <div class="section-label">About</div>
+          <h2>Organic dairy from the island. Fruit from the valley.</h2>
+          <p>Organic milk from Vancouver Island farms. Strawberries picked that morning. Rhubarb from a friend's garden. That's the recipe, more or less.</p>
+          <p>Everything is made in small batches at the shop on Esquimalt Road. When a flavour's done for the season, it's done. That's what makes the next one worth waiting for.</p>
+          <a href="mailto:hello@kidsistericecream.com" class="link-arrow">hello@kidsistericecream.com →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <div class="footer-brand">Kid Sister</div>
+          <div class="footer-tagline">Frozen delights on Esquimalt Road</div>
+        </div>
+        <ul class="footer-links">
+          <li><a href="#shop">The Shop</a></li>
+          <li><a href="#flavours">Flavours</a></li>
+          <li><a href="#find-us">Find Us</a></li>
+          <li><a href="#stockists">Stockists</a></li>
+          <li><a href="#about">About</a></li>
+        </ul>
+        <div class="footer-contact">
+          <a href="mailto:hello@kidsistericecream.com">hello@kidsistericecream.com</a>
+          <a href="https://www.instagram.com/kidsistericecream/" target="_blank" rel="noopener">@kidsistericecream</a>
+          <a href="https://maps.google.com/maps?q=1320+Esquimalt+Road+Victoria+BC" target="_blank" rel="noopener">1320 Esquimalt Rd, Victoria, BC</a>
+        </div>
+      </div>
+      <div class="footer-bottom">© 2026 Kid Sister Ice Cream</div>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll-reveal observer
+    const revealEls = document.querySelectorAll('.reveal, .hours-list, .stockist-col');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    revealEls.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>

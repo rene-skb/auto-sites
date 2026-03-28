@@ -1,7 +1,14 @@
 <!--
-  Sean Evans — Sound Design Artist
-  Movements is the showcase. Everything else lives in the discography grid.
-  Flow: Hero → Movements (featured) → Quote → About → Discography → Footer
+  v5 — Final: fixed image reuse (removed Movements from discography, added Edits), copy audit clean
+  - Unified max-width (1080px) and consistent left alignment across all sections
+  - Two tracking values only: 0.06em (labels) and 0.12em (nav/caps)
+  - Credits: lighter weight, more vertical space, quieter
+  - Removed "Featured Album" label (redundant)
+  - Genre line: simplified separators
+  - Tracklist: tabular figures, clearer weight differentiation
+  - Consistent section spacing via --section-pad
+  - Quote attribution tightened
+  - Footer cleaned up
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +16,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sean Evans — Sound Design Artist</title>
-  <meta name="description" content="Ambient, drone, and minimalist music from Vancouver, BC. Listen to Stasis Music and Movements.">
+  <meta name="description" content="Ambient, drone, and minimalist music from Vancouver, BC. Listen to Movements.">
   <meta property="og:title" content="Sean Evans — Sound Design Artist">
   <meta property="og:description" content="Ambient, drone, and minimalist music from Vancouver, BC.">
   <meta property="og:image" content="assets/album-art-large.jpg">
@@ -28,6 +35,7 @@
       --track-label: 0.06em;
       --track-nav: 0.12em;
       --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -50,6 +58,7 @@
       padding-right: 48px;
     }
 
+    /* FOCUS & SKIP */
     a:focus-visible, button:focus-visible {
       outline: 2px solid var(--accent);
       outline-offset: 4px;
@@ -181,13 +190,6 @@
       margin: 0 auto;
       width: 100%;
       padding: 64px 48px;
-      opacity: 0;
-      transform: translateY(16px);
-      animation: hero-in 1200ms var(--ease-out) 300ms forwards;
-    }
-
-    @keyframes hero-in {
-      to { opacity: 1; transform: translateY(0); }
     }
 
     .hero-title {
@@ -218,20 +220,18 @@
       margin-bottom: 24px;
     }
 
-    /* ALBUM SECTIONS */
-    .album-section {
+    /* FEATURED ALBUM */
+    .featured {
       padding-top: var(--section-pad);
       padding-bottom: var(--section-pad);
     }
 
-    .album-layout {
+    .featured-layout {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 64px;
       align-items: start;
     }
-
-    .album-layout--flipped .album-info { order: -1; }
 
     .album-art {
       width: 100%;
@@ -253,20 +253,12 @@
     .album-meta {
       font-size: 14px;
       color: var(--text-muted);
-      margin-bottom: 16px;
-    }
-
-    .album-desc {
-      font-size: 16px;
-      color: var(--text-muted);
-      line-height: 1.7;
-      margin-bottom: 24px;
-      max-width: 460px;
+      margin-bottom: 32px;
     }
 
     .tracklist {
       list-style: none;
-      margin-bottom: 32px;
+      margin-bottom: 40px;
     }
 
     .tracklist li {
@@ -279,20 +271,6 @@
     }
 
     .tracklist li:first-child { border-top: 1px solid rgba(255,255,255,0.06); }
-
-    .track-side {
-      padding: 11px 0 4px;
-      font-size: 11px;
-      font-weight: 400;
-      letter-spacing: var(--track-nav);
-      text-transform: uppercase;
-      color: var(--accent);
-      opacity: 0.7;
-      border-bottom: none;
-    }
-
-    .track-side + li { border-top: none; }
-
     .track-name { font-weight: 400; }
 
     .track-duration {
@@ -304,11 +282,7 @@
       text-align: right;
     }
 
-    .album-cta {
-      display: inline-flex;
-      gap: 16px;
-      margin-bottom: 32px;
-    }
+    .album-cta { display: inline-flex; gap: 16px; }
 
     .btn {
       display: inline-block;
@@ -336,24 +310,6 @@
     }
 
     .btn-secondary:hover { border-color: rgba(255,255,255,0.6); }
-
-    /* INLINE CREDITS (inside album sections) */
-    .album-credits {
-      font-size: 13px;
-      color: var(--text-muted);
-      line-height: 1.6;
-      opacity: 0.7;
-      max-width: 460px;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .album-credits span {
-      display: block;
-      color: var(--text);
-      opacity: 0.6;
-    }
 
     /* QUOTE */
     .quote-section {
@@ -383,7 +339,7 @@
     /* ABOUT */
     .about {
       padding-top: var(--section-pad);
-      padding-bottom: var(--section-pad);
+      padding-bottom: 48px;
     }
 
     .about p {
@@ -394,16 +350,44 @@
       line-height: 1.8;
     }
 
+    /* CREDITS */
+    .credits {
+      padding-bottom: var(--section-pad);
+    }
+
+    .credits-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px 48px;
+    }
+
+    .credit-item {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .credit-role {
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: var(--track-label);
+      text-transform: uppercase;
+      color: var(--accent);
+      display: block;
+      margin-bottom: 2px;
+      opacity: 0.8;
+    }
+
     /* DISCOGRAPHY */
     .discography {
-      padding-top: 0;
+      padding-top: var(--section-pad);
       padding-bottom: var(--section-pad);
     }
 
     .disco-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 32px;
+      gap: 40px;
     }
 
     .disco-item {
@@ -417,7 +401,7 @@
       aspect-ratio: 1;
       object-fit: cover;
       border-radius: 2px;
-      margin-bottom: 12px;
+      margin-bottom: 16px;
       transition: opacity 200ms var(--ease-out);
     }
 
@@ -425,8 +409,8 @@
 
     .disco-title {
       font-family: 'Instrument Serif', serif;
-      font-size: 18px;
-      margin-bottom: 2px;
+      font-size: 22px;
+      margin-bottom: 4px;
     }
 
     .disco-year { font-size: 13px; color: var(--text-muted); }
@@ -458,6 +442,25 @@
 
     .footer-copy { font-size: 13px; color: var(--text-muted); opacity: 0.5; }
 
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .container { padding-left: 24px; padding-right: 24px; }
+      nav { padding: 20px 24px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .hero { height: 85vh; }
+      .hero-content { padding: 48px 24px; }
+      .featured-layout { grid-template-columns: 1fr; gap: 32px; }
+      .album-art { max-width: 320px; }
+      .credits-grid { grid-template-columns: 1fr; }
+      .disco-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    }
+
+    @media (max-width: 480px) {
+      .disco-grid { grid-template-columns: 1fr; max-width: 280px; margin-left: auto; margin-right: auto; }
+      .album-cta { flex-direction: column; }
+    }
+
     /* SCROLL REVEAL */
     .reveal {
       opacity: 0;
@@ -472,23 +475,15 @@
 
     .reveal-stagger { transition-delay: var(--stagger, 0ms); }
 
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
-      .container { padding-left: 24px; padding-right: 24px; }
-      nav { padding: 20px 24px; }
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-      .hero { height: 85vh; }
-      .hero-content { padding: 48px 24px; }
-      .album-layout { grid-template-columns: 1fr; gap: 32px; }
-      .album-layout--flipped .album-info { order: 0; }
-      .album-art { max-width: 320px; }
-      .disco-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    /* HERO ENTRANCE */
+    .hero-content {
+      opacity: 0;
+      transform: translateY(16px);
+      animation: hero-in 1200ms var(--ease-out) 300ms forwards;
     }
 
-    @media (max-width: 480px) {
-      .disco-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
-      .album-cta { flex-direction: column; }
+    @keyframes hero-in {
+      to { opacity: 1; transform: translateY(0); }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -532,14 +527,13 @@
     </div>
   </section>
 
-  <!-- MOVEMENTS -->
-  <section class="album-section container reveal" id="movements">
-    <div class="album-layout album-layout--flipped">
+  <!-- FEATURED ALBUM -->
+  <section class="featured container reveal" id="movements">
+    <div class="featured-layout">
+      <img src="assets/album-art-large.jpg" alt="Movements album cover — hazy ocean horizon" class="album-art">
       <div class="album-info">
-        <p class="section-label">Self-Released</p>
         <h2 class="album-title">Movements</h2>
         <p class="album-meta">October 2020 · 7 tracks · 39 minutes</p>
-        <p class="album-desc">Seven pieces built from piano, synth, and saxophone. Available on 180-gram vinyl.</p>
         <ol class="tracklist">
           <li><span class="track-name">Night</span><span class="track-duration">06:30</span></li>
           <li><span class="track-name">Sway</span><span class="track-duration">03:53</span></li>
@@ -553,17 +547,7 @@
           <a href="https://sean-evans.bandcamp.com/album/movements" target="_blank" rel="noopener" class="btn btn-primary">Listen on Bandcamp</a>
           <a href="https://sean-evans.bandcamp.com/album/movements" target="_blank" rel="noopener" class="btn btn-secondary">Vinyl — $35 CAD</a>
         </div>
-        <div class="album-credits">
-          <span>Written, produced & recorded by Sean Evans</span>
-          <span>Recorded at Kiklo Studios, Vancouver, BC — 2019–2020</span>
-          <span>Additional production — Jordan Esau</span>
-          <span>Saxophone — Paolo Carcamo</span>
-          <span>Mixed by Jordan Esau</span>
-          <span>Mastered by Joshua Stevenson at Otic Mastering</span>
-          <span>Artwork by Klee Larsen Crawford</span>
-        </div>
       </div>
-      <img src="assets/album-art-large.jpg" alt="Movements album cover — hazy ocean horizon in lavender and seafoam" class="album-art">
     </div>
   </section>
 
@@ -576,8 +560,23 @@
   <!-- ABOUT -->
   <section class="about container reveal" id="about">
     <p class="section-label">About</p>
-    <p>Sean Evans is a sound design artist based in Vancouver, BC. His work lives between ambient, drone, and minimalism, built slowly over months of patient recording at studios around Vancouver.</p>
-    <p>Piano, synths, samples, and programming form the core. Collaborators fill in the space around it: Jordan Esau on production and mixing, Alex Kelley on double bass, Paolo Carcamo on saxophone.</p>
+    <p>Sean Evans is a sound design artist based in Vancouver, BC. His work lives between ambient, drone, and minimalism, built slowly at Kiklo Studios over months of patient recording.</p>
+    <p>Movements took thirteen months. Recorded at Kiklo Studios from January 2019 to February 2020, mixed by Jordan Esau, mastered by Joshua Stevenson at Otic Mastering. Saxophone by Paolo Carcamo. Pressed on 180-gram vinyl by Poly Custom Records in North Vancouver.</p>
+  </section>
+
+  <!-- CREDITS -->
+  <section class="credits container reveal">
+    <p class="section-label">Credits</p>
+    <div class="credits-grid">
+      <div class="credit-item"><span class="credit-role">Written, Produced & Recorded</span>Sean Evans</div>
+      <div class="credit-item"><span class="credit-role">Additional Production & Mixing</span>Jordan Esau</div>
+      <div class="credit-item"><span class="credit-role">Saxophone</span>Paolo Carcamo</div>
+      <div class="credit-item"><span class="credit-role">Mastering</span>Joshua Stevenson · Otic Mastering</div>
+      <div class="credit-item"><span class="credit-role">Artwork</span>Klee Larsen Crawford</div>
+      <div class="credit-item"><span class="credit-role">Back Text</span>Sabrina Chen</div>
+      <div class="credit-item"><span class="credit-role">Vinyl Pressing</span>Poly Custom Records · North Vancouver</div>
+      <div class="credit-item"><span class="credit-role">Studio</span>Kiklo Studios · Vancouver, BC</div>
+    </div>
   </section>
 
   <!-- DISCOGRAPHY -->
@@ -585,22 +584,22 @@
     <p class="section-label">Discography</p>
     <div class="disco-grid">
       <a href="https://sustainedtones.bandcamp.com/album/sean-evans-stasis-music" target="_blank" rel="noopener" class="disco-item">
-        <img src="assets/stasis-music-art.jpg" alt="Stasis Music" class="disco-art">
+        <img src="assets/stasis-music-art.jpg" alt="Stasis Music — soft abstract tones" class="disco-art">
         <p class="disco-title">Stasis Music</p>
         <p class="disco-year">2023</p>
       </a>
       <a href="https://sean-evans.bandcamp.com/album/wave" target="_blank" rel="noopener" class="disco-item">
-        <img src="assets/album-2.jpg" alt="Wave" class="disco-art">
+        <img src="assets/album-2.jpg" alt="Wave — cassette artwork with ocean wave graphic" class="disco-art">
         <p class="disco-title">Wave</p>
         <p class="disco-year">2018</p>
       </a>
       <a href="https://sean-evans.bandcamp.com/album/catalog" target="_blank" rel="noopener" class="disco-item">
-        <img src="assets/album-3.jpg" alt="Catalog" class="disco-art">
+        <img src="assets/album-3.jpg" alt="Catalog — isometric layered graphic design" class="disco-art">
         <p class="disco-title">Catalog</p>
         <p class="disco-year">2018</p>
       </a>
-      <a href="https://sean-evans.bandcamp.com/album/edits" target="_blank" rel="noopener" class="disco-item">
-        <img src="assets/album-4.jpg" alt="Edits" class="disco-art">
+      <a href="https://sean-evans.bandcamp.com" target="_blank" rel="noopener" class="disco-item">
+        <img src="assets/album-4.jpg" alt="Edits — glitched landscape in amber and dark tones" class="disco-art">
         <p class="disco-title">Edits</p>
         <p class="disco-year">2018</p>
       </a>
@@ -611,12 +610,12 @@
   <footer class="container">
     <div class="footer-links">
       <a href="https://sean-evans.bandcamp.com" target="_blank" rel="noopener">Bandcamp</a>
-      <a href="https://sustainedtones.bandcamp.com/album/sean-evans-stasis-music" target="_blank" rel="noopener">Sustained Tones</a>
     </div>
     <p class="footer-copy">© 2026 Sean Evans</p>
   </footer>
 
   <script>
+    // Scroll reveal
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -628,12 +627,14 @@
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    document.querySelectorAll('.tracklist li:not(.track-side)').forEach((li, i) => {
+    // Stagger tracklist items
+    document.querySelectorAll('.tracklist li').forEach((li, i) => {
       li.classList.add('reveal', 'reveal-stagger');
       li.style.setProperty('--stagger', `${i * 60}ms`);
       observer.observe(li);
     });
 
+    // Stagger discography items
     document.querySelectorAll('.disco-item').forEach((item, i) => {
       item.classList.add('reveal', 'reveal-stagger');
       item.style.setProperty('--stagger', `${i * 80}ms`);

@@ -1,5 +1,48 @@
 # Auto-Sites Build Log
 
+## Build 78 — Routine Coffee & Supply
+- **Category:** Coffee Shop + Coffee Truck
+- **City:** Victoria, BC
+- **Date:** 2026-03-28
+- **Model:** claude-opus-4-6 (subagent)
+- **Agent:** Lucy
+- **Hero pattern:** editorial-spread (full-bleed storefront photo → massive headline slam below, magazine-style)
+- **Typography:** Barlow Condensed 400-900 + DM Sans 400/500/600
+- **Review layout:** N/A (no reviews — community/neighborhood section instead)
+- **Stats bar style:** no-stats
+- **Score:** 6.0 (WHY avg) / 7.3 (WHAT avg) / 6.875 (HOW avg) → 6.73
+- **Self-review:** 7.0 (footnote)
+- **Live URL:** https://auto-sites.pages.dev/demos/routine-coffee/
+- **Key decisions:** EXPERIMENTAL BUILD per Scott's brief. "Grab it. Go." headline captures grab-and-go energy in 3 words. Full-viewport hero storefront photo (ig-photo-07, dusk shot) with no text overlay — let the photo breathe. Magazine-style editorial spreads instead of traditional sections. "The menu is the board." section turns the lack of online menu into brand personality — pushes to Instagram. Suzi the truck gets her own cinematic dark section with "1991" watermark type. 8 of 12 Instagram photos used (skipped hours graphic, event poster, closure sign, duplicate retail). Barlow Condensed chosen for industrial/signage energy matching their storefront typography. Three-voice type system: T1 display (900 weight, up to 240px), T2 section heads (800), T3 intro (DM Sans 600/24px). Sticky nav appears after hero via IntersectionObserver. Gold/green/orange/cream palette extracted from brand. Scroll-reveal animations on headlines, staggered word entrance on main headline. HOW panel didn't pass 7.0 gate after 2 retries (6.875 best) — noted. Copy audit clean: no AI slop, no em dashes in body.
+
+### Scores
+| Round | Phase | Reviewers | Avg |
+|-------|-------|-----------|-----|
+| v0→v1 | WHY | Jobs 7.0, Cagan 5.0, Ogilvy 6.0 | 6.0 |
+| v1→v2 | WHAT | Norman 8.0, Krug 7.0, Nielsen 7.0 | 7.3 |
+| v2→v3 | HOW | Vignelli 7.0, Spiekermann 7.0, Rams 7.0, Ruder 6.5 | 6.875 |
+| v5 | Self | Lucy | 7.0 |
+
+### Photo Evaluation (Phase 1)
+| Rank | File | Score | Aspect | Role |
+|------|------|-------|--------|------|
+| 1 | ig-photo-07 | 9/10 | Portrait 9:16 | Hero (storefront dusk) |
+| 2 | ig-photo-10 | 8.5/10 | Square | Counter section (donuts) |
+| 3 | ig-photo-09 | 8/10 | Square | Supply mosaic (TANAT + cans) |
+| 4 | ig-photo-03 | 8/10 | Portrait 4:5 | Community moment |
+| 5 | ig-photo-02 | 7.5/10 | Square | Suzi section (behind bar) |
+| 6 | ig-photo-08 | 7/10 | Square | Supply mosaic (drinks) |
+| 7 | ig-photo-11 | 7/10 | Portrait 4:5 | Not used in final |
+| 8 | ig-photo-04 | 7/10 | Square | Supply mosaic (retail shelf) |
+| 9-12 | 01,05,06,12 | 5-6.5/10 | Various | Skipped |
+
+### Files
+- index-v0.html through index-v5.html (6 versions) + index.html
+- 12 real Instagram photos (ig-photo-01 through ig-photo-12)
+- screenshot-v0.png through screenshot-v5.png
+
+---
+
 ## Build 77 — Humble Coffee Roasters
 - **Category:** Coffee Roaster / Café
 - **City:** Calgary, AB

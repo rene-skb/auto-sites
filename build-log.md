@@ -1,5 +1,50 @@
 # Auto-Sites Build Log
 
+## Build 79 — Frondly Plants
+- **Category:** Indoor Plant Shop
+- **City:** Vancouver, BC
+- **Date:** 2026-03-28
+- **Model:** claude-opus-4-6 (subagent)
+- **Agent:** Lucy
+- **Hero pattern:** giant-display-type (massive "Frondly" serif over dark plant photography, bottom-aligned content)
+- **Typography:** Cormorant Garamond 400/500/600/700 + Space Grotesk 400/500/600
+- **Review layout:** 3-column equal cards on dark green background, consistent treatment
+- **Stats bar style:** no-stats
+- **Score:** 6.67 (WHY avg) / 8.0 (WHAT avg, retry) / 6.5 (HOW avg, retry) → 7.06
+- **Self-review:** 7.5 (footnote)
+- **Live URL:** https://auto-sites.pages.dev/demos/frondly-plants/
+- **Key decisions:** "Every review mentions Chad by name" is the strongest headline — specific, surprising, makes you curious. Hero subtitle "Rare tropicals, collectors' plants, and the weird ones you won't find anywhere else" communicates purpose immediately. "Not easy to find" from Rachel K.'s review became the brand's charm angle. Instagram framed as the inventory/catalog ("See what's in right now on Instagram") since this is a physical shop without e-commerce. 8 of 12 Instagram photos used (skipped hoya top-down, hoya stem, monstera cataphyll, hoya bloom — too niche). Cormorant Garamond chosen for botanical/editorial energy matching a curated plant shop. Forest green (#1B3A2D) + cream (#F5F1E8) palette — the green IS the brand. Scroll-reveal with staggered gallery (80ms) and review cards (60ms). Copy audit clean: no AI slop, no em dashes, no significance inflation.
+
+### Scores
+| Round | Phase | Reviewers | Avg |
+|-------|-------|-----------|-----|
+| v0→v1 | WHY | Jobs 7.0, Cagan 6.0, Ogilvy 7.0 | 6.67 |
+| v1→v2 | WHAT (initial) | Norman 5.0, Krug 4.0, Nielsen 4.0 | 4.33 |
+| v2 | WHAT (retry) | Norman 8.0, Krug 9.0, Nielsen 7.0 | 8.0 |
+| v2→v3 | HOW (initial) | Vignelli 7.0, Spiekermann 6.0, Rams 7.0, Emil 4.0 | 6.0 |
+| v3 | HOW (retry) | Vignelli 7.0, Spiekermann 6.0, Rams 8.0, Emil 5.0 | 6.5 |
+| v5 | Self | Lucy | 7.5 |
+
+### Photo Evaluation (Phase 1)
+| Rank | File | Score | Aspect | Role |
+|------|------|-------|--------|------|
+| 1 | ig-photo-08 | 9/10 | Square | Hero background (hanging plants window) |
+| 2 | ig-photo-12 | 8.5/10 | Square | Gallery feature wide (Monstera collection) |
+| 3 | ig-photo-02 | 8.5/10 | Square | Gallery (Alocasia Frydek) |
+| 4 | ig-photo-05 | 8.5/10 | Square | About section (Philodendron verrucosum) |
+| 5 | ig-photo-07 | 8/10 | Square | Gallery (Alocasia zebrina) |
+| 6 | ig-photo-04 | 8/10 | Square | Gallery (cycad frond) |
+| 7 | ig-photo-09 | 8/10 | Square | Gallery (Monstera leaf) |
+| 8 | ig-photo-01 | 7.5/10 | Square | Gallery (caladium with droplets) |
+| 9-12 | 03,06,10,11 | 6-7/10 | Square | Skipped (too niche, cluttered) |
+
+### Files
+- index-v0.html through index-v5.html (6 versions) + index.html
+- 12 real Instagram photos (ig-photo-01 through ig-photo-12)
+- screenshot-v0.png through screenshot-v5.png
+
+---
+
 ## Build 78 — Routine Coffee & Supply
 - **Category:** Coffee Shop + Coffee Truck
 - **City:** Victoria, BC
@@ -3045,3 +3090,33 @@ Real Victoria BC business. Website was literally just a street address (touristw
 - **Stats bar style:** inline in hero grid (4 stats, serif numerals)
 - **Score:** 8/10 → 8.5/10 final
 - **Key decisions:** Dark warm theme (#0C0B09 + amber #C8963A) for AI/agent designer positioning. Real case study screenshots from scottkbell.com. Hero headline "I find the logic underneath — then make it impossible to ignore" captures Zone of Genius precisely. LoopIn featured as current direction with terminal mockup. Case study layout: 260px meta column + flexible description + full-width 4-col image row.
+
+### Routine Coffee & Supply V2 — Coffee Shop + Coffee Truck, Victoria BC
+- **Date:** 2026-03-28
+- **Hero pattern:** editorial-spread (full-viewport photo, text overlay at bottom)
+- **Typography:** Barlow Condensed + DM Sans
+- **Review layout:** N/A (no reviews — coffee shop doesn't need them)
+- **Stats bar style:** no-stats
+- **Score:** WHY 6.83 / WHAT 7.17 / HOW 6.0 (2 retries, capped at best) → 6.67
+- **Self-review:** 7.5
+- **Key decisions:** "No Wrong Orders" as hero headline (brand's own voice from their menu). Golden-hour window photo as hero. 4-chapter structure: Coffee (full menu) → Shop → Suzi the Truck → Booking. Deep green (#2D4A2D) for Suzi section creates distinct chapter feel. Full menu with actual prices. Real photography from both Instagram and website assets — 7 photos curated from 46 available. V1 scored 6.73; V2 improved structure, photo curation, and editorial flow but craft panels scored lower than expected due to type hierarchy gaps in early versions.
+
+### Scott Bell Portfolio v2 (Definitive) — Personal Portfolio, Victoria BC
+- **Date:** 2026-03-28
+- **Hero pattern:** giant-display-type (full-viewport serif headline with gold italic accent)
+- **Typography:** Instrument Serif + Space Grotesk + JetBrains Mono
+- **Review layout:** N/A (portfolio)
+- **Stats bar style:** no-stats (numbers woven into hero sub-copy)
+- **Score:** WHY 6.0 / WHAT 6.17 (retry needed) / HOW 7.0 → 6.39 panel avg
+- **Self-review:** 7.5
+- **Key decisions:** Three-chapter structure (Built → Career → About) with distinct visual moods: dark GitHub-navy for AI products, warm paper for career, dark charcoal for about. Nakamoto Design Co. given full showcase treatment with 6-site preview grid and 80+/13/1 stats — it's the centerpiece of Chapter 1. Terminal mockups for mix-id and LoopIn. Career section uses 2-column layout (company info left, description + screenshots right). Copy humanized through multiple audit passes. Scroll-reveal animations with staggered timing. Gold accent (#C8963A) + blue (#6CB6FF) dual-accent system for warm/cool chapter distinction. Real screenshots: Strike (3), AIOZ (3), Fountain (4). Nakamoto previews: Farine, Kid Sister, Status, Flowers, Goodside, 33 Acres. Built for 1Password recruiter review.
+
+### Kid Sister Ice Cream v5 — Ice Cream Shop, Victoria BC
+- **Date:** 2026-03-28
+- **Hero pattern:** full-viewport-bg (owner + kei truck photo, centered conviction text)
+- **Typography:** Playfair Display + DM Sans
+- **Review layout:** N/A (no reviews section)
+- **Stats bar style:** no-stats
+- **Score:** WHY 6.17 / WHAT 7.33 (retry) / HOW 7.0 (retry) → 6.83 panel avg
+- **Self-review:** 7.5
+- **Key decisions:** Five-chapter structure (Shop → Flavours → Events → Stockists → About) each with distinct color/mood. "Seasonal. Small-batch. Gone when it's gone." as hero conviction. True red (#C41E2A) + forest green (#2D5A3D) + cream palette extracted from actual brand signage. 10 Instagram photos + 29 website photos evaluated; 11 used. Menu redirects to Instagram (rotating inventory pattern). Stockists grouped by geography for scannability. Scroll-reveal animations with hero text stagger. Copy humanized through audit pass. The definitive Kid Sister build with all available content.

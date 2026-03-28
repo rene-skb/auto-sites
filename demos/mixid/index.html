@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>mix-id — Identify every track in a DJ mix</title>
+<meta name="description" content="CLI tool that identifies every track in a DJ mix with timestamps. Paste a URL, get a tracklist. Free, open source, Node.js.">
+<meta property="og:title" content="mix-id — Paste a URL. Get a tracklist.">
+<meta property="og:description" content="Identify every track in a DJ mix with timestamps. One command, no account needed. Free, open source.">
+<meta property="og:url" content="https://mix-id.vercel.app/">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #0C0B10;
+  --bg-surface: #13121A;
+  --bg-elevated: #1A1924;
+  --text: #E8E6F0;
+  --text-dim: #9B98AD;
+  --text-faint: #6E6B80;
+  --accent: #4ADE80;
+  --accent-dim: rgba(74, 222, 128, 0.15);
+  --format-txt: #F59E0B;
+  --format-cue: #22D3EE;
+  --format-json: #F87171;
+  --serif: 'Crimson Pro', Georgia, serif;
+  --mono: 'Space Mono', 'SF Mono', 'Fira Code', monospace;
+  --max-w: 980px;
+  --section-pad: 96px;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@media (prefers-color-scheme: light) {
+  :root { /* stay dark regardless */ }
+}
+
+body {
+  font-family: var(--mono);
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a { color: var(--accent); text-decoration: none; transition: opacity 200ms var(--ease-out); }
+a:hover { opacity: 0.8; }
+
+*:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: rgba(74, 222, 128, 0.25);
+  color: var(--text);
+}
+
+/* ===== NAV ===== */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 20px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(12, 11, 16, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+.nav-brand {
+  font-family: var(--mono);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: 0.02em;
+}
+
+.nav-brand span { color: var(--accent); }
+
+.nav-links {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--text-dim);
+  letter-spacing: 0.04em;
+  transition: color 200ms var(--ease-out);
+}
+
+.nav-links a:hover { color: var(--text); opacity: 1; }
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 120px 24px 64px;
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
+.hero-label {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 24px;
+}
+
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(48px, 8vw, 96px);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  margin-bottom: 24px;
+}
+
+.hero-sub {
+  font-family: var(--serif);
+  font-size: clamp(18px, 2.5vw, 22px);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--text-dim);
+  max-width: 540px;
+  margin-bottom: 48px;
+}
+
+.hero-command {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--bg-surface);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 8px;
+  padding: 14px 24px;
+  font-family: var(--mono);
+  font-size: 15px;
+  cursor: pointer;
+  transition: border-color 200ms var(--ease-out), transform 100ms var(--ease-out);
+}
+
+.hero-command:hover { border-color: rgba(74, 222, 128, 0.3); }
+.hero-command:active { transform: scale(0.97); }
+
+.hero-command .prompt { color: var(--text-faint); }
+.hero-command .cmd { color: var(--accent); }
+.hero-command .arg { color: var(--text-dim); }
+.hero-command .copy-hint {
+  font-size: 11px;
+  color: var(--text-faint);
+  margin-left: 12px;
+  padding: 2px 8px;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 4px;
+}
+
+.hero-note {
+  margin-top: 16px;
+  font-size: 12px;
+  color: var(--text-faint);
+}
+
+/* ===== TERMINAL ===== */
+.terminal-section {
+  padding: 0 24px var(--section-pad);
+  max-width: calc(var(--max-w) + 48px);
+  margin: 0 auto;
+}
+
+.terminal {
+  background: var(--bg-surface);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.terminal-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 20px;
+  background: rgba(255,255,255,0.02);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+.terminal-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.dot-red { background: #FF5F57; }
+.dot-yellow { background: #FEBC2E; }
+.dot-green { background: #28C840; }
+
+.terminal-title {
+  flex: 1;
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-faint);
+  letter-spacing: 0.04em;
+}
+
+.terminal-body {
+  padding: 24px 28px;
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1.8;
+  overflow-x: auto;
+}
+
+.terminal-body .prompt-line {
+  color: var(--text-faint);
+  margin-bottom: 16px;
+}
+
+.terminal-body .prompt-line .cmd { color: var(--accent); }
+.terminal-body .prompt-line .url { color: var(--text-dim); }
+
+.terminal-body .divider {
+  color: var(--text-faint);
+  opacity: 0.3;
+}
+
+.terminal-body .header-line {
+  color: var(--text-dim);
+  letter-spacing: 0.06em;
+  margin: 4px 0;
+}
+
+.terminal-body .track {
+  color: var(--text);
+}
+
+.terminal-body .track .timestamp { color: var(--accent); }
+.terminal-body .track .artist { color: var(--text); font-weight: 700; }
+.terminal-body .track .title { color: var(--text-dim); }
+.terminal-body .track .album { color: var(--text-faint); }
+
+.terminal-body .summary {
+  margin-top: 16px;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* ===== SOURCES ===== */
+.sources {
+  padding: var(--section-pad) 24px;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.section-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 12px;
+}
+
+.sources h2 {
+  font-family: var(--serif);
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin-bottom: 40px;
+}
+
+.source-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 32px 48px;
+}
+
+.source-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.source-icon {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-surface);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 10px;
+}
+
+.source-icon svg {
+  width: 28px;
+  height: 28px;
+  fill: var(--text-dim);
+}
+
+.source-name {
+  font-size: 13px;
+}
+
+.source-name {
+  font-size: 12px;
+  color: var(--text-dim);
+  letter-spacing: 0.04em;
+}
+
+.source-more {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-top: 24px;
+  padding: 10px 20px;
+  background: var(--bg-surface);
+  border-radius: 8px;
+  display: inline-block;
+}
+
+.source-more a { color: var(--accent); }
+
+/* ===== HOW IT WORKS ===== */
+.how {
+  padding: var(--section-pad) 24px;
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
+.how .section-label { text-align: center; }
+
+.how h2 {
+  font-family: var(--serif);
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.step {
+  padding: 32px;
+  background: var(--bg-surface);
+  border: 1px solid rgba(255,255,255,0.04);
+  border-radius: 12px;
+}
+
+.step-number {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: 0.08em;
+  margin-bottom: 16px;
+}
+
+.step h3 {
+  font-family: var(--serif);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+}
+
+.step p {
+  font-size: 14px;
+  color: var(--text-dim);
+  line-height: 1.7;
+}
+
+.step .tech {
+  margin-top: 14px;
+  font-size: 11px;
+  color: var(--text-faint);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ===== FORMATS ===== */
+.formats {
+  padding: var(--section-pad) 24px;
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
+.formats .section-label { text-align: center; }
+
+.formats h2 {
+  font-family: var(--serif);
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.format-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.format-card {
+  padding: 32px;
+  background: var(--bg-surface);
+  border: 1px solid rgba(255,255,255,0.04);
+  border-radius: 12px;
+  position: relative;
+}
+
+.format-badge {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 6px;
+  margin-bottom: 16px;
+}
+
+.badge-txt { color: var(--format-txt); background: rgba(245, 158, 11, 0.12); }
+.badge-cue { color: var(--format-cue); background: rgba(34, 211, 238, 0.12); }
+.badge-json { color: var(--format-json); background: rgba(248, 113, 113, 0.12); }
+
+.format-card h3 {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 10px;
+  letter-spacing: -0.01em;
+}
+
+.format-card p {
+  font-size: 14px;
+  color: var(--text-dim);
+  line-height: 1.7;
+}
+
+.format-preview {
+  margin-top: 20px;
+  padding: 16px;
+  background: var(--bg);
+  border-radius: 8px;
+  font-family: var(--mono);
+  font-size: 11px;
+  line-height: 1.6;
+  color: var(--text-faint);
+  overflow-x: auto;
+}
+
+/* ===== CTA ===== */
+.cta-section {
+  padding: var(--section-pad) 24px;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.cta-section h2 {
+  font-family: var(--serif);
+  font-size: clamp(28px, 4vw, 36px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+
+.cta-section p {
+  font-size: 14px;
+  color: var(--text-dim);
+  margin-bottom: 32px;
+}
+
+.cta-form {
+  display: flex;
+  gap: 12px;
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+.cta-form input {
+  flex: 1;
+  padding: 12px 16px;
+  font-family: var(--mono);
+  font-size: 14px;
+  background: var(--bg-surface);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px;
+  color: var(--text);
+  outline: none;
+  transition: border-color 200ms var(--ease-out);
+}
+
+.cta-form input:focus { border-color: var(--accent); }
+.cta-form input::placeholder { color: var(--text-faint); }
+
+.cta-form button {
+  padding: 12px 24px;
+  font-family: var(--mono);
+  font-size: 14px;
+  font-weight: 700;
+  background: var(--accent);
+  color: var(--bg);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 100ms var(--ease-out), opacity 200ms var(--ease-out);
+}
+
+.cta-form button:hover { opacity: 0.9; }
+.cta-form button:active { transform: scale(0.97); }
+
+.cta-note {
+  margin-top: 12px;
+  font-size: 12px;
+  color: var(--text-faint);
+}
+
+/* ===== FOOTER ===== */
+footer {
+  padding: 48px 24px;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  border-top: 1px solid rgba(255,255,255,0.04);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-left {
+  font-size: 13px;
+  color: var(--text-faint);
+}
+
+.footer-left a { color: var(--text-dim); }
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+}
+
+.footer-links a {
+  font-size: 13px;
+  color: var(--text-dim);
+  letter-spacing: 0.04em;
+}
+
+/* ===== WAVEFORM DIVIDER ===== */
+.waveform-divider {
+  padding: 0 24px;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  gap: 3px;
+  opacity: 0.15;
+}
+
+.waveform-divider span {
+  display: block;
+  width: 2px;
+  background: var(--accent);
+  border-radius: 1px;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+  :root {
+    --section-pad: 64px;
+  }
+
+  nav { padding: 16px 20px; }
+
+  .hero { padding: 100px 20px 48px; }
+  .hero h1 { font-size: clamp(36px, 10vw, 56px); }
+
+  .hero-command {
+    font-size: 13px;
+    padding: 12px 16px;
+    flex-wrap: wrap;
+  }
+
+  .terminal-body { padding: 16px; font-size: 11px; }
+
+  .steps { grid-template-columns: 1fr; gap: 16px; }
+
+  .format-cards { grid-template-columns: 1fr; gap: 16px; }
+
+  .cta-form { flex-direction: column; }
+
+  footer { flex-direction: column; gap: 16px; text-align: center; }
+
+  .nav-links { gap: 16px; }
+}
+
+@media (max-width: 480px) {
+  .source-grid { gap: 24px 32px; }
+  .hero-command .copy-hint { display: none; }
+}
+
+section { scroll-margin-top: 80px; }
+
+/* ===== ANIMATIONS ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 500ms var(--ease-out), transform 500ms var(--ease-out);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stagger-1 { transition-delay: 0ms; }
+.stagger-2 { transition-delay: 80ms; }
+.stagger-3 { transition-delay: 160ms; }
+
+/* Hero entrance */
+body.js-ready .hero-label,
+body.js-ready .hero h1,
+body.js-ready .hero-sub,
+body.js-ready .hero-command,
+body.js-ready .hero-note {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 500ms var(--ease-out), transform 500ms var(--ease-out);
+}
+
+body.js-loaded .hero-label    { opacity: 1; transform: translateY(0); transition-delay: 100ms; }
+body.js-loaded .hero h1       { opacity: 1; transform: translateY(0); transition-delay: 200ms; }
+body.js-loaded .hero-sub      { opacity: 1; transform: translateY(0); transition-delay: 320ms; }
+body.js-loaded .hero-command  { opacity: 1; transform: translateY(0); transition-delay: 440ms; }
+body.js-loaded .hero-note     { opacity: 1; transform: translateY(0); transition-delay: 520ms; }
+
+/* Waveform pulse */
+@keyframes waveform-pulse {
+  0%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(1.3); }
+}
+
+.waveform-divider span {
+  animation: waveform-pulse 2.5s ease-in-out infinite;
+}
+
+.waveform-divider span:nth-child(2n) { animation-delay: 0.15s; }
+.waveform-divider span:nth-child(3n) { animation-delay: 0.3s; }
+.waveform-divider span:nth-child(5n) { animation-delay: 0.45s; }
+.waveform-divider span:nth-child(7n) { animation-delay: 0.6s; }
+
+/* Terminal track stagger */
+.terminal-body .track,
+.terminal-body .summary {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 400ms var(--ease-out), transform 400ms var(--ease-out);
+}
+
+.terminal.visible .track { opacity: 1; transform: translateY(0); }
+.terminal.visible .track:nth-child(1) { transition-delay: 200ms; }
+.terminal.visible .track:nth-child(2) { transition-delay: 280ms; }
+.terminal.visible .track:nth-child(3) { transition-delay: 360ms; }
+.terminal.visible .track:nth-child(4) { transition-delay: 440ms; }
+.terminal.visible .track:nth-child(5) { transition-delay: 520ms; }
+.terminal.visible .track:nth-child(6) { transition-delay: 600ms; }
+.terminal.visible .track:nth-child(7) { transition-delay: 680ms; }
+.terminal.visible .summary { opacity: 1; transform: translateY(0); transition-delay: 800ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand"><span>mix</span>-id</div>
+  <ul class="nav-links">
+    <li><a href="https://www.npmjs.com/package/mix-id" target="_blank" rel="noopener">npm</a></li>
+    <li><a href="https://github.com/skip5this/mix-id" target="_blank" rel="noopener">GitHub</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <p class="hero-label">Free · Open Source · CLI</p>
+  <h1>Paste a URL.<br>Get a tracklist.</h1>
+  <p class="hero-sub">Identify every track in a DJ mix with timestamps. One command, no account needed.</p>
+  <div class="hero-command" onclick="navigator.clipboard.writeText('npx mix-id https://your-mix')" title="Click to copy">
+    <span class="prompt">$</span>
+    <span class="cmd">npx mix-id</span>
+    <span class="arg">https://your-mix</span>
+    <span class="copy-hint">click to copy</span>
+  </div>
+  <p class="hero-note">Requires Node.js 18+. Dependencies auto-install on macOS.</p>
+</section>
+
+<section class="terminal-section">
+  <div class="terminal">
+    <div class="terminal-bar">
+      <div class="terminal-dot dot-red"></div>
+      <div class="terminal-dot dot-yellow"></div>
+      <div class="terminal-dot dot-green"></div>
+      <div class="terminal-title">mix-id</div>
+    </div>
+    <div class="terminal-body">
+      <div class="prompt-line"><span class="prompt">$ </span><span class="cmd">npx mix-id</span> <span class="url">https://mixcloud.com/dynamicquality/friday-night-set</span></div>
+      <div class="divider">───────────────────────────────────────────────────────────────</div>
+      <div class="header-line">TRACKLIST — friday-night-set.mp3</div>
+      <div class="divider">───────────────────────────────────────────────────────────────</div>
+      <br>
+      <div class="track"> 1. <span class="timestamp">[00:00]</span> <span class="artist">Donna Summer</span> <span class="title">— I Feel Love</span> <span class="album">[I Remember Yesterday]</span></div>
+      <div class="track"> 2. <span class="timestamp">[04:12]</span> <span class="artist">Daft Punk</span> <span class="title">— Around the World</span> <span class="album">[Homework]</span></div>
+      <div class="track"> 3. <span class="timestamp">[08:45]</span> <span class="artist">Bicep</span> <span class="title">— Glue</span> <span class="album">[Bicep]</span></div>
+      <div class="track"> 4. <span class="timestamp">[13:20]</span> <span class="artist">The Avalanches</span> <span class="title">— Since I Left You</span> <span class="album">[Since I Left You]</span></div>
+      <div class="track"> 5. <span class="timestamp">[18:03]</span> <span class="artist">Caribou</span> <span class="title">— Can't Do Without You</span> <span class="album">[Our Love]</span></div>
+      <div class="track"> 6. <span class="timestamp">[22:41]</span> <span class="artist">Peggy Gou</span> <span class="title">— Starry Night</span> <span class="album">[Once]</span></div>
+      <div class="track" style="color: var(--text-faint);"> ...</div>
+      <br>
+      <div class="divider">───────────────────────────────────────────────────────────────</div>
+      <div class="summary">24 tracks identified · 3 files saved</div>
+    </div>
+  </div>
+</section>
+
+<div class="waveform-divider">
+  <span style="height:8px"></span><span style="height:14px"></span><span style="height:22px"></span><span style="height:16px"></span><span style="height:28px"></span><span style="height:20px"></span><span style="height:34px"></span><span style="height:24px"></span><span style="height:18px"></span><span style="height:30px"></span><span style="height:12px"></span><span style="height:26px"></span><span style="height:38px"></span><span style="height:22px"></span><span style="height:16px"></span><span style="height:32px"></span><span style="height:20px"></span><span style="height:14px"></span><span style="height:24px"></span><span style="height:10px"></span><span style="height:18px"></span><span style="height:28px"></span><span style="height:14px"></span><span style="height:22px"></span><span style="height:36px"></span><span style="height:18px"></span><span style="height:12px"></span><span style="height:26px"></span><span style="height:20px"></span><span style="height:16px"></span><span style="height:30px"></span><span style="height:22px"></span><span style="height:8px"></span><span style="height:14px"></span><span style="height:24px"></span><span style="height:18px"></span><span style="height:32px"></span><span style="height:14px"></span><span style="height:20px"></span><span style="height:26px"></span>
+</div>
+
+<section class="sources reveal">
+  <p class="section-label">Compatible sources</p>
+  <h2>Mixcloud, YouTube, SoundCloud, local files</h2>
+  <div class="source-grid">
+    <div class="source-item">
+      <div class="source-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M9 8l7 4-7 4z" fill="currentColor"/></svg>
+      </div>
+      <span class="source-name">Mixcloud</span>
+    </div>
+    <div class="source-item">
+      <div class="source-icon">
+        <svg viewBox="0 0 24 24"><path d="M5 3v18l4-3.5L5 3zm4 0v12l4-3V3H9zm5 0v9l4-3V3h-4z" fill="currentColor"/></svg>
+      </div>
+      <span class="source-name">SoundCloud</span>
+    </div>
+    <div class="source-item">
+      <div class="source-icon">
+        <svg viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0C.488 3.45.029 5.804 0 12c.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0C23.512 20.55 23.971 18.196 24 12c-.029-6.185-.484-8.549-4.385-8.816zM9 16V8l8 4-8 4z" fill="currentColor"/></svg>
+      </div>
+      <span class="source-name">YouTube</span>
+    </div>
+    <div class="source-item">
+      <div class="source-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 14.5c-2.49 0-4.5-2.01-4.5-4.5S9.51 7.5 12 7.5s4.5 2.01 4.5 4.5-2.01 4.5-4.5 4.5z" fill="currentColor"/></svg>
+      </div>
+      <span class="source-name">Bandcamp</span>
+    </div>
+    <div class="source-item">
+      <div class="source-icon">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 2l5 5h-5V4zm-3 9v5l4-2.5L10 13z" fill="currentColor"/></svg>
+      </div>
+      <span class="source-name">Local files</span>
+    </div>
+  </div>
+  <p class="source-more">+ 1,000 more sources via <a href="https://github.com/yt-dlp/yt-dlp" target="_blank" rel="noopener">yt-dlp</a></p>
+</section>
+
+<section class="how">
+  <p class="section-label">How it works</p>
+  <h2>URL in. Tracklist out.</h2>
+  <div class="steps">
+    <div class="step reveal stagger-1">
+      <p class="step-number">01</p>
+      <h3>Download</h3>
+      <p>Paste any URL. mix-id grabs the audio. A 3-hour Boiler Room set takes about 90 seconds.</p>
+      <p class="tech">via yt-dlp</p>
+    </div>
+    <div class="step reveal stagger-2">
+      <p class="step-number">02</p>
+      <h3>Fingerprint</h3>
+      <p>Each segment gets matched against Shazam's catalog of 100 million songs. Even short clips land.</p>
+      <p class="tech">Shazam recognition</p>
+    </div>
+    <div class="step reveal stagger-3">
+      <p class="step-number">03</p>
+      <h3>Output</h3>
+      <p>Deduplicated tracklist with timestamps. Three formats (.txt, .cue, .json) saved to your working directory.</p>
+      <p class="tech">Deduplication built in</p>
+    </div>
+  </div>
+</section>
+
+<section class="formats">
+  <p class="section-label">Output formats</p>
+  <h2>Three formats. All saved automatically.</h2>
+  <div class="format-cards">
+    <div class="format-card reveal stagger-1">
+      <span class="format-badge badge-txt">.txt</span>
+      <h3>Tracklist</h3>
+      <p>Plain text with timestamps. Copy into show notes, blog posts, or Mixcloud descriptions.</p>
+      <div class="format-preview">
+1. [00:00] Donna Summer — I Feel Love<br>
+2. [04:12] Daft Punk — Around the World<br>
+3. [08:45] Bicep — Glue
+      </div>
+    </div>
+    <div class="format-card reveal stagger-2">
+      <span class="format-badge badge-cue">.cue</span>
+      <h3>CUE sheet</h3>
+      <p>Import into Rekordbox, Traktor, or any audio player. Chapter markers, ready to go.</p>
+      <div class="format-preview">
+TRACK 01 AUDIO<br>
+&nbsp;&nbsp;TITLE "I Feel Love"<br>
+&nbsp;&nbsp;PERFORMER "Donna Summer"<br>
+&nbsp;&nbsp;INDEX 01 00:00:00
+      </div>
+    </div>
+    <div class="format-card reveal stagger-3">
+      <span class="format-badge badge-json">.json</span>
+      <h3>Metadata</h3>
+      <p>Structured data with every field. Build Spotify playlists, feed a database, or wire it into your own tools.</p>
+      <div class="format-preview">
+{<br>
+&nbsp;&nbsp;"title": "I Feel Love",<br>
+&nbsp;&nbsp;"artist": "Donna Summer",<br>
+&nbsp;&nbsp;"timestamp": "00:00"<br>
+}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section reveal">
+  <h2>Get notified</h2>
+  <p>Web version is in progress. One email when it ships. That's it.</p>
+  <form class="cta-form" onsubmit="return false;">
+    <input type="email" placeholder="you@email.com" required>
+    <button type="submit">Notify me</button>
+  </form>
+  <p class="cta-note">No spam. Just updates.</p>
+</section>
+
+<footer>
+  <div class="footer-left">
+    Built by <a href="https://www.scottkbell.com/" target="_blank" rel="noopener">Scott Bell</a> · MIT License
+  </div>
+  <ul class="footer-links">
+    <li><a href="https://github.com/skip5this/mix-id" target="_blank" rel="noopener">GitHub</a></li>
+    <li><a href="https://www.npmjs.com/package/mix-id" target="_blank" rel="noopener">npm</a></li>
+  </ul>
+</footer>
+
+<noscript>
+<style>
+  .reveal { opacity: 1 !important; transform: none !important; }
+  .terminal-body .track, .terminal-body .summary { opacity: 1 !important; transform: none !important; }
+  body.js-ready .hero-label, body.js-ready .hero h1, body.js-ready .hero-sub, body.js-ready .hero-command, body.js-ready .hero-note { opacity: 1 !important; transform: none !important; }
+</style>
+</noscript>
+
+<script>
+(function() {
+  // Hero entrance
+  document.body.classList.add('js-ready');
+  requestAnimationFrame(function() {
+    requestAnimationFrame(function() {
+      document.body.classList.add('js-loaded');
+    });
+  });
+
+  // Scroll reveals
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.reveal').forEach(function(el) {
+    observer.observe(el);
+  });
+
+  // Terminal reveal
+  var terminal = document.querySelector('.terminal');
+  if (terminal) {
+    var termObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          termObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    termObserver.observe(terminal);
+  }
+
+  // Copy command
+  var cmd = document.querySelector('.hero-command');
+  if (cmd) {
+    cmd.addEventListener('click', function() {
+      navigator.clipboard.writeText('npx mix-id https://your-mix').then(function() {
+        var hint = cmd.querySelector('.copy-hint');
+        if (hint) {
+          hint.textContent = 'copied!';
+          setTimeout(function() { hint.textContent = 'click to copy'; }, 2000);
+        }
+      });
+    });
+  }
+})();
+</script>
+</body>
+</html>

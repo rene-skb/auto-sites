@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scott Bell — Product Designer</title>
+  <meta name="description" content="Product Designer with 14+ years experience. From fintech to AI agents, designing products used by millions across 100+ countries.">
+  <meta property="og:title" content="Scott Bell — Product Designer">
+  <meta property="og:description" content="14+ years designing products used by millions. From fintech to AI agents to running a design studio.">
+  <meta property="og:image" content="assets/strike1.png">
+  <meta property="og:url" content="https://auto-sites.pages.dev/demos/scott-bell-opus/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Libre+Franklin:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #FAFAF5;
+      --bg-alt: #F0EFE9;
+      --bg-dark: #111111;
+      --text: #1A1A1A;
+      --text-mid: #505050;
+      --text-dim: #646464;
+      --accent: #6B5CE7;
+      --accent-glow: rgba(107, 92, 231, 0.08);
+      --white: #FFFFFF;
+
+      /* Strict type scale */
+      --type-display: clamp(3.5rem, 10vw, 7.5rem);
+      --type-h2: clamp(1.5rem, 2.5vw, 2rem);
+      --type-h3: clamp(1.25rem, 2vw, 1.625rem);
+      --type-body: 1.125rem;
+      --type-small: 0.9375rem;
+      --type-meta: 0.8125rem;
+
+      --section-pad: clamp(72px, 10vw, 128px);
+      --content-width: 1120px;
+      --grid-gap: 80px;
+      --label-width: 200px;
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+    }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Libre Franklin', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -100px;
+      left: 16px;
+      padding: 8px 16px;
+      background: var(--accent);
+      color: var(--white);
+      font-size: var(--type-small);
+      border-radius: 4px;
+      z-index: 200;
+      text-decoration: none;
+    }
+
+    .skip-link:focus { top: 16px; }
+
+    /* ===== NAV ===== */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 18px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(250, 250, 245, 0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    .nav-name {
+      font-family: 'Sora', sans-serif;
+      font-weight: 600;
+      font-size: 0.9375rem;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+
+    .nav-links a {
+      font-size: var(--type-small);
+      font-weight: 500;
+      color: var(--text-dim);
+      text-decoration: none;
+      transition: color 200ms var(--ease-out);
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      width: 28px;
+      height: 24px;
+      position: relative;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text);
+      position: absolute;
+      left: 3px;
+      transition: all 200ms var(--ease-out);
+    }
+
+    .hamburger span:nth-child(1) { top: 5px; }
+    .hamburger span:nth-child(2) { top: 11px; }
+    .hamburger span:nth-child(3) { top: 17px; }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--bg);
+      z-index: 99;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .mobile-menu.active { display: flex; }
+
+    .mobile-menu a {
+      font-family: 'Sora', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 140px 40px 96px;
+      max-width: var(--content-width);
+      margin: 0 auto;
+    }
+
+    .hero-label {
+      font-family: 'Sora', sans-serif;
+      font-size: var(--type-meta);
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 28px;
+    }
+
+    .hero-name {
+      font-family: 'Sora', sans-serif;
+      font-size: var(--type-display);
+      font-weight: 800;
+      line-height: 0.9;
+      letter-spacing: -0.04em;
+      color: var(--text);
+      margin-bottom: 40px;
+    }
+
+    .hero-name .dot { color: var(--accent); }
+
+    .hero-tagline {
+      font-size: clamp(1.0625rem, 1.5vw, 1.25rem);
+      font-weight: 400;
+      line-height: 1.65;
+      color: var(--text-mid);
+      max-width: 520px;
+      margin-bottom: 48px;
+    }
+
+    .hero-cta { margin-bottom: 64px; }
+
+    .hero-meta {
+      display: flex;
+      gap: 48px;
+      flex-wrap: wrap;
+      padding-top: 32px;
+      border-top: 1px solid rgba(26, 26, 26, 0.08);
+    }
+
+    .hero-meta-item { display: flex; flex-direction: column; gap: 4px; }
+
+    .hero-meta-label {
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+    }
+
+    .hero-meta-value {
+      font-family: 'Sora', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    /* ===== BUTTONS ===== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-family: 'Sora', sans-serif;
+      font-size: var(--type-small);
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 160ms var(--ease-out), box-shadow 200ms var(--ease-out), background 200ms var(--ease-out);
+    }
+
+    .btn:active { transform: scale(0.97); }
+
+    .btn-primary { background: var(--accent); color: var(--white); }
+    .btn-primary:hover { box-shadow: 0 6px 24px rgba(107, 92, 231, 0.3); }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text);
+      border: 1.5px solid rgba(26, 26, 26, 0.12);
+      margin-left: 12px;
+    }
+    .btn-ghost:hover { border-color: rgba(26, 26, 26, 0.4); }
+
+    /* ===== SECTIONS (unified grid) ===== */
+    .section-grid {
+      display: grid;
+      grid-template-columns: var(--label-width) 1fr;
+      gap: var(--grid-gap);
+      align-items: start;
+    }
+
+    .section-label {
+      font-family: 'Sora', sans-serif;
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      padding-top: 6px;
+    }
+
+    /* ===== ABOUT ===== */
+    .about {
+      padding: var(--section-pad) 40px;
+      max-width: var(--content-width);
+      margin: 0 auto;
+    }
+
+    .about-content h2 {
+      font-family: 'Sora', sans-serif;
+      font-size: var(--type-h2);
+      font-weight: 700;
+      line-height: 1.3;
+      letter-spacing: -0.015em;
+      margin-bottom: 20px;
+    }
+
+    .about-content h2 em {
+      font-style: italic;
+      font-family: 'Libre Franklin', serif;
+      font-weight: 400;
+      color: var(--accent);
+    }
+
+    .about-content p {
+      font-size: var(--type-body);
+      line-height: 1.8;
+      color: var(--text-mid);
+      margin-bottom: 16px;
+      max-width: 580px;
+    }
+
+    /* ===== WORK ===== */
+    .work {
+      padding: var(--section-pad) 40px;
+      max-width: var(--content-width);
+      margin: 0 auto;
+    }
+
+    .work .section-grid { margin-bottom: 72px; }
+
+    .work-title {
+      font-family: 'Sora', sans-serif;
+      font-size: var(--type-h2);
+      font-weight: 700;
+      line-height: 1.3;
+      letter-spacing: -0.015em;
+    }
+
+    .case-study {
+      margin-bottom: 72px;
+      padding-bottom: 72px;
+      border-bottom: 1px solid rgba(26, 26, 26, 0.06);
+    }
+
+    .case-study:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .case-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .case-company {
+      font-family: 'Sora', sans-serif;
+      font-size: var(--type-meta);
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .case-role {
+      font-size: var(--type-small);
+      color: var(--text-dim);
+    }
+
+    .case-title {
+      font-family: 'Sora', sans-serif;
+      font-size: var(--type-h3);
+      font-weight: 600;
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+      margin-bottom: 12px;
+      max-width: 680px;
+    }
+
+    .case-desc {
+      font-size: 1rem;
+      line-height: 1.75;
+      color: var(--text-mid);
+      margin-bottom: 28px;
+      max-width: 620px;
+    }
+
+    .case-images {
+      display: grid;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+
+    .case-images.four-up { grid-template-columns: repeat(4, 1fr); }
+    .case-images.three-up { grid-template-columns: repeat(3, 1fr); }
+
+    .case-images img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 10px;
+      background: var(--bg-alt);
+    }
+
+    .case-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .case-metrics {
+      display: flex;
+      gap: 36px;
+      flex-wrap: wrap;
+    }
+
+    .case-metric {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .case-metric-value {
+      font-family: 'Sora', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--text);
+    }
+
+    .case-metric-label {
+      font-size: var(--type-small);
+      color: var(--text-mid);
+    }
+
+    .case-link {
+      font-family: 'Sora', sans-serif;
+      font-size: var(--type-small);
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: gap 200ms var(--ease-out);
+    }
+
+    .case-link:hover { gap: 10px; }
+
+    .arrow { display: inline-block; font-size: 1em; }
+
+    /* ===== STUDIO ===== */
+    .studio {
+      padding: var(--section-pad) 40px;
+      background: var(--bg-dark);
+      color: var(--white);
+    }
+
+    .studio-inner {
+      max-width: var(--content-width);
+      margin: 0 auto;
+    }
+
+    .studio .section-grid { margin-bottom: 56px; }
+
+    .studio-label {
+      font-family: 'Sora', sans-serif;
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      padding-top: 6px;
+    }
+
+    .studio-header h2 {
+      font-family: 'Sora', sans-serif;
+      font-size: var(--type-h2);
+      font-weight: 700;
+      line-height: 1.3;
+      letter-spacing: -0.015em;
+      color: var(--white);
+      margin-bottom: 14px;
+    }
+
+    .studio-header p {
+      font-size: var(--type-body);
+      line-height: 1.7;
+      color: rgba(255,255,255,0.55);
+      max-width: 520px;
+    }
+
+    .studio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .studio-card {
+      border-radius: 10px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.04);
+      transition: background 300ms var(--ease-out);
+    }
+
+    .studio-card:hover { background: rgba(255,255,255,0.07); }
+
+    .studio-card img {
+      width: 100%;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+    }
+
+    .studio-card-info { padding: 14px 18px; }
+
+    .studio-card-name {
+      font-family: 'Sora', sans-serif;
+      font-size: var(--type-small);
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 2px;
+    }
+
+    .studio-card-type {
+      font-size: 0.8125rem;
+      color: rgba(255,255,255,0.45);
+    }
+
+    .studio-cta {
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    .studio-cta a {
+      font-family: 'Sora', sans-serif;
+      font-size: var(--type-small);
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: gap 200ms var(--ease-out);
+    }
+
+    .studio-cta a:hover { gap: 10px; }
+
+    /* ===== CONTACT ===== */
+    .contact {
+      padding: var(--section-pad) 40px;
+      max-width: var(--content-width);
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .contact h2 {
+      font-family: 'Sora', sans-serif;
+      font-size: var(--type-h2);
+      font-weight: 700;
+      line-height: 1.3;
+      letter-spacing: -0.015em;
+      margin-bottom: 16px;
+    }
+
+    .contact p {
+      font-size: var(--type-body);
+      color: var(--text-mid);
+      margin-bottom: 36px;
+      max-width: 440px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.65;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      padding: 36px 40px;
+      text-align: center;
+      font-size: 0.8125rem;
+      color: var(--text-dim);
+    }
+
+    footer a {
+      color: var(--text-dim);
+      text-decoration: none;
+      transition: color 200ms var(--ease-out);
+    }
+
+    footer a:hover { color: var(--text); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .section-grid,
+      .studio .section-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      :root { --label-width: 1fr; }
+
+      .case-images.four-up { grid-template-columns: repeat(2, 1fr); }
+      .studio-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      .hamburger { display: block; }
+
+      .hero { padding: 100px 24px 64px; min-height: auto; }
+      .hero-meta { gap: 24px; }
+
+      .about, .work, .contact { padding: var(--section-pad) 24px; }
+      .studio { padding: var(--section-pad) 24px; }
+
+      .case-images.three-up { grid-template-columns: 1fr; }
+      .studio-grid { grid-template-columns: 1fr; }
+      .case-metrics { gap: 20px; }
+
+      .btn-ghost { margin-left: 0; margin-top: 8px; }
+      .hero-cta { display: flex; flex-wrap: wrap; gap: 8px; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-name { font-size: 3rem; }
+      .hero-meta { flex-direction: column; gap: 16px; }
+      .case-metrics { flex-direction: column; gap: 12px; }
+    }
+
+    /* ===== MOTION ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 500ms var(--ease-out), transform 500ms var(--ease-out);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .stagger-1 { transition-delay: 0ms; }
+    .stagger-2 { transition-delay: 60ms; }
+    .stagger-3 { transition-delay: 120ms; }
+    .stagger-4 { transition-delay: 180ms; }
+    .stagger-5 { transition-delay: 240ms; }
+
+    /* Hero entrance */
+    .hero-label,
+    .hero-name,
+    .hero-tagline,
+    .hero-cta,
+    .hero-meta {
+      opacity: 0;
+      transform: translateY(16px);
+      animation: heroFadeIn 600ms var(--ease-out) forwards;
+    }
+
+    .hero-label { animation-delay: 0ms; }
+    .hero-name { animation-delay: 100ms; }
+    .hero-tagline { animation-delay: 200ms; }
+    .hero-cta { animation-delay: 300ms; }
+    .hero-meta { animation-delay: 400ms; }
+
+    @keyframes heroFadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      .reveal { opacity: 1; transform: none; }
+      .hero-label, .hero-name, .hero-tagline, .hero-cta, .hero-meta {
+        opacity: 1;
+        transform: none;
+        animation: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <nav role="navigation" aria-label="Main">
+    <a href="#" class="nav-name">Scott Bell</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#studio">Studio</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('active')" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-menu" role="dialog" aria-label="Navigation">
+    <a href="#about" onclick="this.parentElement.classList.remove('active')">About</a>
+    <a href="#work" onclick="this.parentElement.classList.remove('active')">Work</a>
+    <a href="#studio" onclick="this.parentElement.classList.remove('active')">Studio</a>
+    <a href="#contact" onclick="this.parentElement.classList.remove('active')">Contact</a>
+  </div>
+
+  <main id="main">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-label">Product Designer · Studio Founder</div>
+    <h1 class="hero-name">Scott<br>Bell<span class="dot">.</span></h1>
+    <p class="hero-tagline">14 years designing products that reach millions. I find the structure nobody sees and turn it into something useful.</p>
+    <div class="hero-cta">
+      <a href="#work" class="btn btn-primary">See the Work</a>
+    </div>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Experience</span>
+        <span class="hero-meta-value">14+ Years</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Products</span>
+        <span class="hero-meta-value">9 Shipped</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Countries</span>
+        <span class="hero-meta-value">100+</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Education</span>
+        <span class="hero-meta-value">Microbiology + Design</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="section-grid reveal">
+      <span class="section-label">About</span>
+      <div class="about-content">
+        <h2>Microbiology taught me to see invisible systems. Design taught me to make them tangible.</h2>
+        <p>I started studying things you can't see with the naked eye. Now I design the products you use every day. The throughline is the same: find the hidden layer, make it real.</p>
+        <p>Employee #1 at a neobank now worth $800M. Senior designer on payments used in 65 countries. Principal designer across 8 decentralized products. Currently building AI agents and running a design studio.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section class="work" id="work">
+    <div class="section-grid reveal">
+      <span class="section-label">Selected Work</span>
+      <h2 class="work-title">Products used by millions</h2>
+    </div>
+
+    <!-- Strike -->
+    <article class="case-study reveal">
+      <div class="case-top">
+        <span class="case-company">Strike</span>
+        <span class="case-role">Senior Product Designer · 2021–2023</span>
+      </div>
+      <h3 class="case-title">Complete app redesign. 450+ screens. 65+ countries. 1.5M+ users.</h3>
+      <p class="case-desc">Led the full redesign of Strike's mobile payment app. Every major flow from onboarding to payments to KYC, shipped in five months.</p>
+      <div class="case-images four-up">
+        <img src="assets/strike1.png" alt="Strike — payments screen" loading="lazy">
+        <img src="assets/strike2.png" alt="Strike — send money" loading="lazy">
+        <img src="assets/strike3.png" alt="Strike — home dashboard" loading="lazy">
+        <img src="assets/strike4.png" alt="Strike — transaction detail" loading="lazy">
+      </div>
+      <div class="case-bottom">
+        <div class="case-metrics">
+          <div class="case-metric">
+            <span class="case-metric-value">1.5M+</span>
+            <span class="case-metric-label">users</span>
+          </div>
+          <div class="case-metric">
+            <span class="case-metric-value">65+</span>
+            <span class="case-metric-label">countries</span>
+          </div>
+          <div class="case-metric">
+            <span class="case-metric-value">450+</span>
+            <span class="case-metric-label">screens</span>
+          </div>
+        </div>
+        <a href="https://www.scottkbell.com/strike-case-study" class="case-link" target="_blank" rel="noopener">
+          View Case Study <span class="arrow">→</span>
+        </a>
+      </div>
+    </article>
+
+    <!-- AIOZ -->
+    <article class="case-study reveal">
+      <div class="case-top">
+        <span class="case-company">AIOZ Network</span>
+        <span class="case-role">Principal Product Designer · 2023–2025</span>
+      </div>
+      <h3 class="case-title">8 products. One design system. 100× market cap growth.</h3>
+      <p class="case-desc">Led design across the full AIOZ ecosystem — AI marketplace, multichain wallet, desktop node app, IPFS pinning, P2P transfer. Built the unified system that tied it all together.</p>
+      <div class="case-images three-up">
+        <img src="assets/aioz1.png" alt="AIOZ — main dashboard" loading="lazy">
+        <img src="assets/aioz2.png" alt="AIOZ — AI marketplace" loading="lazy">
+        <img src="assets/aioz3.png" alt="AIOZ — product ecosystem" loading="lazy">
+      </div>
+      <div class="case-bottom">
+        <div class="case-metrics">
+          <div class="case-metric">
+            <span class="case-metric-value">8</span>
+            <span class="case-metric-label">products</span>
+          </div>
+          <div class="case-metric">
+            <span class="case-metric-value">100×</span>
+            <span class="case-metric-label">market cap</span>
+          </div>
+          <div class="case-metric">
+            <span class="case-metric-value">$1.38B</span>
+            <span class="case-metric-label">peak</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Fountain -->
+    <article class="case-study reveal">
+      <div class="case-top">
+        <span class="case-company">Fountain</span>
+        <span class="case-role">Design Advisor & Director · 2023–2024</span>
+      </div>
+      <h3 class="case-title">Full app redesign in 5 months. Featured by Apple twice.</h3>
+      <p class="case-desc">Built a semantic, tokenized design system and redesigned core flows for listening, tipping, and wallet UX on a Bitcoin-native podcasting platform.</p>
+      <div class="case-images four-up">
+        <img src="assets/fountain1.png" alt="Fountain — podcast player" loading="lazy">
+        <img src="assets/fountain2.png" alt="Fountain — discovery" loading="lazy">
+        <img src="assets/fountain3.png" alt="Fountain — wallet" loading="lazy">
+        <img src="assets/fountain4.png" alt="Fountain — redesign" loading="lazy">
+      </div>
+      <div class="case-bottom">
+        <div class="case-metrics">
+          <div class="case-metric">
+            <span class="case-metric-value">2×</span>
+            <span class="case-metric-label">Apple featured</span>
+          </div>
+          <div class="case-metric">
+            <span class="case-metric-value">5 mo</span>
+            <span class="case-metric-label">to ship</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- KOHO -->
+    <article class="case-study reveal">
+      <div class="case-top">
+        <span class="case-company">KOHO</span>
+        <span class="case-role">Design Lead · Employee #1 · 2015–2018</span>
+      </div>
+      <h3 class="case-title">First employee. Built the design foundation. Now worth $800M+.</h3>
+      <p class="case-desc">Built the product design foundation from scratch — onboarding, transactions, budgeting — scaling from zero to 100K+ users at what became Canada's highest-rated neobank.</p>
+      <div class="case-bottom">
+        <div class="case-metrics">
+          <div class="case-metric">
+            <span class="case-metric-value">#1</span>
+            <span class="case-metric-label">employee</span>
+          </div>
+          <div class="case-metric">
+            <span class="case-metric-value">0→100K+</span>
+            <span class="case-metric-label">users</span>
+          </div>
+          <div class="case-metric">
+            <span class="case-metric-value">$800M+</span>
+            <span class="case-metric-label">valuation</span>
+          </div>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <!-- STUDIO -->
+  <section class="studio" id="studio">
+    <div class="studio-inner">
+      <div class="section-grid studio-section-grid reveal">
+        <span class="studio-label">Nakamoto Design Co.</span>
+        <div class="studio-header">
+          <h2>Real websites for real businesses</h2>
+          <p>My studio builds custom sites for small businesses that deserve better than a template. Each one designed for that specific business.</p>
+        </div>
+      </div>
+      <div class="studio-grid">
+        <div class="studio-card reveal">
+          <img src="assets/farine-et-vanille-preview.png" alt="Farine & Vanille website" loading="lazy">
+          <div class="studio-card-info">
+            <div class="studio-card-name">Farine & Vanille</div>
+            <div class="studio-card-type">Bakery · Vancouver</div>
+          </div>
+        </div>
+        <div class="studio-card reveal">
+          <img src="assets/goodside-pastry-house-preview.png" alt="GoodSide Pastry House website" loading="lazy">
+          <div class="studio-card-info">
+            <div class="studio-card-name">GoodSide Pastry House</div>
+            <div class="studio-card-type">Bakery · Calgary</div>
+          </div>
+        </div>
+        <div class="studio-card reveal">
+          <img src="assets/kid-sister-ice-cream-preview.png" alt="Kid Sister Ice Cream website" loading="lazy">
+          <div class="studio-card-info">
+            <div class="studio-card-name">Kid Sister Ice Cream</div>
+            <div class="studio-card-type">Ice Cream · Victoria</div>
+          </div>
+        </div>
+        <div class="studio-card reveal">
+          <img src="assets/status-barber-shop-preview.png" alt="Status Barber Shop website" loading="lazy">
+          <div class="studio-card-info">
+            <div class="studio-card-name">Status Barber Shop</div>
+            <div class="studio-card-type">Barbershop · Victoria</div>
+          </div>
+        </div>
+        <div class="studio-card reveal">
+          <img src="assets/flowers-on-top-preview.png" alt="Flowers On Top website" loading="lazy">
+          <div class="studio-card-info">
+            <div class="studio-card-name">Flowers On Top</div>
+            <div class="studio-card-type">Florist · Victoria</div>
+          </div>
+        </div>
+        <div class="studio-card reveal">
+          <img src="assets/33-acres-brewing-preview.png" alt="33 Acres Brewing website" loading="lazy">
+          <div class="studio-card-info">
+            <div class="studio-card-name">33 Acres Brewing</div>
+            <div class="studio-card-type">Brewery · Vancouver</div>
+          </div>
+        </div>
+      </div>
+      <div class="studio-cta">
+        <a href="https://nakamotodesign.co" target="_blank" rel="noopener">
+          Visit Nakamoto Design <span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact reveal" id="contact">
+    <h2>Let's talk.</h2>
+    <p>Open to the right opportunity. Product design, AI, design leadership.</p>
+    <a href="mailto:scott.k.bell@gmail.com" class="btn btn-primary">Get in Touch</a>
+  </section>
+
+  </main>
+
+  <footer>
+    <p>© 2026 Scott Bell · <a href="https://linkedin.com/in/scottkbell" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://www.scottkbell.com/" target="_blank" rel="noopener">Portfolio</a> · <a href="https://nakamotodesign.co" target="_blank" rel="noopener">Studio</a></p>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+    reveals.forEach(el => observer.observe(el));
+
+    // Stagger studio cards
+    const studioCards = document.querySelectorAll('.studio-card');
+    studioCards.forEach((card, i) => {
+      card.style.transitionDelay = `${i * 60}ms`;
+    });
+
+    // Hamburger toggle
+    const hamburger = document.querySelector('.hamburger');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    if (hamburger) {
+      hamburger.addEventListener('click', () => {
+        const isOpen = mobileMenu.classList.toggle('active');
+        hamburger.setAttribute('aria-expanded', isOpen);
+      });
+    }
+  </script>
+</body>
+</html>

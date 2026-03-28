@@ -1,0 +1,617 @@
+<!--
+  DELTA: v3 → v4
+  Changes:
+  - Added scroll-reveal animations (IntersectionObserver)
+  - Stagger on review cards (80ms) and product items (60ms)
+  - Hero text fade-up on load
+  - All motion respects prefers-reduced-motion
+  - No hover effects on images (verified)
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Humble Coffee Roasters — Calgary, AB</title>
+  <meta name="description" content="Small-batch coffee roasted in Calgary. 4.9 stars, 158 reviews. Mon-Fri 7AM-2:30PM.">
+  <meta property="og:title" content="Humble Coffee Roasters">
+  <meta property="og:description" content="Small-batch coffee roasted in Calgary. Gone by 2:30.">
+  <meta property="og:image" content="ig-photo-05.jpg">
+  <meta property="og:url" content="https://auto-sites.pages.dev/demos/humble-coffee/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --espresso: #2C1810;
+      --cream: #F5F0E8;
+      --amber: #C4713B;
+      --warm-gray: #6B5E53;
+      --light-cream: #FAF8F4;
+      --section-pad: 96px;
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--espresso);
+      background: var(--cream);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ANIMATIONS */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 500ms var(--ease-out), transform 500ms var(--ease-out);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .hero-text { opacity: 0; transform: translateY(24px); animation: heroFadeIn 600ms var(--ease-out) 300ms forwards; }
+
+    @keyframes heroFadeIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 20px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(245, 240, 232, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .nav-logo {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      font-size: 1.25rem;
+      color: var(--espresso);
+      text-decoration: none;
+    }
+
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+
+    .nav-links a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--warm-gray);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 200ms var(--ease-out);
+    }
+
+    .nav-links a:hover { color: var(--espresso); }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--espresso);
+      transition: transform 300ms var(--ease-out);
+    }
+
+    /* HERO */
+    .hero { padding-top: 80px; }
+
+    .hero-image {
+      width: 100%;
+      height: 65vh;
+      overflow: hidden;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+    }
+
+    .hero-text {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 48px 48px 0;
+      text-align: center;
+    }
+
+    .hero-text h1 {
+      font-family: 'Fraunces', serif;
+      font-weight: 700;
+      font-size: 3.25rem;
+      line-height: 1.2;
+      color: var(--espresso);
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-text p {
+      font-size: 1.0625rem;
+      color: var(--warm-gray);
+      max-width: 480px;
+      margin: 0 auto 28px;
+      line-height: 1.8;
+    }
+
+    .hero-meta {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--warm-gray);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .hero-meta span { display: flex; align-items: center; gap: 8px; }
+    .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--amber); display: inline-block; }
+
+    /* ABOUT */
+    .about {
+      padding: var(--section-pad) 48px;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 5fr 6fr;
+      gap: 72px;
+      align-items: center;
+    }
+
+    .about-image { border-radius: 8px; overflow: hidden; }
+    .about-image img { width: 100%; height: auto; display: block; }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 16px;
+    }
+
+    .about-content h2 {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      font-size: 2rem;
+      line-height: 1.25;
+      color: var(--espresso);
+      margin-bottom: 24px;
+    }
+
+    .about-content p { color: var(--warm-gray); margin-bottom: 16px; line-height: 1.75; }
+
+    /* DRINKS */
+    .drinks {
+      padding: var(--section-pad) 48px;
+      background: var(--light-cream);
+    }
+
+    .drinks-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 6fr 5fr;
+      gap: 72px;
+      align-items: center;
+    }
+
+    .drinks-image { border-radius: 8px; overflow: hidden; }
+    .drinks-image img { width: 100%; height: auto; display: block; }
+
+    .drinks-content h2 {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      font-size: 2rem;
+      line-height: 1.25;
+      color: var(--espresso);
+      margin-bottom: 24px;
+    }
+
+    .drinks-content p { color: var(--warm-gray); margin-bottom: 16px; line-height: 1.75; }
+
+    /* PRODUCTS */
+    .products {
+      padding: var(--section-pad) 48px;
+    }
+
+    .products-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .products h2 {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      font-size: 2rem;
+      color: var(--espresso);
+      margin-bottom: 16px;
+    }
+
+    .products-subtitle {
+      color: var(--warm-gray);
+      margin-bottom: 48px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.75;
+    }
+
+    .products-image {
+      max-width: 640px;
+      margin: 0 auto 48px;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .products-image img { width: 100%; height: auto; display: block; }
+
+    .product-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      max-width: 780px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .product-item h3 {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      font-size: 1.1875rem;
+      color: var(--espresso);
+      margin-bottom: 8px;
+    }
+
+    .product-item .roast-level {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--amber);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .product-item p { font-size: 0.9375rem; color: var(--warm-gray); line-height: 1.65; }
+
+    /* REVIEWS */
+    .reviews {
+      padding: var(--section-pad) 48px;
+      background: var(--light-cream);
+    }
+
+    .reviews-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .reviews-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .reviews-header h2 {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      font-size: 2rem;
+      color: var(--espresso);
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .review-card {
+      background: var(--cream);
+      border-radius: 8px;
+      padding: 32px;
+    }
+
+    .review-stars {
+      color: var(--amber);
+      font-size: 0.875rem;
+      margin-bottom: 16px;
+      letter-spacing: 2px;
+    }
+
+    .review-text {
+      font-size: 1.0625rem;
+      color: var(--espresso);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .review-author {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--warm-gray);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* VISIT */
+    .visit {
+      padding: var(--section-pad) 48px;
+      background: var(--espresso);
+      color: var(--cream);
+    }
+
+    .visit-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .visit h2 {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      font-size: 2rem;
+      color: var(--cream);
+      margin-bottom: 24px;
+    }
+
+    .visit-details p { color: rgba(245, 240, 232, 0.7); margin-bottom: 12px; line-height: 1.75; }
+    .visit-details strong { color: var(--cream); font-weight: 500; }
+
+    .visit-cta {
+      display: inline-block;
+      margin-top: 24px;
+      padding: 14px 32px;
+      background: var(--cream);
+      color: var(--espresso);
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 0.875rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: transform 160ms var(--ease-out), box-shadow 160ms var(--ease-out);
+    }
+
+    .visit-cta:active { transform: scale(0.97); }
+    .visit-cta:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.2); }
+
+    .visit-map { border-radius: 8px; overflow: hidden; aspect-ratio: 4/3; }
+    .visit-map iframe { width: 100%; height: 100%; border: 0; filter: grayscale(0.3); }
+
+    footer {
+      padding: 32px 48px;
+      text-align: center;
+      background: var(--espresso);
+      border-top: 1px solid rgba(245, 240, 232, 0.1);
+    }
+
+    footer p { font-size: 0.8125rem; color: rgba(245, 240, 232, 0.4); }
+    footer a { color: rgba(245, 240, 232, 0.6); text-decoration: none; }
+    footer a:hover { color: var(--cream); }
+
+    @media (max-width: 768px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%; left: 0; right: 0;
+        background: rgba(245, 240, 232, 0.98);
+        backdrop-filter: blur(12px);
+        padding: 24px;
+        gap: 20px;
+      }
+      .hamburger { display: flex; }
+      .hero-image { height: 50vh; }
+      .hero-text { padding: 32px 24px 0; }
+      .hero-text h1 { font-size: 2.25rem; }
+      .hero-meta { flex-direction: column; gap: 12px; align-items: center; }
+      .about { grid-template-columns: 1fr; padding: 64px 24px; gap: 40px; }
+      .drinks { padding: 64px 24px; }
+      .drinks-inner { grid-template-columns: 1fr; gap: 40px; }
+      .products { padding: 64px 24px; }
+      .product-list { grid-template-columns: 1fr; gap: 24px; }
+      .reviews { padding: 64px 24px; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .visit { padding: 64px 24px; }
+      .visit-inner { grid-template-columns: 1fr; gap: 40px; }
+      footer { padding: 24px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .hero-text { opacity: 1; transform: none; animation: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#" class="nav-logo">Humble Coffee</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#coffee">Coffee</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#visit">Visit</a></li>
+      <li><a href="https://instagram.com/humblecoffeeroasters" target="_blank" rel="noopener">Instagram</a></li>
+    </ul>
+    <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-image">
+      <img src="ig-photo-05.jpg" alt="Barista pouring latte art at Humble Coffee Roasters" width="1200" height="1500">
+    </div>
+    <div class="hero-text">
+      <h1>Roasted in Calgary.<br>Gone by 2:30.</h1>
+      <p>Small-batch, medium-light roasted coffee. Orange, blackberry, chocolate, caramel. The kind of tasting notes that make people drive across Calgary.</p>
+      <div class="hero-meta">
+        <span><i class="dot"></i> Mon–Fri 7AM–2:30PM</span>
+        <span><i class="dot"></i> Calgary, AB</span>
+        <span><i class="dot"></i> 4.9★ · 158 Reviews</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="about-image reveal">
+      <img src="ig-photo-01.jpg" alt="Pour-over coffee brewing at Humble Coffee Roasters" width="800" height="1200">
+    </div>
+    <div class="about-content">
+      <div class="section-label reveal">The Roaster</div>
+      <h2 class="reveal">Tyler roasts every batch himself.</h2>
+      <p class="reveal">Humble is a roaster and café in Calgary. Medium-light profiles that bring out fruit, chocolate, and caramel from beans across Peru, Brazil, Guatemala, and Colombia.</p>
+      <p class="reveal">The café is small and the menu is focused. Shirley, Tammy, and Meagan know every bean by name. Regulars come back for them as much as the coffee.</p>
+    </div>
+  </section>
+
+  <section class="drinks">
+    <div class="drinks-inner">
+      <div class="drinks-content">
+        <div class="section-label reveal">The Menu</div>
+        <h2 class="reveal">Lattes, pour-overs, and breakfast sandwiches Charlotte calls "life changing."</h2>
+        <p class="reveal">Every drink is made from beans roasted on-site. The menu is short because everything on it is good.</p>
+      </div>
+      <div class="drinks-image reveal">
+        <img src="ig-photo-04.jpg" alt="Specialty drink in a branded Humble Coffee cup" width="800" height="800">
+      </div>
+    </div>
+  </section>
+
+  <section class="products" id="coffee">
+    <div class="products-inner">
+      <div class="section-label reveal">The Beans</div>
+      <h2 class="reveal">Four roasts. No filler.</h2>
+      <p class="products-subtitle reveal">Every bag is roasted in-house. Medium-light is the house style, but there's a dark roast for the people who want it.</p>
+      <div class="products-image reveal">
+        <img src="ig-photo-07.jpg" alt="Three bags of Humble Coffee — The Daily, The Royal, and Guatemala Huehuetenango" width="1200" height="1200">
+      </div>
+      <div class="product-list">
+        <div class="product-item reveal">
+          <h3>The Daily</h3>
+          <div class="roast-level">Medium Roast</div>
+          <p>Peru, Brazil, Guatemala. Chocolate and caramel. The one most people start with.</p>
+        </div>
+        <div class="product-item reveal">
+          <h3>The Royal</h3>
+          <div class="roast-level">Dark Roast</div>
+          <p>Peru and Brazil. Bold and smooth. For the people who like it strong.</p>
+        </div>
+        <div class="product-item reveal">
+          <h3>Guatemala Huehuetenango</h3>
+          <div class="roast-level">Medium Roast</div>
+          <p>Single origin. Orange, blackberry, and chocolate. If you like fruity, this is the one.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="reviews" id="reviews">
+    <div class="reviews-inner">
+      <div class="reviews-header">
+        <div class="section-label reveal">Reviews</div>
+        <h2 class="reveal">158 reviews. 4.9 stars.</h2>
+      </div>
+      <div class="reviews-grid">
+        <div class="review-card reveal">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Hands down best coffee in Calgary! Don't sleep on it — especially if you truly love and appreciate good quality coffee. The staff are all warm & welcoming, and the owner Tyler is fantastic!!"</p>
+          <div class="review-author">Maddy A. · Via Google</div>
+        </div>
+        <div class="review-card reveal">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"My coworker and I have tried over 16 coffee places in the area, and Humble is HANDS DOWN the best one. Super high quality, life changing breakfast sandwiches."</p>
+          <div class="review-author">Charlotte H. · Via Google</div>
+        </div>
+        <div class="review-card reveal">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Megan was amazing — she really helped me understand different coffee beans. The coffee is beautifully medium-light roasted. If you like fruity tastes, definitely try!"</p>
+          <div class="review-author">Sinem D. · Via Google</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="visit" id="visit">
+    <div class="visit-inner">
+      <div class="visit-details">
+        <div class="section-label reveal" style="color: var(--amber);">Find Us</div>
+        <h2 class="reveal">Come before 2:30.</h2>
+        <p class="reveal"><strong>Hours:</strong> Monday–Friday, 7:00AM–2:30PM</p>
+        <p class="reveal"><strong>Closed:</strong> Saturday & Sunday</p>
+        <p class="reveal"><strong>Location:</strong> Calgary, AB</p>
+        <p class="reveal"><strong>Phone:</strong> (403) 850-9396</p>
+        <a href="tel:+14038509396" class="visit-cta reveal">Call (403) 850-9396</a>
+      </div>
+      <div class="visit-map reveal">
+        <iframe src="https://maps.google.com/maps?q=Humble+Coffee+Roasters+Calgary+AB&output=embed" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Humble Coffee Roasters · Calgary, AB · <a href="https://instagram.com/humblecoffeeroasters" target="_blank" rel="noopener">@humblecoffeeroasters</a></p>
+  </footer>
+
+  <script>
+    // Scroll reveal with stagger
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Find all siblings with .reveal in the same parent
+          const parent = entry.target.parentElement;
+          const siblings = parent.querySelectorAll('.reveal:not(.visible)');
+          let delay = 0;
+
+          // If this is a stagger group (review cards, product items)
+          if (parent.classList.contains('reviews-grid') || parent.classList.contains('product-list')) {
+            siblings.forEach(el => {
+              setTimeout(() => el.classList.add('visible'), delay);
+              delay += parent.classList.contains('reviews-grid') ? 80 : 60;
+            });
+          } else {
+            entry.target.classList.add('visible');
+          }
+
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>

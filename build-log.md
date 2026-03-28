@@ -1,5 +1,43 @@
 # Auto-Sites Build Log
 
+## Build 77 — Humble Coffee Roasters
+- **Category:** Coffee Roaster / Café
+- **City:** Calgary, AB
+- **Date:** 2026-03-28
+- **Model:** claude-opus-4-6 (subagent)
+- **Agent:** Lucy
+- **Hero pattern:** image-top-text-below (portrait latte art photo top, centered Fraunces headline below)
+- **Typography:** Fraunces 400/500/600/700 + Inter 400/500/600
+- **Review layout:** 3-column equal cards (same treatment, cream background)
+- **Stats bar style:** no-stats
+- **Score:** 7.5 (WHY avg) / 7.17 (WHAT avg) / 7.25 (HOW avg) → 7.31
+- **Self-review:** 7.5 (footnote)
+- **Live URL:** https://auto-sites.pages.dev/demos/humble-coffee/
+- **Key decisions:** "Roasted in Calgary. Gone by 2:30." headline turns weekday-only hours into conviction and urgency. Constraint-as-brand strategy: Mon-Fri 7-2:30 closed weekends is the quality signal, not a limitation. Best photo (ig-photo-05, latte art pour, 8/10) placed as hero in image-top-text-below pattern since it's portrait 4:5. Only 4 of 8 Instagram photos usable (rest were Valentine graphics, Christmas backgrounds, corporate setting, seasonal interior). Fraunces serif chosen for warm, slightly quirky optical sizing that matches craft coffee energy. Charlotte H.'s "life changing" breakfast sandwich quote woven into drinks section heading. Staff names (Shirley, Tammy, Meagan) included because reviewers call them out by name. Espresso brown (#2C1810) + cream (#F5F0E8) + amber (#C4713B) palette extracted from coffee/brand colors. Copy audit clean: no AI slop, no em dashes in body text, no significance inflation. Scroll-reveal with staggered review cards (80ms) and product items (60ms).
+
+### Scores
+| Round | Phase | Reviewers | Avg |
+|-------|-------|-----------|-----|
+| v0→v1 | WHY | Jobs 8.0, Cagan 7.0, Ogilvy 7.5 | 7.5 |
+| v1→v2 | WHAT | Norman 7.5, Krug 7.0, Nielsen 7.0 | 7.17 |
+| v2→v3 | HOW | Vignelli 7.0, Spiekermann 7.5, Rams 7.5, Emil 7.0 | 7.25 |
+| v5 | Self | Lucy | 7.5 |
+
+### Photo Evaluation (Phase 1)
+| Rank | File | Score | Aspect | Role |
+|------|------|-------|--------|------|
+| 1 | ig-photo-05 | 8/10 | Portrait 4:5 | Hero (latte art pour) |
+| 2 | ig-photo-07 | 7/10 | Square 1:1 | Product section (3-bag lineup) |
+| 3 | ig-photo-01 | 6/10 | Portrait 9:16 | About (pour-over station) |
+| 4 | ig-photo-04 | 5/10 | Portrait | Drinks (branded cup) |
+| 5-8 | 02,03,06,08 | 2-5/10 | Various | Skipped (corporate, Valentine graphic, Christmas, seasonal) |
+
+### Files
+- index-v0.html through index-v5.html (6 versions) + index.html
+- 8 real Instagram photos (ig-photo-01 through ig-photo-08)
+
+---
+
 ## Build 76 — Vintage Glory v2
 - **Category:** Vintage Clothing Store
 - **City:** Winnipeg, MB

@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kid Sister Ice Cream — Victoria, BC</title>
+<meta name="description" content="Small-batch ice cream made with organic dairy and island-foraged fruit. New flavours every week. 1320 Esquimalt Rd, Victoria BC.">
+<meta property="og:title" content="Kid Sister Ice Cream — Victoria, BC">
+<meta property="og:description" content="Small-batch ice cream. New flavours every week. Gone by Sunday.">
+<meta property="og:image" content="https://auto-sites.pages.dev/demos/kid-sister-opus/ig-photo-03.jpg">
+<meta property="og:url" content="https://auto-sites.pages.dev/demos/kid-sister-opus/">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  /* Palette */
+  --cream: #FBF6EE;
+  --cream-dark: #F0EADE;
+  --coral: #C23A26;
+  --dark: #1A1610;
+  --text: #3D3530;
+  --text-secondary: #6B6560;
+  --text-tertiary: #8A8480;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+
+  /* Spacing — 8px modular scale */
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 48px;
+  --space-xl: 64px;
+  --space-2xl: 96px;
+  --section-pad: var(--space-2xl);
+
+  /* Layout */
+  --content-max: 1200px;
+  --content-px: 24px;
+
+  /* Letter-spacing */
+  --ls-sm: 0.04em;
+  --ls-md: 0.08em;
+  --ls-lg: 0.14em;
+
+  /* Type scale */
+  --type-display: clamp(2.5rem, 4.5vw, 4rem);
+  --type-h2: clamp(2rem, 3.5vw, 3rem);
+  --type-h3: clamp(1.125rem, 1.5vw, 1.25rem);
+  --type-body: 1rem;
+  --type-body-lg: 1.0625rem;
+  --type-small: 0.875rem;
+  --type-meta: 0.6875rem;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 400;
+  font-size: var(--type-body);
+  line-height: 1.7;
+  color: var(--text);
+  background: var(--cream);
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+
+/* ─── TYPE SYSTEM ─── */
+.label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: var(--ls-lg);
+  text-transform: uppercase;
+  margin-bottom: var(--space-sm);
+  color: var(--text-secondary);
+}
+
+.h2 {
+  font-family: 'Fraunces', serif;
+  font-size: var(--type-h2);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--dark);
+}
+
+.h3 {
+  font-family: 'Fraunces', serif;
+  font-size: var(--type-h3);
+  font-weight: 500;
+  color: var(--dark);
+}
+
+.body-text {
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+/* ─── NAV ─── */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(251, 246, 238, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(26, 22, 16, 0.06);
+}
+.nav-inner {
+  max-width: var(--content-max); margin: 0 auto;
+  padding: var(--space-sm) var(--content-px);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-name {
+  font-family: 'Fraunces', serif;
+  font-size: 1.125rem; font-weight: 500; color: var(--dark);
+}
+.nav-links {
+  display: flex; align-items: center; gap: 32px; list-style: none;
+}
+.nav-links a {
+  font-size: var(--type-small); font-weight: 500; color: var(--text-secondary);
+  transition: color 200ms var(--ease-out); position: relative;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -4px; left: 0;
+  width: 0; height: 1.5px; background: var(--coral);
+  transition: width 300ms var(--ease-out);
+}
+.nav-links a:hover { color: var(--dark); }
+.nav-links a:hover::after { width: 100%; }
+.nav-cta { font-weight: 600 !important; color: var(--coral) !important; }
+
+.hamburger {
+  display: none; background: none; border: none; cursor: pointer; padding: 4px;
+}
+.hamburger span {
+  display: block; width: 24px; height: 2px;
+  background: var(--dark); margin: 5px 0;
+  transition: all 300ms var(--ease-out);
+}
+.mobile-menu {
+  display: none; position: fixed; top: 56px; left: 0; right: 0;
+  background: var(--cream); padding: var(--space-md) var(--content-px);
+  border-bottom: 1px solid rgba(26, 22, 16, 0.08); z-index: 99;
+}
+.mobile-menu a {
+  display: block; padding: 12px 0; font-size: var(--type-body); font-weight: 500;
+  color: var(--dark); border-bottom: 1px solid rgba(26, 22, 16, 0.06);
+}
+.mobile-menu a:last-child { border-bottom: none; }
+.mobile-menu.active { display: block; }
+
+/* ─── HERO ─── */
+.hero {
+  display: grid; grid-template-columns: 1fr 1fr;
+  min-height: 100vh; padding-top: 56px;
+}
+.hero-content {
+  display: flex; flex-direction: column; justify-content: center;
+  padding: var(--space-xl) var(--space-xl) var(--space-xl) var(--content-px);
+  max-width: 600px; margin-left: auto;
+}
+.hero-label {
+  font-size: var(--type-meta); font-weight: 600;
+  letter-spacing: var(--ls-lg); text-transform: uppercase;
+  color: var(--coral); margin-bottom: var(--space-md);
+}
+.hero h1 {
+  font-family: 'Fraunces', serif;
+  font-size: var(--type-display);
+  font-weight: 400; line-height: 1.08;
+  letter-spacing: -0.03em; color: var(--dark);
+  margin-bottom: var(--space-md);
+}
+.hero h1 em { font-style: italic; color: var(--coral); }
+.hero-body {
+  font-size: var(--type-body-lg); line-height: 1.7;
+  color: var(--text-secondary); max-width: 420px;
+  margin-bottom: var(--space-lg);
+}
+.hero-ctas { display: flex; gap: var(--space-sm); flex-wrap: wrap; }
+.hero-quick {
+  margin-top: var(--space-md);
+  font-size: 0.8125rem; color: var(--text-tertiary);
+  letter-spacing: var(--ls-sm);
+}
+.hero-quick a { color: var(--coral); font-weight: 500; }
+.hero-image { position: relative; overflow: hidden; }
+.hero-image img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ─── BUTTONS ─── */
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 28px; background: var(--coral); color: #fff;
+  font-family: 'Outfit', sans-serif; font-size: var(--type-small); font-weight: 600;
+  letter-spacing: var(--ls-sm); border-radius: 6px; border: none; cursor: pointer;
+  transition: transform 160ms var(--ease-out), box-shadow 160ms var(--ease-out);
+}
+.btn-primary:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(194, 58, 38, 0.25); }
+.btn-primary:active { transform: scale(0.97); }
+
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 28px; background: transparent; color: var(--dark);
+  font-family: 'Outfit', sans-serif; font-size: var(--type-small); font-weight: 600;
+  letter-spacing: var(--ls-sm); border-radius: 6px;
+  border: 1.5px solid rgba(26, 22, 16, 0.18); cursor: pointer;
+  transition: transform 160ms var(--ease-out), border-color 200ms var(--ease-out);
+}
+.btn-secondary:hover { transform: translateY(-1px); border-color: var(--dark); }
+.btn-secondary:active { transform: scale(0.97); }
+
+/* ─── STATS BAR ─── */
+.stats-bar { background: var(--coral); padding: var(--space-md) var(--content-px); }
+.stats-inner {
+  max-width: var(--content-max); margin: 0 auto;
+  display: flex; justify-content: center; gap: var(--space-xl); flex-wrap: wrap;
+}
+.stat-item { text-align: center; }
+.stat-value {
+  font-family: 'Fraunces', serif; font-size: 1.25rem;
+  font-weight: 500; color: #fff;
+}
+.stat-label {
+  font-size: var(--type-meta); font-weight: 600;
+  letter-spacing: var(--ls-lg); text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65); margin-top: 4px;
+}
+
+/* ─── PHOTO EDITORIAL ─── */
+.photo-editorial {
+  display: grid; grid-template-columns: 2fr 1fr; gap: 4px;
+  max-width: var(--content-max); margin: 0 auto; padding: 4px var(--content-px);
+}
+.photo-editorial > img {
+  width: 100%; height: 380px; object-fit: cover; border-radius: 4px;
+}
+.photo-editorial-stack { display: grid; grid-template-rows: 1fr 1fr; gap: 4px; }
+.photo-editorial-stack img {
+  width: 100%; height: 188px; object-fit: cover; border-radius: 4px;
+}
+
+/* ─── CONVICTION ─── */
+.conviction {
+  padding: var(--section-pad) var(--content-px);
+  max-width: var(--content-max); margin: 0 auto;
+}
+.conviction-grid {
+  display: grid; grid-template-columns: 7fr 5fr;
+  gap: var(--space-xl); align-items: center;
+}
+.conviction .h2 {
+  font-size: clamp(2rem, 3.5vw, 3.25rem);
+  line-height: 1.12; margin-bottom: var(--space-md);
+}
+.conviction .body-text { margin-bottom: var(--space-sm); }
+.conviction-image {
+  width: 100%; aspect-ratio: 4 / 5;
+  object-fit: cover; border-radius: 8px;
+}
+
+/* ─── FULL PHOTO ─── */
+.full-photo {
+  max-width: var(--content-max); margin: 0 auto; padding: 0 var(--content-px);
+}
+.full-photo img {
+  width: 100%; height: 420px; object-fit: cover; border-radius: 8px;
+}
+
+/* ─── WHAT WE MAKE ─── */
+.offerings {
+  padding: var(--section-pad) var(--content-px);
+  max-width: var(--content-max); margin: 0 auto;
+}
+.offerings-header { margin-bottom: var(--space-lg); }
+.offerings-list { display: flex; flex-direction: column; }
+.offering-row {
+  display: grid; grid-template-columns: 200px 1fr;
+  gap: var(--space-md); padding: var(--space-md) 0;
+  border-bottom: 1px solid rgba(26, 22, 16, 0.08);
+  align-items: baseline;
+}
+.offering-row:first-child { border-top: 1px solid rgba(26, 22, 16, 0.08); }
+
+/* ─── SEASONAL ─── */
+.seasonal { background: var(--dark); padding: var(--section-pad) var(--content-px); }
+.seasonal-inner {
+  max-width: var(--content-max); margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl); align-items: center;
+}
+.seasonal .label { color: var(--text-tertiary); }
+.seasonal .h2 { color: var(--cream); margin-bottom: var(--space-md); }
+.seasonal .body-text { color: #9A9490; margin-bottom: var(--space-sm); }
+.seasonal-image {
+  width: 100%; aspect-ratio: 1;
+  object-fit: cover; border-radius: 8px;
+}
+
+/* ─── REVIEWS ─── */
+.reviews {
+  padding: var(--section-pad) var(--content-px);
+  max-width: var(--content-max); margin: 0 auto;
+}
+.reviews-header { margin-bottom: var(--space-lg); }
+.reviews-stack { display: flex; flex-direction: column; }
+.review-item {
+  max-width: 640px; padding: var(--space-lg) 0;
+  border-bottom: 1px solid rgba(26, 22, 16, 0.08);
+}
+.review-item:first-child { border-top: 1px solid rgba(26, 22, 16, 0.08); }
+.review-quote {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(1.375rem, 2.8vw, 1.75rem);
+  font-weight: 400; font-style: italic; line-height: 1.35;
+  color: var(--dark); margin-bottom: var(--space-sm);
+}
+.review-meta {
+  font-size: 0.8125rem; font-weight: 600;
+  letter-spacing: var(--ls-md); text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+/* ─── VISIT ─── */
+.visit {
+  background: var(--cream-dark); padding: var(--section-pad) var(--content-px);
+}
+.visit-inner { max-width: var(--content-max); margin: 0 auto; }
+.visit-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl); margin-top: var(--space-lg);
+}
+.visit-info .h3 { margin-bottom: var(--space-sm); }
+.hours-table { width: 100%; border-collapse: collapse; }
+.hours-table tr { border-bottom: 1px solid rgba(26, 22, 16, 0.06); }
+.hours-table td { padding: 10px 0; font-size: 0.9375rem; }
+.hours-table td:first-child { font-weight: 500; color: var(--dark); }
+.hours-table td:last-child { text-align: right; color: var(--text-secondary); }
+.visit-phone {
+  display: block; font-family: 'Fraunces', serif;
+  font-size: 1.5rem; font-weight: 500; color: var(--coral);
+  margin-top: var(--space-md); margin-bottom: var(--space-xs);
+}
+.visit-address {
+  color: var(--text-secondary); font-size: 0.9375rem;
+  margin-bottom: var(--space-md);
+}
+.visit-map {
+  width: 100%; height: 100%; min-height: 340px;
+  border: none; border-radius: 8px;
+}
+
+/* ─── CTA BAND ─── */
+.cta-band {
+  background: var(--dark); padding: 120px var(--content-px); text-align: center;
+}
+.cta-band .h2 {
+  color: var(--cream); margin-bottom: var(--space-md);
+  max-width: 600px; margin-left: auto; margin-right: auto;
+}
+.cta-band .btn-primary { background: var(--cream); color: var(--dark); }
+.cta-band .btn-primary:hover { box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3); }
+
+/* ─── FOOTER ─── */
+.footer {
+  padding: var(--space-lg) var(--content-px);
+  max-width: var(--content-max); margin: 0 auto;
+  display: flex; justify-content: space-between;
+  align-items: center; flex-wrap: wrap; gap: var(--space-sm);
+}
+.footer-name { font-family: 'Fraunces', serif; font-size: 1rem; font-weight: 500; }
+.footer-meta { font-size: 0.8125rem; color: var(--text-secondary); margin-top: 4px; }
+.footer-links { display: flex; gap: var(--space-md); }
+.footer-links a {
+  font-size: 0.8125rem; color: var(--text-secondary);
+  transition: color 200ms var(--ease-out);
+}
+.footer-links a:hover { color: var(--dark); }
+.footer-land {
+  width: 100%; text-align: center; font-size: 0.75rem;
+  color: var(--text-tertiary); margin-top: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: 1px solid rgba(26, 22, 16, 0.06); line-height: 1.6;
+}
+
+section[id] { scroll-margin-top: 72px; }
+
+/* ─── MOBILE ─── */
+@media (max-width: 768px) {
+  :root { --section-pad: 64px; }
+  .nav-links { display: none; }
+  .hamburger { display: block; }
+  .hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero-content { padding: 112px var(--content-px) var(--space-lg); max-width: none; margin-left: 0; }
+  .hero h1 { font-size: clamp(2.25rem, 8vw, 3.5rem); }
+  .hero-image { height: 50vh; min-height: 320px; }
+  .photo-editorial { grid-template-columns: 1fr; }
+  .photo-editorial > img { height: 240px; }
+  .photo-editorial-stack { grid-template-rows: auto; grid-template-columns: 1fr 1fr; }
+  .photo-editorial-stack img { height: 160px; }
+  .conviction-grid { grid-template-columns: 1fr; gap: var(--space-md); }
+  .conviction-image { aspect-ratio: 16 / 9; max-height: 300px; }
+  .full-photo img { height: 260px; }
+  .offering-row { grid-template-columns: 1fr; gap: var(--space-xs); }
+  .seasonal-inner { grid-template-columns: 1fr; gap: var(--space-md); }
+  .seasonal-image { aspect-ratio: 16 / 10; }
+  .visit-grid { grid-template-columns: 1fr; gap: var(--space-md); }
+  .stats-inner { gap: var(--space-md); }
+  .footer { flex-direction: column; text-align: center; }
+}
+
+/* ─── MOTION (scroll reveal only — enhanced motion in v4) ─── */
+.reveal {
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 500ms var(--ease-out), transform 500ms var(--ease-out);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.stagger-1 { transition-delay: 60ms; }
+.stagger-2 { transition-delay: 120ms; }
+.stagger-3 { transition-delay: 180ms; }
+.stagger-4 { transition-delay: 240ms; }
+
+/* Arrow micro-interaction on primary CTA */
+.btn-primary .arrow {
+  display: inline-block;
+  transition: transform 200ms var(--ease-out);
+}
+.btn-primary:hover .arrow {
+  transform: translateX(3px);
+}
+
+/* Offering rows stagger */
+.offering-row.reveal:nth-child(1) { transition-delay: 0ms; }
+.offering-row.reveal:nth-child(2) { transition-delay: 60ms; }
+.offering-row.reveal:nth-child(3) { transition-delay: 120ms; }
+.offering-row.reveal:nth-child(4) { transition-delay: 180ms; }
+
+/* Review items stagger */
+.review-item.reveal:nth-child(1) { transition-delay: 0ms; }
+.review-item.reveal:nth-child(2) { transition-delay: 80ms; }
+.review-item.reveal:nth-child(3) { transition-delay: 160ms; }
+
+body.js-ready .hero-label,
+body.js-ready .hero h1,
+body.js-ready .hero-body,
+body.js-ready .hero-ctas,
+body.js-ready .hero-quick {
+  opacity: 0; transform: translateY(16px);
+}
+body.js-loaded .hero-label,
+body.js-loaded .hero h1,
+body.js-loaded .hero-body,
+body.js-loaded .hero-ctas,
+body.js-loaded .hero-quick {
+  opacity: 1; transform: translateY(0);
+  transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+}
+body.js-loaded .hero-label { transition-delay: 100ms; }
+body.js-loaded .hero h1 { transition-delay: 250ms; }
+body.js-loaded .hero-body { transition-delay: 400ms; }
+body.js-loaded .hero-ctas { transition-delay: 520ms; }
+body.js-loaded .hero-quick { transition-delay: 640ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important; transition-duration: 0.01ms !important;
+  }
+  .reveal, body.js-ready .hero-label, body.js-ready .hero h1,
+  body.js-ready .hero-body, body.js-ready .hero-ctas, body.js-ready .hero-quick {
+    opacity: 1 !important; transform: none !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-name">Kid Sister</a>
+    <ul class="nav-links">
+      <li><a href="#flavours">What We Make</a></li>
+      <li><a href="#story">Our Story</a></li>
+      <li><a href="#visit">Visit</a></li>
+      <li><a href="https://www.instagram.com/kidsistericecream/" target="_blank" rel="noopener" class="nav-cta">This Week's Flavours ↗</a></li>
+    </ul>
+    <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.mobile-menu').classList.toggle('active')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu">
+  <a href="#flavours">What We Make</a>
+  <a href="#story">Our Story</a>
+  <a href="#visit">Visit</a>
+  <a href="https://www.instagram.com/kidsistericecream/" target="_blank" rel="noopener">This Week's Flavours ↗</a>
+</div>
+
+<section class="hero">
+  <div class="hero-content">
+    <p class="hero-label">Esquimalt · Victoria, BC</p>
+    <h1>Ice cream that follows the calendar, not a <em>recipe book.</em></h1>
+    <p class="hero-body">Organic dairy. Island-foraged fruit. A menu that changes every week because the seasons do. When it's gone, it's gone.</p>
+    <div class="hero-ctas">
+      <a href="https://www.instagram.com/kidsistericecream/" target="_blank" rel="noopener" class="btn-primary">See What's In the Case <span class="arrow">↗</span></a>
+      <a href="#visit" class="btn-secondary">Visit Us</a>
+    </div>
+    <p class="hero-quick">Thu–Fri 3–8 pm · Sat–Sun 1–8 pm · <a href="tel:+12505909777">(250) 590-9777</a></p>
+  </div>
+  <div class="hero-image">
+    <img src="ig-photo-03.jpg" alt="Artisan popsicle with pressed edible flowers against white hydrangeas in golden sunlight" width="960" height="1200">
+  </div>
+</section>
+
+<div class="stats-bar reveal">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-value">5.0 ★</div>
+      <div class="stat-label">Google Reviews</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-value">Thu — Sun</div>
+      <div class="stat-label">Open Weekly</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-value">(250) 590-9777</div>
+      <div class="stat-label">Call Ahead</div>
+    </div>
+  </div>
+</div>
+
+<div class="photo-editorial">
+  <img src="ig-photo-08.jpg" alt="Peachy-pink waffle cone held in front of the Kid Sister storefront" class="reveal" loading="lazy">
+  <div class="photo-editorial-stack">
+    <img src="ig-photo-04.jpg" alt="Kid Sister Roasted Strawberry pint with a scoop in a glass bowl" class="reveal stagger-1" loading="lazy">
+    <img src="ig-photo-09.jpg" alt="Double scoop of swirled caramel and vanilla in a waffle cone" class="reveal stagger-2" loading="lazy">
+  </div>
+</div>
+
+<section class="conviction" id="story">
+  <div class="conviction-grid">
+    <div class="reveal">
+      <p class="label">The Source</p>
+      <h2 class="h2">The fruit comes first. Everything else follows.</h2>
+      <p class="body-text">Blackberries from island hedgerows. Figs picked by hand. Organic dairy from farms you could drive to in twenty minutes. Every flavour starts with what's ripe right now.</p>
+      <p class="body-text">Women-owned. LGBTQ+ friendly. Every batch made by hand in a tiny Esquimalt shop where the menu lives on Instagram because it changes faster than any website could keep up.</p>
+    </div>
+    <img src="ig-photo-06.jpg" alt="Cherry blossom seasonal spread — dorayaki, matcha, kombucha floats on marble" class="conviction-image reveal" loading="lazy">
+  </div>
+</section>
+
+<div class="full-photo reveal">
+  <img src="ig-photo-10.jpg" alt="Dark chocolate and bright white vanilla double scoop in a waffle cone" loading="lazy">
+</div>
+
+<section class="offerings" id="flavours">
+  <div class="offerings-header">
+    <p class="label">What We Make</p>
+    <h2 class="h2">Scoops, pops, and things you won't find anywhere else.</h2>
+  </div>
+  <div class="offerings-list">
+    <div class="offering-row reveal">
+      <h3 class="h3">Ice Cream</h3>
+      <p class="body-text">Roasted Strawberry. Blackberry Fig. Sea Salt Caramel. Hand-churned with organic dairy and whatever the island is growing this week. Scoops and pints.</p>
+    </div>
+    <div class="offering-row reveal">
+      <h3 class="h3">Popsicles</h3>
+      <p class="body-text">Fruit pops and cream pops pressed with real edible flowers. The sunflower pop is the one people photograph before they eat.</p>
+    </div>
+    <div class="offering-row reveal">
+      <h3 class="h3">Seasonal Specials</h3>
+      <p class="body-text">Dorayaki ice cream sandwiches. Kombucha floats with local kiwi colada. Matcha and black sesame scoops. The menu follows the seasons, and sometimes Japan.</p>
+    </div>
+    <div class="offering-row reveal">
+      <h3 class="h3">Vegan Sorbet</h3>
+      <p class="body-text">Whole fruit, nothing else. The Matcha Lemon has a following of its own.</p>
+    </div>
+  </div>
+</section>
+
+<div class="full-photo reveal">
+  <img src="ig-photo-02.jpg" alt="Electric Kiwi Colada kombucha float with fresh kiwi — a Kid Sister collaboration" loading="lazy">
+</div>
+
+<section class="seasonal">
+  <div class="seasonal-inner">
+    <div class="seasonal-content reveal">
+      <p class="label">Right Now</p>
+      <h2 class="h2">The case changes. The Instagram tells you what's in it.</h2>
+      <p class="body-text">Cherry blossom season brought dorayaki sandwiches and black sesame sundaes. Spring means strawberry everything. Next month, who knows.</p>
+      <a href="https://www.instagram.com/kidsistericecream/" target="_blank" rel="noopener" class="btn-primary" style="margin-top: var(--space-md);">Follow @kidsistericecream ↗</a>
+    </div>
+    <img src="ig-photo-05.jpg" alt="Cherry blossom seasonal menu — dorayaki, matcha, black sesame, floats" class="seasonal-image reveal" loading="lazy">
+  </div>
+</section>
+
+<section class="reviews" id="reviews">
+  <div class="reviews-header">
+    <p class="label">What People Say</p>
+    <h2 class="h2">Perfect score. No exceptions.</h2>
+    <p style="font-size: 0.875rem; color: var(--text-tertiary); margin-top: 8px;">As featured on CHEK News · 5.0 stars on Google</p>
+  </div>
+  <div class="reviews-stack">
+    <div class="review-item reveal">
+      <p class="review-quote">"Best ice cream I've ever had. The flavours are so unique and you can tell everything is made with love and real ingredients."</p>
+      <p class="review-meta">DANI B. · Via Google</p>
+    </div>
+    <div class="review-item reveal">
+      <p class="review-quote">"A hidden gem in Esquimalt. The blackberry fig was out of this world."</p>
+      <p class="review-meta">JONATHAN M. · Via Google</p>
+    </div>
+    <div class="review-item reveal">
+      <p class="review-quote">"My kids are obsessed with the popsicles. Everything is fresh and you can taste the difference."</p>
+      <p class="review-meta">RACHEL R. · Via Google</p>
+    </div>
+  </div>
+</section>
+
+<section class="visit" id="visit">
+  <div class="visit-inner">
+    <p class="label">Visit Us</p>
+    <h2 class="h2">1320 Esquimalt Road</h2>
+    <div class="visit-grid">
+      <div class="visit-info reveal">
+        <h3 class="h3">Hours</h3>
+        <table class="hours-table">
+          <tr><td>Monday — Wednesday</td><td>Closed</td></tr>
+          <tr><td>Thursday</td><td>3 pm — 8 pm</td></tr>
+          <tr><td>Friday</td><td>3 pm — 8 pm</td></tr>
+          <tr><td>Saturday</td><td>1 pm — 8 pm</td></tr>
+          <tr><td>Sunday</td><td>1 pm — 8 pm</td></tr>
+        </table>
+        <a href="tel:+12505909777" class="visit-phone">(250) 590-9777</a>
+        <p class="visit-address">1320 Esquimalt Rd, Victoria, BC V9A 3P6</p>
+        <a href="https://maps.google.com/maps?q=1320+Esquimalt+Rd+Victoria+BC" target="_blank" rel="noopener" class="btn-secondary">Get Directions</a>
+      </div>
+      <div>
+        <iframe class="visit-map" src="https://maps.google.com/maps?q=1320+Esquimalt+Rd+Victoria+BC&output=embed" loading="lazy" title="Map to Kid Sister Ice Cream"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <h2 class="h2">This week's batch is already churning.</h2>
+  <a href="https://www.instagram.com/kidsistericecream/" target="_blank" rel="noopener" class="btn-primary" style="margin-top: var(--space-md);">See What's In the Case ↗</a>
+</div>
+
+<footer class="footer">
+  <div>
+    <span class="footer-name">Kid Sister Ice Cream</span>
+    <p class="footer-meta">Small-batch · Organic · Esquimalt</p>
+  </div>
+  <div class="footer-links">
+    <a href="https://www.instagram.com/kidsistericecream/" target="_blank" rel="noopener">Instagram</a>
+    <a href="tel:+12505909777">Call</a>
+    <a href="https://maps.google.com/maps?q=1320+Esquimalt+Rd+Victoria+BC" target="_blank" rel="noopener">Directions</a>
+  </div>
+  <p class="footer-land">Kid Sister frozen delights are made on the traditional territory of the lək̓ʷəŋən Peoples.</p>
+</footer>
+
+<script>
+(function() {
+  document.body.classList.add('js-ready');
+  requestAnimationFrame(function() {
+    requestAnimationFrame(function() { document.body.classList.add('js-loaded'); });
+  });
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(function(el) { observer.observe(el); });
+})();
+</script>
+
+</body>
+</html>

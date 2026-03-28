@@ -1,0 +1,791 @@
+<!--
+  BURNING MONK TATTOO — v5 (final)
+  
+  DELTA: v4 → v5
+  Changes:
+  - Portfolio: 8 photos in a 2-col masonry-style grid with generous size
+  - Removed feature photo section — integrated ig-photo-01 into portfolio as lead
+  - Reviews: trimmed to 3 strongest, larger type, more editorial spacing
+  - Visit section: warmer, condensed hours, less clinical
+  - Tightened overall: removed redundancies
+  Self-review: 6.5 on v4. Portfolio grid too small, reviews too generic.
+  Hypothesis: Bigger portfolio + editorial reviews will move overall quality most.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Burning Monk Tattoo — Montreal</title>
+  <meta name="description" content="Where people go when the tattoo matters. Fine line, portraits, and Japanese tattoo by convention-known artists in Montreal.">
+  <meta property="og:title" content="Burning Monk Tattoo — Montreal">
+  <meta property="og:description" content="Where people go when the tattoo matters. Convention-known artists in Montreal.">
+  <meta property="og:image" content="ig-photo-01.jpg">
+  <meta property="og:url" content="https://auto-sites.pages.dev/demos/burning-monk-tattoo/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;0,6..96,700;0,6..96,900;1,6..96,400;1,6..96,500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    :root {
+      --black: #0A0A08;
+      --charcoal: #111110;
+      --brown: #1A1409;
+      --burgundy: #150A0D;
+      --cream: #F0EBE3;
+      --amber: #C4873B;
+      --warm-white: #E8E2D8;
+      --muted: #B5B2A8;
+      --section-pad: 96px;
+      --content-width: 1000px;
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      background: var(--black);
+      color: var(--warm-white);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a:focus-visible, button:focus-visible { outline: 2px solid var(--amber); outline-offset: 4px; }
+
+    .content-wrap {
+      max-width: var(--content-width);
+      margin: 0 auto;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(10, 10, 8, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .nav-logo {
+      font-family: 'Bodoni Moda', serif;
+      font-weight: 700;
+      font-size: 1.125rem;
+      color: var(--cream);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 200ms var(--ease-out);
+    }
+
+    .nav-links a:hover { color: var(--cream); }
+
+    .nav-cta {
+      background: var(--amber);
+      color: var(--black);
+      padding: 10px 24px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: transform 160ms var(--ease-out);
+    }
+
+    .nav-cta:active { transform: scale(0.97); }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--cream);
+      transition: transform 200ms var(--ease-out), opacity 200ms;
+    }
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--black);
+      z-index: 99;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+    }
+    .mobile-menu.active { display: flex; }
+    .mobile-menu a {
+      font-family: 'Bodoni Moda', serif;
+      font-size: 2rem;
+      color: var(--cream);
+      text-decoration: none;
+    }
+
+    /* ===== CHAPTER 1: HERO ===== */
+    .hero {
+      background: var(--black);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 120px 40px 80px;
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, rgba(196, 135, 59, 0.04) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-name {
+      font-family: 'Bodoni Moda', serif;
+      font-weight: 900;
+      font-size: clamp(3.5rem, 11vw, 9rem);
+      line-height: 0.9;
+      color: var(--cream);
+      letter-spacing: -0.02em;
+      margin-bottom: 32px;
+      opacity: 0; transform: translateY(24px);
+      animation: heroFade 800ms var(--ease-out) forwards;
+    }
+
+    .hero-conviction {
+      font-family: 'Bodoni Moda', serif;
+      font-style: italic;
+      font-weight: 500;
+      font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+      color: var(--warm-white);
+      margin-bottom: 24px;
+      opacity: 0; transform: translateY(24px);
+      animation: heroFade 800ms var(--ease-out) 200ms forwards;
+    }
+
+    .hero-detail {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 440px;
+      line-height: 1.6;
+      opacity: 0; transform: translateY(24px);
+      animation: heroFade 800ms var(--ease-out) 400ms forwards;
+    }
+
+    .hero-rating {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 24px;
+      opacity: 0; transform: translateY(24px);
+      animation: heroFade 800ms var(--ease-out) 550ms forwards;
+    }
+
+    .hero-rating .stars { color: var(--amber); font-size: 0.875rem; letter-spacing: 2px; }
+    .hero-rating .text { font-size: 0.875rem; color: var(--muted); }
+
+    @keyframes heroFade {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ===== CHAPTER 2: THE WORK ===== */
+    .the-work {
+      background: var(--charcoal);
+      padding: var(--section-pad) 40px;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 12px;
+    }
+
+    .section-heading {
+      font-family: 'Bodoni Moda', serif;
+      font-weight: 600;
+      font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+      color: var(--cream);
+      margin-bottom: 12px;
+      line-height: 1.15;
+    }
+
+    .section-intro {
+      font-size: 1.0625rem;
+      color: var(--muted);
+      max-width: 460px;
+      line-height: 1.6;
+      margin-bottom: 48px;
+    }
+
+    /* Portfolio: 2-col masonry feel with lead image spanning full width */
+    .portfolio-lead {
+      max-width: var(--content-width);
+      margin: 0 auto 16px;
+      overflow: hidden;
+      border-radius: 2px;
+    }
+
+    .portfolio-lead img {
+      width: 100%;
+      max-height: 600px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      max-width: var(--content-width);
+      margin: 0 auto;
+    }
+
+    .portfolio-item {
+      overflow: hidden;
+      border-radius: 2px;
+      aspect-ratio: 1;
+    }
+
+    .portfolio-item.portrait {
+      aspect-ratio: 4/5;
+    }
+
+    .portfolio-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .portfolio-cta {
+      text-align: center;
+      margin-top: 48px;
+    }
+
+    .portfolio-cta a {
+      color: var(--amber);
+      font-size: 0.9375rem;
+      font-weight: 500;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(196, 135, 59, 0.3);
+      padding-bottom: 2px;
+      transition: border-color 200ms var(--ease-out);
+    }
+
+    .portfolio-cta a:hover { border-color: var(--amber); }
+
+    /* ===== CHAPTER 3: THE ARTISTS ===== */
+    .the-artists {
+      background: var(--brown);
+      padding: var(--section-pad) 40px;
+    }
+
+    .artist-content {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .artist-name {
+      font-family: 'Bodoni Moda', serif;
+      font-weight: 700;
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--cream);
+      margin-bottom: 4px;
+      line-height: 1;
+    }
+
+    .artist-role {
+      font-size: 0.8125rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 20px;
+    }
+
+    .artist-specialties {
+      font-family: 'Bodoni Moda', serif;
+      font-size: 1.1875rem;
+      font-weight: 500;
+      color: var(--cream);
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+
+    .artist-bio {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--warm-white);
+    }
+
+    .artist-bio + .artist-bio { margin-top: 14px; }
+
+    .artist-pullquote {
+      font-family: 'Bodoni Moda', serif;
+      font-style: italic;
+      font-weight: 500;
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      line-height: 1.3;
+      color: var(--cream);
+      padding-top: 20px;
+      border-top: 2px solid var(--amber);
+    }
+
+    .artist-pullquote cite {
+      display: block;
+      font-family: 'DM Sans', sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 0.875rem;
+      color: var(--muted);
+      margin-top: 16px;
+    }
+
+    /* ===== CHAPTER 4: WHAT THEY SAY ===== */
+    .the-reviews {
+      background: var(--burgundy);
+      padding: var(--section-pad) 40px;
+    }
+
+    .reviews-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .review-block {
+      padding: 48px 0;
+      border-bottom: 1px solid rgba(232, 226, 216, 0.06);
+    }
+
+    .review-block:last-child { border-bottom: none; }
+
+    .review-quote {
+      font-family: 'Bodoni Moda', serif;
+      font-style: italic;
+      font-weight: 500;
+      font-size: clamp(1.25rem, 2.5vw, 1.625rem);
+      line-height: 1.55;
+      color: var(--cream);
+      margin-bottom: 20px;
+    }
+
+    .review-attr {
+      font-size: 0.8125rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ===== CHAPTER 5: YOUR VISIT ===== */
+    .your-visit {
+      background: var(--cream);
+      padding: var(--section-pad) 40px;
+      color: var(--black);
+    }
+
+    .your-visit .section-heading { color: var(--black); }
+
+    .visit-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      margin-bottom: 48px;
+    }
+
+    .visit-section h3 {
+      font-family: 'Bodoni Moda', serif;
+      font-weight: 600;
+      font-size: 1.375rem;
+      margin-bottom: 20px;
+      color: var(--black);
+    }
+
+    .visit-section p {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: #3A3A35;
+    }
+
+    .hours-list {
+      list-style: none;
+    }
+
+    .hours-list li {
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(10, 10, 8, 0.08);
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9375rem;
+    }
+
+    .hours-list .day { font-weight: 600; color: var(--black); }
+    .hours-list .time { color: #3A3A35; }
+    .hours-list .closed { color: #999; }
+
+    .visit-cta {
+      display: inline-block;
+      background: var(--black);
+      color: var(--cream);
+      padding: 14px 36px;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      text-decoration: none;
+      margin-top: 24px;
+      transition: transform 160ms var(--ease-out);
+    }
+
+    .visit-cta:active { transform: scale(0.97); }
+
+    .first-timer {
+      margin-top: 28px;
+      padding: 20px 24px;
+      background: rgba(10, 10, 8, 0.04);
+      border-radius: 4px;
+    }
+
+    .first-timer h4 {
+      font-family: 'Bodoni Moda', serif;
+      font-weight: 600;
+      font-size: 1.0625rem;
+      margin-bottom: 6px;
+    }
+
+    .first-timer p {
+      font-size: 0.9375rem;
+      line-height: 1.6;
+      color: #555;
+    }
+
+    .map-embed {
+      width: 100%;
+      height: 280px;
+      border: none;
+      border-radius: 4px;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--black);
+      padding: 48px 40px;
+      text-align: center;
+    }
+
+    .footer-name {
+      font-family: 'Bodoni Moda', serif;
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--cream);
+      letter-spacing: 0.06em;
+      margin-bottom: 12px;
+    }
+
+    .footer-address {
+      font-size: 0.875rem;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .footer-social a {
+      color: var(--amber);
+      text-decoration: none;
+      font-size: 0.9375rem;
+      font-weight: 500;
+    }
+
+    .footer-copy {
+      font-size: 0.75rem;
+      color: rgba(181, 178, 168, 0.4);
+      margin-top: 24px;
+    }
+
+    /* SCROLL REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-stagger {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 500ms var(--ease-out), transform 500ms var(--ease-out);
+    }
+
+    .reveal-stagger.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav { padding: 16px 24px; }
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      
+      .hero { padding: 100px 24px 60px; }
+      
+      .the-work, .the-artists, .the-reviews, .your-visit { padding: 64px 24px; }
+      
+      .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+      }
+      .portfolio-item.portrait { aspect-ratio: 1; }
+      .portfolio-lead img { max-height: 400px; }
+
+      .artist-content {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      
+      .visit-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .map-embed { height: 200px; }
+      footer { padding: 40px 24px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+      .reveal, .reveal-stagger,
+      .hero-name, .hero-conviction, .hero-detail, .hero-rating {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-logo">Burning Monk</div>
+    <ul class="nav-links">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#artists">Artists</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#visit">Visit</a></li>
+    </ul>
+    <a href="https://www.instagram.com/burningmonktattoo/" class="nav-cta" target="_blank">Book via Instagram</a>
+    <button class="hamburger" aria-label="Menu" onclick="this.classList.toggle('active'); document.querySelector('.mobile-menu').classList.toggle('active');">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-menu">
+    <a href="#work" onclick="document.querySelector('.mobile-menu').classList.remove('active'); document.querySelector('.hamburger').classList.remove('active');">Work</a>
+    <a href="#artists" onclick="document.querySelector('.mobile-menu').classList.remove('active'); document.querySelector('.hamburger').classList.remove('active');">Artists</a>
+    <a href="#reviews" onclick="document.querySelector('.mobile-menu').classList.remove('active'); document.querySelector('.hamburger').classList.remove('active');">Reviews</a>
+    <a href="#visit" onclick="document.querySelector('.mobile-menu').classList.remove('active'); document.querySelector('.hamburger').classList.remove('active');">Visit</a>
+    <a href="https://www.instagram.com/burningmonktattoo/" target="_blank">Book on Instagram</a>
+  </div>
+
+  <!-- CHAPTER 1: HERO -->
+  <section class="hero">
+    <h1 class="hero-name">Burning<br>Monk</h1>
+    <p class="hero-conviction">Where people go when the tattoo matters.</p>
+    <p class="hero-detail">Convention-known artists in Montreal. Fine line, portraits, Japanese, and everything between.</p>
+    <div class="hero-rating">
+      <span class="stars">★★★★★</span>
+      <span class="text">4.7 from 129 reviews</span>
+    </div>
+  </section>
+
+  <!-- CHAPTER 2: THE WORK -->
+  <section class="the-work" id="work">
+    <div class="content-wrap">
+      <p class="section-label">The Work</p>
+      <h2 class="section-heading">The portfolio is the product.</h2>
+      <p class="section-intro">Fine line to full sleeves. Anime to irezumi. Every piece is custom.</p>
+    </div>
+    <div class="portfolio-lead reveal">
+      <img src="ig-photo-01.jpg" alt="Japanese warrior and snake calf tattoo by Linus Yang">
+    </div>
+    <div class="portfolio-grid">
+      <div class="portfolio-item portrait reveal-stagger">
+        <img src="ig-photo-02.jpg" alt="Hannya mask with kimono tattoo">
+      </div>
+      <div class="portfolio-item reveal-stagger">
+        <img src="ig-photo-03.jpg" alt="Anime portrait tattoo">
+      </div>
+      <div class="portfolio-item reveal-stagger">
+        <img src="ig-photo-10.jpg" alt="Peony and mandala calf piece">
+      </div>
+      <div class="portfolio-item reveal-stagger">
+        <img src="ig-photo-07.jpg" alt="Black and grey koi fish">
+      </div>
+      <div class="portfolio-item reveal-stagger">
+        <img src="ig-photo-09.jpg" alt="Realistic red rose">
+      </div>
+      <div class="portfolio-item reveal-stagger">
+        <img src="ig-photo-08.jpg" alt="Floral and mandala forearm">
+      </div>
+      <div class="portfolio-item reveal-stagger">
+        <img src="ig-photo-11.jpg" alt="Full Japanese sleeve from three angles">
+      </div>
+    </div>
+    <div class="portfolio-cta">
+      <a href="https://www.instagram.com/burningmonktattoo/" target="_blank">See more on Instagram →</a>
+    </div>
+  </section>
+
+  <!-- CHAPTER 3: THE ARTISTS -->
+  <section class="the-artists" id="artists">
+    <div class="content-wrap">
+      <p class="section-label">The Artists</p>
+    </div>
+    <div class="artist-content">
+      <div class="artist-info reveal">
+        <h2 class="artist-name">Linus Yang</h2>
+        <p class="artist-role">Lead Artist · Convention Regular</p>
+        <p class="artist-specialties">Fine line · Portraits · Japanese · Color realism · Anime</p>
+        <p class="artist-bio">Linus has been a fixture at tattoo conventions across Canada. Clients fly in from other provinces. He specializes in fine line and portrait work, but the Japanese pieces are what stop people at convention booths.</p>
+        <p class="artist-bio">Three tattoos from the same artist isn't loyalty. It's proof.</p>
+      </div>
+      <blockquote class="artist-pullquote reveal">
+        "Beautiful lines."
+        <cite>Jonathan C., after his third piece</cite>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- CHAPTER 4: WHAT THEY SAY -->
+  <section class="the-reviews" id="reviews">
+    <div class="reviews-container">
+      <p class="section-label">What They Say</p>
+      <h2 class="section-heading">129 reviews. 4.7 stars.</h2>
+      <div class="review-block reveal-stagger">
+        <p class="review-quote">"Got inked by Linus and I am so thrilled! Linus was absolutely amazing and made me feel at ease throughout the whole process."</p>
+        <p class="review-attr">Elly E. · Via Google</p>
+      </div>
+      <div class="review-block reveal-stagger">
+        <p class="review-quote">"Tattoo artist reworked his schedule so that my daughter and I could get our matching tattoos before she had to return to Edmonton."</p>
+        <p class="review-attr">Rene L. · Via Google</p>
+      </div>
+      <div class="review-block reveal-stagger">
+        <p class="review-quote">"These guys are just great. Well known artists from tattoo conventions. They can do everything."</p>
+        <p class="review-attr">Ben G. · Via Google</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHAPTER 5: YOUR VISIT -->
+  <section class="your-visit" id="visit">
+    <div class="content-wrap">
+      <p class="section-label" style="color: var(--amber);">Your Visit</p>
+      <h2 class="section-heading">Come by. Bring your ideas.</h2>
+      <div class="visit-grid">
+        <div class="visit-section">
+          <h3>Hours</h3>
+          <ul class="hours-list">
+            <li><span class="day">Monday</span><span class="time">12:00 – 7:00 PM</span></li>
+            <li><span class="day">Tuesday</span><span class="time">12:00 – 7:00 PM</span></li>
+            <li><span class="day">Wednesday</span><span class="time">12:00 – 7:00 PM</span></li>
+            <li><span class="day">Thursday</span><span class="time">12:00 – 8:00 PM</span></li>
+            <li><span class="day">Friday</span><span class="time">12:00 – 8:00 PM</span></li>
+            <li><span class="day">Saturday</span><span class="time">12:00 – 8:00 PM</span></li>
+            <li><span class="day">Sunday</span><span class="closed">Closed</span></li>
+          </ul>
+        </div>
+        <div class="visit-section">
+          <h3>Book a Session</h3>
+          <p>DM on Instagram with your idea, placement, and size. Linus will get back to you with availability and a quote. Walk-ins welcome when the schedule allows.</p>
+          <a href="https://www.instagram.com/burningmonktattoo/" class="visit-cta" target="_blank">DM @burningmonktattoo</a>
+          <div class="first-timer">
+            <h4>First tattoo?</h4>
+            <p>Bring reference photos. Linus will walk you through placement, sizing, and what to expect.</p>
+          </div>
+        </div>
+      </div>
+      <iframe class="map-embed" src="https://maps.google.com/maps?q=Burning+Monk+Tattoo+Montreal&output=embed" allowfullscreen loading="lazy"></iframe>
+    </div>
+  </section>
+
+  <footer>
+    <p class="footer-name">Burning Monk Tattoo</p>
+    <p class="footer-address">Montreal, QC</p>
+    <div class="footer-social">
+      <a href="https://www.instagram.com/burningmonktattoo/" target="_blank">@burningmonktattoo</a>
+    </div>
+    <p class="footer-copy">&copy; 2026 Burning Monk Tattoo</p>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // Stagger reveal
+    const staggerObserver = new IntersectionObserver((entries) => {
+      const visible = entries.filter(e => e.isIntersecting);
+      visible.forEach((entry, i) => {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, i * 80);
+        staggerObserver.unobserve(entry.target);
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal-stagger').forEach(el => staggerObserver.observe(el));
+  </script>
+
+</body>
+</html>

@@ -1,5 +1,86 @@
 # Auto-Sites Build Log
 
+## Build 76 — Vintage Glory v2
+- **Category:** Vintage Clothing Store
+- **City:** Winnipeg, MB
+- **Date:** 2026-03-28
+- **Model:** claude-opus-4-6 (subagent)
+- **Agent:** Lucy
+- **Hero pattern:** dark-immersive (boots photo left of text on near-black)
+- **Typography:** Bodoni Moda 400/500/600/700 + Instrument Sans 400/500/600
+- **Review layout:** 3-column cards with brass left border accent + large Bodoni quote marks
+- **Stats bar style:** no-stats
+- **Score:** 7.5 (WHY avg) / 7.17 (WHAT avg) / 7.125 (HOW avg) → 7.27
+- **Self-review:** 7.5 (footnote)
+- **Live URL:** https://auto-sites.pages.dev/demos/vintage-glory-v2/
+- **Key decisions:** v2 rebuild with 8 real Instagram photos (v1 had none). "A museum you can buy from" headline sourced directly from Google review — best headlines come from customers. Dark-immersive hero with ig-photo-04 (Victorian boots on Pendleton blanket, rated 10/10). Bodoni Moda chosen for high-contrast editorial magazine feel matching a curated vintage shop. Photos with baked-in Instagram text overlays (05, 06) moved to secondary positions or replaced with clean photos (07, 08, 03). 5 photos used of 8 (3 skipped for text overlays, flat lighting, or story format). Brass (#C9A04E) on near-black (#1A1814) palette. Copy audit clean. Scroll-reveal with staggered cards. Previous build (build 46) used Barlow Condensed + IBM Plex Sans with olive/brass/cream palette.
+
+### Scores
+| Round | Phase | Reviewers | Avg |
+|-------|-------|-----------|-----|
+| v0→v1 | WHY | Jobs 8.0, Cagan 7.0, Ogilvy 7.5 | 7.5 |
+| v1→v2 | WHAT | Norman 7.5, Krug 7.0, Nielsen 7.0 | 7.17 |
+| v2→v3 | HOW | Vignelli 6.5, Spiekermann 7.5, Rams 7.5, Emil 7.0 | 7.125 |
+| v5 | Self | Lucy | 7.5 |
+
+### Photo Evaluation (Phase 1)
+| Rank | File | Score | Aspect | Role |
+|------|------|-------|--------|------|
+| 1 | ig-photo-04 | 10/10 | Square | Hero |
+| 2 | ig-photo-07 | 9/10 | Square | Finds grid |
+| 3 | ig-photo-08 | 9/10 | Square | Finds grid (jewelry/lifestyle) |
+| 4 | ig-photo-06 | 8/10 | Portrait | Skipped (text overlay) |
+| 5 | ig-photo-05 | 7/10 | Portrait | Experience section |
+| 6 | ig-photo-01 | 9/10 | Portrait story | Skipped (black bars) |
+| 7 | ig-photo-03 | 5/10 | Portrait | Finds grid |
+| 8 | ig-photo-02 | 4/10 | Square | Skipped (flat) |
+
+### Files
+- index-v0.html through index-v5.html (6 versions) + index.html
+- 8 real Instagram photos (ig-photo-01 through ig-photo-08)
+- screenshot-v0.png through screenshot-v5.png
+
+---
+
+## Build 75 — Kavod Thrift Store
+- **Category:** Thrift / Secondhand Store
+- **City:** Winnipeg, MB
+- **Date:** 2026-03-28
+- **Model:** claude-opus-4-6 (subagent)
+- **Agent:** Lucy
+- **Hero pattern:** split-image-right (portrait mannequin photo right, text left)
+- **Typography:** Bitter 400/500/600/700 + Space Grotesk 400/500/600
+- **Review layout:** Single-column left-accent cards (terracotta left border)
+- **Stats bar style:** no-stats
+- **Score:** 7.5 (WHY avg) / 7.17 (WHAT avg) / 7.375 (HOW avg) → 7.35
+- **Self-review:** 7.5 (footnote)
+- **Live URL:** https://auto-sites.pages.dev/demos/kavod-thrift/
+- **Key decisions:** "Kavod" means honor in Hebrew — the headline leans into this: "Kavod means honor. So does a $12 cashmere sweater." Specific product + specific price + brand meaning in one line. Only 4 usable real photos out of 8 (rest were graphics or poor quality store interior). Bitter slab serif chosen for warmth and groundedness — matches community thrift energy without being precious. Olive green + cream + terracotta palette. Quick-info bar surfaces hours immediately (irregular schedule is a friction point). Volunteer angle is the differentiator — "Run by volunteers. Stocked with care." Community/volunteer CTA included. Reviews are real Google reviews with name + date format. No stats bar — "4.5 stars on Google" in section heading. Copy audit clean: no em dashes, no significance inflation, no "not X, it's Y" pattern. Scroll reveal on headlines and staggered review cards.
+
+### Scores
+| Round | Phase | Reviewers | Avg |
+|-------|-------|-----------|-----|
+| v0→v1 | WHY | Jobs 8.0, Cagan 7.0, Ogilvy 7.5 | 7.5 |
+| v1→v2 | WHAT | Norman 7.5, Krug 7.0, Nielsen 7.0 | 7.17 |
+| v2→v3 | HOW | Vignelli 7.0, Spiekermann 7.5, Rams 8.0, Emil 7.0 | 7.375 |
+| v5 | Self | Lucy | 7.5 |
+
+### Photo Evaluation (Phase 1)
+| Rank | File | Score | Aspect | Role |
+|------|------|-------|--------|------|
+| 1 | ig-photo-07 | 9/10 | Portrait 4:5 | Hero (split-image-right) |
+| 2 | ig-photo-04 | 9/10 | Near-square | Finds grid |
+| 3 | ig-photo-03 | 8/10 | Portrait 4:5 | About/community |
+| 4 | ig-photo-05 | 7/10 | Portrait 4:5 | Finds grid |
+| 5-8 | 01,02,06,08 | 3-7/10 | Various | Skipped (graphics/poor quality) |
+
+### Files
+- index-v0.html through index-v5.html (6 versions) + index.html
+- 8 real Instagram photos (ig-photo-01 through ig-photo-08)
+- screenshot-v0.png, screenshot-v1.png, screenshot-v2.png, screenshot-v4.png, screenshot-v5.png
+
+---
+
 ## Build 74 — Klee Larsen
 - **Category:** Fine Art / Artist Portfolio
 - **City:** Vancouver, BC

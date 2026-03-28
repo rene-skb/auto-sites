@@ -1,0 +1,774 @@
+<!--
+  FRONDLY PLANTS — v4 (Motion Implementation)
+  
+  DELTA: v3 → v4
+  Changes:
+  1. Added scroll-reveal animations via IntersectionObserver (fade-in + translateY)
+  2. Gallery photos stagger at 80ms intervals
+  3. Review cards stagger at 60ms intervals
+  4. Button :active scale(0.97) on all buttons
+  5. prefers-reduced-motion: reduce respected
+  6. Hero subtitle contrast improved (#d4e4d6 → brighter)
+  7. Only animate transform + opacity (GPU performance)
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frondly Plants — Indoor Plant Shop, Vancouver BC</title>
+  
+  <meta property="og:title" content="Frondly Plants — Indoor Plant Shop, Vancouver">
+  <meta property="og:description" content="Rare and trendy tropical houseplants in Vancouver. 5★ rated, 134 reviews.">
+  <meta property="og:image" content="ig-photo-08.jpg">
+  <meta property="og:url" content="https://auto-sites.pages.dev/demos/frondly-plants/">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    :root {
+      --forest: #1B3A2D;
+      --forest-deep: #0F2419;
+      --sage: #7A9E7E;
+      --sage-light: #A8C5AB;
+      --cream: #F5F1E8;
+      --cream-dark: #E8E2D5;
+      --warm-white: #FAFAF6;
+      --text-dark: #1A1A18;
+      --text-muted: #5A5A52;
+      
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'Space Grotesk', system-ui, sans-serif;
+      
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --section-pad: clamp(72px, 10vw, 112px);
+      --content-width: 1140px;
+      --gutter: 40px;
+    }
+    
+    html { scroll-behavior: smooth; }
+    
+    body {
+      font-family: var(--font-body);
+      color: var(--text-dark);
+      background: var(--cream);
+      line-height: 1.65;
+      font-size: 17px;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    /* ============ ANIMATIONS ============ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+    }
+    
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .stagger { transition-delay: var(--delay, 0ms); }
+    
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
+    
+    /* ============ NAV ============ */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 20px var(--gutter);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 300ms var(--ease-out);
+    }
+    
+    nav.scrolled {
+      background: rgba(245, 241, 232, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    
+    nav:not(.scrolled) .nav-logo,
+    nav:not(.scrolled) .nav-links a { color: var(--cream); }
+    nav:not(.scrolled) .hamburger span { background: var(--cream); }
+    
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--forest);
+      text-decoration: none;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+    
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--forest);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: opacity 200ms var(--ease-out);
+    }
+    
+    .nav-links a:hover { opacity: 0.6; }
+    
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--forest);
+    }
+    
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--cream);
+      z-index: 99;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 32px;
+    }
+    
+    .mobile-menu.open { display: flex; }
+    
+    .mobile-menu a {
+      font-family: var(--font-display);
+      font-size: 32px;
+      font-weight: 500;
+      color: var(--forest);
+      text-decoration: none;
+    }
+    
+    .mobile-close {
+      position: absolute;
+      top: 20px;
+      right: var(--gutter);
+      background: none;
+      border: none;
+      font-size: 28px;
+      color: var(--forest);
+      cursor: pointer;
+    }
+    
+    /* ============ HERO ============ */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 var(--gutter) 80px;
+      background: var(--forest-deep);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('ig-photo-08.jpg') center/cover;
+      opacity: 0.4;
+    }
+    
+    .hero-gradient {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, 
+        rgba(15,36,25,0.1) 0%, 
+        rgba(15,36,25,0.3) 50%, 
+        rgba(15,36,25,0.85) 100%);
+      z-index: 1;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+    }
+    
+    .hero-label {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--sage);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(64px, 12vw, 140px);
+      font-weight: 400;
+      color: var(--cream);
+      line-height: 0.9;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+    
+    .hero-subtitle {
+      font-family: var(--font-display);
+      font-size: clamp(19px, 2.2vw, 24px);
+      font-weight: 500;
+      font-style: italic;
+      color: #dce8de;
+      line-height: 1.5;
+      margin-bottom: 36px;
+      max-width: 580px;
+    }
+    
+    .hero-actions {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    
+    .btn-primary {
+      display: inline-block;
+      padding: 16px 36px;
+      background: var(--cream);
+      color: var(--forest);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: transform 160ms var(--ease-out), opacity 200ms var(--ease-out);
+    }
+    
+    .btn-primary:active { transform: scale(0.97); }
+    .btn-primary:hover { opacity: 0.9; }
+    
+    .hero-link {
+      color: var(--sage-light);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(168, 197, 171, 0.4);
+      transition: border-color 200ms var(--ease-out);
+    }
+    
+    .hero-link:hover { border-color: var(--sage-light); }
+    
+    /* ============ ABOUT ============ */
+    .about {
+      padding: var(--section-pad) var(--gutter);
+      background: var(--cream);
+    }
+    
+    .about-inner {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    
+    .about h2 {
+      font-family: var(--font-display);
+      font-size: clamp(30px, 3.5vw, 44px);
+      font-weight: 400;
+      color: var(--forest);
+      line-height: 1.2;
+      margin-bottom: 24px;
+    }
+    
+    .about p {
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 16px;
+      max-width: 460px;
+    }
+    
+    .about-image {
+      aspect-ratio: 1;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    
+    .about-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    
+    /* ============ GALLERY ============ */
+    .gallery {
+      padding: var(--section-pad) var(--gutter);
+      background: var(--warm-white);
+    }
+    
+    .gallery-header {
+      max-width: var(--content-width);
+      margin: 0 auto 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 40px;
+    }
+    
+    .gallery-label {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--sage);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    
+    .gallery-title {
+      font-family: var(--font-display);
+      font-size: clamp(26px, 3vw, 36px);
+      font-weight: 400;
+      color: var(--forest);
+      line-height: 1.25;
+      max-width: 520px;
+    }
+    
+    .gallery-note {
+      font-size: 15px;
+      color: var(--text-muted);
+      max-width: 280px;
+      text-align: right;
+      flex-shrink: 0;
+    }
+    
+    .gallery-note a {
+      color: var(--forest);
+      font-weight: 500;
+      text-decoration: none;
+      border-bottom: 1px solid var(--sage-light);
+    }
+    
+    .gallery-note a:hover { border-color: var(--forest); }
+    
+    .gallery-grid {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    
+    .gallery-grid .photo {
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    
+    .gallery-grid .photo img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      display: block;
+    }
+    
+    .photo-wide { grid-column: span 2; }
+    .photo-wide img { aspect-ratio: 2 / 1 !important; }
+    
+    /* ============ REVIEWS ============ */
+    .reviews {
+      padding: var(--section-pad) var(--gutter);
+      background: var(--forest);
+    }
+    
+    .reviews-inner {
+      max-width: var(--content-width);
+      margin: 0 auto;
+    }
+    
+    .reviews-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 56px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    
+    .reviews-title {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 3.5vw, 40px);
+      font-weight: 400;
+      color: var(--cream);
+    }
+    
+    .reviews-meta {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--sage);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    
+    .reviews-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+    
+    .review-card {
+      padding: 32px 28px;
+      background: rgba(245, 241, 232, 0.05);
+      border-radius: 8px;
+      border: 1px solid rgba(168, 197, 171, 0.08);
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .review-quote {
+      font-family: var(--font-display);
+      font-size: 21px;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--cream);
+      line-height: 1.5;
+      margin-bottom: auto;
+      padding-bottom: 24px;
+    }
+    
+    .review-author {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--sage);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding-top: 16px;
+      border-top: 1px solid rgba(168, 197, 171, 0.12);
+    }
+    
+    /* ============ VISIT ============ */
+    .visit {
+      padding: var(--section-pad) var(--gutter);
+      background: var(--cream);
+    }
+    
+    .visit-inner {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    
+    .visit h2 {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 400;
+      color: var(--forest);
+      line-height: 1.15;
+      margin-bottom: 32px;
+    }
+    
+    .visit-detail {
+      margin-bottom: 24px;
+    }
+    
+    .visit-detail-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--sage);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    
+    .visit-detail-value {
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+    
+    .visit-detail-value a {
+      color: var(--forest);
+      text-decoration: none;
+      border-bottom: 1px solid var(--sage-light);
+      transition: border-color 200ms var(--ease-out);
+    }
+    
+    .visit-detail-value a:hover { border-color: var(--forest); }
+    
+    .visit-cta {
+      display: inline-block;
+      margin-top: 28px;
+      padding: 16px 36px;
+      background: var(--forest);
+      color: var(--cream);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: transform 160ms var(--ease-out), background 200ms var(--ease-out);
+    }
+    
+    .visit-cta:active { transform: scale(0.97); }
+    .visit-cta:hover { background: var(--forest-deep); }
+    
+    .visit-map {
+      border-radius: 8px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+    }
+    
+    .visit-map iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    
+    /* ============ FOOTER ============ */
+    footer {
+      padding: 32px var(--gutter);
+      background: var(--forest-deep);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .footer-left {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--cream);
+    }
+    
+    .footer-right a {
+      color: var(--sage-light);
+      text-decoration: none;
+      font-size: 14px;
+      letter-spacing: 0.04em;
+      transition: color 200ms var(--ease-out);
+    }
+    
+    .footer-right a:hover { color: var(--cream); }
+    
+    /* ============ MOBILE ============ */
+    @media (max-width: 768px) {
+      :root { --gutter: 24px; }
+      
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      
+      .hero { padding: 0 var(--gutter) 60px; }
+      .hero-actions { flex-direction: column; align-items: flex-start; gap: 16px; }
+      
+      .about-inner { grid-template-columns: 1fr; gap: 40px; }
+      
+      .gallery-header { flex-direction: column; align-items: flex-start; }
+      .gallery-note { text-align: left; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+      .photo-wide { grid-column: span 2; }
+      
+      .reviews-list { grid-template-columns: 1fr; gap: 20px; }
+      
+      .visit-inner { grid-template-columns: 1fr; gap: 40px; }
+      
+      footer { flex-direction: column; gap: 12px; text-align: center; }
+    }
+    
+    @media (max-width: 480px) {
+      .hero-title { font-size: clamp(48px, 14vw, 64px); }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .photo-wide { grid-column: span 1; }
+      .photo-wide img { aspect-ratio: 1 !important; }
+    }
+  </style>
+</head>
+<body>
+  
+  <nav id="nav">
+    <a href="#" class="nav-logo">Frondly</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#plants">Plants</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#visit">Visit</a></li>
+    </ul>
+    <button class="hamburger" onclick="document.getElementById('mobileMenu').classList.add('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  
+  <div id="mobileMenu" class="mobile-menu">
+    <button class="mobile-close" onclick="this.parentElement.classList.remove('open')" aria-label="Close">&times;</button>
+    <a href="#about" onclick="this.parentElement.classList.remove('open')">About</a>
+    <a href="#plants" onclick="this.parentElement.classList.remove('open')">Plants</a>
+    <a href="#reviews" onclick="this.parentElement.classList.remove('open')">Reviews</a>
+    <a href="#visit" onclick="this.parentElement.classList.remove('open')">Visit</a>
+  </div>
+  
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-gradient"></div>
+    <div class="hero-content">
+      <p class="hero-label">Indoor Plant Shop · Vancouver, BC</p>
+      <h1 class="hero-title">Frondly</h1>
+      <p class="hero-subtitle">Rare tropicals, collectors' plants, and the weird ones you won't find anywhere else. 134 five-star reviews and counting.</p>
+      <div class="hero-actions">
+        <a href="tel:+12363394903" class="btn-primary">Call (236) 339-4903</a>
+        <a href="https://instagram.com/frondlyplants" target="_blank" rel="noopener" class="hero-link">Browse @frondlyplants</a>
+      </div>
+    </div>
+  </section>
+  
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="about-inner">
+      <div class="reveal">
+        <h2>Every review mentions Chad by name.</h2>
+        <p>That tells you everything about this shop. Chad hand-picks every plant, inspects the roots, checks the soil. He'll spend 20 minutes helping you choose a tree and another 10 explaining how to keep it alive.</p>
+        <p>Frondly isn't easy to find, and people drive across Vancouver for it anyway.</p>
+      </div>
+      <div class="about-image reveal" style="--delay: 100ms">
+        <img src="ig-photo-05.jpg" alt="Philodendron verrucosum held in hand showing velvety dark leaves" loading="lazy">
+      </div>
+    </div>
+  </section>
+  
+  <!-- GALLERY -->
+  <section class="gallery" id="plants">
+    <div class="gallery-header reveal">
+      <div>
+        <p class="gallery-label">Inside the shop</p>
+        <h2 class="gallery-title">Alocasia, Monstera, Philodendron, Hoya, and whatever just arrived.</h2>
+      </div>
+      <p class="gallery-note">New plants land weekly. See what's in right now on <a href="https://instagram.com/frondlyplants" target="_blank" rel="noopener">Instagram</a>.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="photo photo-wide reveal stagger" style="--delay: 0ms">
+        <img src="ig-photo-12.jpg" alt="Monstera collection on windowsill" loading="lazy">
+      </div>
+      <div class="photo reveal stagger" style="--delay: 80ms">
+        <img src="ig-photo-02.jpg" alt="Alocasia Frydek" loading="lazy">
+      </div>
+      <div class="photo reveal stagger" style="--delay: 160ms">
+        <img src="ig-photo-07.jpg" alt="Alocasia zebrina stems" loading="lazy">
+      </div>
+      <div class="photo reveal stagger" style="--delay: 240ms">
+        <img src="ig-photo-04.jpg" alt="Cycad frond" loading="lazy">
+      </div>
+      <div class="photo reveal stagger" style="--delay: 320ms">
+        <img src="ig-photo-09.jpg" alt="Monstera deliciosa leaf" loading="lazy">
+      </div>
+      <div class="photo reveal stagger" style="--delay: 400ms">
+        <img src="ig-photo-01.jpg" alt="Caladium leaf with water droplets" loading="lazy">
+      </div>
+    </div>
+  </section>
+  
+  <!-- REVIEWS -->
+  <section class="reviews" id="reviews">
+    <div class="reviews-inner">
+      <div class="reviews-header reveal">
+        <h2 class="reviews-title">What people say</h2>
+        <span class="reviews-meta">5★ · 134 reviews · Google</span>
+      </div>
+      <div class="reviews-list">
+        <div class="review-card reveal stagger" style="--delay: 0ms">
+          <p class="review-quote">"There are three things that really set Frondly apart. Quality of plants, they come in perfect condition with wonderful soil."</p>
+          <p class="review-author">Eric V. · Via Google</p>
+        </div>
+        <div class="review-card reveal stagger" style="--delay: 60ms">
+          <p class="review-quote">"Chad, the owner, was so helpful in selecting the tree and advising us on how to care for it."</p>
+          <p class="review-author">Julia P. · Via Google</p>
+        </div>
+        <div class="review-card reveal stagger" style="--delay: 120ms">
+          <p class="review-quote">"Not easy to find but they have a good variety of trendy tropical house plants."</p>
+          <p class="review-author">Rachel K. · Via Google</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- VISIT -->
+  <section class="visit" id="visit">
+    <div class="visit-inner">
+      <div class="reveal">
+        <h2>Come find us.</h2>
+        
+        <div class="visit-detail">
+          <p class="visit-detail-label">Location</p>
+          <p class="visit-detail-value">Vancouver, BC</p>
+        </div>
+        
+        <div class="visit-detail">
+          <p class="visit-detail-label">Phone</p>
+          <p class="visit-detail-value"><a href="tel:+12363394903">+1 (236) 339-4903</a></p>
+        </div>
+        
+        <div class="visit-detail">
+          <p class="visit-detail-label">Instagram</p>
+          <p class="visit-detail-value"><a href="https://instagram.com/frondlyplants" target="_blank" rel="noopener">@frondlyplants</a></p>
+        </div>
+        
+        <a href="tel:+12363394903" class="visit-cta">Call (236) 339-4903</a>
+      </div>
+      
+      <div class="visit-map reveal" style="--delay: 100ms">
+        <iframe src="https://maps.google.com/maps?q=Frondly+Plants+Vancouver+BC&output=embed" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+  
+  <footer>
+    <span class="footer-left">Frondly Plants</span>
+    <span class="footer-right"><a href="https://instagram.com/frondlyplants" target="_blank" rel="noopener">@frondlyplants</a></span>
+  </footer>
+  
+  <script>
+    // Nav scroll
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    });
+    
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    
+    reveals.forEach(el => observer.observe(el));
+  </script>
+  
+</body>
+</html>

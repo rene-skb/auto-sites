@@ -1,0 +1,564 @@
+<!--
+  v5 — Final
+  - About copy rewritten: removed redundancy with intro, gave custom instruments more presence
+  - Copy audit: no em dashes (replaced with period), no significance inflation, no negative parallelism
+  - Intro desc tightened: removed "comforting and alien" echo (already in hero tagline)
+  - "Limited edition of 50" moved from about to intro context (closer to CTA)
+  - About is now purely biographical, intro is purely about the album
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Will McFarland — Saccades</title>
+  <meta name="description" content="Ambient music from Victoria, BC. Custom-built instruments and programming. Saccades out now on Sustained Tones.">
+  <meta property="og:title" content="Will McFarland — Saccades">
+  <meta property="og:description" content="Ambient music built from custom instruments and programming. Out now on Sustained Tones.">
+  <meta property="og:image" content="assets/album-art.jpg">
+  <meta property="og:url" content="https://auto-sites.pages.dev/demos/will-mcfarland/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #111510;
+      --text: #E0DCC8;
+      --text-muted: #A49F8E;
+      --accent: #C4A864;
+      --content-width: 960px;
+      --section-pad: 96px;
+      --track-label: 0.06em;
+      --track-nav: 0.12em;
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --ease-gentle: cubic-bezier(0.25, 0.1, 0.25, 1.0);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 300;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      padding-left: 48px;
+      padding-right: 48px;
+    }
+
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 4px;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 16px;
+      background: var(--accent);
+      color: var(--bg);
+      padding: 8px 16px;
+      z-index: 200;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+    }
+    .skip-link:focus { top: 16px; }
+
+    /* NAV */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 24px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      mix-blend-mode: difference;
+    }
+
+    .nav-name {
+      font-family: 'Newsreader', serif;
+      font-size: 18px;
+      letter-spacing: var(--track-label);
+      color: #fff;
+    }
+
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: var(--track-nav);
+      text-transform: uppercase;
+      transition: opacity 200ms var(--ease-out);
+    }
+    .nav-links a:hover { opacity: 0.6; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 8px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 1.5px;
+      background: #fff;
+      transition: transform 300ms var(--ease-out), opacity 200ms;
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(17, 21, 16, 0.97);
+      z-index: 99;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 32px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: 'Newsreader', serif;
+      font-size: 32px;
+      color: var(--text);
+      text-decoration: none;
+      transition: opacity 200ms var(--ease-out);
+    }
+    .mobile-menu a:hover { opacity: 0.6; }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      min-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('assets/album-art.jpg') center / cover no-repeat;
+      filter: brightness(0.35) saturate(0.65);
+    }
+
+    .hero-gradient {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        transparent 30%,
+        rgba(17, 21, 16, 0.5) 60%,
+        rgba(17, 21, 16, 0.97) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: var(--content-width);
+      margin: 0 auto;
+      width: 100%;
+      padding: 64px 48px;
+    }
+
+    .hero-title {
+      font-family: 'Newsreader', serif;
+      font-size: clamp(42px, 7vw, 80px);
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+      color: #fff;
+      opacity: 0;
+      transform: translateY(12px);
+      animation: hero-in 800ms var(--ease-gentle) 400ms forwards;
+    }
+
+    .hero-tagline {
+      font-family: 'Newsreader', serif;
+      font-style: italic;
+      font-size: clamp(18px, 2.5vw, 24px);
+      font-weight: 300;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 12px;
+      line-height: 1.4;
+      opacity: 0;
+      transform: translateY(12px);
+      animation: hero-in 800ms var(--ease-gentle) 600ms forwards;
+    }
+
+    .hero-subtitle {
+      font-size: 13px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: var(--track-nav);
+      text-transform: uppercase;
+      opacity: 0;
+      transform: translateY(12px);
+      animation: hero-in 800ms var(--ease-gentle) 800ms forwards;
+    }
+
+    @keyframes hero-in {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* SECTION LABEL */
+    .section-label {
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: var(--track-nav);
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+
+    /* INTRO */
+    .intro {
+      padding-top: var(--section-pad);
+      padding-bottom: 64px;
+    }
+
+    .intro-desc {
+      font-family: 'Newsreader', serif;
+      font-size: 18px;
+      color: var(--text-muted);
+      max-width: 560px;
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+
+    .intro-quote {
+      font-family: 'Newsreader', serif;
+      font-style: italic;
+      font-size: clamp(18px, 2vw, 22px);
+      line-height: 1.6;
+      color: var(--text);
+      max-width: 600px;
+      margin-bottom: 16px;
+    }
+
+    .quote-attr {
+      font-size: 13px;
+      color: var(--text-muted);
+      letter-spacing: var(--track-label);
+      text-transform: uppercase;
+      margin-bottom: 40px;
+    }
+
+    .album-cta { display: inline-flex; gap: 16px; flex-wrap: wrap; }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 36px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: var(--track-label);
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 0;
+      transition: transform 160ms var(--ease-out), background 200ms var(--ease-out), border-color 200ms var(--ease-out);
+      cursor: pointer;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn:active { transform: scale(0.97); }
+    .btn-primary { background: var(--text); color: var(--bg); }
+    .btn-primary:hover { background: #fff; transform: translateY(-1px); }
+    .btn-secondary {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid rgba(224, 220, 200, 0.3);
+    }
+    .btn-secondary:hover { border-color: rgba(224, 220, 200, 0.6); transform: translateY(-1px); }
+
+    /* TRACKLIST */
+    .tracklist-section {
+      padding-bottom: var(--section-pad);
+    }
+
+    .tracklist-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 32px;
+    }
+
+    .album-title {
+      font-family: 'Newsreader', serif;
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 300;
+    }
+
+    .album-meta {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .tracklist { list-style: none; }
+
+    .tracklist li {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(224, 220, 200, 0.08);
+      font-size: 16px;
+    }
+    .tracklist li:first-child { border-top: 1px solid rgba(224, 220, 200, 0.08); }
+
+    .track-num {
+      color: var(--text-muted);
+      font-size: 13px;
+      font-variant-numeric: tabular-nums;
+      min-width: 32px;
+      font-family: 'Newsreader', serif;
+    }
+
+    .track-name { flex: 1; font-weight: 400; }
+
+    .track-duration {
+      color: var(--text-muted);
+      font-size: 13px;
+      font-variant-numeric: tabular-nums;
+      min-width: 48px;
+      text-align: right;
+    }
+
+    /* CREDITS */
+    .credits {
+      padding-bottom: 64px;
+    }
+
+    .credits-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px 48px;
+    }
+
+    .credit-item {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .credit-role {
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: var(--track-label);
+      text-transform: uppercase;
+      color: var(--accent);
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    /* ABOUT */
+    .about {
+      padding-top: var(--section-pad);
+      padding-bottom: var(--section-pad);
+      border-top: 1px solid rgba(224, 220, 200, 0.08);
+    }
+
+    .about p {
+      font-family: 'Newsreader', serif;
+      font-size: 17px;
+      color: var(--text-muted);
+      max-width: 560px;
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+
+    .about p:last-child { margin-bottom: 0; }
+
+    /* FOOTER */
+    footer {
+      padding: 48px 0;
+      text-align: center;
+      border-top: 1px solid rgba(224, 220, 200, 0.08);
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin-bottom: 20px;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: var(--track-label);
+      text-transform: uppercase;
+      transition: color 200ms var(--ease-out);
+    }
+    .footer-links a:hover { color: var(--text); }
+
+    .footer-copy { font-size: 13px; color: var(--text-muted); opacity: 0.6; }
+
+    /* SCROLL REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 600ms var(--ease-gentle), transform 600ms var(--ease-gentle);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-stagger { transition-delay: var(--stagger, 0ms); }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .container { padding-left: 24px; padding-right: 24px; }
+      header { padding: 20px 24px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .hero { min-height: 85vh; }
+      .hero-content { padding: 48px 24px; }
+      .tracklist-header { flex-direction: column; gap: 8px; }
+      .credits-grid { grid-template-columns: 1fr; }
+      .album-cta { flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation-duration: 0ms !important; transition-duration: 0ms !important; }
+      .reveal { opacity: 1; transform: none; }
+      .hero-title, .hero-tagline, .hero-subtitle { opacity: 1; transform: none; animation: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#saccades" class="skip-link">Skip to content</a>
+
+  <header role="banner">
+    <span class="nav-name">Will McFarland</span>
+    <nav aria-label="Main navigation">
+      <ul class="nav-links">
+        <li><a href="#saccades">Saccades</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="https://sustainedtones.bandcamp.com/album/will-mcfarland-saccades" target="_blank" rel="noopener">Bandcamp</a></li>
+      </ul>
+    </nav>
+    <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <div class="mobile-menu" role="dialog" aria-label="Navigation menu">
+    <a href="#saccades" onclick="document.querySelector('.mobile-menu').classList.remove('open')">Saccades</a>
+    <a href="#about" onclick="document.querySelector('.mobile-menu').classList.remove('open')">About</a>
+    <a href="https://sustainedtones.bandcamp.com/album/will-mcfarland-saccades" target="_blank" rel="noopener">Bandcamp</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" aria-label="Introduction">
+    <div class="hero-bg" role="img" aria-label="Saccades album artwork by Melody-Rose Murray — organic textures in deep green and amber"></div>
+    <div class="hero-gradient"></div>
+    <div class="hero-content">
+      <h1 class="hero-title">Will McFarland</h1>
+      <p class="hero-tagline">Comforting and alien</p>
+      <p class="hero-subtitle">Ambient — Victoria, BC</p>
+    </div>
+  </section>
+
+  <main>
+    <!-- INTRO -->
+    <section class="intro container reveal" id="saccades" aria-label="Saccades">
+      <p class="intro-desc">Seven pieces built from custom instruments and programming, recorded over two years in Victoria. Released on Sustained Tones as a limited cassette of 50. High bias tape, custom printed case.</p>
+      <blockquote class="intro-quote">"Recommended for fans of Aphex's SAW II, Stars Of The Lid and droning, ethereal bliss in general."</blockquote>
+      <p class="quote-attr">Shanx · Bandcamp</p>
+      <div class="album-cta">
+        <a href="https://sustainedtones.bandcamp.com/album/will-mcfarland-saccades" target="_blank" rel="noopener" class="btn btn-primary">Listen on Bandcamp</a>
+        <a href="https://sustainedtones.bandcamp.com/album/will-mcfarland-saccades" target="_blank" rel="noopener" class="btn btn-secondary">Cassette — $10 CAD</a>
+      </div>
+    </section>
+
+    <!-- TRACKLIST -->
+    <section class="tracklist-section container reveal" aria-label="Tracklist">
+      <div class="tracklist-header">
+        <h2 class="album-title">Saccades</h2>
+        <p class="album-meta">June 2022 · 65 minutes</p>
+      </div>
+      <ol class="tracklist">
+        <li><span class="track-num">I</span><span class="track-name">Saccades I</span><span class="track-duration">07:26</span></li>
+        <li><span class="track-num">II</span><span class="track-name">Saccades II</span><span class="track-duration">12:57</span></li>
+        <li><span class="track-num">III</span><span class="track-name">Saccades III</span><span class="track-duration">09:00</span></li>
+        <li><span class="track-num">IV</span><span class="track-name">Saccades IV</span><span class="track-duration">08:13</span></li>
+        <li><span class="track-num">V</span><span class="track-name">Saccades V</span><span class="track-duration">09:31</span></li>
+        <li><span class="track-num">VI</span><span class="track-name">Saccades VI</span><span class="track-duration">13:00</span></li>
+        <li><span class="track-num">VII</span><span class="track-name">Saccades VII</span><span class="track-duration">05:27</span></li>
+      </ol>
+    </section>
+
+    <!-- CREDITS -->
+    <section class="credits container reveal" aria-label="Credits">
+      <p class="section-label">Credits</p>
+      <div class="credits-grid">
+        <div class="credit-item"><span class="credit-role">Written & Recorded</span>Will McFarland, 2020–2021</div>
+        <div class="credit-item"><span class="credit-role">Mastering</span>Jordan Esau</div>
+        <div class="credit-item"><span class="credit-role">Photography</span>Melody-Rose Murray</div>
+        <div class="credit-item"><span class="credit-role">Layout</span>Scott Bell & Klee Larsen</div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about container reveal" id="about" aria-label="About">
+      <p class="section-label">About</p>
+      <p>Will McFarland is a composer in Victoria, BC who builds his own instruments and writes the software that plays them. Saccades is his debut on Sustained Tones Recordings, the Vancouver label.</p>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer role="contentinfo" class="reveal">
+    <div class="container">
+      <div class="footer-links">
+        <a href="https://sustainedtones.bandcamp.com/album/will-mcfarland-saccades" target="_blank" rel="noopener">Bandcamp</a>
+        <a href="https://sustainedtones.bandcamp.com" target="_blank" rel="noopener">Sustained Tones</a>
+      </div>
+      <p class="footer-copy">© 2026 Will McFarland</p>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    document.querySelectorAll('.tracklist li').forEach((li, i) => {
+      li.classList.add('reveal', 'reveal-stagger');
+      li.style.setProperty('--stagger', `${i * 60}ms`);
+      observer.observe(li);
+    });
+  </script>
+
+</body>
+</html>

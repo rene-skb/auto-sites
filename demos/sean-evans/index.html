@@ -1,14 +1,7 @@
 <!--
-  v5 — Final: fixed image reuse (removed Movements from discography, added Edits), copy audit clean
-  - Unified max-width (1080px) and consistent left alignment across all sections
-  - Two tracking values only: 0.06em (labels) and 0.12em (nav/caps)
-  - Credits: lighter weight, more vertical space, quieter
-  - Removed "Featured Album" label (redundant)
-  - Genre line: simplified separators
-  - Tracklist: tabular figures, clearer weight differentiation
-  - Consistent section spacing via --section-pad
-  - Quote attribution tightened
-  - Footer cleaned up
+  Sean Evans — Sound Design Artist
+  Updated: added Stasis Music (2023) as second featured album
+  Structure: Hero → Stasis Music (newest) → Movements → Quote → About → Credits → Discography → Footer
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +9,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sean Evans — Sound Design Artist</title>
-  <meta name="description" content="Ambient, drone, and minimalist music from Vancouver, BC. Listen to Movements.">
+  <meta name="description" content="Ambient, drone, and minimalist music from Vancouver, BC. Listen to Stasis Music and Movements.">
   <meta property="og:title" content="Sean Evans — Sound Design Artist">
   <meta property="og:description" content="Ambient, drone, and minimalist music from Vancouver, BC.">
   <meta property="og:image" content="assets/album-art-large.jpg">
@@ -58,7 +51,6 @@
       padding-right: 48px;
     }
 
-    /* FOCUS & SKIP */
     a:focus-visible, button:focus-visible {
       outline: 2px solid var(--accent);
       outline-offset: 4px;
@@ -190,6 +182,13 @@
       margin: 0 auto;
       width: 100%;
       padding: 64px 48px;
+      opacity: 0;
+      transform: translateY(16px);
+      animation: hero-in 1200ms var(--ease-out) 300ms forwards;
+    }
+
+    @keyframes hero-in {
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .hero-title {
@@ -220,10 +219,14 @@
       margin-bottom: 24px;
     }
 
-    /* FEATURED ALBUM */
+    /* FEATURED ALBUMS */
     .featured {
       padding-top: var(--section-pad);
       padding-bottom: var(--section-pad);
+    }
+
+    .featured + .featured {
+      padding-top: 0;
     }
 
     .featured-layout {
@@ -232,6 +235,8 @@
       gap: 64px;
       align-items: start;
     }
+
+    .featured-layout--flipped .album-info { order: -1; }
 
     .album-art {
       width: 100%;
@@ -253,7 +258,15 @@
     .album-meta {
       font-size: 14px;
       color: var(--text-muted);
-      margin-bottom: 32px;
+      margin-bottom: 16px;
+    }
+
+    .album-desc {
+      font-size: 16px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 24px;
+      max-width: 460px;
     }
 
     .tracklist {
@@ -271,6 +284,20 @@
     }
 
     .tracklist li:first-child { border-top: 1px solid rgba(255,255,255,0.06); }
+
+    .track-side {
+      padding: 11px 0 4px;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: var(--track-nav);
+      text-transform: uppercase;
+      color: var(--accent);
+      opacity: 0.7;
+      border-bottom: none;
+    }
+
+    .track-side + li { border-top: none; }
+
     .track-name { font-weight: 400; }
 
     .track-duration {
@@ -352,6 +379,10 @@
 
     /* CREDITS */
     .credits {
+      padding-bottom: 48px;
+    }
+
+    .credits + .credits {
       padding-bottom: var(--section-pad);
     }
 
@@ -386,8 +417,8 @@
 
     .disco-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 40px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
     }
 
     .disco-item {
@@ -401,7 +432,7 @@
       aspect-ratio: 1;
       object-fit: cover;
       border-radius: 2px;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
       transition: opacity 200ms var(--ease-out);
     }
 
@@ -409,8 +440,8 @@
 
     .disco-title {
       font-family: 'Instrument Serif', serif;
-      font-size: 22px;
-      margin-bottom: 4px;
+      font-size: 18px;
+      margin-bottom: 2px;
     }
 
     .disco-year { font-size: 13px; color: var(--text-muted); }
@@ -442,6 +473,20 @@
 
     .footer-copy { font-size: 13px; color: var(--text-muted); opacity: 0.5; }
 
+    /* SCROLL REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 800ms var(--ease-out), transform 800ms var(--ease-out);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-stagger { transition-delay: var(--stagger, 0ms); }
+
     /* RESPONSIVE */
     @media (max-width: 768px) {
       .container { padding-left: 24px; padding-right: 24px; }
@@ -457,33 +502,8 @@
     }
 
     @media (max-width: 480px) {
-      .disco-grid { grid-template-columns: 1fr; max-width: 280px; margin-left: auto; margin-right: auto; }
+      .disco-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
       .album-cta { flex-direction: column; }
-    }
-
-    /* SCROLL REVEAL */
-    .reveal {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 800ms var(--ease-out), transform 800ms var(--ease-out);
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .reveal-stagger { transition-delay: var(--stagger, 0ms); }
-
-    /* HERO ENTRANCE */
-    .hero-content {
-      opacity: 0;
-      transform: translateY(16px);
-      animation: hero-in 1200ms var(--ease-out) 300ms forwards;
-    }
-
-    @keyframes hero-in {
-      to { opacity: 1; transform: translateY(0); }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -495,11 +515,12 @@
 </head>
 <body>
 
-  <a href="#movements" class="skip-link">Skip to content</a>
+  <a href="#stasis-music" class="skip-link">Skip to content</a>
 
   <nav>
     <span class="nav-name">Sean Evans</span>
     <ul class="nav-links">
+      <li><a href="#stasis-music">Stasis Music</a></li>
       <li><a href="#movements">Movements</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#discography">Discography</a></li>
@@ -511,6 +532,7 @@
   </nav>
 
   <div class="mobile-menu">
+    <a href="#stasis-music" onclick="document.querySelector('.mobile-menu').classList.remove('open')">Stasis Music</a>
     <a href="#movements" onclick="document.querySelector('.mobile-menu').classList.remove('open')">Movements</a>
     <a href="#about" onclick="document.querySelector('.mobile-menu').classList.remove('open')">About</a>
     <a href="#discography" onclick="document.querySelector('.mobile-menu').classList.remove('open')">Discography</a>
@@ -527,10 +549,36 @@
     </div>
   </section>
 
-  <!-- FEATURED ALBUM -->
-  <section class="featured container reveal" id="movements">
+  <!-- STASIS MUSIC (newest, featured first) -->
+  <section class="featured container reveal" id="stasis-music">
     <div class="featured-layout">
-      <img src="assets/album-art-large.jpg" alt="Movements album cover — hazy ocean horizon" class="album-art">
+      <img src="assets/stasis-music-art.jpg" alt="Stasis Music album cover — warm modular panels with plant and blinds photography" class="album-art">
+      <div class="album-info">
+        <p class="section-label">Latest Release · Sustained Tones Recordings</p>
+        <h2 class="album-title">Stasis Music</h2>
+        <p class="album-meta">November 2023 · 7 tracks</p>
+        <p class="album-desc">A tighter artistic vision, a smaller range of instruments, a quieter and more nuanced sound. Music to get lost in.</p>
+        <ol class="tracklist">
+          <li class="track-side">Side A</li>
+          <li><span class="track-name">Cathedrals</span></li>
+          <li><span class="track-name">Quartets in Dreams</span></li>
+          <li><span class="track-name">Time Distortion</span></li>
+          <li><span class="track-name">The Loneliest Hour</span></li>
+          <li class="track-side">Side B</li>
+          <li><span class="track-name">O.I. 07/22</span></li>
+          <li><span class="track-name">Strings in Blue</span></li>
+          <li><span class="track-name">Stasis Music</span></li>
+        </ol>
+        <div class="album-cta">
+          <a href="https://sustainedtones.bandcamp.com/album/sean-evans-stasis-music" target="_blank" rel="noopener" class="btn btn-primary">Listen on Bandcamp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MOVEMENTS -->
+  <section class="featured container reveal" id="movements">
+    <div class="featured-layout featured-layout--flipped">
       <div class="album-info">
         <h2 class="album-title">Movements</h2>
         <p class="album-meta">October 2020 · 7 tracks · 39 minutes</p>
@@ -548,6 +596,7 @@
           <a href="https://sean-evans.bandcamp.com/album/movements" target="_blank" rel="noopener" class="btn btn-secondary">Vinyl — $35 CAD</a>
         </div>
       </div>
+      <img src="assets/album-art-large.jpg" alt="Movements album cover — hazy ocean horizon in lavender and seafoam" class="album-art">
     </div>
   </section>
 
@@ -560,13 +609,26 @@
   <!-- ABOUT -->
   <section class="about container reveal" id="about">
     <p class="section-label">About</p>
-    <p>Sean Evans is a sound design artist based in Vancouver, BC. His work lives between ambient, drone, and minimalism, built slowly at Kiklo Studios over months of patient recording.</p>
-    <p>Movements took thirteen months. Recorded at Kiklo Studios from January 2019 to February 2020, mixed by Jordan Esau, mastered by Joshua Stevenson at Otic Mastering. Saxophone by Paolo Carcamo. Pressed on 180-gram vinyl by Poly Custom Records in North Vancouver.</p>
+    <p>Sean Evans is a sound design artist based in Vancouver, BC. His work lives between ambient, drone, and minimalism, built slowly over months of patient recording at studios around Vancouver.</p>
+    <p>Piano, synths, samples, and programming form the core. Collaborators fill in the space around it: Jordan Esau on production and mixing, Alex Kelley on double bass, Paolo Carcamo on saxophone.</p>
   </section>
 
-  <!-- CREDITS -->
+  <!-- CREDITS — STASIS MUSIC -->
   <section class="credits container reveal">
-    <p class="section-label">Credits</p>
+    <p class="section-label">Credits — Stasis Music</p>
+    <div class="credits-grid">
+      <div class="credit-item"><span class="credit-role">Written, Produced & Recorded</span>Sean Evans</div>
+      <div class="credit-item"><span class="credit-role">Piano, Synths, Samples & Programming</span>Sean Evans</div>
+      <div class="credit-item"><span class="credit-role">Double Bass</span>Alex Kelley</div>
+      <div class="credit-item"><span class="credit-role">Mixed & Mastered</span>Jordan Esau</div>
+      <div class="credit-item"><span class="credit-role">Studio</span>PAL Studio · Vancouver, BC</div>
+      <div class="credit-item"><span class="credit-role">Label</span>Sustained Tones Recordings</div>
+    </div>
+  </section>
+
+  <!-- CREDITS — MOVEMENTS -->
+  <section class="credits container reveal">
+    <p class="section-label">Credits — Movements</p>
     <div class="credits-grid">
       <div class="credit-item"><span class="credit-role">Written, Produced & Recorded</span>Sean Evans</div>
       <div class="credit-item"><span class="credit-role">Additional Production & Mixing</span>Jordan Esau</div>
@@ -579,23 +641,28 @@
     </div>
   </section>
 
-  <!-- DISCOGRAPHY -->
+  <!-- DISCOGRAPHY (all 4 releases, chronological newest first) -->
   <section class="discography container reveal" id="discography">
     <p class="section-label">Discography</p>
     <div class="disco-grid">
+      <a href="https://sustainedtones.bandcamp.com/album/sean-evans-stasis-music" target="_blank" rel="noopener" class="disco-item">
+        <img src="assets/stasis-music-art.jpg" alt="Stasis Music" class="disco-art">
+        <p class="disco-title">Stasis Music</p>
+        <p class="disco-year">2023</p>
+      </a>
+      <a href="https://sean-evans.bandcamp.com/album/movements" target="_blank" rel="noopener" class="disco-item">
+        <img src="assets/album-art-large.jpg" alt="Movements" class="disco-art">
+        <p class="disco-title">Movements</p>
+        <p class="disco-year">2020</p>
+      </a>
       <a href="https://sean-evans.bandcamp.com/album/wave" target="_blank" rel="noopener" class="disco-item">
-        <img src="assets/album-2.jpg" alt="Wave — cassette artwork with ocean wave graphic" class="disco-art">
+        <img src="assets/album-2.jpg" alt="Wave" class="disco-art">
         <p class="disco-title">Wave</p>
         <p class="disco-year">2018</p>
       </a>
       <a href="https://sean-evans.bandcamp.com/album/catalog" target="_blank" rel="noopener" class="disco-item">
-        <img src="assets/album-3.jpg" alt="Catalog — isometric layered graphic design" class="disco-art">
+        <img src="assets/album-3.jpg" alt="Catalog" class="disco-art">
         <p class="disco-title">Catalog</p>
-        <p class="disco-year">2018</p>
-      </a>
-      <a href="https://sean-evans.bandcamp.com" target="_blank" rel="noopener" class="disco-item">
-        <img src="assets/album-4.jpg" alt="Edits — glitched landscape in amber and dark tones" class="disco-art">
-        <p class="disco-title">Edits</p>
         <p class="disco-year">2018</p>
       </a>
     </div>
@@ -605,12 +672,12 @@
   <footer class="container">
     <div class="footer-links">
       <a href="https://sean-evans.bandcamp.com" target="_blank" rel="noopener">Bandcamp</a>
+      <a href="https://sustainedtones.bandcamp.com/album/sean-evans-stasis-music" target="_blank" rel="noopener">Sustained Tones</a>
     </div>
     <p class="footer-copy">© 2026 Sean Evans</p>
   </footer>
 
   <script>
-    // Scroll reveal
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -622,14 +689,12 @@
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // Stagger tracklist items
-    document.querySelectorAll('.tracklist li').forEach((li, i) => {
+    document.querySelectorAll('.tracklist li:not(.track-side)').forEach((li, i) => {
       li.classList.add('reveal', 'reveal-stagger');
       li.style.setProperty('--stagger', `${i * 60}ms`);
       observer.observe(li);
     });
 
-    // Stagger discography items
     document.querySelectorAll('.disco-item').forEach((item, i) => {
       item.classList.add('reveal', 'reveal-stagger');
       item.style.setProperty('--stagger', `${i * 80}ms`);

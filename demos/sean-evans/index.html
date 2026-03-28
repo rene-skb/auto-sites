@@ -1,0 +1,641 @@
+<!--
+  v5 — Final: fixed image reuse (removed Movements from discography, added Edits), copy audit clean
+  - Unified max-width (1080px) and consistent left alignment across all sections
+  - Two tracking values only: 0.06em (labels) and 0.12em (nav/caps)
+  - Credits: lighter weight, more vertical space, quieter
+  - Removed "Featured Album" label (redundant)
+  - Genre line: simplified separators
+  - Tracklist: tabular figures, clearer weight differentiation
+  - Consistent section spacing via --section-pad
+  - Quote attribution tightened
+  - Footer cleaned up
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sean Evans — Sound Design Artist</title>
+  <meta name="description" content="Ambient, drone, and minimalist music from Vancouver, BC. Listen to Movements.">
+  <meta property="og:title" content="Sean Evans — Sound Design Artist">
+  <meta property="og:description" content="Ambient, drone, and minimalist music from Vancouver, BC.">
+  <meta property="og:image" content="assets/album-art-large.jpg">
+  <meta property="og:url" content="https://auto-sites.pages.dev/demos/sean-evans/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0d1117;
+      --text: #e0ddd8;
+      --text-muted: #9e9a95;
+      --accent: #9ab0a8;
+      --content-width: 1080px;
+      --section-pad: 96px;
+      --track-label: 0.06em;
+      --track-nav: 0.12em;
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 300;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 17px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      padding-left: 48px;
+      padding-right: 48px;
+    }
+
+    /* FOCUS & SKIP */
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 4px;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 16px;
+      background: var(--bg);
+      color: var(--text);
+      padding: 8px 16px;
+      z-index: 200;
+      font-size: 14px;
+      text-decoration: none;
+      border-radius: 2px;
+    }
+
+    .skip-link:focus { top: 16px; }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 24px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      mix-blend-mode: difference;
+    }
+
+    .nav-name {
+      font-family: 'Instrument Serif', serif;
+      font-size: 18px;
+      letter-spacing: var(--track-label);
+      color: #fff;
+    }
+
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: var(--track-nav);
+      text-transform: uppercase;
+      transition: opacity 200ms var(--ease-out);
+    }
+
+    .nav-links a:hover { opacity: 0.6; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 8px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 1.5px;
+      background: #fff;
+      transition: transform 300ms var(--ease-out), opacity 200ms;
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(13, 17, 23, 0.97);
+      z-index: 99;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .mobile-menu.open { display: flex; }
+
+    .mobile-menu a {
+      font-family: 'Instrument Serif', serif;
+      font-size: 32px;
+      color: var(--text);
+      text-decoration: none;
+      transition: opacity 200ms var(--ease-out);
+    }
+
+    .mobile-menu a:hover { opacity: 0.6; }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      height: 90vh;
+      min-height: 560px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('assets/album-art-large.jpg') center / cover no-repeat;
+      filter: brightness(0.45) saturate(0.75);
+    }
+
+    .hero-gradient {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        transparent 20%,
+        rgba(13, 17, 23, 0.3) 55%,
+        rgba(13, 17, 23, 0.95) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: var(--content-width);
+      margin: 0 auto;
+      width: 100%;
+      padding: 64px 48px;
+    }
+
+    .hero-title {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(48px, 8vw, 96px);
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+      color: #fff;
+    }
+
+    .hero-subtitle {
+      font-size: 14px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: var(--track-nav);
+      text-transform: uppercase;
+    }
+
+    /* SECTION LABEL */
+    .section-label {
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: var(--track-nav);
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 24px;
+    }
+
+    /* FEATURED ALBUM */
+    .featured {
+      padding-top: var(--section-pad);
+      padding-bottom: var(--section-pad);
+    }
+
+    .featured-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .album-art {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 2px;
+    }
+
+    .album-info { padding-top: 8px; }
+
+    .album-title {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 400;
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+
+    .album-meta {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+    }
+
+    .tracklist {
+      list-style: none;
+      margin-bottom: 40px;
+    }
+
+    .tracklist li {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 11px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      font-size: 15px;
+    }
+
+    .tracklist li:first-child { border-top: 1px solid rgba(255,255,255,0.06); }
+    .track-name { font-weight: 400; }
+
+    .track-duration {
+      color: var(--text-muted);
+      font-size: 13px;
+      font-variant-numeric: tabular-nums;
+      font-weight: 300;
+      min-width: 48px;
+      text-align: right;
+    }
+
+    .album-cta { display: inline-flex; gap: 16px; }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 36px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: var(--track-label);
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: transform 160ms var(--ease-out), background 200ms var(--ease-out), border-color 200ms var(--ease-out);
+      cursor: pointer;
+    }
+
+    .btn:active { transform: scale(0.97); }
+
+    .btn-primary { background: var(--text); color: var(--bg); }
+    .btn-primary:hover { background: #fff; }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid rgba(255,255,255,0.25);
+    }
+
+    .btn-secondary:hover { border-color: rgba(255,255,255,0.6); }
+
+    /* QUOTE */
+    .quote-section {
+      padding: 64px 0;
+      text-align: center;
+    }
+
+    .quote-section blockquote {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: clamp(22px, 3vw, 30px);
+      line-height: 1.5;
+      color: var(--text);
+      margin-bottom: 16px;
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .quote-attr {
+      font-size: 12px;
+      color: var(--text-muted);
+      letter-spacing: var(--track-nav);
+      text-transform: uppercase;
+    }
+
+    /* ABOUT */
+    .about {
+      padding-top: var(--section-pad);
+      padding-bottom: 48px;
+    }
+
+    .about p {
+      font-size: 18px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      max-width: 620px;
+      line-height: 1.8;
+    }
+
+    /* CREDITS */
+    .credits {
+      padding-bottom: var(--section-pad);
+    }
+
+    .credits-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px 48px;
+    }
+
+    .credit-item {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .credit-role {
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: var(--track-label);
+      text-transform: uppercase;
+      color: var(--accent);
+      display: block;
+      margin-bottom: 2px;
+      opacity: 0.8;
+    }
+
+    /* DISCOGRAPHY */
+    .discography {
+      padding-top: var(--section-pad);
+      padding-bottom: var(--section-pad);
+    }
+
+    .disco-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+    }
+
+    .disco-item {
+      text-decoration: none;
+      color: var(--text);
+      display: block;
+    }
+
+    .disco-art {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 2px;
+      margin-bottom: 16px;
+      transition: opacity 200ms var(--ease-out);
+    }
+
+    .disco-item:hover .disco-art { opacity: 0.8; }
+
+    .disco-title {
+      font-family: 'Instrument Serif', serif;
+      font-size: 22px;
+      margin-bottom: 4px;
+    }
+
+    .disco-year { font-size: 13px; color: var(--text-muted); }
+
+    /* FOOTER */
+    footer {
+      padding: 48px 0;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin-bottom: 20px;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: var(--track-label);
+      text-transform: uppercase;
+      transition: color 200ms var(--ease-out);
+    }
+
+    .footer-links a:hover { color: var(--text); }
+
+    .footer-copy { font-size: 13px; color: var(--text-muted); opacity: 0.5; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .container { padding-left: 24px; padding-right: 24px; }
+      nav { padding: 20px 24px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .hero { height: 85vh; }
+      .hero-content { padding: 48px 24px; }
+      .featured-layout { grid-template-columns: 1fr; gap: 32px; }
+      .album-art { max-width: 320px; }
+      .credits-grid { grid-template-columns: 1fr; }
+      .disco-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    }
+
+    @media (max-width: 480px) {
+      .disco-grid { grid-template-columns: 1fr; max-width: 280px; margin-left: auto; margin-right: auto; }
+      .album-cta { flex-direction: column; }
+    }
+
+    /* SCROLL REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 800ms var(--ease-out), transform 800ms var(--ease-out);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-stagger { transition-delay: var(--stagger, 0ms); }
+
+    /* HERO ENTRANCE */
+    .hero-content {
+      opacity: 0;
+      transform: translateY(16px);
+      animation: hero-in 1200ms var(--ease-out) 300ms forwards;
+    }
+
+    @keyframes hero-in {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation-duration: 0ms !important; transition-duration: 0ms !important; }
+      .reveal { opacity: 1; transform: none; }
+      .hero-content { opacity: 1; transform: none; animation: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#movements" class="skip-link">Skip to content</a>
+
+  <nav>
+    <span class="nav-name">Sean Evans</span>
+    <ul class="nav-links">
+      <li><a href="#movements">Movements</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#discography">Discography</a></li>
+      <li><a href="https://sean-evans.bandcamp.com" target="_blank" rel="noopener">Bandcamp</a></li>
+    </ul>
+    <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-menu">
+    <a href="#movements" onclick="document.querySelector('.mobile-menu').classList.remove('open')">Movements</a>
+    <a href="#about" onclick="document.querySelector('.mobile-menu').classList.remove('open')">About</a>
+    <a href="#discography" onclick="document.querySelector('.mobile-menu').classList.remove('open')">Discography</a>
+    <a href="https://sean-evans.bandcamp.com" target="_blank" rel="noopener">Bandcamp</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-gradient"></div>
+    <div class="hero-content">
+      <h1 class="hero-title">Sean Evans</h1>
+      <p class="hero-subtitle">Ambient / Drone / Minimalism — Vancouver, BC</p>
+    </div>
+  </section>
+
+  <!-- FEATURED ALBUM -->
+  <section class="featured container reveal" id="movements">
+    <div class="featured-layout">
+      <img src="assets/album-art-large.jpg" alt="Movements album cover — hazy ocean horizon" class="album-art">
+      <div class="album-info">
+        <h2 class="album-title">Movements</h2>
+        <p class="album-meta">October 2020 · 7 tracks · 39 minutes</p>
+        <ol class="tracklist">
+          <li><span class="track-name">Night</span><span class="track-duration">06:30</span></li>
+          <li><span class="track-name">Sway</span><span class="track-duration">03:53</span></li>
+          <li><span class="track-name">Wood</span><span class="track-duration">06:47</span></li>
+          <li><span class="track-name">Glass</span><span class="track-duration">03:26</span></li>
+          <li><span class="track-name">Strings</span><span class="track-duration">07:27</span></li>
+          <li><span class="track-name">Pulse</span><span class="track-duration">04:51</span></li>
+          <li><span class="track-name">Dream</span><span class="track-duration">06:39</span></li>
+        </ol>
+        <div class="album-cta">
+          <a href="https://sean-evans.bandcamp.com/album/movements" target="_blank" rel="noopener" class="btn btn-primary">Listen on Bandcamp</a>
+          <a href="https://sean-evans.bandcamp.com/album/movements" target="_blank" rel="noopener" class="btn btn-secondary">Vinyl — $35 CAD</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAN QUOTE -->
+  <section class="quote-section container reveal">
+    <blockquote>"Hard to imagine a more perfect ambient album. Deliberate yet thoughtful with just enough spaciousness and depth of feeling."</blockquote>
+    <p class="quote-attr">Khyex</p>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about container reveal" id="about">
+    <p class="section-label">About</p>
+    <p>Sean Evans is a sound design artist based in Vancouver, BC. His work lives between ambient, drone, and minimalism, built slowly at Kiklo Studios over months of patient recording.</p>
+    <p>Movements took thirteen months. Recorded at Kiklo Studios from January 2019 to February 2020, mixed by Jordan Esau, mastered by Joshua Stevenson at Otic Mastering. Saxophone by Paolo Carcamo. Pressed on 180-gram vinyl by Poly Custom Records in North Vancouver.</p>
+  </section>
+
+  <!-- CREDITS -->
+  <section class="credits container reveal">
+    <p class="section-label">Credits</p>
+    <div class="credits-grid">
+      <div class="credit-item"><span class="credit-role">Written, Produced & Recorded</span>Sean Evans</div>
+      <div class="credit-item"><span class="credit-role">Additional Production & Mixing</span>Jordan Esau</div>
+      <div class="credit-item"><span class="credit-role">Saxophone</span>Paolo Carcamo</div>
+      <div class="credit-item"><span class="credit-role">Mastering</span>Joshua Stevenson · Otic Mastering</div>
+      <div class="credit-item"><span class="credit-role">Artwork</span>Klee Larsen Crawford</div>
+      <div class="credit-item"><span class="credit-role">Back Text</span>Sabrina Chen</div>
+      <div class="credit-item"><span class="credit-role">Vinyl Pressing</span>Poly Custom Records · North Vancouver</div>
+      <div class="credit-item"><span class="credit-role">Studio</span>Kiklo Studios · Vancouver, BC</div>
+    </div>
+  </section>
+
+  <!-- DISCOGRAPHY -->
+  <section class="discography container reveal" id="discography">
+    <p class="section-label">Discography</p>
+    <div class="disco-grid">
+      <a href="https://sean-evans.bandcamp.com/album/wave" target="_blank" rel="noopener" class="disco-item">
+        <img src="assets/album-2.jpg" alt="Wave — cassette artwork with ocean wave graphic" class="disco-art">
+        <p class="disco-title">Wave</p>
+        <p class="disco-year">2018</p>
+      </a>
+      <a href="https://sean-evans.bandcamp.com/album/catalog" target="_blank" rel="noopener" class="disco-item">
+        <img src="assets/album-3.jpg" alt="Catalog — isometric layered graphic design" class="disco-art">
+        <p class="disco-title">Catalog</p>
+        <p class="disco-year">2018</p>
+      </a>
+      <a href="https://sean-evans.bandcamp.com" target="_blank" rel="noopener" class="disco-item">
+        <img src="assets/album-4.jpg" alt="Edits — glitched landscape in amber and dark tones" class="disco-art">
+        <p class="disco-title">Edits</p>
+        <p class="disco-year">2018</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="container">
+    <div class="footer-links">
+      <a href="https://sean-evans.bandcamp.com" target="_blank" rel="noopener">Bandcamp</a>
+    </div>
+    <p class="footer-copy">© 2026 Sean Evans</p>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Stagger tracklist items
+    document.querySelectorAll('.tracklist li').forEach((li, i) => {
+      li.classList.add('reveal', 'reveal-stagger');
+      li.style.setProperty('--stagger', `${i * 60}ms`);
+      observer.observe(li);
+    });
+
+    // Stagger discography items
+    document.querySelectorAll('.disco-item').forEach((item, i) => {
+      item.classList.add('reveal', 'reveal-stagger');
+      item.style.setProperty('--stagger', `${i * 80}ms`);
+      observer.observe(item);
+    });
+  </script>
+
+</body>
+</html>

@@ -341,12 +341,16 @@
     .album-credits {
       font-size: 13px;
       color: var(--text-muted);
-      line-height: 1.7;
+      line-height: 1.6;
       opacity: 0.7;
       max-width: 460px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
     }
 
     .album-credits span {
+      display: block;
       color: var(--text);
       opacity: 0.6;
     }
@@ -549,15 +553,15 @@
           <a href="https://sean-evans.bandcamp.com/album/movements" target="_blank" rel="noopener" class="btn btn-primary">Listen on Bandcamp</a>
           <a href="https://sean-evans.bandcamp.com/album/movements" target="_blank" rel="noopener" class="btn btn-secondary">Vinyl — $35 CAD</a>
         </div>
-        <p class="album-credits">
-          All songs written, produced and recorded by <span>Sean Evans</span>.
-          Recorded at Kiklo Studios, Vancouver, BC, January 2019 to February 2020.
-          Additional production by <span>Jordan Esau</span>.
-          Saxophone by <span>Paolo Carcamo</span>.
-          Mixed by <span>Jordan Esau</span>.
-          Mastered by <span>Joshua Stevenson</span> at Otic Mastering.
-          Artwork by <span>Klee Larsen Crawford</span>.
-        </p>
+        <div class="album-credits">
+          <span>Written, produced & recorded by Sean Evans</span>
+          <span>Recorded at Kiklo Studios, Vancouver, BC — 2019–2020</span>
+          <span>Additional production — Jordan Esau</span>
+          <span>Saxophone — Paolo Carcamo</span>
+          <span>Mixed by Jordan Esau</span>
+          <span>Mastered by Joshua Stevenson at Otic Mastering</span>
+          <span>Artwork by Klee Larsen Crawford</span>
+        </div>
       </div>
       <img src="assets/album-art-large.jpg" alt="Movements album cover — hazy ocean horizon in lavender and seafoam" class="album-art">
     </div>

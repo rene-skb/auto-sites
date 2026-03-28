@@ -1,7 +1,7 @@
 <!--
   Sean Evans — Sound Design Artist
-  Updated: added Stasis Music (2023) as second featured album
-  Structure: Hero → Stasis Music (newest) → Movements → Quote → About → Credits → Discography → Footer
+  Final holistic pass: credits folded into album sections, clean grouping
+  Flow: Hero → Stasis Music → Movements → Quote → About → Discography → Footer
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +28,6 @@
       --track-label: 0.06em;
       --track-nav: 0.12em;
       --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
-      --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -219,24 +218,20 @@
       margin-bottom: 24px;
     }
 
-    /* FEATURED ALBUMS */
-    .featured {
+    /* ALBUM SECTIONS */
+    .album-section {
       padding-top: var(--section-pad);
       padding-bottom: var(--section-pad);
     }
 
-    .featured + .featured {
-      padding-top: 0;
-    }
-
-    .featured-layout {
+    .album-layout {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 64px;
       align-items: start;
     }
 
-    .featured-layout--flipped .album-info { order: -1; }
+    .album-layout--flipped .album-info { order: -1; }
 
     .album-art {
       width: 100%;
@@ -271,7 +266,7 @@
 
     .tracklist {
       list-style: none;
-      margin-bottom: 40px;
+      margin-bottom: 32px;
     }
 
     .tracklist li {
@@ -309,7 +304,11 @@
       text-align: right;
     }
 
-    .album-cta { display: inline-flex; gap: 16px; }
+    .album-cta {
+      display: inline-flex;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
 
     .btn {
       display: inline-block;
@@ -337,6 +336,20 @@
     }
 
     .btn-secondary:hover { border-color: rgba(255,255,255,0.6); }
+
+    /* INLINE CREDITS (inside album sections) */
+    .album-credits {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      opacity: 0.7;
+      max-width: 460px;
+    }
+
+    .album-credits span {
+      color: var(--text);
+      opacity: 0.6;
+    }
 
     /* QUOTE */
     .quote-section {
@@ -366,7 +379,7 @@
     /* ABOUT */
     .about {
       padding-top: var(--section-pad);
-      padding-bottom: 48px;
+      padding-bottom: var(--section-pad);
     }
 
     .about p {
@@ -377,41 +390,9 @@
       line-height: 1.8;
     }
 
-    /* CREDITS */
-    .credits {
-      padding-bottom: 48px;
-    }
-
-    .credits + .credits {
-      padding-bottom: var(--section-pad);
-    }
-
-    .credits-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px 48px;
-    }
-
-    .credit-item {
-      font-size: 14px;
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
-
-    .credit-role {
-      font-size: 11px;
-      font-weight: 400;
-      letter-spacing: var(--track-label);
-      text-transform: uppercase;
-      color: var(--accent);
-      display: block;
-      margin-bottom: 2px;
-      opacity: 0.8;
-    }
-
     /* DISCOGRAPHY */
     .discography {
-      padding-top: var(--section-pad);
+      padding-top: 0;
       padding-bottom: var(--section-pad);
     }
 
@@ -495,9 +476,9 @@
       .hamburger { display: flex; }
       .hero { height: 85vh; }
       .hero-content { padding: 48px 24px; }
-      .featured-layout { grid-template-columns: 1fr; gap: 32px; }
+      .album-layout { grid-template-columns: 1fr; gap: 32px; }
+      .album-layout--flipped .album-info { order: 0; }
       .album-art { max-width: 320px; }
-      .credits-grid { grid-template-columns: 1fr; }
       .disco-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
     }
 
@@ -549,14 +530,14 @@
     </div>
   </section>
 
-  <!-- STASIS MUSIC (newest, featured first) -->
-  <section class="featured container reveal" id="stasis-music">
-    <div class="featured-layout">
+  <!-- STASIS MUSIC -->
+  <section class="album-section container reveal" id="stasis-music">
+    <div class="album-layout">
       <img src="assets/stasis-music-art.jpg" alt="Stasis Music album cover — warm modular panels with plant and blinds photography" class="album-art">
       <div class="album-info">
         <p class="section-label">Latest Release · Sustained Tones Recordings</p>
         <h2 class="album-title">Stasis Music</h2>
-        <p class="album-meta">November 2023 · 7 tracks</p>
+        <p class="album-meta">November 2023 · 7 tracks · Recorded at PAL Studio, Vancouver</p>
         <p class="album-desc">A tighter artistic vision, a smaller range of instruments, a quieter and more nuanced sound. Music to get lost in.</p>
         <ol class="tracklist">
           <li class="track-side">Side A</li>
@@ -572,16 +553,21 @@
         <div class="album-cta">
           <a href="https://sustainedtones.bandcamp.com/album/sean-evans-stasis-music" target="_blank" rel="noopener" class="btn btn-primary">Listen on Bandcamp</a>
         </div>
+        <p class="album-credits">
+          <span>Sean Evans</span> — piano, synths, samples & programming.
+          <span>Alex Kelley</span> — double bass.
+          Mixed & mastered by <span>Jordan Esau</span>.
+        </p>
       </div>
     </div>
   </section>
 
   <!-- MOVEMENTS -->
-  <section class="featured container reveal" id="movements">
-    <div class="featured-layout featured-layout--flipped">
+  <section class="album-section container reveal" id="movements">
+    <div class="album-layout album-layout--flipped">
       <div class="album-info">
         <h2 class="album-title">Movements</h2>
-        <p class="album-meta">October 2020 · 7 tracks · 39 minutes</p>
+        <p class="album-meta">October 2020 · 7 tracks · 39 minutes · Recorded at Kiklo Studios, Vancouver</p>
         <ol class="tracklist">
           <li><span class="track-name">Night</span><span class="track-duration">06:30</span></li>
           <li><span class="track-name">Sway</span><span class="track-duration">03:53</span></li>
@@ -595,6 +581,14 @@
           <a href="https://sean-evans.bandcamp.com/album/movements" target="_blank" rel="noopener" class="btn btn-primary">Listen on Bandcamp</a>
           <a href="https://sean-evans.bandcamp.com/album/movements" target="_blank" rel="noopener" class="btn btn-secondary">Vinyl — $35 CAD</a>
         </div>
+        <p class="album-credits">
+          Written, produced & recorded by <span>Sean Evans</span>.
+          Saxophone by <span>Paolo Carcamo</span>.
+          Additional production & mixing by <span>Jordan Esau</span>.
+          Mastered by <span>Joshua Stevenson</span> at Otic Mastering.
+          Artwork by <span>Klee Larsen Crawford</span>.
+          180-gram vinyl pressed by Poly Custom Records, North Vancouver.
+        </p>
       </div>
       <img src="assets/album-art-large.jpg" alt="Movements album cover — hazy ocean horizon in lavender and seafoam" class="album-art">
     </div>
@@ -613,35 +607,7 @@
     <p>Piano, synths, samples, and programming form the core. Collaborators fill in the space around it: Jordan Esau on production and mixing, Alex Kelley on double bass, Paolo Carcamo on saxophone.</p>
   </section>
 
-  <!-- CREDITS — STASIS MUSIC -->
-  <section class="credits container reveal">
-    <p class="section-label">Credits — Stasis Music</p>
-    <div class="credits-grid">
-      <div class="credit-item"><span class="credit-role">Written, Produced & Recorded</span>Sean Evans</div>
-      <div class="credit-item"><span class="credit-role">Piano, Synths, Samples & Programming</span>Sean Evans</div>
-      <div class="credit-item"><span class="credit-role">Double Bass</span>Alex Kelley</div>
-      <div class="credit-item"><span class="credit-role">Mixed & Mastered</span>Jordan Esau</div>
-      <div class="credit-item"><span class="credit-role">Studio</span>PAL Studio · Vancouver, BC</div>
-      <div class="credit-item"><span class="credit-role">Label</span>Sustained Tones Recordings</div>
-    </div>
-  </section>
-
-  <!-- CREDITS — MOVEMENTS -->
-  <section class="credits container reveal">
-    <p class="section-label">Credits — Movements</p>
-    <div class="credits-grid">
-      <div class="credit-item"><span class="credit-role">Written, Produced & Recorded</span>Sean Evans</div>
-      <div class="credit-item"><span class="credit-role">Additional Production & Mixing</span>Jordan Esau</div>
-      <div class="credit-item"><span class="credit-role">Saxophone</span>Paolo Carcamo</div>
-      <div class="credit-item"><span class="credit-role">Mastering</span>Joshua Stevenson · Otic Mastering</div>
-      <div class="credit-item"><span class="credit-role">Artwork</span>Klee Larsen Crawford</div>
-      <div class="credit-item"><span class="credit-role">Back Text</span>Sabrina Chen</div>
-      <div class="credit-item"><span class="credit-role">Vinyl Pressing</span>Poly Custom Records · North Vancouver</div>
-      <div class="credit-item"><span class="credit-role">Studio</span>Kiklo Studios · Vancouver, BC</div>
-    </div>
-  </section>
-
-  <!-- DISCOGRAPHY (all 4 releases, chronological newest first) -->
+  <!-- DISCOGRAPHY -->
   <section class="discography container reveal" id="discography">
     <p class="section-label">Discography</p>
     <div class="disco-grid">

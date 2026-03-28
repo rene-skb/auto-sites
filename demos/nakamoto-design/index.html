@@ -4,622 +4,327 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nakamoto Design Co. — Web Design Studio, Victoria BC</title>
-<meta name="description" content="Custom websites for local businesses. Not templates. Not Squarespace. Built by a senior product designer in Victoria, BC.">
+<meta name="description" content="Custom websites for local businesses. Designed and built in Victoria, BC.">
 <meta property="og:title" content="Nakamoto Design Co.">
-<meta property="og:description" content="Custom websites for local businesses. Built in Victoria, BC.">
+<meta property="og:description" content="Custom websites for local businesses. Designed and built in Victoria, BC.">
 <meta property="og:url" content="https://nakamotodesign.co">
-<meta property="og:type" content="website">
+<meta property="og:image" content="https://auto-sites.pages.dev/demos/nakamoto-design-opus/farine-et-vanille-preview.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  --bg: #0C0B09;
-  --bg-card: #151412;
-  --text: #EAE6DE;
-  --text-muted: #9A958C;
-  --text-dim: #6B665E;
-  --accent: #D4A33A;
-  --accent-hover: #E0B44A;
-  --border: rgba(234, 230, 222, 0.08);
-  --border-hover: rgba(234, 230, 222, 0.16);
+  --bg: #0A0908;
+  --bg-alt: #0F0E0C;
+  --card: #131211;
+  --text: #D8D4CF;
+  --text-muted: #9A9590;
+  --text-dim: #706B66;
+  --accent: #C8963A;
+  --white: #F0EDE8;
+
+  --unit: 8px;
+  --s1: 8px; --s2: 16px; --s3: 24px; --s4: 32px; --s5: 48px; --s6: 64px; --s7: 96px; --s8: 128px;
+
   --max-w: 1120px;
-  --content-px: clamp(24px, 5vw, 48px);
-  --section-pad: clamp(80px, 10vw, 120px);
+  --px: 24px;
+  --section-gap: var(--s7);
+
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
-  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+
+  --display: clamp(2.5rem, 5vw, 4.25rem);
+  --h2: clamp(1.5rem, 2.5vw, 2rem);
+  --h3: 1.125rem;
+  --body: 1rem;
+  --small: 0.8125rem;
+  --meta: 0.6875rem;
+
   --ls-sm: 0.04em;
+  --ls-md: 0.08em;
   --ls-lg: 0.14em;
 }
 
-html { scroll-behavior: smooth; }
-
-body {
-  font-family: 'Inter', -apple-system, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  font-size: 16px;
-  line-height: 1.7;
-  font-weight: 400;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--body); line-height: 1.7; color: var(--text); background: var(--bg); }
 a { color: inherit; text-decoration: none; }
-img { display: block; max-width: 100%; height: auto; }
+img { max-width: 100%; height: auto; display: block; }
 
-:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 4px;
-  border-radius: 2px;
-}
+.label { font-size: var(--meta); font-weight: 500; letter-spacing: var(--ls-lg); text-transform: uppercase; color: var(--text-dim); margin-bottom: var(--s3); }
+.h2 { font-family: 'Instrument Serif', serif; font-size: var(--h2); font-weight: 400; line-height: 1.25; letter-spacing: -0.025em; color: var(--white); }
 
-/* ─── NAV ─── */
-.nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 100;
-  padding: 0 var(--content-px);
-  height: 64px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: rgba(12, 11, 9, 0.92);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border);
-}
+.container { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--px); }
+section { padding: var(--section-gap) 0; }
 
-.nav-brand {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 1rem;
-  font-weight: 600;
-  letter-spacing: var(--ls-sm);
-}
-
-.nav-links { display: flex; gap: 32px; list-style: none; }
-
-.nav-links a {
-  font-size: 0.875rem;
-  font-weight: 400;
-  color: var(--text-muted);
-  letter-spacing: var(--ls-sm);
-  transition: color 300ms var(--ease-out);
-  position: relative;
-}
-
-.nav-links a::after {
-  content: '';
-  position: absolute;
-  bottom: -4px; left: 0;
-  width: 0; height: 1px;
-  background: var(--accent);
-  transition: width 300ms var(--ease-out);
-}
-
-.nav-links a:hover { color: var(--text); }
+/* Nav */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 0; transition: background 300ms var(--ease-out); }
+nav.scrolled { background: rgba(10, 9, 8, 0.95); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+.nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--px); display: flex; justify-content: space-between; align-items: center; }
+.nav-brand { font-size: 0.875rem; font-weight: 500; letter-spacing: var(--ls-md); text-transform: uppercase; color: var(--white); }
+.nav-links { display: flex; gap: var(--s4); list-style: none; }
+.nav-links a { font-size: var(--small); font-weight: 400; color: var(--text-muted); letter-spacing: var(--ls-sm); transition: color 200ms; position: relative; }
+.nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: var(--accent); transition: width 300ms var(--ease-out); }
+.nav-links a:hover { color: var(--white); }
 .nav-links a:hover::after { width: 100%; }
+.menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: var(--s1); }
+.menu-toggle span { display: block; width: 20px; height: 1.5px; background: var(--white); margin: 5px 0; }
 
-/* ─── HERO ─── */
-.hero {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 120px var(--content-px) var(--section-pad);
-  max-width: var(--max-w);
-  margin: 0 auto;
-}
+/* Hero */
+.hero { padding: 176px 0 var(--s5); }
+.hero-content { max-width: 680px; }
+.hero-label { font-size: var(--meta); font-weight: 500; letter-spacing: var(--ls-lg); text-transform: uppercase; color: var(--text-dim); margin-bottom: var(--s3); }
+.hero h1 { font-family: 'Instrument Serif', serif; font-size: var(--display); font-weight: 400; line-height: 1.08; letter-spacing: -0.03em; color: var(--white); margin-bottom: var(--s3); }
+.hero h1 em { font-style: italic; }
+.hero-body { font-size: var(--body); line-height: 1.75; color: var(--text-muted); max-width: 420px; margin-bottom: var(--s5); }
+.hero-cta { display: inline-flex; font-size: var(--small); font-weight: 500; letter-spacing: var(--ls-md); text-transform: uppercase; color: var(--white); border: 1px solid rgba(200,150,58,0.25); padding: 14px var(--s4); transition: all 200ms var(--ease-out); }
+.hero-cta:hover { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+.hero-cta:active { transform: scale(0.97); transition-duration: 100ms; }
 
-.hero-label {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.8125rem;
-  font-weight: 500;
-  letter-spacing: var(--ls-lg);
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 32px;
-}
+/* Work */
+.work { padding-top: var(--s5); }
 
-.hero h1 {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: 700;
-  line-height: 1.12;
-  letter-spacing: -0.03em;
-  max-width: 700px;
-  margin-bottom: 24px;
-}
+/* Featured project — full width */
+.work-featured { position: relative; overflow: hidden; background: var(--card); margin-bottom: var(--s2); }
+.work-featured img { width: 100%; aspect-ratio: 2.2/1; object-fit: cover; object-position: top; }
+.work-featured-info { padding: 20px var(--s3); display: flex; justify-content: space-between; align-items: baseline; }
+.work-featured-name { font-family: 'Instrument Serif', serif; font-size: 1.25rem; font-weight: 400; color: var(--white); }
+.work-featured-meta { font-size: var(--meta); color: var(--text-dim); letter-spacing: var(--ls-sm); }
+.work-featured a { position: absolute; inset: 0; z-index: 1; }
+.work-featured-arrow { position: absolute; top: var(--s2); right: var(--s3); font-size: var(--small); color: var(--text-dim); opacity: 0; transform: translate(-4px, 4px); transition: all 250ms var(--ease-out); }
+.work-featured:hover .work-featured-arrow { opacity: 1; transform: translate(0,0); }
 
-.hero-body {
-  font-size: 1.0625rem;
-  line-height: 1.75;
-  color: var(--text-muted);
-  max-width: 520px;
-  margin-bottom: 40px;
-}
+/* Grid cards */
+.work-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--s2); }
+.work-card { position: relative; overflow: hidden; background: var(--card); transition: transform 300ms var(--ease-out), box-shadow 300ms var(--ease-out); }
+.work-card:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
+.work-card img { width: 100%; aspect-ratio: 16/10; object-fit: cover; object-position: top; }
+.work-card-info { padding: var(--s2) 20px; display: flex; justify-content: space-between; align-items: baseline; }
+.work-card-name { font-family: 'Instrument Serif', serif; font-size: var(--h3); font-weight: 400; color: var(--white); transition: color 200ms; }
+.work-card:hover .work-card-name { color: var(--accent); }
+.work-card-meta { font-size: var(--meta); color: var(--text-dim); letter-spacing: var(--ls-sm); }
+.work-card a { position: absolute; inset: 0; z-index: 1; }
+.work-card-arrow { position: absolute; top: var(--s2); right: var(--s2); font-size: var(--small); color: var(--text-dim); opacity: 0; transform: translate(-4px, 4px); transition: all 250ms var(--ease-out); }
+.work-card:hover .work-card-arrow { opacity: 1; transform: translate(0,0); }
 
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 14px 28px;
-  background: var(--accent);
-  color: var(--bg);
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.9375rem;
-  font-weight: 600;
-  border-radius: 4px;
-  transition: transform 160ms var(--ease-out), background 200ms;
-  cursor: pointer;
-  border: none;
-}
+/* About */
+.about { background: var(--bg-alt); }
+.about-intro { max-width: 560px; margin-top: var(--s3); margin-bottom: var(--s5); }
+.about-intro p { color: var(--text-muted); line-height: 1.75; margin-bottom: var(--s2); }
+.about-intro p:last-child { margin-bottom: 0; }
+.about-companies { display: flex; gap: var(--s3); flex-wrap: wrap; padding-top: var(--s3); border-top: 1px solid rgba(255,255,255,0.04); }
+.about-company { font-size: var(--meta); font-weight: 500; letter-spacing: var(--ls-lg); text-transform: uppercase; color: var(--text-dim); }
 
-.btn:active { transform: scale(0.97); }
-.btn:hover { background: var(--accent-hover); }
+/* Process */
+.process { border-top: 1px solid rgba(255,255,255,0.04); padding-top: var(--s7); padding-bottom: var(--s7); }
+.process-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s5); margin-top: var(--s5); }
+.process-title { font-size: var(--body); font-weight: 500; color: var(--white); margin-bottom: var(--s1); }
+.process-desc { font-size: var(--small); color: var(--text-muted); line-height: 1.7; }
 
-/* ─── SECTIONS ─── */
-.section {
-  padding: var(--section-pad) var(--content-px);
-  max-width: var(--max-w);
-  margin: 0 auto;
-  scroll-margin-top: 80px;
-}
+/* Contact */
+.contact { background: var(--bg-alt); padding: var(--s8) 0; }
+.contact-inner { text-align: center; max-width: 520px; margin: 0 auto; }
+.contact-h2 { font-family: 'Instrument Serif', serif; font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 400; line-height: 1.2; letter-spacing: -0.025em; color: var(--white); margin-bottom: var(--s3); }
+.contact-email { font-family: 'Instrument Serif', serif; font-size: clamp(1.25rem, 2vw, 1.75rem); font-weight: 400; color: var(--accent); display: inline-block; border-bottom: 1px solid rgba(200,150,58,0.25); padding-bottom: 2px; transition: border-color 200ms, color 200ms; }
+.contact-email:hover { border-color: var(--accent); color: var(--white); }
+.contact-note { margin-top: var(--s2); font-size: var(--small); color: var(--text-dim); }
 
-.section-label {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: var(--ls-lg);
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 12px;
-}
+/* Footer */
+footer { padding: var(--s5) 0; }
+.footer-inner { display: flex; justify-content: space-between; align-items: center; font-size: var(--meta); color: var(--text-dim); letter-spacing: var(--ls-sm); }
 
-.section-h2 {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: clamp(1.5rem, 3vw, 2.25rem);
-  font-weight: 600;
-  line-height: 1.2;
-  letter-spacing: -0.025em;
-  margin-bottom: 12px;
-}
+*:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 
-.section-body {
-  font-size: 1rem;
-  line-height: 1.7;
-  color: var(--text-muted);
-  max-width: 560px;
-}
+/* Animations */
+.reveal { opacity: 0; transform: translateY(12px); transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+body.js-ready .hero-label, body.js-ready .hero h1, body.js-ready .hero-body, body.js-ready .hero-cta { opacity: 0; transform: translateY(10px); }
+body.js-loaded .hero-label, body.js-loaded .hero h1, body.js-loaded .hero-body, body.js-loaded .hero-cta { opacity: 1; transform: translateY(0); transition: opacity 500ms var(--ease-out), transform 500ms var(--ease-out); }
+body.js-loaded .hero-label { transition-delay: 80ms; }
+body.js-loaded .hero h1 { transition-delay: 200ms; }
+body.js-loaded .hero-body { transition-delay: 340ms; }
+body.js-loaded .hero-cta { transition-delay: 480ms; }
+.s1 { transition-delay: 0ms; } .s2 { transition-delay: 60ms; } .s3 { transition-delay: 120ms; }
+.s4 { transition-delay: 180ms; } .s5 { transition-delay: 240ms; }
 
-/* ─── WORK ─── */
-.work { border-top: 1px solid var(--border); }
-
-.work-header { margin-bottom: 40px; }
-
-.work-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-}
-
-.work-card {
-  display: block;
-  border-radius: 6px;
-  overflow: hidden;
-  border: 1px solid var(--border);
-  transition: border-color 300ms var(--ease-out), transform 400ms var(--ease-out), box-shadow 400ms var(--ease-out);
-}
-
-.work-card:hover {
-  border-color: var(--border-hover);
-  transform: translateY(-3px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-}
-
-.work-card-img {
-  width: 100%;
-  aspect-ratio: 16 / 10;
-  object-fit: cover;
-  object-position: top;
-  background: var(--bg-card);
-}
-
-.work-card-body {
-  padding: 14px 18px 16px;
-  background: var(--bg-card);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.work-card-name {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.9375rem;
-  font-weight: 600;
-}
-
-.work-card-meta {
-  font-size: 0.8125rem;
-  color: var(--text-dim);
-}
-
-.work-card-info { display: flex; align-items: baseline; gap: 12px; }
-
-.work-card-link {
-  font-size: 0.8125rem;
-  font-weight: 500;
-  color: var(--accent);
-  letter-spacing: var(--ls-sm);
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  transition: gap 200ms var(--ease-out);
-  white-space: nowrap;
-}
-
-.work-card:hover .work-card-link { gap: 8px; }
-
-/* ─── ABOUT ─── */
-.about { border-top: 1px solid var(--border); }
-
-.about-content {
-  display: grid;
-  grid-template-columns: 5fr 7fr;
-  gap: 48px;
-  margin-top: 40px;
-}
-
-.about-left p {
-  font-size: 1rem;
-  line-height: 1.75;
-  color: var(--text-muted);
-  margin-bottom: 16px;
-}
-
-.about-left p strong {
-  color: var(--text);
-  font-weight: 500;
-}
-
-.about-right {
-  padding-left: 48px;
-  border-left: 1px solid var(--border);
-}
-
-.about-right p {
-  font-size: 1rem;
-  line-height: 1.75;
-  color: var(--text-muted);
-  margin-bottom: 16px;
-}
-
-/* ─── CTA ─── */
-.cta-band {
-  padding: var(--section-pad) var(--content-px);
-  max-width: var(--max-w);
-  margin: 0 auto;
-  border-top: 1px solid var(--border);
-  scroll-margin-top: 80px;
-}
-
-.cta-h2 {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: clamp(1.5rem, 3vw, 2.25rem);
-  font-weight: 600;
-  line-height: 1.25;
-  letter-spacing: -0.025em;
-  margin-bottom: 16px;
-}
-
-.cta-body {
-  font-size: 1rem;
-  color: var(--text-muted);
-  margin-bottom: 24px;
-}
-
-.cta-email {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: clamp(1.125rem, 2vw, 1.5rem);
-  font-weight: 600;
-  color: var(--accent);
-  display: inline-block;
-  transition: color 200ms;
-  position: relative;
-}
-
-.cta-email::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--accent);
-  transition: width 300ms var(--ease-out);
-}
-
-.cta-email:hover { color: var(--accent-hover); }
-.cta-email:hover::after { width: 100%; }
-
-/* ─── FOOTER ─── */
-.footer {
-  padding: 32px var(--content-px);
-  max-width: var(--max-w);
-  margin: 0 auto;
-  border-top: 1px solid var(--border);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.footer-brand {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.8125rem;
-  font-weight: 500;
-  color: var(--text-dim);
-}
-
-.footer-right {
-  font-size: 0.8125rem;
-  color: var(--text-dim);
-}
-
-/* ─── HAMBURGER ─── */
-.hamburger {
-  display: none;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 8px;
-}
-
-.hamburger span {
-  display: block;
-  width: 20px;
-  height: 2px;
-  background: var(--text);
-  margin: 5px 0;
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  .reveal, body.js-ready .hero-label, body.js-ready .hero h1, body.js-ready .hero-body, body.js-ready .hero-cta { opacity: 1; transform: none; }
 }
 
 @media (max-width: 768px) {
-  .hamburger { display: block; }
-
-  .nav-links {
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: var(--bg);
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 40px;
-    transform: translateY(-100%);
-    transition: transform 400ms var(--ease-out);
-    z-index: 99;
-  }
-
-  .nav-links.open { transform: translateY(0); }
-  .nav-links a { font-size: 1.25rem; color: var(--text); }
-
+  :root { --section-gap: 72px; --px: 20px; }
+  .hero { padding: 128px 0 var(--s5); }
+  .nav-links { display: none; }
+  .menu-toggle { display: block; }
+  .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: rgba(10,9,8,0.98); padding: var(--s3) var(--px); gap: 20px; }
   .work-grid { grid-template-columns: 1fr; }
-  .about-content { grid-template-columns: 1fr; gap: 24px; }
-  .about-right { padding-left: 0; border-left: none; padding-top: 24px; border-top: 1px solid var(--border); }
-  .work-card-body { flex-direction: column; align-items: flex-start; gap: 8px; }
-  .work-card-info { flex-direction: column; gap: 2px; }
-}
-
-/* ─── REVEAL ANIMATIONS ─── */
-.reveal {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 500ms var(--ease-out), transform 500ms var(--ease-out);
-}
-
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Hero entrance */
-body.js-ready .hero-label,
-body.js-ready .hero h1,
-body.js-ready .hero-body,
-body.js-ready .hero .btn {
-  opacity: 0;
-  transform: translateY(16px);
-}
-
-body.js-loaded .hero-label,
-body.js-loaded .hero h1,
-body.js-loaded .hero-body,
-body.js-loaded .hero .btn {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
-}
-
-body.js-loaded .hero-label { transition-delay: 0ms; }
-body.js-loaded .hero h1 { transition-delay: 100ms; }
-body.js-loaded .hero-body { transition-delay: 200ms; }
-body.js-loaded .hero .btn { transition-delay: 320ms; }
-
-/* Card stagger */
-.work-card.reveal.visible { transition-delay: var(--stagger, 0ms); }
-
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    transition-duration: 0.01ms !important;
-  }
-  .reveal, body.js-ready .hero-label, body.js-ready .hero h1,
-  body.js-ready .hero-body, body.js-ready .hero .btn {
-    opacity: 1 !important;
-    transform: none !important;
-  }
+  .work-featured img { aspect-ratio: 16/10; }
+  .process-grid { grid-template-columns: 1fr; gap: var(--s3); }
+  .footer-inner { flex-direction: column; gap: var(--s1); text-align: center; }
 }
 </style>
 </head>
 <body>
 
-<nav class="nav">
-  <a href="#" class="nav-brand">Nakamoto Design</a>
-  <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
-  <ul class="nav-links">
-    <li><a href="#work" onclick="document.querySelector('.nav-links').classList.remove('open')">Work</a></li>
-    <li><a href="#about" onclick="document.querySelector('.nav-links').classList.remove('open')">About</a></li>
-    <li><a href="#contact" onclick="document.querySelector('.nav-links').classList.remove('open')">Contact</a></li>
-  </ul>
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">Nakamoto Design</a>
+    <button class="menu-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    <ul class="nav-links">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
 </nav>
 
 <section class="hero">
-  <p class="hero-label">Web Design Studio · Victoria, BC</p>
-  <h1>Your business deserves better than a template.</h1>
-  <p class="hero-body">Not a freelancer with a Squarespace account. Not a template with your logo dropped in. A custom site, designed for your business, built to bring people through the door.</p>
-  <a href="#work" class="btn">See Our Work ↓</a>
-</section>
-
-<section class="section work" id="work">
-  <div class="work-header reveal">
-    <p class="section-label">Work</p>
-    <h2 class="section-h2">Selected projects</h2>
-  </div>
-
-  <div class="work-grid">
-    <a href="https://auto-sites.pages.dev/demos/farine-et-vanille/" target="_blank" rel="noopener" class="work-card reveal" style="--stagger:0ms">
-      <img src="farine-et-vanille-preview.png" alt="Farine & Vanille website" class="work-card-img" loading="lazy">
-      <div class="work-card-body">
-        <div class="work-card-info">
-          <span class="work-card-name">Farine & Vanille</span>
-          <span class="work-card-meta">Bakery · Montréal</span>
-        </div>
-        <span class="work-card-link">View →</span>
-      </div>
-    </a>
-
-    <a href="https://auto-sites.pages.dev/demos/status-barber-shop/" target="_blank" rel="noopener" class="work-card reveal" style="--stagger:80ms">
-      <img src="status-barber-shop-preview.png" alt="Status Barber Shop website" class="work-card-img" loading="lazy">
-      <div class="work-card-body">
-        <div class="work-card-info">
-          <span class="work-card-name">Status Barber Shop</span>
-          <span class="work-card-meta">Barbershop · Victoria</span>
-        </div>
-        <span class="work-card-link">View →</span>
-      </div>
-    </a>
-
-    <a href="https://auto-sites.pages.dev/demos/goodside-pastry-house/" target="_blank" rel="noopener" class="work-card reveal" style="--stagger:0ms">
-      <img src="goodside-pastry-house-preview.png" alt="GoodSide Pastry House website" class="work-card-img" loading="lazy">
-      <div class="work-card-body">
-        <div class="work-card-info">
-          <span class="work-card-name">GoodSide Pastry House</span>
-          <span class="work-card-meta">Pastry · Victoria</span>
-        </div>
-        <span class="work-card-link">View →</span>
-      </div>
-    </a>
-
-    <a href="https://auto-sites.pages.dev/demos/kid-sister-ice-cream/" target="_blank" rel="noopener" class="work-card reveal" style="--stagger:80ms">
-      <img src="kid-sister-ice-cream-preview.png" alt="Kid Sister Ice Cream website" class="work-card-img" loading="lazy">
-      <div class="work-card-body">
-        <div class="work-card-info">
-          <span class="work-card-name">Kid Sister Ice Cream</span>
-          <span class="work-card-meta">Ice Cream · Victoria</span>
-        </div>
-        <span class="work-card-link">View →</span>
-      </div>
-    </a>
-
-    <a href="https://auto-sites.pages.dev/demos/flowers-on-top/" target="_blank" rel="noopener" class="work-card reveal" style="--stagger:0ms">
-      <img src="flowers-on-top-preview.png" alt="Flowers On Top website" class="work-card-img" loading="lazy">
-      <div class="work-card-body">
-        <div class="work-card-info">
-          <span class="work-card-name">Flowers On Top</span>
-          <span class="work-card-meta">Florist · Victoria</span>
-        </div>
-        <span class="work-card-link">View →</span>
-      </div>
-    </a>
-
-    <a href="https://auto-sites.pages.dev/demos/vintage-glory/" target="_blank" rel="noopener" class="work-card reveal" style="--stagger:80ms">
-      <img src="vintage-glory-preview.png" alt="Vintage Glory website" class="work-card-img" loading="lazy">
-      <div class="work-card-body">
-        <div class="work-card-info">
-          <span class="work-card-name">Vintage Glory</span>
-          <span class="work-card-meta">Vintage · Winnipeg</span>
-        </div>
-        <span class="work-card-link">View →</span>
-      </div>
-    </a>
-  </div>
-</section>
-
-<section class="section about" id="about">
-  <div class="reveal">
-  <p class="section-label">About</p>
-  <h2 class="section-h2">Founded by Scott Bell</h2>
-  </div>
-
-  <div class="about-content reveal">
-    <div class="about-left">
-      <p>14 years designing digital products. Built things used by millions at <strong>Strike</strong>, <strong>KOHO</strong>, <strong>AIOZ</strong>, and <strong>Fountain</strong>.</p>
-      <p>Now building websites for local businesses that don't have one, or have one that doesn't do them justice.</p>
-    </div>
-    <div class="about-right">
-      <p>You get a senior product designer building your site. Someone who thinks about how people use things, what makes them trust a brand, and what makes them take action.</p>
-      <p>Every site is custom. Every site is built to bring people through your door.</p>
+  <div class="container">
+    <div class="hero-content">
+      <p class="hero-label">Design Studio · Victoria, BC</p>
+      <h1>Your business deserves better than a <em>template.</em></h1>
+      <p class="hero-body">Custom websites for local businesses. Built to convert foot traffic, not just look pretty.</p>
+      <a href="#work" class="hero-cta">See the work</a>
     </div>
   </div>
 </section>
 
-<section class="cta-band" id="contact">
-  <div class="reveal">
-  <p class="section-label">Get in Touch</p>
-  <h2 class="cta-h2">Your competitors have templates.<br>Let's make sure visitors can tell.</h2>
-  <p class="cta-body">No pitch decks. No discovery calls. Just send an email.</p>
-  <a href="mailto:scott@nakamotodesign.co" class="cta-email">scott@nakamotodesign.co</a>
+<section class="work" id="work" style="scroll-margin-top: 80px;">
+  <div class="container">
+    <p class="label">Selected Work</p>
+
+    <!-- Featured — full width -->
+    <div class="work-featured reveal">
+      <a href="https://auto-sites.pages.dev/demos/farine-et-vanille/" target="_blank" rel="noopener" aria-label="Farine & Vanille"></a>
+      <span class="work-featured-arrow">↗</span>
+      <img src="farine-et-vanille-preview.png" alt="Farine & Vanille website">
+      <div class="work-featured-info">
+        <h3 class="work-featured-name">Farine & Vanille</h3>
+        <p class="work-featured-meta">Artisan Bakery · Montréal</p>
+      </div>
+    </div>
+
+    <!-- Grid -->
+    <div class="work-grid">
+      <div class="work-card reveal s1">
+        <a href="https://auto-sites.pages.dev/demos/goodside-pastry-house/" target="_blank" rel="noopener" aria-label="GoodSide Pastry House"></a>
+        <span class="work-card-arrow">↗</span>
+        <img src="goodside-pastry-house-preview.png" alt="GoodSide Pastry House website">
+        <div class="work-card-info">
+          <h3 class="work-card-name">GoodSide Pastry House</h3>
+          <p class="work-card-meta">Pastry · Victoria</p>
+        </div>
+      </div>
+      <div class="work-card reveal s2">
+        <a href="https://auto-sites.pages.dev/demos/status-barber-shop/" target="_blank" rel="noopener" aria-label="Status Barber Shop"></a>
+        <span class="work-card-arrow">↗</span>
+        <img src="status-barber-shop-preview.png" alt="Status Barber Shop website">
+        <div class="work-card-info">
+          <h3 class="work-card-name">Status Barber Shop</h3>
+          <p class="work-card-meta">Barbershop · Victoria</p>
+        </div>
+      </div>
+      <div class="work-card reveal s3">
+        <a href="https://auto-sites.pages.dev/demos/kid-sister-ice-cream/" target="_blank" rel="noopener" aria-label="Kid Sister Ice Cream"></a>
+        <span class="work-card-arrow">↗</span>
+        <img src="kid-sister-ice-cream-preview.png" alt="Kid Sister Ice Cream website">
+        <div class="work-card-info">
+          <h3 class="work-card-name">Kid Sister Ice Cream</h3>
+          <p class="work-card-meta">Ice Cream · Victoria</p>
+        </div>
+      </div>
+      <div class="work-card reveal s4">
+        <a href="https://auto-sites.pages.dev/demos/33-acres-brewing/" target="_blank" rel="noopener" aria-label="33 Acres Brewing"></a>
+        <span class="work-card-arrow">↗</span>
+        <img src="33-acres-brewing-preview.png" alt="33 Acres Brewing website">
+        <div class="work-card-info">
+          <h3 class="work-card-name">33 Acres Brewing</h3>
+          <p class="work-card-meta">Brewery · Vancouver</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom featured -->
+    <div class="work-featured reveal" style="margin-top: var(--s2);">
+      <a href="https://auto-sites.pages.dev/demos/flowers-on-top/" target="_blank" rel="noopener" aria-label="Flowers On Top"></a>
+      <span class="work-featured-arrow">↗</span>
+      <img src="flowers-on-top-preview.png" alt="Flowers On Top website">
+      <div class="work-featured-info">
+        <h3 class="work-featured-name">Flowers On Top</h3>
+        <p class="work-featured-meta">Florist · Victoria</p>
+      </div>
+    </div>
   </div>
 </section>
 
-<footer class="footer">
-  <span class="footer-brand">© 2026 Nakamoto Design Co.</span>
-  <span class="footer-right"><a href="mailto:scott@nakamotodesign.co" style="color:var(--text-dim);transition:color 200ms">scott@nakamotodesign.co</a></span>
+<section class="about" id="about" style="scroll-margin-top: 80px;">
+  <div class="container">
+    <p class="label">About</p>
+    <h2 class="h2">Fourteen years of product design. Now pointed at the businesses that need it most.</h2>
+    <div class="about-intro">
+      <p>Founded by Scott Bell, a product designer who spent over a decade building digital products at companies like Strike, KOHO, and AIOZ Network. Products shipped to millions of people across 65 countries.</p>
+      <p>That same attention to detail, applied to your neighbourhood bakery, barber, or florist. No templates. No page builders. No compromises.</p>
+    </div>
+    <div class="about-companies">
+      <span class="about-company">Strike</span>
+      <span class="about-company">KOHO</span>
+      <span class="about-company">AIOZ Network</span>
+      <span class="about-company">Fountain</span>
+    </div>
+  </div>
+</section>
+
+<section class="process">
+  <div class="container">
+    <p class="label">How It Works</p>
+    <div class="process-grid">
+      <div class="reveal s1">
+        <div class="process-title">Research your business</div>
+        <div class="process-desc">We study your reviews, your social presence, what customers actually say about you. The site should sound like you.</div>
+      </div>
+      <div class="reveal s2">
+        <div class="process-title">Design from scratch</div>
+        <div class="process-desc">Typography, colour, layout, and copy built for your business and nobody else's.</div>
+      </div>
+      <div class="reveal s3">
+        <div class="process-title">Ship it fast</div>
+        <div class="process-desc">Clean code. Fast load. Mobile-first. Built for the person Googling you on their phone.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact" style="scroll-margin-top: 80px;">
+  <div class="container">
+    <div class="contact-inner reveal">
+      <h2 class="contact-h2">Let's build something your customers remember.</h2>
+      <a href="mailto:scott@nakamotodesign.co" class="contact-email">scott@nakamotodesign.co</a>
+      <p class="contact-note">Victoria, BC · Available across Canada</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <span>© 2026 Nakamoto Design Co.</span>
+      <span>Victoria, BC</span>
+    </div>
+  </div>
 </footer>
 
 <script>
-// Hero entrance
 document.body.classList.add('js-ready');
-requestAnimationFrame(() => {
-  requestAnimationFrame(() => {
-    document.body.classList.add('js-loaded');
-  });
-});
-
-// Scroll reveals
+requestAnimationFrame(() => { requestAnimationFrame(() => { document.body.classList.add('js-loaded'); }); });
+const nav = document.querySelector('nav');
+window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
+document.querySelector('.menu-toggle').addEventListener('click', () => { document.querySelector('.nav-links').classList.toggle('open'); });
 const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
-    }
-  });
+  entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
-
-<noscript>
-<style>
-.reveal { opacity: 1 !important; transform: none !important; }
-body.js-ready .hero-label, body.js-ready .hero h1,
-body.js-ready .hero-body, body.js-ready .hero .btn {
-  opacity: 1 !important; transform: none !important;
-}
-</style>
-</noscript>
 
 </body>
 </html>

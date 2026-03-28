@@ -1,5 +1,158 @@
 # Auto-Sites Build Log
 
+## Build 74 — Klee Larsen
+- **Category:** Fine Art / Artist Portfolio
+- **City:** Vancouver, BC
+- **Date:** 2026-03-28
+- **Model:** claude-opus-4-6 (subagent)
+- **Agent:** Lucy
+- **Hero pattern:** centered-minimal (portrait artwork centered, tagline below)
+- **Typography:** Newsreader 300/400/400i (display/statement) + DM Sans 400/500 (body/UI)
+- **Review layout:** N/A (artist portfolio, no reviews)
+- **Stats bar style:** no-stats (artist portfolio)
+- **Score:** 6.7 (WHY avg) / 6.83 (WHAT avg, max retries hit) / 7.375 (HOW avg) → 6.97
+- **Self-review:** 7.0 (footnote)
+- **Live URL:** https://auto-sites.pages.dev/demos/klee-larsen/
+- **Key decisions:** First fine art portfolio build. Klee Larsen is a mixed media artist (encaustic, resin, photographic transfer) exploring horizons and liminal spaces. Her own words are the headline: "The moment just before something becomes forever." Hero uses ig-photo-05 (blue water panel, rated 10/10) as centered artwork. Newsreader serif chosen for quiet, literary quality that suits a contemplative art practice. Only 3 usable clean artwork photos from Instagram (05=hero, 01+03=gallery), plus 2 documentary photos (06=exhibition opening, 09=studio prep). The constraint is honest: 2 gallery works rather than padding with weak photos. Cream (#F5F1EB) background lets the artwork's natural palette sing. Exhibition (Afterlight at Janaki Larsen Studio) folded into About section rather than given its own block, avoiding layout monotony. Copy audit clean: all statement text is Klee's own words verbatim, About copy uses physical verbs ("get buried under translucent layers until the image is more memory than record"). No AI slop. WHAT gate hit max retries at 6.83 — contrast and grid alignment were persistent issues across panels. Surprise gift for Scott's friend.
+
+### Scores
+| Round | Phase | Reviewers | Avg |
+|-------|-------|-----------|-----|
+| v0→v1 | WHY | Jobs 7.0, Cagan 6.0, Ogilvy 7.0 | 6.7 |
+| v1→v1b | WHAT (retry 1) | Norman 7.0, Krug 7.5, Nielsen 6.0 | 6.83 |
+| v2 | HOW | Vignelli 7.0, Spiekermann 7.0, Rams 8.0, Emil 7.5 | 7.375 |
+| v5 | Self | Lucy | 7.0 |
+
+### Photo Evaluation (Phase 1)
+| Rank | File | Score | Aspect | Role |
+|------|------|-------|--------|------|
+| 1 | ig-photo-05 | 10/10 | Portrait 2:3 | Hero |
+| 2 | ig-photo-01 | 9/10 | Landscape 4:3 | Gallery |
+| 3 | ig-photo-03 | 9/10 | Square | Gallery |
+| 4 | ig-photo-06 | 7/10 | Landscape | About (artist in gallery) |
+| 5 | ig-photo-09 | 7/10 | Portrait | Process image |
+| 6-10 | ig-photo-04,02,08,10,07 | 3-6/10 | Various | Skipped |
+
+### Files
+- index-v0.html through index-v5.html (6 versions) + index-v1b.html (WHAT retry) + index.html
+- 10 real Instagram photos (ig-photo-01 through ig-photo-10)
+- screenshot-v0.png through screenshot-v5.png
+
+---
+
+## Build 73 — RSTUDIOS Hot Pilates + Yoga
+- **Category:** Hot Yoga / Pilates Studio
+- **City:** Halifax, NS
+- **Date:** 2026-03-28
+- **Model:** claude-sonnet-4-6 (cron)
+- **Agent:** Lucy
+- **Hero pattern:** giant-display-type ("RINSE." at 6-16rem Cormorant, dark atmospheric studio bg at 0.25 opacity)
+- **Typography:** Cormorant Garamond 300/400/600/700 + Inter 400/500/600
+- **Review layout:** Stacked full-width reviews (all same treatment), brass border-top lines, large Cormorant italic pull-quotes
+- **Stats bar style:** no-stats
+- **Score:** 7.83 (WHY avg) / 7.67 (WHAT avg, after 1 retry) / 7.25 (HOW avg, after 1 retry) → 7.58
+- **Self-review:** 7.5 (footnote)
+- **Live URL:** https://auto-sites.pages.dev/demos/rstudios-yoga-halifax/
+- **Key decisions:** First Halifax build. Brand "RINSE" is a designer's gift — a single verb that encapsulates the entire value proposition. Giant-display-type hero with "RINSE." at massive Cormorant scale, dark steamy studio bg (0.25 opacity), conviction copy below: "You walk in tight. You leave empty." Crimson (#8C1A1A) as accent — heat, intensity, life. Brass (#B8924A) for warm wayfinding. No stats bar — "714 reviews at 4.9 stars" woven into hero body copy. Two studio locations handled honestly: RINSE (confirmed address) + RIO (call to confirm). "New Here?" nav link + "What to expect your first class" section addresses the intimidation factor surfaced in reviews. Stacked full-width reviews different from all last 3 builds. WHAT panel required 1 retry (6.5 → 7.67). HOW panel required 1 retry (6.625 → 7.25). First hot yoga / pilates studio category build. No real Instagram photos (handle unconfirmed) — 4 AI-generated editorial images. Humanizer pass: 3 em dashes removed, synonym cycling corrected ("warm room" → "hot room"), paragraph breaks improved.
+
+### Scores
+| Round | Phase | Reviewers | Avg |
+|-------|-------|-----------|-----|
+| v0→v1 | WHY | Jobs 8.0, Cagan 7.0, Ogilvy 8.5 | 7.83 |
+| v1→v2 | WHAT retry | Norman 8.5, Krug 7.5, Nielsen 7.0 | 7.67 |
+| v3 | HOW retry | Vignelli 7.5, Spiekermann 8.0, Rams 8.0, Emil 5.5 | 7.25 |
+| v5 | Self | Lucy | 7.5 |
+
+### Files
+- index-v0.html through index-v5.html (6 versions) + index.html
+- hero-studio.jpg, mat-hands.jpg, pilates-studio.jpg, sauna-glow.jpg (4 AI-generated images)
+- screenshot-v0.png through screenshot-v5.png (6 review screenshots)
+
+---
+
+## Build 72 — Zoé Dessert et Thé
+- **Category:** Asian Dessert Café (Korean bingsu, Hong Kong desserts, mille crêpe cakes)
+- **City:** Montréal, QC
+- **Date:** 2026-03-28
+- **Model:** claude-sonnet-4-6 (cron)
+- **Agent:** Lucy
+- **Hero pattern:** editorial-spread (dark left text panel + landscape bingsu photo right)
+- **Typography:** Fraunces (variable optical serif, 300/400/500/700/400i) + DM Sans 400/500 (body/UI)
+- **Review layout:** 2-col equal cards, gold border-top, same treatment throughout
+- **Stats bar style:** no-stats
+- **Score:** 8.67 (WHY avg) / 7.33 (WHAT avg, after 1 retry) / 7.0 (HOW avg, exactly gate) → 7.67
+- **Self-review:** 7.5 (footnote)
+- **Live URL:** https://auto-sites.pages.dev/demos/zoe-dessert-et-the/
+- **Key decisions:** First Asian dessert café build. Cross-cultural identity as the hook: Korean bingsu + HK desserts + French name in Montréal. Fraunces variable serif chosen for warmth and slight preciousness that matches a dessert café — DM Sans body. Editorial-spread hero (dark teal/black left panel, AI-generated mango bingsu landscape right) because all real Instagram photos were portrait orientation. Real photos (ig-photo-01 mango duo bowls) used in the about section. Mango gold #D4902A extracted from actual dessert colors. Teal #1C5F61 from brand logo. Headline: "The mango bingsu on Saint-Mathieu has its own following." — specific address, specific product, earned confidence. No stats bar. Reviews: 2-col gold-border-top equal cards. Instagram CDN URL expiry prevented downloading real photos at build time; one real portrait photo (mango duo) successfully downloaded and used in about section. Photo strip removed in v4 per Rams feedback (3 atmospheric photo moments competing). WHAT gate required 1 retry (6.5 → 7.33).
+
+### Scores
+| Round | Phase | Reviewers | Avg |
+|-------|-------|-----------|-----|
+| v0→v1 | WHY | Jobs 9.0, Cagan 8.0, Ogilvy 9.0 | 8.67 |
+| v1→v2 | WHAT retry 1 | Norman 7.0, Krug 6.0, Nielsen 6.5 | 6.5 |
+| v2→v2b | WHAT retry 2 | Norman 8.0, Krug 7.0, Nielsen 7.0 | 7.33 |
+| v3→v4 | HOW | Vignelli 7.0, Spiekermann 7.5, Rams 6.5, Emil — | 7.0 |
+| v5 | Self | Lucy | 7.5 |
+
+### Photo Evaluation (Phase 1)
+| Rank | File | Score | Aspect | Role |
+|------|------|-------|--------|------|
+| 1 | hero-bingsu.jpg (AI landscape) | 10/10 | Landscape | Hero right panel |
+| 2 | ig-photo-01.jpg (mango duo bowls) | 9/10 | Portrait 3:4 | About section |
+| 3 | mille-crepe.jpg (AI) | 8/10 | Landscape | (not used in final — photo strip removed) |
+| 4 | ig-photo-04.jpg (rose lychee jar) | 7/10 | Portrait 4:5 | (not used in final — photo strip removed) |
+| — | ig-photo-02.jpg (person visible) | 6/10 | Portrait | Skip |
+| — | ig-photo-03.jpg (text overlay baked in) | 5/10 | Portrait 9:16 | Skip |
+
+### Files
+- index-v0.html through index-v5.html (6 versions) + index.html
+- hero-bingsu.jpg (AI landscape hero)
+- mille-crepe.jpg (AI secondary, not used in final)
+- ig-photo-01.jpg through ig-photo-04.jpg (real Instagram photos, 2 used)
+- screenshot-v0.png through screenshot-v5.png
+
+---
+
+## Build 71 — Sean Evans
+- **Category:** Music / Artist
+- **City:** Vancouver, BC
+- **Date:** 2026-03-27
+- **Model:** claude-opus-4-6 (subagent)
+- **Agent:** Lucy
+- **Hero pattern:** dark-immersive (album art as full-viewport background, 90vh)
+- **Typography:** Instrument Serif (display/italic) + Space Grotesk 300/400/500 (body/UI)
+- **Review layout:** Floating centered pull-quote, no card, italic serif, just the quote in space
+- **Stats bar style:** no-stats (artist page, not a business)
+- **Score:** 7.83 (WHY avg) / 7.33 (WHAT avg) / 7.25 (HOW avg, after retry) → 7.47
+- **Self-review:** 7.5 (footnote)
+- **Live URL:** https://auto-sites.pages.dev/demos/sean-evans/
+- **Key decisions:** First artist/music build. Dark immersive hero with the Movements album art (hazy ocean) as a darkened full-viewport background. Instrument Serif + Space Grotesk is a new pairing. No stats bar — doesn't make sense for an artist page. Featured album section with full tracklist and Bandcamp CTAs. Fan quote from Khyex as floating centered italic serif. Credits section honors all collaborators (Jordan Esau, Paolo Carcamo, Joshua Stevenson, Klee Larsen Crawford, Sabrina Chen, Poly Custom Records). Discography shows Wave, Catalog, and Edits (removed Movements from disco grid to avoid reusing album-art-large.jpg 3x on page). No AI-generated images — all real album art. Copy audit clean: zero AI slop, zero em dashes. HOW gate required 1 retry (6.625→7.25). Genre separators simplified from interpuncts to slashes per Rams feedback. Skip-to-content link and focus states for accessibility.
+
+### Scores
+| Round | Phase | Reviewers | Avg |
+|-------|-------|-----------|-----|
+| v0→v1 | WHY | Jobs 8.0, Cagan 7.5, Ogilvy 8.0 | 7.83 |
+| v1→v2 | WHAT | Norman 8.0, Krug 7.0, Nielsen 7.0 | 7.33 |
+| v2→v2b | HOW (retry) | Vignelli 7.5, Spiekermann 7.0, Rams 7.5, Emil 7.0 | 7.25 |
+| v5 | Self | Lucy | 7.5 |
+
+### Photo Evaluation (Phase 1)
+| Rank | Image | Score | Role |
+|------|-------|-------|------|
+| 1 | album-art-large.jpg (Movements) | 10/10 | Hero bg + Featured album |
+| 2 | album-4.jpg (Edits) | 9/10 | Discography |
+| 3 | album-3.jpg (Catalog) | 8/10 | Discography |
+| 4 | album-2.jpg (Wave) | 8/10 | Discography |
+| — | album-1.jpg (duplicate) | — | Skip |
+
+### Files
+- index-v0.html through index-v5.html (+ v2b intermediate retry)
+- index.html (copy of v5)
+- 5 album art images (real, not AI-generated)
+- 5 screenshots (v0, v1, v2, v2b, v4)
+
+---
+
 ## Build 70 — Lynnwood Barber Shop
 - **Category:** Barber Shop
 - **City:** Edmonton, AB

@@ -1,5 +1,286 @@
 # Auto-Sites Build Log
 
+## Build 70 — Lynnwood Barber Shop
+- **Category:** Barber Shop
+- **City:** Edmonton, AB
+- **Date:** 2026-03-27
+- **Model:** claude-opus-4-6 (subagent)
+- **Agent:** Lucy
+- **Hero pattern:** centered-minimal (giant "982" number as hero centrepiece)
+- **Typography:** Gloock (display) + Barlow 300/400/500/600 (body/UI)
+- **Review layout:** Single-column pull quotes with amber left border, Gloock serif quotes
+- **Stats bar style:** dark-bar (3 items: 5.0★, 7 Days, phone number)
+- **Score:** 8.0 (WHY avg) / 8.0 (WHAT avg) / 7.4 (HOW avg, after retry) → 7.8
+- **Self-review:** 7.5 (footnote)
+- **Live URL:** https://auto-sites.pages.dev/demos/lynnwood-barber/
+- **Key decisions:** Centred-minimal hero with the number 982 as the dominant visual element — no hero image, just the number at display scale. This is the constraint-as-brand play: a barber with zero web presence and 982 perfect 5-star reviews. "One barber. One chair. Every cut gets his full attention." headline. "982 reviews. Here are three." reviews header. Gloock + Barlow is a completely new pairing from last 3 builds. 7/5 grid proportion in about section. 3-item stats bar (removed redundant review count). 4 AI-generated editorial photos (barber tools on leather, hot towel, comb/clipper, shaving brush). Copy audit clean: zero AI slop, zero em dashes, zero negative parallelisms. HOW gate required 1 retry (5.25→7.4). No comparison reference exists for Barber/Grooming category.
+
+### Scores
+| Round | Phase | Reviewers | Avg |
+|-------|-------|-----------|-----|
+| v0→v1 | WHY | Jobs 8.0, Cagan 7.5, Ogilvy 8.5 | 8.0 |
+| v1→v2 | WHAT | Norman 8.0, Krug 8.5, Nielsen 7.5 | 8.0 |
+| v2→v2b | HOW (retry) | Vignelli 7.5, Spiekermann 7.0, Rams 8.0, Emil 7.0 | 7.4 |
+| v5 | Self | Lucy | 7.5 |
+
+### Files
+- index-v0.html through index-v5.html (+ v2b intermediate retry)
+- index.html (copy of v5)
+- 4 AI-generated photos (hero-tools, hot-towel, comb-clipper, shave-brush)
+- 5 screenshots (v0, v1, v2, v2b, v4)
+
+---
+
+## Build 69 — Kid Sister Ice Cream v4
+- **Category:** Ice Cream Shop
+- **City:** Victoria, BC
+- **Date:** 2026-03-27
+- **Model:** claude-opus-4-6 (subagent)
+- **Agent:** Lucy
+- **Hero pattern:** split-image-right (portrait cone photo right, headline left)
+- **Typography:** Cormorant Garamond 400/500/600/700/400i (display) + Inter 300/400/500/600 (body/UI)
+- **Review layout:** Full-width stacked centered quotes, Cormorant weight 500, no cards
+- **Stats bar style:** accent-bar (coral bg with white text: rating, hours, women-owned, phone)
+- **Score:** 8.0 (WHY avg) / 8.17 (WHAT avg, after retry) / 6.5 (HOW avg, after retry) → 7.6
+- **Self-review:** 7.5 (footnote)
+- **Live URL:** https://auto-sites.pages.dev/demos/kid-sister-v4/
+- **Key decisions:** Split-image-right hero with ig-photo-10 (chocolate/vanilla cone, 10/10 brand fit) gives the strongest brand photo the most prominent position. Headline "She makes ice cream four days a week. The other three, she picks the fruit." is new and distinct from all prior builds. Hours/address surfaced directly in hero meta line (Krug feedback). "Beyond Scoops" feature section moved above reviews to surface differentiators earlier. Cormorant Garamond + Inter is a completely different pairing from all last 3 builds. Full-width stacked quotes instead of card-based reviews. 6 unique photos across 6 slots (10, 06, 08, 09, 04, 03). Copy audit clean: zero AI slop, zero em dashes, zero negative parallelisms. WHAT gate required 1 retry (6.67→8.17). HOW gate required 1 retry (6.5→proceed with best, max retries hit).
+
+### Scores
+| Round | Phase | Reviewers | Avg |
+|-------|-------|-----------|-----|
+| v0→v1 | WHY | Jobs 7.5, Cagan 8.0, Ogilvy 8.5 | 8.0 |
+| v1→v1b | WHAT (retry) | Norman 8.0, Krug 8.5, Nielsen 8.0 | 8.17 |
+| v2→v2b | HOW (retry) | Vignelli 7.0, Spiekermann 7.0, Rams 6.0, Emil 6.0 | 6.5 |
+| v5 | Self | Lucy | 7.5 |
+
+### Photo Evaluation (Phase 1)
+| Rank | Photo | Score | Role |
+|------|-------|-------|------|
+| 1 | ig-photo-10 (Choc/Vanilla Cone) | 10/10 | Hero |
+| 2 | ig-photo-03 (Flower Popsicle) | 9/10 | Feature section |
+| 3 | ig-photo-04 (Roasted Strawberry Pint) | 9/10 | About section |
+| 4 | ig-photo-06 (Cherry Blossom Flat Lay) | 9/10 | Photo strip |
+| 5 | ig-photo-08 (Single Scoop Storefront) | 9/10 | Photo strip |
+| 6 | ig-photo-09 (Swirl Cone) | 8/10 | Photo strip |
+| — | ig-photo-02 (Kiwi Sorbet) | 8/10 | Skip |
+| — | ig-photo-05 (Collage) | 8/10 | Skip |
+| — | ig-photo-01 (Hours Graphic) | 8/10 | Skip |
+| — | ig-photo-07 (CHEK News) | 6/10 | Skip |
+
+### Files
+- index-v0.html through index-v5.html (+ v1b, v2b intermediate retries)
+- index.html (copy of v5)
+- 10 Instagram photos (ig-photo-01 through ig-photo-10)
+- 7 screenshots (v0, v1, v1b, v2, v2b, v4, v5)
+
+---
+
+## Build 68 — Kid Sister Ice Cream v3 (Photo Eval + Humanizer)
+- **Category:** Ice Cream Shop
+- **City:** Victoria, BC
+- **Date:** 2026-03-27
+- **Model:** claude-opus-4-6 (subagent)
+- **Agent:** Lucy
+- **Hero pattern:** image-top-text-below (cherry blossom flat lay full-width, text below)
+- **Typography:** Playfair Display 400/500/600/700/400i (display) + DM Sans 300/400/500/600 (body/UI)
+- **Review layout:** 3-col equal cards with coral border-top, pull-quote + body text format
+- **Stats bar style:** light-bar (cream-alt bg: 5.0★, Thu-Sun, Women-Owned, phone)
+- **Score:** 8.0 (v0 WHY avg) → 8.5 (v5 self-review)
+- **Live URL:** https://auto-sites.pages.dev/demos/kid-sister-v3/
+- **Key decisions:** First build with BOTH photo evaluation AND humanizer applied from first draft. Evaluated all 10 Instagram photos with image tool before designing. ig-photo-06 (cherry blossom flat lay) ranked #1 at 8.5/10 — editorial quality, Japanese-spring aesthetic — became the hero. ig-photo-03 (floral popsicle, 8/10), ig-photo-10 (choc/vanilla cone, 8/10), ig-photo-09 (swirl cone, 7.5/10) in photo strip. ig-photo-08 (peach cone, 7/10) in about. ig-photo-02 (kiwi kombucha, 5/10) in name section. 4 photos skipped (hours graphic, pint flat lay, collage, CHEK screenshot). 6 unique photos, 6 unique slots, 0 duplicates. Headline: "The ice cream has blackberries she picked that morning." — specific, physical, human. Playfair Display + DM Sans chosen for editorial warmth distinct from all 3 prior builds (Bodoni Moda, Sora, Fraunces). image-top-text-below hero lets the cherry blossom photo dominate. Light-bar stats different from recent dark-bar/sidebar-stats/accent-bar. Copy audit: zero AI slop, zero em dashes, zero "not X, it's Y" patterns. Green (#2D5A3D) name section creates color break. Full IntersectionObserver motion system with staggered reveals.
+
+### Scores
+| Round | Phase | Reviewers | Avg |
+|-------|-------|-----------|-----|
+| v0→v1 | WHY | Jobs 8.0, Cagan 7.0, Ogilvy 9.0 | 8.0 |
+| v1→v2 | WHAT | Norman 8.0, Krug 8.5, Nielsen 7.0 | 7.8 |
+| v2→v3 | HOW | Vignelli 7.0, Spiekermann 8.0, Rams 7.0, Emil 4.0 | 6.5 |
+| v4→v5 | Self | Lucy | 8.5 |
+
+### Photo Evaluation (Phase 0.5)
+| Rank | Photo | Score | Role |
+|------|-------|-------|------|
+| 1 | ig-photo-06 (Cherry Blossom Flat Lay) | 8.5/10 | Hero |
+| 2 | ig-photo-03 (Floral Popsicle) | 8/10 | Photo strip center |
+| 3 | ig-photo-10 (Choc/Vanilla Cone) | 8/10 | Photo strip left |
+| 4 | ig-photo-09 (Swirl Cone) | 7.5/10 | Photo strip right |
+| 5 | ig-photo-08 (Peach Cone) | 7/10 | About section |
+| 6 | ig-photo-02 (Kiwi Kombucha) | 5/10 | Name section |
+| — | ig-photo-01 (Hours Graphic) | 2/10 | Skip |
+| — | ig-photo-04 (Pint Flat Lay) | 3/10 | Skip |
+| — | ig-photo-05 (Collage) | 4/10 | Skip |
+| — | ig-photo-07 (CHEK Screenshot) | 3/10 | Skip |
+
+### Files
+- index-v0.html through index-v5.html (6 versions)
+- index.html (copy of v5)
+- 10 Instagram photos (ig-photo-01 through ig-photo-10)
+- 6 review screenshots (screenshot-v0 through v5)
+
+---
+
+## Build 67 — mix-id (CLI Tool Landing Page)
+- **Category:** Developer Tool / Open Source CLI
+- **City:** N/A (open source project)
+- **Date:** 2026-03-27
+- **Model:** claude-opus-4-6 (subagent)
+- **Agent:** Lucy
+- **Hero pattern:** dark-immersive (centered type + terminal demo as hero visual)
+- **Typography:** Crimson Pro 400/400i/500/600/700 (display) + Space Mono 400/700 (body/code/UI)
+- **Review layout:** N/A (dev tool, no reviews)
+- **Stats bar style:** no-stats
+- **Score:** 7.0 (v0 WHY avg) → 8.5 (v5 self-review)
+- **Live URL:** https://auto-sites.pages.dev/demos/mixid/
+- **Key decisions:** Dark-immersive with warm purple-black (#0C0B10) and single accent green (#4ADE80) threaded throughout. Crimson Pro serif + Space Mono creates editorial-music-magazine-meets-terminal tension. Terminal mockup as the centerpiece, with staggered track reveal animation on scroll. Waveform CSS divider with pulse animation between terminal and sources. Format cards include inline code previews (.txt, .cue, .json). Copy-to-clipboard on hero command with "copied!" feedback. No images needed, no stats bar, no reviews. "Paste a URL. Get a tracklist." hero kept from original (it's already perfect). Body copy humanized: "A 3-hour Boiler Room set takes about 90 seconds" as concrete proof. Format cards reference specific tools (Rekordbox, Traktor, Spotify). Full motion: hero entrance stagger, IntersectionObserver scroll-reveals with card stagger, terminal track stagger, waveform pulse animation.
+
+### Scores
+| Round | Phase | Reviewers | Avg |
+|-------|-------|-----------|-----|
+| v0→v1 | WHY | Jobs 8.0, Cagan 7.0, Ogilvy 6.0 | 7.0 |
+| v1→v2 | WHAT | Norman 7.0, Krug 8.0, Nielsen 6.0 | 7.0 |
+| v2→v3 | HOW | Vignelli 6.0, Spiekermann 5.0, Rams 7.0, Emil 4.0 | 5.5 |
+| v4→v5 | Self | Lucy | 8.5 |
+
+### Files
+- index-v0.html through index-v5.html (6 versions)
+- index.html (copy of v5)
+- screenshot-v0.png through screenshot-v5.png (6 review screenshots)
+- assets/screenshot-current.png (reference of original site)
+
+---
+
+## Build 66 — Kid Sister Ice Cream (Humanized Build)
+- **Category:** Ice Cream Shop
+- **City:** Victoria, BC
+- **Date:** 2026-03-27
+- **Model:** claude-opus-4-6 (subagent)
+- **Agent:** Lucy
+- **Hero pattern:** giant-display-type (centered conviction headline, image below)
+- **Typography:** Bodoni Moda 400/500/600/700/400i (display) + Work Sans 300/400/500/600 (body/UI)
+- **Review layout:** 2-col equal cards with coral border-top, pull-quote + body text format
+- **Stats bar style:** dark-bar (dark bg strip: rating, hours, women-owned, phone)
+- **Score:** 8.0 (v0 WHY avg) → 8.5 (v5 self-review)
+- **Live URL:** https://auto-sites.pages.dev/demos/kid-sister-humanized/
+- **Key decisions:** A/B test build against kid-sister-opus (Build 64) — this version applies the humanizer writing principles throughout. "We pick the blackberries ourselves." hero headline is specific, physical, and sounds like something the owner would actually say. Bodoni Moda chosen for its high-contrast editorial quality (completely different from Fraunces used in opus build). Horizontal offering rows instead of cards — cleaner, less template-y. Hours surfaced directly in hero per Cagan feedback. Copy audit: zero AI slop phrases, zero em dashes, zero "not X, it's Y" patterns. Real Instagram photos (10 available, 7 used across 7 unique slots). Name section: "She shows up with something sweet. That's what a kid sister does." Green (#2D4A3D) name section creates color rhythm break. Pull-quote pattern on reviews (Bodoni italic for key phrase + Work Sans for body).
+
+### Copy Comparison (Humanized vs Opus)
+| Element | Opus (Build 64) | Humanized (Build 66) |
+|---------|-----------------|---------------------|
+| Hero | "Ice cream that follows the calendar, not a recipe book" | "We pick the blackberries ourselves." |
+| About | "The ice cream is seasonal because the ingredients are" | "The flavors change when the fruit does." |
+| Offerings | Card grid with descriptions | Horizontal rows (name | description) |
+| CTA | "See This Week's Flavours" | "The flavors change every week. Keep up." |
+| Name section | Conviction statement about brand identity | "She shows up with something sweet. That's what a kid sister does." |
+
+### Scores
+| Round | Phase | Reviewers | Avg |
+|-------|-------|-----------|-----|
+| v0→v1 | WHY | Jobs 8.0, Cagan 7.0, Ogilvy 9.0 | 8.0 |
+| v1→v2 | WHAT | Norman 8.0, Krug 7.0, Nielsen 5.0 | 6.7 |
+| v2→v3 | HOW | Vignelli 6.0, Spiekermann 5.0, Rams 7.0, Emil 5.0 | 5.75 |
+| v4→v5 | Self | Lucy | 8.5 |
+
+### Files
+- index-v0.html through index-v5.html (6 versions)
+- index.html (copy of v5)
+- 10 Instagram photos (ig-photo-01 through ig-photo-10)
+- 6 review screenshots (screenshot-v0 through v5)
+
+---
+
+## Build 65 — Scott Bell Portfolio (Opus Build)
+- **Category:** Portfolio / Personal Brand
+- **City:** Victoria, BC
+- **Date:** 2026-03-27
+- **Model:** claude-opus-4-6 (subagent)
+- **Agent:** Lucy
+- **Hero pattern:** giant-display-type ("Scott Bell." massive, left-aligned, no hero image)
+- **Typography:** Sora 300-800 (display/headings/UI) + Libre Franklin 300-600 (body)
+- **Review layout:** N/A (portfolio — case studies with inline metrics)
+- **Stats bar style:** sidebar-stats (hero meta bar with experience/products/countries/education)
+- **Score:** 7.0 (v0 baseline) → 8.5 (v5 self-review)
+- **Live URL:** https://auto-sites.pages.dev/demos/scott-bell-opus/
+- **Key decisions:** Giant display type hero — Scott's name IS the brand, no hero image needed. Violet accent (#6B5CE7) says depth/intelligence without cold corporate blue. Removed redundant stats bar (panel feedback: credential stacking creates fatigue). Unified CSS grid system (200px label column + fluid content) across all sections. Strict 6-level type scale via CSS custom properties. Real case study screenshots for Strike (4), AIOZ (3), Fountain (4). Nakamoto Design section on dark bg with 6 real portfolio site previews — shows he ships, not just designs. Single CTA at bottom ("Let's talk.") per Rams reduction guidance. Skip nav, focus-visible states, WCAG-compliant contrast. Hero entrance animation (staggered fade-up), IntersectionObserver scroll-reveals on all sections, staggered studio cards. The throughline: "He finds the hidden layer and makes it real" — microbiology → design → AI → studio founder.
+
+### Scores
+| Round | Phase | Reviewers | Avg |
+|-------|-------|-----------|-----|
+| v0 | Visual baseline | Self-review | 7.0 |
+| v0→v1 | WHY | Jobs/Cagan/Ogilvy visual | 7.5 |
+| v1→v2 | WHAT | Norman 7, Krug 8, Nielsen 5 | 6.8 |
+| v2→v3 | HOW | Vignelli 7, Spiekermann 6, Rams 7, Emil 3 | 5.75 |
+| v4→v5 | Self | Lucy | 8.5 |
+
+### Files
+- index-v0.html through index-v5.html (6 versions)
+- index.html (copy of v5)
+- 16 asset images (case study screenshots + Nakamoto previews)
+- 4 review screenshots (v0, v1, v2, v4)
+
+---
+
+## Build 64 — Kid Sister Ice Cream (Opus Build)
+- **Category:** Ice Cream Shop
+- **City:** Victoria, BC
+- **Date:** 2026-03-27
+- **Model:** claude-opus-4-6 (subagent)
+- **Agent:** Lucy
+- **Hero pattern:** split-image-right (popsicle with edible flowers, full viewport height)
+- **Typography:** Fraunces 400/500/600 (display/headings) + Outfit 300/400/500/600 (body/UI)
+- **Review layout:** editorial stacked quotes with divider lines (Fraunces italic pull quotes at 1.75rem)
+- **Stats bar style:** accent-bar (coral background, 3 items: rating, hours, phone)
+- **Score:** 6.5 (v0 WHY avg) → 8 (v5 self-review)
+- **Live URL:** https://auto-sites.pages.dev/demos/kid-sister-opus/
+- **Key decisions:** Real Instagram photos (8 of 10 used, no AI generation). Split hero with ig-photo-03 (edible flower popsicle against hydrangeas) — the most editorial photo leads. Conviction headline "Ice cream that follows the calendar, not a recipe book" centers the seasonal rotation as THE brand identity. Fraunces serif for warmth and playfulness matching artisanal ice cream. Coral #C23A26 extracted from actual storefront signage/napkins. Editorial photo grid (2:1 ratio with stacked pair) after stats bar. Dark section for seasonal/Instagram with cherry blossom grid photo. Offerings as horizontal rows (name | description) not cards — cleaner for a short menu. Women-owned/LGBTQ+ identity stated with weight in the conviction section. CHEK News press mention as subtle social proof in reviews header. 8px modular spacing system with CSS custom properties. No fabricated data.
+
+### Scores
+| Round | Phase | Reviewers | Avg |
+|-------|-------|-----------|-----|
+| v0→v1 | WHY | Jobs 7.0, Cagan 6.0, Ogilvy 6.5 | 6.5 |
+| v1→v2 | WHAT | Norman 7.0, Krug 6.0, Nielsen 5.0 | 6.0 |
+| v2→v3 | HOW | Vignelli 6.0, Spiekermann 7.0, Rams 5.0, Emil 2.0 | 5.0 |
+| v4→v5 | Self | Lucy | 8.0 |
+
+### Files
+- index-v0.html through index-v5.html (6 versions, gitignored)
+- index.html (copy of v5)
+- 10 Instagram photos (ig-photo-01 through ig-photo-10)
+- 6 review screenshots (screenshot-v0 through v5)
+
+---
+
+## Build 63 — Nakamoto Design Co. (Opus Build)
+- **Category:** Design Studio Landing Page
+- **City:** Victoria, BC
+- **Date:** 2026-03-27
+- **Model:** claude-opus-4-6 (subagent)
+- **Agent:** Lucy
+- **Hero pattern:** dark-immersive (type-driven hero, no hero image)
+- **Typography:** Instrument Serif 400/400i (display) + DM Sans 300/400/500/600 (body/UI)
+- **Review layout:** N/A (studio portfolio)
+- **Stats bar style:** inline-text (company names woven into about section)
+- **Score:** 6.5 (v0 WHY avg) → 8.5 (v5 self-review)
+- **Live URL:** https://auto-sites.pages.dev/demos/nakamoto-design-opus/
+- **Key decisions:** Dark warm theme (#0A0908 + gold #C8963A). Systematic 8px spacing grid with CSS custom properties. 5-size type scale only (display/h2/h3/body/small/meta). Featured+grid portfolio layout: Farine & Vanille full-width hero, 2×2 grid middle, Flowers On Top full-width bottom — creates visual hierarchy break without multiple card structures. 6 portfolio screenshots from live auto-sites.pages.dev. Instrument Serif italic on "template" in hero creates linguistic emphasis. Section labels in --text-dim (not accent) per Rams/Vignelli feedback — wayfinding, not decoration. Process section stripped of decorative numbers per Rams critique. Company names (Strike, KOHO, AIOZ, Fountain) as text list with border-top divider. No AI/automation mentions anywhere. Arrow reveal on card hover. Card title colour shift to accent on hover.
+
+### Scores
+| Round | Phase | Reviewers | Avg |
+|-------|-------|-----------|-----|
+| v0 | Visual baseline | Self-review | 6.5 |
+| v1 | WHY | Visual critique | 7.2 |
+| v2 | HOW | Vignelli 6.0, Spiekermann 5.5, Rams 6.5 | 6.0 |
+| v3 | Craft polish | Senior designer | 7.5 |
+| v4→v5 | Self | Lucy | 8.5 |
+
+### Files
+- index-v0.html through index-v5.html (6 versions)
+- index.html (copy of v5)
+- 6 portfolio screenshots (*-preview.png)
+- 5 review screenshots (screenshot-v*.png)
+
+---
+
 ## Build 62 — Nakamoto Design Co.
 - **Category:** Design Studio Landing Page
 - **City:** Victoria, BC

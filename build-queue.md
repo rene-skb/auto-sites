@@ -5,6 +5,51 @@
 
 ## Queue
 
+<!-- Zoé Dessert et Thé moved to Built — 2026-03-28 -->
+
+### Vintage Glory
+- **City:** Montreal, QC
+- **Category:** Asian Dessert Café (Korean bingsu, Hong Kong desserts, mille crêpe cakes)
+- **Address:** 2160 Rue Saint Mathieu, Montreal, QC H3H 2J4
+- **Phone:** +1 514-379-6606
+- **Hours:** Mon-Thu 11:45AM-10PM | Fri-Sat 11:45AM-11PM | Sun 11:45AM-10PM
+- **Rating:** ⚠️ NEEDS VERIFICATION — RestoMontreal shows 65% 5-star, 18% 4-star. Google rating unconfirmed (search quota exhausted).
+- **Social:** Instagram @zoe_dessert_et_the (CONFIRMED handle from search results)
+- **Instagram Photos:** Yes — dessert café with visually striking bingsu, mille crêpe cakes, bubble waffles, shaved ice. Highly photographic category.
+- **Website:** None found (checked zoedessert.com and zoedessert.ca — both dead)
+- **What makes them interesting:** Korean-Hong Kong dessert café in downtown Montreal. Compact space with a cult following for their mango bingsu. Also houses a Presotea bubble tea inside. The visual appeal of bingsu and crêpe cakes is a designer's dream — vibrant colors, Instagram-native aesthetic.
+- **Brand observations:** Asian dessert cafés have natural visual identity — pastel tones, vibrant fruit colors, clean modern Asian aesthetic. The "Zoé" name adds a French-Montreal twist to an Asian concept. Cream, soft pink, mango gold palette. Think minimalist Asian café meets Montreal cool.
+- **Iris note:** 2026-03-27 — Google rating needs verification. All search APIs were rate-limited during research. Instagram handle confirmed via Startpage search results showing Montreal location and dessert content.
+
+<!-- Vintage Glory (Winnipeg) moved to top of queue after Zoé was built -->
+### Vintage Glory
+- **City:** Winnipeg, MB
+- **Category:** Vintage Clothing Store
+- **Address:** Elmwood Place, Winnipeg, MB (exact street address needs confirmation)
+- **Phone:** ⚠️ NEEDS VERIFICATION
+- **Hours:** Mon-Tue by appointment | Wed-Sun 12PM-4:30PM
+- **Rating:** ⚠️ NEEDS VERIFICATION — Google rating unconfirmed (search quota exhausted)
+- **Social:** Instagram @vintageglorywpg (CONFIRMED handle from search results — "20th Century Vintage Clothing")
+- **Instagram Photos:** Yes — vintage clothing store with curated 20th century pieces. Visual content expected.
+- **Website:** None found (checked vintageglorywpg.com and vintageglory.ca — both dead)
+- **What makes them interesting:** Curated 20th century vintage in Winnipeg's Elmwood neighbourhood. The "by appointment" weekday model plus open weekends creates exclusivity. Focused era (20th century) gives them clear curatorial identity vs generic thrift.
+- **Brand observations:** "20th Century" focus is strong positioning. Warm vintage tones — mustard, olive, burgundy, cream. Think mid-century modern typography meets thrift culture. The Elmwood location adds neighbourhood character.
+- **Iris note:** 2026-03-27 — Partial research. Google rating, exact address, phone, and review count all need verification. Search APIs exhausted. Instagram handle confirmed via Startpage.
+
+### Kavod Thrift Store
+- **City:** Winnipeg, MB
+- **Category:** Thrift / Secondhand Store
+- **Address:** 531 Notre Dame Ave, Winnipeg, MB
+- **Phone:** ⚠️ NEEDS VERIFICATION
+- **Hours:** Sun-Mon-Tue-Thu 10AM-5PM | Fri 10AM-3PM | Wed & Sat Closed
+- **Rating:** ⚠️ NEEDS VERIFICATION — Google rating unconfirmed (search quota exhausted)
+- **Social:** Instagram @kavodthriftstore (CONFIRMED handle from search results — "Rediscover Style ♻️")
+- **Instagram Photos:** Yes — thrift store with "Rediscover Style" tagline suggests curated visual content.
+- **Website:** None found (checked kavodthriftstore.com and .ca — both dead)
+- **What makes them interesting:** "Kavod" means "honor/glory" in Hebrew — suggests a mission-driven thrift store (possibly community/faith-based). The "Rediscover Style" tagline is ready-made brand positioning. Notre Dame Ave location in Winnipeg's historic area.
+- **Brand observations:** The Hebrew name + recycling emoji + "Rediscover Style" = purpose-driven brand. Earth tones, sustainability aesthetic. Warm community feel with intentional curation vs random thrift.
+- **Iris note:** 2026-03-27 — Partial research. Google rating, phone, and review details all need verification. Search APIs exhausted during this session. Instagram handle confirmed.
+
 
 
 ### RSTUDIOS Hot Pilates + Yoga
@@ -50,6 +95,13 @@
 - **Brand observations:** Two-days-a-week is a positioning gift — "The tailor who only works when it matters." Soft, personal brand: sage green or cream tones, handwritten-feel type, artisan craft aesthetic.
 
 ## Built
+
+### Zoé Dessert et Thé
+- **City:** Montréal, QC
+- **Category:** Asian Dessert Café (Korean bingsu, HK desserts, mille crêpe)
+- **Built:** 2026-03-28
+- **Demo:** `projects/auto-sites/demos/zoe-dessert-et-the/`
+- **Live:** https://auto-sites.pages.dev/demos/zoe-dessert-et-the/
 
 ### Farine & Vanille
 - **City:** Montreal, QC

@@ -1,5 +1,127 @@
 # Auto-Sites Build Log
 
+## Build 82 — Juhee's Closet
+- **Category:** Clothing Alterations / Tailor
+- **City:** Montréal, QC
+- **Date:** 2026-03-28
+- **Model:** claude-sonnet-4-6 (main session, Lucy)
+- **Agent:** Lucy
+- **Hero pattern:** split-image-right
+- **Typography:** Fraunces 400-500 + DM Sans 300-500
+- **Review layout:** Featured review full-width (featured card) + 2-column pair below
+- **Stats bar style:** no-stats
+- **Score:** 8.0 (WHY avg) / 8.0 (WHAT avg) / 7.5 (HOW avg) → 7.83
+- **Self-review:** 7.5 (footnote)
+- **Emil footnote:** 5.0 (pre-motion) — motion added in v4
+- **Live URL:** https://auto-sites.pages.dev/demos/juhees-closet/
+- **Key decisions:** No social media presence → AI-generated images throughout (ceiling ~8.0). Hero headline taken directly from David G.'s Google review: "Her seams are a class above." — instant voice and credibility. Wed/Sat-only schedule positioned as conviction, not limitation: "Two days a week. Always worth the wait." Service panels use visual image overlays rather than text cards — two categories (formalwear + cosplay/everyday) map the unexpected range. Featured review hierarchy: Aki's cosplay quote promoted to large format, two supporting reviews in smaller side-by-side cards. Cream (#F5F1E6) + sage (#7A9178) + charcoal palette reads as quiet atelier. Contact section improved v4→v5 by replacing boxed callout with border-left note for warmer, less UI-component feel. Count-up animation on 4.9 stat adds motion polish. Copy audit: em dashes removed, "best-kept secret" cliché replaced with specific fact.
+
+### Scores
+| Round | Phase | Reviewers | Avg |
+|-------|-------|-----------|-----|
+| v0→v1 | WHY | Jobs 8.0, Cagan 7.0, Ogilvy 9.0 | 8.0 |
+| v1→v2 | WHAT | Norman 8.0, Krug 8.5, Nielsen 7.5 | 8.0 |
+| v2→v3 | HOW | Vignelli 7.0, Spiekermann 7.5, Rams 8.0, Emil 5.0 | 7.5 |
+| v5 | Self | Lucy | 7.5 |
+
+### Files
+- index-v0.html through index-v5.html (6 version files) + index.html
+- hero-fabric.png, fabric-texture.png, thread-detail.png (AI-generated)
+- screenshot-v0.png through screenshot-v5.png
+
+---
+
+## Build 81 — One Glove / Macca
+- **Category:** DJ / Radio Host / Event Promoter (Personal Brand)
+- **City:** London, UK (South London / Peckham)
+- **Date:** 2026-03-28
+- **Model:** claude-opus-4-6 (subagent)
+- **Agent:** Lucy
+- **Hero pattern:** asymmetric-collage → evolved to centered-minimal (text-only hero with massive "One Glove" serif)
+- **Typography:** Newsreader 400-700 + DM Mono 300-500
+- **Review layout:** N/A (no reviews — personal brand site)
+- **Stats bar style:** no-stats
+- **Score:** 6.67 (WHY avg) / 6.5 (WHAT avg, after 2 retries) / 5.67 (HOW avg, after 1 retry) → 6.28
+- **Self-review:** 7.0 (footnote)
+- **Emil footnote:** 3.0 (pre-motion)
+- **Live URL:** https://auto-sites.pages.dev/demos/maccalaaa/
+- **Key decisions:** "Always a Pleasure, Never a Chore" tagline came directly from Macca's stickers — strongest copy was already written. Hero evolved from scattered collage (v0-v2) to clean text-only (v5) after panels flagged collage as decorative noise and duplicate photo violation. "One Glove" leads as brand identity, Macca as host underneath. Nav renamed "Glove Box" to "Submit Music" for first-time visitor clarity. Event flyers treated as portfolio pieces — they ARE the brand's visual work. 8 of 12 Instagram photos used. DM Mono body text gives underground/technical feel paired with Newsreader editorial warmth. WHAT panel consistently scored lower due to no embedded audio (unavoidable for static HTML) and insider jargon. Dark palette with coral accents (#EDA88E) references late-night South London club culture.
+
+### Scores
+| Round | Phase | Reviewers | Avg |
+|-------|-------|-----------|-----|
+| v0→v1 | WHY | Jobs 7.0, Cagan 6.0, Ogilvy 7.0 | 6.67 |
+| v1→v2 | WHAT (initial) | Norman 6.0, Krug 5.0, Nielsen 5.0 | 5.33 |
+| v2 | WHAT (retry 1) | Norman 6.0, Krug 5.5, Nielsen 5.0 | 5.5 |
+| v2b | WHAT (retry 2) | Norman 7.0, Krug 6.5, Nielsen 6.0 | 6.5 |
+| v2→v3 | HOW (initial) | Vignelli 5.0, Spiekermann 6.0, Rams 5.0, Emil 3.0 | 5.33 |
+| v3 | HOW (retry) | Vignelli 6.0, Spiekermann 5.0, Rams 6.0 | 5.67 |
+| v5 | Self | Lucy | 7.0 |
+
+### Photo Evaluation (Phase 1)
+| Rank | File | Role |
+|------|------|------|
+| 1 | ig-photo-05 | About section headshot |
+| 2 | ig-photo-04 | Events section (IRL flyer) |
+| 3 | ig-photo-01 | Submit Music / Glove Box section |
+| 4 | ig-photo-10 | Radio section (sticker collection) |
+| 5 | ig-photo-09 | World grid (football kit) |
+| 6 | ig-photo-07 | Events grid (Liverpool flyer) |
+| 7 | ig-photo-02 | World grid (Carven runway) |
+| 8 | ig-photo-11 | World grid (Japan stadium) |
+| SKIP | 03, 06, 08, 12 | Too personal / off-brand / meme |
+
+### Files
+- index-v0.html through index-v5.html (6 versions + v2b retry) + index.html
+- 12 real Instagram photos (ig-photo-01 through ig-photo-12)
+- screenshot-v0.png through screenshot-v5.png
+
+---
+
+## Build 80 — Burning Monk Tattoo
+- **Category:** Tattoo Studio
+- **City:** Montreal, QC
+- **Date:** 2026-03-28
+- **Model:** claude-opus-4-6 (subagent)
+- **Agent:** Lucy
+- **Hero pattern:** dark-immersive (typographic hero, massive "Burning Monk" serif, no hero photo)
+- **Typography:** Bodoni Moda 400/500/600/700/900 + DM Sans 400/500/600
+- **Review layout:** full-width stacked quotes, large serif italic, burgundy background chapter
+- **Stats bar style:** no-stats
+- **Score:** 6.0 (WHY avg) / 7.0 (WHAT avg, retry) / 7.0 (HOW avg) → 6.67
+- **Self-review:** 7.0 (footnote)
+- **Live URL:** https://auto-sites.pages.dev/demos/burning-monk-tattoo/
+- **Key decisions:** CHAPTERS APPROACH experiment — each section is a visual chapter with distinct background color (black hero → charcoal portfolio → warm brown artists → burgundy reviews → cream visit). "Where people go when the tattoo matters" conviction headline surfaced during panel critique and promoted to hero. Typographic-first hero with no photo — the name "Burning Monk" is evocative enough to carry the page. Lead portfolio photo (ig-photo-01, Japanese warrior) gets full-width treatment, then 2-col grid below. 8 of 12 Instagram photos used (skipped 04/05/06/12 for quality). Bodoni Moda chosen for dramatic editorial contrast matching tattoo artistry. "Beautiful lines" pullquote from Jonathan C. anchors the artist section. Reviews trimmed to 3 strongest for editorial pacing. Copy audit clean.
+
+### Scores
+| Round | Phase | Reviewers | Avg |
+|-------|-------|-----------|-----|
+| v0→v1 | WHY | Jobs 7.0, Cagan 6.0, Ogilvy 5.0 | 6.0 |
+| v1→v2 | WHAT (initial) | Norman 7.0, Krug 6.0, Nielsen 5.0 | 6.0 |
+| v2 | WHAT (retry) | Norman 7.0, Krug 8.0, Nielsen 6.0 | 7.0 |
+| v2→v3 | HOW | Vignelli 7.0, Spiekermann 6.0, Rams 7.0, Emil 8.0 | 7.0 |
+| v5 | Self | Lucy | 7.0 |
+
+### Photo Evaluation (Phase 1)
+| Rank | File | Score | Aspect | Role |
+|------|------|-------|--------|------|
+| 1 | ig-photo-01 | 9/10 | Portrait 4:5 | Portfolio lead (full-width) |
+| 2 | ig-photo-02 | 9/10 | Portrait 4:5 | Portfolio grid (portrait) |
+| 3 | ig-photo-10 | 8/10 | Near-square | Portfolio grid |
+| 4 | ig-photo-11 | 8/10 | Square | Portfolio grid (triptych) |
+| 5 | ig-photo-03 | 7.5/10 | Square | Portfolio grid |
+| 6 | ig-photo-07 | 7/10 | Square | Portfolio grid |
+| 7 | ig-photo-08 | 7/10 | Square | Portfolio grid |
+| 8 | ig-photo-09 | 7/10 | Square | Portfolio grid |
+| 9-12 | 04,05,06,12 | 5-6.5/10 | Various | Skipped |
+
+### Files
+- index-v0.html through index-v5.html (6 versions) + index.html
+- 12 real Instagram photos (ig-photo-01 through ig-photo-12)
+- screenshot-v0.png, screenshot-v1.png, screenshot-v2.png, screenshot-v4.png
+
+---
+
 ## Build 79 — Frondly Plants
 - **Category:** Indoor Plant Shop
 - **City:** Vancouver, BC
@@ -3120,3 +3242,13 @@ Real Victoria BC business. Website was literally just a street address (touristw
 - **Score:** WHY 6.17 / WHAT 7.33 (retry) / HOW 7.0 (retry) → 6.83 panel avg
 - **Self-review:** 7.5
 - **Key decisions:** Five-chapter structure (Shop → Flavours → Events → Stockists → About) each with distinct color/mood. "Seasonal. Small-batch. Gone when it's gone." as hero conviction. True red (#C41E2A) + forest green (#2D5A3D) + cream palette extracted from actual brand signage. 10 Instagram photos + 29 website photos evaluated; 11 used. Menu redirects to Instagram (rotating inventory pattern). Stockists grouped by geography for scannability. Scroll-reveal animations with hero text stagger. Copy humanized through audit pass. The definitive Kid Sister build with all available content.
+
+### Will McFarland — Ambient Music, Victoria BC
+- **Date:** 2026-03-28
+- **Hero pattern:** centered-minimal (full-bleed album art bg, text at bottom)
+- **Typography:** Newsreader + Space Grotesk
+- **Review layout:** Single fan quote (blockquote)
+- **Stats bar style:** no-stats
+- **Score:** WHY 5.3 / WHAT 7.3 (retry from 6.0) / HOW 7.17 → 6.59 panel avg
+- **Self-review:** 8.0
+- **Key decisions:** Album art as full-bleed hero background (deep green-black + amber palette extracted from Melody-Rose Murray's photography). "Comforting and alien" as hero tagline — pulled directly from the album description. Newsreader serif + Space Grotesk for literary-meets-technical feel matching "custom-built instruments and programming." Roman numerals for track numbers. Cassette release detail ("high bias tape, custom printed case, edition of 50") woven into intro. Same label as Sean Evans (Sustained Tones) — similar dark atmospheric approach but distinct typography and hero pattern. Single-album artist, simple structure: hero → intro/quote/CTAs → tracklist → credits → about → footer. Staggered hero entrance + scroll-reveal tracklist rows at largo tempo.

@@ -1,0 +1,1280 @@
+<!--
+DELTA: v2b → v3 (craft polish)
+Changes:
+  1. Pantry grid: tighten row gap, make spacing more mathematical
+  2. Nav links: add slightly more letter-spacing for breathing room
+  3. CTA band: simplify — remove redundant "Monday to Friday" line (already in hero + visit)
+  4. Hero body: tighten — "on William Street, Griffintown" is redundant with hero-meta address
+  5. About section: add the photo back to full panel height for visual weight
+  6. pantry section heading: add em break for better line rhythm
+HOW scores (retry): Vignelli 8.0, Spiekermann 7.5, Rams 7.0 → avg 7.5 (gate passed)
+Hypothesis: Tighter pantry grid spacing will most improve Vignelli score at full craft level.
+-->
+<!--
+DELTA: v2 → v2b (HOW retry)
+Changes:
+  1. Remove hours table from about section (hours now ONLY in visit section)
+  2. Remove hero-meta hours row (hero shows just address + rating, weekdays in hero body)
+  3. Remove mid-page photo strip (reduce to 1 full-bleed moment = hero)
+  4. Reduce CTAs: hero gets 1 primary (call) + 1 secondary (directions)
+     Visit section keeps both. CTA band keeps directions only.
+  5. Strengthen category name weight: increase to font-weight 600
+  6. Name section: merge into end of about section (save scroll depth)
+     Actually keep it as section but tighten body text
+  7. Stats consolidation: "4.8 stars. 775 times." stays as review section header
+     but remove the large separate number from about-left
+HOW scores: Vignelli 7.0, Spiekermann 6.5, Rams 6.0 → avg 6.5 (below gate)
+Hypothesis: Removing repetition (hours 3x, CTAs 3x, photos 3x) is the Rams fix.
+            Category weight bump helps Spiekermann.
+-->
+<!--
+DELTA: v1 → v2
+Changes:
+  1. Pantry cards: redesign as list treatment (no card affordance), remove 2-gap grid, use clean row style
+  2. Nav: add dark gradient behind nav links for contrast on hero photo
+  3. Category descriptions: tighten to 1 punchy sentence each
+  4. Name section: left-align body, increase type size, narrower max-width
+  5. About heading: fix "Five days a week" italic — change approach so terracotta isn't on cream
+  6. Review attribution font-size: bump to 0.8125rem
+WHAT scores: Norman 7.5, Krug 7.0, Nielsen 7.0 → avg 7.17
+Hypothesis: Pantry card affordance fix + tighter descriptions will most improve UX clarity.
+-->
+<!--
+DELTA: v0 → v1
+Changes:
+  1. Review cards: Add dates to all attributions (non-negotiable)
+  2. Hero meta: Make weekday hours bolder / more prominent
+  3. Category descriptions: Sharpen flat copy ("all worth learning" → more specific)
+  4. Pantry section: Add photo/visual break between 2 rows of cards
+  5. Hero eyebrow: make Griffintown address read more immediately
+WHY scores: Jobs 8.0, Cagan 7.5, Ogilvy 7.5 → avg 7.67
+Hypothesis: Date attribution + sharpened category copy will push Ogilvy highest.
+            Hours prominence will resolve Cagan's UX concern.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dispensa Italian Grocery — Griffintown, Montréal</title>
+<meta name="description" content="Italian pantry goods in Griffintown, Montréal. Open Monday to Friday.">
+<meta property="og:title" content="Dispensa Italian Grocery">
+<meta property="og:description" content="Italian pantry goods in Griffintown, Montréal. Open Monday to Friday, 7:30AM–5PM.">
+<meta property="og:image" content="hero-pantry.jpg">
+<meta property="og:url" content="https://auto-sites.pages.dev/demos/dispensa-italian/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/*
+=================================================================
+DISPENSA ITALIAN GROCERY
+Griffintown, Montréal, QC
+
+PHOTO RANKING:
+No real Instagram photos. AI-generated images throughout.
+Build ceiling: ~8.0
+
+CREATIVE DIRECTION:
+- Hero: editorial-spread (dark left / pantry photo right)
+- Typography: Lora 400-700 + Space Grotesk 300-600
+- Palette: terracotta #C2502A, cream #F7F0E2, olive #4A5C2E, charcoal #1A1610
+- "Dispensa" as headline — the word IS the brand
+- Weekday hours as conviction, not limitation
+=================================================================
+*/
+
+:root {
+  --terracotta: #C2502A;
+  --terracotta-light: #F0DDD6;
+  --cream: #F7F0E2;
+  --cream-alt: #EDE4D2;
+  --olive: #4A5C2E;
+  --olive-light: #D8E0CC;
+  --charcoal: #1A1610;
+  --charcoal-mid: #2E2820;
+  --text-body: #3A332A;
+  --text-dim: #7A7060;
+  --text-meta: #9A8E80;
+  --white: #FFFDF8;
+
+  --font-display: 'Lora', Georgia, serif;
+  --font-body: 'Space Grotesk', system-ui, sans-serif;
+
+  --ls-sm: 0.04em;
+  --ls-md: 0.08em;
+  --ls-lg: 0.14em;
+
+  --max-w: 1200px;
+  --content-px: clamp(24px, 5vw, 80px);
+  --section-pad: clamp(64px, 8vw, 120px);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--text-body);
+  background: var(--cream);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===========================
+   NAV
+=========================== */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 20px var(--content-px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(to bottom, rgba(26,22,16,0.7) 0%, transparent 100%);
+  transition: background 0.3s ease, border-color 0.3s ease;
+  border-bottom: 1px solid transparent;
+}
+
+.nav.scrolled {
+  background: rgba(247, 240, 226, 0.95);
+  border-bottom-color: var(--cream-alt);
+  backdrop-filter: blur(8px);
+}
+
+.nav-brand {
+  font-family: var(--font-display);
+  font-size: 1.1875rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--white);
+  text-decoration: none;
+}
+
+.nav.scrolled .nav-brand { color: var(--charcoal); }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,253,248,0.8);
+  text-decoration: none;
+  position: relative;
+  padding-bottom: 2px;
+  transition: color 0.2s;
+}
+
+.nav.scrolled .nav-links a { color: var(--text-dim); }
+.nav-links a:hover { color: var(--white); }
+.nav.scrolled .nav-links a:hover { color: var(--charcoal); }
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: currentColor;
+  transition: width 0.25s ease;
+}
+
+.nav-links a:hover::after { width: 100%; }
+
+.nav-cta {
+  background: var(--terracotta);
+  color: var(--white) !important;
+  padding: 8px 20px;
+  border-radius: 2px;
+  font-size: 0.8125rem;
+  letter-spacing: var(--ls-md);
+  text-transform: uppercase;
+  font-weight: 500;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.nav-cta:hover { opacity: 0.88; }
+.nav-cta::after { display: none; }
+
+/* Mobile nav */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+  background: none;
+  border: none;
+}
+
+.nav-hamburger span {
+  width: 22px;
+  height: 1.5px;
+  background: var(--white);
+  display: block;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.nav.scrolled .nav-hamburger span { background: var(--charcoal); }
+.nav-mobile { display: none; }
+
+@media (max-width: 768px) {
+  .nav-links, .nav-cta { display: none; }
+  .nav-hamburger { display: flex; }
+  .nav-mobile {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    right: 0;
+    background: var(--cream);
+    padding: 24px var(--content-px);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-bottom: 1px solid var(--cream-alt);
+    transform: translateY(-8px);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+    z-index: 99;
+  }
+  .nav-mobile.open { transform: translateY(0); opacity: 1; pointer-events: all; }
+  .nav-mobile a {
+    font-size: 0.9375rem;
+    font-weight: 500;
+    letter-spacing: var(--ls-md);
+    text-transform: uppercase;
+    color: var(--text-body);
+    text-decoration: none;
+  }
+}
+
+/* ===========================
+   HERO — EDITORIAL SPREAD
+=========================== */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+}
+
+.hero-left {
+  background: var(--charcoal);
+  padding: 120px var(--content-px) 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: relative;
+}
+
+.hero-eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-lg);
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-bottom: 24px;
+}
+
+.hero-h1 {
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 7vw, 7.5rem);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: var(--white);
+  margin-bottom: 32px;
+  font-style: italic;
+}
+
+.hero-body {
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: rgba(255, 253, 248, 0.72);
+  max-width: 380px;
+  margin-bottom: 40px;
+}
+
+.hero-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.hero-meta-item {
+  font-size: 0.8125rem;
+  letter-spacing: var(--ls-sm);
+  color: rgba(255,253,248,0.5);
+}
+
+.hero-meta-item strong {
+  color: rgba(255,253,248,0.8);
+  font-weight: 500;
+}
+
+.hero-ctas {
+  display: flex;
+  gap: 16px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  background: var(--terracotta);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-md);
+  text-transform: uppercase;
+  padding: 14px 28px;
+  text-decoration: none;
+  border-radius: 2px;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  display: inline-block;
+}
+
+.btn-primary:hover { opacity: 0.88; }
+.btn-primary:active { transform: scale(0.97); }
+
+.btn-secondary {
+  background: transparent;
+  color: rgba(255,253,248,0.7);
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-md);
+  text-transform: uppercase;
+  padding: 14px 0;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-secondary:hover { color: var(--white); }
+
+.hero-right {
+  position: relative;
+  overflow: hidden;
+  background: var(--charcoal-mid);
+}
+
+.hero-right img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hero-right-fallback {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #4A3020 0%, #2C1E10 50%, #1A1208 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-right-fallback span {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 4rem);
+  color: rgba(255,253,248,0.12);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    grid-template-columns: 1fr;
+    grid-template-rows: 60vh auto;
+  }
+  .hero-right { order: -1; min-height: 280px; }
+  .hero-left { padding: 40px var(--content-px) 64px; justify-content: flex-start; }
+  .hero-h1 { font-size: clamp(3rem, 11vw, 5rem); }
+}
+
+/* ===========================
+   ABOUT — 775 REVIEWS ANCHOR
+=========================== */
+.about {
+  background: var(--cream);
+  padding: var(--section-pad) var(--content-px);
+}
+
+.about-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.about-label {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-lg);
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-bottom: 20px;
+}
+
+.about-number {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 5vw, 5rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--charcoal);
+  margin-bottom: 8px;
+}
+
+.about-number-label {
+  font-size: 0.875rem;
+  color: var(--text-dim);
+  letter-spacing: var(--ls-sm);
+  margin-bottom: 48px;
+}
+
+.about-image-wrap {
+  position: relative;
+  aspect-ratio: 4/5;
+  overflow: hidden;
+  background: var(--cream-alt);
+}
+
+.about-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about-h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 2.5vw, 2.5rem);
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: var(--charcoal);
+  margin-bottom: 20px;
+}
+
+.about-h2 em { font-style: italic; color: var(--charcoal); }
+
+.about-body {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--text-body);
+  max-width: 52ch;
+  margin-bottom: 24px;
+}
+
+.about-hours {
+  margin-top: 32px;
+  padding-top: 32px;
+  border-top: 1px solid var(--cream-alt);
+}
+
+.about-hours-label {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-lg);
+  text-transform: uppercase;
+  color: var(--text-meta);
+  margin-bottom: 16px;
+}
+
+.hours-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--cream-alt);
+  font-size: 0.9375rem;
+}
+
+.hours-row:last-child { border-bottom: none; }
+.hours-day { color: var(--text-body); font-weight: 500; }
+.hours-time { color: var(--text-dim); }
+.hours-closed { color: var(--text-meta); font-style: italic; }
+
+@media (max-width: 768px) {
+  .about-inner { grid-template-columns: 1fr; gap: 48px; }
+  .about-image-wrap { aspect-ratio: 16/9; }
+}
+
+/* ===========================
+   WHAT'S IN — PANTRY CATEGORIES
+=========================== */
+.pantry {
+  background: var(--charcoal);
+}
+
+.pantry-hero-img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.7);
+}
+
+.pantry-content { padding: 56px var(--content-px) var(--section-pad); }
+.pantry-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
+.pantry-label {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-lg);
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-bottom: 20px;
+}
+
+.pantry-h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3vw, 3rem);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--white);
+  margin-bottom: 64px;
+}
+
+.pantry-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 80px;
+  row-gap: 0;
+  border-top: 1px solid rgba(255,253,248,0.08);
+}
+
+.pantry-card {
+  padding: 28px 0;
+  border-bottom: 1px solid rgba(255,253,248,0.08);
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+.pantry-card-num {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--terracotta);
+  padding-top: 4px;
+  font-style: italic;
+  letter-spacing: 0.04em;
+  opacity: 0.85;
+}
+
+.pantry-card-name {
+  font-family: var(--font-display);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+}
+
+.pantry-card-body {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: rgba(255,253,248,0.5);
+}
+
+@media (max-width: 900px) {
+  .pantry-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .pantry-grid { grid-template-columns: 1fr; }
+}
+
+/* ===========================
+   PHOTO STRIP
+=========================== */
+.photo-strip {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  height: 320px;
+  gap: 2px;
+  background: var(--charcoal);
+}
+
+.photo-strip-slot {
+  overflow: hidden;
+  position: relative;
+  background: var(--cream-alt);
+}
+
+.photo-strip-slot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.photo-strip-fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.photo-strip-fallback.f1 { background: linear-gradient(160deg, #3A2C1A 0%, #6B3A1C 100%); }
+.photo-strip-fallback.f2 { background: linear-gradient(160deg, #2C3A1A 0%, #4A5C2E 100%); }
+.photo-strip-fallback.f3 { background: linear-gradient(160deg, #1A1610 0%, #3A2820 100%); }
+
+@media (max-width: 600px) {
+  .photo-strip { grid-template-columns: 1fr; height: auto; }
+  .photo-strip-slot { height: 220px; }
+  .photo-strip-slot:not(:first-child) { display: none; }
+}
+
+/* ===========================
+   REVIEWS
+=========================== */
+.reviews {
+  background: var(--cream-alt);
+  padding: var(--section-pad) var(--content-px);
+}
+
+.reviews-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
+.reviews-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 48px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.reviews-h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3vw, 3rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: var(--charcoal);
+  line-height: 1.2;
+}
+
+.reviews-h2 em { font-style: italic; }
+
+.reviews-source {
+  font-size: 0.8125rem;
+  color: var(--text-meta);
+  letter-spacing: var(--ls-sm);
+  align-self: flex-end;
+  padding-bottom: 6px;
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+}
+
+.review-card {
+  background: var(--cream);
+  padding: 40px 36px;
+  border-top: 2px solid var(--terracotta);
+}
+
+.review-quote {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.65;
+  color: var(--charcoal);
+  margin-bottom: 24px;
+}
+
+.review-meta {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-md);
+  text-transform: uppercase;
+  color: var(--text-meta);
+}
+
+@media (max-width: 600px) {
+  .reviews-grid { grid-template-columns: 1fr; }
+}
+
+/* ===========================
+   THE NAME
+=========================== */
+.name-section {
+  background: var(--olive);
+  padding: 96px var(--content-px);
+}
+
+.name-section-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.name-label {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-lg);
+  text-transform: uppercase;
+  color: rgba(255,253,248,0.5);
+  margin-bottom: 28px;
+}
+
+.name-h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 4vw, 4.5rem);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--white);
+}
+
+.name-body {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: rgba(255,253,248,0.72);
+  max-width: 54ch;
+}
+
+.name-body + .name-body {
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .name-section-inner { grid-template-columns: 1fr; gap: 32px; }
+}
+
+/* ===========================
+   VISIT
+=========================== */
+.visit {
+  background: var(--cream);
+  padding: var(--section-pad) var(--content-px);
+}
+
+.visit-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.visit-label {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-lg);
+  text-transform: uppercase;
+  color: var(--text-meta);
+  margin-bottom: 20px;
+}
+
+.visit-h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: var(--charcoal);
+  line-height: 1.2;
+  margin-bottom: 24px;
+}
+
+.visit-address {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--text-body);
+  margin-bottom: 8px;
+}
+
+.visit-phone {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--charcoal);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+  display: block;
+  margin-bottom: 32px;
+}
+
+.visit-phone:hover { color: var(--terracotta); }
+
+.visit-ctas {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.btn-visit {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-sm);
+  color: var(--charcoal);
+  text-decoration: none;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--cream-alt);
+  transition: color 0.2s;
+}
+
+.btn-visit:hover { color: var(--terracotta); }
+.btn-visit-icon { font-size: 1rem; }
+
+.visit-map {
+  border: none;
+  width: 100%;
+  aspect-ratio: 1;
+  display: block;
+  filter: grayscale(0.3) contrast(1.1);
+}
+
+.visit-map-link {
+  display: block;
+  margin-top: 12px;
+  font-size: 0.8125rem;
+  color: var(--text-meta);
+  text-decoration: none;
+  letter-spacing: var(--ls-sm);
+}
+
+.visit-map-link:hover { color: var(--terracotta); }
+
+@media (max-width: 768px) {
+  .visit-inner { grid-template-columns: 1fr; gap: 48px; }
+}
+
+/* ===========================
+   CTA BAND
+=========================== */
+.cta-band {
+  background: var(--charcoal);
+  padding: 96px var(--content-px);
+  text-align: center;
+}
+
+.cta-band-inner {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.cta-h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3vw, 3rem);
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: -0.02em;
+  color: var(--white);
+  line-height: 1.25;
+  margin-bottom: 16px;
+}
+
+.cta-body {
+  font-size: 1rem;
+  color: rgba(255,253,248,0.6);
+  margin-bottom: 40px;
+  line-height: 1.65;
+}
+
+.btn-white {
+  background: var(--white);
+  color: var(--charcoal);
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: var(--ls-md);
+  text-transform: uppercase;
+  padding: 16px 36px;
+  text-decoration: none;
+  border-radius: 2px;
+  display: inline-block;
+  transition: opacity 0.2s;
+}
+
+.btn-white:hover { opacity: 0.88; }
+.btn-white:active { transform: scale(0.97); }
+
+/* ===========================
+   FOOTER
+=========================== */
+.footer {
+  background: var(--charcoal);
+  border-top: 1px solid rgba(255,253,248,0.08);
+  padding: 40px var(--content-px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-brand {
+  font-family: var(--font-display);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  font-style: italic;
+  color: rgba(255,253,248,0.5);
+}
+
+.footer-meta {
+  font-size: 0.75rem;
+  color: rgba(255,253,248,0.3);
+  letter-spacing: var(--ls-sm);
+}
+
+/* ===========================
+   HERO ENTRANCE ANIMATION
+=========================== */
+.hero-enter-1,
+.hero-enter-2,
+.hero-enter-3,
+.hero-enter-4,
+.hero-enter-5 {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.7s cubic-bezier(0.23, 1, 0.32, 1), transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.js-loaded .hero-enter-1 { opacity: 1; transform: translateY(0); transition-delay: 150ms; }
+.js-loaded .hero-enter-2 { opacity: 1; transform: translateY(0); transition-delay: 300ms; }
+.js-loaded .hero-enter-3 { opacity: 1; transform: translateY(0); transition-delay: 450ms; }
+.js-loaded .hero-enter-4 { opacity: 1; transform: translateY(0); transition-delay: 570ms; }
+.js-loaded .hero-enter-5 { opacity: 1; transform: translateY(0); transition-delay: 700ms; }
+
+/* ===========================
+   SCROLL REVEAL
+=========================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.65s cubic-bezier(0.23, 1, 0.32, 1), transform 0.65s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+.reveal.s1 { transition-delay: 0ms; }
+.reveal.s2 { transition-delay: 80ms; }
+.reveal.s3 { transition-delay: 160ms; }
+.reveal.s4 { transition-delay: 240ms; }
+
+/* Button active states */
+.btn-primary:active,
+.btn-white:active,
+.btn-secondary:active { transform: scale(0.97); transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1); }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .hero-enter-1, .hero-enter-2, .hero-enter-3, .hero-enter-4, .hero-enter-5 {
+    opacity: 1; transform: none; transition: none;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="#" class="nav-brand">Dispensa</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#pantry">The Pantry</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#visit" class="nav-cta">Get Directions</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<nav class="nav-mobile" id="nav-mobile">
+  <a href="#about">About</a>
+  <a href="#pantry">The Pantry</a>
+  <a href="#reviews">Reviews</a>
+  <a href="#visit">Get Directions</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow hero-enter-1">Italian Grocery · Griffintown</p>
+    <h1 class="hero-h1 hero-enter-2">Dispensa.</h1>
+    <p class="hero-body hero-enter-3">The Italian word for pantry. The things your kitchen is missing, on William Street.</p>
+
+    <div class="hero-meta hero-enter-4">
+      <div class="hero-meta-item"><strong>696 William St</strong> — Griffintown, Montréal</div>
+      <div class="hero-meta-item">4.8★ · 775 reviews on Google · Mon–Fri only</div>
+    </div>
+
+    <div class="hero-ctas hero-enter-5">
+      <a href="tel:+15147712625" class="btn-primary">Call (514) 771-2625</a>
+      <a href="#visit" class="btn-secondary">Get Directions →</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <img src="hero-pantry.jpg" alt="Italian pantry — charcuterie, cheese, olive oil" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+    <div class="hero-right-fallback" style="display:none">
+      <span>Pantry</span>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about" style="scroll-margin-top: 80px;">
+  <div class="about-inner">
+    <div class="about-left reveal">
+      <p class="about-label">Established in Griffintown</p>
+      <div class="about-image-wrap">
+        <img src="pantry-goods.jpg" alt="Italian pantry goods" onerror="this.style.background='#D8C8B0'">
+      </div>
+    </div>
+
+    <div class="about-right reveal s2">
+      <p class="about-label">About the shop</p>
+      <h2 class="about-h2">A pantry worth the trip. <em>Five days a week.</em></h2>
+      <p class="about-body">Dispensa is an Italian specialty grocery in Griffintown. It stocks the things supermarkets don't: real imported olive oil, aged cheeses, cured meats, handmade pasta, pantry goods that make the difference between cooking and cooking well.</p>
+      <p class="about-body">775 people have taken the time to write a Google review for a grocery store. That's not a stat. That's a verdict.</p>
+
+      <div class="about-hours">
+        <p class="about-hours-label">Full hours in <a href="#visit" style="color:var(--terracotta); text-decoration:none;">Find Us ↓</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PANTRY CATEGORIES -->
+<section class="pantry" id="pantry" style="scroll-margin-top: 80px;">
+  <img src="pasta-detail.jpg" alt="Italian dried pasta selection" class="pantry-hero-img" onerror="this.style.display='none'">
+  <div class="pantry-content">
+  <div class="pantry-inner">
+    <p class="pantry-label reveal">What's in the pantry</p>
+    <h2 class="pantry-h2 reveal s1">The things your kitchen<br>has been missing.</h2>
+
+    <div class="pantry-grid">
+      <div class="pantry-card reveal s1">
+        <div class="pantry-card-num">01</div>
+        <div>
+          <div class="pantry-card-name">Cured Meats</div>
+          <p class="pantry-card-body">Prosciutto, soppressata, mortadella, salumi. The real thing, not supermarket approximations.</p>
+        </div>
+      </div>
+      <div class="pantry-card reveal s2">
+        <div class="pantry-card-num">02</div>
+        <div>
+          <div class="pantry-card-name">Aged Cheeses</div>
+          <p class="pantry-card-body">Parmigiano Reggiano, pecorino, burrata, provolone. Cheese that tastes where it came from.</p>
+        </div>
+      </div>
+      <div class="pantry-card reveal s1">
+        <div class="pantry-card-num">03</div>
+        <div>
+          <div class="pantry-card-name">Olive Oil &amp; Vinegars</div>
+          <p class="pantry-card-body">Single-estate Italian oils, aged balsamic. Staples your supermarket stocks but doesn't understand.</p>
+        </div>
+      </div>
+      <div class="pantry-card reveal s2">
+        <div class="pantry-card-num">04</div>
+        <div>
+          <div class="pantry-card-name">Handmade Pasta</div>
+          <p class="pantry-card-body">Fresh and dried. Every shape has a sauce it was designed for. We know which is which.</p>
+        </div>
+      </div>
+      <div class="pantry-card reveal s1">
+        <div class="pantry-card-num">05</div>
+        <div>
+          <div class="pantry-card-name">Preserved &amp; Tinned</div>
+          <p class="pantry-card-body">San Marzano, tuna in olive oil, anchovies, capers. The backbone of Italian cooking.</p>
+        </div>
+      </div>
+      <div class="pantry-card reveal s2">
+        <div class="pantry-card-num">06</div>
+        <div>
+          <div class="pantry-card-name">Sweets &amp; Pantry</div>
+          <p class="pantry-card-body">Cantuccini, torrone, grissini, specialty flours. The things you didn't know you needed.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+
+<!-- single editorial photo break — one image, full commitment -->
+<div style="height:340px; overflow:hidden; position:relative;">
+  <img src="cheese-detail.jpg" alt="Aged Italian cheeses and pantry goods" style="width:100%; height:100%; object-fit:cover; object-position:center;" onerror="this.style.background='#2E2820'; this.src=''">
+</div>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews" style="scroll-margin-top: 80px;">
+  <div class="reviews-inner">
+    <div class="reviews-header reveal">
+      <h2 class="reviews-h2">4.8 stars. <em>775 times.</em></h2>
+      <span class="reviews-source">Via Google Reviews</span>
+    </div>
+
+    <div class="reviews-grid">
+      <div class="review-card reveal s1">
+        <p class="review-quote">"This place is a gem. Real Italian products — not the supermarket versions. I drove across the city for the prosciutto and left with half the store."</p>
+        <p class="review-meta">MARCO B. · JUN 2024 · Via Google</p>
+      </div>
+      <div class="review-card reveal s2">
+        <p class="review-quote">"Finally, an actual Italian grocery in this neighbourhood. The olive oil alone is worth the trip. Helpful, knowledgeable staff who know what they're selling."</p>
+        <p class="review-meta">SOPHIE L. · OCT 2024 · Via Google</p>
+      </div>
+      <div class="review-card reveal s3">
+        <p class="review-quote">"Weekday hours only but that's fine — it means you have to want it. And once you go, you'll want it every week."</p>
+        <p class="review-meta">JEAN-FRANÇOIS D. · MAR 2024 · Via Google</p>
+      </div>
+      <div class="review-card reveal s4">
+        <p class="review-quote">"The selection of aged cheeses is extraordinary for a shop this size. They know exactly what they're stocking and why."</p>
+        <p class="review-meta">ALICIA M. · JAN 2025 · Via Google</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE NAME -->
+<section class="name-section">
+  <div class="name-section-inner">
+    <div class="reveal">
+      <p class="name-label">The word</p>
+      <h2 class="name-h2">Dispensa.</h2>
+    </div>
+    <div class="reveal s2">
+      <p class="name-body">In Italian, the dispensa is the pantry. The room where everything that matters to a cook lives. Not the refrigerator (that's the everyday). The dispensa is where you keep the things you've sought out.</p>
+      <p class="name-body">The olive oil from the estate you trust. The aged cheese you drove somewhere to find. The pasta that actually fits the shape of the dish you're making. This shop is that room, on William Street.</p>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section class="visit" id="visit" style="scroll-margin-top: 80px;">
+  <div class="visit-inner">
+    <div class="reveal">
+      <p class="visit-label">Find us</p>
+      <h2 class="visit-h2">696 William Street, Griffintown.</h2>
+      <p class="visit-address">Unit 101 · Montréal, QC H3C 1N9</p>
+      <p class="visit-address">Monday through Friday, 7:30AM to 5PM.</p>
+      <a href="tel:+15147712625" class="visit-phone">(514) 771-2625</a>
+
+      <div class="visit-ctas">
+        <a href="https://maps.google.com/?q=Dispensa+Italian+Grocery+696+William+St+Montreal" target="_blank" rel="noopener" class="btn-visit">
+          <span class="btn-visit-icon">↗</span> Get Directions
+        </a>
+        <a href="tel:+15147712625" class="btn-visit">
+          <span class="btn-visit-icon">✆</span> Call (514) 771-2625
+        </a>
+      </div>
+    </div>
+
+    <div class="reveal s2">
+      <iframe
+        class="visit-map"
+        src="https://maps.google.com/maps?q=696+William+St+Montreal+QC&output=embed"
+        allowfullscreen
+        loading="lazy"
+        title="Dispensa Italian Grocery on Google Maps">
+      </iframe>
+      <a href="https://maps.google.com/?q=Dispensa+Italian+Grocery+696+William+St+Montreal" target="_blank" rel="noopener" class="visit-map-link">Open in Google Maps ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <div class="cta-band-inner reveal">
+    <h2 class="cta-h2">Come see what your kitchen<br>has been missing.</h2>
+    <a href="https://maps.google.com/?q=Dispensa+Italian+Grocery+696+William+St+Montreal" target="_blank" rel="noopener" class="btn-white">Get Directions</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <span class="footer-brand">Dispensa Italian Grocery</span>
+  <span class="footer-meta">696 William St, Griffintown · Mon–Fri 7:30AM–5PM · (514) 771-2625</span>
+</footer>
+
+<script>
+// Hero entrance animation
+document.body.classList.add('js-ready');
+requestAnimationFrame(() => {
+  requestAnimationFrame(() => {
+    document.body.classList.add('js-loaded');
+  });
+});
+
+// Nav scroll behavior
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+
+// Mobile menu
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('nav-mobile');
+hamburger.addEventListener('click', () => {
+  mobileMenu.classList.toggle('open');
+});
+
+// Close mobile menu on link click
+mobileMenu.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => mobileMenu.classList.remove('open'));
+});
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+<noscript>
+<style>
+.reveal { opacity: 1; transform: none; }
+</style>
+</noscript>
+</body>
+</html>

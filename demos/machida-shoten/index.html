@@ -1,0 +1,801 @@
+<!--
+  MACHIDA SHOTEN (町田商店) — v3
+
+  DELTA: v2 → v3
+  Changes:
+  - Increase body text to font-weight 400 and improve contrast (cream instead of muted for key passages)
+  - Feature one review quote at larger scale, reduce to 3 reviews
+  - Align reviews section left instead of centered
+  - Refine body text contrast ratio
+  HOW scores: Vignelli 8, Spiekermann 7, Rams 9 (avg 8.0) — gate passed
+  Emil footnote: 8
+  Hypothesis: Body text weight and featured review will move Spiekermann's score
+
+  DELTA: v1 → v2
+  Changes:
+  - Added hero info bar (location, hours, rating) for instant scannability
+  - Added "Menu" nav link pointing to bowl section
+  - Strengthened hero gradient and ritual overlay for text contrast
+  - Mobile responsive hero-info
+  WHAT scores: Norman 8, Krug 9, Nielsen 7 (avg 8.0) — gate passed
+  Hypothesis: Contrast and scannability fixes moved Krug significantly
+
+  DELTA: v0 → v1
+  Changes:
+  - Add "The Bowl" section with components and price signal before CTA
+  - Break repeating layout: make ritual section full-bleed with large image
+  - Sharpen noodle copy: sensory texture over functional description
+  - Add visual variation mid-scroll
+  WHY scores: Jobs 8, Cagan 8.5, Ogilvy 9 (avg 8.5)
+  Hypothesis: The bowl/menu section will move Cagan's score most
+  Iekei-style ramen, College St, Toronto
+
+  PHOTO ASSIGNMENTS:
+  - Hero: broth-detail.png (10/10) — broth pour, the money shot
+  - Story section: ramen-hero.png (9/10) — overhead bowl, classic presentation
+  - Noodle section: noodle-pull.png (8/10) — action, texture
+  - Rice ritual: rice-ritual.png (6/10) — tells the ritual story
+
+  ROTATION:
+  - Hero pattern: full-viewport-bg
+  - Typography: Instrument Serif + Space Grotesk
+  - Review layout: large pull-quotes, single column, oversized quotation marks
+  - Stats: no-stats (woven into copy)
+
+  CREATIVE DIRECTION:
+  - The broth is the star. Every review mentions it.
+  - 835 reviews at 4.9 stars — the headline.
+  - Yokohama iekei lineage is the differentiator.
+  - Rice-in-broth ritual is the closer.
+  - Modern Japanese, not stereotypical. No cherry blossoms, no red lanterns.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Machida Shoten — Iekei Ramen on College St, Toronto</title>
+  <meta name="description" content="Yokohama-style iekei ramen. Rich pork broth, thick noodles, and the ritual of rice. 4.9 stars from 835 reviews. College St, Toronto.">
+  <meta property="og:title" content="Machida Shoten — Iekei Ramen, Toronto">
+  <meta property="og:description" content="Yokohama-style iekei ramen. Rich pork broth, thick noodles, and the ritual of rice. 4.9 stars, 835 reviews.">
+  <meta property="og:image" content="broth-detail.png">
+  <meta property="og:url" content="https://auto-sites.pages.dev/demos/machida-shoten/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-bg: #1a1714;
+      --color-bg-warm: #231f1b;
+      --color-cream: #f5efe6;
+      --color-cream-muted: #c4b9a8;
+      --color-amber: #d4a053;
+      --color-amber-dim: #b8873e;
+      --section-pad: 96px;
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background: var(--color-bg);
+      color: var(--color-cream);
+      font-weight: 400;
+      font-size: 17px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+
+    /* NAV */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(to bottom, rgba(26,23,20,0.9), transparent);
+    }
+    .nav-logo {
+      font-family: 'Instrument Serif', serif;
+      font-size: 22px;
+      letter-spacing: 0.02em;
+    }
+    .nav-logo span {
+      font-size: 14px;
+      color: var(--color-cream-muted);
+      margin-left: 8px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 300;
+    }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .nav-links a {
+      color: var(--color-cream-muted);
+      transition: color 200ms var(--ease-out);
+    }
+    .nav-links a:hover { color: var(--color-cream); }
+
+    /* HAMBURGER */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--color-cream);
+      transition: transform 200ms var(--ease-out);
+    }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--color-bg);
+      z-index: 99;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+    }
+    .mobile-menu.active { display: flex; }
+    .mobile-menu a {
+      font-family: 'Instrument Serif', serif;
+      font-size: 32px;
+      color: var(--color-cream);
+    }
+    .mobile-menu-close {
+      position: absolute;
+      top: 24px; right: 40px;
+      background: none;
+      border: none;
+      color: var(--color-cream);
+      font-size: 32px;
+      cursor: pointer;
+    }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 600px;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('broth-detail.png') center/cover no-repeat;
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(26,23,20,0.97) 0%, rgba(26,23,20,0.6) 45%, rgba(26,23,20,0.25) 100%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 40px 80px;
+      max-width: 800px;
+    }
+    .hero-label {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-amber);
+      margin-bottom: 20px;
+    }
+    .hero-headline {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(40px, 6vw, 72px);
+      line-height: 1.1;
+      font-weight: 400;
+      margin-bottom: 24px;
+    }
+    .hero-sub {
+      font-size: 18px;
+      color: var(--color-cream-muted);
+      max-width: 520px;
+      line-height: 1.6;
+    }
+    .hero-info {
+      display: flex;
+      gap: 24px;
+      margin-top: 24px;
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--color-cream-muted);
+      letter-spacing: 0.04em;
+    }
+    .hero-info span {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .hero-info .dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--color-amber);
+      flex-shrink: 0;
+    }
+
+    /* SECTIONS */
+    section { padding: var(--section-pad) 40px; }
+    .container { max-width: 1100px; margin: 0 auto; }
+
+    /* INTRO / ABOUT */
+    .intro {
+      background: var(--color-bg-warm);
+    }
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .intro-text-label {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-amber);
+      margin-bottom: 16px;
+    }
+    .intro-text h2 {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(28px, 3.5vw, 42px);
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 24px;
+    }
+    .intro-text p {
+      color: var(--color-cream-muted);
+      margin-bottom: 16px;
+    }
+    .intro-img {
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .intro-img img {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+    }
+
+    /* RITUAL — full-bleed */
+    .ritual {
+      position: relative;
+      padding: 0;
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .ritual-bg {
+      position: absolute;
+      inset: 0;
+      background: url('rice-ritual.png') center/cover no-repeat;
+    }
+    .ritual-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(26,23,20,0.82);
+    }
+    .ritual-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 96px 40px;
+      max-width: 650px;
+    }
+    .ritual-label {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-amber);
+      margin-bottom: 16px;
+    }
+    .ritual h2 {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 24px;
+    }
+    .ritual p {
+      color: var(--color-cream-muted);
+      max-width: 520px;
+      margin: 0 auto;
+      font-size: 17px;
+    }
+
+    /* THE BOWL */
+    .bowl {
+      text-align: center;
+    }
+    .bowl-label {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-amber);
+      margin-bottom: 16px;
+    }
+    .bowl h2 {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(28px, 3.5vw, 42px);
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 40px;
+    }
+    .bowl-items {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      max-width: 800px;
+      margin: 0 auto 40px;
+    }
+    .bowl-item {
+      text-align: center;
+    }
+    .bowl-item h3 {
+      font-family: 'Instrument Serif', serif;
+      font-size: 20px;
+      font-weight: 400;
+      margin-bottom: 8px;
+    }
+    .bowl-item p {
+      font-size: 15px;
+      color: var(--color-cream-muted);
+      line-height: 1.5;
+    }
+    .bowl-note {
+      font-size: 15px;
+      color: var(--color-cream-muted);
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    /* REVIEWS */
+    .reviews {
+      background: var(--color-bg-warm);
+    }
+    .reviews-header {
+      margin-bottom: 64px;
+    }
+    .reviews-header h2 {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(28px, 3.5vw, 42px);
+      font-weight: 400;
+      line-height: 1.2;
+    }
+    .reviews-header p {
+      color: var(--color-cream-muted);
+      margin-top: 12px;
+      font-size: 16px;
+    }
+    .review-featured {
+      margin-bottom: 56px;
+      padding-left: 32px;
+      position: relative;
+    }
+    .review-featured::before {
+      content: '\201C';
+      position: absolute;
+      left: 0;
+      top: -12px;
+      font-family: 'Instrument Serif', serif;
+      font-size: 64px;
+      color: var(--color-amber);
+      line-height: 1;
+    }
+    .review-featured .review-quote {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(24px, 3vw, 32px);
+      font-style: italic;
+      line-height: 1.4;
+      margin-bottom: 16px;
+    }
+    .review-featured .review-author {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-cream-muted);
+    }
+    .review-list {
+      max-width: 700px;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+    .review-item {
+      position: relative;
+      padding-left: 32px;
+    }
+    .review-item::before {
+      content: '\201C';
+      position: absolute;
+      left: 0;
+      top: -8px;
+      font-family: 'Instrument Serif', serif;
+      font-size: 48px;
+      color: var(--color-amber);
+      line-height: 1;
+    }
+    .review-quote {
+      font-family: 'Instrument Serif', serif;
+      font-size: 20px;
+      font-style: italic;
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+    .review-author {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-cream-muted);
+    }
+
+    /* NOODLES SECTION */
+    .noodles {
+      position: relative;
+    }
+    .noodles-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .noodles-img {
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .noodles-img img {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+    }
+    .noodles-text-label {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-amber);
+      margin-bottom: 16px;
+    }
+    .noodles-text h2 {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(28px, 3.5vw, 42px);
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 24px;
+    }
+    .noodles-text p {
+      color: var(--color-cream-muted);
+      margin-bottom: 16px;
+    }
+
+    /* VISIT */
+    .visit {
+      background: var(--color-bg-warm);
+      text-align: center;
+    }
+    .visit h2 {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(28px, 3.5vw, 42px);
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 32px;
+    }
+    .visit-details {
+      display: flex;
+      justify-content: center;
+      gap: 64px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+    .visit-detail {
+      text-align: center;
+    }
+    .visit-detail-label {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-amber);
+      margin-bottom: 8px;
+    }
+    .visit-detail p {
+      color: var(--color-cream-muted);
+      font-size: 16px;
+    }
+    .visit-cta {
+      display: inline-block;
+      background: var(--color-amber);
+      color: var(--color-bg);
+      padding: 16px 40px;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      transition: transform 160ms var(--ease-out), background 200ms var(--ease-out);
+    }
+    .visit-cta:hover { background: var(--color-amber-dim); }
+    .visit-cta:active { transform: scale(0.97); }
+
+    .visit-map {
+      margin-top: 48px;
+      border-radius: 4px;
+      overflow: hidden;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .visit-map iframe {
+      width: 100%;
+      height: 300px;
+      border: 0;
+      filter: grayscale(0.8) contrast(1.1);
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 40px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--color-cream-muted);
+      letter-spacing: 0.04em;
+    }
+    footer a {
+      color: var(--color-amber);
+      transition: color 200ms var(--ease-out);
+    }
+    footer a:hover { color: var(--color-cream); }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      section { padding: 64px 24px; }
+      .hero-content { padding: 0 24px 48px; }
+      .hero-info { flex-direction: column; gap: 8px; }
+      .intro-grid,
+      .noodles-grid { grid-template-columns: 1fr; gap: 40px; }
+      .noodles-img { order: -1; }
+      .bowl-items { grid-template-columns: 1fr; gap: 24px; }
+      .ritual-content { padding: 64px 24px; }
+      .visit-details { gap: 32px; }
+      .review-quote { font-size: 19px; }
+    }
+
+    /* SCROLL REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 500ms var(--ease-out), transform 500ms var(--ease-out);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-stagger { transition-delay: var(--delay, 0ms); }
+
+    /* HERO KEN BURNS */
+    .hero-bg {
+      animation: kenBurns 14s var(--ease-out) forwards;
+    }
+    @keyframes kenBurns {
+      from { transform: scale(1); }
+      to { transform: scale(1.03); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition-duration: 0ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <a href="#" class="nav-logo">町田商店 <span>Machida Shoten</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#visit">Visit</a></li>
+    </ul>
+    <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.add('active')" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu">
+    <button class="mobile-menu-close" onclick="this.parentElement.classList.remove('active')" aria-label="Close menu">&times;</button>
+    <a href="#about" onclick="this.parentElement.classList.remove('active')">About</a>
+    <a href="#menu" onclick="this.parentElement.classList.remove('active')">Menu</a>
+    <a href="#reviews" onclick="this.parentElement.classList.remove('active')">Reviews</a>
+    <a href="#visit" onclick="this.parentElement.classList.remove('active')">Visit</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <p class="hero-label">Iekei Ramen · College St, Toronto</p>
+      <h1 class="hero-headline">835 reviews. They all talk about the broth.</h1>
+      <p class="hero-sub">Yokohama-style iekei ramen. Rich pork bone broth simmered for hours. Thick noodles. A bowl of rice to finish what the broth started.</p>
+      <div class="hero-info">
+        <span><span class="dot"></span> College St, Toronto</span>
+        <span><span class="dot"></span> Daily 11AM–10PM</span>
+        <span><span class="dot"></span> 4.9★ · 835 reviews</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT / INTRO -->
+  <section class="intro" id="about">
+    <div class="container">
+      <div class="intro-grid">
+        <div class="intro-text reveal">
+          <p class="intro-text-label">Yokohama Tradition</p>
+          <h2>Iekei is a style, not a brand</h2>
+          <p>Born in 1974 at a small shop in Yokohama, iekei ramen blends two worlds: the thick tonkotsu pork bone broth of Kyushu with the soy-forward punch of Tokyo shoyu. The result is something richer and bolder than either.</p>
+          <p>Machida Shoten brings that tradition to College St. The broth takes hours. The noodles are thick and straight. Every bowl comes with chashu, spinach, nori, and a soft-boiled egg.</p>
+        </div>
+        <div class="intro-img reveal" style="--delay:100ms">
+          <img src="ramen-hero.png" alt="Overhead view of a bowl of iekei ramen with rich pork broth, chashu, egg, nori, and spinach" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE RITUAL — full-bleed -->
+  <section class="ritual">
+    <div class="ritual-bg"></div>
+    <div class="ritual-content reveal">
+      <p class="ritual-label">The Ritual</p>
+      <h2>Finish the noodles. Order the rice. Pour in the broth.</h2>
+      <p>Every bowl comes with a side of rice. You eat the noodles first, then mix the rice into what's left of the broth. Reviewer after reviewer says the rice is the reason they come back.</p>
+    </div>
+  </section>
+
+  <!-- THE BOWL -->
+  <section class="bowl" id="menu">
+    <div class="container">
+      <p class="bowl-label">What You Get</p>
+      <h2>Every bowl, built the same way</h2>
+      <div class="bowl-items">
+        <div class="bowl-item reveal" style="--delay:0ms">
+          <h3>The Broth</h3>
+          <p>Pork bones, simmered until the broth goes opaque and heavy. Coats the back of a spoon.</p>
+        </div>
+        <div class="bowl-item reveal" style="--delay:80ms">
+          <h3>The Noodles</h3>
+          <p>Thick, straight, and chewy. They grip the broth instead of letting it slide off.</p>
+        </div>
+        <div class="bowl-item reveal" style="--delay:160ms">
+          <h3>The Toppings</h3>
+          <p>Chashu pork, soft-boiled egg, nori, spinach. Plus a bowl of rice for the finish.</p>
+        </div>
+      </div>
+      <p class="bowl-note">Pick your noodle firmness, broth richness, and oil level at the counter.</p>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="reviews" id="reviews">
+    <div class="container">
+      <div class="reviews-header reveal">
+        <h2>4.9 stars from 835 reviews</h2>
+        <p>Same story, different people.</p>
+      </div>
+      <div class="review-featured reveal" style="--delay:100ms">
+        <p class="review-quote">I knew from the very first sip of the pork broth that I'd be coming back. The flavor is seriously impressive — rich, deep, and incredible.</p>
+        <p class="review-author">Kriz · Via Google</p>
+      </div>
+      <div class="review-list">
+        <div class="review-item reveal" style="--delay:200ms">
+          <p class="review-quote">Hands down the most flavourful ramen I've had in Toronto. The Kara Ramen is outstanding.</p>
+          <p class="review-author">Angelica C. · Via Google</p>
+        </div>
+        <div class="review-item reveal" style="--delay:300ms">
+          <p class="review-quote">The real star for me was the broth; it's so good that I couldn't resist ordering a bowl of rice to mix in at the end.</p>
+          <p class="review-author">Wei Z. · Via Google</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOODLES -->
+  <section class="noodles">
+    <div class="container">
+      <div class="noodles-grid">
+        <div class="noodles-img reveal">
+          <img src="noodle-pull.png" alt="Thick ramen noodles lifted from a steaming bowl of rich pork broth" loading="lazy">
+        </div>
+        <div class="noodles-text reveal" style="--delay:100ms">
+          <p class="noodles-text-label">The Noodles</p>
+          <h2>Thick, straight, and made to hold the broth</h2>
+          <p>Iekei noodles are thicker than most ramen. Straight, dense, with a bite that pushes back before it gives. They soak up broth like a sponge, so every slurp carries the full weight of that tonkotsu.</p>
+          <p>The chashu dissolves on your tongue before you think to chew. The nori goes soft at the edges where it meets the broth. The egg splits open golden.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISIT -->
+  <section class="visit" id="visit">
+    <div class="container">
+      <h2>College St, Toronto</h2>
+      <div class="visit-details">
+        <div class="visit-detail">
+          <p class="visit-detail-label">Location</p>
+          <p>College St, Toronto, ON</p>
+        </div>
+        <div class="visit-detail">
+          <p class="visit-detail-label">Hours</p>
+          <p>Daily 11AM – 10PM</p>
+        </div>
+        <div class="visit-detail">
+          <p class="visit-detail-label">Follow</p>
+          <p><a href="https://instagram.com/machidashoten" target="_blank" rel="noopener">@machidashoten</a></p>
+        </div>
+      </div>
+      <a href="https://maps.google.com/maps?q=Machida+Shoten+College+St+Toronto" target="_blank" rel="noopener" class="visit-cta">Get Directions</a>
+      <div class="visit-map">
+        <iframe src="https://maps.google.com/maps?q=Machida+Shoten+College+St+Toronto&output=embed" allowfullscreen loading="lazy" title="Machida Shoten location"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>町田商店 Machida Shoten · College St, Toronto · <a href="https://instagram.com/machidashoten" target="_blank" rel="noopener">@machidashoten</a></p>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

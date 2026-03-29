@@ -1,0 +1,688 @@
+<!--
+  DELTA: v2 → v3
+  Grid discipline pass. Single hero image. Consistent type scale. Body text 16px+.
+  Removed flyer redundancy. Consistent section labels. Tighter vertical rhythm.
+  HOW scores: Vignelli 5, Spiekermann 6, Rams 5 = 5.33 (Emil 3)
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>One Glove — NTS Radio</title>
+  <meta name="description" content="One Glove. Monthly radio show on NTS hosted by Macca. Club nights in South London. The Glove Box.">
+  <meta property="og:title" content="One Glove — NTS Radio">
+  <meta property="og:description" content="Monthly radio show on NTS, club nights, and The Glove Box. Hosted by Macca from South London.">
+  <meta property="og:image" content="ig-photo-05.jpg">
+  <meta property="og:url" content="https://auto-sites.pages.dev/demos/maccalaaa/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --black: #0B0B0B;
+      --coral: #EDA88E;
+      --cream: #F0EBE3;
+      --peach: #F2C4B0;
+      --surface: #161616;
+      --mid: #999;
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+      /* Spacing scale: 8 16 24 32 48 64 96 128 */
+      --sp-xs: 8px;
+      --sp-s: 16px;
+      --sp-m: 24px;
+      --sp-l: 32px;
+      --sp-xl: 48px;
+      --sp-2xl: 64px;
+      --sp-3xl: 96px;
+      --sp-4xl: 128px;
+      --section-pad: clamp(80px, 10vw, 128px);
+      --gutter: 40px;
+      --max-w: 1200px;
+      /* Type scale: 11 / 13 / 16 / 20 / 28 / 48 */
+      --t-xs: 11px;
+      --t-s: 13px;
+      --t-base: 16px;
+      --t-m: 20px;
+      --t-l: clamp(24px, 3vw, 28px);
+      --t-xl: clamp(32px, 4vw, 48px);
+      --t-hero: clamp(72px, 10vw, 140px);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Mono', monospace;
+      background: var(--black);
+      color: var(--cream);
+      font-size: var(--t-base);
+      line-height: 1.65;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* === NAV === */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: var(--sp-s) var(--gutter);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(11, 11, 11, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(240, 235, 227, 0.06);
+    }
+
+    .nav-logo {
+      font-family: 'Newsreader', serif;
+      font-size: var(--t-m);
+      font-weight: 700;
+      color: var(--cream);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .nav-links { display: flex; gap: var(--sp-l); list-style: none; }
+
+    .nav-links a {
+      color: rgba(240, 235, 227, 0.7);
+      text-decoration: none;
+      font-size: var(--t-s);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 200ms var(--ease-out);
+    }
+
+    .nav-links a:hover { color: var(--cream); }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--cream);
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--black);
+      z-index: 99;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: var(--sp-xl);
+    }
+
+    .mobile-menu.active { display: flex; }
+
+    .mobile-menu a {
+      font-family: 'Newsreader', serif;
+      font-size: var(--t-l);
+      color: var(--cream);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    /* === CONTAINER === */
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding-left: var(--gutter);
+      padding-right: var(--gutter);
+    }
+
+    /* === HERO === */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 var(--gutter) var(--sp-3xl);
+    }
+
+    .hero-text {
+      padding-bottom: var(--sp-l);
+      max-width: 700px;
+    }
+
+    .hero-title {
+      font-family: 'Newsreader', serif;
+      font-size: var(--t-hero);
+      font-weight: 700;
+      line-height: 0.88;
+      color: var(--cream);
+      letter-spacing: -0.03em;
+      margin-bottom: var(--sp-m);
+    }
+
+    .hero-tagline {
+      font-family: 'Newsreader', serif;
+      font-size: clamp(20px, 2.2vw, 28px);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--coral);
+      margin-bottom: var(--sp-s);
+    }
+
+    .hero-desc {
+      font-size: 18px;
+      color: rgba(240, 235, 227, 0.8);
+      max-width: 420px;
+      line-height: 1.5;
+      margin-bottom: var(--sp-s);
+    }
+
+    .hero-sub {
+      font-size: var(--t-xs);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(240, 235, 227, 0.4);
+    }
+
+    .hero-image { display: none; }
+
+    /* === SHARED === */
+    .section { padding: var(--section-pad) 0; }
+    .section--dark { background: var(--surface); }
+    .section--dark .container { max-width: var(--max-w); }
+
+    .label {
+      font-size: var(--t-xs);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--coral);
+      margin-bottom: var(--sp-m);
+      display: block;
+      font-weight: 500;
+    }
+
+    .heading {
+      font-family: 'Newsreader', serif;
+      font-size: var(--t-xl);
+      font-weight: 600;
+      line-height: 1.15;
+      color: var(--cream);
+      margin-bottom: var(--sp-m);
+      max-width: 600px;
+    }
+
+    .prose {
+      max-width: 520px;
+      color: rgba(240, 235, 227, 0.8);
+      line-height: 1.7;
+      font-size: var(--t-base);
+    }
+
+    .prose p + p { margin-top: var(--sp-s); }
+
+    /* === BUTTON === */
+    .btn {
+      display: inline-block;
+      margin-top: var(--sp-l);
+      padding: 14px var(--sp-l);
+      background: var(--coral);
+      color: var(--black);
+      text-decoration: none;
+      font-family: 'DM Mono', monospace;
+      font-size: var(--t-s);
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: transform 160ms var(--ease-out), background 200ms var(--ease-out);
+    }
+
+    .btn:active { transform: scale(0.97); }
+    .btn:hover { background: var(--peach); }
+
+    .btn--outline {
+      background: transparent;
+      border: 1px solid var(--coral);
+      color: var(--coral);
+    }
+
+    .btn--outline:hover {
+      background: var(--coral);
+      color: var(--black);
+    }
+
+    /* === TWO-COL === */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-2xl);
+      align-items: center;
+    }
+
+    .two-col img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* === NTS TAG === */
+    .nts-tag {
+      display: inline-block;
+      background: var(--coral);
+      color: var(--black);
+      font-size: var(--t-xs);
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      margin-bottom: var(--sp-s);
+    }
+
+    /* === EVENTS === */
+    .events-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-l);
+      margin-top: var(--sp-xl);
+    }
+
+    .event-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+      margin-bottom: var(--sp-s);
+    }
+
+    .event-name {
+      font-family: 'Newsreader', serif;
+      font-size: var(--t-m);
+      font-weight: 600;
+      color: var(--cream);
+      margin-bottom: var(--sp-xs);
+    }
+
+    .event-detail {
+      font-size: var(--t-s);
+      color: var(--mid);
+      line-height: 1.5;
+    }
+
+    /* === ABOUT === */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.7fr 1fr;
+      gap: var(--sp-2xl);
+      align-items: start;
+    }
+
+    .about-img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* === WORLD === */
+    .world-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--sp-m);
+      margin-top: var(--sp-xl);
+    }
+
+    .world-item img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      display: block;
+    }
+
+    .world-cap {
+      font-size: var(--t-xs);
+      color: var(--mid);
+      margin-top: var(--sp-xs);
+      letter-spacing: 0.04em;
+    }
+
+    /* === CONNECT === */
+    .connect {
+      text-align: center;
+      padding: var(--section-pad) 0;
+    }
+
+    .connect-heading {
+      font-family: 'Newsreader', serif;
+      font-size: var(--t-xl);
+      font-weight: 600;
+      color: var(--cream);
+      margin-bottom: var(--sp-xl);
+    }
+
+    .connect-row {
+      display: flex;
+      justify-content: center;
+      gap: var(--sp-m);
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    .connect-row a {
+      display: inline-block;
+      padding: 14px var(--sp-l);
+      color: var(--coral);
+      text-decoration: none;
+      font-size: var(--t-s);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: 1px solid rgba(237, 168, 142, 0.3);
+      transition: border-color 200ms var(--ease-out), background 200ms var(--ease-out), color 200ms var(--ease-out);
+    }
+
+    .connect-row a:hover {
+      border-color: var(--coral);
+      background: var(--coral);
+      color: var(--black);
+    }
+
+    footer {
+      text-align: center;
+      padding: var(--sp-l);
+      font-size: var(--t-xs);
+      color: rgba(240, 235, 227, 0.3);
+      letter-spacing: 0.06em;
+    }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 1024px) {
+      :root { --gutter: 32px; }
+      .hero { padding-bottom: var(--sp-2xl); }
+      .two-col { grid-template-columns: 1fr; gap: var(--sp-xl); }
+      .two-col img { order: -1; max-width: 480px; }
+      .events-grid { grid-template-columns: 1fr; max-width: 480px; }
+      .about-grid { grid-template-columns: 1fr; gap: var(--sp-xl); }
+      .about-img { max-width: 360px; }
+      .world-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      :root { --gutter: 24px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .hero-title { font-size: clamp(56px, 16vw, 96px); }
+
+      .world-grid { grid-template-columns: 1fr; max-width: 320px; }
+      .connect-row { flex-direction: column; align-items: center; gap: var(--sp-s); }
+    }
+
+    /* === SCROLL REVEAL === */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 500ms var(--ease-out), transform 500ms var(--ease-out);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-d1 { transition-delay: 80ms; }
+    .reveal-d2 { transition-delay: 160ms; }
+    .reveal-d3 { transition-delay: 240ms; }
+
+    /* === HERO ENTRANCE === */
+    .hero-text .hero-title {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: heroIn 600ms var(--ease-out) 200ms forwards;
+    }
+
+    .hero-text .hero-tagline {
+      opacity: 0;
+      transform: translateY(16px);
+      animation: heroIn 600ms var(--ease-out) 360ms forwards;
+    }
+
+    .hero-text .hero-desc {
+      opacity: 0;
+      transform: translateY(14px);
+      animation: heroIn 500ms var(--ease-out) 500ms forwards;
+    }
+
+    .hero-text .hero-sub {
+      opacity: 0;
+      animation: heroIn 500ms var(--ease-out) 620ms forwards;
+    }
+
+    .hero-image img {
+      opacity: 0;
+      transform: translateY(20px) rotate(2deg);
+      animation: heroImgIn 700ms var(--ease-out) 400ms forwards;
+    }
+
+    @keyframes heroIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes heroImgIn {
+      to { opacity: 1; transform: translateY(0) rotate(0deg); }
+    }
+
+    /* === NAV LINK UNDERLINE === */
+    .nav-links a {
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--coral);
+      transition: width 250ms var(--ease-out);
+    }
+
+    .nav-links a:hover::after { width: 100%; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-delay: 0ms !important;
+        transition-duration: 0.01ms !important;
+      }
+      .reveal { opacity: 1; transform: none; }
+      .hero-text .hero-title,
+      .hero-text .hero-tagline,
+      .hero-text .hero-desc,
+      .hero-text .hero-sub,
+      .hero-image img {
+        opacity: 1;
+        transform: none;
+        animation: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#" class="nav-logo">One Glove</a>
+    <ul class="nav-links">
+      <li><a href="#radio">Radio</a></li>
+      <li><a href="#submit">Submit Music</a></li>
+      <li><a href="#events">Events</a></li>
+      <li><a href="#about">Macca</a></li>
+    </ul>
+    <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.mobile-menu').classList.toggle('active')">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-menu">
+    <a href="#radio" onclick="this.parentElement.classList.remove('active')">Radio</a>
+    <a href="#submit" onclick="this.parentElement.classList.remove('active')">Submit Music</a>
+    <a href="#events" onclick="this.parentElement.classList.remove('active')">Events</a>
+    <a href="#about" onclick="this.parentElement.classList.remove('active')">Macca</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1 class="hero-title">One<br>Glove</h1>
+      <p class="hero-tagline">Always a Pleasure, Never a Chore</p>
+      <p class="hero-desc">Monthly radio show on NTS Radio. Club nights across the UK. An open call for your music.</p>
+      <p class="hero-sub">Hosted by Macca · South London</p>
+    </div>
+
+  </section>
+
+  <!-- RADIO -->
+  <section class="section section--dark" id="radio">
+    <div class="container">
+      <div class="two-col">
+        <div class="reveal">
+          <span class="nts-tag">NTS Radio</span>
+          <h2 class="heading">Balearic to broken beat. Last Saturday of every month.</h2>
+          <div class="prose">
+            <p>One Glove airs monthly on NTS, the independent broadcaster out of Dalston. The show moves between house, hip-hop, broken beat, balearic, and whatever Macca pulled from the crates that week. Two hours, no playlist, no rules.</p>
+          </div>
+          <a href="https://www.nts.live/" target="_blank" rel="noopener" class="btn">Listen on NTS</a>
+        </div>
+        <img class="reveal reveal-d1" src="ig-photo-10.jpg" alt="One Glove branded stickers collection">
+      </div>
+    </div>
+  </section>
+
+  <!-- SUBMIT MUSIC -->
+  <section class="section" id="submit">
+    <div class="container">
+      <div class="two-col">
+        <div class="reveal">
+          <span class="label">Submit Music</span>
+          <h2 class="heading">Get your music played on NTS</h2>
+          <p style="font-size: var(--t-s); color: var(--mid); margin-bottom: var(--sp-s); letter-spacing: 0.04em;">via The Glove Box — last Saturday of every month</p>
+          <div class="prose">
+            <p>Send a track via DM on Instagram. If it's good, it gets played on air. No gatekeeping, no hoops. Macca listens to everything.</p>
+            <p>Launched March 2026. The first episode aired submissions from listeners across London, Lagos, and Tokyo.</p>
+          </div>
+          <a href="https://www.instagram.com/maccalaaa/" target="_blank" rel="noopener" class="btn">Send a Track via Instagram</a>
+        </div>
+        <img class="reveal reveal-d1" src="ig-photo-01.jpg" alt="The Glove Box segment promo — get your music played on NTS, launching 28 March">
+      </div>
+    </div>
+  </section>
+
+  <!-- EVENTS -->
+  <section class="section section--dark" id="events">
+    <div class="container">
+      <div class="reveal">
+        <span class="label">Events</span>
+        <h2 class="heading">One Glove I.R.L.</h2>
+      </div>
+      <div class="prose reveal">
+        <p>The radio show, off the radio. Late nights at small venues with good sound and a crowd that actually listens.</p>
+      </div>
+      <div class="events-grid">
+        <div class="event-card reveal">
+          <img src="ig-photo-04.jpg" alt="One Glove I.R.L. flyer for The Carpet Shop, Peckham">
+          <div class="event-name">The Carpet Shop, Peckham</div>
+          <div class="event-detail">SE15 4ST · Macca & Babyschön · Saturday · 11PM–4AM</div>
+        </div>
+        <div class="event-card reveal reveal-d1">
+          <img src="ig-photo-07.jpg" alt="One Glove I.R.L.I.L. flyer for 24 Kitchen Street, Liverpool">
+          <div class="event-name">24 Kitchen Street, Liverpool</div>
+          <div class="event-detail">Conduit Sound 2nd Birthday · Macca & Alex Nut · 9PM–3AM</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <img class="about-img reveal" src="ig-photo-05.jpg" alt="Macca, DJ and NTS Radio host">
+        <div class="reveal reveal-d1">
+          <span class="label">The Host</span>
+          <h2 class="heading">Macca</h2>
+          <div class="prose">
+            <p>DJ, NTS Radio host, and the person behind One Glove. Based in South London. Plays records at Carven fashion shows, Peckham basements, and a football pitch in Hackney with The Gun FC.</p>
+            <p>The show started because he had too many records and not enough people to play them to. That hasn't changed.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORLD -->
+  <section class="section section--dark">
+    <div class="container">
+      <div class="reveal">
+        <span class="label">Beyond the Booth</span>
+        <h2 class="heading">Music sits at the centre of all of it</h2>
+      </div>
+      <div class="world-grid">
+        <div class="world-item reveal">
+          <img src="ig-photo-02.jpg" alt="Carven fashion show runway, Paris">
+          <p class="world-cap">Carven, Paris</p>
+        </div>
+        <div class="world-item reveal reveal-d1">
+          <img src="ig-photo-09.jpg" alt="One Glove x The Gun FC football kit, Hackney">
+          <p class="world-cap">The Gun FC, Hackney</p>
+        </div>
+        <div class="world-item reveal reveal-d2">
+          <img src="ig-photo-11.jpg" alt="Macca at Saitama Stadium, Japan">
+          <p class="world-cap">Saitama, Japan</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONNECT -->
+  <section class="connect">
+    <div class="container">
+      <h2 class="connect-heading reveal">Tune In</h2>
+      <ul class="connect-row">
+        <li><a href="https://www.nts.live/" target="_blank" rel="noopener">NTS Radio</a></li>
+        <li><a href="https://www.instagram.com/maccalaaa/" target="_blank" rel="noopener">Instagram</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <p>One Glove © 2025</p>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

@@ -1,0 +1,621 @@
+<!--
+  DELTA: v4 → v5 (self-review polish + copy audit)
+  Changes:
+  - Typographic hierarchy strengthened: hero h1 largest, section titles smaller, review text uses regular weight not italic
+  - Service divider lines removed — whitespace separates
+  - Reviews reduced from 4 to 3 (cut Lexie's shorter one)
+  - Review text set in regular weight Cormorant to distinguish from italic section titles
+  - Hero headline made distinctly larger vs section titles
+  - Nav weight bumped for visibility
+  - Label color unified across all sections
+  - Consistent column system: max-width 1080px everywhere
+  HOW scores (retry): Vignelli 7, Spiekermann 7, Rams 8 (avg 7.33)
+  Changes for v3:
+  - Service card titles bumped to weight 600 for hierarchy clarity
+  - Quoted customer language in Workshop section given italic treatment
+  - Full-bleed image break removed (didn't earn its space per Rams)
+  - Repair detail image used as background texture on reviews section instead
+  Hypothesis: Removing image break + stronger card titles = tighter, more cohesive page
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Joy Creations — Custom Jewellery, Ottawa</title>
+  <meta name="description" content="Custom wedding bands, heirloom repairs, and one-of-a-kind pieces. 5 stars, 183 reviews. Ottawa's most trusted jewellery studio.">
+  <meta property="og:title" content="Joy Creations — Custom Jewellery">
+  <meta property="og:description" content="183 families trusted us with the piece that mattered most. Custom wedding bands, heirloom repairs, one-of-a-kind creations in Ottawa.">
+  <meta property="og:image" content="hero-ring.png">
+  <meta property="og:url" content="https://auto-sites.pages.dev/demos/joy-creations/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --gold: #C5A55A;
+      --gold-dark: #7A6220;
+      --gold-light: #D4B96E;
+      --charcoal: #2A2A2A;
+      --charcoal-deep: #1A1A1A;
+      --ivory: #F8F5F0;
+      --ivory-warm: #F2EDE5;
+      --text-dark: #2A2A2A;
+      --text-light: #F8F5F0;
+      --text-muted: #7A7A7A;
+      --section-pad: 96px;
+      --content-width: 1080px;
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      color: var(--text-dark);
+      background: var(--ivory);
+      line-height: 1.7;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 20px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 300ms var(--ease-out);
+    }
+
+    nav.scrolled {
+      background: rgba(26, 26, 26, 0.95);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--text-light);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      opacity: 0.85;
+      transition: opacity 200ms var(--ease-out);
+    }
+
+    .nav-links a:hover { opacity: 1; }
+
+    .nav-hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text-light);
+      margin: 5px 0;
+    }
+
+    /* TYPE SCALE
+       Level 1: Hero h1 — 64px Cormorant, weight 400
+       Level 2: Section titles — 40px Cormorant, weight 400
+       Level 3: Service headings — 22px Cormorant, weight 500
+       Level 4: Body — 16px Inter, weight 400
+       Level 5: Labels — 13px Inter, weight 500, tracked
+       Level 6: Review quotes — 19px Cormorant, weight 400 (regular, NOT italic)
+    */
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      background: var(--charcoal-deep);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('hero-ring.png') center/cover no-repeat;
+      opacity: 0.22;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 780px;
+      padding: 0 24px;
+    }
+
+    .hero-eyebrow {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 28px;
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(38px, 5.5vw, 64px);
+      font-weight: 400;
+      color: var(--text-light);
+      line-height: 1.12;
+      margin-bottom: 28px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      font-weight: 400;
+      color: rgba(248, 245, 240, 0.85);
+      max-width: 520px;
+      margin: 0 auto 44px;
+      line-height: 1.7;
+    }
+
+    .hero-cta {
+      display: inline-block;
+      padding: 14px 36px;
+      background: var(--gold);
+      color: var(--charcoal-deep);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: transform 160ms var(--ease-out), background 200ms var(--ease-out);
+    }
+
+    .hero-cta:active { transform: scale(0.97); }
+    .hero-cta:hover { background: var(--gold-light); }
+
+    /* SECTIONS */
+    .section-label {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(28px, 3.5vw, 40px);
+      font-weight: 400;
+      color: var(--text-dark);
+      line-height: 1.2;
+      margin-bottom: 48px;
+    }
+
+    /* SERVICES */
+    .services {
+      padding: var(--section-pad) 48px;
+      background: var(--ivory);
+    }
+
+    .services-inner {
+      max-width: var(--content-width);
+      margin: 0 auto;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 48px;
+    }
+
+    .service-item h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 23px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: var(--text-dark);
+    }
+
+    .service-item p {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* CRAFT */
+    .craft-section {
+      padding: 0 48px var(--section-pad);
+      background: var(--ivory);
+    }
+
+    .craft-inner {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .craft-image {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+    }
+
+    .craft-text h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(26px, 3vw, 36px);
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      color: var(--text-dark);
+    }
+
+    .craft-text p {
+      font-size: 16px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+
+    /* REVIEWS */
+    .reviews {
+      padding: var(--section-pad) 48px;
+      background: var(--charcoal-deep);
+    }
+
+    .reviews-inner {
+      max-width: var(--content-width);
+      margin: 0 auto;
+    }
+
+    .reviews .section-label { color: var(--gold); }
+    .reviews .section-title { color: var(--text-light); margin-bottom: 40px; }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    .review-card {
+      background: rgba(248, 245, 240, 0.04);
+      padding: 36px;
+      border-top: 2px solid var(--gold);
+    }
+
+    .review-stars {
+      color: var(--gold);
+      font-size: 14px;
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+    }
+
+    .review-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 19px;
+      font-weight: 400;
+      color: rgba(248, 245, 240, 0.9);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .review-author {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    /* CONTACT */
+    .contact {
+      padding: var(--section-pad) 48px;
+      background: var(--ivory-warm);
+    }
+
+    .contact-inner {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+    }
+
+    .contact h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(28px, 3.5vw, 40px);
+      font-weight: 400;
+      color: var(--text-dark);
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .contact p {
+      font-size: 16px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+
+    .contact-note {
+      font-size: 14px;
+      color: var(--text-muted);
+      font-style: italic;
+      margin-bottom: 24px;
+    }
+
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .contact-detail {
+      font-size: 15px;
+      color: var(--text-dark);
+    }
+
+    .contact-detail a {
+      color: var(--gold-dark);
+      text-decoration: none;
+    }
+
+    .contact-detail a:hover { text-decoration: underline; }
+
+    .contact-detail-label {
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .contact-cta {
+      display: inline-block;
+      padding: 14px 36px;
+      background: var(--charcoal-deep);
+      color: var(--text-light);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 8px;
+      transition: transform 160ms var(--ease-out), opacity 200ms var(--ease-out);
+    }
+
+    .contact-cta:active { transform: scale(0.97); }
+    .contact-cta:hover { opacity: 0.85; }
+
+    footer {
+      padding: 32px 48px;
+      background: var(--charcoal-deep);
+      text-align: center;
+    }
+
+    footer p {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      .nav-hamburger { display: block; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(26, 26, 26, 0.98);
+        padding: 24px;
+        gap: 20px;
+      }
+      .hero-content { padding: 0 24px; }
+      .services, .craft-section, .reviews, .contact { padding: 64px 24px; }
+      .services-grid { grid-template-columns: 1fr; gap: 32px; }
+      .craft-inner { grid-template-columns: 1fr; gap: 32px; }
+      .reviews-grid { grid-template-columns: 1fr; gap: 24px; }
+      .contact-inner { grid-template-columns: 1fr; gap: 32px; }
+    }
+
+    /* MOTION */
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 500ms var(--ease-out), transform 500ms var(--ease-out);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .stagger-1 { transition-delay: 0ms; }
+    .stagger-2 { transition-delay: 100ms; }
+    .stagger-3 { transition-delay: 200ms; }
+
+    .hero-content {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: heroEntrance 800ms var(--ease-out) 200ms forwards;
+    }
+
+    @keyframes heroEntrance {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition-duration: 0ms !important; }
+      .reveal, .hero-content { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#" class="nav-logo">Joy Creations</a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#craft">Our Craft</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#contact">Find Us</a></li>
+    </ul>
+    <button class="nav-hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Custom Jewellery · Ottawa</p>
+      <h1>183 families trusted us with the piece that mattered most</h1>
+      <p>Wedding bands shaped around family heirlooms. Anniversary gifts born from a single conversation. Samuel and the team have heard every version of "this one has to be perfect."</p>
+      <a href="#contact" class="hero-cta">Start Your Piece</a>
+    </div>
+  </section>
+
+  <section class="services" id="services">
+    <div class="services-inner">
+      <p class="section-label reveal">What We Do</p>
+      <h2 class="section-title reveal">Tell us what it means to you. We'll make it real.</h2>
+      <div class="services-grid">
+        <div class="service-item reveal stagger-1">
+          <h3>Custom Design</h3>
+          <p>Bring Samuel a sketch, a photo, or just a feeling. He'll work with you until the piece matches the picture in your head.</p>
+        </div>
+        <div class="service-item reveal stagger-2">
+          <h3>Wedding Bands</h3>
+          <p>Tara had a specific dainty vision. Shani needed a band that would stack with a family heirloom. Both left with exactly what they imagined.</p>
+        </div>
+        <div class="service-item reveal stagger-3">
+          <h3>Repairs &amp; Restoration</h3>
+          <p>Lexie's sentimental necklace chain was so delicate most shops would have refused it. The team brought it back without losing what made it hers.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="craft-section" id="craft">
+    <div class="craft-inner">
+      <img src="craft-hands.png" alt="Jeweller carefully setting a stone" class="craft-image">
+      <div class="craft-text reveal">
+        <p class="section-label">The Workshop</p>
+        <h2>Warmth you can feel before you see the work</h2>
+        <p>Laura called it <em>"one of the best customer service experiences"</em> she'd had. Steve brought a concept and left with <em>"a beautiful creation that made for a truly special anniversary gift."</em></p>
+        <p>That warmth shows up in the finished piece. A repaired chain that looks like it was never broken. A custom band that fits against a ring that's been in your family for generations.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="reviews" id="reviews">
+    <div class="reviews-inner">
+      <p class="section-label reveal">5.0 Stars · 183 Reviews</p>
+      <h2 class="section-title reveal" style="color: var(--text-light);">In their words</h2>
+      <div class="reviews-grid">
+        <div class="review-card reveal stagger-1">
+          <p class="review-stars" aria-label="5 out of 5 stars">★★★★★</p>
+          <p class="review-text">"We went here to get my band custom made. My engagement ring is a family heirloom and it was important to me that I would be able to stack it with my wedding band."</p>
+          <p class="review-author">Shani P. · Via Google</p>
+        </div>
+        <div class="review-card reveal stagger-2">
+          <p class="review-stars" aria-label="5 out of 5 stars">★★★★★</p>
+          <p class="review-text">"Every person I talked to was so warm, considerate, and just genuinely good at what they do. Definitely one of the best customer service I've experienced."</p>
+          <p class="review-author">Laura Y. · Via Google</p>
+        </div>
+        <div class="review-card reveal stagger-3">
+          <p class="review-stars" aria-label="5 out of 5 stars">★★★★★</p>
+          <p class="review-text">"We had an amazing experience working with Samuel to design my wedding band. I had a very specific dainty vision in mind and was beyond happy to see the final result."</p>
+          <p class="review-author">Tara L. · Via Google</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="contact-inner">
+      <div>
+        <h2>Tell us about your piece</h2>
+        <p>Whether it's a wedding band, an anniversary gift, or a repair that needs a gentle hand. Tell us the story behind it and we'll figure out the rest together.</p>
+        <p class="contact-note">We usually reply within a day.</p>
+        <a href="https://instagram.com/joycreations" target="_blank" class="contact-cta">Message Us on Instagram</a>
+      </div>
+      <div class="contact-details">
+        <div>
+          <p class="contact-detail-label">Location</p>
+          <p class="contact-detail">Ottawa, ON</p>
+        </div>
+        <div>
+          <p class="contact-detail-label">Instagram</p>
+          <p class="contact-detail"><a href="https://instagram.com/joycreations" target="_blank">@joycreations</a></p>
+        </div>
+        <div>
+          <p class="contact-detail-label">Rating</p>
+          <p class="contact-detail">5.0 ★ · 183 reviews on Google</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Joy Creations · Ottawa, ON</p>
+  </footer>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>

@@ -1,5 +1,68 @@
 # Auto-Sites Build Log
 
+## Build 84 — Melodiya Records
+- **Category:** Record Store (Vinyl)
+- **City:** Calgary, AB
+- **Date:** 2026-03-29
+- **Model:** claude-opus-4-6 (subagent)
+- **Agent:** Lucy
+- **Hero pattern:** dark-immersive (full-viewport vinyl photo with gradient overlay)
+- **Typography:** Bodoni Moda 400-700 + Inter 300-600
+- **Review layout:** 2x2 same-treatment grid with border-left accent, warm background
+- **Stats bar style:** no-stats
+- **Score:** 7.83 (WHY avg) / 7.17 (WHAT avg) / 7.5 (HOW avg) → 7.5
+- **Self-review:** 7.5 (footnote)
+- **Emil footnote:** 6.0 (pre-motion)
+- **Live URL:** https://auto-sites.pages.dev/demos/melodiya-records/
+- **Key decisions:** "Every visit sounds different" headline captures the rotating stock differentiator in five words. 12 real Instagram photos used (all vinyl crate shots). "мелодия means melody" Cyrillic touch in story section adds cultural depth. Dark-immersive hero with gradient overlay lets the vinyl covers show through as art. Crates section redirects to Instagram for rotating inventory (proven pattern). Bodoni Moda's high-contrast serif gives record-sleeve editorial energy. Period-terminated headlines ("What's in the crates." "From the regulars." "Come dig.") create declarative confidence. 4 reviews including 2 that specifically mention Eddy and Eric ordering in records. Gold accent (#B8912A) darkened through iterations for WCAG compliance on cream backgrounds.
+
+### Scores
+| Round | Phase | Reviewers | Avg |
+|-------|-------|-----------|-----|
+| v0→v1 | WHY | Jobs 8.0, Cagan 7.5, Ogilvy 8.0 | 7.83 |
+| v1→v2 | WHAT | Norman 7.5, Krug 7.0, Nielsen 7.0 | 7.17 |
+| v2→v3 | HOW | Vignelli 7.5, Spiekermann 8.0, Rams 7.0, Emil 6.0 | 7.5 |
+| v5 | Self | Lucy | 7.5 |
+
+### Files
+- index-v0.html through index-v5.html (6 versions) + index.html
+- 12 real Instagram photos (ig-photo-01 through ig-photo-12)
+- screenshot-v0.png, screenshot-v1.png, screenshot-v2.png, screenshot-v4.png
+
+---
+
+## Build 83 — Dispensa Italian Grocery
+- **Category:** Italian Specialty Grocery
+- **City:** Montréal, QC (Griffintown, 696 William St)
+- **Date:** 2026-03-28
+- **Model:** claude-sonnet-4-6 (cron)
+- **Agent:** Lucy
+- **Hero pattern:** editorial-spread (dark left panel / Italian pantry photo right)
+- **Typography:** Lora 400-700 + Space Grotesk 300-600
+- **Review layout:** 2-col equal cards with terracotta border-top, same treatment throughout
+- **Stats bar style:** no-stats
+- **Score:** 7.67 (WHY avg) / 7.17 (WHAT avg) / 7.5 (HOW avg, after retry) → 7.45
+- **Self-review:** 8.0 (footnote)
+- **Emil footnote:** motion pass (hero entrance stagger + scroll-reveal)
+- **Live URL:** https://auto-sites.pages.dev/demos/dispensa-italian/
+- **Key decisions:** "Dispensa" = Italian for pantry — the word IS the brand concept. The 775 reviews line became the copy centerpiece: "775 people have taken the time to write a Google review for a grocery store. That's not a stat. That's a verdict." Weekday-only hours (Mon–Fri 7:30AM–5PM) positioned as conviction, not limitation. editorial-spread hero with dark left panel and rich Italian charcuterie photography right. Lora + Space Grotesk is a new pairing — Lora's warm humanist serif evokes Italian editorial design. Griffintown Montreal neighbourhood discovered via Outscraper — no website, 4.8★/775 reviews. No real Instagram photos found (4 AI-generated images, ceiling ~8.0). HOW panel required 1 retry (6.5 → 7.5): main fix was reducing repetition (hours appeared 3×, CTAs appeared 3×, 3 food photo moments consolidated). Name section restructured as editorial 2-column layout with "Dispensa." as large italic serif headline on left, philosophy on right. Pantry categories section improved with section-leading food photo.
+
+### Scores
+| Round | Phase | Reviewers | Avg |
+|-------|-------|-----------|-----|
+| v0→v1 | WHY | Jobs 8.0, Cagan 7.5, Ogilvy 7.5 | 7.67 |
+| v1→v2 | WHAT | Norman 7.5, Krug 7.0, Nielsen 7.0 | 7.17 |
+| v2→v2b | HOW (initial) | Vignelli 7.0, Spiekermann 6.5, Rams 6.0 | 6.5 |
+| v2b | HOW (retry) | Vignelli 8.0, Spiekermann 7.5, Rams 7.0 | 7.5 |
+| v5 | Self | Lucy | 8.0 |
+
+### Files
+- index-v0.html through index-v5.html (6 versions) + index-v2b.html (HOW retry) + index.html
+- hero-pantry.jpg, pantry-goods.jpg, cheese-detail.jpg, pasta-detail.jpg (AI-generated)
+- screenshot-v0.png through screenshot-v5.png
+
+---
+
 ## Build 82 — Juhee's Closet
 - **Category:** Clothing Alterations / Tailor
 - **City:** Montréal, QC

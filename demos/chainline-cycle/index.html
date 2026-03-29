@@ -1,0 +1,855 @@
+<!--
+  DELTA: v2b → v3
+  Changes:
+  - Body text bumped from 17px to 18px (Spiekermann: too small for line lengths)
+  - Sales section: aligned to same grid as story (image left, text right)
+  - Removed mid-page CTA (Rams: duplicates header/footer, disrupts flow)
+  - Hours section: increased padding for better proportion
+  - Tightened overall craft polish
+  HOW retry scores: Vignelli 7.5, Spiekermann 7, Rams 8 → avg 7.5
+  Hypothesis: Body text size + grid consistency will push craft score highest.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChainLine Cycle — Service & Sales | Kelowna, BC</title>
+  <meta name="description" content="Father and son bike shop in downtown Kelowna. Service, sales, and 248 five-star reasons to visit.">
+  <meta property="og:title" content="ChainLine Cycle — Service & Sales">
+  <meta property="og:description" content="Father and son bike shop in downtown Kelowna. Service, sales, and 248 five-star reasons to visit.">
+  <meta property="og:image" content="ig-photo-09.jpg">
+  <meta property="og:url" content="https://auto-sites.pages.dev/demos/chainline-cycle/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green: #2D4A3E;
+      --green-dark: #1E3329;
+      --cream: #F5F0E8;
+      --charcoal: #1C1C1C;
+      --copper: #B87333;
+      --copper-dark: #9A5F2A;
+      --white: #FAFAF7;
+      --section-pad: 96px;
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      color: var(--charcoal);
+      background: var(--cream);
+      line-height: 1.6;
+      font-size: 18px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 20px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(245, 240, 232, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .nav-logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 22px;
+      color: var(--green-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--charcoal);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 200ms var(--ease-out);
+    }
+
+    .nav-links a:hover { color: var(--copper); }
+
+    .nav-cta {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--white) !important;
+      background: var(--green);
+      padding: 10px 24px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: transform 160ms var(--ease-out), background 200ms var(--ease-out);
+    }
+
+    .nav-cta:hover { background: var(--green-dark); }
+    .nav-cta:active { transform: scale(0.97); }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--charcoal);
+      transition: transform 200ms var(--ease-out);
+    }
+
+    /* HERO — split-image-right */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 80px;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 64px 80px 48px;
+    }
+
+    .hero-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--copper);
+      margin-bottom: 24px;
+    }
+
+    .hero-headline {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 56px;
+      line-height: 1.08;
+      color: var(--green-dark);
+      margin-bottom: 24px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .hero-sub {
+      font-size: 18px;
+      color: #555;
+      line-height: 1.65;
+      max-width: 440px;
+      margin-bottom: 40px;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 16px;
+      color: var(--white);
+      background: var(--green);
+      padding: 16px 32px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: transform 160ms var(--ease-out), background 200ms var(--ease-out);
+      width: fit-content;
+    }
+
+    .hero-cta:hover { background: var(--green-dark); }
+    .hero-cta:active { transform: scale(0.97); }
+
+    .hero-image {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* SECTIONS */
+    section {
+      padding: var(--section-pad) 48px;
+    }
+
+    .section-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--copper);
+      margin-bottom: 16px;
+    }
+
+    .section-headline {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 42px;
+      line-height: 1.1;
+      color: var(--green-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 24px;
+    }
+
+    /* SERVICES */
+    .services {
+      background: var(--green-dark);
+      color: var(--cream);
+    }
+
+    .services .section-label { color: var(--copper); }
+    .services .section-headline { color: var(--cream); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 48px;
+      margin-top: 48px;
+      max-width: 1100px;
+    }
+
+    .service-item h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 22px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--cream);
+      margin-bottom: 12px;
+    }
+
+    .service-item p {
+      font-size: 16px;
+      line-height: 1.75;
+      color: rgba(245, 240, 232, 0.75);
+    }
+
+    /* ABOUT / STORY */
+    .story {
+      background: var(--cream);
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 64px;
+      align-items: center;
+      margin-top: 48px;
+    }
+
+    .story-image {
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .story-image img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .story-photos {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .story-photos .story-image img {
+      height: 320px;
+    }
+
+    /* MID CTA */
+    .mid-cta {
+      background: var(--cream);
+      text-align: center;
+      padding: 64px 48px;
+    }
+
+    .mid-cta p {
+      font-size: 18px;
+      color: #555;
+      margin-bottom: 24px;
+    }
+
+    .mid-cta a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 16px;
+      color: var(--white);
+      background: var(--green);
+      padding: 16px 32px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: transform 160ms var(--ease-out), background 200ms var(--ease-out);
+    }
+
+    .mid-cta a:hover { background: var(--green-dark); }
+    .mid-cta a:active { transform: scale(0.97); }
+
+    .story-text p {
+      font-size: 18px;
+      line-height: 1.7;
+      color: #444;
+      margin-bottom: 16px;
+    }
+
+    /* BRANDS */
+    .brands {
+      background: var(--white);
+    }
+
+    .brands-flex {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 64px;
+      align-items: center;
+      margin-top: 48px;
+    }
+
+    .brands-image {
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .brands-image img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .brands-text {
+    }
+
+    .brands-text p {
+      font-size: 18px;
+      line-height: 1.7;
+      color: #444;
+      margin-bottom: 20px;
+    }
+
+    .brand-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .brand-tag {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 8px 20px;
+      border: 1.5px solid var(--green);
+      border-radius: 4px;
+      color: var(--green);
+    }
+
+    /* REVIEWS */
+    .reviews {
+      background: var(--cream);
+    }
+
+    .reviews-list {
+      max-width: 720px;
+      margin-top: 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .review-item {
+      padding-left: 24px;
+      border-left: 3px solid var(--copper);
+    }
+
+    .review-quote {
+      font-size: 18px;
+      line-height: 1.7;
+      color: var(--charcoal);
+      font-style: italic;
+      margin-bottom: 12px;
+    }
+
+    .review-author {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--copper-dark);
+    }
+
+    /* HOURS & VISIT */
+    .visit {
+      background: var(--green-dark);
+      color: var(--cream);
+    }
+
+    .visit .section-label { color: var(--copper); }
+    .visit .section-headline { color: var(--cream); }
+
+    .visit-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      margin-top: 48px;
+    }
+
+    .hours-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .hours-list li {
+      display: flex;
+      justify-content: space-between;
+      font-size: 16px;
+      color: rgba(245, 240, 232, 0.8);
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(245, 240, 232, 0.1);
+    }
+
+    .hours-list li span:first-child {
+      font-weight: 500;
+      color: var(--cream);
+    }
+
+    .visit-info {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .visit-info p {
+      font-size: 16px;
+      line-height: 1.7;
+      color: rgba(245, 240, 232, 0.8);
+    }
+
+    .visit-info a {
+      color: var(--copper);
+      text-decoration: none;
+    }
+
+    .visit-info a:hover { text-decoration: underline; }
+
+    .map-container {
+      border-radius: 8px;
+      overflow: hidden;
+      margin-top: 16px;
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 250px;
+      border: 0;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--charcoal);
+      color: rgba(245, 240, 232, 0.5);
+      padding: 40px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 14px;
+    }
+
+    footer a {
+      color: rgba(245, 240, 232, 0.7);
+      text-decoration: none;
+    }
+
+    footer a:hover { color: var(--copper); }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      .nav-cta { display: none; }
+      .hamburger { display: flex; }
+
+      .mobile-menu {
+        display: none;
+        position: fixed;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background: var(--cream);
+        padding: 24px;
+        flex-direction: column;
+        gap: 16px;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        z-index: 99;
+      }
+
+      .mobile-menu.active { display: flex; }
+
+      .mobile-menu a {
+        font-family: 'DM Sans', sans-serif;
+        font-size: 16px;
+        font-weight: 500;
+        color: var(--charcoal);
+        text-decoration: none;
+        padding: 8px 0;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+
+      .hero-content {
+        padding: 48px 24px;
+        order: 2;
+      }
+
+      .hero-image {
+        height: 300px;
+        order: 1;
+      }
+
+      .hero-headline { font-size: 38px; }
+
+      section { padding: 64px 24px; }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .story-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .story-photos {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .brands-flex {
+        flex-direction: column;
+        gap: 32px;
+      }
+
+      .brands-image { flex: none; width: 100%; }
+      .brands-image img { height: 300px; }
+
+      .visit-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .section-headline { font-size: 32px; }
+
+      footer {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+        padding: 32px 24px;
+      }
+    }
+
+    /* SCROLL REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .stagger-1 { transition-delay: 0ms; }
+    .stagger-2 { transition-delay: 40ms; }
+    .stagger-3 { transition-delay: 80ms; }
+    .stagger-4 { transition-delay: 120ms; }
+    .stagger-5 { transition-delay: 160ms; }
+    .stagger-6 { transition-delay: 200ms; }
+
+    /* HERO ENTRANCE */
+    .hero-content .hero-label,
+    .hero-content .hero-headline,
+    .hero-content .hero-sub,
+    .hero-content > div:last-child {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: heroEntrance 700ms var(--ease-out) forwards;
+    }
+
+    .hero-content .hero-label { animation-delay: 0ms; }
+    .hero-content .hero-headline { animation-delay: 80ms; }
+    .hero-content .hero-sub { animation-delay: 160ms; }
+    .hero-content > div:last-child { animation-delay: 240ms; }
+
+    .hero-image img {
+      opacity: 0;
+      animation: heroImageIn 800ms var(--ease-out) 200ms forwards;
+    }
+
+    @keyframes heroEntrance {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes heroImageIn {
+      from {
+        opacity: 0;
+        transform: scale(1.03);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; animation: none !important; }
+      .reveal { opacity: 1; transform: none; }
+      .hero-content .hero-label,
+      .hero-content .hero-headline,
+      .hero-content .hero-sub,
+      .hero-content > div:last-child,
+      .hero-image img {
+        opacity: 1;
+        transform: none;
+        animation: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">ChainLine Cycle</a>
+    <ul class="nav-links">
+      <li><a href="#services">Service</a></li>
+      <li><a href="#story">Our Story</a></li>
+      <li><a href="#brands">Brands</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#visit">Visit</a></li>
+    </ul>
+    <a href="tel:+12507127687" class="nav-cta">Call (250) 712-7687</a>
+    <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('active')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu">
+    <a href="#services" onclick="this.parentElement.classList.remove('active')">Service</a>
+    <a href="#story" onclick="this.parentElement.classList.remove('active')">Our Story</a>
+    <a href="#brands" onclick="this.parentElement.classList.remove('active')">Brands</a>
+    <a href="#reviews" onclick="this.parentElement.classList.remove('active')">Reviews</a>
+    <a href="#visit" onclick="this.parentElement.classList.remove('active')">Visit</a>
+    <a href="tel:+12507127687" onclick="this.parentElement.classList.remove('active')">Call (250) 712-7687</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <p class="hero-label">Downtown Kelowna, BC</p>
+      <h1 class="hero-headline">Your bike deserves someone who gives a damn.</h1>
+      <p class="hero-sub">Tao and Darrin have been fixing and fitting bikes in Kelowna for years. Father and son. 248 reviews. 4.9 stars. The kind of shop where they remember your name and your drivetrain.</p>
+      <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
+        <a href="tel:+12507127687" class="hero-cta">Call (250) 712-7687</a>
+        <a href="https://www.instagram.com/chainlinecycle/" target="_blank" rel="noopener" style="font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 16px; color: var(--green); text-decoration: none; padding: 16px 0; transition: color 200ms var(--ease-out);">@chainlinecycle →</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="ig-photo-09.jpg" alt="ChainLine Cycle workshop tool wall — organized professional bike tools on blue pegboard" loading="eager">
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <p class="section-label reveal">Service</p>
+    <h2 class="section-headline reveal">We fix what other shops won't touch.</h2>
+    <div class="services-grid">
+      <div class="service-item reveal stagger-1">
+        <h3>Tune-Ups</h3>
+        <p>Full drivetrain adjustment, brake alignment, wheel truing. The basics done right, every time.</p>
+      </div>
+      <div class="service-item reveal stagger-2">
+        <h3>Suspension Service</h3>
+        <p>Fork and shock rebuilds. Proper fluid changes, seal replacements, and setup for your weight and riding style.</p>
+      </div>
+      <div class="service-item reveal stagger-3">
+        <h3>Wheel Builds</h3>
+        <p>Hand-built wheels tensioned properly. We stock DT Swiss, Industry Nine, and build to your spec.</p>
+      </div>
+      <div class="service-item reveal stagger-4">
+        <h3>E-Bike Service</h3>
+        <p>Motor diagnostics, battery checks, firmware updates. Your e-bike is a $6,000 machine. We treat it like one.</p>
+      </div>
+      <div class="service-item reveal stagger-5">
+        <h3>Bike Fits</h3>
+        <p>Saddle height, reach, stack. A proper fit changes how your bike feels on the first pedal stroke.</p>
+      </div>
+      <div class="service-item reveal stagger-6">
+        <h3>Full Overhauls</h3>
+        <p>Strip it down, clean every bearing, rebuild from the frame up. Your bike comes back better than new.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section class="story" id="story">
+    <p class="section-label reveal">Father & Son</p>
+    <h2 class="section-headline reveal">Tao and Darrin built this shop on kindness.</h2>
+    <div class="story-grid reveal">
+      <div class="story-photos">
+        <div class="story-image">
+          <img src="ig-photo-12.jpg" alt="ChainLine Cycle staff member explaining bike details" loading="lazy">
+        </div>
+        <div class="story-image">
+          <img src="ig-photo-11.jpg" alt="ChainLine Cycle staff showing bikes on the shop floor" loading="lazy">
+        </div>
+      </div>
+      <div class="story-text">
+        <p>ChainLine Cycle is a father and son operation in downtown Kelowna. Tao and Darrin learn your name, remember what you ride, and treat every repair like it's their own.</p>
+        <p>In a town built for cycling, with mountains in every direction and trails that start 15 minutes from the shop, they've become the place riders trust. 248 Google reviews at 4.9 stars, and most of them mention Tao or Darrin by name.</p>
+        <p>A reputation earned one bike at a time.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BRANDS -->
+  <section class="brands" id="brands">
+    <p class="section-label reveal">Sales</p>
+    <h2 class="section-headline reveal">We ride what we sell.</h2>
+    <div class="brands-flex reveal">
+      <div class="brands-image">
+        <img src="ig-photo-04.jpg" alt="Pivot mountain bike on the ChainLine Cycle shop floor" loading="lazy">
+      </div>
+      <div class="brands-text">
+        <p>Transition and Pivot for the trail riders. Surly for the commuters and tourers. Every bike on our floor has been ridden by someone on the team.</p>
+        <p>Components from DT Swiss, Maxxis, and Chromag. Stock rotates with the seasons, so <a href="https://www.instagram.com/chainlinecycle/" target="_blank" rel="noopener" style="color: var(--copper); text-decoration: none; font-weight: 500;">check our Instagram</a> or call ahead if you're after something specific.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="reviews" id="reviews">
+    <p class="section-label reveal">From the Riders</p>
+    <h2 class="section-headline reveal">"The hearts on these guys are huge."</h2>
+    <div class="reviews-list">
+      <div class="review-item reveal stagger-1">
+        <p class="review-quote">"This Cycle shop is phenomenal. The hearts on these guys are huge! If you're living in Kelowna this is the only place."</p>
+        <p class="review-author">Ben P. · Via Google</p>
+      </div>
+      <div class="review-item reveal stagger-2">
+        <p class="review-quote">"Huge thank you Tao and Darrin. The father and son kindness, the best."</p>
+        <p class="review-author">Suzanne C. · Via Google</p>
+      </div>
+      <div class="review-item reveal stagger-3">
+        <p class="review-quote">"Found a great deal online and purchased a bike from CLC. The entire process was seamless. Communication was great."</p>
+        <p class="review-author">Don M. · Via Google</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- VISIT -->
+  <section class="visit" id="visit">
+    <p class="section-label reveal">Visit</p>
+    <h2 class="section-headline reveal">Come find us.</h2>
+    <div class="visit-grid reveal">
+      <div>
+        <ul class="hours-list">
+          <li><span>Monday</span><span>10:00 AM – 5:00 PM</span></li>
+          <li><span>Tuesday</span><span>9:30 AM – 5:30 PM</span></li>
+          <li><span>Wednesday</span><span>9:30 AM – 5:30 PM</span></li>
+          <li><span>Thursday</span><span>9:30 AM – 5:30 PM</span></li>
+          <li><span>Friday</span><span>9:30 AM – 5:30 PM</span></li>
+          <li><span>Saturday</span><span>10:00 AM – 4:00 PM</span></li>
+          <li><span>Sunday</span><span>Closed</span></li>
+        </ul>
+      </div>
+      <div class="visit-info">
+        <p>
+          <strong style="color: var(--cream);">ChainLine Cycle — Service & Sales</strong><br>
+          Downtown Kelowna, BC<br><br>
+          <a href="tel:+12507127687">(250) 712-7687</a><br>
+          <a href="https://www.instagram.com/chainlinecycle/" target="_blank" rel="noopener">@chainlinecycle</a>
+        </p>
+        <div class="map-container">
+          <iframe src="https://maps.google.com/maps?q=ChainLine+Cycle+Kelowna+BC&output=embed" allowfullscreen loading="lazy" title="ChainLine Cycle location"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>© 2026 ChainLine Cycle</span>
+    <a href="https://www.instagram.com/chainlinecycle/" target="_blank" rel="noopener">@chainlinecycle</a>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>

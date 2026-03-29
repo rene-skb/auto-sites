@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Juhee's Closet — Clothing Alterations, Montreal</title>
+  <meta name="description" content="Expert clothing alterations in NDG, Montreal. Suits, gowns, cosplay, and everyday repairs. Open Wednesday and Saturday.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Juhee's Closet — Clothing Alterations">
+  <meta property="og:description" content="Her seams are a class above. Clothing alterations in NDG, Montreal. Open Wed & Sat.">
+  <meta property="og:image" content="hero-fabric.png">
+  <meta property="og:url" content="https://auto-sites.pages.dev/demos/juhees-closet/">
+  <meta property="og:type" content="website">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #F5F1E6;
+      --cream-dark: #EDE8D9;
+      --sage: #7A9178;
+      --sage-dark: #5F7260;
+      --charcoal: #2C2C2A;
+      --charcoal-mid: #4A4A47;
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+      --section-pad: 96px;
+      --col-width: 1200px;
+      --col-pad: 64px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--charcoal);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ---- NAV ---- */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 48px;
+      background: rgba(245, 241, 230, 0.93);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(44, 44, 42, 0.08);
+    }
+
+    .nav-logo {
+      font-family: 'Fraunces', serif;
+      font-size: 18px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      color: var(--charcoal);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--charcoal-mid);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 200ms;
+    }
+
+    .nav-links a:hover { color: var(--charcoal); }
+
+    .nav-cta {
+      color: var(--cream) !important;
+      background: var(--charcoal);
+      padding: 9px 20px;
+      border-radius: 2px;
+      transition: background 200ms var(--ease-out) !important;
+    }
+
+    .nav-cta:hover { background: var(--sage-dark) !important; color: var(--cream) !important; }
+
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      flex-direction: column;
+      gap: 5px;
+      padding: 4px;
+    }
+
+    .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--charcoal); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 65px; left: 0; right: 0;
+      background: var(--cream);
+      border-bottom: 1px solid rgba(44,44,42,0.12);
+      padding: 24px 32px;
+      z-index: 99;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-size: 16px; color: var(--charcoal); text-decoration: none; }
+
+    /* ---- HERO ---- */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 65px;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px var(--col-pad);
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 12px;
+    }
+
+    /* Hero headline — clip mask for line reveals */
+    .hero-headline {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(40px, 4.5vw, 62px);
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--charcoal);
+      margin-bottom: 24px;
+    }
+
+    .hero-headline em {
+      font-style: italic;
+      color: var(--sage-dark);
+    }
+
+    /* Line-reveal wrapper */
+    .line-reveal {
+      display: block;
+      overflow: hidden;
+    }
+
+    .line-inner {
+      display: block;
+      transform: translateY(100%);
+      transition: transform 800ms var(--ease-spring);
+    }
+
+    .line-inner.visible {
+      transform: translateY(0);
+    }
+
+    .hero-sub {
+      font-size: 17px;
+      font-weight: 300;
+      line-height: 1.65;
+      color: var(--charcoal-mid);
+      max-width: 380px;
+      margin-bottom: 36px;
+
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 600ms var(--ease-out) 400ms, transform 600ms var(--ease-out) 400ms;
+    }
+
+    .hero-sub.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .hero-sub strong { font-weight: 500; color: var(--charcoal); }
+
+    .hero-cta-wrap {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 600ms var(--ease-out) 550ms, transform 600ms var(--ease-out) 550ms;
+    }
+
+    .hero-cta-wrap.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .btn-primary {
+      display: inline-block;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--cream);
+      background: var(--charcoal);
+      padding: 14px 28px;
+      border-radius: 2px;
+      text-decoration: none;
+      transition: background 200ms var(--ease-out);
+    }
+
+    .btn-primary:hover { background: var(--sage-dark); }
+    .btn-primary:active { transform: scale(0.97); transition: transform 160ms var(--ease-out), background 200ms var(--ease-out); }
+
+    .hero-right {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-right img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    /* ---- SERVICES ---- */
+    .services {
+      padding: var(--section-pad) 0;
+    }
+
+    .services-header {
+      padding: 0 var(--col-pad) 48px;
+      max-width: var(--col-width);
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(30px, 3.5vw, 46px);
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--charcoal);
+    }
+
+    .section-subtitle {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--charcoal-mid);
+      margin-top: 10px;
+    }
+
+    .services-panels {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px;
+    }
+
+    .service-panel {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-panel img {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Ken Burns on about-image (static context) */
+    .ken-burns {
+      animation: kenBurns 20s ease-in-out infinite alternate;
+    }
+
+    @keyframes kenBurns {
+      from { transform: scale(1.0); }
+      to   { transform: scale(1.05); }
+    }
+
+    .service-overlay {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 40px 40px 36px;
+      background: linear-gradient(to top, rgba(44,44,42,0.88) 0%, rgba(44,44,42,0.3) 60%, transparent 100%);
+    }
+
+    .service-overlay-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 8px;
+
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 500ms var(--ease-out) 60ms, transform 500ms var(--ease-out) 60ms;
+    }
+
+    .service-overlay-title {
+      font-family: 'Fraunces', serif;
+      font-size: 24px;
+      font-weight: 500;
+      color: var(--cream);
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 500ms var(--ease-out) 120ms, transform 500ms var(--ease-out) 120ms;
+    }
+
+    .service-overlay-items {
+      font-size: 14px;
+      font-weight: 300;
+      color: rgba(245, 241, 230, 0.65);
+      letter-spacing: 0.04em;
+
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 500ms var(--ease-out) 180ms, transform 500ms var(--ease-out) 180ms;
+    }
+
+    .service-panel.reveal-done .service-overlay-label,
+    .service-panel.reveal-done .service-overlay-title,
+    .service-panel.reveal-done .service-overlay-items {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ---- REVIEWS ---- */
+    .reviews {
+      background: var(--charcoal);
+      padding: var(--section-pad) var(--col-pad);
+    }
+
+    .reviews-inner {
+      max-width: var(--col-width);
+      margin: 0 auto;
+    }
+
+    .reviews-header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+
+    .reviews-header .section-label { color: var(--sage); }
+    .reviews-header .section-title { color: var(--cream); margin-top: 12px; }
+
+    .reviews-stat { text-align: right; padding-bottom: 4px; }
+
+    .stat-number {
+      font-family: 'Fraunces', serif;
+      font-size: 56px;
+      font-weight: 300;
+      color: var(--cream);
+      line-height: 1;
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(245,241,230,0.4);
+      display: block;
+      margin-top: 4px;
+    }
+
+    .review-featured {
+      background: rgba(122, 145, 120, 0.1);
+      border: 1px solid rgba(122, 145, 120, 0.18);
+      padding: 52px;
+      margin-bottom: 24px;
+    }
+
+    .review-featured-text {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(22px, 2.6vw, 30px);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--cream);
+      line-height: 1.4;
+      margin-bottom: 20px;
+    }
+
+    .review-attribution {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--sage);
+    }
+
+    .reviews-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .review-card {
+      background: rgba(245, 241, 230, 0.04);
+      border: 1px solid rgba(245, 241, 230, 0.07);
+      padding: 32px;
+    }
+
+    .review-stars {
+      color: var(--sage);
+      font-size: 11px;
+      letter-spacing: 4px;
+      margin-bottom: 16px;
+    }
+
+    .review-text {
+      font-family: 'Fraunces', serif;
+      font-size: 17px;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--cream);
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+
+    .review-meta {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(245, 241, 230, 0.3);
+    }
+
+    /* ---- ABOUT ---- */
+    .about {
+      padding: var(--section-pad) var(--col-pad);
+    }
+
+    .about-inner {
+      max-width: var(--col-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 96px;
+      align-items: center;
+    }
+
+    .about-image-wrap {
+      overflow: hidden;
+    }
+
+    .about-image-wrap img {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      display: block;
+    }
+
+    .about-title {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(28px, 3vw, 42px);
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--charcoal);
+      margin-bottom: 28px;
+    }
+
+    .about-body {
+      font-size: 17px;
+      font-weight: 300;
+      color: var(--charcoal-mid);
+      line-height: 1.7;
+      margin-bottom: 16px;
+      max-width: 460px;
+    }
+
+    /* ---- VISIT ---- */
+    .visit {
+      background: var(--cream-dark);
+      padding: var(--section-pad) var(--col-pad);
+    }
+
+    .visit-inner {
+      max-width: var(--col-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .visit-title {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(28px, 3vw, 40px);
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--charcoal);
+      margin-bottom: 28px;
+    }
+
+    .booking-note {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--charcoal-mid);
+      line-height: 1.65;
+      margin-bottom: 28px;
+      border-left: 2px solid var(--sage);
+      padding-left: 18px;
+    }
+
+    .booking-note strong {
+      font-weight: 500;
+      color: var(--charcoal);
+    }
+
+    .visit-detail {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .detail-line {
+      display: flex;
+      gap: 20px;
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    .detail-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      min-width: 64px;
+      padding-top: 3px;
+    }
+
+    .detail-value { font-size: 15px; font-weight: 300; color: var(--charcoal-mid); }
+    .detail-value a { color: var(--charcoal-mid); text-decoration: none; }
+
+    .map-embed {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      border: none;
+      display: block;
+      filter: grayscale(20%);
+    }
+
+    /* ---- FOOTER ---- */
+    footer {
+      background: var(--charcoal);
+      padding: 40px var(--col-pad);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-logo {
+      font-family: 'Fraunces', serif;
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--cream);
+    }
+
+    .footer-note {
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(245, 241, 230, 0.35);
+    }
+
+    /* ---- GENERAL REVEAL ---- */
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 1024px) {
+      :root { --col-pad: 40px; }
+      nav { padding: 18px 32px; }
+      .hero-left { padding: 60px 40px; }
+      .about-inner { gap: 48px; }
+    }
+
+    @media (max-width: 768px) {
+      :root { --col-pad: 24px; --section-pad: 64px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { padding: 56px 24px 48px; }
+      .hero-right { height: 280px; }
+      .hero-headline { font-size: 36px; }
+
+      .services-panels { grid-template-columns: 1fr; }
+
+      .reviews-header { grid-template-columns: 1fr; gap: 16px; }
+      .reviews-stat { text-align: left; }
+      .reviews-pair { grid-template-columns: 1fr; }
+      .review-featured { padding: 32px 24px; }
+
+      .about-inner { grid-template-columns: 1fr; gap: 40px; }
+      .about-image-wrap { display: none; }
+
+      .visit-inner { grid-template-columns: 1fr; gap: 40px; }
+
+      footer { flex-direction: column; gap: 8px; text-align: center; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .line-inner { transform: translateY(0); transition: none; }
+      .hero-sub, .hero-cta-wrap { opacity: 1; transform: none; transition: none; }
+      .service-overlay-label, .service-overlay-title, .service-overlay-items { opacity: 1; transform: none; transition: none; }
+      .ken-burns { animation: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">Juhee's Closet</a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="tel:+15148000065" class="nav-cta">Book Now</a></li>
+    </ul>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#services" onclick="toggleMenu()">Services</a>
+    <a href="#reviews" onclick="toggleMenu()">Reviews</a>
+    <a href="#about" onclick="toggleMenu()">About</a>
+    <a href="tel:+15148000065">Call +1 514-800-0065</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <p class="section-label reveal">Clothing Alterations · NDG, Montréal</p>
+      <h1 class="hero-headline">
+        <span class="line-reveal"><span class="line-inner" id="line1">"Her seams are</span></span>
+        <span class="line-reveal"><span class="line-inner" id="line2"><em>a class above."</em></span></span>
+      </h1>
+      <p class="hero-sub" id="heroSub">
+        Suits, gowns, and cosplay — Juhee works <strong>Wednesday and Saturday</strong> by choice. When she's here, she's fully here.
+      </p>
+      <div class="hero-cta-wrap" id="heroCta">
+        <a href="tel:+15148000065" class="btn-primary">Call +1 514-800-0065</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <img src="hero-fabric.png" alt="Tailor hands adjusting fine fabric, warm light" loading="eager">
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="services-header">
+      <p class="section-label reveal">What Juhee does</p>
+      <h2 class="section-title reveal">Suits to costumes.<br>Same care, every time.</h2>
+      <p class="section-subtitle reveal">4.9 stars across 83 Google reviews. No website until now.</p>
+    </div>
+    <div class="services-panels">
+      <div class="service-panel reveal" data-panel>
+        <img src="fabric-texture.png" alt="Fine fabric close-up, cream and sage">
+        <div class="service-overlay">
+          <div class="service-overlay-label">Formalwear</div>
+          <div class="service-overlay-title">Tailoring &amp; Alterations</div>
+          <div class="service-overlay-items">Suits · Jackets · Gowns · Dresses · Hems</div>
+        </div>
+      </div>
+      <div class="service-panel reveal" data-panel>
+        <img src="thread-detail.png" alt="Needle and thread, artisan craft detail">
+        <div class="service-overlay">
+          <div class="service-overlay-label">All the rest</div>
+          <div class="service-overlay-title">Cosplay &amp; Everyday</div>
+          <div class="service-overlay-items">Costumes · Zippers · Buttons · Repairs</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="reviews" id="reviews">
+    <div class="reviews-inner">
+      <div class="reviews-header reveal">
+        <div>
+          <p class="section-label">What people say</p>
+          <h2 class="section-title">83 reviews.<br>All word of mouth.</h2>
+        </div>
+        <div class="reviews-stat">
+          <span class="stat-number" data-count-to="4.9" data-count-decimals="1">4.9</span>
+          <span class="stat-label">via Google</span>
+        </div>
+      </div>
+
+      <div class="review-featured reveal">
+        <p class="review-featured-text">"Juhee is the sweetest person ever. Her seams were way better than the original cosplay."</p>
+        <p class="review-attribution">Aki · Via Google</p>
+      </div>
+
+      <div class="reviews-pair">
+        <div class="review-card reveal">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Her seams are a class above."</p>
+          <p class="review-meta">David G. · Via Google</p>
+        </div>
+        <div class="review-card reveal">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"I will be going back with all my suits."</p>
+          <p class="review-meta">Evan S. · Via Google</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="about-inner">
+      <div class="about-image-wrap reveal">
+        <img src="fabric-texture.png" alt="Fine fabric texture" class="ken-burns">
+      </div>
+      <div>
+        <p class="section-label reveal">About Juhee</p>
+        <h2 class="about-title reveal">Two days a week.<br>Always worth the wait.</h2>
+        <p class="about-body reveal">Juhee has been doing alterations in NDG for years. She works Wednesday and Saturday by choice, because that's how she keeps the quality right.</p>
+        <p class="about-body reveal">She does suits, gowns, and cosplay with the same attention. Her Google reviews all say the same thing: the seams, and the kindness. Both are real.</p>
+        <a href="tel:+15148000065" class="btn-primary reveal" style="display: inline-block; margin-top: 16px;">Call +1 514-800-0065</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISIT -->
+  <section class="visit" id="visit">
+    <div class="visit-inner">
+      <div>
+        <p class="section-label reveal">Find Juhee</p>
+        <h2 class="visit-title reveal">5726 Sherbrooke St W,<br>Suite 219.</h2>
+
+        <p class="booking-note reveal"><strong>Call ahead when you can.</strong> Juhee fills up quickly. Saturdays especially. Walk-ins welcome, but a quick call saves the trip.</p>
+
+        <div class="visit-detail reveal">
+          <div class="detail-line">
+            <span class="detail-label">Address</span>
+            <span class="detail-value">5726 Sherbrooke St W, #219<br>Montréal, QC H3H 2J4</span>
+          </div>
+          <div class="detail-line">
+            <span class="detail-label">Wed</span>
+            <span class="detail-value">11:00 AM – 6:00 PM</span>
+          </div>
+          <div class="detail-line">
+            <span class="detail-label">Sat</span>
+            <span class="detail-value">11:00 AM – 5:00 PM</span>
+          </div>
+          <div class="detail-line">
+            <span class="detail-label">Phone</span>
+            <span class="detail-value"><a href="tel:+15148000065">+1 514-800-0065</a></span>
+          </div>
+        </div>
+
+        <a href="tel:+15148000065" class="btn-primary reveal">Call +1 514-800-0065</a>
+      </div>
+      <div class="reveal">
+        <iframe
+          class="map-embed"
+          src="https://maps.google.com/maps?q=5726+Sherbrooke+St+W,+Montreal,+QC&output=embed"
+          allowfullscreen=""
+          loading="lazy"
+          title="Juhee's Closet location">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-logo">Juhee's Closet</span>
+    <span class="footer-note">5726 Sherbrooke St W #219, Montréal · Wed & Sat only</span>
+  </footer>
+
+  <script>
+    // Mobile menu
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('open');
+    }
+    document.addEventListener('click', function(e) {
+      const menu = document.getElementById('mobileMenu');
+      const hamburger = document.querySelector('.hamburger');
+      if (menu.classList.contains('open') && !menu.contains(e.target) && !hamburger.contains(e.target)) {
+        menu.classList.remove('open');
+      }
+    });
+
+    // Check for reduced motion
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Hero line-reveal on load
+    if (!prefersReducedMotion) {
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          document.getElementById('line1').classList.add('visible');
+        }, 100);
+        setTimeout(() => {
+          document.getElementById('line2').classList.add('visible');
+        }, 220);
+        setTimeout(() => {
+          document.getElementById('heroSub').classList.add('visible');
+        }, 500);
+        setTimeout(() => {
+          document.getElementById('heroCta').classList.add('visible');
+        }, 650);
+      });
+    } else {
+      // Show immediately if reduced motion
+      ['line1','line2','heroSub','heroCta'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.classList.add('visible');
+      });
+    }
+
+    // General scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const isStagger = entry.target.closest('.services-panels, .reviews-pair');
+          const siblings = isStagger ? entry.target.parentNode.querySelectorAll('.reveal') : null;
+          const idx = siblings ? Array.from(siblings).indexOf(entry.target) : 0;
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+            // If it's a service panel, also trigger overlay animation
+            if (entry.target.hasAttribute('data-panel')) {
+              setTimeout(() => entry.target.classList.add('reveal-done'), 200);
+            }
+          }, isStagger ? idx * 80 : 0);
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    reveals.forEach(el => revealObserver.observe(el));
+
+    // Count-up animation for stat numbers
+    function animateCount(el) {
+      if (prefersReducedMotion) return;
+      const target = parseFloat(el.dataset.countTo);
+      const decimals = parseInt(el.dataset.countDecimals) || 0;
+      const duration = 800;
+      const start = performance.now();
+      const startVal = target * 0.7;
+
+      function update(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        // ease out
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = startVal + (target - startVal) * eased;
+        el.textContent = current.toFixed(decimals);
+        if (progress < 1) requestAnimationFrame(update);
+        else el.textContent = target.toFixed(decimals);
+      }
+      requestAnimationFrame(update);
+    }
+
+    const statObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && entry.target.dataset.countTo) {
+          animateCount(entry.target);
+          statObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('[data-count-to]').forEach(el => statObserver.observe(el));
+  </script>
+</body>
+</html>

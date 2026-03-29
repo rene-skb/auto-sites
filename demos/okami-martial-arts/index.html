@@ -1,0 +1,739 @@
+<!--
+  DELTA: v0 → v1
+  Changes: Add CTA buttons (hero + post-reviews), sharpen program copy with Okami-specific details, tie programs to confidence outcome
+  WHY scores: Jobs 8, Cagan 8.5, Ogilvy 9 → avg 8.5
+
+  DELTA: v1 → v2
+  Changes: Fix contrast (darken body text, darken labels), remove interactive affordance ambiguity from program cards, add focus indicators
+  WHAT scores: Norman 8, Krug 9, Nielsen 6.5 → avg 7.83
+
+  DELTA: v2 → v2b (HOW retry)
+  Changes: Increase body text size to 18px, bump card text to 16px, reduce label repetition, tighten about-grid asymmetry, remove redundant rating in reviews header
+  HOW scores (initial): Vignelli 7, Spiekermann 6, Rams 7 → avg 6.67 (below gate)
+  HOW scores (retry): Vignelli 7, Spiekermann 7.5, Rams 8 → avg 7.5
+
+  DELTA: v2b → v3
+  Changes: Widen program grid gaps, increase card title size, uppercase review authors with more spacing, replace single large feature photo with 3-image gallery strip using real photos
+  Hypothesis: Gallery strip adds visual variety and uses real photos (proven higher ceiling). Card hierarchy tightening closes Spiekermann's gap.
+
+  PHOTO EVALUATION & ASSIGNMENTS
+  ================================
+  Hero: belt-detail.png (AI-generated, landscape, cinematic belt close-up)
+  About section: ig-photo-12.jpg (girls with Okami logo shirts, square, 7/10)
+  Programs grid: ig-photo-03.jpg (kids kicking, 5/10), ig-photo-11.jpg (Muay Thai group, 5/10)
+  Community: ig-photo-07.jpg (grading lineup, 5/10)
+  Feature: bow-detail.png (AI-generated, bowing)
+  Skip: 01 (meme), 02 (flyer), 05 (flyer), 06 (meme), 08 (poor quality), 10 (cluttered)
+  Reserve: ig-photo-04.jpg (toddler), ig-photo-09.jpg (police officer)
+
+  ROTATION CHECK (Build 88)
+  Hero pattern: centered-minimal (last 3: full-viewport-bg, split-image-right, dark-immersive)
+  Typography: Bitter + DM Sans (last 3: Instrument Serif+Space Grotesk, Barlow Condensed+DM Sans, Cormorant Garamond+Inter)
+  Review layout: vertical stack with large quote marks (last 3: featured pull-quote+2, single-column stacked, 3-column cards)
+  Stats bar: no-stats
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Okami Martial Arts — Saskatoon, SK</title>
+  <meta name="description" content="Family martial arts dojo in Saskatoon. Kids and adults. Students stay for nine years.">
+  <meta property="og:title" content="Okami Martial Arts">
+  <meta property="og:description" content="Family martial arts dojo in Saskatoon. Students stay nine years.">
+  <meta property="og:image" content="belt-detail.png">
+  <meta property="og:url" content="https://auto-sites.pages.dev/demos/okami-martial-arts/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --charcoal: #1a1a1a;
+      --cream: #f5f0e8;
+      --vermillion: #991b1b;
+      --warm-gray: #4a4540;
+      --light-gray: #c4bfb8;
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --s1: 8px; --s2: 16px; --s3: 24px; --s4: 32px;
+      --s5: 48px; --s6: 64px; --s7: 96px; --s8: 128px;
+      --section-pad: clamp(64px, 10vw, 128px);
+      --content-width: 1120px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      color: var(--charcoal);
+      background: var(--cream);
+      font-size: 18px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { display: block; max-width: 100%; height: auto; }
+
+    :focus-visible {
+      outline: 2px solid var(--vermillion);
+      outline-offset: 2px;
+    }
+
+    .container {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      padding: 0 var(--s3);
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(245, 240, 232, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(26, 26, 26, 0.06);
+    }
+
+    nav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .nav-logo {
+      font-family: 'Bitter', serif;
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: var(--s4);
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--warm-gray);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 200ms var(--ease-out);
+    }
+
+    .nav-links a:hover { color: var(--charcoal); }
+
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      width: 32px;
+      height: 32px;
+      flex-direction: column;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--charcoal);
+      transition: all 200ms var(--ease-out);
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 64px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--cream);
+      z-index: 99;
+      padding: var(--s6) var(--s3);
+    }
+
+    .mobile-menu.active { display: block; }
+
+    .mobile-menu a {
+      display: block;
+      font-family: 'Bitter', serif;
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--charcoal);
+      text-decoration: none;
+      padding: var(--s2) 0;
+      border-bottom: 1px solid var(--light-gray);
+    }
+
+    /* HERO — centered-minimal */
+    .hero {
+      padding: calc(var(--s8) + 64px) 0 var(--s7);
+      text-align: center;
+    }
+
+    .hero-kanji {
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--vermillion);
+      margin-bottom: var(--s3);
+    }
+
+    .hero h1 {
+      font-family: 'Bitter', serif;
+      font-size: clamp(40px, 6vw, 72px);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--charcoal);
+      max-width: 720px;
+      margin: 0 auto var(--s3);
+    }
+
+    .hero-sub {
+      font-size: 19px;
+      font-weight: 300;
+      color: var(--warm-gray);
+      max-width: 520px;
+      margin: 0 auto var(--s5);
+      line-height: 1.5;
+    }
+
+    .hero-meta {
+      display: flex;
+      justify-content: center;
+      gap: var(--s5);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--warm-gray);
+      letter-spacing: 0.04em;
+    }
+
+    .hero-meta span { display: flex; align-items: center; gap: var(--s1); }
+
+    .hero-cta {
+      display: inline-block;
+      padding: 14px 36px;
+      background: var(--vermillion);
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      text-decoration: none;
+      border-radius: 6px;
+      letter-spacing: 0.04em;
+      margin-bottom: var(--s4);
+      transition: transform 160ms var(--ease-out);
+    }
+    .hero-cta:active { transform: scale(0.97); }
+
+    /* HERO IMAGE */
+    .hero-image {
+      margin: var(--s7) auto 0;
+      max-width: 960px;
+      padding: 0 var(--s3);
+    }
+
+    .hero-image img {
+      width: 100%;
+      border-radius: 8px;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+    }
+
+    /* ABOUT */
+    .about {
+      padding: var(--section-pad) 0;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 5fr 6fr;
+      gap: var(--s7);
+      align-items: center;
+    }
+
+    .about-image img {
+      width: 100%;
+      border-radius: 8px;
+      aspect-ratio: 1;
+      object-fit: cover;
+    }
+
+    .about-label {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--vermillion);
+      margin-bottom: var(--s2);
+    }
+
+    .about h2 {
+      font-family: 'Bitter', serif;
+      font-size: clamp(28px, 3.5vw, 40px);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: var(--s3);
+    }
+
+    .about p {
+      color: var(--warm-gray);
+      margin-bottom: var(--s2);
+    }
+
+    /* PROGRAMS */
+    .programs {
+      background: var(--charcoal);
+      color: var(--cream);
+      padding: var(--section-pad) 0;
+    }
+
+    .programs-label {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--vermillion);
+      margin-bottom: var(--s2);
+      text-align: center;
+    }
+
+    .programs h2 {
+      font-family: 'Bitter', serif;
+      font-size: clamp(28px, 3.5vw, 40px);
+      font-weight: 700;
+      line-height: 1.2;
+      text-align: center;
+      margin-bottom: var(--s6);
+      letter-spacing: -0.01em;
+    }
+
+    .programs-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--s5);
+    }
+
+    .program-card {
+      padding: var(--s4);
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .program-card h3 {
+      font-family: 'Bitter', serif;
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: var(--s2);
+      letter-spacing: -0.01em;
+    }
+
+    .program-card p {
+      font-size: 16px;
+      color: rgba(245, 240, 232, 0.75);
+      line-height: 1.55;
+    }
+
+    /* GALLERY STRIP */
+    .gallery {
+      padding: var(--s6) 0;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: var(--s3);
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      border-radius: 8px;
+      aspect-ratio: 1;
+      object-fit: cover;
+    }
+
+    /* REVIEWS */
+    .reviews {
+      padding: 0 0 var(--section-pad);
+    }
+
+    .reviews-label {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--vermillion);
+      margin-bottom: var(--s2);
+    }
+
+    .reviews h2 {
+      font-family: 'Bitter', serif;
+      font-size: clamp(28px, 3.5vw, 40px);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: var(--s6);
+    }
+
+    .review-stack {
+      display: flex;
+      flex-direction: column;
+      gap: var(--s5);
+    }
+
+    .review-item {
+      padding-bottom: var(--s5);
+      border-bottom: 1px solid var(--light-gray);
+    }
+
+    .review-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+    .review-quote {
+      font-family: 'Bitter', serif;
+      font-size: 21px;
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.55;
+      color: var(--charcoal);
+      margin-bottom: var(--s2);
+    }
+
+    .review-quote::before {
+      content: '\201C';
+      color: var(--vermillion);
+      font-size: 32px;
+      line-height: 0;
+      vertical-align: -8px;
+      margin-right: 4px;
+    }
+
+    .review-author {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--warm-gray);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: var(--s2);
+    }
+
+    /* VISIT */
+    .visit {
+      background: var(--charcoal);
+      color: var(--cream);
+      padding: var(--section-pad) 0;
+    }
+
+    .visit-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--s7);
+    }
+
+    .visit-label {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--vermillion);
+      margin-bottom: var(--s2);
+    }
+
+    .visit h2 {
+      font-family: 'Bitter', serif;
+      font-size: clamp(28px, 3.5vw, 40px);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: var(--s3);
+    }
+
+    .visit p {
+      color: rgba(245, 240, 232, 0.7);
+      margin-bottom: var(--s2);
+    }
+
+    .visit-hours {
+      list-style: none;
+      font-size: 15px;
+      color: rgba(245, 240, 232, 0.7);
+    }
+
+    .visit-hours li {
+      padding: var(--s1) 0;
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .visit-hours .day { font-weight: 500; color: var(--cream); }
+
+    .visit-cta {
+      display: inline-block;
+      margin-top: var(--s4);
+      padding: 14px 32px;
+      background: var(--cream);
+      color: var(--charcoal);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      text-decoration: none;
+      border-radius: 6px;
+      letter-spacing: 0.04em;
+      transition: transform 160ms var(--ease-out);
+    }
+
+    .visit-cta:active { transform: scale(0.97); }
+
+    .visit-map {
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .visit-map iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 360px;
+      border: none;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: var(--s4) 0;
+      text-align: center;
+      font-size: 13px;
+      color: var(--warm-gray);
+    }
+
+    footer a {
+      color: var(--warm-gray);
+      text-decoration: none;
+    }
+
+    footer a:hover { color: var(--charcoal); }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .about-grid { grid-template-columns: 1fr; gap: var(--s5); }
+      .programs-grid { grid-template-columns: 1fr; }
+      .visit-grid { grid-template-columns: 1fr; }
+      .hero-meta { flex-direction: column; gap: var(--s2); }
+    }
+
+    /* MOTION */
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 500ms var(--ease-out), transform 500ms var(--ease-out);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .stagger-1 { transition-delay: 0ms; }
+    .stagger-2 { transition-delay: 80ms; }
+    .stagger-3 { transition-delay: 160ms; }
+    .stagger-4 { transition-delay: 240ms; }
+
+    .hero-enter .hero-kanji { opacity: 0; transform: translateY(12px); animation: fadeUp 500ms var(--ease-out) 100ms forwards; }
+    .hero-enter h1 { opacity: 0; transform: translateY(12px); animation: fadeUp 500ms var(--ease-out) 200ms forwards; }
+    .hero-enter .hero-sub { opacity: 0; transform: translateY(12px); animation: fadeUp 500ms var(--ease-out) 350ms forwards; }
+    .hero-enter .hero-cta { opacity: 0; transform: translateY(12px); animation: fadeUp 500ms var(--ease-out) 450ms forwards; }
+    .hero-enter .hero-meta { opacity: 0; transform: translateY(12px); animation: fadeUp 500ms var(--ease-out) 550ms forwards; }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; }
+      .reveal { opacity: 1; transform: none; }
+      .hero-enter .hero-kanji,
+      .hero-enter h1,
+      .hero-enter .hero-sub,
+      .hero-enter .hero-cta,
+      .hero-enter .hero-meta { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="container">
+      <a href="#" class="nav-logo">Okami</a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#programs">Programs</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#visit">Visit</a></li>
+      </ul>
+      <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('active')" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu">
+    <a href="#about" onclick="this.parentElement.classList.remove('active')">About</a>
+    <a href="#programs" onclick="this.parentElement.classList.remove('active')">Programs</a>
+    <a href="#reviews" onclick="this.parentElement.classList.remove('active')">Reviews</a>
+    <a href="#visit" onclick="this.parentElement.classList.remove('active')">Visit</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero hero-enter">
+    <div class="container">
+      <h1>Students stay nine years. That tells you everything.</h1>
+      <p class="hero-sub">A martial arts dojo in Saskatoon where people actually stay.</p>
+      <a href="#visit" class="hero-cta">Start Training</a>
+      <div class="hero-meta">
+        <span>4.9★ from 69 reviews</span>
+        <span>Saskatoon, SK</span>
+      </div>
+    </div>
+    <div class="hero-image container">
+      <img src="belt-detail.png" alt="Martial arts belt detail, warm lighting">
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-grid reveal">
+        <div class="about-image">
+          <img src="ig-photo-12.jpg" alt="Young students in Okami gear">
+        </div>
+        <div class="about-text">
+          <p class="about-label">狼 Okami — The Dojo</p>
+          <h2>Crystal, Kelly, and Tal built this place on one idea: show up for your students.</h2>
+          <p>Okami means wolf. Wolves train together, protect each other, and nobody gets left behind. That's the dojo.</p>
+          <p>Classes run evenings and weekends because this has always been about the work, not the business. Kids start young. Adults join later. Most of them stay.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAMS -->
+  <section class="programs" id="programs">
+    <div class="container">
+      <h2>Every age. Every level. One dojo.</h2>
+      <div class="programs-grid">
+        <div class="program-card reveal stagger-1">
+          <h3>Kids Martial Arts</h3>
+          <p>Ages 4 and up. The kid who won't make eye contact in September is leading warmups by spring. Crystal and Kelly have watched it happen hundreds of times.</p>
+        </div>
+        <div class="program-card reveal stagger-2">
+          <h3>Adult Martial Arts</h3>
+          <p>Olesya started over 9 years ago and has never felt judged. That's the room. You train at your level, and the people around you want you to improve.</p>
+        </div>
+        <div class="program-card reveal stagger-3">
+          <h3>Brazilian Jiu-Jitsu</h3>
+          <p>Technique-first ground work. Tal runs the rolling sessions where partners push each other without ego. You'll tap a lot. You'll learn faster because of it.</p>
+        </div>
+        <div class="program-card reveal stagger-4">
+          <h3>Muay Thai</h3>
+          <p>Striking, clinch work, elbows, and knees. Taught the way it's meant to be taught: with respect for the art and the person learning it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <div class="gallery">
+    <div class="gallery-grid container reveal">
+      <img src="ig-photo-03.jpg" alt="Junior students practicing kicks in the dojo">
+      <img src="bow-detail.png" alt="Two martial artists bowing">
+      <img src="ig-photo-11.jpg" alt="Muay Thai group photo after training">
+    </div>
+  </div>
+
+  <!-- REVIEWS -->
+  <section class="reviews" id="reviews">
+    <div class="container">
+      <h2>69 reviews. They all talk about the same thing: confidence.</h2>
+      <div class="review-stack reveal">
+        <div class="review-item">
+          <p class="review-quote">My kids have attended classes with Kelly and Crystal for nine years. They are amazing instructors. The boost in self-esteem and confidence my kids gained is immeasurable.</p>
+          <p class="review-author">Elizabeth T. · Via Google</p>
+        </div>
+        <div class="review-item">
+          <p class="review-quote">Crystal, Kelly & the team at Okami are amazing. The dojo is bright, clean and welcoming. My son has been attending class for over a year now and looks forward to every class.</p>
+          <p class="review-author">Rob T. · Via Google</p>
+        </div>
+        <div class="review-item">
+          <p class="review-quote">Have been attending classes at Okami on and off for over 9 years and they are amazing! Professional, highly engaging and motivational. I've never felt judged on my abilities.</p>
+          <p class="review-author">Olesya H. · Via Google</p>
+        </div>
+      </div>
+      <div style="text-align: center; margin-top: var(--s6);">
+        <a href="#visit" class="hero-cta">Start Training</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISIT -->
+  <section class="visit" id="visit">
+    <div class="container">
+      <div class="visit-grid reveal">
+        <div>
+          <p class="visit-label">Find us</p>
+          <h2>Come train with the pack.</h2>
+          <p>Okami Martial Arts, Saskatoon, SK</p>
+          <ul class="visit-hours">
+            <li><span class="day">Monday</span><span>5:30 – 8:30 PM</span></li>
+            <li><span class="day">Tuesday</span><span>5:00 – 9:30 PM</span></li>
+            <li><span class="day">Wednesday</span><span>5:30 – 9:00 PM</span></li>
+            <li><span class="day">Thursday</span><span>5:00 – 8:00 PM</span></li>
+            <li><span class="day">Friday</span><span>6:00 – 8:00 PM</span></li>
+            <li><span class="day">Saturday</span><span>8:30 AM – 1:30 PM</span></li>
+            <li><span class="day">Sunday</span><span>Closed</span></li>
+          </ul>
+          <a href="https://www.instagram.com/okamimartialarts/" target="_blank" class="visit-cta">Follow on Instagram</a>
+        </div>
+        <div class="visit-map">
+          <iframe src="https://maps.google.com/maps?q=Okami+Martial+Arts+Saskatoon+SK&output=embed" loading="lazy" title="Map to Okami Martial Arts"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Okami Martial Arts. <a href="https://www.instagram.com/okamimartialarts/" target="_blank">@okamimartialarts</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

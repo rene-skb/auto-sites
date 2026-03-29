@@ -1,5 +1,102 @@
 # Auto-Sites Build Log
 
+## Build 87 — Machida Shoten
+- **Category:** Iekei Ramen Restaurant
+- **City:** Toronto, ON
+- **Date:** 2026-03-29
+- **Model:** claude-opus-4-6 (subagent)
+- **Agent:** Lucy
+- **Hero pattern:** full-viewport-bg (broth pour shot)
+- **Typography:** Instrument Serif + Space Grotesk
+- **Review layout:** Featured pull-quote (large) + 2 standard quotes, left-aligned
+- **Stats bar style:** no-stats (835 reviews woven into hero headline)
+- **Score:** 8.5 (WHY avg) / 8.0 (WHAT avg, after retry) / 8.0 (HOW avg) → 8.17
+- **Self-review:** 7.8 (footnote)
+- **Emil footnote:** 8.0 (pre-motion)
+- **Live URL:** https://auto-sites.pages.dev/demos/machida-shoten/
+- **Key decisions:** "835 reviews. They all talk about the broth." hero headline turns social proof into intrigue. Full-bleed ritual section breaks the repeating split-layout pattern mid-scroll. Rice-in-broth ritual featured as a dedicated section — multiple reviewers mention it, so it's the differentiator. Instagram photos were ALL calendars/flyers (0 food photos), so 4 AI-generated images used. Iekei style explained as Yokohama lineage, not generic "authentic Japanese." Bowl breakdown section added per Cagan's feedback. WHAT panel required 1 retry (6.0 → 8.0): main fixes were hero info bar with location/hours/rating, "Menu" nav link, stronger text-on-photo contrast.
+
+### Scores
+| Round | Phase | Reviewers | Avg |
+|-------|-------|-----------|-----|
+| v0→v1 | WHY | Jobs 8, Cagan 8.5, Ogilvy 9 | 8.5 |
+| v1→v1b | WHAT (initial) | Norman 7, Krug 5, Nielsen 6 | 6.0 |
+| v1b | WHAT (retry) | Norman 8, Krug 9, Nielsen 7 | 8.0 |
+| v2 | HOW | Vignelli 8, Spiekermann 7, Rams 9 | 8.0 |
+| v5 | Self | Lucy | 7.8 |
+
+### Files
+- index-v0.html through index-v5.html (6 versions) + index-v1b.html (WHAT retry) + index.html
+- 4 AI-generated images (ramen-hero.png, noodle-pull.png, rice-ritual.png, broth-detail.png)
+- 12 Instagram photos (all calendars/flyers — unused in build)
+- screenshot-v0.png, screenshot-v1.png, screenshot-v1b.png, screenshot-v4.png
+
+---
+
+## Build 86 — ChainLine Cycle
+- **Category:** Bike Shop (Service + Sales)
+- **City:** Kelowna, BC
+- **Date:** 2026-03-29
+- **Model:** claude-opus-4-6 (subagent)
+- **Agent:** Lucy
+- **Hero pattern:** split-image-right (tool wall photo)
+- **Typography:** Barlow Condensed 400-700 + DM Sans 300-600
+- **Review layout:** Single-column stacked quotes with copper left border
+- **Stats bar style:** no-stats
+- **Score:** 7.83 (WHY avg) / 7.67 (WHAT avg) / 7.5 (HOW avg, after retry) → 7.67
+- **Self-review:** 7.5 (footnote)
+- **Emil footnote:** 6.0 (pre-motion)
+- **Live URL:** https://auto-sites.pages.dev/demos/chainline-cycle/
+- **Key decisions:** "Your bike deserves someone who gives a damn" hero headline captures the brand's irreverent expertise. Tool wall photo (ig-photo-09) as hero was the non-obvious choice — tools as identity, not bikes. Father-son story section anchors the emotional core. Reviews headline uses Ben P.'s actual words: "The hearts on these guys are huge." Brand pills replaced with prose to reduce clutter (Rams feedback). Barlow Condensed uppercase headlines give workshop-signage energy. 12 real Instagram photos available but most were portrait video stills with subtitle overlays — only 4 usable (09, 04, 11, 12). HOW panel required 1 retry (6.7 → 7.5): main fixes were letter-spacing on headlines, removing brand pill tags, reducing reviews from 4 to 3. Copy audit caught "don't just fix bikes" negative parallelism and "That's not marketing" negation pattern.
+
+### Scores
+| Round | Phase | Reviewers | Avg |
+|-------|-------|-----------|-----|
+| v0→v1 | WHY | Jobs 8, Cagan 7.5, Ogilvy 8 | 7.83 |
+| v1→v2 | WHAT | Norman 8, Krug 8, Nielsen 7 | 7.67 |
+| v2→v2b | HOW (initial) | Vignelli 7, Spiekermann 6, Rams 7 | 6.7 |
+| v2b | HOW (retry) | Vignelli 7.5, Spiekermann 7, Rams 8 | 7.5 |
+| v5 | Self | Lucy | 7.5 |
+
+### Files
+- index-v0.html through index-v5.html (6 versions) + index-v2b.html (HOW retry) + index.html
+- 12 real Instagram photos (ig-photo-01 through ig-photo-12)
+- screenshot-v0.png, screenshot-v1.png, screenshot-v2.png, screenshot-v2b.png, screenshot-v4.png
+
+---
+
+## Build 85 — Joy Creations
+- **Category:** Custom Jewellery
+- **City:** Ottawa, ON
+- **Date:** 2026-03-29
+- **Model:** claude-opus-4-6 (subagent)
+- **Agent:** Lucy
+- **Hero pattern:** dark-immersive
+- **Typography:** Cormorant Garamond 300-600 + Inter 300-500
+- **Review layout:** 3-column equal cards, gold border-top, same treatment
+- **Stats bar style:** no-stats
+- **Score:** 6.3 (WHY avg) / 7.33 (WHAT avg) / 7.33 (HOW avg, after retry) → 7.0
+- **Self-review:** 7.5 (footnote)
+- **Emil footnote:** 6.0 (pre-motion)
+- **Live URL:** https://auto-sites.pages.dev/demos/joy-creations/
+- **Key decisions:** Instagram photos were all quinceañera party decorations from 2013 — zero usable jewelry images, so all AI-generated (ceiling ~8.0). Hero headline "183 families trusted us with the piece that mattered most" uses the review count as conviction. Samuel named throughout copy — services section uses real reviewer names (Shani, Tara, Lexie) to tell each service's story through a customer experience. Workshop section headline "Warmth you can feel before you see the work" captures the brand's dual identity: care + craft. Copy audit fixed "Every project starts with a conversation" cliché and "care and precision" filler. Gold label contrast darkened for accessibility. HOW panel required 1 retry (6.0 → 7.33): main fixes were strengthening type hierarchy (4 distinct levels), removing decorative gold divider lines, reducing reviews from 5 to 3 for economy.
+
+### Scores
+| Round | Phase | Reviewers | Avg |
+|-------|-------|-----------|-----|
+| v0→v1 | WHY | Jobs 6, Cagan 8, Ogilvy 5 | 6.3 |
+| v1→v2 | WHAT | Norman 8, Krug 7.5, Nielsen 6.5 | 7.33 |
+| v2→v2b | HOW (initial) | Vignelli 6, Spiekermann 5, Rams 7 | 6.0 |
+| v2b | HOW (retry) | Vignelli 7, Spiekermann 7, Rams 8 | 7.33 |
+| v5 | Self | Lucy | 7.5 |
+
+### Files
+- index-v0.html through index-v5.html (6 versions) + index-v2b.html (HOW retry) + index.html
+- hero-ring.png, craft-hands.png, stacked-bands.png, repair-detail.png (AI-generated)
+- screenshot-v0.png through screenshot-v4.png
+
+---
+
 ## Build 84 — Melodiya Records
 - **Category:** Record Store (Vinyl)
 - **City:** Calgary, AB

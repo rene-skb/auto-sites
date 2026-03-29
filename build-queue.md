@@ -52,6 +52,38 @@
 
 
 
+### MacLeod's Books
+- **City:** Vancouver, BC
+- **Category:** Used Bookshop
+- **Address:** 455 W Pender St, Vancouver, BC V6B 2Z3
+- **Phone:** +1 604-681-7654
+- **Hours:** Mon-Fri 11AM-5:30PM | Sat 11AM-6PM | Sun 11AM-5:30PM
+- **Rating:** 4.6★ (1,103 reviews)
+- **Social:** Instagram @macleodsbooksvan (account exists but appears private - 0 photos scraped)
+- **Instagram photos:** no - account private or inactive
+- **Top Reviews (with names):**
+  - "A literal maze of meticulously organized books ranging from rare ephemera to absolute classics. Staff very helpful." — Google reviewer
+  - "MacLeod's Books is a treasure. Packed floor to ceiling, cozy old-school charm." — Google reviewer
+  - "One of the coolest book stores. You can spend hours browsing rare finds." — Google reviewer
+- **What makes them interesting:** Maclean's Magazine called this "Canada's last great used bookstore." Floor-to-ceiling stacks in downtown Vancouver, specializes in rare/out-of-print/Indigenous titles. 1,103 reviews and zero web presence.
+- **Brand observations:** Dark forest green, aged wood, authoritative serif type. Tagline already written: "Canada's last great used bookstore."
+
+### Oliver Professional Dog and Cat Grooming Spa
+- **City:** Winnipeg, MB
+- **Category:** Pet Grooming
+- **Address:** 970 Salter St, Winnipeg, MB R2V 3H8
+- **Phone:** +1 431-335-5314
+- **Hours:** Needs verification - check Google Maps
+- **Rating:** 4.8★ (167 reviews)
+- **Social:** Facebook only - no Instagram found
+- **Instagram photos:** no Instagram found
+- **Top Reviews (with names):**
+  - "My fur baby Judy is always calm and appears happy. She is never hesitant to go with him." — Google reviewer
+  - "I have been bringing my dogs to Oliver since 2020. Service is exceptionally good compared to other shops." — Google reviewer
+  - "Oliver is my go-to for my 2 yorkies. Prices are reasonable, appointments easy. My dogs are happy every visit." — Google reviewer
+- **What makes them interesting:** One person, one name, near-perfect reviews. Owner Oliver grooms both dogs AND cats (unusual). Animals consistently described as calm with him. Built on trust and word-of-mouth, zero digital presence.
+- **Brand observations:** Warm personal energy - terracotta, cream, sage tones. Headline: "Your pet's favourite person."
+
 ### RSTUDIOS Hot Pilates + Yoga
 - **City:** Halifax, NS
 - **Category:** Hot Yoga / Pilates Studio

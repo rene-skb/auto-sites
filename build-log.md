@@ -1,5 +1,134 @@
 # Auto-Sites Build Log
 
+## Build 91 — Little June (v2)
+- **Category:** Cafe
+- **City:** Victoria, BC
+- **Date:** 2026-03-30
+- **Model:** claude-opus-4-6 (subagent)
+- **Agent:** Lucy
+- **Hero pattern:** full-viewport-bg (interior photo with bottom-aligned text)
+- **Typography:** Cormorant Garamond 400-700 italic + Space Grotesk 300-600
+- **Review layout:** 3 equal cards with left green border accent, cream background, italic serif quotes
+- **Visit/hours layout:** Light centered section, no map embed, no dark bar. Hours inline. Google Maps link CTA.
+- **Stats bar style:** no-stats (611 reviews woven into reviews headline: "611 reviews. They all mention the space.")
+- **Score:** 7.83 (WHY avg) / 7.0 (WHAT avg) / 7.17 (HOW avg) → 7.33
+- **Self-review:** 7.5 (footnote)
+- **Emil footnote:** 5.5 (pre-motion, ~7.5 post-motion with scroll reveals + hero stagger)
+- **Live URL:** https://auto-sites.pages.dev/demos/little-june-v2/
+- **Key decisions:** "Every seat's taken for a reason." hero headline — the always-full reality IS the proof. Full-viewport hero with ig-photo-12 (interior counter view) because architecture IS the brand. Quick-visit strip with hours/address/IG immediately under hero. "Designed with the building, not for it." about headline drawn from Olex S. review about design cooperating with the space. Asymmetric food grid (1 large + 2 small) breaks three-column repetition. Interior break photo between food and reviews as rhythm change. Instagram redirect for menu CTA ("See what's on today") since menu rotates. 12 real photos available, 7 used (skipped: worn exterior, dark coffee duplicate, staff candid, merch t-shirt, soft cookie shot). Victoria local — outreach candidate.
+
+### Scores
+| Round | Phase | Reviewers | Avg |
+|-------|-------|-----------|-----|
+| v0→v1 | WHY | Jobs 8, Cagan 7.5, Ogilvy 8 | 7.83 |
+| v1→v2 | WHAT | Norman 8, Krug 7, Nielsen 6 | 7.0 |
+| v2→v3 | HOW | Vignelli 7, Spiekermann 7.5, Rams 7 | 7.17 |
+| v4 | Self | Lucy | 7.5 |
+
+### Files
+- index-v0.html through index-v5.html (6 versions) + index.html
+- 12 Instagram photos (7 used, 5 skipped)
+- screenshot-v0.png, screenshot-v1.png, screenshot-v2.png, screenshot-v4.png
+
+---
+
+## Build 90 — Oliver Professional Dog and Cat Grooming Spa
+- **Category:** Pet Grooming (solo operator)
+- **City:** Winnipeg, MB
+- **Date:** 2026-03-29
+- **Model:** claude-sonnet-4-6 (subagent)
+- **Agent:** Lucy
+- **Hero pattern:** split-image-right (golden retriever close-up on right, conviction copy on left)
+- **Typography:** Playfair Display 400-700 + Nunito 300-700
+- **Review layout:** 3 horizontal equal cards, white on warm background, open-quote CSS decoration, body text font (not italic serif)
+- **Visit/hours layout:** Split — dark left panel with hours list + contact details, Google Maps embed on right
+- **Stats bar style:** no-stats (167 reviews woven into hero sub-copy and reviews headline)
+- **Score:** 7.83 (WHY avg) / 7.67 (WHAT avg) / 7.0 (HOW avg) → 7.5
+- **Self-review:** 7.5 (footnote — within range of HOW ceiling of 8.0)
+- **Emil footnote:** 5.0 (pre-motion, likely 7+ post-motion)
+- **Live URL:** https://auto-sites.pages.dev/demos/oliver-grooming/
+- **Key decisions:** "Your pet's favourite person." headline is earned by 167 reviews — every review mentions pets being calm with Oliver. One groomer = the whole brand, so the about section leads with that fact. Cat grooming explicitly called out as differentiator ("Most groomers won't touch cats"). AI-generated images only (no Instagram, Facebook photos inaccessible) — this limits the ceiling to ~7.5-8.0. Review reviewer names couldn't be verified via Outscraper API (timeout) — used "Google Review · 5 Stars" as best available. Rams pushed back on service icons — removed and service cards improved instead. Quick-visit strip above fold per STRUCTURE lesson.
+
+### Scores
+| Round | Phase | Reviewers | Avg |
+|-------|-------|-----------|-----|
+| v0→v1 | WHY | Jobs 8, Cagan 7.5, Ogilvy 8 | 7.83 |
+| v1→v2 | WHAT | Norman 8, Krug 8, Nielsen 7 | 7.67 |
+| v2→v3 | HOW | Vignelli 7, Spiekermann 7, Rams 7 | 7.0 |
+| v5 | Self | Lucy | 7.5 |
+
+### Files
+- index-v0.html through index-v5.html (6 versions) + index.html
+- 4 AI-generated images (oliver-hero.png, oliver-paw.png, oliver-scissors.png, oliver-cat.png)
+- screenshot-v0.png, screenshot-v1.png, screenshot-v2.png, screenshot-v4.png
+
+---
+
+## Build 89 — Working Culture Bread
+- **Category:** Artisan Bread Bakery
+- **City:** Victoria, BC
+- **Date:** 2026-03-29
+- **Model:** claude-opus-4-6 (subagent)
+- **Agent:** Lucy
+- **Hero pattern:** giant-display-type ("Working Culture" massive serif, photo below)
+- **Typography:** Fraunces 300-700 + Inter 300-500
+- **Review layout:** 2-column offset quotes with italic serif, even cards shifted down 40px
+- **Visit/hours layout:** Hours woven into centered copy section, no dark bar, no map. Instagram CTA for weekly menu.
+- **Stats bar style:** no-stats (485 reviews woven into reviews headline)
+- **Score:** 8.33 (WHY avg) / 8.0 (WHAT avg) / 7.33 (HOW avg) → 7.89
+- **Self-review:** 7.5 (footnote)
+- **Emil footnote:** 6.0 (pre-motion)
+- **Live URL:** https://auto-sites.pages.dev/demos/working-culture/
+- **Key decisions:** "Open four days a week. The bread doesn't last that long." hero subline turns scarcity into desire. Giant display type for "Working Culture" lets the triple-entendre name (starter culture, labor, craft community) speak for itself. Croissant cross-section (ig-photo-04) as hero — the lamination IS the craftsmanship story. Removed redundant feature section in v3 (John S. quote appeared twice). 12 Instagram photos, 7 usable (5 were text graphics/promos/advocacy posts). Photo grid all portrait orientation was the main constraint — limited hero options to the one square photo. "If you're looking for a menu that stays the same every week, this probably isn't your spot" is the strongest conviction line in the about section. Victoria local — outreach candidate for Monday.
+
+### Scores
+| Round | Phase | Reviewers | Avg |
+|-------|-------|-----------|-----|
+| v0→v1 | WHY | Jobs 8.5, Cagan 8, Ogilvy 8.5 | 8.33 |
+| v1→v2 | WHAT | Norman 8.5, Krug 8, Nielsen 7.5 | 8.0 |
+| v2→v3 | HOW | Vignelli 7, Spiekermann 7, Rams 8 | 7.33 |
+| v5 | Self | Lucy | 7.5 |
+
+### Files
+- index-v0.html through index-v5.html (6 versions) + index.html
+- 12 Instagram photos (7 usable, 5 skipped — text graphics/promos)
+- screenshot-v0.png, screenshot-v1.png, screenshot-v2.png, screenshot-v4.png
+
+---
+
+## Build 88 — Okami Martial Arts
+- **Category:** Martial Arts Dojo
+- **City:** Saskatoon, SK
+- **Date:** 2026-03-29
+- **Model:** claude-opus-4-6 (subagent)
+- **Agent:** Lucy
+- **Hero pattern:** centered-minimal (big type, belt photo below fold)
+- **Typography:** Bitter 400-700 + DM Sans 300-500
+- **Review layout:** Vertical stack with italic serif quotes, large opening quote marks, thin separators, uppercase authors
+- **Stats bar style:** no-stats (69 reviews woven into reviews headline)
+- **Score:** 8.5 (WHY avg) / 7.83 (WHAT avg) / 7.5 (HOW avg, after retry) → 7.94
+- **Self-review:** 7.5 (footnote)
+- **Emil footnote:** 5.0 (pre-motion)
+- **Live URL:** https://auto-sites.pages.dev/demos/okami-martial-arts/
+- **Key decisions:** "Students stay nine years. That tells you everything." hero headline turns retention into proof. Wolf/pack motif threaded through copy without being heavy-handed. Program descriptions use real student stories (Olesya's 9 years, kid leading warmups by spring) instead of generic feature lists. 12 Instagram photos but only 6 usable (50% were memes/flyers) — used 4 real photos + 2 AI-generated (belt detail, bow detail). HOW panel required 1 retry (6.67 → 7.5): main fixes were body text size, label system cleanup, italic review quotes. Gallery strip replaced single large feature photo to add variety and use real dojo shots.
+
+### Scores
+| Round | Phase | Reviewers | Avg |
+|-------|-------|-----------|-----|
+| v0→v1 | WHY | Jobs 8, Cagan 8.5, Ogilvy 9 | 8.5 |
+| v1→v2 | WHAT | Norman 8, Krug 9, Nielsen 6.5 | 7.83 |
+| v2→v2b | HOW (initial) | Vignelli 7, Spiekermann 6, Rams 7 | 6.67 |
+| v2b | HOW (retry) | Vignelli 7, Spiekermann 7.5, Rams 8 | 7.5 |
+| v5 | Self | Lucy | 7.5 |
+
+### Files
+- index-v0.html through index-v5.html (6 versions) + index-v2b.html (HOW retry) + index.html
+- 2 AI-generated images (belt-detail.png, bow-detail.png)
+- 12 Instagram photos (6 usable, 6 skipped — memes/flyers)
+- screenshot-v0.png, screenshot-v1.png, screenshot-v2.png, screenshot-v2b.png, screenshot-v4.png
+
+---
+
 ## Build 87 — Machida Shoten
 - **Category:** Iekei Ramen Restaurant
 - **City:** Toronto, ON
@@ -3412,3 +3541,25 @@ Real Victoria BC business. Website was literally just a street address (touristw
 - **Score:** WHY 5.3 / WHAT 7.3 (retry from 6.0) / HOW 7.17 → 6.59 panel avg
 - **Self-review:** 8.0
 - **Key decisions:** Album art as full-bleed hero background (deep green-black + amber palette extracted from Melody-Rose Murray's photography). "Comforting and alien" as hero tagline — pulled directly from the album description. Newsreader serif + Space Grotesk for literary-meets-technical feel matching "custom-built instruments and programming." Roman numerals for track numbers. Cassette release detail ("high bias tape, custom printed case, edition of 50") woven into intro. Same label as Sean Evans (Sustained Tones) — similar dark atmospheric approach but distinct typography and hero pattern. Single-album artist, simple structure: hero → intro/quote/CTAs → tracklist → credits → about → footer. Staggered hero entrance + scroll-reveal tracklist rows at largo tempo.
+
+### Kid Sister Ice Cream v6 — Ice Cream Shop, Victoria BC
+- **Date:** 2026-03-29
+- **Hero pattern:** editorial-spread (full-bleed hero photo with gradient text overlay)
+- **Typography:** Lora + Inter
+- **Review layout:** N/A (no reviews section)
+- **Visit/hours layout:** Quick-strip under hero + detailed hours in Shop section
+- **Stats bar style:** no-stats
+- **Score:** WHY 6.83 / WHAT 7.33 (retry) / HOW 7.0 (retry) → 7.05 panel avg
+- **Self-review:** 7.5
+- **Key decisions:** Pink (#E8A0B4) + cornflower blue (#6B8FC7) + cream palette with true red accent — fresh palette per Scott's direction. 8 sections (reduced from 11): merged catering into events, newsletter into footer, community into about. "Small batch. Seasonal fruit. Gone when it's gone." as hero conviction. Flavours nav links directly to Instagram (rotating inventory pattern). Stockists grouped by geography (Victoria/Esquimalt vs Saanich/Peninsula). Process section with numbered steps + farm photos (cows, strawberries). "Growing more than you can eat?" community callout in about section. 10 photos curated from 39 available (29 site + 10 IG). Italic accent limited to 2 instances (hero + about headline) after HOW panel feedback. Scroll-reveal animations with hero text stagger.
+
+### Kid Sister Ice Cream v7 — Ice Cream Shop, Victoria BC
+- **Date:** 2026-03-29
+- **Hero pattern:** image-top-text-below (full-bleed hero photo, centered text below)
+- **Typography:** Fraunces + DM Sans
+- **Review layout:** N/A (no reviews section)
+- **Visit/hours layout:** Minimal single-line strip under hero text
+- **Stats bar style:** no-stats
+- **Score:** WHY 6.67 / WHAT 5.3 (2 retries, best 6.5) / HOW 6.0 (1 retry) → 6.32 panel avg
+- **Self-review:** 7.5
+- **Key decisions:** Bright cornflower blue (#4A5AE0) from reference photo as bold section bg color. Cream (#FFF8F0) primary bg — NO dark hero per Scott's direction. Hero headline "The little ice cream shop on Esquimalt Road" — warm, specific, location-first. Unified grid system (all two-col sections use identical container/gap). Flavour list as italic serif text instead of pills. Stockists merged into shop section. Process as two-col with farm photo. Newsletter simplified to single-line strip. Scroll-reveal animations with hero entrance stagger. 9 photos curated from 39 available. Copy passed humanizer audit. v6→v7 palette shift: brighter cornflower, no dark sections, more cream/white.

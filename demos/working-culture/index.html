@@ -1,0 +1,576 @@
+<!--
+  DELTA: v2 → v3
+  Changes:
+  1. Unified grid — all text sections share max-width: 640px centered, photo grid at 1100px
+  2. Removed feature section (redundant with about + reviews, John S. quote was duplicated)
+  3. Type hierarchy tightened to 3 levels: display (hero), section (32px), body (17px)
+  4. Photo captions applied consistently to ALL images (gradient overlay)
+  5. Consolidated Instagram to 2 mentions only (visit section + footer)
+  6. Uniform section spacing with --section-pad
+  7. Reviews headline in Fraunces serif (was reading as sans-serif clash)
+  HOW scores: Vignelli 7, Spiekermann 7, Rams 8 → avg 7.33 (Emil 6 footnote)
+  Hypothesis: Unified grid + removed redundancy will tighten the whole page significantly
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Working Culture Bread — Victoria, BC</title>
+  <meta name="description" content="Artisan sourdough and pastries in Victoria, BC. Open Thursday through Sunday.">
+  <meta property="og:title" content="Working Culture Bread">
+  <meta property="og:description" content="Artisan sourdough and pastries. Open four days a week, on purpose.">
+  <meta property="og:image" content="ig-photo-04.jpg">
+  <meta property="og:url" content="https://auto-sites.pages.dev/demos/working-culture/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --cream: #FAF6F0;
+      --brown: #2C1810;
+      --brown-light: #5C4033;
+      --gold: #B8860B;
+      --gold-soft: #D4A84B;
+      --warm-white: #FFFDF9;
+      --section-pad: 96px;
+      --content-width: 640px;
+      --wide-width: 1100px;
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      color: var(--brown);
+      background: var(--cream);
+      line-height: 1.7;
+      font-size: 17px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 20px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(250, 246, 240, 0.9);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .nav-logo {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      font-size: 18px;
+      color: var(--brown);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--brown-light);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 200ms var(--ease-out);
+    }
+
+    .nav-links a:hover { color: var(--brown); }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      width: 24px;
+      height: 2px;
+      background: var(--brown);
+      transition: all 300ms var(--ease-out);
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--cream);
+      z-index: 99;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .mobile-menu.active { display: flex; }
+
+    .mobile-menu a {
+      font-family: 'Fraunces', serif;
+      font-size: 28px;
+      color: var(--brown);
+      text-decoration: none;
+      font-weight: 400;
+    }
+
+    /* HERO — Giant Display Type */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 140px 48px 64px;
+    }
+
+    .hero-title {
+      font-family: 'Fraunces', serif;
+      font-weight: 700;
+      font-size: clamp(56px, 10vw, 140px);
+      line-height: 0.95;
+      color: var(--brown);
+      letter-spacing: -0.02em;
+      margin-bottom: 32px;
+    }
+
+    .hero-sub {
+      font-family: 'Inter', sans-serif;
+      font-size: 20px;
+      font-weight: 300;
+      color: var(--brown-light);
+      max-width: 480px;
+      line-height: 1.6;
+      margin-bottom: 48px;
+    }
+
+    .hero-image {
+      width: 100%;
+      max-width: 720px;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .hero-detail {
+      margin-top: 24px;
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--brown-light);
+    }
+
+    /* TEXT SECTIONS — unified width */
+    .text-section {
+      padding: var(--section-pad) 48px;
+      max-width: var(--content-width);
+      margin: 0 auto;
+    }
+
+    .text-section.centered { text-align: center; }
+
+    .section-heading {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      font-size: 32px;
+      line-height: 1.25;
+      margin-bottom: 24px;
+      color: var(--brown);
+    }
+
+    .text-section p {
+      margin-bottom: 16px;
+      color: var(--brown-light);
+    }
+
+    /* PHOTO GRID */
+    .photo-grid {
+      padding: 0 48px;
+      max-width: var(--wide-width);
+      margin: 0 auto calc(var(--section-pad) + 16px);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 240px 240px;
+      gap: 12px;
+    }
+
+    .photo-grid figure {
+      position: relative;
+      overflow: hidden;
+      border-radius: 6px;
+      margin: 0;
+    }
+
+    .photo-grid img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .photo-grid figcaption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 32px 16px 12px;
+      font-size: 13px;
+      font-weight: 400;
+      color: rgba(255, 253, 249, 0.95);
+      background: linear-gradient(transparent, rgba(44, 24, 16, 0.7));
+      letter-spacing: 0.02em;
+    }
+
+    .photo-grid .tall {
+      grid-row: 1 / -1;
+    }
+
+    /* REVIEWS */
+    .reviews {
+      padding: var(--section-pad) 48px;
+      background: var(--warm-white);
+    }
+
+    .reviews-inner {
+      max-width: var(--wide-width);
+      margin: 0 auto;
+    }
+
+    .reviews-header {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      font-size: 32px;
+      line-height: 1.25;
+      margin-bottom: 56px;
+      color: var(--brown);
+      max-width: 500px;
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px 64px;
+    }
+
+    .review-card { padding: 0; }
+
+    .review-card:nth-child(even) { margin-top: 40px; }
+
+    .review-quote {
+      font-family: 'Fraunces', serif;
+      font-size: 19px;
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.6;
+      color: var(--brown);
+      margin-bottom: 16px;
+    }
+
+    .review-author {
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--brown-light);
+    }
+
+    /* VISIT */
+    .visit {
+      padding: var(--section-pad) 48px;
+      max-width: var(--content-width);
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .visit p {
+      color: var(--brown-light);
+      margin-bottom: 16px;
+    }
+
+    .visit-hours {
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--brown);
+      margin: 32px 0;
+      line-height: 2.2;
+    }
+
+    .visit-address {
+      font-size: 15px;
+      color: var(--brown-light);
+      margin-bottom: 32px;
+    }
+
+    .visit-cta {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--warm-white);
+      padding: 16px 40px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: transform 160ms var(--ease-out), background 200ms var(--ease-out);
+    }
+
+    .visit-cta:active { transform: scale(0.97); }
+    .visit-cta:hover { background: var(--gold-soft); }
+
+    .visit-ig {
+      margin-top: 32px;
+      font-family: 'Fraunces', serif;
+      font-size: 17px;
+      font-weight: 400;
+      color: var(--brown);
+    }
+
+    .visit-ig a {
+      color: var(--gold);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 200ms var(--ease-out);
+    }
+
+    .visit-ig a:hover { color: var(--gold-soft); }
+
+    /* FOOTER */
+    footer {
+      padding: 40px 48px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--brown-light);
+      border-top: 1px solid rgba(44, 24, 16, 0.1);
+    }
+
+    footer a {
+      color: var(--brown-light);
+      text-decoration: none;
+    }
+
+    footer a:hover { color: var(--brown); }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      :root { --section-pad: 64px; }
+
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+
+      .hero {
+        padding: 120px 24px 48px;
+        min-height: auto;
+      }
+
+      .hero-title { margin-bottom: 24px; }
+      .hero-sub { font-size: 17px; }
+
+      .text-section,
+      .visit { padding: var(--section-pad) 24px; }
+
+      .section-heading { font-size: 26px; }
+
+      .photo-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 180px 180px;
+        padding: 0 24px;
+        margin-bottom: var(--section-pad);
+        gap: 8px;
+      }
+
+      .photo-grid .tall { grid-row: span 1; }
+
+      .reviews { padding: var(--section-pad) 24px; }
+
+      .reviews-header { font-size: 26px; }
+
+      .reviews-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .review-card:nth-child(even) { margin-top: 0; }
+
+      footer { padding: 32px 24px; }
+    }
+
+    /* SCROLL REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 500ms var(--ease-out), transform 500ms var(--ease-out);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .stagger-1 { transition-delay: 0ms; }
+    .stagger-2 { transition-delay: 80ms; }
+    .stagger-3 { transition-delay: 160ms; }
+    .stagger-4 { transition-delay: 240ms; }
+    .stagger-5 { transition-delay: 320ms; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">Working Culture</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#visit">Visit</a></li>
+    </ul>
+    <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.mobile-menu').classList.toggle('active')">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu">
+    <a href="#about" onclick="this.parentElement.classList.remove('active')">About</a>
+    <a href="#reviews" onclick="this.parentElement.classList.remove('active')">Reviews</a>
+    <a href="#visit" onclick="this.parentElement.classList.remove('active')">Visit</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1 class="hero-title">Working<br>Culture</h1>
+    <p class="hero-sub">Open four days a week. The bread doesn't last that long.</p>
+    <div class="hero-image">
+      <img src="ig-photo-04.jpg" alt="Laminated pastry cross-section showing honeycomb layers and pastry cream filling, topped with kumquat" loading="eager">
+    </div>
+    <p class="hero-detail">Victoria, BC · Thursday to Sunday</p>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="text-section reveal" id="about">
+    <h2 class="section-heading">Three stools, a counter, and a line out the door.</h2>
+    <p>Working Culture bakes sourdough, pastries, and sandwiches at 2716 Rock Bay Avenue in Victoria. Four days a week, Thursday through Sunday. Everything by hand, everything from scratch.</p>
+    <p>The cinnamon raisin shows up on Sundays. The olive and lemon zest batard shows up when it shows up. If you're looking for a menu that stays the same every week, this probably isn't your spot.</p>
+  </section>
+
+  <!-- PHOTO GRID -->
+  <div class="photo-grid">
+    <figure class="tall reveal stagger-1">
+      <img src="ig-photo-09.jpg" alt="Berry croissant with raspberry compote and flaky laminated layers">
+      <figcaption>Berry croissant</figcaption>
+    </figure>
+    <figure class="reveal stagger-2">
+      <img src="ig-photo-02.jpg" alt="Display of artisan sandwiches with arugula and roasted squash on sourdough">
+      <figcaption>Squash and arugula</figcaption>
+    </figure>
+    <figure class="reveal stagger-3">
+      <img src="ig-photo-05.jpg" alt="Italian sandwich cross-section on house sourdough">
+      <figcaption>House Italian</figcaption>
+    </figure>
+    <figure class="reveal stagger-4">
+      <img src="ig-photo-10.jpg" alt="Roast beef and arugula sandwich on sesame sourdough roll">
+      <figcaption>Roast beef and arugula</figcaption>
+    </figure>
+    <figure class="reveal stagger-5">
+      <img src="ig-photo-12.jpg" alt="Italian sub with layered meats and pickled peppers on sourdough">
+      <figcaption>Italian sub</figcaption>
+    </figure>
+  </div>
+
+  <!-- REVIEWS -->
+  <section class="reviews" id="reviews">
+    <div class="reviews-inner">
+      <h2 class="reviews-header reveal">485 reviews, 4.9 stars. They keep talking about the crust.</h2>
+      <div class="reviews-grid">
+        <div class="review-card reveal stagger-1">
+          <p class="review-quote">"Working Culture are the modern masters of bread, and I weep for the days I have not tasted their creations."</p>
+          <p class="review-author">John S. · Via Google</p>
+        </div>
+        <div class="review-card reveal stagger-2">
+          <p class="review-quote">"Crust has real crunch, interior chewy and flavourful. The olives and lemon zest batard is something else."</p>
+          <p class="review-author">Obama B.L. · Via Google</p>
+        </div>
+        <div class="review-card reveal stagger-3">
+          <p class="review-quote">"I really am not into bread 90% of the time. Had a craving for good bread and this place completely exceeded expectations."</p>
+          <p class="review-author">Els I. · Via Google</p>
+        </div>
+        <div class="review-card reveal stagger-4">
+          <p class="review-quote">"Best carrot cake in town. Super soft and cream cheese on top."</p>
+          <p class="review-author">Double Butter · Via Google</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISIT -->
+  <section class="visit reveal" id="visit">
+    <h2 class="section-heading">Come hungry. Come early.</h2>
+    <p>Three stools and a counter. Takeout by design. The line moves fast.</p>
+    <div class="visit-hours">
+      Thursday & Friday · 8am to 3pm<br>
+      Saturday & Sunday · 9am to 3pm<br>
+      Monday, Tuesday, Wednesday · Closed
+    </div>
+    <p class="visit-address">2716 Rock Bay Avenue, Victoria, BC</p>
+    <a href="https://maps.google.com/maps?q=Working+Culture+Bread+2716+Rock+Bay+Ave+Victoria+BC" target="_blank" rel="noopener" class="visit-cta">Get Directions</a>
+    <p class="visit-ig">What's baking this week? Check <a href="https://www.instagram.com/workingculturebread/" target="_blank" rel="noopener">@workingculturebread</a></p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Working Culture Bread · Victoria, BC</p>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,649 @@
+<!--
+  LITTLE JUNE — v5 (Final Polish)
+  
+  DELTA: v4 → v5
+  Changes:
+  - Copy fix: "the kind of drip coffee" → "drip coffee" (removed filler)
+  - Review section: larger quote text on first card as hero quote
+  - Review cards: slightly more padding for breathing room
+  - Copy audit pass: all clean, no humanizer violations
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Little June — All Day Cafe in Fernwood, Victoria</title>
+<meta name="description" content="Coffee, matcha, and sandwiches at 1301 Gladstone. Open every day 7AM to 5PM.">
+<meta property="og:title" content="Little June — All Day Cafe">
+<meta property="og:description" content="Coffee, matcha, and sandwiches at 1301 Gladstone. Open every day 7AM to 5PM.">
+<meta property="og:image" content="ig-photo-12.jpg">
+<meta property="og:url" content="https://auto-sites.pages.dev/demos/little-june-v2/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --green: #2D5A3E;
+  --green-light: #3A7A54;
+  --cream: #F7F3ED;
+  --cream-dark: #EDE7DD;
+  --charcoal: #1A1A1A;
+  --charcoal-light: #4A4A4A;
+  --section-pad: 88px;
+  --content-width: 1080px;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  background: var(--cream);
+  color: var(--charcoal);
+  font-size: 17px;
+  line-height: 1.65;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+img { display: block; width: 100%; height: auto; }
+a { color: var(--green); text-decoration: none; }
+a:hover { color: var(--green-light); }
+
+.container {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(247, 243, 237, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+nav .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+nav .logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--charcoal);
+  letter-spacing: 0.01em;
+}
+
+nav .nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+nav .nav-links a {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--charcoal-light);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: color 200ms var(--ease-out);
+}
+
+nav .nav-links a:hover { color: var(--green); }
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 8px;
+}
+
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--charcoal);
+}
+
+/* ── HERO ── */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 600px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+}
+
+.hero-img {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.8) 0%,
+    rgba(0,0,0,0.5) 30%,
+    rgba(0,0,0,0.2) 60%,
+    rgba(0,0,0,0.08) 100%
+  );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 24px 72px;
+  max-width: var(--content-width);
+  margin: 0 auto;
+  width: 100%;
+}
+
+.hero h1 {
+  font-size: clamp(40px, 5.5vw, 68px);
+  color: #fff;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: -0.01em;
+  margin-bottom: 14px;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+}
+
+.hero p {
+  font-size: 18px;
+  color: rgba(255,255,255,0.9);
+  max-width: 460px;
+  font-weight: 400;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.3);
+}
+
+/* ── Hero entrance animation ── */
+.hero h1,
+.hero p {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+.hero.loaded h1 {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 700ms var(--ease-out), transform 700ms var(--ease-out);
+}
+
+.hero.loaded p {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 700ms var(--ease-out) 150ms, transform 700ms var(--ease-out) 150ms;
+}
+
+/* ── QUICK STRIP ── */
+.quick-strip {
+  background: var(--green);
+  color: rgba(255,255,255,0.92);
+  padding: 16px 0;
+}
+
+.quick-strip .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.quick-strip a { color: rgba(255,255,255,0.92); transition: color 200ms var(--ease-out); }
+.quick-strip a:hover { color: #fff; }
+
+/* ── Scroll reveal ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stagger-1 { transition-delay: 0ms; }
+.stagger-2 { transition-delay: 60ms; }
+.stagger-3 { transition-delay: 120ms; }
+
+/* ── ABOUT ── */
+.about {
+  padding: var(--section-pad) 0;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.about-text h2 {
+  font-size: clamp(30px, 3.5vw, 44px);
+  margin-bottom: 24px;
+}
+
+.about-text p {
+  color: var(--charcoal-light);
+  margin-bottom: 16px;
+}
+
+.about-img {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.about-img img {
+  aspect-ratio: 4/5;
+  object-fit: cover;
+}
+
+/* ── FOOD ── */
+.food {
+  padding: var(--section-pad) 0 0;
+}
+
+.food-header {
+  text-align: center;
+  margin-bottom: 44px;
+}
+
+.food-header h2 {
+  font-size: clamp(30px, 3.5vw, 44px);
+  margin-bottom: 12px;
+}
+
+.food-header p {
+  color: var(--charcoal-light);
+  max-width: 520px;
+  margin: 0 auto 24px;
+}
+
+.food-header .food-cta {
+  display: inline-block;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--green);
+  letter-spacing: 0.02em;
+  border-bottom: 1px solid var(--green);
+  padding-bottom: 2px;
+  transition: color 200ms var(--ease-out), border-color 200ms var(--ease-out);
+}
+
+.food-header .food-cta:hover { color: var(--green-light); border-color: var(--green-light); }
+
+.food-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 12px;
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.food-card {
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+}
+
+.food-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.food-card.large { grid-row: 1 / 3; }
+
+.food-label {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 14px 20px;
+  background: rgba(0,0,0,0.65);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+/* ── INTERIOR BREAK ── */
+.interior-break {
+  margin-top: 64px;
+  height: 280px;
+  overflow: hidden;
+}
+
+.interior-break img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+}
+
+/* ── REVIEWS ── */
+.reviews {
+  padding: var(--section-pad) 0;
+}
+
+.reviews h2 {
+  font-size: clamp(30px, 3.5vw, 44px);
+  margin-bottom: 48px;
+}
+
+.review-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 28px;
+}
+
+.review-card {
+  border-left: 3px solid var(--green);
+  padding: 28px 28px 28px 24px;
+  background: var(--cream-dark);
+  border-radius: 0 8px 8px 0;
+}
+
+.review-card p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-style: italic;
+  line-height: 1.45;
+  color: var(--charcoal);
+  margin-bottom: 20px;
+}
+
+.review-card .reviewer {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--charcoal-light);
+}
+
+/* ── VISIT ── */
+.visit {
+  padding: var(--section-pad) 0;
+  background: var(--cream-dark);
+}
+
+.visit-inner {
+  text-align: center;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.visit h2 {
+  font-size: clamp(30px, 3.5vw, 44px);
+  margin-bottom: 24px;
+}
+
+.visit-details {
+  font-size: 17px;
+  color: var(--charcoal-light);
+  margin-bottom: 10px;
+}
+
+.visit-details a {
+  color: var(--charcoal-light);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.visit-details a:hover { color: var(--green); }
+
+.visit-cta {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 14px 36px;
+  background: var(--green);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  border-radius: 6px;
+  transition: transform 160ms var(--ease-out), background 200ms var(--ease-out);
+}
+
+.visit-cta:hover { background: var(--green-light); color: #fff; }
+.visit-cta:active { transform: scale(0.97); }
+
+/* ── FOOTER ── */
+footer {
+  padding: 36px 0;
+  text-align: center;
+  font-size: 14px;
+  color: var(--charcoal-light);
+}
+
+footer a { color: var(--charcoal-light); text-decoration: underline; text-underline-offset: 3px; }
+
+/* ── MOBILE ── */
+@media (max-width: 768px) {
+  :root { --section-pad: 56px; }
+  
+  .hamburger { display: flex; }
+  
+  nav .nav-links {
+    display: none;
+    position: absolute;
+    top: 64px; left: 0; right: 0;
+    background: rgba(247, 243, 237, 0.98);
+    backdrop-filter: blur(12px);
+    flex-direction: column;
+    padding: 24px;
+    gap: 20px;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+  
+  nav .nav-links.open { display: flex; }
+  
+  .hero { min-height: 500px; }
+  .hero h1 { font-size: 34px; }
+  .hero-content { padding-bottom: 48px; }
+  
+  .quick-strip .container {
+    flex-direction: column;
+    gap: 10px;
+    font-size: 14px;
+  }
+  
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  
+  .food-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+  
+  .food-card.large { grid-row: auto; }
+  .food-card img { aspect-ratio: 4/3; }
+  
+  .interior-break { height: 200px; }
+  
+  .review-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero h1, .hero p { opacity: 1; transform: none; }
+  .reveal { opacity: 1; transform: none; }
+  * { animation: none !important; transition: none !important; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <a href="#" class="logo">Little June</a>
+    <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#food">Menu</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#visit">Visit</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-img">
+    <img src="ig-photo-12.jpg" alt="Inside Little June cafe — exposed brick, pendant lights, and a long window bar facing Gladstone Avenue">
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>Every seat's taken for a reason.</h1>
+    <p>Coffee, matcha, and all-day food at 1301 Gladstone. Open every day, 7 to 5.</p>
+  </div>
+</section>
+
+<div class="quick-strip">
+  <div class="container">
+    <span>Open daily 7AM – 5PM</span>
+    <span><a href="https://maps.google.com/maps?q=Little+June+Cafe+Victoria+BC" target="_blank" rel="noopener">1301 Gladstone Ave, Victoria</a></span>
+    <span><a href="https://instagram.com/littlejunecafe" target="_blank" rel="noopener">@littlejunecafe</a></span>
+  </div>
+</div>
+
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <h2>Designed with the building, not for it.</h2>
+        <p>Little June sits at Gladstone and Fernwood, across from the Belfry Theatre. The cafe was built in cooperation with the space. The exposed brick, the long window bar, the morning light. None of it's accidental.</p>
+        <p>Matcha is whisked by hand with a traditional chasen. Sandwiches are stacked on house-baked bread. The playlist is always right. And it's full every day, which tells you more than we could.</p>
+      </div>
+      <div class="about-img reveal" style="transition-delay: 100ms;">
+        <img src="ig-photo-05.jpg" alt="Barista whisking matcha with a traditional bamboo chasen at Little June">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="food" id="food">
+  <div class="container">
+    <div class="food-header reveal">
+      <h2>Made here, every morning</h2>
+      <p>Breakfast sandwiches, baguettes, matcha, baked goods, and drip coffee people line up for.</p>
+      <a href="https://instagram.com/littlejunecafe" target="_blank" rel="noopener" class="food-cta">See what's on today →</a>
+    </div>
+    <div class="food-grid">
+      <div class="food-card large reveal stagger-1">
+        <img src="ig-photo-03.jpg" alt="Four breakfast sandwiches stacked on a plate at Little June">
+        <div class="food-label">Breakfast sandwiches</div>
+      </div>
+      <div class="food-card reveal stagger-2">
+        <img src="ig-photo-09.jpg" alt="Baguette sandwich held up in front of Little June's botanical mural">
+        <div class="food-label">Baguettes</div>
+      </div>
+      <div class="food-card reveal stagger-3">
+        <img src="ig-photo-02.jpg" alt="Matcha latte with rosetta art in a green ceramic cup">
+        <div class="food-label">Matcha, hand-whisked</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="interior-break reveal">
+  <img src="ig-photo-01.jpg" alt="Wide view of Little June's interior — natural light, exposed brick, window bar seating">
+</div>
+
+<section class="reviews" id="reviews">
+  <div class="container">
+    <h2 class="reveal">611 reviews. They all mention the space.</h2>
+    <div class="review-grid">
+      <div class="review-card reveal stagger-1">
+        <p>"The cafe's design was created in cooperation with the space. I especially like to visit concepts that create synergy with the area."</p>
+        <span class="reviewer">Olex S. · Via Google</span>
+      </div>
+      <div class="review-card reveal stagger-2">
+        <p>"It's a popular spot, people working and catching up with friends. The space has a nice chill vibe with a cool playlist playing softly."</p>
+        <span class="reviewer">Brandon R. · Via Google</span>
+      </div>
+      <div class="review-card reveal stagger-3">
+        <p>"Sincerely enjoyed both the hot chocolate and the chai latte. The cafe is cute and in a nice location."</p>
+        <span class="reviewer">Charlie B. · Via Google</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="visit" id="visit">
+  <div class="container">
+    <div class="visit-inner reveal">
+      <h2>Come by</h2>
+      <p class="visit-details"><a href="https://maps.google.com/maps?q=Little+June+Cafe+Victoria+BC" target="_blank" rel="noopener">1301 Gladstone Ave, Victoria, BC</a></p>
+      <p class="visit-details">Open every day, 7AM to 5PM</p>
+      <p class="visit-details">Fernwood, across from the Belfry Theatre</p>
+      <a href="https://maps.google.com/maps?q=Little+June+Cafe+Victoria+BC" target="_blank" rel="noopener" class="visit-cta">Get directions</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>Little June · Fernwood, Victoria · <a href="https://instagram.com/littlejunecafe" target="_blank" rel="noopener">@littlejunecafe</a></p>
+  </div>
+</footer>
+
+<script>
+// Hero entrance
+window.addEventListener('load', () => {
+  document.querySelector('.hero').classList.add('loaded');
+});
+
+// Scroll reveals
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

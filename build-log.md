@@ -1,5 +1,37 @@
 # Auto-Sites Build Log
 
+## Build 92 — Heartwood & Co.
+- **Category:** Hair Salon
+- **City:** Victoria, BC
+- **Date:** 2026-03-30
+- **Model:** claude-opus-4-6 (subagent)
+- **Agent:** Lucy
+- **Hero pattern:** centered-minimal (serif headline + portrait photo below)
+- **Typography:** Newsreader 300-600 + DM Sans 300-600
+- **Review layout:** Full-width stacked large italic serif quotes, centered, no cards
+- **Visit/hours layout:** Split — hours list on left with dual CTAs, Google Maps embed on right, warm dark section
+- **Stats bar style:** no-stats (508 reviews woven into hero headline: "508 reviews. They keep naming the same three people.")
+- **Score:** 7.83 (WHY avg) / 7.17 (WHAT avg, retry) / 7.0 (HOW avg) → 7.33
+- **Self-review:** 7.5 (footnote)
+- **Emil footnote:** 7.0
+- **Live URL:** https://auto-sites.pages.dev/demos/heartwood/
+- **Key decisions:** "508 reviews. They keep naming the same three people." hero headline turns the aggregate review count + pattern into the hook. Heartwood name metaphor ("the strongest part of the tree is on the inside") used as about section headline. Three named stylists with specialties from reviews (Casandra/highlights, Emily/colour transitions, Devan/extensions). Second-floor location turned into charm: "Find us on the second floor" / "Worth the climb." Reduced reviews from 3→2 per Rams feedback (redundancy). WHAT panel failed first pass (6.0) due to contrast/accessibility — fixed contrast, added nav CTA, re-passed at 7.17. 12 Instagram photos, 6 used (skipped: 4 too dramatic/B&W, 1 text graphic, 1 makeup). Victoria local — outreach candidate.
+
+### Scores
+| Round | Phase | Reviewers | Avg |
+|-------|-------|-----------|-----|
+| v0→v1 | WHY | Jobs 8, Cagan 7.5, Ogilvy 8 | 7.83 |
+| v1→v2 | WHAT (retry) | Norman 7.5, Krug 7, Nielsen 7 | 7.17 |
+| v2→v3 | HOW | Vignelli 7, Spiekermann 6, Rams 8 | 7.0 |
+| v4 | Self | Lucy | 7.5 |
+
+### Files
+- index-v0.html through index-v5.html (6 versions) + index.html
+- 12 Instagram photos (6 used, 6 skipped)
+- screenshot-v0.png, screenshot-v1.png, screenshot-v2.png, screenshot-v4.png
+
+---
+
 ## Build 91 — Little June (v2)
 - **Category:** Cafe
 - **City:** Victoria, BC

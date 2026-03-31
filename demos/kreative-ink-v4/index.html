@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kreative Ink — Black &amp; Grey Realism</title>
+  <meta name="description" content="Black &amp; Grey Realism. Victoria, BC">
+  <meta property="og:title" content="Kreative Ink">
+  <meta property="og:description" content="Black &amp; Grey Realism">
+  <meta property="og:image" content="ig-photo-11.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --primary: #0A0A0A;
+  --accent: #C9A227;
+  --bg: #0A0A0A;
+  --text: #FAFAFA;
+  --text-muted: #FAFAFA99;
+  --section-pad: 96px;
+  --content-max: 1120px;
+  --content-px: max(24px, calc((100vw - var(--content-max)) / 2));
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; text-decoration: none; }
+
+.container {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Typography */
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+h1 { font-size: clamp(2.5rem, 6vw, 4rem); }
+h2 { font-size: clamp(1.75rem, 4vw, 2.5rem); margin-bottom: 24px; }
+h3 { font-size: 1.25rem; }
+
+.section-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  color: var(--accent);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  border-radius: 6px;
+  transition: transform 0.15s var(--ease-out), opacity 0.15s;
+  cursor: pointer;
+  border: none;
+}
+.btn:active { transform: scale(0.97); }
+
+.btn-primary {
+  background: var(--accent);
+  color: #1a1a1a;
+}
+.btn-primary:hover { opacity: 0.9; }
+
+.btn-outline {
+  background: transparent;
+  border: 2px solid currentColor;
+}
+
+/* Section backgrounds */
+.bg-light { background: var(--bg); }
+.bg-dark { background: var(--primary); color: #fff; }
+.bg-dark .section-label { color: var(--accent); }
+.bg-accent { background: var(--accent); color: #1a1a1a; }
+
+section {
+  padding: var(--section-pad) var(--content-px);
+}
+
+/* ============================================ */
+/* NAV */
+/* ============================================ */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 16px var(--content-px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.3s;
+}
+.nav.scrolled {
+  background: var(--bg);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+}
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+}
+.nav.scrolled .nav-logo { color: var(--text); }
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.9);
+  transition: color 0.2s;
+}
+.nav.scrolled .nav-links a { color: var(--text); }
+.nav-links a:hover { color: var(--accent); }
+
+/* Mobile nav */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+.nav-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #fff;
+  margin: 5px 0;
+  transition: 0.3s;
+}
+.nav.scrolled .nav-toggle span { background: var(--text); }
+
+@media (max-width: 768px) {
+  .nav-toggle { display: block; }
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    background: var(--primary);
+    flex-direction: column;
+    padding: 80px 32px;
+    gap: 24px;
+    transition: right 0.3s var(--ease-out);
+  }
+  .nav-links.open { right: 0; }
+  .nav-links a { color: #fff; font-size: 1.125rem; }
+}
+
+/* ============================================ */
+/* HERO — Full Viewport BG (default) */
+/* ============================================ */
+.hero {
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 80px var(--content-px);
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.1) 100%);
+}
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+}
+.hero h1 { margin-bottom: 16px; }
+.hero-subhead {
+  font-size: 1.25rem;
+  opacity: 0.9;
+  margin-bottom: 32px;
+}
+.hero-badge {
+  position: absolute;
+  top: 80px;
+  right: 24px;
+  background: var(--accent);
+  color: #1a1a1a;
+  padding: 8px 16px;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: 4px;
+  z-index: 2;
+}
+
+/* HERO — Split Image Right */
+.hero.split-image-right {
+  min-height: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: var(--bg);
+  color: var(--text);
+  padding: 120px var(--content-px);
+  gap: 64px;
+  align-items: center;
+}
+.hero.split-image-right::before { display: none; }
+.hero.split-image-right .hero-image {
+  order: 2;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.hero.split-image-right .hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+@media (max-width: 768px) {
+  .hero.split-image-right {
+    grid-template-columns: 1fr;
+    padding: 100px var(--content-px) 60px;
+  }
+  .hero.split-image-right .hero-image { order: -1; }
+}
+
+/* HERO — Centered Minimal */
+.hero.centered-minimal {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: var(--bg);
+  color: var(--text);
+}
+.hero.centered-minimal::before { display: none; }
+.hero.centered-minimal .hero-content { max-width: 800px; }
+.hero.centered-minimal .hero-image {
+  margin-top: 48px;
+  border-radius: 12px;
+  overflow: hidden;
+  max-width: 900px;
+}
+
+/* HERO — Dark Immersive */
+.hero.dark-immersive {
+  background-color: #0a0a0b;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.hero.dark-immersive::before {
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 100%);
+}
+
+/* ============================================ */
+/* TEXT BLOCK */
+/* ============================================ */
+.text-block {
+  text-align: center;
+}
+.text-block h2 {
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.text-block p {
+  max-width: 550px;
+  margin: 0 auto;
+  color: var(--text-muted);
+}
+
+/* ============================================ */
+/* MENU */
+/* ============================================ */
+.menu-grid {
+  display: grid;
+  gap: 32px;
+  margin-top: 48px;
+}
+.menu-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--text-muted);
+}
+.menu-item:last-child { border-bottom: none; }
+.menu-item-info { flex: 1; }
+.menu-item-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.menu-item-badge {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: var(--accent);
+  color: #1a1a1a;
+  padding: 4px 8px;
+  border-radius: 3px;
+}
+.menu-item-desc {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+.menu-item-price {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.menu-item.highlight {
+  background: var(--primary);
+  color: #fff;
+  padding: 24px;
+  border-radius: 8px;
+  border-bottom: none;
+  margin: -8px;
+}
+.menu-item.highlight .menu-item-desc { color: rgba(255,255,255,0.8); }
+
+/* ============================================ */
+/* PHOTO GRID */
+/* ============================================ */
+.photo-grid {
+  padding: var(--section-pad) var(--content-px);
+}
+.photo-grid-inner {
+  display: grid;
+  gap: 16px;
+}
+.photo-grid[data-cols="2"] .photo-grid-inner { grid-template-columns: repeat(2, 1fr); }
+.photo-grid[data-cols="3"] .photo-grid-inner { grid-template-columns: repeat(3, 1fr); }
+.photo-grid[data-cols="4"] .photo-grid-inner { grid-template-columns: repeat(4, 1fr); }
+.photo-grid img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+@media (max-width: 640px) {
+  .photo-grid[data-cols="3"] .photo-grid-inner,
+  .photo-grid[data-cols="4"] .photo-grid-inner { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ============================================ */
+/* REVIEWS */
+/* ============================================ */
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  margin-top: 48px;
+}
+.review-card {
+  background: var(--primary);
+  color: #fff;
+  padding: 32px;
+  border-radius: 12px;
+}
+.review-stars {
+  color: var(--accent);
+  margin-bottom: 16px;
+  font-size: 1.125rem;
+}
+.review-text {
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  margin-bottom: 24px;
+  font-style: italic;
+}
+.review-author {
+  font-size: 0.875rem;
+  opacity: 0.8;
+}
+
+/* ============================================ */
+/* LOCATION */
+/* ============================================ */
+.location-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+  margin-top: 48px;
+}
+.location-info p {
+  margin-bottom: 8px;
+  font-size: 1.0625rem;
+}
+.location-info .btn { margin-top: 24px; }
+
+@media (max-width: 768px) {
+  .location-content { grid-template-columns: 1fr; }
+}
+
+/* ============================================ */
+/* ABOUT */
+/* ============================================ */
+.about-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+.about-content img {
+  border-radius: 12px;
+  width: 100%;
+}
+.about-text p {
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+@media (max-width: 768px) {
+  .about-content { grid-template-columns: 1fr; }
+}
+
+/* ============================================ */
+/* CTA STRIP */
+/* ============================================ */
+.cta-strip {
+  text-align: center;
+  padding: 64px var(--content-px);
+}
+.cta-strip p {
+  font-size: 1.25rem;
+  margin-bottom: 24px;
+}
+
+/* ============================================ */
+/* QUICK VISIT STRIP */
+/* ============================================ */
+.quick-visit {
+  background: var(--primary);
+  color: #fff;
+  padding: 16px var(--content-px);
+}
+.quick-visit-inner {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px 48px;
+  font-size: 0.9375rem;
+}
+.qv-item { white-space: nowrap; }
+.qv-item a { 
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ============================================ */
+/* FOOTER */
+/* ============================================ */
+footer {
+  padding: 48px var(--content-px);
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+/* ============================================ */
+/* ANIMATIONS */
+/* ============================================ */
+@media (prefers-reduced-motion: no-preference) {
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="#" class="nav-logo">Kreative Ink</a>
+  <ul class="nav-links">
+    <li><a href="#the-studio">The Studio</a></li>
+        <li><a href="#what-collectors-say">What Collectors Say</a></li>
+        <li><a href="#the-artist">The Artist</a></li>
+  </ul>
+  <button class="nav-toggle" aria-label="Menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>
+
+<section class="hero dark-immersive" style="background-image: url('ig-photo-11.jpg')">
+  
+  <div class="hero-content">
+    <h1>Your skin deserves an artist.</h1>
+    <p class="hero-subhead">Black &amp; grey realism by Nick. Victoria, BC.</p>
+    <a href="#work" class="btn btn-primary">See the work</a>
+  </div>
+</section>
+
+<section id="the-studio" class="text-block bg-dark fade-in">
+  <span class="section-label">The Studio</span>
+  <h2>Realism only. Because that's all we do.</h2>
+  <p>Kreative Ink specializes in black &amp; grey realism — the portraits, the textures, the details that make people stop and stare. Nick brings 15+ years of competition-level work to every piece.</p>
+</section>
+
+<section class="photo-grid fade-in" data-cols="2">
+  <div class="photo-grid-inner">
+    <img src="ig-photo-04.jpg" alt="Antlered warrior king with sword — full thigh piece" loading="lazy">
+      <img src="ig-photo-12.jpg" alt="Wolves and nun detail — close-up showing incredible skin texture" loading="lazy">
+      <img src="ig-photo-10.jpg" alt="Viking warrior and wolf half-sleeve" loading="lazy">
+      <img src="ig-photo-02.jpg" alt="Wolf merged with Native American warrior portrait" loading="lazy">
+  </div>
+</section>
+
+<section id="what-collectors-say" class="reviews fade-in">
+  <div class="container">
+    <span class="section-label">What Collectors Say</span>
+    <h2>38 reviews. 4.7 stars.</h2>
+    <div class="reviews-grid">
+      
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Nick is a true artist. The level of detail in my sleeve is insane — people ask if it's a photo."</p>
+      <p class="review-author">Mike R. · February 2026 · Google</p>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Worth every penny. Got my first tattoo here and I'm already planning my second."</p>
+      <p class="review-author">Sarah L. · January 2026 · Google</p>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Best realism work in Victoria, hands down. Nick took my rough idea and turned it into something beyond what I imagined."</p>
+      <p class="review-author">Chris T. · December 2025 · Google</p>
+    </div>
+    </div>
+  </div>
+</section>
+
+<section id="the-artist" class="about fade-in">
+  <div class="container">
+    <div class="about-content">
+      <img src="ig-photo-09.jpg" alt="Full back piece — underwater dive bar scene with incredible detail">
+      <div class="about-text">
+        <span class="section-label">The Artist</span>
+        <h2>Nick doesn't do flash. He does you.</h2>
+        <p>Every piece starts with a conversation. What's the story? What matters? Nick spends more time listening than drawing — because the best tattoos aren't designs, they're translations.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-strip bg-dark fade-in">
+  <p>Ready to start something permanent?</p>
+  <a href="https://instagram.com/kreativeinknick" class="btn btn-primary">DM @kreativeinknick</a>
+</section>
+
+<footer>
+  <p>&copy; 2026 Kreative Ink. All rights reserved.</p>
+</footer>
+
+<script>
+// Nav scroll effect
+const navEl = document.querySelector('.nav');
+window.addEventListener('scroll', () => {
+  navEl.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// Mobile menu toggle
+const toggle = document.querySelector('.nav-toggle');
+const links = document.querySelector('.nav-links');
+toggle.addEventListener('click', () => {
+  links.classList.toggle('open');
+});
+
+// Close mobile menu on link click
+links.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => links.classList.remove('open'));
+});
+
+// Scroll animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

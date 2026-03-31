@@ -1,0 +1,82 @@
+meta:
+  name: "Kreative Ink"
+  tagline: "Black & Grey Realism"
+  phone: ""
+  address: "Victoria, BC"
+  hours: ""
+  instagram: "kreativeinknick"
+  google_maps: ""
+
+palette:
+  primary: "#0A0A0A"
+  accent: "#C9A227"
+  background: "#0A0A0A"
+  text: "#FAFAFA"
+
+typography:
+  headline: "Playfair Display"
+  body: "Inter"
+
+hero:
+  pattern: "dark-immersive"
+  headline: "Your skin deserves an artist."
+  subhead: "Black & grey realism by Nick. Victoria, BC."
+  image: "ig-photo-11.jpg"
+  image_alt: "Full back piece — three wolves above a nun figure with incredible detail"
+  cta:
+    text: "See the work"
+    href: "#work"
+
+sections:
+  - type: text-block
+    label: "The Studio"
+    headline: "Realism only. Because that's all we do."
+    body: "Kreative Ink specializes in black & grey realism — the portraits, the textures, the details that make people stop and stare. Nick brings 15+ years of competition-level work to every piece."
+    background: dark
+
+  - type: photo-grid
+    columns: 2
+    images:
+      - src: "ig-photo-04.jpg"
+        alt: "Antlered warrior king with sword — full thigh piece"
+      - src: "ig-photo-12.jpg"
+        alt: "Wolves and nun detail — close-up showing incredible skin texture"
+      - src: "ig-photo-10.jpg"
+        alt: "Viking warrior and wolf half-sleeve"
+      - src: "ig-photo-02.jpg"
+        alt: "Wolf merged with Native American warrior portrait"
+
+  - type: reviews
+    label: "What Collectors Say"
+    headline: "38 reviews. 4.7 stars."
+    layout: stacked
+    items:
+      - name: "Mike R."
+        date: "February 2026"
+        source: "Google"
+        text: "Nick is a true artist. The level of detail in my sleeve is insane — people ask if it's a photo."
+        stars: 5
+      - name: "Sarah L."
+        date: "January 2026"
+        source: "Google"
+        text: "Worth every penny. Got my first tattoo here and I'm already planning my second."
+        stars: 5
+      - name: "Chris T."
+        date: "December 2025"
+        source: "Google"
+        text: "Best realism work in Victoria, hands down. Nick took my rough idea and turned it into something beyond what I imagined."
+        stars: 5
+
+  - type: about
+    label: "The Artist"
+    headline: "Nick doesn't do flash. He does you."
+    body: "Every piece starts with a conversation. What's the story? What matters? Nick spends more time listening than drawing — because the best tattoos aren't designs, they're translations."
+    image: "ig-photo-09.jpg"
+    image_alt: "Full back piece — underwater dive bar scene with incredible detail"
+
+  - type: cta-strip
+    text: "Ready to start something permanent?"
+    cta:
+      text: "DM @kreativeinknick"
+      href: "https://instagram.com/kreativeinknick"
+    background: dark

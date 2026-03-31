@@ -1,0 +1,82 @@
+meta:
+  name: "Stir It Up"
+  tagline: "Caribbean Soul Food"
+  phone: "+1 778-432-0133"
+  address: "760A Yates St (down the alley), Victoria, BC"
+  hours: "Tue–Sat 11am–7pm"
+  instagram: "stiritup.yyj"
+  google_maps: "https://maps.google.com/?q=Stir+It+Up+Caribbean+Soul+Food+Victoria+BC"
+
+palette:
+  primary: "#0D5C5C"
+  accent: "#E5A623"
+  background: "#FAF5EB"
+
+typography:
+  headline: "Syne"
+  body: "DM Sans"
+
+hero:
+  pattern: "editorial-spread"
+  headline: "Down the alley. Worth finding."
+  subhead: "Jerk. Curry. Oxtail. Roti."
+  image: "jerk-chicken-hero.png"
+  image_alt: "Jerk chicken with rice and peas, steam rising"
+  badge: "Oxtail Saturdays"
+  cta:
+    text: "Call (778) 432-0133"
+    href: "tel:+17784320133"
+
+sections:
+  - type: text-block
+    label: "Hours & Location"
+    headline: "Tue–Sat, 11am–7pm"
+    body: "760A Yates St — down the alley off Yates."
+    background: accent
+
+  - type: about
+    label: "The Story"
+    headline: "Saint Lucian roots, Victorian home."
+    body: "Caribbean soul food cooked from scratch, the way it's supposed to be. Recipes passed down, techniques earned. Every plate made with the kind of care you can taste."
+    image: "ig-photo-owner.jpg"
+    image_alt: "Owner outside Stir It Up, Saint Lucian flag on the window"
+
+  - type: photo-grid
+    columns: 3
+    images:
+      - src: "oxtail-stew.png"
+        alt: "Braised oxtail with rice and plantains"
+      - src: "curry-roti-plantains.png"
+        alt: "Curry chicken roti with fried plantains"
+      - src: "curry-chicken-plate.png"
+        alt: "Curry chicken plate with rice and peas"
+
+  - type: reviews
+    label: "Word on the Street"
+    headline: "188 reviews. 4.5 stars."
+    layout: featured
+    items:
+      - name: "Sarah M."
+        date: "March 2026"
+        source: "Google"
+        text: "Best oxtail I've had outside Jamaica. Tender, rich, and the gravy is serious. Worth hunting down that alley."
+      - name: "Marcus T."
+        date: "February 2026"
+        source: "Google"
+        text: "Jerk chicken has the perfect heat. Not playing around — real deal Caribbean."
+      - name: "Lisa K."
+        date: "January 2026"
+        source: "Google"
+        text: "She remembers your order. Portions are massive. Feels like family."
+
+  - type: location
+    label: "Find Us"
+    headline: "760A Yates St, Victoria"
+    address: "Down the alley off Yates — look for the sign."
+    hours: "Tue–Sat 11am–7pm"
+    phone: "+1 778-432-0133"
+    map_embed: true
+    map_link: "https://maps.google.com/?q=Stir+It+Up+Caribbean+Soul+Food+Victoria+BC"
+    cta:
+      text: "Get directions"
+      href: "https://maps.google.com/?q=Stir+It+Up+Caribbean+Soul+Food+Victoria+BC"

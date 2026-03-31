@@ -1,5 +1,88 @@
 # Auto-Sites Build Log
 
+## Build 94 — Kreative Ink v3
+- **Category:** Tattoo Studio — Black & Grey Realism
+- **City:** Victoria, BC
+- **Date:** 2026-03-31
+- **Model:** claude-opus-4-5 (subagent)
+- **Agent:** Lucy
+- **Hero pattern:** dark-immersive (subtle bg image, bottom-aligned hero text)
+- **Typography:** Playfair Display 400-600 + Inter 400-600
+- **Review layout:** None (awards claim carries credibility instead)
+- **Visit/hours layout:** Hours in 2-column footer, no separate section
+- **Stats bar style:** no-stats (weaved into about copy)
+- **Score:** 7.5 (WHY avg) / 7.83 (WHAT avg) / 7.5 (HOW avg, retry from 6.0) → 7.61
+- **Self-review:** 7.5 (footnote)
+- **Live URL:** https://auto-sites.pages.dev/demos/kreative-ink-v3/
+- **Key decisions:** Manual build from Scott's brief. Black + gold palette (explicit direction). "Black and grey realism. Nothing else." hero headline — pure conviction, no fluff. Nick positioned as the brand throughout. El Diablo Needles Pro Team credibility marker. 4 photos from Instagram portfolio (9-9.5/10 rated): wolves/nun back piece as hero bg, dark fantasy warrior, wolves/nun full view, detail close-up. No testimonials — awards and pro team membership carry credibility. Three-step booking process with email alternative to Instagram DM. HOW panel failed first pass (6.0) due to body text readability and dual CTAs — fixed with larger type, higher contrast, single CTA focus. Victoria local — outreach candidate.
+
+### Scores
+| Round | Phase | Reviewers | Avg |
+|-------|-------|-----------|-----|
+| v0→v1 | WHY | Jobs 7.5, Cagan 8, Ogilvy 7 | 7.5 |
+| v1→v2 | WHAT | Norman 8, Krug 8.5, Nielsen 7 | 7.83 |
+| v2→v3 | HOW (retry) | Vignelli 7.5, Spiekermann 7, Rams 8 | 7.5 |
+| v5 | Self | Lucy | 7.5 |
+
+### Photo Evaluation
+| Rank | File | Role |
+|------|------|------|
+| 1 | ig-photo-09.jpg (9.5/10) | Hero background — Dive Bar full back piece |
+| 2 | ig-photo-11.jpg (9/10) | Gallery main — Wolves/Nun full back |
+| 3 | ig-photo-04.jpg (9/10) | Gallery — Dark Fantasy Warrior |
+| 4 | ig-photo-12.jpg (9.5/10) | Gallery — Wolves/Nun close-up detail |
+| SKIP | 01-03, 05-08, 10 | Wrong styles (traditional, illustrative), weak photos, cluttered bg |
+
+### Files
+- index-v0.html through index-v5.html (6 versions) + index.html
+- 4 Instagram photos (ig-photo-04, 09, 11, 12)
+- screenshot-v0.png through screenshot-v4.png
+
+---
+
+## Build 93 — Stir It Up (Rebuild)
+- **Category:** Caribbean Soul Food Restaurant
+- **City:** Victoria, BC
+- **Date:** 2026-03-31
+- **Model:** claude-opus-4-6 (subagent)
+- **Agent:** Lucy
+- **Hero pattern:** editorial-spread (owner photo right, conviction text left)
+- **Typography:** Bitter 400-700 + Inter 300-600
+- **Review layout:** Featured dark teal pull-quote + 2 equal cards with yellow border-top
+- **Visit/hours layout:** Split — visit info left with details, Google Maps embed right, cream-alt bg
+- **Stats bar style:** no-stats (188 reviews woven into reviews header)
+- **Score:** 7.83 (WHY avg) / 7.67 (WHAT avg, retry from 6.67) / 7.67 (HOW avg) → 7.72
+- **Self-review:** 7.5 (footnote)
+- **Emil footnote:** 6.0 (pre-motion)
+- **Live URL:** https://auto-sites.pages.dev/demos/stir-it-up/
+- **Key decisions:** Rebuild of Build 42 with 16 real Instagram photos (5 used, 11 skipped). Owner portrait (9/10) as hero — the owner IS the story. "Down the alley off Yates. Worth finding." hero headline leans into hidden-gem energy. "Oxtail Saturdays" callout badge in hero for urgency. Menu section with 6 items including highlighted oxtail Saturday special. Bob Marley lyric as name section: "Stir it up. Little darling, stir it up." Interior break (blue walls, yellow ceiling) between name section and reviews. Teal + cream + warm yellow palette extracted from actual restaurant interior. WHAT panel failed first pass (6.67) due to missing menu detail and accessibility — fixed with full menu items, "Get Directions" CTA, darkened body text contrast. Victoria local — outreach candidate.
+
+### Scores
+| Round | Phase | Reviewers | Avg |
+|-------|-------|-----------|-----|
+| v0→v1 | WHY | Jobs 8, Cagan 7, Ogilvy 8.5 | 7.83 |
+| v1→v1b | WHAT (retry) | Norman 8, Krug 8, Nielsen 7 | 7.67 |
+| v2→v3 | HOW | Vignelli 8, Spiekermann 7, Rams 8 | 7.67 |
+| v4 | Self | Lucy | 7.5 |
+
+### Photo Evaluation
+| Rank | File | Role |
+|------|------|------|
+| 1 | ig-photo-owner.jpg (9/10) | Hero — owner portrait outside restaurant |
+| 2 | ig-photo-11.jpg (8/10) | About — storefront entrance with Caribbean art |
+| 3 | ig-photo-14.jpg (8/10) | Food hero — jerk roti + Grace Island Soda |
+| 4 | ig-photo-05.jpg (8/10) | Interior break — blue walls, yellow ceiling |
+| 5 | ig-photo-15.jpg (7/10) | Unused (2 photo moments rule) |
+| 6 | ig-photo-16.jpg (7/10) | Unused (2 photo moments rule) |
+| SKIP | 01-04, 06-10, 12-13 | Landscape dupes, weaker food, logo, flag graphic |
+
+### Files
+- index-v0.html through index-v5.html (6 versions) + index-v1b.html (WHAT retry) + index.html
+- 16 Instagram photos + ig-photo-owner.jpg (5 used, 12 skipped)
+- screenshot-v0.png, screenshot-v1.png, screenshot-v1b.png, screenshot-v2.png, screenshot-v4.png
+
+---
+
 ## Build 92 — Heartwood & Co.
 - **Category:** Hair Salon
 - **City:** Victoria, BC

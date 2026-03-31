@@ -470,6 +470,30 @@ section {
 }
 
 /* ============================================ */
+/* QUICK VISIT STRIP */
+/* ============================================ */
+.quick-visit {
+  background: var(--primary);
+  color: #fff;
+  padding: 16px var(--content-px);
+}
+.quick-visit-inner {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px 48px;
+  font-size: 0.9375rem;
+}
+.qv-item { white-space: nowrap; }
+.qv-item a { 
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ============================================ */
 /* FOOTER */
 /* ============================================ */
 footer {
@@ -520,6 +544,15 @@ footer {
     <a href="#menu" class="btn btn-primary">See the menu</a>
   </div>
 </section>
+
+<div class="quick-visit">
+  <div class="quick-visit-inner">
+    <span class="qv-item"><strong>Hours:</strong> Tue-Sat 11am-7pm</span>
+    <span class="qv-item"><strong>Find us:</strong> 760A Yates St, Victoria, BC</span>
+    <span class="qv-item"><a href="tel:+1 778-432-0133">+1 778-432-0133</a></span>
+    <span class="qv-item"><a href="https://instagram.com/stiritup.yyj" target="_blank">@stiritup.yyj</a></span>
+  </div>
+</div>
 
 <section id="the-food" class="text-block bg-light fade-in">
   <span class="section-label">The Food</span>

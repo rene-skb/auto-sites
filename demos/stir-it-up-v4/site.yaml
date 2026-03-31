@@ -1,0 +1,98 @@
+meta:
+  name: "Stir It Up"
+  tagline: "Caribbean Soul Food"
+  phone: "+1 778-432-0133"
+  address: "760A Yates St, Victoria, BC"
+  hours: "Tue-Sat 11am-7pm"
+  instagram: "stiritup.yyj"
+  google_maps: "https://maps.google.com/maps?q=Stir+It+Up+Caribbean+Victoria+BC"
+
+palette:
+  primary: "#1B4D4D"
+  accent: "#E5B94E"
+  background: "#FAF5EE"
+
+typography:
+  headline: "Bitter"
+  body: "DM Sans"
+
+hero:
+  pattern: full-viewport-bg
+  headline: "Down the alley off Yates. Worth finding."
+  subhead: "Caribbean soul food from Saint Lucia. Tue-Sat, 11am-7pm."
+  image: "jerk-chicken-hero.png"
+  image_alt: "Jerk chicken plate with rice and peas, coleslaw, and scotch bonnet pepper"
+  cta:
+    text: "Call (778) 432-0133"
+    href: "tel:+17784320133"
+  badge: "Oxtail Saturdays"
+
+sections:
+  - type: photo-grid
+    columns: 2
+    images:
+      - src: "oxtail-stew.png"
+        alt: "Oxtail stew with rice and peas and fried plantains"
+      - src: "curry-roti-plantains.png"
+        alt: "Curry chicken roti with plantains and coleslaw"
+      - src: "curry-chicken-plate.png"
+        alt: "Curry chicken plate with rice and peas and callaloo"
+      - src: "patties.png"
+        alt: "Fresh Caribbean patties"
+
+  - type: about
+    label: "The Cook"
+    headline: "One woman. One kitchen. One mission."
+    body: "Stir It Up is Caribbean food the way it's supposed to taste. The roti gets rolled by hand. The curry simmers all morning. The jerk sits in its marinade until it's ready. Nothing comes from a box. Straight from Saint Lucia to this alley off Yates."
+    image: "ig-photo-owner.jpg"
+    image_alt: "Owner of Stir It Up"
+
+  - type: menu
+    label: "The Menu"
+    headline: "The oxtail sells out every Saturday."
+    items:
+      - name: "Oxtail"
+        description: "Slow-braised until it falls off the bone. Thick gravy, rice and peas, plantains."
+        highlight: true
+        badge: "Saturdays Only"
+      - name: "Jerk Chicken"
+        description: "Marinated overnight, grilled with real heat. Rice and peas, coleslaw."
+        highlight: false
+      - name: "Curry Chicken Roti"
+        description: "Hand-rolled roti, potato, chickpea, proper curry depth."
+        highlight: false
+      - name: "Curry Goat"
+        description: "Bone-in, tender, Caribbean-spiced."
+        highlight: false
+      - name: "Fried Plantains"
+        description: "Caramelized until the edges go dark."
+        highlight: false
+
+  - type: reviews
+    label: "Word on the Street"
+    layout: stacked
+    items:
+      - name: "Natasha R."
+        source: "Google"
+        text: "Coming from a Trini, this is the real deal. The roti skin is soft and thin, the curry has proper depth, and the portions are the kind where you need a nap after. This place is a treasure."
+        stars: 5
+      - name: "Marcus L."
+        source: "Google"
+        text: "The jerk chicken has real heat, not the watered-down version. Plantains caramelized until the edges go dark. I've tried every Caribbean spot in Victoria. This is the one."
+        stars: 5
+      - name: "James K."
+        source: "Google"
+        text: "Walked past the alley three times before I found it. Now I go every Saturday for oxtail. The meat falls off the bone and the gravy is thick enough to hold a spoon up."
+        stars: 5
+
+  - type: location
+    label: "Find Us"
+    headline: "Down the alley. Worth the hunt."
+    address: "760A Yates St, Victoria, BC"
+    hours: "Tue-Sat 11am-7pm"
+    phone: "+1 778-432-0133"
+    map_embed: true
+    map_link: "https://maps.google.com/maps?q=Stir+It+Up+Caribbean+Victoria+BC"
+    cta:
+      text: "Get Directions"
+      href: "https://maps.google.com/maps?q=Stir+It+Up+Caribbean+Victoria+BC"

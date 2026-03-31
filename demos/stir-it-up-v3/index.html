@@ -7,6 +7,7 @@
   <meta name="description" content="Caribbean Soul Food. 760A Yates St, Victoria, BC">
   <meta property="og:title" content="Stir It Up">
   <meta property="og:description" content="Caribbean Soul Food">
+  <meta property="og:image" content="ig-photo-owner.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bitter&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -104,7 +105,83 @@ section {
 }
 
 /* ============================================ */
-/* HERO */
+/* NAV */
+/* ============================================ */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 16px var(--content-px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.3s;
+}
+.nav.scrolled {
+  background: var(--bg);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+}
+.nav-logo {
+  font-family: 'Bitter', serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+}
+.nav.scrolled .nav-logo { color: var(--text); }
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.9);
+  transition: color 0.2s;
+}
+.nav.scrolled .nav-links a { color: var(--text); }
+.nav-links a:hover { color: var(--accent); }
+
+/* Mobile nav */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+.nav-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #fff;
+  margin: 5px 0;
+  transition: 0.3s;
+}
+.nav.scrolled .nav-toggle span { background: var(--text); }
+
+@media (max-width: 768px) {
+  .nav-toggle { display: block; }
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    background: var(--primary);
+    flex-direction: column;
+    padding: 80px 32px;
+    gap: 24px;
+    transition: right 0.3s var(--ease-out);
+  }
+  .nav-links.open { right: 0; }
+  .nav-links a { color: #fff; font-size: 1.125rem; }
+}
+
+/* ============================================ */
+/* HERO — Full Viewport BG (default) */
 /* ============================================ */
 .hero {
   min-height: 90vh;
@@ -136,7 +213,7 @@ section {
 }
 .hero-badge {
   position: absolute;
-  top: 24px;
+  top: 80px;
   right: 24px;
   background: var(--accent);
   color: #1a1a1a;
@@ -147,6 +224,64 @@ section {
   letter-spacing: 0.05em;
   border-radius: 4px;
   z-index: 2;
+}
+
+/* HERO — Split Image Right */
+.hero.split-image-right {
+  min-height: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: var(--bg);
+  color: var(--text);
+  padding: 120px var(--content-px);
+  gap: 64px;
+  align-items: center;
+}
+.hero.split-image-right::before { display: none; }
+.hero.split-image-right .hero-image {
+  order: 2;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.hero.split-image-right .hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+@media (max-width: 768px) {
+  .hero.split-image-right {
+    grid-template-columns: 1fr;
+    padding: 100px var(--content-px) 60px;
+  }
+  .hero.split-image-right .hero-image { order: -1; }
+}
+
+/* HERO — Centered Minimal */
+.hero.centered-minimal {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: var(--bg);
+  color: var(--text);
+}
+.hero.centered-minimal::before { display: none; }
+.hero.centered-minimal .hero-content { max-width: 800px; }
+.hero.centered-minimal .hero-image {
+  margin-top: 48px;
+  border-radius: 12px;
+  overflow: hidden;
+  max-width: 900px;
+}
+
+/* HERO — Dark Immersive */
+.hero.dark-immersive {
+  background-color: #0a0a0b;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.hero.dark-immersive::before {
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 100%);
 }
 
 /* ============================================ */
@@ -362,6 +497,21 @@ footer {
 </head>
 <body>
 
+<nav class="nav">
+  <a href="#" class="nav-logo">Stir It Up</a>
+  <ul class="nav-links">
+    <li><a href="#the-food">The Food</a></li>
+        <li><a href="#the-menu">The Menu</a></li>
+        <li><a href="#word-on-the-street">Word on the Street</a></li>
+        <li><a href="#find-us">Find Us</a></li>
+  </ul>
+  <button class="nav-toggle" aria-label="Menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>
+
 <section class="hero" style="background-image: url('ig-photo-owner.jpg')">
   <div class="hero-badge">Oxtail Saturdays</div>
   <div class="hero-content">
@@ -371,13 +521,13 @@ footer {
   </div>
 </section>
 
-<section class="text-block bg-light fade-in">
+<section id="the-food" class="text-block bg-light fade-in">
   <span class="section-label">The Food</span>
   <h2>Caribbean soul food. Small kitchen. Big portions.</h2>
   <p>Authentic recipes. Real ingredients. Everything made fresh in a tiny kitchen down the alley off Yates.</p>
 </section>
 
-<section id="menu" class="fade-in">
+<section id="the-menu" id="menu" class="fade-in">
   <div class="container">
     <span class="section-label">The Menu</span>
     <h2>What's Cooking</h2>
@@ -446,7 +596,7 @@ footer {
   </div>
 </section>
 
-<section class="reviews fade-in">
+<section id="word-on-the-street" class="reviews fade-in">
   <div class="container">
     <span class="section-label">Word on the Street</span>
     
@@ -471,7 +621,7 @@ footer {
   </div>
 </section>
 
-<section class="location bg-dark fade-in">
+<section id="find-us" class="location bg-dark fade-in">
   <div class="container">
     <span class="section-label">Find Us</span>
     <h2>Down the alley off Yates</h2>
@@ -491,6 +641,24 @@ footer {
 </footer>
 
 <script>
+// Nav scroll effect
+const navEl = document.querySelector('.nav');
+window.addEventListener('scroll', () => {
+  navEl.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// Mobile menu toggle
+const toggle = document.querySelector('.nav-toggle');
+const links = document.querySelector('.nav-links');
+toggle.addEventListener('click', () => {
+  links.classList.toggle('open');
+});
+
+// Close mobile menu on link click
+links.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => links.classList.remove('open'));
+});
+
 // Scroll animations
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {

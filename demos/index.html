@@ -3,264 +3,1006 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Auto-Sites — Lucy's Portfolio</title>
+  <title>Auto-Sites Gallery</title>
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
     body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       background: #0a0a0b;
-      color: #e8e8e8;
-      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-      padding: 48px 24px 80px;
-    }
-
-    header {
-      max-width: 960px;
-      margin: 0 auto 48px;
-    }
-
-    header h1 {
-      font-size: 2rem;
-      font-weight: 300;
-      letter-spacing: -0.02em;
       color: #fff;
+      padding: 48px 24px;
+    }
+    
+    h1 {
+      text-align: center;
+      font-size: 2rem;
       margin-bottom: 8px;
     }
-
-    header p {
-      color: #666;
-      font-size: 0.95rem;
+    
+    .subtitle {
+      text-align: center;
+      color: #888;
+      margin-bottom: 48px;
     }
-
-    header p span {
-      color: #4fc3a1;
-    }
-
+    
     .filters {
-      max-width: 960px;
-      margin: 0 auto 32px;
       display: flex;
-      gap: 8px;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 32px;
       flex-wrap: wrap;
     }
-
+    
     .filter-btn {
-      background: #1a1a1c;
-      border: 1px solid #2a2a2e;
-      color: #888;
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-size: 0.8rem;
+      padding: 8px 16px;
+      background: #1a1a1a;
+      border: 1px solid #333;
+      color: #fff;
+      border-radius: 6px;
       cursor: pointer;
+      font-size: 0.875rem;
       transition: all 0.15s;
     }
-
+    
     .filter-btn:hover, .filter-btn.active {
-      background: #4fc3a1;
-      border-color: #4fc3a1;
+      background: #fff;
       color: #0a0a0b;
     }
-
+    
     .grid {
-      max-width: 960px;
-      margin: 0 auto;
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 16px;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+      max-width: 1600px;
+      margin: 0 auto;
     }
-
+    
     .card {
-      background: #111113;
-      border: 1px solid #1e1e22;
-      border-radius: 8px;
+      background: #111;
+      border-radius: 12px;
       overflow: hidden;
-      transition: border-color 0.15s, transform 0.15s;
-      text-decoration: none;
-      display: block;
+      transition: transform 0.2s, box-shadow 0.2s;
     }
-
+    
     .card:hover {
-      border-color: #4fc3a1;
-      transform: translateY(-2px);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.4);
     }
-
-    .card-preview {
+    
+    .card a {
+      text-decoration: none;
+      color: inherit;
+    }
+    
+    .thumb {
       width: 100%;
-      height: 180px;
-      background: #1a1a1c;
-      overflow: hidden;
-      position: relative;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+      object-position: top;
+      background: #1a1a1a;
     }
-
-    .card-preview iframe {
-      width: 200%;
-      height: 400px;
-      border: none;
-      transform: scale(0.5);
-      transform-origin: top left;
-      pointer-events: none;
-    }
-
-    .card-body {
+    
+    .card-info {
       padding: 16px;
     }
-
-    .card-name {
-      font-size: 0.95rem;
-      font-weight: 500;
-      color: #fff;
+    
+    .card-title {
+      font-size: 1rem;
+      font-weight: 600;
       margin-bottom: 4px;
     }
-
+    
     .card-meta {
-      font-size: 0.78rem;
-      color: #555;
-      margin-bottom: 10px;
+      font-size: 0.8125rem;
+      color: #666;
     }
-
-    .card-footer {
+    
+    .card-meta span {
+      margin-right: 12px;
+    }
+    
+    .no-thumb {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
+      background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+      color: #444;
+      font-size: 0.875rem;
     }
-
-    .card-category {
-      font-size: 0.72rem;
-      background: #1e1e22;
-      color: #888;
-      padding: 3px 8px;
-      border-radius: 4px;
-    }
-
-    .card-score {
-      font-size: 0.78rem;
-      color: #4fc3a1;
-      font-weight: 500;
-    }
-
-    .count {
-      color: #555;
-      font-size: 0.8rem;
-      margin-top: 8px;
+    
+    .stats {
+      text-align: center;
+      margin-top: 48px;
+      color: #666;
+      font-size: 0.875rem;
     }
   </style>
 </head>
 <body>
-
-  <header>
-    <h1>Auto-Sites</h1>
-    <p>Local businesses that deserve a web presence. Built by <span>Lucy</span>.</p>
-    <p class="count" id="count"></p>
-  </header>
-
+  <h1>🦞 Auto-Sites Gallery</h1>
+  <p class="subtitle">Click any site to view full page</p>
+  
   <div class="filters">
-    <button class="filter-btn active" onclick="filter('all')">All</button>
-    <button class="filter-btn" onclick="filter('cafe')">Café</button>
-    <button class="filter-btn" onclick="filter('bakery')">Bakery</button>
-    <button class="filter-btn" onclick="filter('tattoo')">Tattoo</button>
-    <button class="filter-btn" onclick="filter('barber')">Barber</button>
-    <button class="filter-btn" onclick="filter('vintage')">Vintage</button>
-    <button class="filter-btn" onclick="filter('yoga')">Yoga / Fitness</button>
-    <button class="filter-btn" onclick="filter('food')">Food</button>
-    <button class="filter-btn" onclick="filter('records')">Records</button>
-    <button class="filter-btn" onclick="filter('books')">Books</button>
-    <button class="filter-btn" onclick="filter('victoria')">Victoria</button>
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="food">Food & Drink</button>
+    <button class="filter-btn" data-filter="retail">Retail</button>
+    <button class="filter-btn" data-filter="services">Services</button>
+    <button class="filter-btn" data-filter="creative">Creative</button>
   </div>
-
+  
   <div class="grid" id="grid"></div>
+  
+  <p class="stats" id="stats"></p>
 
   <script>
-    const builds = [
-      { name: "Heartwood & Co.", category: "Hair Salon", city: "Victoria, BC", score: "7.33", slug: "heartwood", tags: ["victoria", "salon"] },
-      { name: "Little June (v2)", category: "Café", city: "Victoria, BC", score: "7.33", slug: "little-june-v2", tags: ["cafe", "victoria"] },
-      { name: "Oliver Grooming Spa", category: "Pet Grooming", city: "Winnipeg, MB", score: "7.5", slug: "oliver-grooming", tags: ["pets"] },
-      { name: "Working Culture Bread", category: "Artisan Bakery", city: "Victoria, BC", score: "7.89", slug: "working-culture", tags: ["bakery", "victoria"] },
-      { name: "Okami Martial Arts", category: "Martial Arts", city: "Saskatoon, SK", score: "7.94", slug: "okami-martial-arts", tags: ["yoga"] },
-      { name: "Machida Shoten", category: "Ramen Restaurant", city: "Toronto, ON", score: "8.17", slug: "machida-shoten", tags: ["food"] },
-      { name: "ChainLine Cycle", category: "Bike Shop", city: "Kelowna, BC", score: "7.67", slug: "chainline-cycle", tags: [] },
-      { name: "Joy Creations", category: "Custom Jewellery", city: "Ottawa, ON", score: "7.0", slug: "joy-creations", tags: [] },
-      { name: "Melodiya Records", category: "Record Store", city: "Calgary, AB", score: "7.5", slug: "melodiya-records", tags: ["records"] },
-      { name: "Dispensa Italian Grocery", category: "Italian Grocery", city: "Montréal, QC", score: "7.45", slug: "dispensa-italian", tags: ["food"] },
-      { name: "Juhee's Closet", category: "Alterations / Tailor", city: "Montréal, QC", score: "7.83", slug: "juhees-closet", tags: [] },
-      { name: "RSTUDIOS Yoga + Pilates", category: "Hot Yoga / Pilates", city: "Halifax, NS", score: "7.58", slug: "rstudios-yoga-halifax", tags: ["yoga"] },
-      { name: "Zoé Dessert et Thé", category: "Asian Dessert Café", city: "Montréal, QC", score: "7.67", slug: "zoe-dessert-et-the", tags: ["cafe", "food"] },
-      { name: "Lynnwood Barber Shop", category: "Barber Shop", city: "Edmonton, AB", score: "7.8", slug: "lynnwood-barber", tags: ["barber"] },
-      { name: "Humble Coffee Roasters", category: "Coffee Roaster", city: "Calgary, AB", score: "7.31", slug: "humble-coffee", tags: ["cafe"] },
-      { name: "Vintage Glory v2", category: "Vintage Clothing", city: "Winnipeg, MB", score: "7.27", slug: "vintage-glory-v2", tags: ["vintage"] },
-      { name: "Kavod Thrift Store", category: "Thrift / Secondhand", city: "Winnipeg, MB", score: "7.35", slug: "kavod-thrift", tags: ["vintage"] },
-      { name: "Frondly Plants", category: "Plant Shop", city: "Vancouver, BC", score: "7.06", slug: "frondly-plants", tags: [] },
-      { name: "Farine & Vanille", category: "Bakery / Café", city: "Montréal, QC", score: "8.0+", slug: "farine-et-vanille", tags: ["bakery", "cafe"] },
-      { name: "Painted Lotus Studios", category: "Tattoo Studio", city: "Victoria, BC", score: "7.5", slug: "painted-lotus-studios", tags: ["tattoo", "victoria"] },
-      { name: "GoodSide Pastry House", category: "Bakery / Pastry", city: "Victoria, BC", score: "8.5", slug: "goodside-pastry-house", tags: ["bakery", "victoria"] },
-      { name: "Flowers On Top", category: "Florist", city: "Victoria, BC", score: "8.2", slug: "flowers-on-top", tags: ["victoria"] },
-      { name: "La Roux Patisserie", category: "French Patisserie", city: "Victoria, BC", score: "7.5", slug: "la-roux-patisserie", tags: ["bakery", "victoria"] },
-      { name: "Status Barber Shop", category: "Barber Shop", city: "Victoria, BC", score: "7.67", slug: "status-barber-shop", tags: ["barber", "victoria"] },
-      { name: "Burning Monk Tattoo", category: "Tattoo Studio", city: "Montréal, QC", score: "6.67", slug: "burning-monk-tattoo", tags: ["tattoo"] },
-      { name: "Klee Larsen", category: "Fine Art / Artist", city: "Vancouver, BC", score: "6.97", slug: "klee-larsen", tags: [] },
-      { name: "Sean Evans", category: "Music / Artist", city: "Vancouver, BC", score: "7.47", slug: "sean-evans", tags: [] },
-      { name: "MacLeod's Books", category: "Used Bookshop", city: "Vancouver, BC", score: "—", slug: "macleods-books", tags: ["books"] },
-      { name: "The Needle in the Haystack", category: "Tailoring", city: "Victoria, BC", score: "8.33", slug: "needle-in-the-haystack", tags: ["victoria"] },
-      { name: "Oak Bay Cobbler", category: "Shoe Repair", city: "Victoria, BC", score: "8.23", slug: "oak-bay-cobbler", tags: ["victoria"] },
-      { name: "Takes a Village Cleaning", category: "Cleaning Service", city: "Victoria, BC", score: "8.33", slug: "takes-a-village-cleaning", tags: ["victoria"] },
-      { name: "A Mart Korean Grocery", category: "Korean Grocery", city: "Victoria, BC", score: "8.33", slug: "a-mart-korean-grocery", tags: ["food", "victoria"] },
-      { name: "Pho Vy", category: "Vietnamese Restaurant", city: "Victoria, BC", score: "8.27", slug: "pho-vy", tags: ["food", "victoria"] },
-      { name: "Kreative Ink", category: "Tattoo Studio", city: "Victoria, BC", score: "7.5", slug: "kreative-ink", tags: ["tattoo", "victoria"] },
-      { name: "Nakamoto Design Co.", category: "Design Studio", city: "Victoria, BC", score: "8.5", slug: "nakamoto-design-opus", tags: ["victoria"] },
-      { name: "LoopIn", category: "Dev Tool", city: "—", score: "7.5", slug: "loopin", tags: [] },
-      { name: "Deep Cuts Vinyl", category: "Record Store", city: "—", score: "—", slug: "deep-cuts-vinyl", tags: ["records"] },
-      { name: "Stir It Up", category: "Restaurant", city: "—", score: "—", slug: "stir-it-up", tags: ["food"] },
-      { name: "Brothers Barbershop", category: "Barber Shop", city: "—", score: "—", slug: "brothers-barbershop", tags: ["barber"] },
-      { name: "Routine Coffee", category: "Coffee Shop", city: "Victoria, BC", score: "6.73", slug: "routine-coffee", tags: ["cafe", "victoria"] },
-      { name: "Spiral Cafe", category: "Café", city: "—", score: "—", slug: "spiral-cafe", tags: ["cafe"] },
-      { name: "Stillwater Yoga", category: "Yoga Studio", city: "—", score: "—", slug: "stillwater-yoga", tags: ["yoga"] },
-      { name: "Burning Birch Tattoo", category: "Tattoo Studio", city: "—", score: "—", slug: "burning-birch-tattoo", tags: ["tattoo"] },
-      { name: "Dragon Flowers", category: "Florist", city: "—", score: "—", slug: "dragon-flowers", tags: [] },
-      { name: "Tarboosh", category: "Restaurant", city: "—", score: "—", slug: "tarboosh-v2", tags: ["food"] },
-      { name: "Sushi Aoi", category: "Japanese Restaurant", city: "—", score: "—", slug: "sushi-aoi", tags: ["food"] },
-      { name: "Happy Medium Books", category: "Bookshop", city: "—", score: "—", slug: "happy-medium-books", tags: ["books"] },
-      { name: "Good Cheese Co.", category: "Cheese Shop", city: "—", score: "—", slug: "good-cheese", tags: ["food"] },
-      { name: "Nadia Pottery", category: "Pottery Studio", city: "—", score: "—", slug: "nadia-pottery", tags: [] },
-      { name: "Kingsway Barbershop", category: "Barber Shop", city: "—", score: "—", slug: "kingsway-barbershop", tags: ["barber"] },
-      { name: "Crow's Nest Tattoo", category: "Tattoo Studio", city: "—", score: "—", slug: "crows-nest-tattoo-atelier", tags: ["tattoo"] },
-      { name: "33 Acres Brewing", category: "Brewery", city: "Vancouver, BC", score: "—", slug: "33-acres-brewing", tags: ["food"] },
-    ];
-
-    let activeFilter = 'all';
-
-    function filter(tag) {
-      activeFilter = tag;
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      event.target.classList.add('active');
-      render();
-    }
-
-    function render() {
-      const grid = document.getElementById('grid');
-      const filtered = activeFilter === 'all'
-        ? builds
-        : builds.filter(b => b.tags.includes(activeFilter) || b.city.toLowerCase().includes(activeFilter));
-
-      document.getElementById('count').textContent = `${filtered.length} builds`;
-
-      grid.innerHTML = filtered.map(b => `
-        <a class="card" href="https://auto-sites.pages.dev/demos/${b.slug}/" target="_blank">
-          <div class="card-preview">
-            <iframe src="https://auto-sites.pages.dev/demos/${b.slug}/" loading="lazy" title="${b.name}"></iframe>
-          </div>
-          <div class="card-body">
-            <div class="card-name">${b.name}</div>
-            <div class="card-meta">${b.city}</div>
-            <div class="card-footer">
-              <span class="card-category">${b.category}</span>
-              ${b.score !== '—' ? `<span class="card-score">★ ${b.score}</span>` : ''}
+    // Site data — auto-generated
+    const sites = [
+  {
+    "slug": "33-acres-brewing",
+    "name": "33 Acres Brewing Company",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "a-mart-korean-grocery",
+    "name": "A Mart Korean Grocery",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "ayo-eat",
+    "name": "Ayo Eat",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "barry-and-busters",
+    "name": "Barry and Busters Pet Grooming",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "bastion-books",
+    "name": "Bastion Books",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "botched-vintage",
+    "name": "Botched Vintage & Apparel",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "bri-the-groomer",
+    "name": "Bri the Groomer",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "brothers-barbershop",
+    "name": "Brothers Barbershop",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "burning-birch-tattoo",
+    "name": "Burning Birch Tattoo",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "burning-monk-tattoo",
+    "name": "Burning Monk Tattoo",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "carlina-cafe",
+    "name": "Carlina Cafe",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "chainline-cycle",
+    "name": "ChainLine Cycle",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "crows-nest-tattoo-atelier",
+    "name": "Crows Nest Tattoo Atelier",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "csinos-vintage",
+    "name": "Csinos Vintage",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "deep-cuts-vinyl",
+    "name": "Deep Cuts Vinyl",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "dispensa-italian",
+    "name": "Dispensa Italian Grocery",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "ditch-records-10round",
+    "name": "Ditch Records & CDs",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "don-williams-lawnmower-clinic",
+    "name": "Don Williams Lawnmower Clinic",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "dragon-flowers",
+    "name": "Dragon Flowers",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "farine-et-vanille",
+    "name": "Farine & Vanille",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "farine-et-vanille-codex",
+    "name": "Farine & Vanille",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "first-light-coffee",
+    "name": "First Light Coffee",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "flowers-on-top",
+    "name": "Flowers On Top",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "focus-strength-performance",
+    "name": "Focus Strength Performance",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "friends-and-family-bake",
+    "name": "Friends & Family Bake",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "frondly-plants",
+    "name": "Frondly Plants",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "goodside-pastry-house",
+    "name": "GoodSide Pastry House",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "greek-n-go",
+    "name": "Greek n Go",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "heartwood",
+    "name": "Heartwood & Co.",
+    "category": "other",
+    "city": "",
+    "hasThumb": true
+  },
+  {
+    "slug": "type-test-sans",
+    "name": "Hide + Seek Coffee",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "humble-coffee",
+    "name": "Humble Coffee Roasters",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "joy-creations",
+    "name": "Joy Creations",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "juhees-closet",
+    "name": "Juhee's Closet",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "kavod-thrift",
+    "name": "Kavod Thrift Store",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "kays-korner",
+    "name": "Kay's Korner",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "key-vintage",
+    "name": "Key Vintage",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "kid-sister-v2",
+    "name": "Kid Sister",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "kid-sister-codex",
+    "name": "Kid Sister Ice Cream",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "kid-sister-humanized",
+    "name": "Kid Sister Ice Cream",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "kid-sister-ice-cream",
+    "name": "Kid Sister Ice Cream",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "kid-sister-opus",
+    "name": "Kid Sister Ice Cream",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "kid-sister-v3",
+    "name": "Kid Sister Ice Cream",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "kid-sister-v4",
+    "name": "Kid Sister Ice Cream",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "kid-sister-v5",
+    "name": "Kid Sister Ice Cream",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "kid-sister-v6",
+    "name": "Kid Sister Ice Cream",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "kid-sister-v7",
+    "name": "Kid Sister Ice Cream",
+    "category": "other",
+    "city": "",
+    "hasThumb": true
+  },
+  {
+    "slug": "king-koncrete",
+    "name": "King Koncrete",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "kingsway-barbershop",
+    "name": "Kingsway Barbershop",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "klee-larsen",
+    "name": "Klee Larsen",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "kreative-ink",
+    "name": "Kreative Ink",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "kreative-ink-v3",
+    "name": "Kreative Ink",
+    "category": "other",
+    "city": "",
+    "hasThumb": true
+  },
+  {
+    "slug": "kreative-ink-v4",
+    "name": "Kreative Ink v4",
+    "category": "other",
+    "city": "Victoria BC",
+    "hasThumb": true
+  },
+  {
+    "slug": "la-roux-patisserie",
+    "name": "La Roux Patisserie",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "little-june-v2",
+    "name": "Little June",
+    "category": "other",
+    "city": "",
+    "hasThumb": true
+  },
+  {
+    "slug": "little-june-cafe",
+    "name": "Little June Cafe",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "little-plant-shop",
+    "name": "Little Plant Shop",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "loopin",
+    "name": "LoopIn",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "los-panas-kitchen",
+    "name": "Los Panas Kitchen",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "lynnwood-barber",
+    "name": "Lynnwood Barber Shop",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "machida-shoten",
+    "name": "Machida Shoten",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "macleods-books",
+    "name": "MacLeod's Books",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "melodiya-records",
+    "name": "Melodiya Records",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "mexican-house-of-spice-10round",
+    "name": "Mexican House of Spice",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "mint-upholstery",
+    "name": "MINT Upholstery",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "mixid",
+    "name": "mix-id",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "nakamoto-design",
+    "name": "Nakamoto Design Co.",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "nakamoto-design-opus",
+    "name": "Nakamoto Design Co.",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "oak-bay-cobbler",
+    "name": "Oak Bay Cobbler",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "okami-martial-arts",
+    "name": "Okami Martial Arts",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "oliver-grooming",
+    "name": "Oliver Professional Dog and Cat Grooming Spa",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "maccalaaa",
+    "name": "One Glove",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "one-mind-and-body",
+    "name": "One Mind and Body",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "painted-lotus-studios",
+    "name": "Painted Lotus Studios",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "pawsitive-pet-emporium",
+    "name": "Pawsitive Pet Emporium",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "petal-and-stem",
+    "name": "Petal & Stem",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "phillips-brewing-10round",
+    "name": "Phillips Brewing & Malting Co.",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "pho-vy",
+    "name": "Pho Vy Vietnamese Restaurant",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "popular-nails-by-bella",
+    "name": "Popular Nails By Bella",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "puerto-vallarta-amigos",
+    "name": "Puerto Vallarta Amigos",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "roaming-yak",
+    "name": "Roaming Yak",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "roast-coffee-co",
+    "name": "Roast Coffee Co",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "routine-coffee",
+    "name": "Routine Coffee & Supply",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "routine-coffee-v2",
+    "name": "Routine Coffee & Supply",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "rstudios-yoga-halifax",
+    "name": "RSTUDIOS",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "scott-bell-codex",
+    "name": "Scott Bell",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "scott-bell-opus",
+    "name": "Scott Bell",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "scott-bell-portfolio",
+    "name": "Scott Bell",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "scott-bell-portfolio-v2",
+    "name": "Scott Bell",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "scott-bell-portfolio-v3",
+    "name": "Scott Bell",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "scott-bell-portfolio-v4",
+    "name": "Scott Bell",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "scott-bell-portfolio-v5",
+    "name": "Scott Bell",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "scott-bell-v2",
+    "name": "Scott Bell",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "scott-bell-portfolio-v6",
+    "name": "Scott Bell Portfolio v6",
+    "category": "creative",
+    "city": "Victoria BC",
+    "hasThumb": false
+  },
+  {
+    "slug": "sean-evans",
+    "name": "Sean Evans",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "sky-studio-lucia",
+    "name": "Sky Studio Lucia",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "spiral-cafe",
+    "name": "Spiral Cafe",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "spiral-cafe-v2",
+    "name": "Spiral Cafe",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "status-barber-shop",
+    "name": "Status Barber Shop",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "stillwater-yoga",
+    "name": "Stillwater Yoga",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "stir-it-up",
+    "name": "Stir It Up",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "stir-it-up-v1",
+    "name": "Stir It Up",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "stir-it-up-v3",
+    "name": "Stir It Up",
+    "category": "other",
+    "city": "",
+    "hasThumb": true
+  },
+  {
+    "slug": "stir-it-up-v4",
+    "name": "Stir It Up v4",
+    "category": "food",
+    "city": "Victoria BC",
+    "hasThumb": true
+  },
+  {
+    "slug": "takes-a-village-cleaning",
+    "name": "Takes a Village Cleaning",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "tarboosh",
+    "name": "Tarboosh",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "tarboosh-v2",
+    "name": "Tarboosh",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "needle-in-the-haystack",
+    "name": "The Needle in the Haystack",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "the-needle-in-the-haystack",
+    "name": "The Needle in the Haystack",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "tourist-wine-bar-10round",
+    "name": "Tourist",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "unicorn-sparkles",
+    "name": "Unicorn Sparkles",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "vintage-glory",
+    "name": "Vintage Glory",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "vintage-glory-v2",
+    "name": "Vintage Glory",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "wairua-cafe-10round",
+    "name": "WAIRUA",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "type-test-serif",
+    "name": "WAIRUA Cafe",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "will-mcfarland",
+    "name": "Will McFarland",
+    "category": "other",
+    "city": "Victoria BC",
+    "hasThumb": false
+  },
+  {
+    "slug": "working-culture",
+    "name": "Working Culture Bread",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "type-test-wild",
+    "name": "Yoka's Coffee",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  },
+  {
+    "slug": "zoe-dessert-et-the",
+    "name": "Zoé Dessert et Thé",
+    "category": "other",
+    "city": "",
+    "hasThumb": false
+  }
+];
+    
+    const grid = document.getElementById('grid');
+    const stats = document.getElementById('stats');
+    
+    function renderSites(filter = 'all') {
+      const filtered = filter === 'all' ? sites : sites.filter(s => s.category === filter);
+      
+      grid.innerHTML = filtered.map(site => `
+        <div class="card" data-category="${site.category || 'other'}">
+          <a href="${site.slug}/" target="_blank">
+            ${site.hasThumb 
+              ? `<img class="thumb" src="../thumbnails/${site.slug}.png" alt="${site.name}" loading="lazy">`
+              : `<div class="thumb no-thumb">No preview</div>`
+            }
+            <div class="card-info">
+              <div class="card-title">${site.name}</div>
+              <div class="card-meta">
+                ${site.category ? `<span>${site.category}</span>` : ''}
+                ${site.city ? `<span>${site.city}</span>` : ''}
+              </div>
             </div>
-          </div>
-        </a>
+          </a>
+        </div>
       `).join('');
+      
+      stats.textContent = `Showing ${filtered.length} of ${sites.length} sites`;
     }
-
-    render();
+    
+    // Filter buttons
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        renderSites(btn.dataset.filter);
+      });
+    });
+    
+    renderSites();
   </script>
-
 </body>
 </html>

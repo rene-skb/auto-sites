@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auto-Sites Gallery</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0a0a0b;
+      color: #fff;
+      padding: 48px 24px;
+    }
+    
+    h1 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 8px;
+    }
+    
+    .subtitle {
+      text-align: center;
+      color: #888;
+      margin-bottom: 48px;
+    }
+    
+    .filters {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+    }
+    
+    .filter-btn {
+      padding: 8px 16px;
+      background: #1a1a1a;
+      border: 1px solid #333;
+      color: #fff;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.875rem;
+      transition: all 0.15s;
+    }
+    
+    .filter-btn:hover, .filter-btn.active {
+      background: #fff;
+      color: #0a0a0b;
+    }
+    
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+      max-width: 1600px;
+      margin: 0 auto;
+    }
+    
+    .card {
+      background: #111;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+    }
+    
+    .card a {
+      text-decoration: none;
+      color: inherit;
+    }
+    
+    .thumb {
+      width: 100%;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+      object-position: top;
+      background: #1a1a1a;
+    }
+    
+    .card-info {
+      padding: 16px;
+    }
+    
+    .card-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    
+    .card-meta {
+      font-size: 0.8125rem;
+      color: #666;
+    }
+    
+    .card-meta span {
+      margin-right: 12px;
+    }
+    
+    .no-thumb {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+      color: #444;
+      font-size: 0.875rem;
+    }
+    
+    .stats {
+      text-align: center;
+      margin-top: 48px;
+      color: #666;
+      font-size: 0.875rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>🦞 Auto-Sites Gallery</h1>
+  <p class="subtitle">Click any site to view full page</p>
+  
+  <div class="filters">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="food">Food & Drink</button>
+    <button class="filter-btn" data-filter="retail">Retail</button>
+    <button class="filter-btn" data-filter="services">Services</button>
+    <button class="filter-btn" data-filter="creative">Creative</button>
+  </div>
+  
+  <div class="grid" id="grid"></div>
+  
+  <p class="stats" id="stats"></p>
+
+  <script>
+    // Site data — auto-generated
+    const sites = SITE_DATA_PLACEHOLDER;
+    
+    const grid = document.getElementById('grid');
+    const stats = document.getElementById('stats');
+    
+    function renderSites(filter = 'all') {
+      const filtered = filter === 'all' ? sites : sites.filter(s => s.category === filter);
+      
+      grid.innerHTML = filtered.map(site => `
+        <div class="card" data-category="${site.category || 'other'}">
+          <a href="${site.slug}/" target="_blank">
+            ${site.hasThumb 
+              ? `<img class="thumb" src="../thumbnails/${site.slug}.png" alt="${site.name}" loading="lazy">`
+              : `<div class="thumb no-thumb">No preview</div>`
+            }
+            <div class="card-info">
+              <div class="card-title">${site.name}</div>
+              <div class="card-meta">
+                ${site.category ? `<span>${site.category}</span>` : ''}
+                ${site.city ? `<span>${site.city}</span>` : ''}
+              </div>
+            </div>
+          </a>
+        </div>
+      `).join('');
+      
+      stats.textContent = `Showing ${filtered.length} of ${sites.length} sites`;
+    }
+    
+    // Filter buttons
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        renderSites(btn.dataset.filter);
+      });
+    });
+    
+    renderSites();
+  </script>
+</body>
+</html>

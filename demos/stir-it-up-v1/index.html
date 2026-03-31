@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stir It Up — Authentic Caribbean Soul Food | Victoria, BC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --cream: #FAF5EE;
+    --warm-black: #1A1410;
+    --spice: #C4752A;
+    --spice-light: #F5E8D8;
+    --warm-gray: #6B5F54;
+    --alt-bg: #F0EAE0;
+    --section-pad: 96px;
+    --content-width: 1120px;
+    --ls-sm: 0.04em;
+    --ls-md: 0.08em;
+    --ls-lg: 0.14em;
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--warm-black);
+    background: var(--cream);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  img { display: block; max-width: 100%; height: auto; }
+
+  a { color: inherit; text-decoration: none; }
+
+  .section-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: var(--ls-lg);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  /* NAV */
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: var(--cream);
+    border-bottom: 1px solid rgba(26, 20, 16, 0.08);
+  }
+  .nav-inner {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 20px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .nav-brand {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.125rem;
+    letter-spacing: var(--ls-sm);
+    text-transform: uppercase;
+  }
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: var(--ls-md);
+    text-transform: uppercase;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1.5px;
+    background: var(--spice);
+    transition: width 300ms var(--ease-out);
+  }
+  .nav-links a:hover::after { width: 100%; }
+
+  /* HAMBURGER */
+  .hamburger {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--warm-black);
+    margin: 5px 0;
+    transition: transform 200ms var(--ease-out), opacity 200ms;
+  }
+  .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+  .hamburger.active span:nth-child(2) { opacity: 0; }
+  .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 65px;
+    left: 0;
+    right: 0;
+    background: var(--cream);
+    padding: 24px;
+    border-bottom: 1px solid rgba(26, 20, 16, 0.08);
+    z-index: 99;
+  }
+  .mobile-menu.active { display: block; }
+  .mobile-menu a {
+    display: block;
+    padding: 12px 0;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: var(--ls-md);
+    text-transform: uppercase;
+  }
+
+  /* HERO — giant display type */
+  .hero {
+    padding: 160px 24px var(--section-pad);
+    text-align: center;
+    max-width: var(--content-width);
+    margin: 0 auto;
+  }
+  .hero-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: var(--ls-lg);
+    text-transform: uppercase;
+    color: var(--spice);
+    margin-bottom: 24px;
+  }
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(48px, 7vw, 96px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+  }
+  .hero-body {
+    max-width: 600px;
+    margin: 0 auto 40px;
+    color: var(--warm-gray);
+    font-size: 1.125rem;
+    line-height: 1.7;
+  }
+  .hero-ctas {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 32px;
+    background: var(--warm-black);
+    color: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: var(--ls-md);
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition: transform 160ms var(--ease-out);
+  }
+  .btn-primary:active { transform: scale(0.97); }
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 32px;
+    background: transparent;
+    color: var(--warm-black);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: var(--ls-md);
+    text-transform: uppercase;
+    border: 1.5px solid var(--warm-black);
+    cursor: pointer;
+    transition: transform 160ms var(--ease-out);
+  }
+  .btn-secondary:active { transform: scale(0.97); }
+
+  /* TRUST BAR */
+  .trust-bar {
+    background: var(--warm-black);
+    color: var(--cream);
+    padding: 40px 24px;
+  }
+  .trust-bar-inner {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    gap: 64px;
+    flex-wrap: wrap;
+  }
+  .trust-stat {
+    text-align: center;
+  }
+  .trust-stat-number {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.5rem;
+    letter-spacing: -0.02em;
+    margin-bottom: 4px;
+  }
+  .trust-stat-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: var(--ls-md);
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+
+  /* PHOTO STRIP */
+  .photo-strip {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: var(--section-pad) 24px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 4px;
+  }
+  .photo-strip-large {
+    aspect-ratio: 16/10;
+    background-size: cover;
+    background-position: center;
+  }
+  .photo-strip-stack {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 4px;
+  }
+  .photo-strip-small {
+    background-size: cover;
+    background-position: center;
+  }
+
+  /* ABOUT */
+  .about {
+    padding: var(--section-pad) 24px;
+    max-width: var(--content-width);
+    margin: 0 auto;
+  }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    gap: 48px;
+    align-items: start;
+  }
+  .about h2 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(28px, 4vw, 40px);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+  }
+  .about-quote {
+    font-style: italic;
+    color: var(--warm-gray);
+    margin-bottom: 24px;
+    font-size: 1.0625rem;
+    line-height: 1.7;
+  }
+  .about-quote cite {
+    font-style: normal;
+    font-size: 0.8125rem;
+    display: block;
+    margin-top: 8px;
+    letter-spacing: var(--ls-sm);
+  }
+  .about-text {
+    color: var(--warm-gray);
+    line-height: 1.7;
+  }
+  .about-text p { margin-bottom: 16px; }
+
+  /* NAME SECTION */
+  .name-section {
+    padding: 120px 24px;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .name-section h2 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(32px, 5vw, 52px);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+  .name-section p {
+    color: var(--warm-gray);
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  /* MENU HIGHLIGHTS */
+  .menu-section {
+    padding: var(--section-pad) 24px;
+    background: var(--alt-bg);
+  }
+  .menu-inner {
+    max-width: var(--content-width);
+    margin: 0 auto;
+  }
+  .menu-section h2 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(28px, 4vw, 40px);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 48px;
+  }
+  .menu-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  .menu-card {
+    padding: 32px;
+    background: var(--cream);
+    border-top: 2px solid var(--warm-black);
+  }
+  .menu-card-number {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--spice);
+    opacity: 0.5;
+    margin-bottom: 12px;
+  }
+  .menu-card h3 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+  .menu-card p {
+    color: var(--warm-gray);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+  }
+
+  /* SPICE QUOTE */
+  .spice-quote {
+    background: var(--spice);
+    color: var(--cream);
+    padding: var(--section-pad) 24px;
+    text-align: center;
+  }
+  .spice-quote-inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .spice-quote blockquote {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.5;
+    margin-bottom: 16px;
+  }
+  .spice-quote cite {
+    font-style: normal;
+    font-size: 0.8125rem;
+    letter-spacing: var(--ls-md);
+    text-transform: uppercase;
+    opacity: 0.8;
+  }
+
+  /* REVIEWS */
+  .reviews {
+    padding: var(--section-pad) 24px;
+    max-width: var(--content-width);
+    margin: 0 auto;
+  }
+  .reviews h2 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(28px, 4vw, 40px);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 48px;
+  }
+  .reviews-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .review-item {
+    padding: 40px 0;
+    border-top: 1px solid rgba(26, 20, 16, 0.1);
+  }
+  .review-item:last-child {
+    border-bottom: 1px solid rgba(26, 20, 16, 0.1);
+  }
+  .review-text {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: var(--warm-black);
+    margin-bottom: 16px;
+    max-width: 720px;
+  }
+  .review-attr {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: var(--ls-md);
+    color: var(--warm-gray);
+    text-transform: uppercase;
+  }
+
+  /* VISIT */
+  .visit {
+    padding: var(--section-pad) 24px;
+    background: var(--alt-bg);
+  }
+  .visit-inner {
+    max-width: var(--content-width);
+    margin: 0 auto;
+  }
+  .visit h2 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(28px, 4vw, 40px);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 48px;
+  }
+  .visit-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+  .visit-info h3 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.125rem;
+    margin-bottom: 16px;
+    letter-spacing: -0.01em;
+  }
+  .visit-info p {
+    color: var(--warm-gray);
+    margin-bottom: 8px;
+    line-height: 1.7;
+  }
+  .visit-phone {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--spice);
+    display: block;
+    margin: 24px 0;
+  }
+  .visit-hours {
+    margin-top: 24px;
+  }
+  .visit-hours table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  .visit-hours td {
+    padding: 8px 0;
+    font-size: 0.9375rem;
+  }
+  .visit-hours td:first-child {
+    font-weight: 500;
+    width: 140px;
+  }
+  .visit-hours td:last-child {
+    color: var(--warm-gray);
+  }
+  .hours-closed {
+    color: var(--warm-gray);
+    opacity: 0.5;
+  }
+  .visit-map {
+    aspect-ratio: 1/1;
+    border: none;
+    filter: grayscale(0.2);
+  }
+
+  /* CTA BAND */
+  .cta-band {
+    padding: var(--section-pad) 24px;
+    text-align: center;
+    background: var(--warm-black);
+    color: var(--cream);
+  }
+  .cta-band h2 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(28px, 4vw, 44px);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+  .cta-band p {
+    color: rgba(250, 245, 238, 0.7);
+    margin-bottom: 32px;
+    font-size: 1.0625rem;
+  }
+  .btn-primary-light {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 32px;
+    background: var(--cream);
+    color: var(--warm-black);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: var(--ls-md);
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition: transform 160ms var(--ease-out);
+  }
+  .btn-primary-light:active { transform: scale(0.97); }
+
+  /* FOOTER */
+  .footer {
+    padding: 48px 24px;
+    background: var(--warm-black);
+    color: rgba(250, 245, 238, 0.5);
+    border-top: 1px solid rgba(250, 245, 238, 0.08);
+  }
+  .footer-inner {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .footer-brand {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1rem;
+    letter-spacing: var(--ls-sm);
+    text-transform: uppercase;
+    color: rgba(250, 245, 238, 0.7);
+  }
+  .footer-links {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+  }
+  .footer-links a {
+    font-size: 0.8125rem;
+    letter-spacing: var(--ls-sm);
+    transition: color 200ms;
+  }
+  .footer-links a:hover { color: var(--cream); }
+
+  .name-label {
+    color: var(--spice);
+  }
+  .visit-note {
+    font-size: 0.875rem;
+    color: var(--spice);
+  }
+  .visit-social {
+    margin-top: 8px;
+  }
+  .visit-social a {
+    color: var(--spice);
+    font-weight: 500;
+    font-size: 0.9375rem;
+  }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    :root { --section-pad: 64px; }
+
+    .nav-links { display: none; }
+    .hamburger { display: block; }
+
+    .photo-strip {
+      grid-template-columns: 1fr;
+    }
+    .photo-strip-large { aspect-ratio: 16/9; }
+    .photo-strip-stack {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto;
+    }
+    .photo-strip-small { aspect-ratio: 1/1; }
+
+    .about-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .menu-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .visit-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-ctas {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .trust-bar-inner {
+      gap: 32px;
+    }
+
+    .footer-inner {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+
+  /* SCROLL MARGIN */
+  [id] { scroll-margin-top: 80px; }
+
+  /* SCROLL REVEAL */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .stagger-1 { transition-delay: 60ms; }
+  .stagger-2 { transition-delay: 120ms; }
+  .stagger-3 { transition-delay: 180ms; }
+  .stagger-4 { transition-delay: 240ms; }
+
+  /* HERO ENTRANCE */
+  .hero-label, .hero h1, .hero-body, .hero-ctas {
+    opacity: 0;
+    transform: translateY(16px);
+    animation: hero-enter 700ms var(--ease-out) forwards;
+  }
+  .hero h1 { animation-delay: 100ms; }
+  .hero-body { animation-delay: 200ms; }
+  .hero-ctas { animation-delay: 300ms; }
+  @keyframes hero-enter {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* NO-JS FALLBACK */
+  noscript + * .reveal,
+  .no-js .reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* REDUCED MOTION */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+    .reveal { opacity: 1; transform: none; }
+    .hero-label, .hero h1, .hero-body, .hero-ctas {
+      opacity: 1;
+      transform: none;
+      animation: none;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">Stir It Up</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#menu">The Food</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#visit">Find Us</a></li>
+    </ul>
+    <button class="hamburger" aria-label="Menu" onclick="this.classList.toggle('active'); document.querySelector('.mobile-menu').classList.toggle('active');">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu">
+  <a href="#about" onclick="document.querySelector('.mobile-menu').classList.remove('active'); document.querySelector('.hamburger').classList.remove('active');">About</a>
+  <a href="#menu" onclick="document.querySelector('.mobile-menu').classList.remove('active'); document.querySelector('.hamburger').classList.remove('active');">The Food</a>
+  <a href="#reviews" onclick="document.querySelector('.mobile-menu').classList.remove('active'); document.querySelector('.hamburger').classList.remove('active');">Reviews</a>
+  <a href="#visit" onclick="document.querySelector('.mobile-menu').classList.remove('active'); document.querySelector('.hamburger').classList.remove('active');">Find Us</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="hero-label">Authentic Caribbean Soul Food · Victoria, BC</p>
+  <h1>She Rolls the Roti While You Wait</h1>
+  <p class="hero-body">Handmade Caribbean food in a hidden alleyway off Yates Street. Made from scratch, every day, by one woman who brought her island to yours.</p>
+  <div class="hero-ctas">
+    <a href="https://maps.google.com/maps?q=760+Yates+St+Victoria+BC" class="btn-primary" target="_blank" rel="noopener">Get Directions</a>
+    <a href="tel:+17784320133" class="btn-secondary">Call (778) 432-0133</a>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar reveal">
+  <div class="trust-bar-inner">
+    <div class="trust-stat">
+      <div class="trust-stat-number">4.6 ★</div>
+      <div class="trust-stat-label">Google Rating</div>
+    </div>
+    <div class="trust-stat">
+      <div class="trust-stat-number">Mon — Sat</div>
+      <div class="trust-stat-label">12PM — 6PM</div>
+    </div>
+    <div class="trust-stat">
+      <div class="trust-stat-number">One Cook</div>
+      <div class="trust-stat-label">Everything by Natalie</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about reveal" id="about">
+  <div class="about-grid">
+    <div>
+      <p class="section-label">The Story</p>
+      <h2>Hopefully I Can Bring My Island to This Island</h2>
+    </div>
+    <div>
+      <div class="about-quote">
+        "Natalie is an amazing owner and very warm to all of her customers. The food is exquisite and breaks every bit of Caribbean essence to Victoria. Coming from a Trini, it is the real deal."
+        <cite>— Ariel T. · Via Google</cite>
+      </div>
+      <div class="about-text">
+        <p>Natalie Justin moved to Victoria from Trinidad with a plan that fit in a carry-on: her family's recipes and the belief that a city surrounded by ocean deserved Caribbean food worth eating.</p>
+        <p>Stir It Up is her kitchen. She makes the roti dough by hand, rolls it fresh for every order, and fills it with slow-cooked curries and jerk that took years to perfect. No shortcuts. No assembly line. Just Natalie.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO STRIP -->
+<div class="photo-strip reveal">
+  <div class="photo-strip-large" style="background-image: url('hero-jerk-chicken.png');"></div>
+  <div class="photo-strip-stack">
+    <div class="photo-strip-small" style="background-image: url('roti-making.png');"></div>
+    <div class="photo-strip-small" style="background-image: url('patties.png');"></div>
+  </div>
+</div>
+
+<!-- NAME SECTION -->
+<div class="name-section reveal">
+  <p class="section-label name-label">The Name</p>
+  <h2>One Kitchen. One Cook. No Shortcuts.</h2>
+  <p>People keep saying the food tastes like someone made it just for them. That's because someone did. There's no prep line, no sous chef, no timer going off in the back. Just Natalie, her recipes, and the time it takes to get it right.</p>
+</div>
+
+<!-- MENU -->
+<section class="menu-section" id="menu">
+  <div class="menu-inner">
+    <p class="section-label">The Food</p>
+    <h2>What's Cooking</h2>
+    <div class="menu-grid">
+      <div class="menu-card reveal stagger-1">
+        <div class="menu-card-number">01</div>
+        <h3>Jerk Chicken</h3>
+        <p>Scotch bonnet, allspice, thyme. Grilled until the skin crisps and the inside stays tender. Served with rice and beans. The one everyone orders first.</p>
+      </div>
+      <div class="menu-card reveal stagger-2">
+        <div class="menu-card-number">02</div>
+        <h3>Curry Chicken Roti</h3>
+        <p>Hand-rolled roti skin, fried fresh while you wait. Filled with slow-cooked curry chicken, potato, dal, and Natalie's special spice blend.</p>
+      </div>
+      <div class="menu-card reveal stagger-3">
+        <div class="menu-card-number">03</div>
+        <h3>Doubles</h3>
+        <p>Two pieces of fried bara bread filled with curried chickpeas, tamarind sauce, and pepper sauce. A Trinidadian street food staple.</p>
+      </div>
+      <div class="menu-card reveal stagger-4">
+        <div class="menu-card-number">04</div>
+        <h3>Jamaican Patties</h3>
+        <p>Golden, flaky pastry. Seasoned beef. Baked fresh daily. The one you eat on the walk back to your car and wish you'd bought two more.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPICE QUOTE -->
+<div class="spice-quote reveal">
+  <div class="spice-quote-inner">
+    <blockquote>"Had the homemade flavours I haven't found elsewhere on the island. A definite hidden gem."</blockquote>
+    <cite>Kyle S. · Via Google</cite>
+  </div>
+</div>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <p class="section-label">What People Say</p>
+  <h2>Don't Take Our Word for It</h2>
+  <div class="reviews-stack">
+    <div class="review-item reveal stagger-1">
+      <p class="review-text">"Humble and authentic joint dishing up Caribbean soul food. It's all made fresh in house. Had the jerk chicken roti. Chicken had crispy skin and the mix of sauces was perfect. Hot, sweet and lots of tang."</p>
+      <p class="review-attr">Crawford R. · Via Google</p>
+    </div>
+    <div class="review-item reveal stagger-2">
+      <p class="review-text">"Been passing by this place for quite a while now and finally I gave in and tried them. Not one regret. The food was hearty and soulful. It feels like your mom made you your own plate."</p>
+      <p class="review-attr">G D. · Via Google</p>
+    </div>
+    <div class="review-item reveal stagger-3">
+      <p class="review-text">"I went here with my partner for lunch and had a great experience. My jerk chicken was very tender and flavourful. The portion size was good. The owner was friendly and attentive."</p>
+      <p class="review-attr">Alice L. · Via Google</p>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section class="visit reveal" id="visit">
+  <div class="visit-inner">
+    <p class="section-label">Find Us</p>
+    <h2>Hidden, Not Hard to Find</h2>
+    <div class="visit-grid">
+      <div class="visit-info">
+        <h3>Location</h3>
+        <p>760 Yates Street<br>Victoria, BC V8W 1L4</p>
+        <p class="visit-note">Look for the red, green, and yellow door in the alleyway between Yates &amp; Johnson.</p>
+        <a href="tel:+17784320133" class="visit-phone">(778) 432-0133</a>
+        <p class="visit-social"><a href="https://www.facebook.com/p/Stir-it-Up-100056689994498/" target="_blank" rel="noopener">Follow on Facebook →</a></p>
+        <div class="visit-hours">
+          <h3>Hours</h3>
+          <table>
+            <tr><td>Monday</td><td>12 — 6 PM</td></tr>
+            <tr><td>Tuesday</td><td>12 — 6 PM</td></tr>
+            <tr><td>Wednesday</td><td>12 — 6 PM</td></tr>
+            <tr><td>Thursday</td><td>12 — 6 PM</td></tr>
+            <tr><td>Friday</td><td>12 — 6 PM</td></tr>
+            <tr><td>Saturday</td><td>12 — 6 PM</td></tr>
+            <tr><td>Sunday</td><td class="hours-closed">Closed</td></tr>
+          </table>
+        </div>
+      </div>
+      <iframe class="visit-map" src="https://maps.google.com/maps?q=760+Yates+St+Victoria+BC&output=embed" loading="lazy" title="Map"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<div class="cta-band reveal">
+  <h2>Come Hungry</h2>
+  <p>760 Yates Street, Victoria · Monday — Saturday, 12 — 6 PM</p>
+  <a href="https://maps.google.com/maps?q=760+Yates+St+Victoria+BC" class="btn-primary-light" target="_blank" rel="noopener">Get Directions</a>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <span class="footer-brand">Stir It Up</span>
+    <ul class="footer-links">
+      <li><a href="https://www.facebook.com/p/Stir-it-Up-100056689994498/" target="_blank" rel="noopener">Facebook</a></li>
+      <li><a href="tel:+17784320133">(778) 432-0133</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => observer.observe(el));
+  } else {
+    reveals.forEach(el => el.classList.add('visible'));
+  }
+</script>
+</body>
+</html>

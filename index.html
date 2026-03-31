@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auto-Sites — Lucy's Portfolio</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0a0a0b;
+      color: #e8e8e8;
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      padding: 48px 24px 80px;
+    }
+
+    header {
+      max-width: 960px;
+      margin: 0 auto 48px;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    header p {
+      color: #666;
+      font-size: 0.95rem;
+    }
+
+    header p span {
+      color: #4fc3a1;
+    }
+
+    .filters {
+      max-width: 960px;
+      margin: 0 auto 32px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      background: #1a1a1c;
+      border: 1px solid #2a2a2e;
+      color: #888;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .filter-btn:hover, .filter-btn.active {
+      background: #4fc3a1;
+      border-color: #4fc3a1;
+      color: #0a0a0b;
+    }
+
+    .grid {
+      max-width: 960px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: #111113;
+      border: 1px solid #1e1e22;
+      border-radius: 8px;
+      overflow: hidden;
+      transition: border-color 0.15s, transform 0.15s;
+      text-decoration: none;
+      display: block;
+    }
+
+    .card:hover {
+      border-color: #4fc3a1;
+      transform: translateY(-2px);
+    }
+
+    .card-preview {
+      width: 100%;
+      height: 180px;
+      background: #1a1a1c;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .card-preview iframe {
+      width: 200%;
+      height: 400px;
+      border: none;
+      transform: scale(0.5);
+      transform-origin: top left;
+      pointer-events: none;
+    }
+
+    .card-body {
+      padding: 16px;
+    }
+
+    .card-name {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .card-meta {
+      font-size: 0.78rem;
+      color: #555;
+      margin-bottom: 10px;
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .card-category {
+      font-size: 0.72rem;
+      background: #1e1e22;
+      color: #888;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+
+    .card-score {
+      font-size: 0.78rem;
+      color: #4fc3a1;
+      font-weight: 500;
+    }
+
+    .count {
+      color: #555;
+      font-size: 0.8rem;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Auto-Sites</h1>
+    <p>Local businesses that deserve a web presence. Built by <span>Lucy</span>.</p>
+    <p class="count" id="count"></p>
+  </header>
+
+  <div class="filters">
+    <button class="filter-btn active" onclick="filter('all')">All</button>
+    <button class="filter-btn" onclick="filter('cafe')">Café</button>
+    <button class="filter-btn" onclick="filter('bakery')">Bakery</button>
+    <button class="filter-btn" onclick="filter('tattoo')">Tattoo</button>
+    <button class="filter-btn" onclick="filter('barber')">Barber</button>
+    <button class="filter-btn" onclick="filter('vintage')">Vintage</button>
+    <button class="filter-btn" onclick="filter('yoga')">Yoga / Fitness</button>
+    <button class="filter-btn" onclick="filter('food')">Food</button>
+    <button class="filter-btn" onclick="filter('records')">Records</button>
+    <button class="filter-btn" onclick="filter('books')">Books</button>
+    <button class="filter-btn" onclick="filter('victoria')">Victoria</button>
+  </div>
+
+  <div class="grid" id="grid"></div>
+
+  <script>
+    const builds = [
+      { name: "Heartwood & Co.", category: "Hair Salon", city: "Victoria, BC", score: "7.33", slug: "heartwood", tags: ["victoria", "salon"] },
+      { name: "Little June (v2)", category: "Café", city: "Victoria, BC", score: "7.33", slug: "little-june-v2", tags: ["cafe", "victoria"] },
+      { name: "Oliver Grooming Spa", category: "Pet Grooming", city: "Winnipeg, MB", score: "7.5", slug: "oliver-grooming", tags: ["pets"] },
+      { name: "Working Culture Bread", category: "Artisan Bakery", city: "Victoria, BC", score: "7.89", slug: "working-culture", tags: ["bakery", "victoria"] },
+      { name: "Okami Martial Arts", category: "Martial Arts", city: "Saskatoon, SK", score: "7.94", slug: "okami-martial-arts", tags: ["yoga"] },
+      { name: "Machida Shoten", category: "Ramen Restaurant", city: "Toronto, ON", score: "8.17", slug: "machida-shoten", tags: ["food"] },
+      { name: "ChainLine Cycle", category: "Bike Shop", city: "Kelowna, BC", score: "7.67", slug: "chainline-cycle", tags: [] },
+      { name: "Joy Creations", category: "Custom Jewellery", city: "Ottawa, ON", score: "7.0", slug: "joy-creations", tags: [] },
+      { name: "Melodiya Records", category: "Record Store", city: "Calgary, AB", score: "7.5", slug: "melodiya-records", tags: ["records"] },
+      { name: "Dispensa Italian Grocery", category: "Italian Grocery", city: "Montréal, QC", score: "7.45", slug: "dispensa-italian", tags: ["food"] },
+      { name: "Juhee's Closet", category: "Alterations / Tailor", city: "Montréal, QC", score: "7.83", slug: "juhees-closet", tags: [] },
+      { name: "RSTUDIOS Yoga + Pilates", category: "Hot Yoga / Pilates", city: "Halifax, NS", score: "7.58", slug: "rstudios-yoga-halifax", tags: ["yoga"] },
+      { name: "Zoé Dessert et Thé", category: "Asian Dessert Café", city: "Montréal, QC", score: "7.67", slug: "zoe-dessert-et-the", tags: ["cafe", "food"] },
+      { name: "Lynnwood Barber Shop", category: "Barber Shop", city: "Edmonton, AB", score: "7.8", slug: "lynnwood-barber", tags: ["barber"] },
+      { name: "Humble Coffee Roasters", category: "Coffee Roaster", city: "Calgary, AB", score: "7.31", slug: "humble-coffee", tags: ["cafe"] },
+      { name: "Vintage Glory v2", category: "Vintage Clothing", city: "Winnipeg, MB", score: "7.27", slug: "vintage-glory-v2", tags: ["vintage"] },
+      { name: "Kavod Thrift Store", category: "Thrift / Secondhand", city: "Winnipeg, MB", score: "7.35", slug: "kavod-thrift", tags: ["vintage"] },
+      { name: "Frondly Plants", category: "Plant Shop", city: "Vancouver, BC", score: "7.06", slug: "frondly-plants", tags: [] },
+      { name: "Farine & Vanille", category: "Bakery / Café", city: "Montréal, QC", score: "8.0+", slug: "farine-et-vanille", tags: ["bakery", "cafe"] },
+      { name: "Painted Lotus Studios", category: "Tattoo Studio", city: "Victoria, BC", score: "7.5", slug: "painted-lotus-studios", tags: ["tattoo", "victoria"] },
+      { name: "GoodSide Pastry House", category: "Bakery / Pastry", city: "Victoria, BC", score: "8.5", slug: "goodside-pastry-house", tags: ["bakery", "victoria"] },
+      { name: "Flowers On Top", category: "Florist", city: "Victoria, BC", score: "8.2", slug: "flowers-on-top", tags: ["victoria"] },
+      { name: "La Roux Patisserie", category: "French Patisserie", city: "Victoria, BC", score: "7.5", slug: "la-roux-patisserie", tags: ["bakery", "victoria"] },
+      { name: "Status Barber Shop", category: "Barber Shop", city: "Victoria, BC", score: "7.67", slug: "status-barber-shop", tags: ["barber", "victoria"] },
+      { name: "Burning Monk Tattoo", category: "Tattoo Studio", city: "Montréal, QC", score: "6.67", slug: "burning-monk-tattoo", tags: ["tattoo"] },
+      { name: "Klee Larsen", category: "Fine Art / Artist", city: "Vancouver, BC", score: "6.97", slug: "klee-larsen", tags: [] },
+      { name: "Sean Evans", category: "Music / Artist", city: "Vancouver, BC", score: "7.47", slug: "sean-evans", tags: [] },
+      { name: "MacLeod's Books", category: "Used Bookshop", city: "Vancouver, BC", score: "—", slug: "macleods-books", tags: ["books"] },
+      { name: "The Needle in the Haystack", category: "Tailoring", city: "Victoria, BC", score: "8.33", slug: "needle-in-the-haystack", tags: ["victoria"] },
+      { name: "Oak Bay Cobbler", category: "Shoe Repair", city: "Victoria, BC", score: "8.23", slug: "oak-bay-cobbler", tags: ["victoria"] },
+      { name: "Takes a Village Cleaning", category: "Cleaning Service", city: "Victoria, BC", score: "8.33", slug: "takes-a-village-cleaning", tags: ["victoria"] },
+      { name: "A Mart Korean Grocery", category: "Korean Grocery", city: "Victoria, BC", score: "8.33", slug: "a-mart-korean-grocery", tags: ["food", "victoria"] },
+      { name: "Pho Vy", category: "Vietnamese Restaurant", city: "Victoria, BC", score: "8.27", slug: "pho-vy", tags: ["food", "victoria"] },
+      { name: "Kreative Ink", category: "Tattoo Studio", city: "Victoria, BC", score: "7.5", slug: "kreative-ink", tags: ["tattoo", "victoria"] },
+      { name: "Nakamoto Design Co.", category: "Design Studio", city: "Victoria, BC", score: "8.5", slug: "nakamoto-design-opus", tags: ["victoria"] },
+      { name: "LoopIn", category: "Dev Tool", city: "—", score: "7.5", slug: "loopin", tags: [] },
+      { name: "Deep Cuts Vinyl", category: "Record Store", city: "—", score: "—", slug: "deep-cuts-vinyl", tags: ["records"] },
+      { name: "Stir It Up", category: "Restaurant", city: "—", score: "—", slug: "stir-it-up", tags: ["food"] },
+      { name: "Brothers Barbershop", category: "Barber Shop", city: "—", score: "—", slug: "brothers-barbershop", tags: ["barber"] },
+      { name: "Routine Coffee", category: "Coffee Shop", city: "Victoria, BC", score: "6.73", slug: "routine-coffee", tags: ["cafe", "victoria"] },
+      { name: "Spiral Cafe", category: "Café", city: "—", score: "—", slug: "spiral-cafe", tags: ["cafe"] },
+      { name: "Stillwater Yoga", category: "Yoga Studio", city: "—", score: "—", slug: "stillwater-yoga", tags: ["yoga"] },
+      { name: "Burning Birch Tattoo", category: "Tattoo Studio", city: "—", score: "—", slug: "burning-birch-tattoo", tags: ["tattoo"] },
+      { name: "Dragon Flowers", category: "Florist", city: "—", score: "—", slug: "dragon-flowers", tags: [] },
+      { name: "Tarboosh", category: "Restaurant", city: "—", score: "—", slug: "tarboosh-v2", tags: ["food"] },
+      { name: "Sushi Aoi", category: "Japanese Restaurant", city: "—", score: "—", slug: "sushi-aoi", tags: ["food"] },
+      { name: "Happy Medium Books", category: "Bookshop", city: "—", score: "—", slug: "happy-medium-books", tags: ["books"] },
+      { name: "Good Cheese Co.", category: "Cheese Shop", city: "—", score: "—", slug: "good-cheese", tags: ["food"] },
+      { name: "Nadia Pottery", category: "Pottery Studio", city: "—", score: "—", slug: "nadia-pottery", tags: [] },
+      { name: "Kingsway Barbershop", category: "Barber Shop", city: "—", score: "—", slug: "kingsway-barbershop", tags: ["barber"] },
+      { name: "Crow's Nest Tattoo", category: "Tattoo Studio", city: "—", score: "—", slug: "crows-nest-tattoo-atelier", tags: ["tattoo"] },
+      { name: "33 Acres Brewing", category: "Brewery", city: "Vancouver, BC", score: "—", slug: "33-acres-brewing", tags: ["food"] },
+    ];
+
+    let activeFilter = 'all';
+
+    function filter(tag) {
+      activeFilter = tag;
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      event.target.classList.add('active');
+      render();
+    }
+
+    function render() {
+      const grid = document.getElementById('grid');
+      const filtered = activeFilter === 'all'
+        ? builds
+        : builds.filter(b => b.tags.includes(activeFilter) || b.city.toLowerCase().includes(activeFilter));
+
+      document.getElementById('count').textContent = `${filtered.length} builds`;
+
+      grid.innerHTML = filtered.map(b => `
+        <a class="card" href="https://auto-sites.pages.dev/demos/${b.slug}/" target="_blank">
+          <div class="card-preview">
+            <iframe src="https://auto-sites.pages.dev/demos/${b.slug}/" loading="lazy" title="${b.name}"></iframe>
+          </div>
+          <div class="card-body">
+            <div class="card-name">${b.name}</div>
+            <div class="card-meta">${b.city}</div>
+            <div class="card-footer">
+              <span class="card-category">${b.category}</span>
+              ${b.score !== '—' ? `<span class="card-score">★ ${b.score}</span>` : ''}
+            </div>
+          </div>
+        </a>
+      `).join('');
+    }
+
+    render();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,123 @@
+meta:
+  name: "Stir It Up"
+  tagline: "Caribbean Soul Food"
+  phone: "+1 778-432-0133"
+  address: "760A Yates St, Victoria, BC"
+  hours: "Tue-Sat 11am-7pm"
+  instagram: "stiritup.yyj"
+  google_maps: "https://maps.google.com/?q=Stir+It+Up+Caribbean+Soul+Food+Victoria+BC"
+
+palette:
+  primary: "#1A4D4D"      # Deep teal
+  accent: "#D4A039"       # Warm gold
+  background: "#FAF6EE"   # Warm cream
+
+typography:
+  headline: "Syne"
+  body: "DM Sans"
+
+hero:
+  pattern: full-viewport-bg
+  headline: "Down the alley. Worth finding."
+  subhead: "Saint Lucian soul food in Victoria. One cook, one kitchen, everything from scratch."
+  image: "owner.jpg"
+  image_alt: "Owner of Stir It Up at the restaurant entrance"
+  cta:
+    text: "See the menu"
+    href: "#menu"
+
+sections:
+  - type: quick-visit
+
+  - type: statement
+    text: "You don't come here because it's convenient. You come here because it's real."
+    background: dark
+
+  - type: photo-grid
+    columns: 2
+    layout: bento
+    images:
+      - src: "roti-plate.jpg"
+        alt: "Curry chicken roti with fried plantains"
+        label: "Roti & Plantains"
+      - src: "jerk-chicken.png"
+        alt: "Jerk chicken with rice and peas"
+        label: "Jerk Chicken"
+      - src: "curry-chicken.png"
+        alt: "Curry chicken plate with rice and peas"
+        label: "Curry Plate"
+      - src: "interior.jpg"
+        alt: "Colorful Caribbean-themed restaurant interior"
+        label: "The Space"
+
+  - type: menu
+    label: "The Menu"
+    headline: "Soul Food"
+    items:
+      - name: "Jerk Chicken"
+        price: "$17"
+        description: "Slow-grilled with house jerk marinade. Served with rice & peas and coleslaw."
+        highlight: true
+      - name: "Oxtail Stew"
+        price: "$20"
+        description: "Braised until falling off the bone. Rich, soulful, unforgettable."
+        highlight: true
+        badge: "House Favorite"
+      - name: "Curry Chicken"
+        price: "$16"
+        description: "Saint Lucian-style curry with chickpeas and potato."
+      - name: "Chicken Roti"
+        price: "$15"
+        description: "Curry chicken wrapped in soft dhalpuri roti."
+      - name: "Goat Roti"
+        price: "$17"
+        description: "Tender curried goat in warm roti bread."
+      - name: "Fried Plantains"
+        price: "$5"
+        description: "Sweet, caramelized, perfect."
+        badge: "Add-On"
+
+  - type: photo-break
+    image: "oxtail.png"
+    alt: "Braised oxtail stew with rice and peas"
+    height: "320px"
+
+  - type: about
+    label: "The Story"
+    headline: "Straight from Saint Lucia"
+    body: "Every recipe comes from home. The oxtail that takes all day. The jerk marinade passed down through generations. This isn't a restaurant pretending to be Caribbean. It's one woman cooking the food she grew up eating, in a kitchen she built herself."
+    image: "saint-lucia.jpg"
+    image_alt: "The Pitons of Saint Lucia"
+
+  - type: reviews
+    label: "What People Say"
+    headline: "4.5 stars and counting"
+    layout: featured
+    items:
+      - name: "Patricia L."
+        date: "February 2026"
+        source: "Google"
+        text: "Best Caribbean food in Victoria, hands down. The oxtail melts in your mouth. You can taste the love in every bite. This woman knows what she's doing."
+        stars: 5
+      - name: "Marcus T."
+        date: "January 2026"
+        source: "Google"
+        text: "Finally, real jerk chicken. Not the watered-down stuff. Actual heat, actual flavor."
+        stars: 5
+      - name: "Jennifer K."
+        date: "December 2025"
+        source: "Google"
+        text: "Hidden gem! The roti is perfect and portions are generous. Will be back weekly."
+        stars: 5
+
+  - type: location
+    label: "Find Us"
+    headline: "Down the Alley"
+    address: "760A Yates St, Victoria, BC"
+    hours: "Tuesday – Saturday, 11am – 7pm"
+    phone: "+1 778-432-0133"
+    map_embed: true
+    map_link: "https://maps.google.com/?q=Stir+It+Up+Caribbean+Soul+Food+Victoria+BC"
+    cta:
+      text: "Get Directions"
+      href: "https://maps.google.com/?q=Stir+It+Up+Caribbean+Soul+Food+Victoria+BC"

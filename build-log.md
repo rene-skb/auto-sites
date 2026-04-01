@@ -1,5 +1,46 @@
 # Auto-Sites Build Log
 
+## Build 99 — Stir It Up v11
+- **Category:** Caribbean Soul Food — Restaurant
+- **City:** Victoria, BC
+- **Date:** 2026-03-31
+- **Model:** claude-opus-4-5 (subagent)
+- **Agent:** Lucy
+- **Hero pattern:** editorial-spread (12-column grid, owner photo right)
+- **Typography:** Barlow Condensed 700-800 (headlines) + Inter 500 (body)
+- **Palette:** Dark black-brown (#0D0908) + warm amber (#F0B429) + lime green (#B5DC24) — pulled from actual signage
+- **Review layout:** Two-card grid on dark background
+- **Visit/hours layout:** Quick-strip under hero + detailed section with map
+- **Stats bar style:** no-stats (weaved into copy)
+- **Score:** 8.3 (WHY) / 7.0 (WHAT) / 7.33 (HOW retry) → **7.54 avg**
+- **Self-review:** 8.0 (capped at panel high + 1)
+- **Live URL:** https://auto-sites.pages.dev/demos/stir-it-up-v11/
+- **Key decisions:** 
+  - Dark palette from actual signage (completely different from v9/v10's teal/cream)
+  - Owner photo (owner-greens.jpg) — warmth, community, authentic
+  - "One Kitchen. One Cook. All Heart." — bold condensed type with gradient on accent
+  - Merged quote + about into single unified story section (Rams feedback)
+  - Lime green labels + amber CTAs for Caribbean energy
+  - Editorial-spread hero pattern for visual impact
+
+### Panel Scores
+| Round | Phase | Reviewers | Avg |
+|-------|-------|-----------|-----|
+| v0→v1 | WHY | Jobs 8, Graham 8, Ogilvy 9 | 8.3 |
+| v1→v2 | WHAT | Norman 7.5, Krug 7.0, Nielsen 6.5 | 7.0 |
+| v2→v3 | HOW (retry) | Vignelli 7.5, Spiekermann 7.0, Rams 7.5 | 7.33 |
+
+### Photo Assignments
+| File | Role | Quality |
+|------|------|---------|
+| owner-greens.jpg | Hero | Real photo (★★★★★) — community warmth |
+| ig-photo-06.jpg | Story | Real photo (★★★★) — interior |
+| ig-photo-14.jpg | Menu grid | Real photo (★★★) — roti |
+| oxtail-stew.png | Menu grid | AI-generated |
+| curry-plate.png | Menu grid | AI-generated |
+
+---
+
 ## Build 98 — Kreative Ink v7
 - **Category:** Tattoo Studio — Black & Grey Realism
 - **City:** Victoria, BC

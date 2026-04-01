@@ -1,0 +1,614 @@
+<!--
+DELTA: v4 → v5 (Final)
+Final polish:
+1. Copy audit passed - no humanizer violations
+2. Verified contrast ratios
+3. Tightened spacing in a few places
+4. Added slightly more prominent CTA in contact section
+5. Final typography pass
+
+PANEL SCORES:
+- WHY: Jobs 7 / Graham 6 / Ogilvy 6.5 = 6.5 avg
+- WHAT retry: Norman 7 / Krug 6 / Nielsen 6.5 = 6.5 avg
+- HOW retry: Vignelli 7.5 / Spiekermann 7 / Rams 6.5 = 7.0 avg
+
+OVERALL AVERAGE: 6.67
+
+Self-review: 7.0 (capped at panel high 7.5 + 1 = 8.5; honest calibration)
+
+Key strengths:
+- Strong conviction in hero headline
+- Direct, specific copy throughout
+- Color-coded sections create visual landmarks
+- Scientific method angle is memorable
+- All 4 projects show AI-focused work
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scott Bell — Product Designer</title>
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Scott Bell — Product Designer">
+  <meta property="og:description" content="Finding the logic underneath. Making it impossible to ignore.">
+  <meta property="og:image" content="loopin.jpg">
+  <meta property="og:url" content="https://scottkbell.com">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      /* Spacing scale (8px base) */
+      --space-1: 8px;
+      --space-2: 16px;
+      --space-3: 24px;
+      --space-4: 32px;
+      --space-5: 48px;
+      --space-6: 64px;
+      --space-7: 96px;
+      --space-8: 128px;
+      
+      /* Colors */
+      --black: #0A0908;
+      --dark: #131210;
+      --cream: #F5F3EF;
+      --cream-body: #E0DCD6;
+      --muted: #A09A92;
+      --mint: #7FD4A0;
+      --mint-bg: #0F1A14;
+      --salmon: #F0A090;
+      --salmon-bg: #1A120F;
+      --yellow: #E8D070;
+      --yellow-bg: #1A1810;
+      
+      /* Typography scale */
+      --text-xs: 13px;
+      --text-sm: 15px;
+      --text-base: 17px;
+      --text-lg: 20px;
+      --text-xl: 28px;
+      --text-2xl: 40px;
+      --text-3xl: 56px;
+      
+      --font-serif: 'Instrument Serif', Georgia, serif;
+      --font-sans: 'Inter', -apple-system, sans-serif;
+      
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --max-width: 1200px;
+    }
+    
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: var(--font-sans);
+      background: var(--black);
+      color: var(--cream);
+      font-size: var(--text-base);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    /* Typography */
+    h1, h2, h3 {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      line-height: 1.15;
+    }
+    
+    .label {
+      font-family: var(--font-sans);
+      font-size: var(--text-xs);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: var(--space-3) var(--space-5);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(to bottom, var(--black) 0%, transparent 100%);
+    }
+    
+    .logo {
+      font-family: var(--font-sans);
+      font-size: var(--text-xs);
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--cream);
+      text-decoration: none;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: var(--space-4);
+      list-style: none;
+    }
+    
+    .nav-links a {
+      font-size: var(--text-sm);
+      font-weight: 500;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 200ms var(--ease-out);
+    }
+    
+    .nav-links a:hover {
+      color: var(--cream);
+    }
+    
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: var(--space-1);
+    }
+    
+    .hamburger span {
+      width: 24px;
+      height: 2px;
+      background: var(--cream);
+    }
+    
+    /* Fade-in animation */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 500ms var(--ease-out), transform 500ms var(--ease-out);
+    }
+    
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Stagger delays */
+    .stagger-1 { transition-delay: 0ms; }
+    .stagger-2 { transition-delay: 80ms; }
+    .stagger-3 { transition-delay: 160ms; }
+    .stagger-4 { transition-delay: 240ms; }
+    
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: var(--space-8) var(--space-5);
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+    
+    .hero-role {
+      font-size: var(--text-sm);
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: var(--mint);
+      margin-bottom: var(--space-2);
+    }
+    
+    .hero-location {
+      font-size: var(--text-sm);
+      color: var(--muted);
+      margin-bottom: var(--space-5);
+    }
+    
+    .hero h1 {
+      font-size: clamp(var(--text-2xl), 6vw, var(--text-3xl));
+      max-width: 800px;
+      margin-bottom: var(--space-4);
+    }
+    
+    .hero h1 em {
+      font-style: italic;
+      color: var(--salmon);
+    }
+    
+    .hero-sub {
+      font-size: var(--text-lg);
+      color: var(--cream-body);
+      max-width: 540px;
+      line-height: 1.7;
+    }
+    
+    /* Project sections */
+    .project {
+      padding: var(--space-7) var(--space-5);
+    }
+    
+    .project.mint { background: var(--mint-bg); }
+    .project.salmon { background: var(--salmon-bg); }
+    .project.yellow { background: var(--yellow-bg); }
+    .project.dark { background: var(--dark); }
+    
+    .project-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+    
+    .project-header {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: var(--space-5);
+      margin-bottom: var(--space-5);
+      align-items: start;
+    }
+    
+    .project-label {
+      margin-bottom: var(--space-2);
+    }
+    
+    .project-label.mint { color: var(--mint); }
+    .project-label.salmon { color: var(--salmon); }
+    .project-label.yellow { color: var(--yellow); }
+    .project-label.cream { color: var(--cream); }
+    
+    .project-title {
+      font-size: var(--text-2xl);
+    }
+    
+    .project-description {
+      font-size: var(--text-base);
+      color: var(--cream-body);
+      line-height: 1.7;
+    }
+    
+    .project-image {
+      width: 100%;
+      border-radius: 6px;
+      overflow: hidden;
+      background: rgba(0,0,0,0.4);
+    }
+    
+    .project-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    .project-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-3);
+    }
+    
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-1);
+      margin-top: var(--space-4);
+      font-size: var(--text-sm);
+      font-weight: 500;
+      color: var(--cream);
+      text-decoration: none;
+      transition: opacity 200ms var(--ease-out), transform 160ms var(--ease-out);
+    }
+    
+    .project-link:hover {
+      opacity: 0.7;
+    }
+    
+    .project-link:active {
+      transform: scale(0.97);
+    }
+    
+    /* About */
+    .about {
+      padding: var(--space-7) var(--space-5);
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+    
+    .about-label {
+      color: var(--mint);
+      margin-bottom: var(--space-3);
+    }
+    
+    .about h2 {
+      font-size: var(--text-xl);
+      max-width: 600px;
+      margin-bottom: var(--space-5);
+    }
+    
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-6);
+    }
+    
+    .about-text {
+      font-size: var(--text-base);
+      color: var(--cream-body);
+      line-height: 1.8;
+    }
+    
+    .about-text p {
+      margin-bottom: var(--space-3);
+    }
+    
+    .about-text p:last-child {
+      margin-bottom: 0;
+    }
+    
+    /* Contact */
+    .contact {
+      padding: var(--space-7) var(--space-5);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    .contact h2 {
+      font-size: var(--text-xl);
+      margin-bottom: var(--space-3);
+    }
+    
+    .contact p {
+      font-size: var(--text-base);
+      color: var(--cream-body);
+      margin-bottom: var(--space-4);
+      max-width: 480px;
+    }
+    
+    .contact-link {
+      display: inline-block;
+      padding: var(--space-2) var(--space-4);
+      background: var(--cream);
+      color: var(--black);
+      font-size: var(--text-sm);
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: transform 160ms var(--ease-out), box-shadow 160ms var(--ease-out);
+    }
+    
+    .contact-link:hover {
+      box-shadow: 0 4px 20px rgba(245,243,239,0.2);
+    }
+    
+    .contact-link:active {
+      transform: scale(0.97);
+    }
+    
+    /* Footer */
+    footer {
+      padding: var(--space-5);
+      text-align: center;
+      font-size: var(--text-xs);
+      color: var(--muted);
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    
+    footer a {
+      color: var(--cream);
+      text-decoration: none;
+    }
+    
+    /* Mobile */
+    @media (max-width: 768px) {
+      nav {
+        padding: var(--space-2) var(--space-3);
+      }
+      
+      .nav-links {
+        display: none;
+      }
+      
+      .hamburger {
+        display: flex;
+      }
+      
+      .hero {
+        padding: var(--space-7) var(--space-3);
+      }
+      
+      .project {
+        padding: var(--space-6) var(--space-3);
+      }
+      
+      .project-header {
+        grid-template-columns: 1fr;
+        gap: var(--space-3);
+      }
+      
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .about {
+        padding: var(--space-6) var(--space-3);
+      }
+      
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+      }
+      
+      .contact {
+        padding: var(--space-6) var(--space-3);
+      }
+      
+      footer {
+        padding: var(--space-4) var(--space-3);
+      }
+    }
+    
+    @media (prefers-reduced-motion: reduce) {
+      .fade-in {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+      
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="#" class="logo">SCOTT BELL</a>
+    <ul class="nav-links">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </nav>
+  
+  <main>
+    <section class="hero">
+      <p class="hero-role fade-in stagger-1">Product Designer · AI & Human-Agent Collaboration</p>
+      <p class="hero-location fade-in stagger-2">Victoria, BC · 14 years experience</p>
+      <h1 class="fade-in stagger-3">I find the logic <em>underneath</em> and make it impossible to ignore.</h1>
+      <p class="hero-sub fade-in stagger-4">Building tools that help AI agents work with humans, not around them.</p>
+    </section>
+    
+    <section id="work" class="project mint">
+      <div class="project-inner">
+        <div class="project-header fade-in">
+          <div>
+            <p class="label project-label mint">01 · Nakamoto Design Co</p>
+            <h2 class="project-title">Auto-Sites</h2>
+          </div>
+          <p class="project-description">An AI agent that designs and builds landing pages for real businesses. Each build gets critiqued by design panels, and the feedback trains the next one. 100+ sites shipped.</p>
+        </div>
+        <div class="project-grid fade-in">
+          <div class="project-image">
+            <img src="autosite-stiritup.jpg" alt="Stir It Up landing page">
+          </div>
+          <div class="project-image">
+            <img src="autosite-kreativeink.jpg" alt="Kreative Ink landing page">
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="project salmon">
+      <div class="project-inner">
+        <div class="project-header fade-in">
+          <div>
+            <p class="label project-label salmon">02 · Chrome Extension + MCP</p>
+            <h2 class="project-title">LoopIn</h2>
+          </div>
+          <p class="project-description">Your AI coding agent can write code, refactor, debug. But it can't see what's on your screen. LoopIn captures DOM, styles, accessibility data, and sends it to Claude, Cursor, or any MCP client.</p>
+        </div>
+        <div class="project-image fade-in">
+          <img src="loopin.jpg" alt="LoopIn interface">
+        </div>
+        <a href="https://scottkbell.com/loopin" class="project-link fade-in">
+          View project →
+        </a>
+      </div>
+    </section>
+    
+    <section class="project yellow">
+      <div class="project-inner">
+        <div class="project-header fade-in">
+          <div>
+            <p class="label project-label yellow">03 · CLI Tool</p>
+            <h2 class="project-title">Mix'd</h2>
+          </div>
+          <p class="project-description">Identify every track in a DJ mix. Paste a Mixcloud, SoundCloud, or YouTube URL. Get a timestamped tracklist. I built this because I got tired of Shazaming tracks for 90 minutes.</p>
+        </div>
+        <div class="project-image fade-in">
+          <img src="mixid.jpg" alt="Mix'd terminal interface">
+        </div>
+        <a href="https://mix-id.vercel.app" class="project-link fade-in">
+          View project →
+        </a>
+      </div>
+    </section>
+    
+    <section class="project dark">
+      <div class="project-inner">
+        <div class="project-header fade-in">
+          <div>
+            <p class="label project-label cream">04 · Personality Assessment</p>
+            <h2 class="project-title">Clawprint</h2>
+          </div>
+          <p class="project-description">Your AI agent works for you but doesn't know you. Clawprint is a 15-minute assessment that captures how you think and what you prefer. The output is a profile your agent can use.</p>
+        </div>
+        <div class="project-image fade-in">
+          <img src="clawprint.jpg" alt="Clawprint interface">
+        </div>
+        <a href="https://clawprint.dev" class="project-link fade-in">
+          View project →
+        </a>
+      </div>
+    </section>
+    
+    <section id="about" class="about">
+      <p class="label about-label fade-in">About</p>
+      <h2 class="fade-in">I studied microbiology before I studied design.</h2>
+      <div class="about-grid">
+        <div class="about-text fade-in">
+          <p>10 years of post-secondary. BSc in Microbiology, BA in Interaction Design. The scientific method never left. I still approach every problem the same way: observe, hypothesize, test, iterate.</p>
+          <p>14 years of product design after that. Fintech, bitcoin, podcasting, web3. Led design teams, shipped to millions of users.</p>
+        </div>
+        <div class="about-text fade-in">
+          <p>Now I'm focused on the space between humans and AI. The tools I build help agents understand context, see what users see, and make decisions with more information.</p>
+          <p>Every system has logic underneath. My job is finding it and making it visible.</p>
+        </div>
+      </div>
+    </section>
+    
+    <section id="contact" class="contact">
+      <h2 class="fade-in">The logic underneath needs a designer.</h2>
+      <p class="fade-in">Looking for product design roles in AI, agents, and human-machine collaboration.</p>
+      <a href="mailto:hi@scottkbell.com" class="contact-link fade-in">hi@scottkbell.com</a>
+    </section>
+  </main>
+  
+  <footer>
+    <p>© 2026 Scott Bell · <a href="https://github.com/skip5this">GitHub</a> · <a href="https://www.mixcloud.com/dynamicquality/">Mixcloud</a></p>
+  </footer>
+  
+  <script>
+    // Intersection Observer for fade-in animations
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+    
+    document.querySelectorAll('.fade-in').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+meta:
+  name: "Kreative Ink"
+  tagline: "Black & Grey Realism Tattoos"
+  phone: "+1 250-686-9629"
+  address: "1282 Park Terrace, Victoria, BC"
+  hours: "By appointment"
+  instagram: "kreativeinknick"
+  google_maps: "https://maps.google.com/maps?q=Kreative+Ink+Victoria+BC"
+
+palette:
+  primary: "#1A1A1A"
+  accent: "#F5F0E8"
+  background: "#0D0D0D"
+  text: "#F5F0E8"
+
+typography:
+  headline: "Bebas Neue"
+  body: "Inter"
+
+hero:
+  pattern: "dark-immersive"
+  headline: "The longer you look, the more you notice."
+  subhead: "Black & grey realism. 6,600+ followers. Victoria, BC."
+  image: "ig-photo-02.jpg"
+  image_alt: "Black and grey realism tattoo of wolf and warrior portrait by Nick at Kreative Ink"
+  cta:
+    text: "Book your piece"
+    href: "https://instagram.com/kreativeinknick"
+
+sections:
+  - type: photo-grid
+    id: portfolio
+    columns: 2
+    images:
+      - src: "ig-photo-04.jpg"
+        alt: "Dark fantasy antlered warrior full thigh piece"
+      - src: "ig-photo-09.jpg"
+        alt: "Dive Bar full back piece - underwater bar scene"
+      - src: "ig-photo-11.jpg"
+        alt: "Wolves and nun full back piece - hyper-realism"
+      - src: "ig-photo-05.jpg"
+        alt: "Traditional style owl on forearm"
+      - src: "ig-photo-01.jpg"
+        alt: "Snake and ornate goblet with dotwork shading"
+      - src: "ig-photo-07.jpg"
+        alt: "Skull and crown with spiked chains rib piece"
+
+  - type: text-block
+    label: "The Artist"
+    headline: "Nick Chan"
+    body: "Owner of Kreative Ink. Sponsored by El Diablo Needles Pro Team. Specializing in black & grey realism — large-scale pieces with layered storytelling. Every tattoo is custom. Every piece is personal."
+    background: dark
+
+  - type: reviews
+    label: "The Work Speaks"
+    headline: "38 five-star reviews. They keep coming back."
+    layout: cards
+    items:
+      - name: "Julie S."
+        date: "2024"
+        source: "Google"
+        text: "Nick has done 2 pieces for me so far, going back for a third in a few weeks. Amazing artist, amazing work!"
+        stars: 5
+      - name: "Kyleah L."
+        date: "2024"
+        source: "Google"
+        text: "Loved the environment. Extremely clean and sterile. I have gotten 5 tattoos here and all turned out amazing."
+        stars: 5
+      - name: "Shannon C."
+        date: "2024"
+        source: "Google"
+        text: "He got me in last minute. Great customer service, awesome job at my cover-up. An incredible experience."
+        stars: 5
+
+  - type: location
+    label: "Book Your Piece"
+    headline: "DM on Instagram to start"
+    address: "1282 Park Terrace, Victoria, BC"
+    hours: "By appointment only"
+    phone: "+1 250-686-9629"
+    map_embed: false
+    map_link: "https://maps.google.com/maps?q=Kreative+Ink+1282+Park+Terrace+Victoria+BC"
+    cta:
+      text: "Message @kreativeinknick"
+      href: "https://instagram.com/kreativeinknick"

@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sow Song — Custom Heirloom Jewelry by Tia Noelle</title>
+<meta name="description" content="Custom engagement rings, wedding bands, and heirloom jewelry handmade by Tia Noelle on Vancouver Island, BC.">
+<meta property="og:title" content="Sow Song — Custom Heirloom Jewelry">
+<meta property="og:description" content="Handmade on Vancouver Island by Tia Noelle.">
+<meta property="og:image" content="ig-photo-06.jpg">
+<meta property="og:url" content="https://auto-sites.pages.dev/demos/sowsong-lucy/">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --burgundy: #8B1D2C;
+    --burgundy-deep: #6B1521;
+    --cream: #F5EDE0;
+    --cream-warm: #EDE0CD;
+    --text: #1E1916;
+    --text-muted: #6B5D52;
+    --pad: 80px;
+    --max: 1280px;
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Libre Baskerville', Georgia, serif;
+    background: var(--cream);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.85;
+    overflow-x: hidden;
+  }
+
+  .inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 var(--pad);
+  }
+
+  /* TYPE SCALE — 3 levels only */
+  .label {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--burgundy);
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 44px;
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: var(--text);
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(245, 237, 224, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(139, 29, 44, 0.07);
+  }
+
+  .nav-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 20px var(--pad);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 21px;
+    font-weight: 500;
+    color: var(--burgundy);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+    align-items: center;
+  }
+
+  .nav-links a {
+    font-size: 12px;
+    color: var(--text-muted);
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 150ms;
+  }
+
+  .nav-links a:hover { color: var(--burgundy); }
+
+  .nav-cta {
+    color: var(--cream) !important;
+    background: var(--burgundy);
+    padding: 11px 24px;
+    transition: background 150ms var(--ease-out);
+  }
+
+  .nav-cta:hover { background: var(--burgundy-deep) !important; }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 4px;
+  }
+
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--burgundy); }
+
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 65px; left: 0; right: 0;
+    background: var(--cream);
+    padding: 20px var(--pad) 28px;
+    border-bottom: 1px solid rgba(139, 29, 44, 0.1);
+    z-index: 99;
+  }
+
+  .mobile-menu.open { display: block; }
+
+  .mobile-menu a {
+    display: block;
+    font-size: 14px;
+    color: var(--text);
+    text-decoration: none;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(139, 29, 44, 0.07);
+  }
+
+  .mobile-menu .mobile-cta {
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--cream);
+    background: var(--burgundy);
+    padding: 12px 24px;
+    text-decoration: none;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 55% 45%;
+    padding-top: 65px;
+  }
+
+  .hero-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 72px var(--pad) 72px var(--pad);
+  }
+
+  .hero-eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--burgundy);
+    margin-bottom: 28px;
+    opacity: 0.65;
+    display: block;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 80px;
+    font-weight: 400;
+    line-height: 1.0;
+    color: var(--text);
+    margin-bottom: 20px;
+    letter-spacing: -0.02em;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--burgundy);
+  }
+
+  .hero-conviction {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+
+  .hero-sub {
+    font-size: 15px;
+    color: var(--text-muted);
+    margin-bottom: 40px;
+  }
+
+  .hero-image { overflow: hidden; }
+
+  .hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+
+  /* BUTTONS */
+  .btn {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--cream);
+    background: var(--burgundy);
+    padding: 14px 32px;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 160ms var(--ease-out), transform 160ms var(--ease-out);
+  }
+
+  .btn:hover { background: var(--burgundy-deep); }
+  .btn:active { transform: scale(0.97); }
+
+  /* WORK */
+  .work-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    align-items: end;
+    margin-bottom: 44px;
+  }
+
+  .work-desc {
+    font-size: 16px;
+    color: var(--text-muted);
+    max-width: 420px;
+    margin-top: 18px;
+    line-height: 1.85;
+  }
+
+  .work-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+
+  .work-item img {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    display: block;
+  }
+
+  .work-item-label {
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-top: 10px;
+  }
+
+  /* PROCESS */
+  .process-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    margin-top: 36px;
+  }
+
+  .process-body {
+    font-size: 16px;
+    color: var(--text-muted);
+    line-height: 1.85;
+    margin-bottom: 16px;
+    max-width: 52ch;
+  }
+
+  .process-note {
+    font-size: 14px;
+    color: var(--text-muted);
+    font-style: italic;
+    line-height: 1.75;
+    max-width: 48ch;
+  }
+
+  /* VIDEO */
+  .video-caption {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(245, 237, 224, 0.3);
+    text-align: center;
+    padding-top: 24px;
+    padding-bottom: 8px;
+  }
+
+  .video-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  .video-row video {
+    width: 100%;
+    aspect-ratio: 9/16;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* STORY + MAKER */
+  .story-maker { background: var(--burgundy); }
+
+  .story-maker-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .maker-portrait {
+    width: 100%;
+    display: block;
+  }
+
+  .story-text .label { color: rgba(245, 237, 224, 0.55); }
+  .story-text h2 { color: var(--cream); margin-bottom: 28px; }
+
+  .story-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-style: italic;
+    color: var(--cream);
+    border-left: 2px solid rgba(192, 144, 64, 0.4);
+    padding-left: 24px;
+    margin-bottom: 24px;
+    line-height: 1.55;
+  }
+
+  .story-body {
+    font-size: 15px;
+    color: rgba(245, 237, 224, 0.78);
+    line-height: 1.85;
+    margin-bottom: 12px;
+    max-width: 48ch;
+  }
+
+  .story-attribution {
+    font-size: 13px;
+    color: rgba(245, 237, 224, 0.4);
+    font-style: italic;
+    margin-top: 4px;
+    margin-bottom: 28px;
+  }
+
+  .grandpa-inset {
+    width: 180px;
+    display: block;
+    margin-bottom: 28px;
+    opacity: 0.85;
+  }
+
+  .story-divider {
+    width: 40px;
+    height: 1px;
+    background: rgba(192, 144, 64, 0.35);
+    margin: 28px 0;
+  }
+
+  .maker-detail {
+    font-size: 15px;
+    color: rgba(245, 237, 224, 0.7);
+    line-height: 1.85;
+    margin-bottom: 12px;
+    max-width: 46ch;
+  }
+
+  /* CTA — polished close */
+  .cta-section {
+    background: var(--cream);
+    text-align: center;
+    padding: 96px 0;
+  }
+
+  .cta-section .label { justify-content: center; }
+  .cta-section h2 { margin-bottom: 16px; }
+
+  .cta-body {
+    font-size: 16px;
+    color: var(--text-muted);
+    max-width: 40ch;
+    margin: 0 auto 36px;
+    line-height: 1.8;
+  }
+
+  .cta-detail {
+    font-size: 13px;
+    font-style: italic;
+    color: var(--text-muted);
+    margin-top: 20px;
+    display: block;
+    letter-spacing: 0.02em;
+  }
+
+  /* FOOTER */
+  footer { background: var(--text); }
+
+  .footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 44px 0;
+  }
+
+  .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 19px;
+    color: var(--cream);
+  }
+
+  .footer-links { display: flex; gap: 28px; }
+
+  .footer-links a {
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(245, 237, 224, 0.4);
+    text-decoration: none;
+    transition: color 150ms;
+  }
+
+  .footer-links a:hover { color: var(--cream); }
+
+  .footer-copy {
+    font-size: 12px;
+    color: rgba(245, 237, 224, 0.35);
+  }
+
+  /* SCROLL ANIMATIONS */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+  }
+
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  .stagger-1 { transition-delay: 0ms; }
+  .stagger-2 { transition-delay: 60ms; }
+  .stagger-3 { transition-delay: 120ms; }
+  .stagger-4 { transition-delay: 180ms; }
+
+  /* Hero entrance — not scroll-triggered */
+  .hero-eyebrow { animation: fadeUp 500ms var(--ease-out) 100ms both; }
+  h1 { animation: fadeUp 600ms var(--ease-out) 200ms both; }
+  .hero-conviction { animation: fadeUp 500ms var(--ease-out) 360ms both; }
+  .hero-sub { animation: fadeUp 500ms var(--ease-out) 440ms both; }
+  .hero .btn { animation: fadeUp 500ms var(--ease-out) 520ms both; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    :root { --pad: 40px; }
+
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-text { padding: 96px var(--pad) 56px; }
+    .hero-image { height: 65vw; min-height: 280px; }
+    h1 { font-size: 60px; }
+
+    .work-header { grid-template-columns: 1fr; gap: 16px; margin-bottom: 32px; }
+    .work-grid { grid-template-columns: repeat(2, 1fr); }
+    .process-grid { grid-template-columns: 1fr; gap: 24px; }
+
+    .story-maker-grid { grid-template-columns: 1fr; gap: 40px; }
+    .grandpa-inset { width: 140px; }
+
+    .footer-inner { flex-direction: column; gap: 20px; text-align: center; padding: 36px 0; }
+    .footer-links { flex-wrap: wrap; justify-content: center; }
+  }
+
+  @media (max-width: 640px) {
+    :root { --pad: 24px; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+
+    h1 { font-size: 50px; }
+    h2 { font-size: 32px; }
+
+    .work-grid { gap: 10px; }
+    .video-row { grid-template-columns: 1fr; }
+    .video-row video { aspect-ratio: 16/9; }
+
+    .grandpa-inset { width: 110px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-eyebrow, h1, .hero-conviction, .hero-sub, .hero .btn {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+    .reveal {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+    * { transition-duration: 0ms !important; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Sow Song</a>
+    <ul class="nav-links">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#story">Story</a></li>
+      <li><a href="#contact" class="nav-cta">Start a Conversation</a></li>
+    </ul>
+    <button class="hamburger" aria-label="Open menu" onclick="document.querySelector('.mobile-menu').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu">
+  <a href="#work">Work</a>
+  <a href="#process">Process</a>
+  <a href="#story">Story</a>
+  <a href="mailto:tia@sowsong.com" class="mobile-cta">Start a Conversation</a>
+</div>
+
+<!-- HERO — split-image-right -->
+<section class="hero" style="padding: 0;">
+  <div class="hero-text">
+    <span class="hero-eyebrow">Custom Heirloom Jewelry · Vancouver Island, BC</span>
+    <h1>Made for<br><em>keeps.</em></h1>
+    <p class="hero-conviction">One ring, one conversation.</p>
+    <p class="hero-sub">Handmade on Vancouver Island by Tia Noelle.</p>
+    <a href="mailto:tia@sowsong.com" class="btn">Start a Conversation</a>
+  </div>
+  <div class="hero-image">
+    <img src="ig-photo-06.jpg" alt="Handcrafted gold ring worn by firelight" loading="eager">
+  </div>
+</section>
+
+<!-- THE WORK -->
+<section id="work" style="background: var(--cream); padding-top: 96px; padding-bottom: 96px;">
+  <div class="inner">
+    <div class="work-header">
+      <div class="reveal">
+        <span class="label">The Work</span>
+        <h2>Rings that hold a story</h2>
+      </div>
+      <p class="work-desc reveal" style="transition-delay: 80ms;">Engagement rings, wedding bands, memorial pendants, heirloom remakes. Salt-and-pepper diamonds, warm gold, organic shapes — made to order, start to finish.</p>
+    </div>
+    <div class="work-grid">
+      <div class="work-item reveal stagger-1">
+        <img src="ig-photo-01.jpg" alt="Oval salt-and-pepper diamond solitaire ring">
+        <p class="work-item-label">Engagement Rings</p>
+      </div>
+      <div class="work-item reveal stagger-2">
+        <img src="ig-photo-11.jpg" alt="Pearl drop earrings in signature red jewelry box">
+        <p class="work-item-label">Earrings &amp; Pendants</p>
+      </div>
+      <div class="work-item reveal stagger-3">
+        <img src="ig-photo-09.jpg" alt="Stacked gold rings on a hand full of seashells">
+        <p class="work-item-label">Wedding Bands</p>
+      </div>
+      <div class="work-item reveal stagger-4">
+        <img src="ig-photo-10.jpg" alt="Bezel-set blue stone ring resting on coastal rock">
+        <p class="work-item-label">Custom &amp; Bespoke</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="process" style="background: var(--cream-warm); padding-top: 96px; padding-bottom: 96px;">
+  <div class="inner">
+    <div class="reveal">
+      <span class="label">How It Works</span>
+      <h2>A conversation, then a ring.</h2>
+    </div>
+    <div class="process-grid">
+      <div class="reveal" style="transition-delay: 80ms;">
+        <p class="process-body">Start with an email. Tell Tia what you're imagining — the occasion, any stones or metals in mind, whether you have heirloom pieces to incorporate. She'll write back.</p>
+        <p class="process-body">She designs something specific to you. You talk through it, adjust as needed, and settle on something that feels right before she starts making it.</p>
+      </div>
+      <div class="reveal" style="transition-delay: 160ms;">
+        <p class="process-body">Tia works with engagement rings, wedding bands, memorial pieces, and heirloom remakes. Based in Nanaimo, with consultations available in Tofino.</p>
+        <p class="process-note">Custom pieces take time. Most commissions run 8–12 weeks. Worth mentioning your timeline when you reach out.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEOS — three looping clips, pure visual -->
+<section style="background: var(--text); padding: 48px 0 0;">
+  <div class="inner">
+    <p class="video-caption">The work, moving</p>
+    <div class="video-row">
+      <video autoplay muted loop playsinline class="reveal stagger-1">
+        <source src="video-dog-ring.mp4" type="video/mp4">
+      </video>
+      <video autoplay muted loop playsinline class="reveal stagger-2">
+        <source src="video-cushion-solitaire.mp4" type="video/mp4">
+      </video>
+      <video autoplay muted loop playsinline class="reveal stagger-3">
+        <source src="video-sea-rings.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+</section>
+
+<!-- STORY + MAKER — combined, redesigned -->
+<section id="story" class="story-maker" style="padding-top: 96px; padding-bottom: 96px;">
+  <div class="inner">
+    <div class="story-maker-grid">
+      <!-- Left: Tia portrait — clean, full column -->
+      <div class="reveal">
+        <img src="clean-tia-studio.jpg" alt="Tia Noelle at her jewelry bench in the studio" class="maker-portrait">
+      </div>
+      <!-- Right: text, then grandpa inset as documentary moment -->
+      <div class="story-text reveal" style="transition-delay: 120ms;">
+        <span class="label">In Dedication to Grandpa Soby</span>
+        <h2>Where the name comes from</h2>
+        <blockquote class="story-quote">"Sow Song was a tune he'd sing to us grandkids most times we were with him. Playful and full of love."</blockquote>
+        <p class="story-body">Tia Noelle Soby grew up watching her grandfather play banjo in the garden. When she started her jewelry brand in 2025, she chose the song he sang to the grandkids. The pieces she makes are meant to carry the same kind of meaning he did.</p>
+        <p class="story-body">"When I make jewelry, I'm always thinking about connection. I want the pieces I make to hold meaning throughout our lifetime."</p>
+        <p class="story-attribution">— Tia Noelle, Sow Song</p>
+        <img src="clean-grandpa-1.jpg" alt="Grandpa Soby playing banjo" class="grandpa-inset">
+        <div class="story-divider"></div>
+        <span class="label">The Maker</span>
+        <p class="maker-detail">Tia trained with local metalsmithing mentors before opening her studio in a converted Travelux trailer in Nanaimo. She works with warm yellow gold, salt-and-pepper diamonds, and organic shapes.</p>
+        <p class="maker-detail">Every piece starts with a conversation. What you're looking for, whether you have heirloom materials, what the occasion means to you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA — confident close -->
+<section id="contact" class="cta-section">
+  <div class="inner reveal">
+    <span class="label">Start Here</span>
+    <h2>Every ring starts<br>with an email.</h2>
+    <p class="cta-body">Tell Tia what you're imagining. She'll take it from there.</p>
+    <a href="mailto:tia@sowsong.com" class="btn">tia@sowsong.com</a>
+    <span class="cta-detail">@sowsong__ on Instagram &nbsp;·&nbsp; Nanaimo, BC</span>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="inner">
+    <div class="footer-inner">
+      <p class="footer-brand">Sow Song</p>
+      <div class="footer-links">
+        <a href="https://www.instagram.com/sowsong__/" target="_blank" rel="noopener">Instagram</a>
+        <a href="mailto:tia@sowsong.com">Email</a>
+        <a href="#work">Work</a>
+        <a href="#story">Story</a>
+      </div>
+      <p class="footer-copy">© 2025 Sow Song &nbsp;·&nbsp; Nanaimo, BC</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Scroll-reveal: only animates transform + opacity (GPU only)
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// Mobile menu: close on link click
+document.querySelectorAll('.mobile-menu a').forEach(link => {
+  link.addEventListener('click', () => {
+    document.querySelector('.mobile-menu').classList.remove('open');
+  });
+});
+</script>
+</body>
+</html>

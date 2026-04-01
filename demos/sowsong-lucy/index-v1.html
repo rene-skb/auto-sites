@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sow Song — Custom Heirloom Jewelry by Tia Noelle</title>
+<meta name="description" content="Custom engagement rings, wedding bands, and heirloom jewelry handmade by Tia Noelle on Vancouver Island, BC.">
+<!-- Open Graph -->
+<meta property="og:title" content="Sow Song — Custom Heirloom Jewelry">
+<meta property="og:description" content="Handmade on Vancouver Island by Tia Noelle.">
+<meta property="og:image" content="ig-photo-06.jpg">
+<meta property="og:url" content="https://auto-sites.pages.dev/demos/sowsong-lucy/">
+<meta property="og:type" content="website">
+
+<!--
+DELTA: v0 → v1
+Changes:
+- "One ring, one conversation" moved to hero — sits below main headline as conviction line
+- Subhead tightened to "Handmade on Vancouver Island by Tia Noelle"  
+- Process section (01/02/03 steps) removed — replaced with simple email invite
+- Video section repositioned before story section — removed generic "Made on Vancouver Island" label
+- Story section: grandpa quote enlarged and made the anchor moment of that section
+- Maker section: cleaner, tighter copy — removed redundant "previous life as a florist" sentence
+WHY scores: Jobs 7, Graham 7, Ogilvy 7 → 7.0 avg
+Hypothesis: Removing templated steps + sharpening hero will lift conviction and clarity together
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --burgundy: #8B1D2C;
+    --burgundy-deep: #6B1521;
+    --cream: #F5EDE0;
+    --cream-warm: #EDE0CD;
+    --gold: #C09040;
+    --text: #1E1916;
+    --text-muted: #6B5D52;
+    --section-pad: 96px;
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Libre Baskerville', Georgia, serif;
+    background: var(--cream);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ——— NAV ——— */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 20px 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(245, 237, 224, 0.94);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(139, 29, 44, 0.07);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--burgundy);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+    align-items: center;
+  }
+
+  .nav-links a {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 12px;
+    color: var(--text-muted);
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 160ms;
+  }
+
+  .nav-links a:hover { color: var(--burgundy); }
+
+  .nav-cta {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--cream) !important;
+    background: var(--burgundy);
+    padding: 11px 26px;
+    text-decoration: none;
+    transition: background 160ms;
+  }
+
+  .nav-cta:hover { background: var(--burgundy-deep) !important; }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 4px;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--burgundy);
+  }
+
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 65px;
+    left: 0;
+    right: 0;
+    background: var(--cream);
+    padding: 24px 32px 32px;
+    border-bottom: 1px solid rgba(139, 29, 44, 0.1);
+    z-index: 99;
+  }
+
+  .mobile-menu.open { display: block; }
+
+  .mobile-menu a {
+    display: block;
+    font-family: 'Libre Baskerville', serif;
+    font-size: 14px;
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(139, 29, 44, 0.07);
+  }
+
+  .mobile-menu .mobile-cta {
+    display: inline-block;
+    margin-top: 24px;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--cream);
+    background: var(--burgundy);
+    padding: 13px 28px;
+    text-decoration: none;
+    border: none;
+  }
+
+  /* ——— HERO — SPLIT RIGHT ——— */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 55% 45%;
+    padding-top: 65px;
+  }
+
+  .hero-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 72px 80px 80px;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--burgundy);
+    margin-bottom: 28px;
+    opacity: 0.8;
+  }
+
+  .hero-headline {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(56px, 6.5vw, 96px);
+    font-weight: 400;
+    line-height: 1.0;
+    color: var(--text);
+    margin-bottom: 20px;
+    letter-spacing: -0.01em;
+  }
+
+  .hero-headline em {
+    font-style: italic;
+    color: var(--burgundy);
+  }
+
+  .hero-conviction {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+    font-weight: 400;
+  }
+
+  .hero-sub {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 15px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 44px;
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--cream);
+    background: var(--burgundy);
+    padding: 14px 32px;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 160ms var(--ease-out), transform 160ms var(--ease-out);
+  }
+
+  .btn-primary:hover { background: var(--burgundy-deep); }
+  .btn-primary:active { transform: scale(0.97); }
+
+  .hero-note {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 13px;
+    font-style: italic;
+    color: var(--text-muted);
+  }
+
+  .hero-image {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+
+  /* ——— SECTION DEFAULTS ——— */
+  .section-label {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--burgundy);
+    margin-bottom: 16px;
+    opacity: 0.8;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(30px, 3.2vw, 50px);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: var(--text);
+  }
+
+  /* ——— WORK SECTION ——— */
+  .work-section {
+    padding: var(--section-pad) 80px;
+    background: var(--cream);
+  }
+
+  .work-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: end;
+    margin-bottom: 48px;
+  }
+
+  .work-desc {
+    font-size: 16px;
+    color: var(--text-muted);
+    max-width: 420px;
+    margin-top: 20px;
+    line-height: 1.75;
+  }
+
+  .work-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+  }
+
+  .work-item img {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    display: block;
+  }
+
+  .work-item-label {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-top: 10px;
+  }
+
+  /* ——— VIDEO SECTION ——— */
+  .video-section {
+    background: var(--text);
+    padding: 64px 80px;
+  }
+
+  .video-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  .video-row video {
+    width: 100%;
+    aspect-ratio: 9/16;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* ——— STORY SECTION ——— */
+  .story-section {
+    background: var(--burgundy);
+    padding: var(--section-pad) 0;
+  }
+
+  .story-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 80px;
+    gap: 80px;
+  }
+
+  .story-image-wrap img {
+    width: 100%;
+    max-width: 440px;
+    display: block;
+  }
+
+  .story-text .section-label {
+    color: rgba(245, 237, 224, 0.55);
+  }
+
+  .story-text .section-title {
+    color: var(--cream);
+    margin-bottom: 36px;
+  }
+
+  .story-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-style: italic;
+    color: var(--cream);
+    border-left: 2px solid rgba(192, 144, 64, 0.5);
+    padding-left: 28px;
+    margin-bottom: 28px;
+    line-height: 1.55;
+  }
+
+  .story-body {
+    font-size: 15px;
+    color: rgba(245, 237, 224, 0.8);
+    line-height: 1.8;
+    margin-bottom: 16px;
+  }
+
+  .story-attribution {
+    font-size: 13px;
+    color: rgba(245, 237, 224, 0.45);
+    font-style: italic;
+    margin-top: 8px;
+  }
+
+  /* ——— MAKER SECTION ——— */
+  .maker-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    padding: var(--section-pad) 80px;
+    background: var(--cream-warm);
+  }
+
+  .maker-image img {
+    width: 100%;
+    max-width: 520px;
+    display: block;
+  }
+
+  .maker-text .section-title {
+    margin-top: 10px;
+    margin-bottom: 24px;
+  }
+
+  .maker-body {
+    font-size: 16px;
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 24px;
+    max-width: 460px;
+  }
+
+  /* ——— CONTACT / CTA ——— */
+  .cta-section {
+    background: var(--cream);
+    text-align: center;
+    padding: var(--section-pad) 80px;
+  }
+
+  .cta-section .section-title {
+    margin-bottom: 20px;
+    max-width: 580px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cta-body {
+    font-size: 16px;
+    color: var(--text-muted);
+    max-width: 480px;
+    margin: 0 auto 40px;
+    line-height: 1.75;
+  }
+
+  .cta-detail {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 13px;
+    font-style: italic;
+    color: var(--text-muted);
+    margin-top: 20px;
+    display: block;
+  }
+
+  /* ——— FOOTER ——— */
+  footer {
+    background: var(--text);
+    color: rgba(245, 237, 224, 0.45);
+    padding: 48px 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 19px;
+    color: var(--cream);
+    font-weight: 400;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 32px;
+  }
+
+  .footer-links a {
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(245, 237, 224, 0.45);
+    text-decoration: none;
+    transition: color 160ms;
+  }
+
+  .footer-links a:hover { color: var(--cream); }
+
+  .footer-copy {
+    font-size: 12px;
+  }
+
+  /* ——— RESPONSIVE ——— */
+  @media (max-width: 1024px) {
+    nav { padding: 18px 32px; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-text { padding: 100px 40px 56px; }
+    .hero-image { height: 65vw; min-height: 320px; }
+
+    .work-section, .cta-section { padding: var(--section-pad) 40px; }
+    .work-header { grid-template-columns: 1fr; gap: 16px; margin-bottom: 36px; }
+    .work-grid { grid-template-columns: repeat(2, 1fr); }
+
+    .video-section { padding: 48px 40px; }
+    .video-row { gap: 6px; }
+
+    .story-inner { grid-template-columns: 1fr; padding: 0 40px; gap: 48px; }
+    .story-section { padding: var(--section-pad) 0; }
+
+    .maker-section { grid-template-columns: 1fr; gap: 40px; padding: var(--section-pad) 40px; }
+
+    footer { flex-direction: column; gap: 24px; text-align: center; padding: 40px 32px; }
+    .footer-links { flex-wrap: wrap; justify-content: center; }
+  }
+
+  @media (max-width: 640px) {
+    nav { padding: 18px 24px; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+
+    .hero-text { padding: 80px 24px 48px; }
+    .hero-headline { font-size: 52px; }
+
+    .work-section, .cta-section, .video-section { padding: 64px 24px; }
+    .work-grid { gap: 10px; }
+
+    .story-section { padding: 64px 0; }
+    .story-inner { padding: 0 24px; gap: 40px; }
+    .story-quote { font-size: 18px; }
+
+    .maker-section { padding: 64px 24px; }
+
+    footer { padding: 40px 24px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Sow Song</a>
+  <ul class="nav-links">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#story">Story</a></li>
+    <li><a href="#tia">The Maker</a></li>
+    <li><a href="#contact" class="nav-cta">Start a Conversation</a></li>
+  </ul>
+  <button class="hamburger" aria-label="Open menu" onclick="document.querySelector('.mobile-menu').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu">
+  <a href="#work">Work</a>
+  <a href="#story">Story</a>
+  <a href="#tia">The Maker</a>
+  <a href="mailto:tia@sowsong.com" class="mobile-cta">Start a Conversation</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" style="padding: 0;">
+  <div class="hero-text">
+    <p class="hero-eyebrow">Custom Heirloom Jewelry · Vancouver Island, BC</p>
+    <h1 class="hero-headline">Made for<br><em>keeps.</em></h1>
+    <p class="hero-conviction">One ring, one conversation.</p>
+    <p class="hero-sub">Handmade on Vancouver Island by Tia Noelle.</p>
+    <div class="hero-actions">
+      <a href="mailto:tia@sowsong.com" class="btn-primary">Start a Conversation</a>
+      <span class="hero-note">tia@sowsong.com</span>
+    </div>
+  </div>
+  <div class="hero-image">
+    <img src="ig-photo-06.jpg" alt="Handcrafted gold ring worn by firelight" loading="eager">
+  </div>
+</section>
+
+<!-- WORK -->
+<section id="work" class="work-section">
+  <div class="work-header">
+    <div>
+      <p class="section-label">The Work</p>
+      <h2 class="section-title">Rings that hold a story</h2>
+    </div>
+    <p class="work-desc">Engagement rings, wedding bands, memorial pendants, and heirloom remakes. Salt-and-pepper diamonds, warm gold, organic shapes — made to order, from scratch.</p>
+  </div>
+  <div class="work-grid">
+    <div class="work-item">
+      <img src="ig-photo-01.jpg" alt="Oval salt-and-pepper diamond solitaire ring">
+      <p class="work-item-label">Engagement Rings</p>
+    </div>
+    <div class="work-item">
+      <img src="ig-photo-11.jpg" alt="Pearl drop earrings in signature red jewelry box">
+      <p class="work-item-label">Earrings &amp; Pendants</p>
+    </div>
+    <div class="work-item">
+      <img src="ig-photo-09.jpg" alt="Stacked gold rings worn on a hand holding seashells">
+      <p class="work-item-label">Wedding Bands</p>
+    </div>
+    <div class="work-item">
+      <img src="ig-photo-10.jpg" alt="Blue bezel-set stone ring on coastal rock">
+      <p class="work-item-label">Custom &amp; Bespoke</p>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEOS -->
+<section class="video-section">
+  <div class="video-row">
+    <video autoplay muted loop playsinline>
+      <source src="video-dog-ring.mp4" type="video/mp4">
+    </video>
+    <video autoplay muted loop playsinline>
+      <source src="video-cushion-solitaire.mp4" type="video/mp4">
+    </video>
+    <video autoplay muted loop playsinline>
+      <source src="video-sea-rings.mp4" type="video/mp4">
+    </video>
+  </div>
+</section>
+
+<!-- THE STORY -->
+<section id="story" class="story-section">
+  <div class="story-inner">
+    <div class="story-image-wrap">
+      <img src="clean-grandpa-1.jpg" alt="Grandpa Soby playing banjo — the namesake of Sow Song">
+    </div>
+    <div class="story-text">
+      <p class="section-label">In Dedication to Grandpa Soby</p>
+      <h2 class="section-title" style="color: var(--cream);">Where the name comes from</h2>
+      <blockquote class="story-quote">"Sow Song was a tune he'd sing to us grandkids most times we were with him. Playful and full of love."</blockquote>
+      <p class="story-body">Tia Noelle Soby grew up watching her grandfather play banjo in the garden. When she started her jewelry brand in 2025, she chose the song he sang to the grandkids — because the pieces she makes are meant to carry the same kind of meaning he did.</p>
+      <p class="story-body">"When I make jewelry, I'm always thinking about connection. I want the pieces I make to hold meaning throughout our lifetime."</p>
+      <p class="story-attribution">— Tia Noelle, Sow Song</p>
+    </div>
+  </div>
+</section>
+
+<!-- MEET TIA -->
+<section id="tia" class="maker-section">
+  <div class="maker-image">
+    <img src="clean-tia-studio.jpg" alt="Tia Noelle at her jewelry bench in the studio">
+  </div>
+  <div class="maker-text">
+    <p class="section-label">The Maker</p>
+    <h2 class="section-title">Tia Noelle Soby</h2>
+    <p class="maker-body">Tia is based in Nanaimo and trained with local metalsmithing mentors before opening her studio in a converted Travelux trailer. She works with warm yellow gold, salt-and-pepper diamonds, and organic shapes — bezel settings, hand-carved signets, custom memorial pieces.</p>
+    <p class="maker-body">She does consultations in Tofino. Every piece starts with a conversation — what you're looking for, whether you have heirloom materials to incorporate, what the occasion means to you.</p>
+    <a href="mailto:tia@sowsong.com" class="btn-primary">Email Tia</a>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="contact" class="cta-section">
+  <p class="section-label">Start Here</p>
+  <h2 class="section-title">Every ring starts<br>with an email.</h2>
+  <p class="cta-body">Tell Tia what you're imagining. She'll take it from there.</p>
+  <a href="mailto:tia@sowsong.com" class="btn-primary">tia@sowsong.com</a>
+  <span class="cta-detail">@sowsong__ on Instagram · Based in Nanaimo, BC</span>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p class="footer-brand">Sow Song</p>
+  <div class="footer-links">
+    <a href="https://www.instagram.com/sowsong__/" target="_blank" rel="noopener">Instagram</a>
+    <a href="mailto:tia@sowsong.com">Email</a>
+    <a href="#work">Work</a>
+    <a href="#story">Story</a>
+  </div>
+  <p class="footer-copy">© 2025 Sow Song · Nanaimo, BC</p>
+</footer>
+
+</body>
+</html>

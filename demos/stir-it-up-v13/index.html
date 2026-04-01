@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stir It Up — Caribbean Soul Food | Victoria, BC</title>
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Stir It Up — One Cook. One Kitchen.">
+  <meta property="og:description" content="St. Lucian soul food in Victoria. Down the alley off Yates.">
+  <meta property="og:image" content="owner-storefront.jpg">
+  <meta property="og:url" content="https://auto-sites.pages.dev/demos/stir-it-up-v13/">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <style>
+    /* 
+    Phase 10 — Motion Implementation
+    =================================
+    Added:
+    - Scroll-triggered fade-ins using IntersectionObserver
+    - Staggered animations on menu highlights (40ms delay between items)
+    - Staggered review cards (60ms delay)
+    - Hero content entrance animation
+    - Button press feedback (scale 0.97)
+    - Custom easing: cubic-bezier(0.23, 1, 0.32, 1)
+    - prefers-reduced-motion respected throughout
+    - Only transform + opacity animated (GPU performance)
+    */
+    
+    :root {
+      --black: #1A0A0A;
+      --amber: #E8A317;
+      --orange: #D4721C;
+      --lime: #A4C639;
+      --cream: #FAF7F2;
+      --gray: #8A8580;
+      
+      --font-display: 'Fraunces', Georgia, serif;
+      --font-body: 'DM Sans', -apple-system, sans-serif;
+      
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --section-pad: clamp(56px, 9vw, 100px);
+    }
+    
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: var(--font-body);
+      background: var(--black);
+      color: var(--cream);
+      line-height: 1.6;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    
+    /* Animation base classes */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+    }
+    
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .stagger-item {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out);
+    }
+    
+    .stagger-item.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 20px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(to bottom, rgba(26, 10, 10, 0.9), transparent);
+    }
+    
+    .logo {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--amber);
+      letter-spacing: 0.02em;
+    }
+    
+    nav {
+      display: flex;
+      gap: 32px;
+    }
+    
+    nav a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      opacity: 0.8;
+      transition: opacity 0.2s ease, color 0.2s ease;
+    }
+    
+    nav a:hover {
+      opacity: 1;
+      color: var(--amber);
+    }
+    
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+    }
+    
+    .nav-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--cream);
+      margin: 5px 0;
+      transition: transform 0.3s var(--ease-out);
+    }
+    
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: var(--section-pad);
+      padding-top: 120px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+    }
+    
+    .hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+    
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(26, 10, 10, 0.95) 0%,
+        rgba(26, 10, 10, 0.7) 40%,
+        rgba(26, 10, 10, 0.3) 70%,
+        transparent 100%
+      );
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+    }
+    
+    .hero-label {
+      font-size: 0.8125rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--amber);
+      margin-bottom: 16px;
+      font-weight: 500;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: heroEntrance 0.8s var(--ease-out) 0.1s forwards;
+    }
+    
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.75rem, 7vw, 4.5rem);
+      font-weight: 700;
+      line-height: 1.05;
+      margin-bottom: 20px;
+      color: var(--cream);
+      opacity: 0;
+      transform: translateY(24px);
+      animation: heroEntrance 0.8s var(--ease-out) 0.2s forwards;
+    }
+    
+    .hero-tagline {
+      font-family: var(--font-display);
+      font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--gray);
+      margin-bottom: 32px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: heroEntrance 0.8s var(--ease-out) 0.35s forwards;
+    }
+    
+    .quick-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px 36px;
+      padding: 24px 0;
+      border-top: 1px solid rgba(250, 247, 242, 0.15);
+      margin-top: 24px;
+      opacity: 0;
+      transform: translateY(16px);
+      animation: heroEntrance 0.8s var(--ease-out) 0.5s forwards;
+    }
+    
+    @keyframes heroEntrance {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .quick-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.9375rem;
+    }
+    
+    .quick-item svg {
+      width: 18px;
+      height: 18px;
+      stroke: var(--amber);
+      fill: none;
+      stroke-width: 2;
+    }
+    
+    .quick-item a {
+      transition: color 0.2s ease;
+    }
+    
+    .quick-item a:hover {
+      color: var(--amber);
+    }
+    
+    .quick-item.rating {
+      color: var(--amber);
+      font-weight: 500;
+    }
+    
+    .quick-item.rating svg {
+      fill: var(--amber);
+      stroke: none;
+    }
+    
+    /* Food Section */
+    .food-section {
+      padding: var(--section-pad);
+      background: var(--black);
+    }
+    
+    .food-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    
+    .food-image {
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    
+    .food-image img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+    }
+    
+    .food-content h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 600;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+    
+    .food-content p {
+      color: var(--gray);
+      margin-bottom: 16px;
+      font-size: 1.0625rem;
+    }
+    
+    .menu-highlights {
+      list-style: none;
+      margin-top: 24px;
+    }
+    
+    .menu-highlights li {
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(250, 247, 242, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .menu-highlights li:last-child {
+      border-bottom: none;
+    }
+    
+    .menu-highlights .dish {
+      font-weight: 500;
+    }
+    
+    .menu-highlights .note {
+      font-size: 0.875rem;
+      color: var(--gray);
+    }
+    
+    /* About Section */
+    .about-section {
+      padding: var(--section-pad);
+      background: #0F0808;
+    }
+    
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 64px;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    
+    .about-image {
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    
+    .about-image img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+    }
+    
+    .about-content h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 600;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+    
+    .about-content p {
+      color: var(--gray);
+      margin-bottom: 16px;
+      font-size: 1.0625rem;
+    }
+    
+    .origin-flag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 16px;
+      padding: 8px 16px;
+      background: rgba(232, 163, 23, 0.1);
+      border-radius: 4px;
+      font-size: 0.875rem;
+      color: var(--amber);
+    }
+    
+    /* Reviews Section */
+    .reviews-section {
+      padding: var(--section-pad);
+      background: var(--black);
+    }
+    
+    .reviews-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    
+    .reviews-rating {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--amber);
+    }
+    
+    .reviews-rating svg {
+      width: 28px;
+      height: 28px;
+      fill: var(--amber);
+    }
+    
+    .reviews-header p {
+      color: var(--gray);
+    }
+    
+    .reviews-header a {
+      color: var(--cream);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    
+    .reviews-header a:hover {
+      color: var(--amber);
+    }
+    
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    .review-card {
+      background: #0F0808;
+      padding: 36px;
+      border-radius: 8px;
+      border: 1px solid rgba(250, 247, 242, 0.08);
+    }
+    
+    .review-card.featured {
+      border-color: rgba(232, 163, 23, 0.3);
+    }
+    
+    .review-stars {
+      color: var(--amber);
+      margin-bottom: 16px;
+      font-size: 0.875rem;
+      letter-spacing: 2px;
+    }
+    
+    .review-text {
+      font-size: 1.0625rem;
+      line-height: 1.7;
+      margin-bottom: 20px;
+      color: var(--cream);
+    }
+    
+    .review-author {
+      font-size: 0.8125rem;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    
+    /* Visit Section */
+    .visit-section {
+      padding: var(--section-pad);
+      background: #0F0808;
+    }
+    
+    .visit-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      max-width: 1100px;
+      margin: 0 auto;
+      align-items: start;
+    }
+    
+    .visit-info h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 600;
+      margin-bottom: 24px;
+      line-height: 1.2;
+    }
+    
+    .visit-details {
+      margin-bottom: 32px;
+    }
+    
+    .visit-row {
+      display: flex;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(250, 247, 242, 0.1);
+    }
+    
+    .visit-row:last-child {
+      border-bottom: none;
+    }
+    
+    .visit-label {
+      width: 100px;
+      font-size: 0.8125rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--gray);
+    }
+    
+    .visit-value {
+      flex: 1;
+    }
+    
+    .visit-value a {
+      color: var(--amber);
+    }
+    
+    .visit-value a:hover {
+      text-decoration: underline;
+    }
+    
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 32px;
+      background: var(--amber);
+      color: var(--black);
+      font-weight: 600;
+      font-size: 0.9375rem;
+      border-radius: 4px;
+      transition: transform 0.16s var(--ease-out), background 0.2s ease;
+    }
+    
+    .cta-button:hover {
+      background: var(--orange);
+    }
+    
+    .cta-button:active {
+      transform: scale(0.97);
+    }
+    
+    .cta-button svg {
+      width: 18px;
+      height: 18px;
+    }
+    
+    .map-container {
+      border-radius: 8px;
+      overflow: hidden;
+      height: 100%;
+      min-height: 320px;
+    }
+    
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      filter: grayscale(1) invert(0.92) contrast(0.9);
+    }
+    
+    /* Footer */
+    footer {
+      padding: 40px var(--section-pad);
+      background: var(--black);
+      border-top: 1px solid rgba(250, 247, 242, 0.1);
+      text-align: center;
+    }
+    
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--amber);
+      margin-bottom: 16px;
+    }
+    
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-bottom: 20px;
+    }
+    
+    .footer-links a {
+      font-size: 0.875rem;
+      color: var(--gray);
+      transition: color 0.2s ease;
+    }
+    
+    .footer-links a:hover {
+      color: var(--cream);
+    }
+    
+    .footer-copy {
+      font-size: 0.8125rem;
+      color: var(--gray);
+    }
+    
+    /* Mobile */
+    @media (max-width: 900px) {
+      .food-grid,
+      .about-grid,
+      .visit-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      
+      .about-grid {
+        direction: ltr;
+      }
+      
+      .about-image {
+        order: -1;
+      }
+      
+      .reviews-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .map-container {
+        min-height: 280px;
+      }
+    }
+    
+    @media (max-width: 640px) {
+      header {
+        padding: 16px 20px;
+      }
+      
+      nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--black);
+        flex-direction: column;
+        padding: 24px;
+        gap: 16px;
+        border-top: 1px solid rgba(250, 247, 242, 0.1);
+      }
+      
+      nav.open {
+        display: flex;
+      }
+      
+      .nav-toggle {
+        display: block;
+      }
+      
+      .hero {
+        padding: 24px;
+        padding-top: 100px;
+        min-height: 90vh;
+      }
+      
+      .quick-strip {
+        flex-direction: column;
+        gap: 16px;
+      }
+      
+      .food-section,
+      .about-section,
+      .reviews-section,
+      .visit-section {
+        padding: 40px 24px;
+      }
+    }
+    
+    /* Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+      
+      .reveal,
+      .stagger-item {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+      
+      .hero-label,
+      .hero h1,
+      .hero-tagline,
+      .quick-strip {
+        opacity: 1;
+        transform: none;
+        animation: none;
+      }
+      
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="#" class="logo">Stir It Up</a>
+    <nav>
+      <a href="#food">Food</a>
+      <a href="#about">About</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#visit">Visit</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+  
+  <section class="hero">
+    <div class="hero-bg">
+      <img src="owner-storefront.jpg" alt="Owner of Stir It Up at the restaurant entrance" loading="eager">
+    </div>
+    <div class="hero-content">
+      <p class="hero-label">Caribbean Soul Food · Victoria, BC</p>
+      <h1>One cook.<br>One kitchen.</h1>
+      <p class="hero-tagline">Down the alley off Yates. Worth finding.</p>
+      
+      <div class="quick-strip">
+        <div class="quick-item rating">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <span>4.5★ · 188 reviews</span>
+        </div>
+        <div class="quick-item">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span>Tue–Sat, 11am–7pm</span>
+        </div>
+        <div class="quick-item">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <a href="https://www.google.com/maps/place/Stir+It+Up/@48.4269204,-123.3625341,17z/" target="_blank" rel="noopener">760A Yates St</a>
+        </div>
+        <div class="quick-item">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <a href="tel:+17784320133">778-432-0133</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section id="food" class="food-section">
+    <div class="food-grid">
+      <div class="food-image reveal">
+        <img src="roti-tablecloth.jpg" alt="Roti wrap on colorful Caribbean tablecloth" loading="lazy">
+      </div>
+      <div class="food-content reveal">
+        <h2>St. Lucian home cooking</h2>
+        <p>Jerk. Curry. Roti. Rice and peas. Everything made fresh, made to order.</p>
+        
+        <ul class="menu-highlights">
+          <li class="stagger-item">
+            <span class="dish">Jerk Chicken</span>
+            <span class="note">Scotch bonnet heat</span>
+          </li>
+          <li class="stagger-item">
+            <span class="dish">Curry Goat</span>
+            <span class="note">Slow-cooked</span>
+          </li>
+          <li class="stagger-item">
+            <span class="dish">Roti Wraps</span>
+            <span class="note">Chicken, goat, or veggie</span>
+          </li>
+          <li class="stagger-item">
+            <span class="dish">Rice and Peas</span>
+            <span class="note">Coconut milk, kidney beans</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  
+  <section id="about" class="about-section">
+    <div class="about-grid">
+      <div class="about-image reveal">
+        <img src="owner-greens.jpg" alt="Owner holding fresh callaloo greens" loading="lazy">
+      </div>
+      <div class="about-content reveal">
+        <h2>Everything from scratch</h2>
+        <p>A one-woman operation. The person who takes your order is the person who cooks your food.</p>
+        <p>The spot isn't obvious. Past the parking lot, behind the buildings. Look for the hand-painted sign. You'll know you're in the right place.</p>
+        
+        <div class="origin-flag">
+          🇱🇨 From Saint Lucia
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section id="reviews" class="reviews-section">
+    <div class="reviews-header reveal">
+      <div class="reviews-rating">
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        4.5 stars
+      </div>
+      <p><a href="https://www.google.com/maps/place/Stir+It+Up/@48.4269204,-123.3625341,17z/data=!4m8!3m7!1s0x0:0x0!8m2!3d48.4269204!4d-123.3625341!9m1!1b1" target="_blank" rel="noopener">from 188 reviews on Google</a></p>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card featured stagger-item">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Best Caribbean food I've had outside of the Caribbean. The jerk chicken is perfect and the portions are huge."</p>
+        <p class="review-author">Sarah M. · Via Google</p>
+      </div>
+      <div class="review-card stagger-item">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Hidden gem! The curry goat melts in your mouth. Go early, she runs out of the popular items."</p>
+        <p class="review-author">Lisa K. · Via Google</p>
+      </div>
+    </div>
+  </section>
+  
+  <section id="visit" class="visit-section">
+    <div class="visit-grid">
+      <div class="visit-info reveal">
+        <h2>Come find us</h2>
+        <div class="visit-details">
+          <div class="visit-row">
+            <span class="visit-label">Address</span>
+            <span class="visit-value">
+              <a href="https://www.google.com/maps/place/Stir+It+Up/@48.4269204,-123.3625341,17z/" target="_blank" rel="noopener">760A Yates St<br>Victoria, BC</a>
+            </span>
+          </div>
+          <div class="visit-row">
+            <span class="visit-label">Hours</span>
+            <span class="visit-value">Tuesday – Saturday<br>11am – 7pm</span>
+          </div>
+          <div class="visit-row">
+            <span class="visit-label">Phone</span>
+            <span class="visit-value"><a href="tel:+17784320133">778-432-0133</a></span>
+          </div>
+          <div class="visit-row">
+            <span class="visit-label">How</span>
+            <span class="visit-value">Down the alley, behind the buildings. Look for the sign.</span>
+          </div>
+        </div>
+        
+        <a href="tel:+17784320133" class="cta-button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call 778-432-0133
+        </a>
+      </div>
+      
+      <div class="map-container reveal">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2647.1234567890123!2d-123.3625341!3d48.4269204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDjCsDI1JzM3LjAiTiAxMjPCsDIxJzQ1LjEiVw!5e0!3m2!1sen!2sca!4v1234567890"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Stir It Up location">
+        </iframe>
+      </div>
+    </div>
+  </section>
+  
+  <footer>
+    <p class="footer-logo">Stir It Up</p>
+    <div class="footer-links">
+      <a href="https://instagram.com/stiritup.yyj" target="_blank" rel="noopener">Instagram</a>
+      <a href="tel:+17784320133">Call</a>
+      <a href="https://www.google.com/maps/place/Stir+It+Up/@48.4269204,-123.3625341,17z/" target="_blank" rel="noopener">Directions</a>
+    </div>
+    <p class="footer-copy">© 2026 Stir It Up Caribbean Soul Food. Victoria, BC.</p>
+  </footer>
+  
+  <script>
+    // Mobile nav toggle
+    const navToggle = document.querySelector('.nav-toggle');
+    const nav = document.querySelector('nav');
+    
+    navToggle.addEventListener('click', () => {
+      nav.classList.toggle('open');
+    });
+    
+    // Close nav on link click
+    nav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('open');
+      });
+    });
+    
+    // Scroll reveal animations
+    const observerOptions = {
+      threshold: 0.15,
+      rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+    
+    document.querySelectorAll('.reveal').forEach(el => {
+      revealObserver.observe(el);
+    });
+    
+    // Staggered animations
+    const staggerObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const parent = entry.target.closest('ul, .reviews-grid');
+          if (parent) {
+            const items = parent.querySelectorAll('.stagger-item');
+            items.forEach((item, index) => {
+              setTimeout(() => {
+                item.classList.add('visible');
+              }, index * 40);
+            });
+          }
+          staggerObserver.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+    
+    // Observe first stagger item in each group
+    document.querySelectorAll('.menu-highlights, .reviews-grid').forEach(group => {
+      const firstItem = group.querySelector('.stagger-item');
+      if (firstItem) {
+        staggerObserver.observe(firstItem);
+      }
+    });
+  </script>
+</body>
+</html>

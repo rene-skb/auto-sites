@@ -178,9 +178,18 @@
     }
     
     .nav.scrolled {
-      background: rgba(248, 244, 238, 0.95);
+      background: var(--burgundy);
       backdrop-filter: blur(8px);
-      box-shadow: 0 1px 12px rgba(0,0,0,0.06);
+      box-shadow: 0 1px 12px rgba(0,0,0,0.1);
+    }
+    
+    .nav.scrolled .nav-brand,
+    .nav.scrolled .nav-links a {
+      color: var(--cream);
+    }
+    
+    .nav.scrolled .nav-links a:hover {
+      opacity: 0.8;
     }
     
     .nav-brand {
@@ -224,6 +233,10 @@
       background: var(--text);
       margin: 5px 0;
       transition: 0.3s;
+    }
+    
+    .nav.scrolled .nav-toggle span {
+      background: var(--cream);
     }
     
     /* ===================== HERO ===================== */

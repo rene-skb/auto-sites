@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sow Song — Custom Heirloom Jewellery</title>
+  <meta name="description" content="Handcrafted heirloom jewellery by Tia Noelle. Custom engagement rings, wedding bands, and keepsakes made with love on Vancouver Island.">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Sow Song — Custom Heirloom Jewellery">
+  <meta property="og:description" content="Every piece is a love letter to the bonds, connections, and magic of life well lived.">
+  <meta property="og:image" content="scott-pick-red-box-hoops.jpg">
+  <meta property="og:url" content="https://sowsong.com">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  
+  <style>
+    /* Panel Score: v0 baseline */
+    
+    :root {
+      --burgundy: #6B2737;
+      --burgundy-dark: #4A1B26;
+      --cream: #F5F0E8;
+      --cream-dark: #EDE6DA;
+      --gold: #C9A962;
+      --gold-light: #D4BC82;
+      --text: #2C2420;
+      --text-light: #5C5450;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      background: var(--cream);
+      color: var(--text);
+      font-size: 18px;
+      line-height: 1.7;
+    }
+    
+    /* Typography */
+    .brand-name {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-style: italic;
+      font-weight: 500;
+      color: var(--burgundy);
+    }
+    
+    h1, h2, h3 {
+      font-weight: 500;
+      line-height: 1.3;
+    }
+    
+    /* Layout */
+    .section {
+      padding: 80px 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .section-narrow {
+      max-width: 800px;
+    }
+    
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 60px 24px;
+      background: var(--cream);
+    }
+    
+    .hero-tagline {
+      font-size: 14px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 24px;
+    }
+    
+    .hero h1 {
+      font-size: clamp(48px, 10vw, 96px);
+      margin-bottom: 32px;
+    }
+    
+    .hero-quote {
+      font-size: clamp(20px, 3vw, 28px);
+      font-style: italic;
+      max-width: 700px;
+      color: var(--text-light);
+      margin-bottom: 48px;
+    }
+    
+    .hero-cta {
+      display: inline-block;
+      padding: 16px 40px;
+      background: var(--burgundy);
+      color: var(--cream);
+      text-decoration: none;
+      font-size: 14px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      transition: background 0.3s ease;
+    }
+    
+    .hero-cta:hover {
+      background: var(--burgundy-dark);
+    }
+    
+    /* Manifesto */
+    .manifesto {
+      background: var(--burgundy);
+      color: var(--cream);
+      text-align: center;
+      padding: 100px 24px;
+    }
+    
+    .manifesto blockquote {
+      font-size: clamp(22px, 3.5vw, 32px);
+      font-style: italic;
+      max-width: 900px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    
+    .manifesto cite {
+      display: block;
+      margin-top: 32px;
+      font-size: 14px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-style: normal;
+      opacity: 0.8;
+    }
+    
+    /* Video Row */
+    .video-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      background: var(--text);
+    }
+    
+    .video-row video {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      display: block;
+    }
+    
+    @media (max-width: 768px) {
+      .video-row {
+        grid-template-columns: 1fr;
+      }
+      .video-row video {
+        height: 300px;
+      }
+    }
+    
+    /* The Name Section */
+    .the-name {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      padding: 100px 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .the-name-image {
+      position: relative;
+    }
+    
+    .the-name-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    .the-name-content h2 {
+      font-size: 14px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--burgundy);
+      margin-bottom: 16px;
+    }
+    
+    .the-name-content h3 {
+      font-size: clamp(32px, 5vw, 48px);
+      font-style: italic;
+      margin-bottom: 32px;
+    }
+    
+    .the-name-content p {
+      margin-bottom: 20px;
+      color: var(--text-light);
+    }
+    
+    .the-name-content p:last-of-type {
+      margin-bottom: 0;
+    }
+    
+    .signature {
+      margin-top: 32px;
+      font-style: italic;
+      color: var(--burgundy);
+    }
+    
+    @media (max-width: 900px) {
+      .the-name {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+    }
+    
+    /* About / Tia */
+    .about {
+      background: var(--cream-dark);
+      padding: 100px 24px;
+    }
+    
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      max-width: 1200px;
+      margin: 0 auto;
+      align-items: center;
+    }
+    
+    .about-content h2 {
+      font-size: 14px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--burgundy);
+      margin-bottom: 16px;
+    }
+    
+    .about-content h3 {
+      font-size: clamp(28px, 4vw, 40px);
+      margin-bottom: 24px;
+    }
+    
+    .about-content p {
+      color: var(--text-light);
+      margin-bottom: 16px;
+    }
+    
+    .about-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    @media (max-width: 900px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .about-image {
+        order: -1;
+      }
+    }
+    
+    /* Nature Strip */
+    .nature-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 4px;
+    }
+    
+    .nature-strip img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      display: block;
+    }
+    
+    @media (max-width: 768px) {
+      .nature-strip {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .nature-strip img {
+        height: 200px;
+      }
+    }
+    
+    /* Contact */
+    .contact {
+      text-align: center;
+      padding: 100px 24px;
+      background: var(--burgundy);
+      color: var(--cream);
+    }
+    
+    .contact h2 {
+      font-size: clamp(32px, 5vw, 48px);
+      font-style: italic;
+      margin-bottom: 24px;
+    }
+    
+    .contact p {
+      font-size: 18px;
+      margin-bottom: 40px;
+      opacity: 0.9;
+    }
+    
+    .contact-link {
+      display: inline-block;
+      padding: 16px 40px;
+      border: 1px solid var(--cream);
+      color: var(--cream);
+      text-decoration: none;
+      font-size: 14px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      margin: 0 12px 12px 0;
+    }
+    
+    .contact-link:hover {
+      background: var(--cream);
+      color: var(--burgundy);
+    }
+    
+    .contact-details {
+      margin-top: 60px;
+      font-size: 15px;
+      opacity: 0.8;
+    }
+    
+    .contact-details a {
+      color: var(--cream);
+    }
+    
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 40px 24px;
+      font-size: 14px;
+      color: var(--text-light);
+      background: var(--cream);
+    }
+    
+    footer a {
+      color: var(--burgundy);
+    }
+  </style>
+</head>
+<body>
+  
+  <!-- Hero -->
+  <section class="hero">
+    <p class="hero-tagline">Custom Heirloom Jewellery · Vancouver Island</p>
+    <h1 class="brand-name">Sow Song</h1>
+    <p class="hero-quote">"Jewellery is more than an object — it's a vessel for connection, memory, and love."</p>
+    <a href="mailto:tia@sowsong.com" class="hero-cta">Begin Your Piece</a>
+  </section>
+  
+  <!-- Manifesto -->
+  <section class="manifesto">
+    <blockquote>
+      "Every piece is a love letter to the bonds, connections, and magic of life well lived — of life well-loved. From treasured friends and beloved life partners, to precious pets and soft self embraces, we pour our hearts into crafting poetry that lives with you throughout lifetimes."
+    </blockquote>
+    <cite>— Tia Noelle</cite>
+  </section>
+  
+  <!-- Video Row -->
+  <section class="video-row">
+    <video autoplay loop muted playsinline>
+      <source src="../sowsong/video-dog-ring.mp4" type="video/mp4">
+    </video>
+    <video autoplay loop muted playsinline>
+      <source src="../sowsong/video-cushion-solitaire.mp4" type="video/mp4">
+    </video>
+    <video autoplay loop muted playsinline>
+      <source src="../sowsong/video-sea-rings.mp4" type="video/mp4">
+    </video>
+  </section>
+  
+  <!-- The Name -->
+  <section class="the-name">
+    <div class="the-name-image">
+      <img src="../sowsong/scott-pick-grandpa-story-full.jpg" alt="Grandpa Soby with his banjo" loading="lazy">
+    </div>
+    <div class="the-name-content">
+      <h2>The Name</h2>
+      <h3 class="brand-name">"Sow Song"</h3>
+      <p>Some things just stay with us. People, songs, scents, memories — my Grandfather was one of those things for me.</p>
+      <p>My Grandpa Soby was a musical man. Most of my memories of him are of him in his garden or playing the banjo. He was such a warm, social person, and being around him always made things feel a little more sparkly.</p>
+      <p>Sow Song was a tune he'd sing to us grandkids most times we were with him. Playful and full of love.</p>
+      <p>When I make jewelry, I'm always thinking about connection. I want the pieces I make to hold meaning throughout our lifetime. I like to think of them as tokens of love — some remind us of the people we care about, the way Sow Song reminds me of him.</p>
+      <p class="signature">With Love Always,<br>Tia</p>
+    </div>
+  </section>
+  
+  <!-- About Tia -->
+  <section class="about">
+    <div class="about-grid">
+      <div class="about-content">
+        <h2>The Maker</h2>
+        <h3>From Flowers to Forever</h3>
+        <p>After years as a florist, Tia was drawn to the timelessness of jewellery and apprenticed with local mentors to master the art of metalsmithing.</p>
+        <p>Today, she works from a converted Travelux trailer studio — an intimate, soulful space that reflects her Western roots and honours her late grandfather, the inspiration behind the name.</p>
+        <p>Rooted on the coast, Sow Song sources continuous inspiration being among the trees and bodies of water. The wisdom of nature flows throughout her process.</p>
+      </div>
+      <div class="about-image">
+        <img src="../sowsong/scott-pick-tia-studio.jpg" alt="Tia in her trailer studio" loading="lazy">
+      </div>
+    </div>
+  </section>
+  
+  <!-- Nature Strip -->
+  <section class="nature-strip">
+    <img src="../sowsong/scott-pick-nature.jpg" alt="Vancouver Island greenery" loading="lazy">
+    <img src="../sowsong/scott-pick-red-box-hoops.jpg" alt="Gold hoops in signature red box" loading="lazy">
+    <img src="../sowsong/scott-pick-brand-manifesto.jpg" alt="Sow Song brand" loading="lazy">
+    <img src="../sowsong/ig-photo-01.jpg" alt="Sow Song jewelry" loading="lazy">
+  </section>
+  
+  <!-- Contact -->
+  <section class="contact">
+    <h2>Let's Create Something Meaningful</h2>
+    <p>Custom engagement rings, wedding bands, memorial pendants, and heirloom recreations.<br>Every piece begins with a conversation.</p>
+    <a href="mailto:tia@sowsong.com" class="contact-link">Email Tia</a>
+    <a href="https://www.instagram.com/sowsong__/" class="contact-link" target="_blank">@sowsong__</a>
+    <div class="contact-details">
+      <p>Nanaimo, BC · Consultations in Tofino<br>
+      <a href="mailto:tia@sowsong.com">tia@sowsong.com</a></p>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 Sow Song · In dedication to Grandpa Soby</p>
+  </footer>
+
+</body>
+</html>

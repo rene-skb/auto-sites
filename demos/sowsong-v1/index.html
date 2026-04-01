@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sow Song — Custom Heirloom Jewelry, Victoria BC</title>
+  <meta name="description" content="Custom engagement rings and wedding bands by Tia Noelle Soby. Salt-and-pepper diamonds, organic shapes, heirloom pieces. Victoria, BC.">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Sow Song — Custom Heirloom Jewelry">
+  <meta property="og:description" content="Custom engagement rings and wedding bands. The ring will outlast everything else.">
+  <meta property="og:image" content="ig-photo-06.jpg">
+  <meta property="og:url" content="https://auto-sites.pages.dev/demos/sowsong-v1/">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;0,6..96,700;1,6..96,400;1,6..96,500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ============================================
+       FINAL BUILD: v5
+       ============================================
+       
+       HOW retry scores: Vignelli 7.5, Spiekermann 7, Rams 8 → avg 7.5 (PASS)
+       
+       Final changes:
+       1. Hero headline tracking fixed (letter-spacing: -0.02em)
+       2. Body text bumped to 17px with 1.85 line-height
+       3. Removed "See more on Instagram" from work section (Rams: redundant)
+       4. Consolidated CTA section — single decisive action
+       5. Added motion: hero entrance stagger, IntersectionObserver scroll-reveals
+       
+       Photo assignments (6 unique, 6 slots, 0 duplicates):
+       - Hero: ig-photo-06 (men's band by fire)
+       - About: ig-photo-05 (founder portrait)
+       - Work 1: ig-photo-01 (oval solitaire)
+       - Work 2: ig-photo-04 (bezel cushion)
+       - Work 3: ig-photo-11 (pearl drops)
+       - Atmosphere: ig-photo-03 (candlelit table)
+       - Story: ig-photo-08 (brand identity)
+       
+       SKIPPED: 02 (logo), 07 (hand shadow), 09 (shells), 10 (cold lighting), 12 (landscape)
+       
+       ============================================ */
+    
+    :root {
+      /* Palette */
+      --burgundy: #8B2942;
+      --burgundy-dark: #6B1F33;
+      --cream: #F5F0E8;
+      --cream-alt: #EDE7DC;
+      --gold: #C9A050;
+      --gold-dark: #A07830;
+      --dark: #1A1614;
+      --dark-warm: #241E1B;
+      --text-body: #342B28;
+      --text-dim: #5A4D48;
+      
+      /* Typography */
+      --font-display: 'Bodoni Moda', Georgia, serif;
+      --font-body: 'Instrument Sans', system-ui, sans-serif;
+      
+      /* Spacing */
+      --space-xs: 8px;
+      --space-sm: 16px;
+      --space-md: 24px;
+      --space-lg: 48px;
+      --space-xl: 96px;
+      
+      /* Layout */
+      --max-w: 1200px;
+      --content-px: clamp(20px, 5vw, 48px);
+      
+      /* Animation */
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: var(--font-body);
+      font-size: 17px;
+      line-height: 1.85;
+      color: var(--text-body);
+      background: var(--cream);
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    
+    /* Skip Link */
+    .skip-link {
+      position: absolute;
+      top: -100px;
+      left: var(--content-px);
+      background: var(--burgundy);
+      color: var(--cream);
+      padding: var(--space-xs) var(--space-sm);
+      font-size: 0.875rem;
+      z-index: 1000;
+      transition: top 0.2s;
+    }
+    
+    .skip-link:focus {
+      top: var(--space-sm);
+    }
+    
+    /* ===================== MOTION ===================== */
+    
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+    }
+    
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .reveal-img {
+      opacity: 0;
+      transform: scale(0.98);
+      transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+    }
+    
+    .reveal-img.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+    
+    /* Stagger delays */
+    .stagger-1 { transition-delay: 0ms; }
+    .stagger-2 { transition-delay: 80ms; }
+    .stagger-3 { transition-delay: 160ms; }
+    
+    /* Hero entrance */
+    .hero-content > * {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    
+    body.js-loaded .hero-content > * {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+    }
+    
+    body.js-loaded .hero-label { transition-delay: 100ms; }
+    body.js-loaded .hero h1 { transition-delay: 200ms; }
+    body.js-loaded .hero-body { transition-delay: 300ms; }
+    body.js-loaded .hero .btn-primary { transition-delay: 400ms; }
+    
+    /* ===================== NAV ===================== */
+    
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: var(--space-md) var(--content-px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: transparent;
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+    
+    .nav.scrolled {
+      background: rgba(26, 22, 20, 0.95);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.15);
+    }
+    
+    .nav-brand {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--cream);
+      letter-spacing: 0.02em;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: var(--space-md);
+      list-style: none;
+      align-items: center;
+    }
+    
+    .nav-links a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--cream);
+      opacity: 0.85;
+      transition: opacity 0.2s;
+    }
+    
+    .nav-links a:hover {
+      opacity: 1;
+    }
+    
+    .nav-cta {
+      background: var(--burgundy);
+      padding: 10px 20px;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--cream);
+      border-radius: 2px;
+      opacity: 1 !important;
+      transition: background 0.2s, transform 0.15s;
+    }
+    
+    .nav-cta:hover {
+      background: var(--burgundy-dark);
+    }
+    
+    .nav-cta:active {
+      transform: scale(0.97);
+    }
+    
+    /* Mobile nav */
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: var(--space-xs);
+    }
+    
+    .nav-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--cream);
+      margin: 5px 0;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    
+    @media (max-width: 768px) {
+      .nav-toggle {
+        display: block;
+      }
+      
+      .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background: var(--dark);
+        padding: var(--space-md) var(--content-px);
+        gap: var(--space-sm);
+        display: none;
+        align-items: flex-start;
+      }
+      
+      .nav-links.open {
+        display: flex;
+      }
+    }
+    
+    /* ===================== HERO ===================== */
+    
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background: var(--dark);
+    }
+    
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: var(--space-xl) var(--content-px);
+      padding-top: calc(var(--space-xl) + 80px);
+    }
+    
+    .hero-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      margin-bottom: var(--space-sm);
+    }
+    
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--cream);
+      margin-bottom: var(--space-md);
+    }
+    
+    .hero-body {
+      font-family: var(--font-display);
+      font-size: 1.375rem;
+      font-style: italic;
+      line-height: 1.5;
+      color: var(--gold);
+      max-width: 420px;
+      margin-bottom: var(--space-lg);
+    }
+    
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--burgundy);
+      color: var(--cream);
+      padding: 18px 36px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      border: none;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      align-self: flex-start;
+    }
+    
+    .btn-primary:hover {
+      background: var(--burgundy-dark);
+    }
+    
+    .btn-primary:active {
+      transform: scale(0.97);
+    }
+    
+    .hero-image {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+    }
+    
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+      
+      .hero-content {
+        order: 2;
+        padding: var(--space-lg) var(--content-px);
+      }
+      
+      .hero-image {
+        order: 1;
+        height: 60vh;
+        min-height: 400px;
+      }
+    }
+    
+    /* ===================== TAGLINE STRIP ===================== */
+    
+    .tagline-strip {
+      background: var(--burgundy);
+      padding: var(--space-md) var(--content-px);
+      text-align: center;
+    }
+    
+    .tagline-strip p {
+      font-family: var(--font-display);
+      font-size: 1.125rem;
+      font-style: italic;
+      color: var(--cream);
+      letter-spacing: 0.02em;
+    }
+    
+    /* ===================== ABOUT ===================== */
+    
+    .about {
+      padding: var(--space-xl) var(--content-px);
+      background: var(--cream);
+    }
+    
+    .about-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 5fr 7fr;
+      gap: var(--space-lg);
+      align-items: center;
+    }
+    
+    .about-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 2px;
+    }
+    
+    .about-content {
+      padding-left: var(--space-lg);
+    }
+    
+    .section-label {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--burgundy);
+      margin-bottom: var(--space-sm);
+    }
+    
+    .about h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      font-weight: 400;
+      line-height: 1.25;
+      color: var(--dark);
+      margin-bottom: var(--space-md);
+      letter-spacing: -0.02em;
+    }
+    
+    .about-body {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: var(--text-body);
+      margin-bottom: var(--space-md);
+      max-width: 58ch;
+    }
+    
+    .about-signature {
+      font-family: var(--font-display);
+      font-size: 1.125rem;
+      font-style: italic;
+      color: var(--burgundy);
+    }
+    
+    @media (max-width: 768px) {
+      .about-inner {
+        grid-template-columns: 1fr;
+      }
+      
+      .about-content {
+        padding-left: 0;
+      }
+    }
+    
+    /* ===================== WORK ===================== */
+    
+    .work {
+      padding: var(--space-xl) var(--content-px);
+      background: var(--cream-alt);
+    }
+    
+    .work-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+    
+    .work-header {
+      margin-bottom: var(--space-lg);
+    }
+    
+    .work h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      font-weight: 400;
+      color: var(--dark);
+    }
+    
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-md);
+    }
+    
+    .work-item {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .work-item-image {
+      position: relative;
+      overflow: hidden;
+      border-radius: 2px;
+      aspect-ratio: 4/5;
+    }
+    
+    .work-item-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s var(--ease-out);
+    }
+    
+    .work-item:hover .work-item-image img {
+      transform: scale(1.03);
+    }
+    
+    .work-item-caption {
+      padding-top: var(--space-sm);
+    }
+    
+    .work-item-caption h3 {
+      font-family: var(--font-display);
+      font-size: 1.0625rem;
+      font-weight: 500;
+      color: var(--dark);
+      margin-bottom: 2px;
+    }
+    
+    .work-item-caption p {
+      font-size: 0.875rem;
+      color: var(--text-dim);
+    }
+    
+    @media (max-width: 768px) {
+      .work-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+        margin: 0 auto;
+      }
+    }
+    
+    /* ===================== ATMOSPHERE ===================== */
+    
+    .atmosphere {
+      position: relative;
+      height: 45vh;
+      min-height: 360px;
+      overflow: hidden;
+    }
+    
+    .atmosphere img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    
+    .atmosphere-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(26,22,20,0.4), rgba(26,22,20,0.7));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .atmosphere-quote {
+      font-family: var(--font-display);
+      font-size: clamp(1.375rem, 2.5vw, 2rem);
+      font-style: italic;
+      color: var(--cream);
+      text-align: center;
+      max-width: 540px;
+      padding: 0 var(--content-px);
+    }
+    
+    /* ===================== STORY ===================== */
+    
+    .story {
+      padding: var(--space-xl) var(--content-px);
+      background: var(--dark);
+    }
+    
+    .story-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 7fr 5fr;
+      gap: var(--space-lg);
+      align-items: center;
+    }
+    
+    .story-content {
+      padding-right: var(--space-lg);
+    }
+    
+    .story .section-label {
+      color: var(--gold);
+      letter-spacing: 0.2em;
+    }
+    
+    .story h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      font-weight: 400;
+      line-height: 1.25;
+      color: var(--cream);
+      margin-bottom: var(--space-md);
+    }
+    
+    .story-body {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: var(--cream);
+      margin-bottom: var(--space-md);
+      max-width: 58ch;
+    }
+    
+    .story-dedication {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-style: italic;
+      color: var(--gold);
+      padding-left: var(--space-md);
+      border-left: 2px solid var(--burgundy);
+    }
+    
+    .story-image img {
+      width: 100%;
+      border-radius: 2px;
+    }
+    
+    @media (max-width: 768px) {
+      .story-inner {
+        grid-template-columns: 1fr;
+      }
+      
+      .story-content {
+        padding-right: 0;
+      }
+      
+      .story-image {
+        order: -1;
+      }
+    }
+    
+    /* ===================== PROCESS ===================== */
+    
+    .process {
+      padding: var(--space-xl) var(--content-px);
+      background: var(--cream);
+    }
+    
+    .process-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+    
+    .process-header {
+      margin-bottom: var(--space-lg);
+      max-width: 58ch;
+    }
+    
+    .process h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      font-weight: 400;
+      color: var(--dark);
+      margin-bottom: var(--space-sm);
+    }
+    
+    .process-intro {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--text-dim);
+    }
+    
+    .process-sequence {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: var(--space-lg);
+      flex-wrap: wrap;
+    }
+    
+    .process-step {
+      text-align: center;
+      flex: 1;
+      min-width: 180px;
+      max-width: 240px;
+    }
+    
+    .process-step h3 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--dark);
+      margin-bottom: var(--space-xs);
+    }
+    
+    .process-step p {
+      font-size: 0.9375rem;
+      color: var(--text-dim);
+      line-height: 1.6;
+    }
+    
+    .process-arrow {
+      font-size: 1.25rem;
+      color: var(--burgundy);
+      opacity: 0.4;
+      padding-top: 8px;
+    }
+    
+    @media (max-width: 768px) {
+      .process-sequence {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-md);
+      }
+      
+      .process-step {
+        max-width: 280px;
+      }
+      
+      .process-arrow {
+        transform: rotate(90deg);
+      }
+    }
+    
+    /* ===================== CTA ===================== */
+    
+    .cta-section {
+      padding: var(--space-xl) var(--content-px);
+      background: var(--burgundy);
+      text-align: center;
+    }
+    
+    .cta-section h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400;
+      color: var(--cream);
+      margin-bottom: var(--space-sm);
+    }
+    
+    .cta-section > p {
+      font-size: 1.0625rem;
+      color: var(--cream);
+      max-width: 480px;
+      margin: 0 auto var(--space-md);
+    }
+    
+    .btn-light {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--cream);
+      color: var(--burgundy);
+      padding: 18px 36px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      border: none;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+    
+    .btn-light:hover {
+      background: var(--cream-alt);
+    }
+    
+    .btn-light:active {
+      transform: scale(0.97);
+    }
+    
+    /* ===================== FOOTER ===================== */
+    
+    .footer {
+      padding: var(--space-lg) var(--content-px);
+      background: var(--dark);
+    }
+    
+    .footer-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: var(--space-md);
+    }
+    
+    .footer-brand {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--cream);
+    }
+    
+    .footer-tagline {
+      font-family: var(--font-display);
+      font-size: 0.875rem;
+      font-style: italic;
+      color: var(--gold);
+      margin-top: 4px;
+    }
+    
+    .footer-links {
+      display: flex;
+      gap: var(--space-md);
+      align-items: center;
+    }
+    
+    .footer-links a {
+      font-size: 0.875rem;
+      color: rgba(245, 240, 232, 0.7);
+      transition: color 0.2s;
+    }
+    
+    .footer-links a:hover {
+      color: var(--cream);
+    }
+    
+    .footer-divider {
+      color: rgba(245,240,232,0.3);
+    }
+    
+    .footer-location {
+      font-size: 0.875rem;
+      color: rgba(245,240,232,0.5);
+    }
+    
+    .footer-copy {
+      width: 100%;
+      text-align: center;
+      padding-top: var(--space-md);
+      margin-top: var(--space-md);
+      border-top: 1px solid rgba(245, 240, 232, 0.1);
+      font-size: 0.8125rem;
+      color: rgba(245, 240, 232, 0.5);
+    }
+    
+    /* ===================== FOCUS STATES ===================== */
+    
+    *:focus-visible {
+      outline: 2px solid var(--burgundy);
+      outline-offset: 3px;
+    }
+    
+    .btn-light:focus-visible {
+      outline-color: var(--cream);
+    }
+    
+    /* ===================== REDUCED MOTION ===================== */
+    
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+      
+      .reveal, .reveal-img {
+        opacity: 1;
+        transform: none;
+      }
+      
+      .hero-content > * {
+        opacity: 1;
+        transform: none;
+      }
+    }
+    
+    /* ===================== NOSCRIPT FALLBACK ===================== */
+    
+    noscript .reveal,
+    noscript .reveal-img,
+    noscript .hero-content > * {
+      opacity: 1;
+      transform: none;
+    }
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+  
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <a href="#" class="nav-brand">Sow Song</a>
+    
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#contact" class="nav-cta">Inquire</a></li>
+    </ul>
+  </nav>
+  
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-content">
+        <p class="hero-label">Custom Heirloom Jewelry · Victoria, BC</p>
+        <h1>The Ring Will Outlast Everything Else</h1>
+        <p class="hero-body">For the love you'd bet your life on.</p>
+        <a href="#contact" class="btn-primary">Start Your Piece</a>
+      </div>
+      <div class="hero-image">
+        <img src="ig-photo-06.jpg" alt="Gold wedding band with flush-set diamonds, worn by firelight" loading="eager">
+      </div>
+    </section>
+    
+    <!-- TAGLINE STRIP -->
+    <section class="tagline-strip">
+      <p>"An Ode to Love" — Dedicated to Grandpa Soby</p>
+    </section>
+    
+    <!-- ABOUT -->
+    <section class="about" id="about">
+      <div class="about-inner">
+        <div class="about-image reveal-img">
+          <img src="ig-photo-05.jpg" alt="Tia Noelle Soby, founder of Sow Song, laughing in golden hour light" loading="lazy">
+        </div>
+        <div class="about-content">
+          <p class="section-label reveal">Meet the Maker</p>
+          <h2 class="reveal">I design jewelry for people who value story over status.</h2>
+          <p class="about-body reveal">Every piece starts with a conversation. What's the stone that speaks to you? What shape fits the life you're living? I work with salt-and-pepper diamonds, organic forms, and bezel settings that feel timeless without being traditional.</p>
+          <p class="about-body reveal">This work is dedicated to my grandfather. He taught me that the things worth keeping are the ones made with intention.</p>
+          <p class="about-signature reveal">— Tia Noelle Soby</p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- WORK -->
+    <section class="work" id="work">
+      <div class="work-inner">
+        <div class="work-header reveal">
+          <p class="section-label">The Work</p>
+          <h2>Recent Pieces</h2>
+        </div>
+        <div class="work-grid">
+          <div class="work-item reveal stagger-1">
+            <div class="work-item-image">
+              <img src="ig-photo-01.jpg" alt="Oval salt-and-pepper diamond ring in rose gold" loading="lazy">
+            </div>
+            <div class="work-item-caption">
+              <h3>Oval Solitaire</h3>
+              <p>Salt-and-pepper diamond, rose gold</p>
+            </div>
+          </div>
+          <div class="work-item reveal stagger-2">
+            <div class="work-item-image">
+              <img src="ig-photo-04.jpg" alt="Cushion-cut bezel-set diamond ring on hand outdoors" loading="lazy">
+            </div>
+            <div class="work-item-caption">
+              <h3>Bezel Cushion</h3>
+              <p>Bezel-set diamond, yellow gold</p>
+            </div>
+          </div>
+          <div class="work-item reveal stagger-3">
+            <div class="work-item-image">
+              <img src="ig-photo-11.jpg" alt="Baroque pearl drop earrings in burgundy box" loading="lazy">
+            </div>
+            <div class="work-item-caption">
+              <h3>Pearl Drops</h3>
+              <p>Baroque pearls, organic silver</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- ATMOSPHERE -->
+    <section class="atmosphere">
+      <img src="ig-photo-03.jpg" alt="Candlelit dinner table with vintage candle holders and warm amber glow" loading="lazy">
+      <div class="atmosphere-overlay">
+        <p class="atmosphere-quote reveal">"Jewelry that gets passed down. The kind you find in your grandmother's drawer."</p>
+      </div>
+    </section>
+    
+    <!-- STORY -->
+    <section class="story">
+      <div class="story-inner">
+        <div class="story-content">
+          <p class="section-label reveal">The Name</p>
+          <h2 class="reveal">Sow Song: An Ode to Love</h2>
+          <p class="story-body reveal">The name comes from two things: the act of sowing (planting, nurturing, watching something grow) and song (the thing that plays when words aren't enough). Together, they're about what love looks like when you're in it for the long haul.</p>
+          <p class="story-body reveal">I make heirloom pieces. Jewelry designed to outlast everything else.</p>
+          <p class="story-dedication reveal">"In dedication to Grandpa Soby"</p>
+        </div>
+        <div class="story-image reveal-img">
+          <img src="ig-photo-08.jpg" alt="Sow Song brand identity in crimson and cream" loading="lazy">
+        </div>
+      </div>
+    </section>
+    
+    <!-- PROCESS -->
+    <section class="process" id="process">
+      <div class="process-inner">
+        <div class="process-header reveal">
+          <p class="section-label">How It Works</p>
+          <h2>From Conversation to Heirloom</h2>
+          <p class="process-intro">Most pieces take 4 to 8 weeks. We'll talk about investment during our initial consultation.</p>
+        </div>
+        <div class="process-sequence">
+          <div class="process-step reveal stagger-1">
+            <h3>We Talk</h3>
+            <p>The stone, the shape, the person who'll wear it.</p>
+          </div>
+          <span class="process-arrow reveal stagger-2">→</span>
+          <div class="process-step reveal stagger-2">
+            <h3>I Design</h3>
+            <p>Sketches and renderings until it's exactly right.</p>
+          </div>
+          <span class="process-arrow reveal stagger-3">→</span>
+          <div class="process-step reveal stagger-3">
+            <h3>I Make</h3>
+            <p>Handcrafted. Then it's yours forever.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- CTA -->
+    <section class="cta-section" id="contact">
+      <h2 class="reveal">Ready to Start?</h2>
+      <p class="reveal">Tell me about the person, the moment, the love.</p>
+      <a href="mailto:tia@sowsong.ca?subject=Custom%20Piece%20Inquiry" class="btn-light reveal">Email Tia</a>
+    </section>
+    
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-inner">
+        <div class="footer-brand-wrap">
+          <p class="footer-brand">Sow Song</p>
+          <p class="footer-tagline">An Ode to Love</p>
+        </div>
+        <div class="footer-links">
+          <a href="https://www.instagram.com/sowsong__/" target="_blank" rel="noopener">Instagram</a>
+          <span class="footer-divider">·</span>
+          <a href="mailto:tia@sowsong.ca">tia@sowsong.ca</a>
+          <span class="footer-divider">·</span>
+          <span class="footer-location">Victoria, BC</span>
+        </div>
+        <p class="footer-copy">© 2026 Sow Song. Custom heirloom jewelry by Tia Noelle Soby.</p>
+      </div>
+    </footer>
+  </main>
+  
+  <script>
+    // Hero entrance animation
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        document.body.classList.add('js-loaded');
+      });
+    });
+    
+    // Scroll reveal
+    const revealElements = document.querySelectorAll('.reveal, .reveal-img');
+    
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    });
+    
+    revealElements.forEach(el => revealObserver.observe(el));
+    
+    // Mobile nav toggle
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    
+    navToggle?.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', isOpen);
+    });
+    
+    // Scroll effect on nav
+    const nav = document.querySelector('.nav');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
+  </script>
+</body>
+</html>

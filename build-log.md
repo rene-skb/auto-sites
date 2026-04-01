@@ -1,5 +1,53 @@
 # Auto-Sites Build Log
 
+## Build 100 — Stir It Up v12
+- **Category:** Caribbean Soul Food — Restaurant
+- **City:** Victoria, BC
+- **Date:** 2026-03-31
+- **Model:** claude-opus-4-5 (subagent)
+- **Agent:** Lucy
+- **Hero pattern:** dark-immersive (centered circular owner photo, stacked typography)
+- **Typography:** Playfair Display 400-600 (headlines) + DM Sans 400-600 (body)
+- **Palette:** Warm black (#0B0807) + amber (#E8943A) + lime green (#A8D41A) — dark palette direction
+- **Review layout:** Single cinematic quote (no stars, no cards)
+- **Visit/hours layout:** Centered details with lime labels, no map
+- **Stats bar style:** no-stats
+- **Score:** 7.67 (WHY) / 7.5 (WHAT retry) / 6.0 (HOW retry) → **7.06 avg**
+- **Self-review:** 7.0 (capped at panel high + 1 = 7.67, honest assessment)
+- **Live URL:** https://auto-sites.pages.dev/demos/stir-it-up-v12/
+- **Key decisions:**
+  - Different approach than v11: centered hero vs editorial-spread
+  - Typography shift: elegant serif (Playfair) vs industrial condensed (Barlow)
+  - Removed testimonial stars per Rams feedback — quote speaks for itself
+  - Circle motif: hero photo → section label dots
+  - Copy humanized: removed fragment stacking, "Bring napkins" ending
+  - Caption added to Pitons image for context
+
+### Panel Scores
+| Round | Phase | Reviewers | Avg |
+|-------|-------|-----------|-----|
+| v0→v1 | WHY | Jobs 8, Graham 8, Ogilvy 7 | 7.67 |
+| v1→v2 | WHAT | Norman 7, Krug 7.5, Nielsen 5.5 | 6.67 (retry) |
+| v2 retry | WHAT | Norman 8, Krug 7.5, Nielsen 7 | 7.5 ✓ |
+| v3 | HOW | Vignelli 5, Spiekermann 5, Rams 6 | 5.33 (retry) |
+| v3b retry | HOW | Vignelli 5.5, Spiekermann 6.5, Rams 6 | 6.0 (max retry, proceed) |
+
+### Photo Assignments
+| File | Role | Quality |
+|------|------|---------|
+| owner-greens.jpg | Hero | Real photo (★★★★★) — community warmth, circular crop |
+| piton.jpg | Story | Real photo (★★★) — St. Lucia landmark with caption |
+| roti-soda.jpg | Menu grid | Real photo (★★★★) — roti + Grace soda |
+| curry-plate.jpg | Menu grid | Real photo (★★★) — curry plate with sides |
+
+### Notes
+- HOW panel hit max retry at 6.0 — grid/typography system improved but not to professional standard
+- Vignelli flagged: "center axis as crutch, not system"
+- Copy audit: Fixed AI fragment patterns, shortened food descriptions
+- Different creative direction than v11 as requested — proves same business can have multiple valid approaches
+
+---
+
 ## Build 99 — Stir It Up v11
 - **Category:** Caribbean Soul Food — Restaurant
 - **City:** Victoria, BC

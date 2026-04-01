@@ -1,0 +1,109 @@
+meta:
+  name: "Stir It Up"
+  tagline: "Authentic Caribbean Soul Food"
+  phone: "+1 778-432-0133"
+  address: "760A Yates St (down the alley), Victoria, BC"
+  hours: "Tue–Sat 11am–7pm"
+  instagram: "stiritup.yyj"
+  google_maps: "https://maps.google.com/?q=Stir+It+Up+Caribbean+Victoria+BC"
+
+palette:
+  primary: "#1A6B6B"
+  accent: "#E5A832"
+  background: "#FAF5EE"
+
+typography:
+  headline: "Bitter"
+  body: "DM Sans"
+
+hero:
+  pattern: "full-viewport-bg"
+  headline: "Hand-pulled roti. Worth finding."
+  subhead: "Authentic Caribbean soul food, down the alley off Yates."
+  image: "hero.png"
+  image_alt: "Jerk chicken with rice and peas, plantains, and fresh herbs"
+  cta:
+    text: "Find Us"
+    href: "#location"
+
+sections:
+  - type: text-block
+    label: "Hours & Location"
+    headline: "760A Yates St — Down the Alley"
+    body: "Tue–Sat, 11am–7pm. Between Yates & Johnson, around the corner from the Cineplex. Look for the Caribbean art."
+    background: dark
+
+  - type: menu
+    label: "What to Order"
+    headline: "The Signatures"
+    items:
+      - name: "Jerk Chicken Roti"
+        description: "Crispy-skinned jerk chicken, perfect heat, wrapped in hand-pulled roti."
+        highlight: true
+        badge: "The Signature"
+      - name: "Curry Chicken Roti"
+        description: "Tender chicken in golden curry with potatoes, wrapped fresh."
+        highlight: false
+      - name: "Curry Goat"
+        description: "Slow-marinated for days in thyme, scallions, garlic, and peppers."
+        highlight: false
+      - name: "Jamaican Beef Patty"
+        description: "Golden flaky crust, spiced beef filling. Veggie patties made fresh on request."
+        highlight: false
+      - name: "Rice & Peas"
+        description: "Coconut rice with kidney beans. The foundation."
+        highlight: false
+      - name: "Doubles"
+        description: "Trinidadian street food classic. Call a day ahead."
+        badge: "By Request"
+        highlight: false
+
+  - type: reviews
+    label: "What People Say"
+    headline: "188 reviews, 4.5 stars."
+    layout: featured
+    items:
+      - name: "Guest"
+        date: "March 2025"
+        source: "Google"
+        text: "The food is exquisite and breaks every bit of Caribbean essence to Victoria. Coming from a Trini, it is the real deal."
+      - name: "Guest"
+        date: "2025"
+        source: "TripAdvisor"
+        text: "Amazing hand-pulled roti and tender jerk chicken. Some of the best Caribbean food I've had in a while."
+      - name: "Local"
+        date: "February 2025"
+        source: "Reddit"
+        text: "There's a little Caribbean restaurant off Millie's Lane. They made me fresh veggie patties while I waited. Thirty years in Toronto and not once did a restaurant make me a fresh patty."
+
+  - type: photo-grid
+    columns: 3
+    images:
+      - src: "interior.jpg"
+        alt: "Bright Caribbean-themed interior with yellow ceiling and teal booths"
+        label: "The vibe inside"
+      - src: "food-roti.jpg"
+        alt: "Roti wrap on colorful Caribbean tablecloth"
+        label: "Roti done right"
+      - src: "food-curry.jpg"
+        alt: "Curry plate with rice and peas"
+        label: "Rice & peas"
+
+  - type: about
+    label: "The Story"
+    headline: "Saint Lucian Soul"
+    body: "A one-woman kitchen run by a Saint Lucian native. Every dish made from scratch, every day. Fresh ingredients, amazing spices, and when the day's goat is gone, it's gone. That's how you know it's real."
+    image: "owner.jpg"
+    image_alt: "Owner of Stir It Up in front of the restaurant"
+
+  - type: location
+    label: "Find Us"
+    headline: "Down the Alley"
+    address: "760A Yates St, Victoria, BC"
+    hours: "Tue–Sat 11am–7pm · Closed Sunday & Monday"
+    phone: "+1 778-432-0133"
+    map_embed: true
+    map_link: "https://maps.google.com/?q=Stir+It+Up+Caribbean+Victoria+BC"
+    cta:
+      text: "Get Directions"
+      href: "https://maps.google.com/?q=Stir+It+Up+Caribbean+Victoria+BC"

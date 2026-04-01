@@ -32,4 +32,15 @@
 
 ---
 
-*Last updated: March 27, 2026*
+❌ **NO generic address links.** When linking to a business location, link to the actual Google Maps business listing (the pin with the business name), not just the street address. The visitor should land on the business page, not a random spot on the map.
+
+❌ **NO "X reviews, they all mention Y" formula as a headline or hero hook.** Review counts woven into copy are fine, but the "611 reviews, they all mention the space" pattern reads as fake and formulaic. Real people don't talk like that. If you use review volume, make it specific and human — not a data observation. The business's actual value proposition must lead, not an aggregate statistic.
+
+❌ **NO invented origin stories or claims.** Don't assume where a name came from, why the business started, or any backstory unless it's explicitly confirmed in reviews, social posts, or the brief. "Stir It Up" might reference Bob Marley — or might not. If you don't know, don't claim it.
+
+*Last updated: March 31, 2026*
+
+## Menu & Pricing
+- **Never invent prices.** If we don't have real pricing, don't show prices.
+- Use "What to Order" / signature dishes approach instead of full menu when data is incomplete.
+- Only include menu items confirmed from reviews, Instagram, or actual menus.

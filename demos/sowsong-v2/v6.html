@@ -44,9 +44,9 @@
     
     :root {
       /* Palette */
-      --burgundy: #9B1B30;
-      --burgundy-dark: #7A1526;
-      --burgundy-light: #B8263F;
+      --burgundy: #8B1D2C;
+      --burgundy-dark: #6E1723;
+      --burgundy-light: #A82538;
       --cream: #DBD5C6;
       --cream-warm: #D1CABB;
       --gold: #C9A050;
@@ -355,17 +355,30 @@
     
     .work-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--space-3);
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-4);
     }
     
     .work-card {
-      aspect-ratio: 4 / 5;
+      aspect-ratio: 1;
       overflow: hidden;
       border-radius: 2px;
     }
     
     .work-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    /* Full-bleed image break */
+    .image-break {
+      width: 100%;
+      height: 70vh;
+      overflow: hidden;
+    }
+    
+    .image-break img {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -621,8 +634,12 @@
       }
       
       .work-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: var(--space-2);
+        grid-template-columns: 1fr;
+        gap: var(--space-3);
+      }
+      
+      .image-break {
+        height: 50vh;
       }
       
       .about-inner {
@@ -723,18 +740,12 @@
             <img src="../sowsong/ig-photo-01.jpg" alt="Salt-and-pepper diamond in warm gold" loading="lazy">
           </div>
           <div class="work-card reveal stagger-2">
-            <img src="../sowsong/ig-photo-02.jpg" alt="Wedding bands" loading="lazy">
-          </div>
-          <div class="work-card reveal stagger-3">
             <img src="../sowsong/ig-photo-03.jpg" alt="Custom signet ring" loading="lazy">
           </div>
           <div class="work-card reveal stagger-1">
             <img src="../sowsong/ig-photo-04.jpg" alt="Engagement ring" loading="lazy">
           </div>
           <div class="work-card reveal stagger-2">
-            <img src="../sowsong/ig-photo-10.jpg" alt="Montana sapphire ring" loading="lazy">
-          </div>
-          <div class="work-card reveal stagger-3">
             <img src="../sowsong/ig-photo-11.jpg" alt="Pearl earrings" loading="lazy">
           </div>
         </div>
@@ -743,6 +754,11 @@
         </div>
       </div>
     </section>
+    
+    <!-- IMAGE BREAK -->
+    <div class="image-break">
+      <img src="../sowsong/clean-collection.jpg" alt="Sow Song jewelry collection" loading="lazy">
+    </div>
     
     <!-- ABOUT -->
     <section id="about" class="about">

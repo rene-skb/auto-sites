@@ -285,6 +285,28 @@
       background: var(--cream-dark);
     }
     
+    /* Video Moment */
+    .video-moment {
+      padding: 80px 24px;
+      background: var(--cream-dark);
+      text-align: center;
+    }
+    
+    .video-moment video {
+      max-width: 400px;
+      width: 100%;
+      border-radius: 4px;
+      display: block;
+      margin: 0 auto;
+    }
+    
+    .video-moment p {
+      margin-top: 20px;
+      font-size: 14px;
+      color: var(--text-light);
+      font-style: italic;
+    }
+    
     /* Contact */
     .contact {
       text-align: center;
@@ -423,6 +445,14 @@
         <img src="../sowsong/clean-tia-studio.jpg" alt="Tia in her studio" loading="lazy">
       </div>
     </div>
+  </section>
+  
+  <!-- Video Moment -->
+  <section class="video-moment reveal">
+    <video autoplay muted loop playsinline poster="../sowsong/film-video-poster.jpg">
+      <source src="../sowsong/film-video.mp4" type="video/mp4">
+    </video>
+    <p>Shot on film, 2025</p>
   </section>
   
   <!-- Contact -->

@@ -1,0 +1,127 @@
+meta:
+  name: "Stir It Up"
+  tagline: "Caribbean Soul Food"
+  phone: "+1 778-432-0133"
+  address: "760A Yates St, Victoria, BC"
+  hours: "Tue–Sat 11am–7pm"
+  instagram: "stiritup.yyj"
+  google_maps: "https://maps.google.com/maps?q=Stir+It+Up+Caribbean+Soul+Food+Victoria+BC"
+
+palette:
+  primary: "#1B5E5E"       # Deep Caribbean teal
+  accent: "#D4A04A"        # Warm gold
+  background: "#FAF6EF"    # Warm cream
+
+typography:
+  headline: "Syne"
+  body: "Inter"
+
+hero:
+  pattern: full-viewport-bg
+  headline: "Down the alley. Worth finding."
+  subhead: "Caribbean soul food from a one-woman kitchen"
+  image: "jerk-chicken-hero.png"
+  image_alt: "Plate of jerk chicken with rice and peas, coleslaw, and a whole scotch bonnet pepper garnish"
+  cta:
+    text: "See the menu"
+    href: "#menu"
+  badge: "Oxtail Saturdays"
+
+sections:
+  - type: quick-visit
+
+  - type: text-block
+    label: "The Food"
+    headline: "One kitchen. One cook. Everything from scratch."
+    body: "Jerk chicken with real char. Curry roti wrapped tight. Oxtail braised low and slow — Saturdays only, gone by dinner. This is Caribbean cooking the way it's supposed to be."
+    background: light
+
+  - type: menu
+    label: "The Menu"
+    headline: "What's Cooking"
+    items:
+      - name: "Jerk Chicken"
+        price: "$18"
+        description: "Marinated overnight, grilled over charcoal. Served with rice and peas, coleslaw, and plantain."
+        highlight: true
+      - name: "Curry Chicken Roti"
+        price: "$16"
+        description: "Trinidadian-style flatbread wrapped around curried chicken, chickpeas, and potato."
+        highlight: false
+      - name: "Oxtail Stew"
+        price: "$22"
+        description: "Braised until falling off the bone. Rice and peas, plantain, steamed veg. Saturdays only."
+        highlight: true
+        badge: "Saturdays Only"
+      - name: "Doubles"
+        price: "$8"
+        description: "Two bara (fried flatbreads) with curried chickpeas, tamarind, and pepper sauce."
+        highlight: false
+      - name: "Jamaican Patties"
+        price: "$6"
+        description: "Flaky golden crust, spiced beef or chicken filling. Perfect grab-and-go."
+        highlight: false
+      - name: "Curry Goat"
+        price: "$20"
+        description: "Bone-in goat simmered in Caribbean curry. Tender, fragrant, generous portion."
+        highlight: false
+
+  - type: photo-grid
+    label: "Our Plates"
+    columns: 2
+    images:
+      - src: "oxtail-stew.png"
+        alt: "Plate of braised oxtail stew with rice, kidney beans, and fried plantains"
+      - src: "curry-roti-plantains.png"
+        alt: "Chicken roti cut open showing curried filling, with plantains and coleslaw"
+      - src: "curry-chicken-plate.png"
+        alt: "Curry chicken with rice and peas, callaloo, and roasted pumpkin"
+      - src: "patties.png"
+        alt: "Golden Jamaican patties with flaky crust"
+
+  - type: about
+    label: "The Story"
+    headline: "Saint Lucian roots. Victoria kitchen."
+    body: "This is a one-woman operation. The recipes come from Saint Lucia — passed down, perfected, and made fresh every morning. The location down the alley off Yates isn't accidental. Good food doesn't need a prime spot. It just needs to be good."
+    image: "ig-photo-owner.jpg"
+    image_alt: "Owner of Stir It Up standing outside the restaurant with hand-painted signage and Saint Lucian flag"
+
+  - type: reviews
+    label: "Word on the Street"
+    headline: "188 reviews. 4.5 stars."
+    layout: featured
+    items:
+      - name: "Marcus T."
+        date: "March 2026"
+        source: "Google"
+        text: "The oxtail is unreal. Tender, flavorful, and the portion is huge. This place is a hidden gem — don't let the alley location fool you."
+        stars: 5
+      - name: "Sarah L."
+        date: "February 2026"
+        source: "Google"
+        text: "Best jerk chicken in Victoria. The char and spice are perfect. Worth the trip."
+        stars: 5
+      - name: "Devon W."
+        date: "January 2026"
+        source: "Google"
+        text: "Finally, authentic Caribbean food. The roti reminds me of home."
+        stars: 5
+
+  - type: location
+    label: "Find Us"
+    headline: "Down the alley off Yates. Worth the walk."
+    address: "760A Yates St, Victoria, BC"
+    hours: "Tue–Sat 11am–7pm"
+    phone: "+1 778-432-0133"
+    map_embed: true
+    map_link: "https://maps.google.com/maps?q=Stir+It+Up+Caribbean+Soul+Food+Victoria+BC"
+    cta:
+      text: "Get Directions"
+      href: "https://maps.google.com/maps?q=Stir+It+Up+Caribbean+Soul+Food+Victoria+BC"
+
+  - type: cta-strip
+    text: "Soul food takes time. Come hungry."
+    cta:
+      text: "Call (778) 432-0133"
+      href: "tel:+17784320133"
+    background: dark

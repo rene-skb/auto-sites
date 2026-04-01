@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 80">
+  <!-- Saint Lucia Flag -->
+  <!-- Cerulean blue background -->
+  <rect width="120" height="80" fill="#65CFFF"/>
+  
+  <!-- White-edged black triangle -->
+  <polygon points="60,10 20,70 100,70" fill="#FFFFFF"/>
+  <polygon points="60,14 24,68 96,68" fill="#000000"/>
+  
+  <!-- Gold/yellow triangle -->
+  <polygon points="60,24 35,68 85,68" fill="#FCD116"/>
+</svg>

@@ -1,5 +1,54 @@
 # Auto-Sites Build Log
 
+## Build 106 — Sow Song v2
+- **Category:** Custom Heirloom Jewelry
+- **City:** Victoria, BC
+- **Date:** 2026-04-01
+- **Model:** claude-opus-4-5 (subagent)
+- **Agent:** Lucy
+- **Hero pattern:** centered-minimal (typography-forward, cream background)
+- **Typography:** Cormorant Garamond 400-600 (display) + DM Sans 400-600 (body)
+- **Palette:** #8B2942 burgundy + #F8F4EE cream + #C9A050 gold + #1E1916 dark
+- **Review layout:** N/A (inquiry-based custom jewelry maker)
+- **Visit/hours layout:** N/A (email-only contact)
+- **Stats bar style:** no-stats
+- **Score:** 7.33 (WHY) / 7.33 (WHAT) / 7.0 (HOW) → **7.22 avg**
+- **Self-review:** 7.5 (ceiling 8.0; strong direction, headline simplified from original)
+- **Live URL:** https://auto-sites.pages.dev/demos/sowsong-v2/
+- **Key decisions:**
+  - "Where feelings become gold" — simplified from original "alchemists" line to avoid plural confusion
+  - Removed atmospheric image section per Rams — page 40% shorter, nothing lost
+  - Process woven into About as prose, not numbered steps — Jobs flagged templated feel in v1
+  - Cream-forward instead of dark-forward (v1 used dark hero) — warmer, more intimate
+  - 4 real Instagram photos used (01, 05, 06, 11), rest skipped for quality
+
+### Panel Scores
+| Round | Phase | Reviewers | Avg |
+|-------|-------|-----------|-----|
+| v0→v1 | WHY | Jobs 8, Graham 7, Ogilvy 7 | 7.33 |
+| v1→v2 | WHAT | Norman 7, Krug 6, Nielsen 6 | 6.33 (retry) |
+| v2 retry | WHAT | Norman 7.5, Krug 7, Nielsen 7.5 | 7.33 ✓ |
+| v2→v3 | HOW | Vignelli 6, Spiekermann 5, Rams 6 | 5.67 (retry) |
+| v3 retry | HOW | Vignelli 7, Spiekermann 7, Rams 7 | 7.0 ✓ |
+
+### Photo Assignments
+| File | Role | Quality |
+|------|------|---------|
+| ig-photo-01.jpg | Work grid | ⭐⭐⭐⭐⭐ Oval solitaire close-up |
+| ig-photo-05.jpg | About section | ⭐⭐⭐⭐½ Founder portrait golden hour |
+| ig-photo-06.jpg | Work grid | ⭐⭐⭐⭐½ Men's band by firelight |
+| ig-photo-11.jpg | Work grid | ⭐⭐⭐⭐ Pearl earrings in box |
+
+### Notes
+- Warm lead — friend of Scott's wife, actually looking for a website
+- This is v2 iteration on Build 104 (Sow Song v1)
+- v1 used dark-dominant palette; v2 went cream-forward for warmer feel
+- Removed templated "How It Works" numbered section per Jobs feedback
+- Copy audited — "innermost" cut, captions humanized
+- Process description flagged in sources.md as needing verification from Tia
+
+---
+
 ## Build 105 — Stir It Up v13
 - **Category:** Caribbean Soul Food
 - **City:** Victoria, BC

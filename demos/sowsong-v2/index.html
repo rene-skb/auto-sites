@@ -383,26 +383,27 @@
     }
     
     .work-card {
-      display: flex;
-      flex-direction: column;
-    }
-    
-    .work-card-image {
+      position: relative;
       aspect-ratio: 1;
       overflow: hidden;
-      border-radius: 2px;
+      border-radius: 4px;
     }
     
-    .work-card-image img {
+    .work-card img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
     
     .work-card-caption {
-      padding: 6px 0 0 0;
-      font-size: 0.75rem;
-      color: var(--text-dim);
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 32px 12px 10px;
+      background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 100%);
+      font-size: 0.8125rem;
+      color: #fff;
       line-height: 1.3;
     }
     
@@ -813,39 +814,27 @@
         </div>
         <div class="work-grid">
           <div class="work-card reveal stagger-1">
-            <div class="work-card-image">
-              <img src="../sowsong/ig-photo-01.jpg" alt="Salt-and-pepper diamond ring" loading="lazy">
-            </div>
+            <img src="../sowsong/ig-photo-01.jpg" alt="Salt-and-pepper diamond ring" loading="lazy">
             <p class="work-card-caption">Salt-and-pepper diamond in 14k gold</p>
           </div>
           <div class="work-card reveal stagger-2">
-            <div class="work-card-image">
-              <img src="../sowsong/ig-photo-10.jpg" alt="Montana sapphire signet" loading="lazy">
-            </div>
+            <img src="../sowsong/ig-photo-10.jpg" alt="Montana sapphire signet" loading="lazy">
             <p class="work-card-caption">Montana Sapphire Signet, 14k yellow gold</p>
           </div>
           <div class="work-card reveal stagger-3">
-            <div class="work-card-image">
-              <img src="../sowsong/ig-photo-04.jpg" alt="Custom engagement ring" loading="lazy">
-            </div>
+            <img src="../sowsong/ig-photo-04.jpg" alt="Custom engagement ring" loading="lazy">
             <p class="work-card-caption">Custom engagement ring</p>
           </div>
           <div class="work-card reveal stagger-1">
-            <div class="work-card-image">
-              <img src="../sowsong/ig-photo-09.jpg" alt="Stacked rings" loading="lazy">
-            </div>
+            <img src="../sowsong/ig-photo-09.jpg" alt="Stacked rings" loading="lazy">
             <p class="work-card-caption">Stacked rings, 14k gold</p>
           </div>
           <div class="work-card reveal stagger-2">
-            <div class="work-card-image">
-              <img src="../sowsong/ig-photo-11.jpg" alt="Pearl earrings" loading="lazy">
-            </div>
+            <img src="../sowsong/ig-photo-11.jpg" alt="Pearl earrings" loading="lazy">
             <p class="work-card-caption">Baroque pearl drops</p>
           </div>
           <div class="work-card reveal stagger-3">
-            <div class="work-card-image">
-              <img src="../sowsong/ig-photo-06.jpg" alt="Men's band" loading="lazy">
-            </div>
+            <img src="../sowsong/ig-photo-06.jpg" alt="Men's band" loading="lazy">
             <p class="work-card-caption">Men's textured band, 14k gold</p>
           </div>
         </div>

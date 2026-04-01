@@ -437,6 +437,37 @@
       opacity: 0.7;
     }
     
+    /* ===================== MOTION ===================== */
+    
+    .motion {
+      padding: var(--space-8) var(--content-px);
+      background: var(--cream);
+    }
+    
+    .motion-label {
+      font-size: 0.6875rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      text-align: center;
+      margin-bottom: var(--space-3);
+    }
+    
+    .motion-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-3);
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    
+    .motion-grid video {
+      width: 100%;
+      aspect-ratio: 9 / 16;
+      object-fit: cover;
+      border-radius: 2px;
+    }
+    
     /* ===================== ABOUT ===================== */
     
     .about {
@@ -678,6 +709,15 @@
         height: 50vh;
       }
       
+      .motion-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-2);
+      }
+      
+      .motion-grid video {
+        aspect-ratio: 9 / 16;
+      }
+      
       .about-inner {
         grid-template-columns: 1fr;
         gap: var(--space-5);
@@ -819,6 +859,22 @@
     <div class="image-break">
       <img src="../sowsong/clean-collection.jpg" alt="Sow Song jewelry collection" loading="lazy">
     </div>
+    
+    <!-- MOTION -->
+    <section class="motion">
+      <p class="motion-label reveal">In motion</p>
+      <div class="motion-grid">
+        <video autoplay muted loop playsinline class="reveal stagger-1">
+          <source src="../sowsong/film-video.mp4" type="video/mp4">
+        </video>
+        <video autoplay muted loop playsinline class="reveal stagger-2">
+          <source src="../sowsong/video-cushion-solitaire.mp4" type="video/mp4">
+        </video>
+        <video autoplay muted loop playsinline class="reveal stagger-3">
+          <source src="../sowsong/video-sea-rings.mp4" type="video/mp4">
+        </video>
+      </div>
+    </section>
     
     <!-- ABOUT -->
     <section id="about" class="about">

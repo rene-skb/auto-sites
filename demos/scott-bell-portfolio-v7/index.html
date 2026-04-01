@@ -64,6 +64,8 @@ Key strengths:
       --salmon-bg: #1A120F;
       --yellow: #E8D070;
       --yellow-bg: #1A1810;
+      --blue: #70A0E8;
+      --blue-bg: #0F141A;
       
       /* Typography scale */
       --text-xs: 13px;
@@ -240,6 +242,7 @@ Key strengths:
     .project.salmon { background: var(--salmon-bg); }
     .project.yellow { background: var(--yellow-bg); }
     .project.dark { background: var(--dark); }
+    .project.blue { background: var(--blue-bg); }
     
     .project-inner {
       max-width: var(--max-width);
@@ -262,6 +265,7 @@ Key strengths:
     .project-label.salmon { color: var(--salmon); }
     .project-label.yellow { color: var(--yellow); }
     .project-label.cream { color: var(--cream); }
+    .project-label.blue { color: var(--blue); }
     
     .project-title {
       font-size: var(--text-2xl);
@@ -290,6 +294,15 @@ Key strengths:
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: var(--space-3);
+    }
+    
+    .project-grid.phone-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-2);
+    }
+    
+    .project-grid.phone-grid .project-image {
+      background: transparent;
     }
     
     .project-link {
@@ -434,6 +447,10 @@ Key strengths:
         grid-template-columns: 1fr;
       }
       
+      .project-grid.phone-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
       .about {
         padding: var(--space-6) var(--space-3);
       }
@@ -560,6 +577,35 @@ Key strengths:
         </div>
         <a href="https://clawprint.dev" class="project-link fade-in">
           View project →
+        </a>
+      </div>
+    </section>
+    
+    <section class="project blue">
+      <div class="project-inner">
+        <div class="project-header fade-in">
+          <div>
+            <p class="label project-label blue">05 · Strike · 2021–23</p>
+            <h2 class="project-title">Money without borders.</h2>
+          </div>
+          <p class="project-description">Product design for Strike's Bitcoin and Lightning payments app. Send money globally in seconds. Shipped to millions of users across 65 countries.</p>
+        </div>
+        <div class="project-grid phone-grid fade-in">
+          <div class="project-image">
+            <img src="strike1-CjnPLkXo.png" alt="Strike onboarding">
+          </div>
+          <div class="project-image">
+            <img src="strike2-D0UqhuCL.png" alt="Strike Bitcoin balance">
+          </div>
+          <div class="project-image">
+            <img src="strike3-BJpH3wPc.png" alt="Strike Lightning payment">
+          </div>
+          <div class="project-image">
+            <img src="strike4-o5zK3qf1.png" alt="Strike app">
+          </div>
+        </div>
+        <a href="https://scottkbell.com/strike" class="project-link fade-in">
+          View case study →
         </a>
       </div>
     </section>

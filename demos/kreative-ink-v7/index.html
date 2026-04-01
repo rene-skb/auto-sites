@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kreative Ink — Black & Grey Realism Tattoos | Victoria, BC</title>
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Kreative Ink — Black & Grey Realism Tattoos">
+  <meta property="og:description" content="Award-winning tattoo studio in Victoria, BC. Specializing in black & grey realism.">
+  <meta property="og:image" content="ig-photo-09.jpg">
+  <meta property="og:url" content="https://auto-sites.pages.dev/demos/kreative-ink-v7/">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <style>
+    /*
+    FINAL VERSION: v5
+    
+    Build Summary:
+    - WHY Panel: Jobs 6, Graham 5, Ogilvy 5.5 → 5.5 avg
+    - WHAT Panel: Norman 7, Krug 6, Nielsen 6 → 6.3 avg
+    - HOW Panel (retry): Vignelli 6, Spiekermann 6.5, Rams 7 → 6.5 avg
+    - Self-review: 6.2
+    
+    Final polish:
+    - Strengthened hero gradient for text legibility
+    - Copy audit pass (humanizer patterns)
+    - Motion and accessibility verified
+    */
+    
+    :root {
+      --black: #0A0A0A;
+      --dark: #121212;
+      --grey-dark: #1C1C1C;
+      --grey-mid: #2A2A2A;
+      --grey-light: #A0A0A0;
+      --cream: #F5F5F0;
+      --white: #FFFFFF;
+      --accent: #E5C978;
+      
+      --font-display: 'Oswald', sans-serif;
+      --font-body: 'Source Sans 3', sans-serif;
+      
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+      --section-pad: clamp(80px, 12vw, 140px);
+      --content-max: 1200px;
+      --content-px: max(24px, calc((100vw - var(--content-max)) / 2));
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: var(--font-body);
+      background: var(--black);
+      color: var(--cream);
+      font-size: 18px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    
+    /* Skip Link */
+    .skip-link {
+      position: absolute;
+      top: -100px;
+      left: 16px;
+      background: var(--accent);
+      color: var(--black);
+      padding: 8px 16px;
+      z-index: 1000;
+      font-weight: 600;
+      transition: top 0.2s var(--ease-out);
+    }
+    
+    .skip-link:focus {
+      top: 16px;
+    }
+    
+    /* Content Container */
+    .container {
+      max-width: var(--content-max);
+      margin: 0 auto;
+      padding: 0 var(--content-px);
+    }
+    
+    /* ============================================
+       HEADER / NAV
+    ============================================ */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 24px var(--content-px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(to bottom, rgba(10,10,10,0.95) 0%, transparent 100%);
+    }
+    
+    .logo {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    
+    nav {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+    }
+    
+    nav a {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.75;
+      transition: opacity 0.2s ease;
+    }
+    
+    nav a:hover {
+      opacity: 1;
+    }
+    
+    /* Mobile menu */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+    }
+    
+    .menu-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--cream);
+      margin: 5px 0;
+      transition: transform 0.3s var(--ease-out), opacity 0.3s;
+    }
+    
+    @media (max-width: 768px) {
+      header {
+        padding: 16px 20px;
+      }
+      
+      .menu-toggle {
+        display: block;
+      }
+      
+      nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        background: var(--dark);
+        flex-direction: column;
+        padding: 80px 40px;
+        gap: 28px;
+        transition: right 0.3s var(--ease-out);
+      }
+      
+      nav.open {
+        right: 0;
+      }
+    }
+    
+    /* ============================================
+       HERO — DARK IMMERSIVE
+    ============================================ */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-image {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+    
+    .hero-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(10,10,10,0.98) 0%,
+        rgba(10,10,10,0.7) 35%,
+        rgba(10,10,10,0.25) 65%,
+        rgba(10,10,10,0.35) 100%
+      );
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      padding: 0 var(--content-px) 100px;
+      max-width: 900px;
+    }
+    
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(52px, 9vw, 100px);
+      font-weight: 700;
+      line-height: 0.92;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+    
+    .hero-sub {
+      font-size: 19px;
+      color: var(--grey-light);
+      max-width: 500px;
+      margin-bottom: 40px;
+      line-height: 1.6;
+    }
+    
+    /* Button base with motion */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--accent);
+      color: var(--black);
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 18px 36px;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.16s var(--ease-out);
+    }
+    
+    .btn:active {
+      transform: scale(0.97);
+    }
+    
+    @media (max-width: 768px) {
+      .hero-content {
+        padding: 0 24px 72px;
+      }
+    }
+    
+    /* ============================================
+       GALLERY — FULL BLEED, ONE AT A TIME
+    ============================================ */
+    .gallery {
+      padding: var(--section-pad) 0;
+    }
+    
+    .gallery-header {
+      text-align: center;
+      padding: 0 var(--content-px);
+      margin-bottom: 72px;
+    }
+    
+    .gallery-header h2 {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 5vw, 52px);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    
+    .gallery-header p {
+      color: var(--grey-light);
+      max-width: 500px;
+      margin: 0 auto;
+      font-size: 18px;
+    }
+    
+    .gallery-piece {
+      position: relative;
+      width: 100%;
+      margin-bottom: 4px;
+      background: var(--black);
+    }
+    
+    .gallery-piece img {
+      width: 100%;
+      max-height: 88vh;
+      object-fit: contain;
+    }
+    
+    .gallery-piece-info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 40px var(--content-px);
+      background: linear-gradient(to top, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.6) 60%, transparent 100%);
+    }
+    
+    .gallery-piece-title {
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    
+    .gallery-piece-desc {
+      font-size: 16px;
+      color: var(--grey-light);
+      max-width: 500px;
+    }
+    
+    /* ============================================
+       STATEMENT
+    ============================================ */
+    .statement {
+      padding: var(--section-pad) var(--content-px);
+      text-align: center;
+      background: var(--dark);
+    }
+    
+    .statement-text {
+      font-family: var(--font-body);
+      font-size: clamp(24px, 3.5vw, 36px);
+      font-weight: 400;
+      line-height: 1.5;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .statement-text strong {
+      color: var(--accent);
+      font-weight: 500;
+    }
+    
+    /* ============================================
+       NICK — THE ARTIST (GRID-ALIGNED)
+    ============================================ */
+    .artist-section {
+      padding: var(--section-pad) var(--content-px);
+    }
+    
+    .artist-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: start;
+    }
+    
+    .artist-image img {
+      width: 100%;
+    }
+    
+    .artist-text h2 {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 4vw, 44px);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+    
+    .artist-text p {
+      color: var(--grey-light);
+      margin-bottom: 24px;
+      font-size: 18px;
+      line-height: 1.7;
+    }
+    
+    .artist-social {
+      margin-top: 36px;
+    }
+    
+    .artist-social a {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--accent);
+      font-weight: 500;
+      font-size: 17px;
+      transition: opacity 0.2s ease;
+    }
+    
+    .artist-social a:hover {
+      opacity: 0.8;
+    }
+    
+    .artist-apprentice {
+      margin-top: 56px;
+      padding-top: 36px;
+      border-top: 1px solid var(--grey-mid);
+    }
+    
+    .artist-apprentice h3 {
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+    
+    .artist-apprentice p {
+      color: var(--grey-light);
+      font-size: 17px;
+      margin-bottom: 12px;
+    }
+    
+    .artist-apprentice a {
+      color: var(--accent);
+      font-size: 16px;
+      transition: opacity 0.2s ease;
+    }
+    
+    .artist-apprentice a:hover {
+      opacity: 0.8;
+    }
+    
+    @media (max-width: 768px) {
+      .artist-content {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+    }
+    
+    /* ============================================
+       REVIEW — SINGLE POWERFUL QUOTE
+    ============================================ */
+    .review-section {
+      padding: var(--section-pad) var(--content-px);
+      background: var(--dark);
+    }
+    
+    .review-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    
+    .review-quote {
+      font-family: var(--font-body);
+      font-size: clamp(26px, 4vw, 40px);
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.45;
+      margin-bottom: 36px;
+      color: var(--white);
+    }
+    
+    .review-author {
+      font-size: 15px;
+      color: var(--grey-light);
+      letter-spacing: 0.06em;
+    }
+    
+    /* ============================================
+       VISIT / LOCATION (GRID-ALIGNED)
+    ============================================ */
+    .visit {
+      padding: var(--section-pad) var(--content-px);
+    }
+    
+    .visit-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: start;
+    }
+    
+    .visit-info h2 {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 4vw, 44px);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 36px;
+    }
+    
+    .visit-detail {
+      margin-bottom: 28px;
+    }
+    
+    .visit-label {
+      font-size: 12px;
+      color: var(--grey-light);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 8px;
+    }
+    
+    .visit-value {
+      font-size: 18px;
+      line-height: 1.6;
+    }
+    
+    .visit-value a {
+      color: var(--accent);
+      transition: opacity 0.2s ease;
+    }
+    
+    .visit-value a:hover {
+      opacity: 0.8;
+    }
+    
+    .visit-cta {
+      margin-top: 28px;
+    }
+    
+    .visit-map {
+      aspect-ratio: 4/3;
+      background: var(--grey-dark);
+      overflow: hidden;
+    }
+    
+    .visit-map iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      filter: grayscale(100%) invert(92%) contrast(90%);
+    }
+    
+    @media (max-width: 768px) {
+      .visit-inner {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+    }
+    
+    /* ============================================
+       FOOTER
+    ============================================ */
+    footer {
+      background: var(--dark);
+      padding: 56px var(--content-px);
+      text-align: center;
+      border-top: 1px solid var(--grey-mid);
+    }
+    
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    
+    .footer-social {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      margin-bottom: 24px;
+    }
+    
+    .footer-social a {
+      color: var(--cream);
+      opacity: 0.6;
+      font-size: 15px;
+      letter-spacing: 0.04em;
+      transition: opacity 0.2s ease;
+    }
+    
+    .footer-social a:hover {
+      opacity: 1;
+    }
+    
+    .footer-copy {
+      font-size: 14px;
+      color: var(--grey-light);
+    }
+    
+    /* ============================================
+       ANIMATIONS — SCROLL REVEALS
+    ============================================ */
+    @media (prefers-reduced-motion: no-preference) {
+      .fade-in {
+        opacity: 0;
+        transform: translateY(28px);
+        transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+      }
+      
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      
+      /* Stagger delays for gallery pieces */
+      .gallery-piece:nth-child(2) { transition-delay: 0ms; }
+      .gallery-piece:nth-child(3) { transition-delay: 30ms; }
+      .gallery-piece:nth-child(4) { transition-delay: 60ms; }
+      .gallery-piece:nth-child(5) { transition-delay: 90ms; }
+    }
+    
+    @media (prefers-reduced-motion: reduce) {
+      .fade-in {
+        opacity: 1;
+        transform: none;
+      }
+      
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+  
+  <header>
+    <div class="logo">Kreative Ink</div>
+    <button class="menu-toggle" aria-label="Toggle menu" onclick="document.querySelector('nav').classList.toggle('open')">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav>
+      <a href="#gallery">Work</a>
+      <a href="#nick">Nick</a>
+      <a href="#visit">Visit</a>
+    </nav>
+  </header>
+  
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-image">
+        <img src="ig-photo-09.jpg" alt="Full back tattoo by Nick — underwater dive bar scene">
+      </div>
+      <div class="hero-content">
+        <h1>Skin is canvas.<br>Ink is permanent.</h1>
+        <p class="hero-sub">Black & grey realism. Every pore, every strand of fur, every reflection in the eye. Victoria, BC.</p>
+        <a href="https://www.instagram.com/kreativeinknick/" class="btn" target="_blank">
+          DM to Book
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    </section>
+    
+    <!-- GALLERY — FULL BLEED -->
+    <section class="gallery" id="gallery">
+      <div class="gallery-header fade-in">
+        <h2>The Work</h2>
+        <p>Full back pieces. Half sleeves. Details you'll find years later.</p>
+      </div>
+      
+      <div class="gallery-piece fade-in">
+        <img src="ig-photo-12.jpg" alt="Wolves and nun back piece detail">
+        <div class="gallery-piece-info">
+          <div class="gallery-piece-title">Full Back — Wolves & Nun</div>
+          <div class="gallery-piece-desc">60+ hours. Every tooth, every pore, every strand of fur.</div>
+        </div>
+      </div>
+      
+      <div class="gallery-piece fade-in">
+        <img src="ig-photo-04.jpg" alt="Antlered warrior dark fantasy tattoo">
+        <div class="gallery-piece-info">
+          <div class="gallery-piece-title">Full Thigh — Dark Fantasy</div>
+          <div class="gallery-piece-desc">Antlered warrior. When mythology meets skin.</div>
+        </div>
+      </div>
+      
+      <div class="gallery-piece fade-in">
+        <img src="ig-photo-02.jpg" alt="Wolf and Indigenous warrior half-sleeve">
+        <div class="gallery-piece-info">
+          <div class="gallery-piece-title">Half Sleeve — Wolf Spirit</div>
+          <div class="gallery-piece-desc">The fur texture alone. Look closer.</div>
+        </div>
+      </div>
+      
+      <div class="gallery-piece fade-in">
+        <img src="ig-photo-06.jpg" alt="Chickadee on pine branch">
+        <div class="gallery-piece-info">
+          <div class="gallery-piece-title">Small Scale — Pacific Northwest</div>
+          <div class="gallery-piece-desc">Realism works at any size. Chickadee on pine.</div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- STATEMENT -->
+    <section class="statement fade-in">
+      <p class="statement-text">
+        Tattoos don't wash off. <strong>This is skin you'll wear for the rest of your life.</strong>
+      </p>
+    </section>
+    
+    <!-- NICK -->
+    <section class="artist-section" id="nick">
+      <div class="artist-content">
+        <div class="artist-image fade-in">
+          <img src="ig-photo-11.jpg" alt="Full view of Wolves and Nun back piece">
+        </div>
+        <div class="artist-text fade-in">
+          <h2>Nick</h2>
+          <p>Owner of Kreative Ink. Over a decade in black & grey realism. Multiple full back pieces. Award-winning work recognized at conventions.</p>
+          <p>The Dive Bar piece in the hero took 80+ hours. The Wolves & Nun took 60+. Nick doesn't rush. He builds.</p>
+          <p>Walk-in flash isn't really the thing here. This is for pieces you'll still be proud of in 30 years.</p>
+          
+          <div class="artist-social">
+            <a href="https://www.instagram.com/kreativeinknick/" target="_blank">
+              @kreativeinknick
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/>
+              </svg>
+            </a>
+          </div>
+          
+          <div class="artist-apprentice">
+            <h3>Autumn</h3>
+            <p>Nick's apprentice. Smaller pieces, flash, and custom designs.</p>
+            <a href="https://www.instagram.com/hotdamnitsautumn/" target="_blank">@hotdamnitsautumn</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- REVIEW -->
+    <section class="review-section">
+      <div class="review-inner fade-in">
+        <p class="review-quote">"I've gotten 5 tattoos here and all turned out amazing. Would recommend over anywhere else."</p>
+        <p class="review-author">Via Google · 4.7★ from 38 reviews</p>
+      </div>
+    </section>
+    
+    <!-- VISIT -->
+    <section class="visit" id="visit">
+      <div class="visit-inner">
+        <div class="visit-info fade-in">
+          <h2>Book Your Session</h2>
+          
+          <div class="visit-detail">
+            <div class="visit-label">Location</div>
+            <div class="visit-value">
+              <a href="https://maps.google.com/?q=Kreative+Ink+1282+Park+Terrace+Victoria+BC" target="_blank">
+                1282 Park Terrace<br>
+                Victoria, BC V9A 4Z4
+              </a>
+            </div>
+          </div>
+          
+          <div class="visit-detail">
+            <div class="visit-label">How to Book</div>
+            <div class="visit-value">DM <a href="https://www.instagram.com/kreativeinknick/" target="_blank">@kreativeinknick</a> on Instagram</div>
+          </div>
+          
+          <a href="https://www.instagram.com/kreativeinknick/" class="btn visit-cta" target="_blank">
+            DM to Book
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+        
+        <div class="visit-map fade-in">
+          <iframe 
+            src="https://maps.google.com/maps?q=Kreative+Ink+1282+Park+Terrace+Victoria+BC&output=embed"
+            allowfullscreen
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Kreative Ink location map">
+          </iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <footer>
+    <div class="footer-logo">Kreative Ink</div>
+    <div class="footer-social">
+      <a href="https://www.instagram.com/kreativeinknick/" target="_blank">Instagram</a>
+      <a href="https://www.facebook.com/Kreativeinknick/" target="_blank">Facebook</a>
+    </div>
+    <p class="footer-copy">© 2026 Kreative Ink · Victoria, BC</p>
+  </footer>
+  
+  <script>
+    // Scroll-triggered fade-ins
+    if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+      
+      document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    }
+  </script>
+</body>
+</html>

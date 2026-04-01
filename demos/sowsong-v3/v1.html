@@ -280,28 +280,49 @@
       }
     }
     
-    /* Nature Strip */
-    .nature-strip {
+    /* What We Create */
+    .what-we-create {
+      padding: 80px 0 0;
+    }
+    
+    .what-we-create h2 {
+      font-size: 14px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--burgundy);
+      margin-bottom: 16px;
+    }
+    
+    .what-intro {
+      font-size: 20px;
+      color: var(--text-light);
+      font-style: italic;
+    }
+    
+    .product-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 4px;
+      margin-top: 40px;
     }
     
-    .nature-strip img {
+    .product-grid img {
       width: 100%;
-      height: 300px;
+      height: 350px;
       object-fit: cover;
       display: block;
     }
     
-    @media (max-width: 768px) {
-      .nature-strip {
+    @media (max-width: 900px) {
+      .product-grid {
         grid-template-columns: repeat(2, 1fr);
       }
-      .nature-strip img {
-        height: 200px;
+      .product-grid img {
+        height: 280px;
       }
     }
+    
+    /* Nature Strip — removed, replaced with product grid */
     
     /* Contact */
     .contact {
@@ -404,11 +425,26 @@
     <div class="the-name-content">
       <h2>The Name</h2>
       <h3 class="brand-name">"Sow Song"</h3>
-      <p>Some things just stay with us. People, songs, scents, memories — my Grandfather was one of those things for me.</p>
-      <p>My Grandpa Soby was a musical man. Most of my memories of him are of him in his garden or playing the banjo. He was such a warm, social person, and being around him always made things feel a little more sparkly.</p>
-      <p>Sow Song was a tune he'd sing to us grandkids most times we were with him. Playful and full of love.</p>
-      <p>When I make jewelry, I'm always thinking about connection. I want the pieces I make to hold meaning throughout our lifetime. I like to think of them as tokens of love — some remind us of the people we care about, the way Sow Song reminds me of him.</p>
+      <p>Some things just stay with us. My Grandpa Soby was a musical man — warm, social, always playing his banjo. Sow Song was a tune he'd sing to us grandkids. Playful and full of love.</p>
+      <p>When I make jewelry, I'm always thinking about connection. I want each piece to hold meaning throughout a lifetime — tokens of love that remind us of the people we care about, the way Sow Song reminds me of him.</p>
       <p class="signature">With Love Always,<br>Tia</p>
+    </div>
+  </section>
+  
+  <!-- What We Create -->
+  <section class="what-we-create">
+    <div class="section section-narrow" style="text-align: center;">
+      <h2>What We Create</h2>
+      <p class="what-intro">Custom engagement rings · Wedding bands · Memorial pendants · Heirloom recreations · Signet rings</p>
+    </div>
+    <div class="product-grid">
+      <img src="../sowsong/ig-photo-01.jpg" alt="Custom engagement ring" loading="lazy">
+      <img src="../sowsong/ig-photo-02.jpg" alt="Wedding bands" loading="lazy">
+      <img src="../sowsong/ig-photo-03.jpg" alt="Handcrafted jewelry" loading="lazy">
+      <img src="../sowsong/ig-photo-04.jpg" alt="Custom piece" loading="lazy">
+    </div>
+    <div style="text-align: center; padding: 40px 24px;">
+      <a href="mailto:tia@sowsong.com" class="hero-cta">Start a Conversation</a>
     </div>
   </section>
   
@@ -428,13 +464,11 @@
     </div>
   </section>
   
-  <!-- Nature Strip -->
-  <section class="nature-strip">
-    <img src="../sowsong/scott-pick-nature.jpg" alt="Vancouver Island greenery" loading="lazy">
-    <img src="../sowsong/scott-pick-red-box-hoops.jpg" alt="Gold hoops in signature red box" loading="lazy">
-    <img src="../sowsong/scott-pick-brand-manifesto.jpg" alt="Sow Song brand" loading="lazy">
-    <img src="../sowsong/ig-photo-01.jpg" alt="Sow Song jewelry" loading="lazy">
-  </section>
+  <!-- Nature accent image -->
+  <div style="max-width: 600px; margin: 0 auto; padding: 60px 24px;">
+    <img src="../sowsong/scott-pick-nature.jpg" alt="Drawn from nature — Vancouver Island" style="width: 100%; height: auto; display: block;" loading="lazy">
+    <p style="text-align: center; margin-top: 16px; font-style: italic; color: var(--text-light); font-size: 15px;">Drawn from nature</p>
+  </div>
   
   <!-- Contact -->
   <section class="contact">

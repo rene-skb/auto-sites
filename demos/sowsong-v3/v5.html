@@ -85,7 +85,7 @@
       display: flex;
       align-items: center;
       justify-content: flex-start;
-      padding: 80px 48px;
+      padding: 100px 64px;
       overflow: hidden;
     }
     
@@ -211,22 +211,23 @@
     .split {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 48px;
+      gap: 80px;
       align-items: center;
-      padding: 80px 48px;
+      padding: 120px 64px;
       max-width: 1200px;
       margin: 0 auto;
     }
     
     .split-content h3 {
-      font-size: clamp(28px, 4vw, 40px);
-      margin-bottom: 20px;
+      font-size: clamp(32px, 5vw, 48px);
+      margin-bottom: 28px;
       color: var(--crimson);
     }
     
     .split-content p {
-      margin-bottom: 16px;
+      margin-bottom: 20px;
       color: var(--text-light);
+      font-size: 18px;
     }
     
     .split-content p:last-of-type {
@@ -249,8 +250,8 @@
     @media (max-width: 900px) {
       .split {
         grid-template-columns: 1fr;
-        gap: 32px;
-        padding: 60px 24px;
+        gap: 48px;
+        padding: 80px 24px;
       }
       .split-image {
         order: -1;
@@ -265,7 +266,7 @@
     /* Contact */
     .contact {
       text-align: center;
-      padding: 80px 24px;
+      padding: 120px 24px;
       background: var(--crimson);
       color: white;
     }

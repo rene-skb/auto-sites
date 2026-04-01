@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scott Bell — Product Designer</title>
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Scott Bell — Product Designer">
+  <meta property="og:description" content="I find the logic underneath — then make it impossible to ignore.">
+  <meta property="og:image" content="loopin.jpg">
+  <meta property="og:url" content="https://scottkbell.com">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  
+  <style>
+    /*
+    v5 — Final polish + copy audit
+    - Tightened Nakamoto intro (40% shorter)
+    - Rewrote Side Projects intro to match hero sharpness
+    - Ran humanizer audit on all copy
+    - Added visual metric to Strike section
+    - Minor spacing refinements
+    */
+    
+    :root {
+      --black: #0D0B0A;
+      --cream: #E8DDD3;
+      --copper: #C4956A;
+      --mint: #A8E6CF;
+      --salmon: #FFB6B6;
+      --yellow: #FFEAA7;
+      --gray: #8A847E;
+      
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Inter', -apple-system, sans-serif;
+      
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+      
+      --content-width: 1000px;
+      --section-pad-x: 2rem;
+      --section-pad-y: 6rem;
+      --grid-gap: 1.5rem;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: var(--sans);
+      background: var(--black);
+      color: var(--cream);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    /* NAVIGATION */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1.5rem var(--section-pad-x);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(13, 11, 10, 0.95);
+      backdrop-filter: blur(10px);
+    }
+    
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--cream);
+      text-decoration: none;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+    
+    .nav-links a {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--gray);
+      text-decoration: none;
+      transition: color 0.2s var(--ease-out);
+    }
+    
+    .nav-links a:hover {
+      color: var(--cream);
+    }
+    
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+    
+    .nav-toggle span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--cream);
+      margin: 4px 0;
+      transition: transform 0.2s var(--ease-out);
+    }
+    
+    /* SCROLL REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+    }
+    
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .reveal-delay-1 { transition-delay: 0.05s; }
+    .reveal-delay-2 { transition-delay: 0.1s; }
+    .reveal-delay-3 { transition-delay: 0.15s; }
+    
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 8rem var(--section-pad-x) 4rem;
+      max-width: var(--content-width);
+      margin: 0 auto;
+    }
+    
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+      max-width: 720px;
+    }
+    
+    .hero h1 em {
+      color: var(--copper);
+      font-style: italic;
+    }
+    
+    .hero-intro {
+      font-size: 0.875rem;
+      color: var(--gray);
+      letter-spacing: 0.04em;
+      margin-bottom: 0.75rem;
+    }
+    
+    .hero-subtitle {
+      font-size: 1rem;
+      color: rgba(232, 221, 211, 0.7);
+      max-width: 480px;
+      margin-top: 1.5rem;
+    }
+    
+    /* SECTION BASE */
+    section {
+      padding: var(--section-pad-y) var(--section-pad-x);
+    }
+    
+    .section-inner {
+      max-width: var(--content-width);
+      margin: 0 auto;
+    }
+    
+    .section-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 1rem;
+    }
+    
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(1.75rem, 4vw, 2.25rem);
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    
+    .section-desc {
+      font-size: 1rem;
+      line-height: 1.7;
+      max-width: 500px;
+      margin-bottom: 2.5rem;
+    }
+    
+    /* COLOR SECTIONS */
+    .section-mint {
+      background: var(--mint);
+      color: var(--black);
+    }
+    
+    .section-mint .section-label {
+      color: rgba(13, 11, 10, 0.6);
+    }
+    
+    .section-mint .section-desc {
+      color: rgba(13, 11, 10, 0.75);
+    }
+    
+    .section-salmon {
+      background: var(--salmon);
+      color: var(--black);
+    }
+    
+    .section-salmon .section-label {
+      color: rgba(13, 11, 10, 0.6);
+    }
+    
+    .section-salmon .section-desc {
+      color: rgba(13, 11, 10, 0.75);
+    }
+    
+    .section-yellow {
+      background: var(--yellow);
+      color: var(--black);
+    }
+    
+    .section-yellow .section-label {
+      color: rgba(13, 11, 10, 0.6);
+    }
+    
+    .section-yellow .section-desc {
+      color: rgba(13, 11, 10, 0.75);
+    }
+    
+    /* PROJECT CARDS */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--grid-gap);
+    }
+    
+    .project-card {
+      background: var(--black);
+      border-radius: 8px;
+      overflow: hidden;
+      text-decoration: none;
+      color: var(--cream);
+      transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
+    }
+    
+    .project-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+    
+    .project-card:active {
+      transform: scale(0.97);
+      transition: transform 0.16s var(--ease-out);
+    }
+    
+    .project-card-image {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+    }
+    
+    .project-card-content {
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    
+    .project-card-text {
+      flex: 1;
+    }
+    
+    .project-card-title {
+      font-family: var(--serif);
+      font-size: 1.125rem;
+      font-weight: 500;
+      margin-bottom: 0.375rem;
+    }
+    
+    .project-card-desc {
+      font-size: 0.875rem;
+      color: rgba(232, 221, 211, 0.7);
+      line-height: 1.5;
+    }
+    
+    .project-card-arrow {
+      font-size: 1.25rem;
+      color: var(--gray);
+      transition: transform 0.2s var(--ease-out), color 0.2s var(--ease-out);
+      margin-left: 1rem;
+    }
+    
+    .project-card:hover .project-card-arrow {
+      transform: translateX(4px);
+      color: var(--cream);
+    }
+    
+    /* STRIKE GRID */
+    .strike-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--grid-gap);
+    }
+    
+    .strike-card {
+      background: var(--black);
+      border-radius: 8px;
+      padding: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .strike-card img {
+      width: 55%;
+      height: auto;
+      border-radius: 4px;
+    }
+    
+    .case-study-link {
+      display: inline-block;
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: var(--black);
+      text-decoration: none;
+      border-bottom: 2px solid var(--black);
+      padding-bottom: 2px;
+      transition: opacity 0.2s var(--ease-out);
+    }
+    
+    .case-study-link:hover {
+      opacity: 0.7;
+    }
+    
+    .case-study-link:active {
+      transform: scale(0.97);
+    }
+    
+    /* ABOUT SECTION */
+    .section-about {
+      background: var(--black);
+    }
+    
+    .about-content {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3rem;
+      align-items: start;
+    }
+    
+    .about-text p {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: rgba(232, 221, 211, 0.85);
+      margin-bottom: 1.5rem;
+    }
+    
+    .about-text p:last-child {
+      margin-bottom: 0;
+    }
+    
+    /* CONTACT */
+    .contact-section {
+      background: var(--black);
+      border-top: 1px solid rgba(232, 221, 211, 0.1);
+    }
+    
+    .contact-content {
+      text-align: center;
+    }
+    
+    .contact-title {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 400;
+      margin-bottom: 1rem;
+    }
+    
+    .contact-subtitle {
+      font-size: 1rem;
+      color: var(--gray);
+      margin-bottom: 2rem;
+    }
+    
+    .contact-email {
+      display: inline-block;
+      font-size: 1.125rem;
+      color: var(--copper);
+      text-decoration: none;
+      padding-bottom: 4px;
+      border-bottom: 2px solid var(--copper);
+      transition: opacity 0.2s var(--ease-out);
+    }
+    
+    .contact-email:hover {
+      opacity: 0.8;
+    }
+    
+    .contact-email:active {
+      transform: scale(0.97);
+    }
+    
+    /* FOOTER */
+    footer {
+      padding: 2rem;
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--gray);
+      letter-spacing: 0.04em;
+    }
+    
+    /* MOBILE */
+    @media (max-width: 768px) {
+      :root {
+        --section-pad-x: 1.5rem;
+        --section-pad-y: 4rem;
+      }
+      
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--black);
+        flex-direction: column;
+        padding: 2rem;
+        gap: 1.5rem;
+      }
+      
+      .nav-links.active {
+        display: flex;
+      }
+      
+      .nav-toggle {
+        display: block;
+      }
+      
+      .hero {
+        padding-top: 6rem;
+        padding-bottom: 3rem;
+      }
+      
+      .project-grid,
+      .strike-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .about-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+    }
+    
+    /* REDUCED MOTION */
+    @media (prefers-reduced-motion: reduce) {
+      .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+      
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="#" class="nav-logo">Scott Bell</a>
+    <button class="nav-toggle" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <p class="hero-intro reveal">Product Designer · AI-Enabled</p>
+    <h1 class="reveal">I find the <em>logic underneath</em> — then make it <em>impossible to ignore</em>.</h1>
+    <p class="hero-subtitle reveal">
+      24 products shipped across fintech, crypto, and AI. 
+      Used by 2M+ people in 100+ countries.
+    </p>
+  </header>
+
+  <!-- NAKAMOTO DESIGN - MINT -->
+  <section id="work" class="section-mint">
+    <div class="section-inner">
+      <p class="section-label reveal">Current · 2024–Present</p>
+      <h2 class="section-title reveal">Nakamoto Design Co</h2>
+      <p class="section-desc reveal">
+        AI agents that build websites. Research, copy, visuals, code. 
+        No templates. These are real businesses.
+      </p>
+      
+      <div class="project-grid">
+        <a href="https://nakamotodesign.co/" target="_blank" class="project-card reveal reveal-delay-1">
+          <img src="autosite-stiritup.jpg" alt="Stir It Up website" class="project-card-image">
+          <div class="project-card-content">
+            <div class="project-card-text">
+              <h3 class="project-card-title">Stir It Up</h3>
+              <p class="project-card-desc">Caribbean soul food · Victoria</p>
+            </div>
+            <span class="project-card-arrow">→</span>
+          </div>
+        </a>
+        <a href="https://nakamotodesign.co/" target="_blank" class="project-card reveal reveal-delay-2">
+          <img src="autosite-kreativeink.jpg" alt="Kreative Ink website" class="project-card-image">
+          <div class="project-card-content">
+            <div class="project-card-text">
+              <h3 class="project-card-title">Kreative Ink</h3>
+              <p class="project-card-desc">Tattoo studio · Vancouver</p>
+            </div>
+            <span class="project-card-arrow">→</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOOLS - SALMON -->
+  <section class="section-salmon">
+    <div class="section-inner">
+      <p class="section-label reveal">Side Projects · 2024–2025</p>
+      <h2 class="section-title reveal">I build what I need.</h2>
+      <p class="section-desc reveal">
+        Tools that solve my own problems first. If they work, I ship them.
+      </p>
+      
+      <div class="project-grid">
+        <a href="https://scottkbell.com/loopin" target="_blank" class="project-card reveal reveal-delay-1">
+          <img src="loopin.jpg" alt="LoopIn" class="project-card-image">
+          <div class="project-card-content">
+            <div class="project-card-text">
+              <h3 class="project-card-title">LoopIn</h3>
+              <p class="project-card-desc">Give AI agents browser vision.</p>
+            </div>
+            <span class="project-card-arrow">→</span>
+          </div>
+        </a>
+        <a href="https://mix-id.vercel.app" target="_blank" class="project-card reveal reveal-delay-2">
+          <img src="mixid.jpg" alt="Mix'd" class="project-card-image">
+          <div class="project-card-content">
+            <div class="project-card-text">
+              <h3 class="project-card-title">Mix'd</h3>
+              <p class="project-card-desc">Paste a URL, get a tracklist.</p>
+            </div>
+            <span class="project-card-arrow">→</span>
+          </div>
+        </a>
+        <a href="https://clawprint.dev" target="_blank" class="project-card reveal reveal-delay-3">
+          <img src="clawprint.jpg" alt="Clawprint" class="project-card-image">
+          <div class="project-card-content">
+            <div class="project-card-text">
+              <h3 class="project-card-title">Clawprint</h3>
+              <p class="project-card-desc">Personality profiles for AI agents.</p>
+            </div>
+            <span class="project-card-arrow">→</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STRIKE - YELLOW -->
+  <section class="section-yellow">
+    <div class="section-inner">
+      <p class="section-label reveal">Case Study · 2021–2023</p>
+      <h2 class="section-title reveal">Strike</h2>
+      <p class="section-desc reveal">
+        Bitcoin payments for El Salvador's national rollout. 
+        Led product design from early beta to millions of users sending money across borders.
+      </p>
+      
+      <div class="strike-grid">
+        <div class="strike-card reveal reveal-delay-1">
+          <img src="strike1-CjnPLkXo.png" alt="Strike onboarding">
+        </div>
+        <div class="strike-card reveal reveal-delay-2">
+          <img src="strike2-D0UqhuCL.png" alt="Strike wallet">
+        </div>
+      </div>
+      
+      <a href="https://www.scottkbell.com/strike-case-study" class="case-study-link reveal">Read the full case study →</a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section-about">
+    <div class="section-inner">
+      <p class="section-label reveal" style="color: var(--gray);">About</p>
+      <h2 class="section-title reveal">Scientist brain. Design hands.</h2>
+      
+      <div class="about-content">
+        <div class="about-text reveal reveal-delay-1">
+          <p>
+            I spent years in microbiology labs before I picked up design tools. 
+            That training stuck. Observe the system. Find the pattern. Test the intervention.
+          </p>
+          <p>
+            Design is the same work, different medium. 
+            Find the logic underneath, then make it visible.
+          </p>
+        </div>
+        <div class="about-text reveal reveal-delay-2">
+          <p>
+            Now I work at the intersection of AI and human experience. 
+            I build tools that make AI agents more capable, and I use those same agents to ship faster than should be possible.
+          </p>
+          <p>
+            14 years of product design. Still curious about what's underneath.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact-section">
+    <div class="section-inner contact-content">
+      <h2 class="contact-title reveal">I'm most useful early.</h2>
+      <p class="contact-subtitle reveal">
+        Before the scope is locked. Before the obvious solution wins.
+      </p>
+      <a href="mailto:hello@scottkbell.com" class="contact-email reveal">hello@scottkbell.com</a>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Scott Bell · Victoria, BC
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    
+    navToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+    
+    // Scroll reveal
+    const revealElements = document.querySelectorAll('.reveal');
+    
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    });
+    
+    revealElements.forEach(el => revealObserver.observe(el));
+  </script>
+</body>
+</html>

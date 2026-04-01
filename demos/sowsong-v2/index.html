@@ -434,21 +434,20 @@
     
     .about-inner {
       display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap: var(--space-8);
+      grid-template-columns: auto 1fr;
+      gap: var(--space-5);
       max-width: 900px;
       margin: 0 auto;
-      align-items: center;
-      padding: var(--space-6);
+      align-items: stretch;
+      padding: var(--space-5);
       border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 4px;
     }
     
     .about-image {
-      aspect-ratio: 3 / 4;
+      width: 260px;
       overflow: hidden;
       border-radius: 2px;
-      max-width: 280px;
     }
     
     .about-image img {
@@ -459,6 +458,9 @@
     
     .about-content {
       max-width: 440px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
     
     .about-content h2 {

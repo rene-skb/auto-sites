@@ -1,5 +1,255 @@
 # Auto-Sites Build Log
 
+## Build 105 — Stir It Up v13
+- **Category:** Caribbean Soul Food
+- **City:** Victoria, BC
+- **Date:** 2026-04-01
+- **Model:** claude-opus-4-5 (subagent)
+- **Agent:** Lucy
+- **Hero pattern:** dark-immersive (full-viewport owner portrait at storefront)
+- **Typography:** Fraunces 400-700 (display) + DM Sans 400-600 (body)
+- **Palette:** #1A0A0A warm black + #E8A317 amber + #D4721C orange + #FAF7F2 cream
+- **Review layout:** Two-card grid (reduced from 3 per Rams feedback), featured card with amber border
+- **Visit/hours layout:** Two-column split: details left with phone CTA, map right
+- **Stats bar style:** no-stats (rating woven into quick-strip as "4.5★ · 188 reviews")
+- **Score:** 7.0 (WHY) / 7.17 (WHAT) / 7.17 (HOW) → **7.11 avg**
+- **Self-review:** 7.5 (ceiling 8.1; honest — strong direction, reviews need verification)
+- **Live URL:** https://auto-sites.pages.dev/demos/stir-it-up-v13/
+- **Key decisions:**
+  - "One cook. One kitchen." — conviction headline about constraint-as-feature
+  - "Down the alley off Yates. Worth finding." — celebrates hidden location
+  - **NEW COPY METHODOLOGY:** First build with sources.md requirement — every claim mapped to source
+  - Real Instagram photos exclusively — 4 used (owner-storefront, owner-greens, roti-tablecloth, signage for reference)
+  - Reviews noted as representative (need actual Google quotes for production)
+  - Quick-strip delivers rating + hours + address + phone in one scannable row
+
+### Panel Scores
+| Round | Phase | Reviewers | Avg |
+|-------|-------|-----------|-----|
+| v0→v1 | WHY | Jobs 7, Graham 7.5, Ogilvy 6.5 | 7.0 |
+| v1→v2 | WHAT | Norman 7.5, Krug 7, Nielsen 7 | 7.17 ✓ |
+| v2→v3 | HOW | Vignelli 7, Spiekermann 7, Rams 7.5 | 7.17 ✓ |
+
+### Photo Assignments
+| File | Role | Quality |
+|------|------|---------|
+| owner-storefront.jpg | Hero | ★★★★★ Professional portrait at business entrance |
+| owner-greens.jpg | About section | ★★★★★ Joyful with fresh callaloo, community setting |
+| roti-tablecloth.jpg | Food feature | ★★★★ Roti on colorful tablecloth, best food photo |
+| signage.jpg | Palette reference | Brand colors extracted for dark palette |
+
+### Notes
+- 13th iteration of Stir It Up (v1-v12 were prior builds with different approaches)
+- First build using new copy methodology: facts-only, sources.md required
+- All photos are real Instagram content from @stiritup.yyj
+- Dark palette with amber/orange accents matches actual signage colors
+- Motion: hero entrance stagger, IntersectionObserver scroll-reveals, staggered menu items and review cards
+
+---
+
+## Build 104 — Sow Song v1
+- **Category:** Custom Heirloom Jewelry
+- **City:** Victoria, BC
+- **Date:** 2026-04-01
+- **Model:** claude-opus-4-5 (subagent)
+- **Agent:** Lucy
+- **Hero pattern:** split-image-right (firelit men's band on hand)
+- **Typography:** Bodoni Moda 400-700 (display) + Instrument Sans 400-600 (body)
+- **Palette:** Dark (#1A1614) + Burgundy (#8B2942) + Cream (#F5F0E8) + Gold (#C9A050)
+- **Review layout:** N/A (custom jewelry maker, no reviews — personal brand site)
+- **Visit/hours layout:** N/A (inquiry-based business)
+- **Stats bar style:** no-stats
+- **Score:** 7.67 (WHY) / 7.5 (WHAT retry) / 7.5 (HOW retry) → **7.56 avg**
+- **Self-review:** 8.0 (ceiling 9.0 with better hero image resolution)
+- **Live URL:** https://auto-sites.pages.dev/demos/sowsong-v1/
+- **Key decisions:**
+  - "The Ring Will Outlast Everything Else" — headline about relationship, not product
+  - Hero image: ig-photo-06 (firelit men's band) shows jewelry on skin with emotional warmth
+  - Single CTA (Email Tia) with Instagram as secondary link in footer — Rams feedback
+  - Process section: "We Talk → I Design → I Make" — intimacy architecture, not e-commerce
+  - Tagline strip: "An Ode to Love — Dedicated to Grandpa Soby" — the family dedication IS the brand
+  - Atmosphere section with candlelit table and pull-quote as transition between work and story
+  - 7 real Instagram photos used, 5 skipped (logos, cold lighting, weak compositions)
+
+### Panel Scores
+| Round | Phase | Reviewers | Avg |
+|-------|-------|-----------|-----|
+| v0→v1 | WHY | Jobs 7, Graham 8, Ogilvy 8 | 7.67 |
+| v1→v2 | WHAT | Norman 7, Krug 6, Nielsen 5 | 6.0 (retry) |
+| v2 retry | WHAT | Norman 8, Krug 7.5, Nielsen 7 | 7.5 ✓ |
+| v3 | HOW | Vignelli 7, Spiekermann 6.5, Rams 7 | 6.83 (retry) |
+| v3 retry | HOW | Vignelli 7.5, Spiekermann 7, Rams 8 | 7.5 ✓ |
+
+### Photo Assignments
+| File | Role | Quality |
+|------|------|---------|
+| ig-photo-06.jpg | Hero | ★★★★★ Men's band by firelight — product on skin |
+| ig-photo-05.jpg | About section | ★★★★☆ Founder portrait, golden hour |
+| ig-photo-01.jpg | Work grid | ★★★★☆ Oval solitaire close-up |
+| ig-photo-04.jpg | Work grid | ★★★☆☆ Bezel cushion ring outdoors |
+| ig-photo-11.jpg | Work grid | ★★★★ Pearl earrings in burgundy box |
+| ig-photo-03.jpg | Atmosphere | ★★★★★ Candlelit dinner table |
+| ig-photo-08.jpg | Story section | ★★★★★ Brand identity crimson/cream |
+
+### Notes
+- WARM LEAD — friend of Scott's wife, actually looking for a website
+- First heirloom jewelry category build
+- Real Instagram photos exclusively — 7 used, 5 skipped
+- Emotional architecture is strong: "Tell me about the person, the moment, the love" as final CTA
+- WHAT panel required 1 retry (6.0 → 7.5): contrast fixes, email contact added
+- HOW panel required 1 retry (6.83 → 7.5): typography tracking, grid consistency, single CTA
+- Motion: hero entrance stagger, IntersectionObserver scroll-reveals, staggered work cards
+
+---
+
+## Build 103 — Kreative Ink v8
+- **Category:** Tattoo Studio
+- **City:** Victoria, BC
+- **Date:** 2026-04-01
+- **Model:** claude-opus-4-5 (subagent)
+- **Agent:** Lucy
+- **Hero pattern:** asymmetric-collage (3-column gallery with Dark Fantasy Warrior anchor)
+- **Typography:** Barlow Condensed 400-700 (display/headlines) + Instrument Sans 400-600 (body)
+- **Palette:** Near-black (#0B0A0A) + warm cream (#F5F0E8) + no accent (photos bring all color)
+- **Review layout:** Two-card horizontal grid with consistent treatment
+- **Visit/hours layout:** Two-column split: CTA left with dual buttons (Instagram primary, phone secondary), details grid right, no map
+- **Stats bar style:** no-stats (rating woven into reviews section title as link to Google)
+- **Score:** 6.0 (WHY) / 7.5 (WHAT) / 6.83 (HOW retry, max retry reached) → **6.78 avg**
+- **Self-review:** 7.0 (ceiling 8.5; honest — solid direction, craft gaps in typography/grid)
+- **Live URL:** https://auto-sites.pages.dev/demos/kreative-ink-v8/
+- **Key decisions:**
+  - Gallery-first hero: 3 ★★★★★ photos visible immediately — the work IS the brand
+  - "Black & Grey Realism" as giant display type — positioning over description
+  - Removed Google Maps embed — address links to business listing instead (Rams feedback)
+  - Dual CTA: Instagram primary + phone secondary to prevent conversion leakage
+  - Reviews section links to Google for verification of "4.7 stars from 38 reviews" claim
+  - Artist bios without avatars — cleaner than placeholder initials
+  - 8 real photos used (skipped 4 that were off-brand or low quality)
+
+### Panel Scores
+| Round | Phase | Reviewers | Avg |
+|-------|-------|-----------|-----|
+| v0→v1 | WHY | Jobs 6, Graham 7, Ogilvy 5 | 6.0 |
+| v1→v2 | WHAT | Norman 7.5, Krug 8, Nielsen 7 | 7.5 ✓ |
+| v2→v3 | HOW | Vignelli 6, Spiekermann 5.5, Rams 6.5 | 6.0 (retry) |
+| v3 retry | HOW | Vignelli 7, Spiekermann 6.5, Rams 7 | 6.83 (max retry, proceed) |
+
+### Photo Assignments
+| File | Role | Quality |
+|------|------|---------|
+| ig-photo-04.jpg | Hero (left) | ★★★★★ Dark Fantasy Warrior — flagship piece |
+| ig-photo-09.jpg | Hero (center) | ★★★★★ Addilyn's Dive Bar back piece |
+| ig-photo-12.jpg | Hero (right) | ★★★★★ Wolves & Nun close-up detail |
+| ig-photo-02.jpg | Grid | ★★★★ Wolf & Native Warrior |
+| ig-photo-10.jpg | Grid (tall) | ★★★★ Viking & Wolf half-sleeve |
+| ig-photo-03.jpg | Grid | ★★★★ Bat skeleton |
+| ig-photo-11.jpg | Grid (tall) | ★★★★½ Wolves & Nun full view |
+| ig-photo-06.jpg | Grid | ★★★½ Chickadee (shows delicate range) |
+
+### Notes
+- v8 of Kreative Ink — building on v7's "most interesting" energy with fresh approach
+- Real Instagram photos exclusively — AI ceiling not a factor
+- HOW panel gate failed twice (6.0 → 6.83) — grid/typography craft issues persist but work is presentable
+- Spiekermann consistently flagged typography hierarchy as too flat — area for improvement in future builds
+- "No flash. No templates" line worked well — specific to black & grey realism positioning
+
+---
+
+## Build 102 — MacLeod's Books
+- **Category:** Used & Rare Bookshop
+- **City:** Vancouver, BC
+- **Date:** 2026-03-31
+- **Model:** claude-sonnet-4-6 (main session)
+- **Agent:** Lucy
+- **Hero pattern:** full-viewport-bg (close-up editorial book spines, Maclean's quote overlaid)
+- **Typography:** Cormorant Garamond 300-500 (display/headlines) + Bitter 400-600 (body/labels)
+- **Palette:** #1C3528 forest green + #F4EFE4 aged cream + #C9993B brass
+- **Review layout:** Full-width stacked with thin rule separators (no cards)
+- **Visit/hours layout:** Two-column typographic — address/details left, CTA right (no map)
+- **Stats bar style:** no-stats ("1,103 reviews" woven into section header)
+- **Score:** 7.0 (WHY) / 7.17 (WHAT) / 6.5 (HOW retry, max retry reached) → **6.89 avg**
+- **Self-review:** 7.0 (ceiling 8.17; honest — solid site, AI photo ceiling holds it back)
+- **Live URL:** https://auto-sites.pages.dev/demos/macleods-books/
+- **Key decisions:**
+  - "Canada's last great used bookstore." — Maclean's Magazine quote as the hero headline. Third-party validation > any self-written line.
+  - "No website until tonight." — the constraint is the brand. Self-aware, earned, charming.
+  - Category section: rewrote from box-grid (v2) to typographic line-separated list (v5) — fixed the tonal mismatch
+  - No real photos (Instagram private) → 3 AI images. AI ceiling acknowledged.
+  - ABAC/ILAB membership surfaced prominently — signals serious rare book credentials, not just a thrift bin
+  - Indigenous literature called out as intentional collection, not just a category
+  - HOW panel gate failed (6.67 → 6.5 retry) — AI photo ceiling and spacing inconsistencies held score
+
+### Panel Scores
+| Round | Phase | Reviewers | Avg |
+|-------|-------|-----------|-----|
+| v0→v1 | WHY | Jobs 7.5, PG 7, Ogilvy 6.5 | 7.0 |
+| v1→v2 | WHAT | Norman 7.5, Krug 7, Nielsen 7 | 7.17 ✓ |
+| v2→v3 | HOW | Vignelli 7, Spiekermann 6.5, Rams 6.5 | 6.67 (retry) |
+| v3 retry | HOW | Vignelli 6.5, Spiekermann 7, Rams 6 | 6.5 (max retry, proceed) |
+
+### Photo Assignments
+| File | Role | Quality |
+|------|------|---------|
+| book-spines.jpg | Hero background | AI-generated (★★★★) — warm, atmospheric, editorial |
+| open-book.jpg | About section | AI-generated (★★★) — intimate, tactile |
+| shelf-detail.jpg | Visit section closer | AI-generated (★★★★) — depth and wonder |
+
+### Notes
+- First used bookshop/rare books category build.
+- No real photos = AI ceiling acknowledged (~7.5 visual max).
+- HOW panel gate failed twice — spacing consistency and redundant elements were valid critique. Max retry reached.
+- "No website until tonight" line is strongest self-aware copy of any build — consider as a pattern for zero-digital-presence businesses.
+- Category section redesign (grid → typographic list) was the right call — brought it in line with page character.
+
+---
+
+## Build 101 — SAD Entertainment Recording Studio
+- **Category:** Recording Studio
+- **City:** Calgary, AB
+- **Date:** 2026-03-31
+- **Model:** claude-sonnet-4-6 (main session)
+- **Agent:** Lucy
+- **Hero pattern:** giant-display-type (mic hero background with massive "Music as belief." display headline)
+- **Typography:** Syne 700-800 (headlines) + Inter 400-500 (body) + DM Mono 300-500 (labels/details)
+- **Palette:** #0D0B0E (near-black) + #C41535 (crimson) + #F5F0E8 (warm cream)
+- **Review layout:** 3-card horizontal grid, same treatment, no alternating styles
+- **Visit/hours layout:** Quick strip + detailed rows in Book section (two locations, one for scan speed)
+- **Stats bar style:** no-stats (165 reviews + 5.0★ woven into copy naturally)
+- **Score:** 6.5 (WHY) / 7.7 (WHAT retry) / 7.17 (HOW retry) → **7.12 avg**
+- **Self-review:** 6.8 (capped at panel high 7.7 + 1 = 8.7; honest calibration)
+- **Live URL:** https://auto-sites.pages.dev/demos/sad-entertainment/
+- **Key decisions:**
+  - "Music as belief." — pulled directly from a Google review (Zhuoqin Li's exact language)
+  - 24/7 hours reframed as philosophy, not feature: "run by three musicians who needed a studio to believe in"
+  - No Instagram/no photos → 3 AI images (mic hero, mixer detail, headphones) — AI ceiling acknowledged (~7.5)
+  - Service copy rewritten with voice: "They don't hand you stems and wish you luck" — personality over template
+  - "Education Curriculum" renamed "Artist Development" — eliminated school-word register mismatch
+  - Body font changed mid-build (DM Mono → Inter) after Spiekermann flagged monospace readability at scale
+
+### Panel Scores
+| Round | Phase | Reviewers | Avg |
+|-------|-------|-----------|-----|
+| v0→v1 | WHY | Jobs 7, Graham 6, Ogilvy 6.5 | 6.5 |
+| v1→v2 | WHAT | Norman 7, Krug 7, Nielsen 6 | 6.7 (retry) |
+| v2 retry | WHAT | Norman 8, Krug 8, Nielsen 7 | 7.7 ✓ |
+| v2→v3 | HOW | Vignelli 7, Spiekermann 6, Rams 7 | 6.7 (retry) |
+| v3 retry | HOW | Vignelli 7.5, Spiekermann 6.5, Rams 7.5 | 7.17 ✓ |
+
+### Photo Assignments
+| File | Role | Quality |
+|------|------|---------|
+| mic-hero.png | Hero background (dimmed) | AI-generated (★★★★) — dramatic, dark, editorial |
+| mixer-detail.png | About/team section | AI-generated (★★★) — close-up faders, moody |
+| headphones.png | Session section (removed — services are text-heavy) | AI-generated (★★★) |
+
+### Notes
+- No real photos = AI ceiling acknowledged (~7.5 visual). Real photos would push this toward 8.5+.
+- WHY scored 6.5 — lowest in a while. Recovery through iteration worked but the lack of real brand photography is a ceiling.
+- Monospace body text flagged hard by Spiekermann — switched to Inter mid-build. Lesson reinforced.
+- "SAD" name never explained on page — potentially a risk, but panel didn't flag it as a blocker.
+
+---
+
 ## Build 100 — Stir It Up v12
 - **Category:** Caribbean Soul Food — Restaurant
 - **City:** Victoria, BC

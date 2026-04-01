@@ -27,11 +27,11 @@
 - "4.5★ from 188 reviews on Google" → Build brief
 
 ### Review Cards
-**NOTE:** These reviews are representative placeholders. For production, actual reviews should be pulled from Google Reviews with exact text and names.
+**⚠️ REPRESENTATIVE PLACEHOLDERS — NOT VERIFIED**
+These reviews capture common themes from Google but are not direct quotes. For production, pull actual reviews from Google with exact text and names.
 
-- "Best Caribbean food I've had outside of the Caribbean..." → Representative of common Google review themes
-- "Authentic St. Lucian food..." → Representative review; "Cash only" detail needs verification
-- "Hidden gem! The curry goat melts in your mouth..." → Representative review
+- "Best Caribbean food I've had outside of the Caribbean..." → Representative (common theme)
+- "Hidden gem! The curry goat melts in your mouth..." → Representative (common theme)
 
 ## Visit Section
 - All address/hours/phone → Build brief / Google listing

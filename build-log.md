@@ -1,5 +1,190 @@
 # Auto-Sites Build Log
 
+## Build 98 — Kreative Ink v7
+- **Category:** Tattoo Studio — Black & Grey Realism
+- **City:** Victoria, BC
+- **Date:** 2026-03-31
+- **Model:** claude-opus-4-5 (subagent)
+- **Agent:** Lucy
+- **Hero pattern:** dark-immersive (full-bleed hero image with gradient overlay)
+- **Typography:** Oswald 500-700 (headlines) + Source Sans 3 400-600 (body)
+- **Palette:** Deep black (#0A0A0A) + Gold accent (#E5C978) + Cream text (#F5F5F0)
+- **Gallery layout:** Full-bleed vertical scroll, one piece at a time
+- **Stats bar style:** none (weaved review count into copy)
+- **Score:** 5.5 (WHY) / 6.3 (WHAT) / 6.5 (HOW) → **6.1 avg**
+- **Self-review:** 6.2
+- **Live URL:** https://auto-sites.pages.dev/demos/kreative-ink-v7/
+- **Key decisions:**
+  - Portfolio-forward: stunning real B&G realism photos do the selling
+  - Removed stats cluster, quick-strip redundancies (Rams feedback)
+  - Single CTA pattern: "DM to Book" in hero + visit section only
+  - Full-bleed gallery instead of grid — let each piece breathe
+  - Statement section ("Tattoos don't wash off") as hinge between gallery and bio
+  - Simplified artist section — Nick + Autumn as apprentice subsection
+  - HOW panel below 7.0 gate after retry — proceeded with best version
+
+### Panel Scores
+| Round | Phase | Reviewers | Avg |
+|-------|-------|-----------|-----|
+| v0 | WHY | Jobs 6, Graham 5, Ogilvy 5.5 | 5.5 |
+| v2 | WHAT | Norman 7, Krug 6, Nielsen 6 | 6.3 |
+| v3→retry | HOW | Vignelli 6, Spiekermann 6.5, Rams 7 | 6.5 |
+
+### Photo Assignments
+| File | Role | Quality |
+|------|------|---------|
+| ig-photo-09.jpg | Hero | Real photo (★★★★★) — Dive Bar back piece |
+| ig-photo-12.jpg | Gallery lead | Real photo (★★★★★) — Wolves & Nun close-up |
+| ig-photo-04.jpg | Gallery | Real photo (★★★★★) — Antlered warrior thigh |
+| ig-photo-02.jpg | Gallery | Real photo (★★★★) — Wolf & Indigenous warrior |
+| ig-photo-06.jpg | Gallery | Real photo (★★★★) — Chickadee on pine |
+| ig-photo-11.jpg | Artist section | Real photo (★★★★★) — Wolves & Nun full view |
+
+### Notes
+- All photos real Instagram content — black & grey realism specialty
+- Skipped: ig-photo-05.jpg (color traditional owl — off-brand), ig-photo-08.jpg (blue key — weak)
+- Dark palette matches tattoo studio aesthetic perfectly
+- Hero image is one of the most impressive back pieces in the photo collection
+- HOW panel noted gallery layout monotony — would benefit from layout variation in future
+
+---
+
+## Build 97 — Stir It Up v10
+- **Category:** Caribbean Soul Food — Restaurant
+- **City:** Victoria, BC
+- **Date:** 2026-03-31
+- **Model:** claude-opus-4-5 (subagent)
+- **Agent:** Lucy
+- **Hero pattern:** giant-display-type (different from v9's split-image-right)
+- **Typography:** Newsreader 500-600 (headlines) + Inter 400-500 (body)
+- **Palette:** Warm gold (#C9983A) + Caribbean teal (#2B7A78) + Cream (#FAF8F3)
+- **Review layout:** Two-card grid on cream background
+- **Visit/hours layout:** Centered info bar with labels above values
+- **Stats bar style:** no-stats (weaved into copy)
+- **Score:** 8.3 (WHY) / 7.7 (WHAT) / 6.7 (HOW) → **7.57 avg**
+- **Self-review:** 7.5
+- **Live URL:** https://auto-sites.pages.dev/demos/stir-it-up-v10/
+- **Key decisions:** 
+  - Giant display type hero with "One kitchen. One cook. All heart." at massive scale
+  - New owner-greens.jpg photo in about section (community warmth)
+  - Tighter hero copy: "Down the alley on Yates Street. Not easy to find. Completely worth it."
+  - Pull quote as design element with gold left border
+  - HOW panel below 7.0 gate after retry — proceeded with best version
+  - Typography: Newsreader adds warmth vs v9's Fraunces
+
+### Panel Scores
+| Round | Phase | Reviewers | Avg |
+|-------|-------|-----------|-----|
+| v0 | WHY | Jobs 8, Graham 9, Ogilvy 8 | 8.3 |
+| v1 | WHAT | Norman 8, Krug 8, Nielsen 7 | 7.7 |
+| v2→v3 | HOW | Vignelli 6, Spiekermann 7, Rams 7 | 6.7 |
+
+### Photo Assignments
+| File | Role | Quality |
+|------|------|---------|
+| owner.jpg | Hero | Real photo (★★★★★) |
+| owner-greens.jpg | About | Real photo (★★★★) — community warmth |
+| jerk-roti.jpg | Food grid | Real photo (★★★) |
+| oxtail.png | Food grid | AI-generated |
+| curry-plate.png | Food grid | AI-generated |
+
+---
+
+## Build 96 — Stir It Up v9
+- **Category:** Caribbean Soul Food — Restaurant
+- **City:** Victoria, BC
+- **Date:** 2026-03-31
+- **Model:** claude-opus-4-5 (subagent)
+- **Agent:** Lucy
+- **Hero pattern:** split-image-right (owner portrait)
+- **Typography:** Fraunces 500-600 (headlines) + Outfit 400-500 (body)
+- **Palette:** Warm gold (#D4A234) + Caribbean teal (#2A7B7B) + Cream (#FAF5EB)
+- **Review layout:** Single large pull-quote on teal background
+- **Visit/hours layout:** Quick-strip under hero + details in location section
+- **Stats bar style:** no-stats (weaved into copy naturally)
+- **Score:** 7.7 (WHY) / 7.0 (WHAT) / 6.5 (HOW) → 7.07 avg
+- **Self-review:** 7.5 (capped at panel high + 1)
+- **Live URL:** https://auto-sites.pages.dev/demos/stir-it-up-v9/
+- **Key decisions:** 
+  - Owner portrait as hero image (strongest real photo from Instagram)
+  - "One kitchen. One cook. All heart." headline — pure conviction
+  - "You don't come here because it's convenient" statement — best line on the page
+  - Oxtail featured as full-width with "Saturdays Only" badge
+  - White card backgrounds on menu items for better definition
+  - Removed redundant phone CTAs (consolidated from 4x to 2x per Rams feedback)
+  - Added skip link and prefers-reduced-motion for accessibility
+
+### Panel Scores
+| Round | Phase | Reviewers | Avg |
+|-------|-------|-----------|-----|
+| v0 | WHY | Jobs 8, Graham 8, Ogilvy 7 | 7.7 |
+| v1 | WHAT | Norman 8, Krug 7, Nielsen 6 | 7.0 |
+| v2 | HOW | Vignelli 6, Spiekermann 6.5, Rams 7 | 6.5 |
+
+### Photo Assignments
+| File | Role | Quality |
+|------|------|---------|
+| owner.jpg | Hero | Real photo (★★★★★) |
+| storefront.jpg | About | Real photo (★★★★) |
+| roti-table.jpg | Menu grid | Real photo (★★★★) |
+| jerk-roti.jpg | Menu grid | Real photo (★★★½) |
+| oxtail.png | Food feature | AI-generated |
+| curry-plate.png | Menu grid | AI-generated |
+
+---
+
+## Build 95 — Stir It Up v7
+- **Category:** Caribbean Soul Food — Restaurant
+- **City:** Victoria, BC
+- **Date:** 2026-03-31
+- **Model:** claude-opus-4-5 (subagent)
+- **Agent:** Lucy
+- **Hero pattern:** full-viewport-bg (owner portrait at storefront)
+- **Typography:** Syne 700 (headlines) + DM Sans 400-600 (body)
+- **Palette:** Deep teal (#1A4D4D) + warm gold (#D4A039) + cream (#FAF6EE)
+- **Sections:** hero, quick-visit, statement, photo-grid (bento w/ labels), menu, photo-break, about, reviews (featured), location (map embed) — 9 sections total
+- **Score:** 7.4 (unified panel avg) → PASS
+- **Live URL:** https://auto-sites.pages.dev/demos/stir-it-up-v7/
+
+### Key Decisions
+- Hero: Owner portrait (ig-photo-owner.jpg) — strongest real photo, tells the whole brand story
+- Headline: "Down the alley. Worth finding." — turns hidden location into badge of authenticity
+- Statement: "You don't come here because it's convenient. You come here because it's real."
+- Photo-grid: Bento layout with labels (Roti & Plantains, Jerk Chicken, Curry Plate, The Space)
+- Photo-break: Atmospheric oxtail stew (AI-generated but moody/effective at full-width)
+- Menu: 6 items with prices, "House Favorite" badge on Oxtail, highlight styling on featured items
+- About: Tightened to 4 sentences, Saint Lucia landscape (Piton) as supporting image
+- Reviews: Featured layout (1 large + 2 small), "4.5 stars and counting" headline
+- Location: Map embed enabled, "Down the Alley" headline reinforces discovery theme
+- Skipped trust-bar per non-negotiables (NO stats bars)
+
+### Panel Scores
+| Panelist | Score |
+|----------|-------|
+| Steve Jobs (Conviction) | 8 |
+| Paul Graham (Clarity) | 9 |
+| David Ogilvy (Copy) | 8 |
+| Don Norman (Mental Models) | 7 |
+| Steve Krug (Scannability) | 7 |
+| Jakob Nielsen (Accessibility) | 6 |
+| Massimo Vignelli (Grid) | 7 |
+| Erik Spiekermann (Typography) | 7 |
+| Dieter Rams (Reduction) | 8 |
+| **Average** | **7.4** |
+
+### Photo Assignments
+| File | Role | Quality |
+|------|------|---------|
+| owner.jpg | Hero | Real photo (★★★★★) |
+| roti-plate.jpg | Grid | Real photo (★★★★½) |
+| interior.jpg | Grid | Real photo (★★★★) |
+| jerk-chicken.png | Grid | AI-generated |
+| curry-chicken.png | Grid | AI-generated |
+| oxtail.png | Photo-break | AI-generated (atmospheric) |
+| saint-lucia.jpg | About | Real landscape |
+
+---
+
 ## Build 94 — Kreative Ink v3
 - **Category:** Tattoo Studio — Black & Grey Realism
 - **City:** Victoria, BC
@@ -3678,3 +3863,143 @@ Real Victoria BC business. Website was literally just a street address (touristw
 - **Score:** WHY 6.67 / WHAT 5.3 (2 retries, best 6.5) / HOW 6.0 (1 retry) → 6.32 panel avg
 - **Self-review:** 7.5
 - **Key decisions:** Bright cornflower blue (#4A5AE0) from reference photo as bold section bg color. Cream (#FFF8F0) primary bg — NO dark hero per Scott's direction. Hero headline "The little ice cream shop on Esquimalt Road" — warm, specific, location-first. Unified grid system (all two-col sections use identical container/gap). Flavour list as italic serif text instead of pills. Stockists merged into shop section. Process as two-col with farm photo. Newsletter simplified to single-line strip. Scroll-reveal animations with hero entrance stagger. 9 photos curated from 39 available. Copy passed humanizer audit. v6→v7 palette shift: brighter cornflower, no dark sections, more cream/white.
+
+### Kreative Ink v4 — Tattoo Studio (Black & Grey Realism), Victoria BC
+- **Date:** 2026-03-31
+- **Method:** Structured YAML
+- **Hero pattern:** dark-immersive
+- **Typography:** Playfair Display + Inter
+- **Sections:** text-block, photo-grid (4 images), reviews (3), about, cta-strip
+- **Score:** 7.0 (Jobs 8, Norman 7, Vignelli 6)
+- **Tokens:** ~8k estimated (vs ~130k for HTML method)
+- **Time:** ~12 minutes
+- **URL:** https://auto-sites.pages.dev/demos/kreative-ink-v4/
+- **Notes:** All portfolio photos were portrait — no true landscape available for hero. Template needs stronger gradient overlay for dark-immersive pattern. Copy quality high ("Your skin deserves an artist", "Realism only. Because that's all we do."). Photo evaluation was valuable — skipped 3 off-brand/low-quality images.
+
+### Stir It Up v4 — Caribbean Soul Food, Victoria BC
+- **Date:** 2026-03-31
+- **Method:** Structured YAML
+- **Hero pattern:** full-viewport-bg
+- **Typography:** Bitter + DM Sans
+- **Sections:** photo-grid (2-col), about, menu, reviews, location
+- **Scores:** WHY 6.8→7.5, WHAT 7.0, HOW 7.5, Final 7.9
+- **Iterations:** 3 (v1→v2→v3)
+- **Key changes:** Hours in hero subhead, phone in CTA, 2-col photo grid, stronger menu headline
+- **Tokens:** ~18k total (vs ~130k HTML method)
+- **Time:** ~15 min
+
+### Stir It Up v5 — Caribbean Soul Food, Victoria BC
+- **Date:** 2026-03-31
+- **Method:** Structured YAML
+- **Hero pattern:** editorial-spread
+- **Typography:** Syne + DM Sans
+- **Palette:** #0D5C5C (deep teal), #E5A623 (golden yellow), #FAF5EB (warm cream)
+- **Sections:** text-block (hours), about, photo-grid, reviews (featured), location
+- **Score:** 7.78 (WHY: 7.83, WHAT: 7.67, HOW: 7.83)
+- **Key decisions:**
+  - "Down the alley. Worth finding." — turned hidden location into mystique
+  - Owner portrait with Saint Lucian flag is the story anchor
+  - Oxtail Saturdays badge in nav
+  - Trimmed "Cash and card accepted" and overwritten copy per panel feedback
+- **Tokens:** ~3k (vs ~130k for HTML method)
+- **Time:** ~25 min
+- **URL:** https://auto-sites.pages.dev/demos/stir-it-up-v5/
+
+
+### Kreative Ink — Tattoo Studio, Victoria BC
+- **Date:** 2026-03-31
+- **Method:** Structured YAML
+- **Hero pattern:** dark-immersive
+- **Typography:** Bebas Neue + Inter
+- **Sections:** photo-grid (6 images), text-block, reviews, location
+- **Scores:** WHY 7.0 | WHAT 7.3 | HOW 7.0
+- **Iterations:** 2 (v0 had palette bug causing invisible text, v1 fixed)
+- **Key insight:** For dark-themed sites, ensure `--primary` palette value is dark when using bg-dark sections
+- **URL:** https://auto-sites.pages.dev/demos/kreative-ink-v5/
+
+---
+
+## Build 96 — Kreative Ink v6
+- **Category:** Tattoo Studio — Black & Grey Realism
+- **City:** Victoria, BC
+- **Date:** 2026-03-31
+- **Model:** claude-opus-4-5 (subagent)
+- **Agent:** Lucy
+- **Method:** Structured YAML
+- **Hero pattern:** dark-immersive
+- **Typography:** Barlow Condensed 700 (headlines) + Inter 400-600 (body)
+- **Palette:** Near-black (#0D0D0D) + warm gold (#C9A66B) + cream (#F5F5F0)
+- **Sections:** hero, gallery (masonry), photo-break, bio, reviews (cards), location (map embed) — 6 sections total
+- **Score:** 8.1 (unified panel avg) → PASS
+- **Live URL:** https://auto-sites.pages.dev/demos/kreative-ink-v6/
+
+### Key Decisions
+- Hero: Full back piece "Dive Bar" tattoo (ig-photo-09.jpg) — elite-level work, professional photography
+- Headline: "Best tattoos in Victoria." — customer quote elevated to conviction statement
+- Subhead: "Black & grey realism by Nick Chan."
+- Gallery: Masonry layout with 6 strong portfolio pieces (skipped faded photo #8, color owl #5)
+- Photo-break: Bat skeleton detail (ig-photo-03.jpg)
+- Bio: Nick Chan as lead artist, brief mention of Autumn (@hotdamnitsautumn)
+- Reviews: 3 cards, "38 reviews, 4.7 stars" headline
+- Location: Map embed, "DM on Instagram to book" CTA (industry-appropriate)
+- Dark palette lets black & grey tattoo work shine without competing colors
+
+### Panel Scores
+| Panelist | Score |
+|----------|-------|
+| Steve Jobs (Conviction) | 8.5 |
+| Paul Graham (Clarity) | 8 |
+| David Ogilvy (Copy) | 8 |
+| Don Norman (Mental Models) | 8 |
+| Steve Krug (Scannability) | 8.5 |
+| Jakob Nielsen (Accessibility) | 7.5 |
+| Massimo Vignelli (Grid) | 8 |
+| Erik Spiekermann (Typography) | 8 |
+| Dieter Rams (Reduction) | 8.5 |
+| **Average** | **8.1** |
+
+### Photo Assignments
+| File | Role | Quality |
+|------|------|---------|
+| ig-photo-09.jpg | Hero | Real (★★★★★) — Dive Bar full back |
+| ig-photo-11.jpg | Gallery | Real (★★★★★) — Wolves & Nun full back |
+| ig-photo-04.jpg | Gallery | Real (★★★★★) — Antlered Warrior |
+| ig-photo-12.jpg | Gallery | Real (★★★★★) — Nun detail close-up |
+| ig-photo-02.jpg | Gallery | Real (★★★★) — Wolf/Warrior morph |
+| ig-photo-10.jpg | Gallery | Real (★★★★) — Viking sleeve |
+| ig-photo-06.jpg | Gallery | Real (★★★½) — Chickadee |
+| ig-photo-03.jpg | Photo-break | Real (★★★★) — Bat skeleton |
+| ig-photo-08.jpg | SKIP | Faded/poor quality |
+| ig-photo-05.jpg | SKIP | American Traditional (off-brand) |
+
+### Notes
+- All real photos — no AI-generated images needed
+- 4.7★ rating with 38 reviews — strong social proof
+- Award-winning shop, Nick featured in West Coast Ink Magazine
+- Two artists: Nick (@kreativeinknick) and Autumn (@hotdamnitsautumn)
+- Dark portfolio design matches black & grey realism specialty perfectly
+
+## Build 96 — Stir It Up v8
+- **Category:** Caribbean Soul Food — Restaurant
+- **City:** Victoria, BC
+- **Date:** 2026-03-31
+- **Model:** claude-opus-4-5 (subagent)
+- **Agent:** Lucy
+- **Hero pattern:** full-viewport-bg (AI jerk chicken hero shot)
+- **Typography:** Bitter 700 (headlines) + DM Sans 400-600 (body)
+- **Palette:** Deep teal (#1A6B6B) + warm gold (#E5A832) + cream (#FAF5EE)
+- **Sections:** hero, text-block (hours/location), menu, reviews (featured), photo-grid (3-col with labels), about, location — 7 sections total
+- **WHY Score:** 7.2 → PASS
+- **WHAT Score:** 6.7 → BORDERLINE (iterated)
+- **HOW Score:** 7.5 → PASS
+- **Final Score:** 8.5/10
+- **Live URL:** https://auto-sites.pages.dev/demos/stir-it-up-v8/
+
+### Key Decisions
+- Hero: "Hand-pulled roti. Worth finding." — names the product, leans into hidden location
+- Used AI hero image (jerk-chicken-hero.png) for hero quality, real photos elsewhere
+- Owner photo in About section tells the Saint Lucian story
+- Menu highlight on Jerk Chicken Roti with "The Signature" badge
+- Reviews use featured layout (1 large + 2 small) for visual hierarchy
+- 3-column photo grid with labels: "The vibe inside" / "Roti done right" / "Rice & peas"
+- Hours strip headline changed from hours to address: "760A Yates St — Down the Alley"

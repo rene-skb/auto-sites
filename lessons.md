@@ -7,6 +7,12 @@
 ## Tier 1 — Recent Observations
 *New patterns from 1-2 builds. Watch for repetition.*
 
+### [COPY] Facts-first copy with editorial voice outscores generic food descriptions.
+"If you get there late, the oxtail is probably gone" and "That's the kind of place this is" — specific, honest lines that all three WHY reviewers praised. Graham 8, Ogilvy 7. Don't describe food with adjectives. Tell the truth about what happens there. — Stir It Up Lucy b110
+
+### [STRUCTURE] Interior photo breaks get cut when they don't advance user decisions.
+Rams flagged the atmospheric interior photo as "decoration without function" (score 7). It interrupted reading flow without earning its space. Removing it tightened the page. If you keep a photo break, overlay actionable content (address, hours). — Stir It Up Lucy b110
+
 ### [LAYOUT] dark-immersive hero with centered product photo creates jewel-box intimacy.
 When the brand is precious/handmade, centering a single product photo against a near-black background with restrained type creates a luxury feel. The photo floats in darkness like something precious revealed. Works well with portrait product shots. WHAT panel scored it low initially (4.33) due to contrast issues — body text must be bright enough. — Sow Song Lucy 3 b109
 

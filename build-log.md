@@ -1,5 +1,60 @@
 # Auto-Sites Build Log
 
+## Build 110 — Stir It Up Lucy (Full Pipeline)
+- **Category:** Caribbean Soul Food
+- **City:** Victoria, BC
+- **Date:** 2026-04-01
+- **Model:** claude-opus-4-6 (subagent, Lucy)
+- **Agent:** Lucy (full 12-phase pipeline)
+- **Hero pattern:** full-viewport-bg (owner portrait at storefront, conviction text bottom-aligned)
+- **Typography:** Bitter 400-700 (display) + Space Grotesk 400-600 (body)
+- **Palette:** #1A0A0A warm black + #E8A317 amber + #FAF7F2 cream
+- **Review layout:** Single centered pull-quote with amber accent star, link to Google
+- **Visit/hours layout:** Quick-strip under hero + two-column split (details left, map right)
+- **Stats bar style:** no-stats (rating woven into quick-strip as "4.5★ · 188 reviews")
+- **Score:** 7.67 (WHY) / 7.67 (WHAT) / 7.0 (HOW, retry from 6.67) → **7.45 avg**
+- **Self-review:** 7.0 (ceiling 8.0; honest — strong editorial voice, food section limited by available photography)
+- **Live URL:** https://auto-sites.pages.dev/demos/stir-it-up-lucy/
+- **Key decisions:**
+  - "One cook. One kitchen. Everything from scratch." — conviction headline about constraint-as-feature
+  - Owner portrait (ig-photo-owner.jpg) as full-viewport hero — the owner IS the brand
+  - 5 real Instagram photos used (owner portrait, owner-greens, roti-tablecloth, interior, jerk roti+soda)
+  - Content verification: no invented reviews, no owner name, no prices, no Bob Marley reference
+  - sources.md documents every piece of copy's origin
+  - Menu items with descriptions but no prices (not available)
+  - Oxtail "Saturdays Only" badge
+  - Interior photo break removed per Rams (didn't earn its space)
+  - Review section simplified to single centered stat with Google link
+  - Quick-strip delivers rating + hours + phone in one scannable row
+  - Copy audit: zero AI slop, zero em dashes, zero "not X, it's Y" patterns
+
+### Panel Scores
+| Round | Phase | Reviewers | Avg |
+|-------|-------|-----------|-----|
+| v0→v1 | WHY | Jobs 8, Graham 8, Ogilvy 7 | 7.67 |
+| v1→v2 | WHAT | Norman 8, Krug 8, Nielsen 7 | 7.67 ✓ |
+| v2→v3 | HOW | Vignelli 6, Spiekermann 7, Rams 7 | 6.67 (retry) |
+| v3 retry | HOW | Vignelli 7, Spiekermann 7, Rams 7 | 7.0 ✓ |
+
+### Photo Assignments
+| File | Role | Quality |
+|------|------|---------|
+| ig-photo-owner.jpg | Hero | ★★★★★ Owner portrait at storefront with St. Lucian flag |
+| owner-greens.jpg | About section | ★★★★ Joyful with callaloo at community event |
+| roti-tablecloth.jpg | Food feature | ★★★★ Roti on colorful Caribbean tablecloth |
+| ig-photo-14.jpg | Food detail | ★★★½ Jerk roti with Grace Island Soda |
+| ig-photo-05.jpg | NOT USED (removed per Rams) | ★★★½ Blue walls, yellow ceiling interior |
+
+### Notes
+- Stir It Up rebuild with strict content verification (no invented claims)
+- All photos are real Instagram content from @stiritup.yyj
+- Copy is facts-first: what she cooks, where, when. Photos do the selling.
+- "The menu is short. Everything is made that morning." replaced generic food section headline
+- Motion: hero entrance stagger, IntersectionObserver scroll-reveals, food card stagger
+- Bitter + Space Grotesk is a sturdy, grounded pairing that matches one-woman Caribbean kitchen energy
+
+---
+
 ## Build 109 — Sow Song Lucy 3 (Full Pipeline)
 - **Category:** Custom Heirloom Jewelry
 - **City:** Nanaimo, BC (consultations in Tofino)

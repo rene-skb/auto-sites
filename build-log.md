@@ -1,5 +1,89 @@
 # Auto-Sites Build Log
 
+## Build 108 — Sow Song Lucy 2 (Full Pipeline)
+- **Category:** Custom Heirloom Jewelry
+- **City:** Nanaimo, BC (consultations in Tofino)
+- **Date:** 2026-04-01
+- **Model:** claude-sonnet-4-6 (subagent, Lucy)
+- **Agent:** Lucy (full 12-phase pipeline)
+- **Hero pattern:** giant-display-type (typography-forward, no hero photo)
+- **Typography:** Fraunces 300/italic (display — constrained to hero + contact) + Inter 400-600 (body)
+- **Palette:** #8B1D2C burgundy + #DBD5C6 cream + #E8E0CE cream-warm + #1E1916 dark
+- **Review layout:** N/A (email-only inquiry, no formal reviews — added Instagram quote instead)
+- **Visit/hours layout:** N/A (studio-based custom, email-only)
+- **Stats bar style:** no-stats
+- **Score:** 6.83 (WHY) / 6.0 (WHAT, below gate — max retry) / 7.33 (HOW) → **6.72 avg panels**
+- **Self-review:** 7.5 (ceiling 8.33)
+- **Live URL:** https://auto-sites.pages.dev/demos/sowsong-lucy-2/
+- **Key decisions:**
+  - "Traces of history, marks of moments." — her exact words as giant display hero type (no competing photo)
+  - "Named after a song her grandfather played on banjo." — moved story to second section for emotional hook
+  - Fraunces non-italic used for section titles; italic reserved for hero/quote/contact only
+  - B&W Tia portrait anchors the story section (burgundy bg, editorial layout)
+  - Services as clean border-top items (not numbered cards — removes false clickable affordance)
+  - Instagram quote strip for social proof: "Starting this little heartfilled business has meant more to me than I can say."
+  - Triple video row (dog ring, cushion solitaire, sea rings) — no header (Rams: let them speak)
+  - Scroll-reveal on hero, story, gallery, contact sections
+
+### Panel Scores
+| Round | Reviewers | Scores | Avg |
+|-------|-----------|--------|-----|
+| WHY (v0→v1) | Jobs 6, Graham 5, Ogilvy 5.5 → Jobs 7, Graham 7.5, Ogilvy 6 | 5.5 → 6.83 | ✓ proceed |
+| WHAT (v1) | Norman 7, Krug 6, Nielsen 5 | 6.0 | below gate |
+| WHAT retry (v2) | Norman 7, Krug 6, Nielsen 5 | 6.0 | below gate (max retry) |
+| HOW (v2) | Vignelli 7, Spiekermann 8, Rams 7 | 7.33 | ✓ pass |
+
+### Notes
+- Previous build (Build 107) used split-image-right + Playfair Display → this build uses giant-display-type + Fraunces — genuinely different approach
+- WHAT panel repeatedly flagged scannability + text contrast — service section redesigned from numbered cards to clean border-top, but scores didn't cross gate
+- Grandpa Soby story moved from bottom to second section — WHY score improved from 5.5 to 6.83
+- Real photos throughout — no AI-generated images needed
+
+---
+
+## Build 107 — Sow Song Lucy (Full Pipeline)
+- **Category:** Custom Heirloom Jewelry
+- **City:** Nanaimo, BC (consultations in Tofino)
+- **Date:** 2026-04-01
+- **Model:** claude-sonnet-4-6 (subagent, Lucy)
+- **Agent:** Lucy (full 12-phase pipeline)
+- **Hero pattern:** split-image-right
+- **Typography:** Playfair Display 400/italic (display) + Libre Baskerville 400 (body)
+- **Palette:** #8B1D2C burgundy + #F5EDE0 cream + #EDE0CD cream-warm + #1E1916 dark
+- **Review layout:** N/A (email-only inquiry, no formal reviews section)
+- **Visit/hours layout:** N/A (studio-based custom, no walk-in hours)
+- **Stats bar style:** no-stats
+- **Score:** 7.0 (WHY) / 6.67 (WHAT, below gate — max retry) / 6.83 (HOW, below gate — max retry) → **6.83 avg**
+- **Self-review:** 7.0 (ceiling 8.0)
+- **Live URL:** https://auto-sites.pages.dev/demos/sowsong-lucy/
+- **Key decisions:**
+  - "Made for keeps." — conviction headline, two words, works on two levels
+  - "One ring, one conversation." — used as hero conviction line (moved from section title)
+  - split-image-right with ig-photo-06 (ring by firelight) — best portrait asset, most emotionally compelling
+  - Story + Maker sections merged into one burgundy section — Rams: reduce length
+  - Process section as prose, not numbered steps — Jobs had killed steps in v1; added back as prose for Nielsen
+  - Three looping videos (dog ring, cushion solitaire, sea rings) in dark strip
+  - Grandpa Soby photo as documentary inset in text column — personal, scaled appropriately
+  - Scroll-reveal animations on all below-fold content via IntersectionObserver
+
+### Panel Scores
+| Round | Reviewers | Scores | Avg |
+|-------|-----------|--------|-----|
+| WHY | Jobs 7, Graham 7, Ogilvy 7 | 7.0 | ✓ pass |
+| WHAT (v1) | Norman 7.5, Krug 6.5, Nielsen 6.0 | 6.67 | below gate |
+| WHAT retry | Norman 7, Krug 7, Nielsen 6 | 6.67 | below gate (max retry) |
+| HOW (v2) | Vignelli 6.5, Spiekermann 6.0, Rams 5.5 | 6.0 | below gate |
+| HOW retry | Vignelli 7, Spiekermann 6.5, Rams 7 | 6.83 | below gate (max retry) |
+
+### Notes
+- Warm lead — friend of Scott's wife, actually looking for a website
+- Nielsen consistently flagged missing pricing/portfolio depth — single-page HTML constraint limits this
+- WHAT + HOW both ended below 7.0 gate; max retries exhausted; proceeded with best version
+- Copy audited: removed em dashes, cut "go from there", tightened process prose
+- Timeline estimate (8–12 weeks) is unverified — sources.md flags this for Tia's confirmation
+
+---
+
 ## Build 106 — Sow Song v2
 - **Category:** Custom Heirloom Jewelry
 - **City:** Victoria, BC

@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<!--
+  STIR IT UP — v1
+  Build: stir-it-up-lucy-2
+
+  DELTA: v0 → v1
+  Changes:
+  - Food section: replaced conventional 2-column with bold editorial single-column stacked layout
+  - Food section photos: full-width patties.png as chapter break, roti tablecloth as inline accent
+  - "Our Roots" copy: more specific — mentions Scotch bonnet, callaloo, coconut, actual island detail
+  - CTAs: hero now has "Call to Order" + "Get Directions" instead of Instagram
+  - Removed "Made Fresh" badge from patties (everything is made fresh, badge is redundant/contradictory)
+  - Food descriptions slightly expanded for specificity
+  WHY scores: Jobs 8.5 / PG 8.0 / Ogilvy 7.5 → 8.0 avg
+  Hypothesis: The menu section redesign will close the gap between bold hero and conventional content
+
+  Build: stir-it-up-lucy-2
+  Agent: Lucy (auto-site-builder, subagent)
+  Date: 2026-04-01
+
+  PHOTO RANKING (evaluated with brand lens):
+  ★★★★★ hero-jerk-chicken.png — landscape 16:9, golden hour, steam, jerk chicken. HERO.
+  ★★★★  patties.png — landscape 16:9, pro lighting, golden patties on parchment. Food section.
+  ★★★★  roti-making.png — landscape 16:9, hands rolling roti, window light, heritage feel. Story.
+  ★★★★  spices.png — landscape 16:9, spice board, A+ composition. Texture/background.
+  ★★★   ig-photo-03.jpg — portrait 4:5, Piton close-up, dramatic. Heritage section accent.
+  ★★★   ig-photo-15.jpg — square 1:1, roti on tablecloth, colorful. Food section card.
+  ★★    ig-photo-14.jpg — square 1:1, roti + Grace soda, casual. NOT USED (too dark)
+  ★★    ig-photo-16.jpg — square 1:1, curry plate, flyer in bg. NOT USED (too cluttered)
+  ✗     ig-photo-11.jpg — watermark, color cast. NOT USED (hero or primary)
+  ✗     signage.jpg — low res, screenshot artifact. NOT USED.
+  ✗     ig-photo-owner.jpg — owner portrait. NOT used as hero (per brief).
+
+  PHOTO ASSIGNMENTS:
+  - Hero: hero-jerk-chicken.png (full-bleed 65vh)
+  - Food section: patties.png + ig-photo-15.jpg
+  - Heritage bg: spices.png (opacity overlay background)
+  - Story: roti-making.png (half-width)
+  - St. Lucia accent: ig-photo-03.jpg (portrait, half-section)
+
+  HERO PATTERN: image-top-text-below
+  TYPOGRAPHY: Fraunces (display) + Inter (body)
+  PALETTE: #100804 (espresso) + #C4791A (amber) + #F4EFE6 (cream)
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stir It Up — Caribbean Soul Food, Victoria BC</title>
+  <meta name="description" content="St. Lucian home cooking at 760A Yates St, Victoria. Jerk chicken, curry goat, roti wraps — made from scratch. Tue–Sat, 11am–7pm.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Stir It Up — Caribbean Soul Food">
+  <meta property="og:description" content="St. Lucian home cooking. Jerk chicken, curry goat, roti wraps. Made from scratch. Down the alley on Yates.">
+  <meta property="og:image" content="../stir-it-up/hero-jerk-chicken.png">
+  <meta property="og:url" content="https://auto-sites.pages.dev/demos/stir-it-up-lucy-2/">
+  <meta property="og:type" content="website">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,300;1,9..144,600;1,9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:      #100804;
+      --amber:    #C4791A;
+      --cream:    #F4EFE6;
+      --cream-2:  #EDE6D9;
+      --dark:     #0E0804;
+      --dark-mid: #1C1208;
+      --section-pad: clamp(64px, 8vw, 120px);
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(14, 8, 4, 0.92);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      padding: 0 clamp(24px, 5vw, 64px);
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-weight: 700;
+      font-size: 20px;
+      color: var(--cream);
+      letter-spacing: -0.01em;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(244, 239, 230, 0.7);
+      text-decoration: none;
+      transition: color 160ms var(--ease-out);
+    }
+
+    .nav-links a:hover { color: var(--cream); }
+
+    .nav-cta {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--amber) !important;
+    }
+
+    /* Mobile nav */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 8px;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      width: 22px; height: 2px;
+      background: var(--cream);
+      border-radius: 2px;
+      transition: all 200ms var(--ease-out);
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 60px; left: 0; right: 0;
+      background: var(--dark);
+      padding: 24px;
+      z-index: 99;
+    }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a {
+      display: block;
+      padding: 14px 0;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: rgba(244, 239, 230, 0.8);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      width: 100%;
+      height: 68vh;
+      min-height: 400px;
+      position: relative;
+      overflow: hidden;
+      margin-top: 60px;
+    }
+
+    .hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+      display: block;
+    }
+
+    /* ─── HEADLINE SECTION ─── */
+    .headline-section {
+      background: var(--dark);
+      padding: var(--section-pad) clamp(24px, 5vw, 64px);
+    }
+
+    .headline-inner {
+      max-width: 900px;
+    }
+
+    .headline-eyebrow {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 24px;
+    }
+
+    .headline-main {
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-weight: 700;
+      font-size: clamp(44px, 7vw, 96px);
+      line-height: 1.0;
+      letter-spacing: -0.02em;
+      color: var(--cream);
+      margin-bottom: 32px;
+    }
+
+    .headline-sub {
+      font-size: clamp(16px, 1.8vw, 20px);
+      color: rgba(244, 239, 230, 0.72);
+      max-width: 560px;
+      line-height: 1.65;
+      margin-bottom: 40px;
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 14px 28px;
+      background: var(--amber);
+      color: var(--cream);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      border-radius: 3px;
+      transition: background 160ms var(--ease-out), transform 160ms var(--ease-out);
+    }
+    .btn-primary:hover { background: #D4881E; }
+    .btn-primary:active { transform: scale(0.97); }
+
+    .btn-secondary {
+      display: inline-block;
+      padding: 14px 28px;
+      border: 1.5px solid rgba(244, 239, 230, 0.3);
+      color: rgba(244, 239, 230, 0.8);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      border-radius: 3px;
+      transition: border-color 160ms, color 160ms;
+    }
+    .btn-secondary:hover {
+      border-color: rgba(244, 239, 230, 0.7);
+      color: var(--cream);
+    }
+    .btn-secondary:active { transform: scale(0.97); }
+
+    /* ─── QUICK STRIP ─── */
+    .quick-strip {
+      background: var(--amber);
+      padding: 16px clamp(24px, 5vw, 64px);
+      display: flex;
+      gap: 32px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .quick-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--dark);
+      white-space: nowrap;
+    }
+
+    .quick-item svg {
+      flex-shrink: 0;
+      opacity: 0.7;
+    }
+
+    .quick-divider {
+      width: 1px;
+      height: 16px;
+      background: rgba(14, 8, 4, 0.25);
+    }
+
+    /* ─── FOOD SECTION ─── */
+    .food-section {
+      background: var(--cream);
+    }
+
+    .food-intro {
+      padding: var(--section-pad) clamp(24px, 5vw, 64px);
+      padding-bottom: 48px;
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 20px;
+    }
+
+    .section-heading {
+      font-family: 'Fraunces', serif;
+      font-weight: 700;
+      font-size: clamp(32px, 4vw, 52px);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 16px;
+    }
+
+    .section-sub {
+      font-size: 16px;
+      color: rgba(16, 8, 4, 0.6);
+      max-width: 480px;
+    }
+
+    /* Editorial food break */
+    .food-photo-break {
+      width: 100%;
+      height: clamp(260px, 35vw, 440px);
+      overflow: hidden;
+    }
+
+    .food-photo-break img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    /* Dish list */
+    .dish-list {
+      padding: 0 clamp(24px, 5vw, 64px);
+    }
+
+    .dish-item {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 40px;
+      padding: 36px 0;
+      border-bottom: 1px solid rgba(16, 8, 4, 0.1);
+      align-items: baseline;
+    }
+
+    .dish-item:first-child {
+      border-top: 1px solid rgba(16, 8, 4, 0.1);
+    }
+
+    .dish-name {
+      font-family: 'Fraunces', serif;
+      font-weight: 700;
+      font-size: clamp(20px, 2.2vw, 28px);
+      color: var(--ink);
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+    }
+
+    .dish-desc {
+      font-size: 16px;
+      color: rgba(16, 8, 4, 0.65);
+      line-height: 1.65;
+    }
+
+    /* Roti accent */
+    .dish-accent {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      margin: 0;
+      height: clamp(200px, 25vw, 320px);
+    }
+
+    .dish-accent-photo {
+      overflow: hidden;
+    }
+
+    .dish-accent-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .dish-accent-text {
+      background: var(--dark-mid);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(24px, 3vw, 48px);
+    }
+
+    .dish-accent-name {
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-weight: 700;
+      font-size: clamp(22px, 3vw, 36px);
+      color: var(--cream);
+      margin-bottom: 12px;
+      letter-spacing: -0.01em;
+    }
+
+    .dish-accent-desc {
+      font-size: 14px;
+      color: rgba(244, 239, 230, 0.65);
+      line-height: 1.65;
+    }
+
+    .food-section-close {
+      padding: 0 clamp(24px, 5vw, 64px);
+      padding-bottom: var(--section-pad);
+    }
+
+    /* ─── HERITAGE SECTION ─── */
+    .heritage-section {
+      position: relative;
+      overflow: hidden;
+      background: var(--dark-mid);
+    }
+
+    .heritage-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('../stir-it-up/spices.png');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.18;
+    }
+
+    .heritage-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      min-height: 500px;
+    }
+
+    .heritage-image {
+      overflow: hidden;
+    }
+
+    .heritage-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    .heritage-text {
+      padding: clamp(48px, 6vw, 96px) clamp(32px, 5vw, 72px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .heritage-text .section-label {
+      margin-bottom: 24px;
+    }
+
+    .heritage-heading {
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-weight: 600;
+      font-size: clamp(28px, 3.5vw, 44px);
+      line-height: 1.2;
+      color: var(--cream);
+      margin-bottom: 24px;
+      letter-spacing: -0.01em;
+    }
+
+    .heritage-body {
+      font-size: 16px;
+      color: rgba(244, 239, 230, 0.72);
+      line-height: 1.7;
+      max-width: 440px;
+    }
+
+    .heritage-body + .heritage-body {
+      margin-top: 16px;
+    }
+
+    /* ─── REVIEWS SECTION ─── */
+    .reviews-section {
+      padding: var(--section-pad) clamp(24px, 5vw, 64px);
+      background: var(--cream-2);
+      text-align: center;
+    }
+
+    .rating-display {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    .rating-stars {
+      color: var(--amber);
+      font-size: 28px;
+      letter-spacing: 2px;
+    }
+
+    .rating-text {
+      font-family: 'Fraunces', serif;
+      font-weight: 700;
+      font-size: clamp(40px, 6vw, 72px);
+      line-height: 1;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+    }
+
+    .rating-sub {
+      font-size: 14px;
+      color: rgba(16, 8, 4, 0.55);
+      letter-spacing: 0.02em;
+    }
+
+    .rating-stat {
+      margin-bottom: 32px;
+    }
+
+    .google-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--amber);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: opacity 160ms;
+    }
+    .google-link:hover { opacity: 0.75; }
+
+    .reviews-note {
+      font-size: 13px;
+      color: rgba(16, 8, 4, 0.4);
+      margin-top: 48px;
+    }
+
+    /* ─── FIND US ─── */
+    .find-section {
+      padding: var(--section-pad) clamp(24px, 5vw, 64px);
+      background: var(--dark);
+    }
+
+    .find-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(40px, 6vw, 96px);
+      align-items: start;
+    }
+
+    .find-text .section-label { margin-bottom: 20px; }
+
+    .find-address {
+      font-family: 'Fraunces', serif;
+      font-weight: 700;
+      font-size: clamp(28px, 4vw, 48px);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--cream);
+      margin-bottom: 32px;
+    }
+
+    .find-details {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .find-row {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .find-row-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: var(--amber);
+      min-width: 70px;
+      padding-top: 2px;
+    }
+
+    .find-row-value {
+      font-size: 15px;
+      color: rgba(244, 239, 230, 0.8);
+      line-height: 1.6;
+    }
+
+    .find-row-value a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .find-row-value a:hover { color: var(--cream); }
+
+    .map-container {
+      border-radius: 4px;
+      overflow: hidden;
+      height: 360px;
+      background: rgba(255,255,255,0.05);
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    /* Alley note */
+    .alley-note {
+      margin-top: 32px;
+      padding: 20px 24px;
+      background: rgba(196, 121, 26, 0.12);
+      border-left: 3px solid var(--amber);
+      border-radius: 0 4px 4px 0;
+    }
+
+    .alley-note p {
+      font-size: 14px;
+      color: rgba(244, 239, 230, 0.75);
+      line-height: 1.6;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #080401;
+      padding: 40px clamp(24px, 5vw, 64px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 24px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .footer-logo {
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-weight: 700;
+      font-size: 18px;
+      color: rgba(244, 239, 230, 0.6);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      color: rgba(244, 239, 230, 0.4);
+      text-decoration: none;
+      transition: color 160ms;
+    }
+    .footer-links a:hover { color: rgba(244, 239, 230, 0.8); }
+
+    .footer-copy {
+      font-size: 12px;
+      color: rgba(244, 239, 230, 0.25);
+      width: 100%;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .dish-item {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .dish-accent {
+        grid-template-columns: 1fr;
+        height: auto;
+      }
+
+      .dish-accent-photo {
+        height: 260px;
+      }
+
+      .heritage-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .heritage-image {
+        height: 300px;
+      }
+
+      .find-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .map-container {
+        height: 280px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .quick-strip {
+        gap: 16px;
+      }
+
+      .quick-divider { display: none; }
+    }
+
+    /* ─── ANIMATIONS ─── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 80ms; }
+    .reveal-delay-2 { transition-delay: 160ms; }
+    .reveal-delay-3 { transition-delay: 240ms; }
+    .reveal-delay-4 { transition-delay: 320ms; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">Stir It Up</a>
+    <ul class="nav-links">
+      <li><a href="#food">Menu</a></li>
+      <li><a href="#roots">Our Roots</a></li>
+      <li><a href="#find">Find Us</a></li>
+      <li><a href="tel:7784320133" class="nav-cta">778-432-0133</a></li>
+    </ul>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#food" onclick="closeMenu()">Menu</a>
+    <a href="#roots" onclick="closeMenu()">Our Roots</a>
+    <a href="#find" onclick="closeMenu()">Find Us</a>
+    <a href="tel:7784320133">778-432-0133</a>
+  </div>
+
+  <!-- HERO: image-top-text-below -->
+  <section class="hero">
+    <img src="../stir-it-up/hero-jerk-chicken.png" alt="Jerk chicken with rice and peas — Stir It Up">
+  </section>
+
+  <!-- HEADLINE SECTION -->
+  <section class="headline-section">
+    <div class="headline-inner">
+      <p class="headline-eyebrow reveal">Caribbean Soul Food · Victoria, BC</p>
+      <h1 class="headline-main reveal reveal-delay-1">Down the alley on Yates.</h1>
+      <p class="headline-sub reveal reveal-delay-2">
+        St. Lucian home cooking. Jerk chicken, curry goat, roti wraps — made from scratch. The alley's easy to miss. The food isn't.
+      </p>
+      <div class="btn-row reveal reveal-delay-3">
+        <a href="tel:7784320133" class="btn-primary">Call 778-432-0133</a>
+        <a href="#find" class="btn-secondary">Get Directions</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUICK STRIP -->
+  <div class="quick-strip">
+    <div class="quick-item">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+      </svg>
+      Tue–Sat, 11am–7pm
+    </div>
+    <div class="quick-divider"></div>
+    <div class="quick-item">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+      </svg>
+      760A Yates St, Victoria
+    </div>
+    <div class="quick-divider"></div>
+    <div class="quick-item">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+      </svg>
+      4.5★ · 188 reviews on Google
+    </div>
+    <div class="quick-divider"></div>
+    <div class="quick-item">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 5.5 5.5l.93-.93a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21 16.92z"/>
+      </svg>
+      778-432-0133
+    </div>
+  </div>
+
+  <!-- FOOD SECTION -->
+  <section class="food-section" id="food">
+    <div class="food-intro">
+      <p class="section-label reveal">What to order</p>
+      <h2 class="section-heading reveal reveal-delay-1">Five things. All of them good.</h2>
+      <p class="section-sub reveal reveal-delay-2">Made that morning. Every day, Tue–Sat.</p>
+    </div>
+
+    <!-- Full-width patties photo break -->
+    <div class="food-photo-break reveal">
+      <img src="../stir-it-up/patties.png" alt="Golden beef patties fresh from the oven, Stir It Up">
+    </div>
+
+    <!-- Dish list -->
+    <div class="dish-list">
+      <div class="dish-item reveal">
+        <div class="dish-name">Jerk Chicken</div>
+        <p class="dish-desc">Scotch bonnet marinade, charred and slow. Served with rice and peas. This is the one people come back for.</p>
+      </div>
+      <div class="dish-item reveal reveal-delay-1">
+        <div class="dish-name">Curry Goat</div>
+        <p class="dish-desc">Cooked low and slow in a deep curry. The kind of flavor that takes hours to build and seconds to understand.</p>
+      </div>
+      <div class="dish-item reveal reveal-delay-2">
+        <div class="dish-name">Patties</div>
+        <p class="dish-desc">Flaky, golden, stuffed with spiced beef. Made fresh. Ask if they're still warm.</p>
+      </div>
+      <div class="dish-item reveal reveal-delay-3">
+        <div class="dish-name">Rice & Peas</div>
+        <p class="dish-desc">Coconut rice with kidney beans. Goes with everything. Often the best thing on the plate.</p>
+      </div>
+    </div>
+
+    <!-- Roti accent: photo + text -->
+    <div class="dish-accent reveal" style="margin-top: 48px;">
+      <div class="dish-accent-photo">
+        <img src="../stir-it-up/ig-photo-15.jpg" alt="Roti wrap on a colorful Caribbean tablecloth">
+      </div>
+      <div class="dish-accent-text">
+        <div class="dish-accent-name">Roti Wraps</div>
+        <p class="dish-accent-desc">Fresh roti folded around curried fillings — chicken, potato, callaloo. Hand-rolled. A full meal. The tablecloth is part of the experience.</p>
+      </div>
+    </div>
+
+    <div class="food-section-close"></div>
+  </section>
+
+  <!-- HERITAGE SECTION -->
+  <section class="heritage-section" id="roots">
+    <div class="heritage-bg"></div>
+    <div class="heritage-inner">
+      <div class="heritage-image reveal">
+        <img src="../stir-it-up/roti-making.png" alt="Hands rolling roti dough — traditional St. Lucian technique">
+      </div>
+      <div class="heritage-text">
+        <p class="section-label reveal">Our roots</p>
+        <h2 class="heritage-heading reveal reveal-delay-1">St. Lucian cooking.<br>Victoria table.</h2>
+        <p class="heritage-body reveal reveal-delay-2">
+          The food at Stir It Up is St. Lucian home cooking — Scotch bonnet heat, coconut rice, jerk that takes days to prep right. The kind of food that doesn't exist in restaurants because it takes too long.
+        </p>
+        <p class="heritage-body reveal reveal-delay-3">
+          Saint Lucia is in the eastern Caribbean, and the cooking reflects that: French Creole influence, African roots, Indian curry traditions. It all shows up in the pot. Made from scratch, every day.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS SECTION -->
+  <section class="reviews-section">
+    <div class="reveal">
+      <div class="rating-stat">
+        <div class="rating-stars">★★★★½</div>
+      </div>
+      <div class="rating-display">
+        <div class="rating-text">4.5</div>
+      </div>
+      <p class="rating-sub">out of 5 — 188 reviews on Google</p>
+    </div>
+    <div style="margin-top: 24px;" class="reveal reveal-delay-1">
+      <a href="https://g.co/kgs/stiritup-victoria" target="_blank" rel="noopener" class="google-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+          <polyline points="15 3 21 3 21 9"/>
+          <line x1="10" y1="14" x2="21" y2="3"/>
+        </svg>
+        Read reviews on Google
+      </a>
+    </div>
+  </section>
+
+  <!-- FIND US -->
+  <section class="find-section" id="find">
+    <div class="find-inner">
+      <div class="find-text">
+        <p class="section-label reveal">Find us</p>
+        <div class="find-address reveal reveal-delay-1">
+          760A Yates St.<br>Down the alley.<br>Victoria, BC.
+        </div>
+        <div class="find-details">
+          <div class="find-row reveal reveal-delay-2">
+            <span class="find-row-label">Hours</span>
+            <span class="find-row-value">Tuesday – Saturday<br>11:00 am – 7:00 pm</span>
+          </div>
+          <div class="find-row reveal reveal-delay-3">
+            <span class="find-row-label">Phone</span>
+            <span class="find-row-value"><a href="tel:7784320133">778-432-0133</a></span>
+          </div>
+          <div class="find-row reveal reveal-delay-4">
+            <span class="find-row-label">Instagram</span>
+            <span class="find-row-value"><a href="https://www.instagram.com/stiritup.yyj" target="_blank" rel="noopener">@stiritup.yyj</a></span>
+          </div>
+        </div>
+
+        <div class="alley-note reveal" style="margin-top: 40px;">
+          <p>760A is down the alley off Yates Street. Look for the green walls. Easy to walk past, worth doubling back for.</p>
+        </div>
+      </div>
+
+      <div class="map-container reveal reveal-delay-1">
+        <iframe
+          title="Stir It Up location"
+          src="https://maps.google.com/maps?q=760A+Yates+St+Victoria+BC&output=embed"
+          loading="lazy"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">Stir It Up</div>
+    <div class="footer-links">
+      <a href="tel:7784320133">778-432-0133</a>
+      <a href="https://www.instagram.com/stiritup.yyj" target="_blank" rel="noopener">Instagram</a>
+    </div>
+    <p class="footer-copy">Caribbean Soul Food · 760A Yates St, Victoria BC · Tue–Sat 11am–7pm</p>
+  </footer>
+
+  <script>
+    // Mobile menu
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('open');
+    }
+    function closeMenu() {
+      document.getElementById('mobileMenu').classList.remove('open');
+    }
+
+    // Scroll reveals
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    reveals.forEach(el => observer.observe(el));
+
+    // Immediately reveal above-fold elements
+    document.querySelectorAll('.headline-section .reveal').forEach(el => {
+      setTimeout(() => el.classList.add('visible'), 100);
+    });
+  </script>
+</body>
+</html>

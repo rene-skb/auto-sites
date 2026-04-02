@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sow Song — Custom Heirloom Jewelry by Tia Noelle Soby</title>
+  <meta name="description" content="Custom engagement rings, wedding bands, and heirloom jewelry made by hand on Vancouver Island. One piece at a time.">
+  <meta property="og:title" content="Sow Song — Custom Heirloom Jewelry">
+  <meta property="og:description" content="Custom rings and heirlooms made by hand on Vancouver Island. Email Tia to begin.">
+  <meta property="og:image" content="ig-photo-01.jpg">
+  <meta property="og:url" content="https://auto-sites.pages.dev/demos/sowsong-lucy-2/">
+  <meta property="og:type" content="website">
+
+  <!--
+  ============================================
+  PHOTO RANKING & ROLE ASSIGNMENTS
+  ============================================
+  1. ig-photo-01.jpg — close-up oval engagement ring, warm light (9/10) → FEATURED RING (portrait 3:4)
+  2. ig-photo-10.jpg — blue stone ring on coastal rock, water (9/10) → GALLERY A (portrait 4:5)
+  3. ig-photo-11.jpg — pearl earrings in red box with oyster shells (9/10) → GALLERY B (portrait 4:5)
+  4. clean-grandpa-1.jpg — man's hand w/ wedding band by fire (9/10) → GALLERY C (portrait 3:4)
+  5. clean-tia-studio.jpg — B&W maker portrait at workbench (excellent) → MAKER SECTION (portrait 3:4)
+  
+  SKIP:
+  - ig-photo-03.jpg (candle dinner table — brief says no candles/living room)
+  - ig-photo-08.jpg (case study card graphic — 3/10)
+  - ig-photo-12.jpg (beach landscape only — 5/10, no jewelry)
+  - ig-photo-06.jpg (same as clean-grandpa-1 based on analysis)
+  ============================================
+  -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ============ RESET & CUSTOM PROPS ============ */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --burgundy:    #8B1D2C;
+      --burgundy-dk: #6E1723;
+      --cream:       #DBD5C6;
+      --cream-warm:  #E8E0CE;
+      --dark:        #1E1916;
+      --gold:        #C9A050;
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --section-pad: 96px 40px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--dark);
+      font-family: 'Inter', sans-serif;
+      font-size: 17px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ============ NAV ============ */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 24px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 300ms var(--ease-out), padding 300ms var(--ease-out);
+    }
+
+    nav.scrolled {
+      background: var(--burgundy);
+      padding: 16px 48px;
+    }
+
+    .nav-logo {
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: 22px;
+      color: var(--dark);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+      transition: color 300ms;
+    }
+
+    nav.scrolled .nav-logo { color: var(--cream); }
+
+    .nav-links { display: flex; gap: 36px; align-items: center; }
+
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--dark);
+      text-decoration: none;
+      opacity: 0.65;
+      transition: color 300ms, opacity 200ms;
+    }
+
+    nav.scrolled .nav-links a { color: var(--cream); opacity: 0.75; }
+    .nav-links a:hover { opacity: 1; }
+
+    .nav-cta {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--dark);
+      text-decoration: none;
+      border-bottom: 1.5px solid var(--dark);
+      padding-bottom: 2px;
+      opacity: 1 !important;
+      transition: color 300ms, border-color 300ms;
+    }
+
+    nav.scrolled .nav-cta { color: var(--cream); border-color: var(--cream); }
+
+    /* Mobile hamburger */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--dark);
+      transition: background 300ms;
+    }
+
+    nav.scrolled .nav-hamburger span { background: var(--cream); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--burgundy);
+      z-index: 99;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+    }
+
+    .mobile-menu.open { display: flex; }
+
+    .mobile-menu a {
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-size: 36px;
+      font-weight: 300;
+      color: var(--cream);
+      text-decoration: none;
+    }
+
+    .mobile-close {
+      position: absolute;
+      top: 24px; right: 48px;
+      background: none;
+      border: none;
+      color: var(--cream);
+      font-size: 32px;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    /* ============ HERO — GIANT DISPLAY TYPE ============ */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-end;
+      padding: 120px 48px 80px;
+      background: var(--cream);
+      position: relative;
+    }
+
+    .hero-inner {
+      max-width: 1180px;
+      width: 100%;
+    }
+
+    .hero-label {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--burgundy);
+      margin-bottom: 40px;
+    }
+
+    .hero-headline {
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(56px, 9vw, 128px);
+      line-height: 1.02;
+      letter-spacing: -0.03em;
+      color: var(--dark);
+      margin-bottom: 40px;
+      max-width: 10ch;
+    }
+
+    .hero-bottom {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 1180px;
+    }
+
+    .hero-sub {
+      font-size: 17px;
+      color: var(--dark);
+      opacity: 0.6;
+      max-width: 380px;
+      line-height: 1.6;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--burgundy);
+      color: var(--cream);
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 14px 32px;
+      transition: background 200ms var(--ease-out), transform 160ms var(--ease-out);
+      white-space: nowrap;
+    }
+
+    .btn-primary:hover { background: var(--burgundy-dk); }
+    .btn-primary:active { transform: scale(0.97); }
+
+    /* ============ DIVIDER LINE ============ */
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: rgba(30, 25, 22, 0.12);
+      margin: 0 48px;
+      width: calc(100% - 96px);
+    }
+
+    /* ============ FEATURED RING ============ */
+    .featured-ring {
+      background: var(--cream-warm);
+    }
+
+    .featured-ring-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 680px;
+    }
+
+    .featured-ring-photo {
+      overflow: hidden;
+    }
+
+    .featured-ring-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .featured-ring-text {
+      padding: 80px 72px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--burgundy);
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(28px, 3.5vw, 48px);
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      color: var(--dark);
+      margin-bottom: 24px;
+    }
+
+    .section-body {
+      font-size: 17px;
+      line-height: 1.65;
+      color: var(--dark);
+      opacity: 0.7;
+      max-width: 400px;
+      margin-bottom: 40px;
+    }
+
+    /* ============ SERVICES ============ */
+    .services {
+      padding: var(--section-pad);
+      background: var(--cream);
+    }
+
+    .services-header {
+      max-width: 1180px;
+      margin: 0 auto 64px;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .services-header h2 {
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(28px, 3vw, 40px);
+      color: var(--dark);
+      letter-spacing: -0.01em;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    .service-item {
+      padding: 40px 48px 40px 0;
+      border-top: 1px solid rgba(30, 25, 22, 0.18);
+    }
+
+    .service-item:not(:last-child) {
+      border-right: 1px solid rgba(30, 25, 22, 0.18);
+      margin-right: 48px;
+    }
+
+    .service-num {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      color: var(--burgundy);
+      margin-bottom: 16px;
+    }
+
+    .service-name {
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: 22px;
+      color: var(--dark);
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+
+    .service-desc {
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--dark);
+      opacity: 0.65;
+    }
+
+    /* ============ GALLERY ============ */
+    .gallery {
+      background: var(--dark);
+      padding: 0 48px 80px;
+    }
+
+    .gallery-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(219, 213, 198, 0.5);
+      padding: 80px 0 48px;
+      max-width: 1180px;
+      margin: 0 auto;
+      display: block;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      display: block;
+    }
+
+    .gallery-caption {
+      font-size: 13px;
+      color: rgba(219, 213, 198, 0.5);
+      letter-spacing: 0.04em;
+      margin-top: 12px;
+    }
+
+    /* ============ VIDEO STRIP ============ */
+    .video-strip {
+      background: var(--cream-warm);
+      padding: 80px 48px;
+    }
+
+    .video-strip-header {
+      max-width: 1180px;
+      margin: 0 auto 48px;
+    }
+
+    .video-strip-header p {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--burgundy);
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    .video-item video {
+      width: 100%;
+      aspect-ratio: 9/16;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ============ MAKER ============ */
+    .maker {
+      background: var(--cream);
+      padding: var(--section-pad);
+    }
+
+    .maker-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 5fr 7fr;
+      gap: 96px;
+      align-items: center;
+    }
+
+    .maker-photo img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      display: block;
+    }
+
+    .maker-text {}
+
+    .maker-quote {
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(20px, 2.5vw, 28px);
+      line-height: 1.45;
+      color: var(--dark);
+      margin-bottom: 32px;
+      padding-left: 28px;
+      border-left: 2px solid var(--burgundy);
+    }
+
+    .maker-body {
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--dark);
+      opacity: 0.7;
+      margin-bottom: 16px;
+    }
+
+    .maker-location {
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--burgundy);
+      margin-top: 32px;
+    }
+
+    /* ============ STORY ============ */
+    .story {
+      background: var(--burgundy);
+      padding: var(--section-pad);
+    }
+
+    .story-inner {
+      max-width: 640px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .story-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(219, 213, 198, 0.55);
+      margin-bottom: 32px;
+    }
+
+    .story-title {
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(28px, 4vw, 52px);
+      line-height: 1.15;
+      color: var(--cream);
+      margin-bottom: 40px;
+      letter-spacing: -0.01em;
+    }
+
+    .story-body {
+      font-size: 18px;
+      line-height: 1.75;
+      color: rgba(219, 213, 198, 0.88);
+      margin-bottom: 24px;
+      font-weight: 400;
+    }
+
+    .story-attr {
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-size: 15px;
+      font-weight: 300;
+      color: rgba(219, 213, 198, 0.5);
+      margin-top: 16px;
+      letter-spacing: 0.04em;
+    }
+
+    /* ============ CONTACT ============ */
+    .contact {
+      background: var(--dark);
+      padding: var(--section-pad);
+      text-align: center;
+    }
+
+    .contact-headline {
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(40px, 6vw, 80px);
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      color: var(--cream);
+      margin-bottom: 24px;
+    }
+
+    .contact-sub {
+      font-size: 17px;
+      color: rgba(219, 213, 198, 0.6);
+      margin-bottom: 48px;
+      font-weight: 400;
+    }
+
+    /* ============ FOOTER ============ */
+    footer {
+      background: var(--burgundy-dk);
+      padding: 36px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-logo {
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: 20px;
+      color: var(--cream);
+      letter-spacing: -0.01em;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 32px;
+    }
+
+    .footer-links a {
+      font-size: 14px;
+      font-weight: 400;
+      color: rgba(219, 213, 198, 0.6);
+      text-decoration: none;
+      transition: color 200ms;
+    }
+
+    .footer-links a:hover { color: var(--cream); }
+
+    /* ============ MOBILE ============ */
+    @media (max-width: 900px) {
+      :root { --section-pad: 64px 24px; }
+      nav { padding: 18px 24px; }
+      nav.scrolled { padding: 14px 24px; }
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+
+      .hero { padding: 100px 24px 64px; align-items: flex-start; justify-content: flex-end; }
+      .hero-headline { font-size: clamp(44px, 12vw, 88px); }
+      .hero-bottom { flex-direction: column; gap: 32px; align-items: flex-start; }
+
+      .divider { margin: 0 24px; width: calc(100% - 48px); }
+
+      .featured-ring-inner { grid-template-columns: 1fr; }
+      .featured-ring-photo { height: 440px; }
+      .featured-ring-text { padding: 48px 24px; }
+
+      .services { padding: 64px 24px; }
+      .services-header { flex-direction: column; gap: 16px; margin-bottom: 40px; }
+      .services-grid { grid-template-columns: 1fr; gap: 0; }
+      .service-item { border-right: none !important; margin-right: 0 !important; padding: 32px 0; }
+
+      .gallery { padding: 0 24px 64px; }
+      .gallery-label { padding: 64px 0 40px; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-grid .gallery-item:last-child { display: none; }
+
+      .video-strip { padding: 64px 24px; }
+      .video-grid { grid-template-columns: 1fr; }
+      .video-grid .video-item:not(:first-child) { display: none; }
+
+      .maker-inner { grid-template-columns: 1fr; gap: 40px; }
+
+      footer { flex-direction: column; gap: 24px; text-align: center; padding: 32px 24px; }
+      .footer-links { flex-wrap: wrap; justify-content: center; gap: 20px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav id="mainNav">
+    <a href="#" class="nav-logo">Sow Song</a>
+    <div class="nav-links">
+      <a href="#rings">Rings</a>
+      <a href="#maker">The Maker</a>
+      <a href="#story">Story</a>
+      <a href="mailto:tia@sowsong.com" class="nav-cta">Begin a Conversation</a>
+    </div>
+    <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Navigation menu">
+    <button class="mobile-close" id="mobileClose" aria-label="Close menu">×</button>
+    <a href="#rings" onclick="closeMobileMenu()">Rings</a>
+    <a href="#maker" onclick="closeMobileMenu()">The Maker</a>
+    <a href="#story" onclick="closeMobileMenu()">Story</a>
+    <a href="mailto:tia@sowsong.com" onclick="closeMobileMenu()">Begin a Conversation</a>
+  </div>
+
+  <!-- Hero — Giant Display Type -->
+  <section class="hero">
+    <div class="hero-inner">
+      <p class="hero-label">Custom Heirloom Jewelry &nbsp;·&nbsp; Vancouver Island, BC</p>
+      <h1 class="hero-headline">Traces of history,<br>marks of moments.</h1>
+    </div>
+    <div class="hero-bottom">
+      <p class="hero-sub">Custom engagement rings, wedding bands, and heirloom pieces made by hand. One piece, one conversation.</p>
+      <a href="mailto:tia@sowsong.com" class="btn-primary">Email Tia</a>
+    </div>
+  </section>
+
+  <!-- Featured Ring — first major photo moment -->
+  <section class="featured-ring" id="rings">
+    <div class="featured-ring-inner">
+      <div class="featured-ring-photo">
+        <img src="ig-photo-01.jpg" alt="Custom engagement ring with oval salt-and-pepper diamond in 14k yellow gold, worn on hand">
+      </div>
+      <div class="featured-ring-text">
+        <p class="eyebrow">Custom Engagement Rings</p>
+        <h2 class="section-title">Made for the person it will live with forever.</h2>
+        <p class="section-body">Every ring starts with a conversation. Tia works with you directly — your stone, your metal, your shape. Salt-and-pepper diamonds, organic bezel settings, warm gold.</p>
+        <a href="mailto:tia@sowsong.com" class="btn-primary">Start the Conversation</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- What We Make -->
+  <section class="services">
+    <div class="services-header">
+      <h2>What we make</h2>
+    </div>
+    <div class="services-grid">
+      <div class="service-item">
+        <p class="service-num">01</p>
+        <h3 class="service-name">Engagement Rings</h3>
+        <p class="service-desc">Custom-designed from the first conversation. Salt-and-pepper diamonds, organic shapes, bezel and prong settings in warm gold.</p>
+      </div>
+      <div class="service-item">
+        <p class="service-num">02</p>
+        <h3 class="service-name">Wedding Bands</h3>
+        <p class="service-desc">His, hers, and everything in between. Hand-carved signets, matching sets, stackable bands designed to wear daily.</p>
+      </div>
+      <div class="service-item">
+        <p class="service-num">03</p>
+        <h3 class="service-name">Heirlooms &amp; Memorials</h3>
+        <p class="service-desc">Fingerprint pendants, handwritten word pieces, family gold remade into something new. Pieces that carry someone with you.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery — second major photo moment -->
+  <section class="gallery">
+    <span class="gallery-label">The Work</span>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="ig-photo-10.jpg" alt="Silver bypass ring with round blue aquamarine stone, resting on coastal rock with water">
+        <p class="gallery-caption">Bypass ring, aquamarine, sterling silver</p>
+      </div>
+      <div class="gallery-item">
+        <img src="ig-photo-11.jpg" alt="Baroque pearl drop earrings in signature Sow Song red jewelry box with oyster shells">
+        <p class="gallery-caption">Baroque pearl drops, sterling silver</p>
+      </div>
+      <div class="gallery-item">
+        <img src="clean-grandpa-1.jpg" alt="Men's wedding band worn on hand resting by a fire">
+        <p class="gallery-caption">Wedding band, 14k yellow gold</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Video Strip — The Work in Motion -->
+  <section class="video-strip">
+    <div class="video-strip-header">
+      <p>The Work in Motion</p>
+    </div>
+    <div class="video-grid">
+      <div class="video-item">
+        <video autoplay muted loop playsinline aria-label="Dog nose print signet ring video">
+          <source src="video-dog-ring.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="video-item">
+        <video autoplay muted loop playsinline aria-label="Cushion cut gold solitaire ring video">
+          <source src="video-cushion-solitaire.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="video-item">
+        <video autoplay muted loop playsinline aria-label="Wedding bands by the sea video">
+          <source src="video-sea-rings.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </section>
+
+  <!-- Maker Section -->
+  <section class="maker" id="maker">
+    <div class="maker-inner">
+      <div class="maker-photo">
+        <img src="clean-tia-studio.jpg" alt="Tia Noelle Soby at her jewelry workbench in her trailer studio on Vancouver Island">
+      </div>
+      <div class="maker-text">
+        <p class="eyebrow">The Maker</p>
+        <blockquote class="maker-quote">"Starting this little heartfilled business has meant more to me than I can say."</blockquote>
+        <p class="maker-body">Tia Noelle Soby makes jewelry from a converted Travelux trailer on Vancouver Island. She apprenticed with local mentors, learned metalsmithing by hand, and works with one client at a time.</p>
+        <p class="maker-body">Her background is in floristry — the same care for living, impermanent things carries into everything she makes. Nature flows through her process and into each piece.</p>
+        <p class="maker-location">Based in Nanaimo &nbsp;·&nbsp; Consultations in Tofino</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Story — The Grandpa Soby Section -->
+  <section class="story" id="story">
+    <div class="story-inner">
+      <p class="story-label">An Ode to Love</p>
+      <h2 class="story-title">In dedication to Grandpa Soby</h2>
+      <p class="story-body">"Sow Song was a tune he'd sing to us grandkids most times we were with him. Playful and full of love. When I make jewelry, I'm always thinking about connection."</p>
+      <p class="story-body">"I want the pieces I make to hold meaning throughout our lifetime. I like to think of them as tokens of love — some remind us of the people we care about, the way Sow Song reminds me of him."</p>
+      <p class="story-attr">— Tia Noelle Soby</p>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <h2 class="contact-headline">Every piece begins<br>with a conversation.</h2>
+    <p class="contact-sub">Email Tia directly to start the process.</p>
+    <a href="mailto:tia@sowsong.com" class="btn-primary">tia@sowsong.com</a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-logo">Sow Song</div>
+    <div class="footer-links">
+      <a href="https://www.instagram.com/sowsong__/" target="_blank" rel="noopener">Instagram</a>
+      <a href="mailto:tia@sowsong.com">tia@sowsong.com</a>
+      <span style="font-size:14px;color:rgba(219,213,198,0.4);">Nanaimo, BC</span>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll behavior
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 80);
+    }, { passive: true });
+
+    // Mobile menu
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileClose = document.getElementById('mobileClose');
+
+    hamburger.addEventListener('click', () => mobileMenu.classList.add('open'));
+    mobileClose.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    function closeMobileMenu() { mobileMenu.classList.remove('open'); }
+
+    // Close mobile menu on outside click
+    mobileMenu.addEventListener('click', (e) => {
+      if (e.target === mobileMenu) mobileMenu.classList.remove('open');
+    });
+  </script>
+</body>
+</html>

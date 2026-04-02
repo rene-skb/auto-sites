@@ -5,7 +5,64 @@
 
 ## Queue
 
-<!-- Zoé Dessert et Thé moved to Built — 2026-03-28 -->
+<!-- Added 2026-04-01 by Iris -->
+### Abdou BarberShop
+- **City:** Montreal, QC
+- **Category:** Barbershop
+- **Address:** 3530 Rue Jean-Talon Est, Montreal, QC H2A 1X2
+- **Phone:** +1 438-990-8696
+- **Hours:** Open 24 hours / 7 days a week
+- **Rating:** 4.9 stars (968+ reviews)
+- **Social:** Instagram @abdou.barbershop (21K followers)
+- **Instagram photos:** Yes -- 8 photos downloaded to demos/abdou-barbershop/
+- **Top Reviews (with names):**
+  - *(Verify top 3 reviews via Google Maps: "Abdou BarberShop Montreal")*
+- **What makes them interesting:** A 24/7 barbershop in Montreal with nearly 1,100 reviews at 4.9 stars. Run by Abderahmane, whose Instagram has 21K followers. The 24/7 operation is almost unheard of for the category. "MORE THAN LUXURY" is already their brand line.
+- **Brand observations:** Deep black, champagne gold, strong italic serif. Headline: "Because the perfect cut doesn't wait." Premium Montreal energy.
+
+### MR SAKO BARBER
+- **City:** Montreal, QC
+- **Category:** Barbershop
+- **Address:** 1190 Crescent Street, Montreal, QC H2X 1X9
+- **Phone:** +1 438-596-6426
+- **Hours:** Verify via Google Maps -- search "MR SAKO BARBER Montreal"
+- **Rating:** 5 stars (557 reviews)
+- **Social:** Instagram handle not confirmed -- search @mrsakobarber before build
+- **Instagram photos:** No confirmed handle -- skip scrape until handle verified
+- **Top Reviews (with names):**
+  - *(Verify top 3 reviews via Google Maps: "MR SAKO BARBER Montreal")*
+- **What makes them interesting:** Est. 2017 on Crescent Street (Montreal's luxury/entertainment strip). 5 stars across 557 reviews. Their own language: "tradition meets innovation, every cut is a masterpiece." No standalone website -- only a Setmore booking page.
+- **Brand observations:** Black and gold, James Bond luxury energy. Headline: "The standard for excellence in Montreal barbering."
+
+<!-- Zoé Dessert et Thé moved to Built -- 2026-03-28 -->
+
+### SAD ENTERTAINMENT RECORDING STUDIO
+- **City:** Calgary, AB
+- **Category:** Recording Studio / Music Studio
+- **Address:** ⚠️ Verify via Google Maps -- search "SAD Entertainment Recording Studio Calgary"
+- **Phone:** +1 587-225-0887
+- **Hours:** Open 24 hours / 7 days a week
+- **Rating:** 5★ (165 reviews)
+- **Social:** No website, no Instagram or Facebook found
+- **Instagram photos:** no Instagram found
+- **Top Reviews (with names):**
+  - *(Verify top reviews via Google Maps -- Outscraper did not return review text tonight)*
+- **What makes them interesting:** 165 reviews at a perfect 5.0 for a recording studio. 24/7 operation = serious working studio. Real artists, zero digital presence. Name "SAD" is bold, raw, memorable.
+- **Brand observations:** Dark palette -- black, deep red, muted gold. Gritty warmth. Headline: "We're open when the inspiration hits."
+
+### Moov Ottawa Dance (Bronson Location)
+- **City:** Ottawa, ON
+- **Category:** Dance Studio
+- **Address:** ⚠️ Verify via Google Maps -- search "Moov Ottawa Dance Bronson"
+- **Phone:** ⚠️ Verify via Google Maps
+- **Hours:** Mon 6-9PM | Thu 6-9PM | Fri 6-9PM | Sun 10:30AM-12:30PM | Tue/Wed/Sat Closed
+- **Rating:** 5★ (134 reviews)
+- **Social:** No website, no Instagram found
+- **Instagram photos:** no Instagram found
+- **Top Reviews (with names):**
+  - *(Verify top reviews via Google Maps -- Outscraper did not return review text tonight)*
+- **What makes them interesting:** 4-day schedule, evenings + Sunday mornings. 134 reviews at 5 stars. Limited hours create community intensity. Ottawa arts underground.
+- **Brand observations:** Movement + exclusivity. Dark background, electric accent. Headline: "Ottawa's favourite dance studio."
 
 ### Vintage Glory
 - **City:** Montreal, QC

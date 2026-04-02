@@ -1,0 +1,20 @@
+{
+  "name": "auto-sites",
+  "version": "1.0.0",
+  "description": "Auto-built local business sites by Lucy.",
+  "main": "build-gallery.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rene-skb/auto-sites.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rene-skb/auto-sites/issues"
+  },
+  "homepage": "https://github.com/rene-skb/auto-sites#readme"
+}

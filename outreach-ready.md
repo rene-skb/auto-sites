@@ -8,6 +8,10 @@
 2. **Hosting demos:** Deploy demo sites so the links work (Cloudflare Pages, or even a simple subdomain setup)
 3. **Domain:** nakamotodesign.co (check if registered, or use scottkbell.com/demos/)
 
+## Stir It Up — Domain
+- **stiritupvictoria.com** — $11.28/yr (Namecheap, coupon NEWCOM679 brings to $6.79)
+- Register before outreach or include in pitch as "I even found you the perfect domain"
+
 ## The Starting Five
 
 ### 1. Spiral Cafe ⭐ TOP PICK

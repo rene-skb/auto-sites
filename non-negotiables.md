@@ -38,9 +38,34 @@
 
 ❌ **NO invented origin stories or claims.** Don't assume where a name came from, why the business started, or any backstory unless it's explicitly confirmed in reviews, social posts, or the brief. "Stir It Up" might reference Bob Marley — or might not. If you don't know, don't claim it.
 
-*Last updated: March 31, 2026*
+*Last updated: April 1, 2026*
 
 ## Menu & Pricing
 - **Never invent prices.** If we don't have real pricing, don't show prices.
 - Use "What to Order" / signature dishes approach instead of full menu when data is incomplete.
 - Only include menu items confirmed from reviews, Instagram, or actual menus.
+
+## Copy & Sources
+
+❌ **NO invented backstories, origin stories, or unverified claims.** Every piece of copy must be traceable to a source — reviews, Instagram bio/posts, Google listing, or the build brief. If you can't cite it, cut it.
+
+❌ **NO flowery filler.** Words like "passion," "journey," "craft," "artisan" are only allowed if the business uses them about themselves. Don't impose a voice.
+
+❌ **NO emotional storytelling for local businesses.** The "why" for a food truck is: food looks good, I'm hungry, where is it. Lead with facts + photos, not invented narrative.
+
+✅ **Every build MUST output a sources.md file.** Map each piece of copy to its source:
+```
+- "Caribbean Soul Food" → Instagram bio
+- "4.7★ 188 reviews" → Google listing  
+- "Everything made fresh daily" → Review by Sarah M.
+- Hours/phone/address → Google listing
+```
+
+✅ **Facts-first copy structure for local businesses:**
+- What it is + where
+- Hours, phone, address (quick info)
+- Photos (let them speak)
+- Reviews (real quotes, attributed)
+- Contact CTA
+
+Keep it simple. The photos and reviews ARE the pitch.

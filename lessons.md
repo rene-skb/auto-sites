@@ -7,6 +7,15 @@
 ## Tier 1 — Recent Observations
 *New patterns from 1-2 builds. Watch for repetition.*
 
+### [HERO] food-forward hero with real food photo beats portraits/owner shots for restaurants.
+Brief specifically asked for food-forward hero. hero-jerk-chicken.png (golden hour, steam, jerk chicken) scored Jobs 8.5 — the food IS the conviction. When real food photography exists and is landscape, it should be the hero. Don't default to owner portraits. — Stir It Up Lucy 2 b111
+
+### [LAYOUT] Standalone review section is often unnecessary — rating woven into quick-strip + find-us delivers the same value in less space.
+Rams scored 7 in HOW for a standalone reviews section. Moving the rating stat to quick-strip + a "Reviews" row in the Find Us section removed an entire section without losing any information. Page is tighter and flows better. — Stir It Up Lucy 2 b111
+
+### [STRUCTURE] Editorial full-width photo break between menu intro and dish list creates a strong visual chapter marker.
+The patties photo as a full-bleed break between "What to order" intro and the dish list gave the menu section an editorial beat it was missing. Scored well with Jobs (8.5 WHY). Lets the food photo do one job well. — Stir It Up Lucy 2 b111
+
 ### [COPY] Facts-first copy with editorial voice outscores generic food descriptions.
 "If you get there late, the oxtail is probably gone" and "That's the kind of place this is" — specific, honest lines that all three WHY reviewers praised. Graham 8, Ogilvy 7. Don't describe food with adjectives. Tell the truth about what happens there. — Stir It Up Lucy b110
 

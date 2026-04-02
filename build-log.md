@@ -1,5 +1,56 @@
 # Auto-Sites Build Log
 
+## Build 111 — Stir It Up Lucy 2 (Food-Forward Rebuild)
+- **Category:** Caribbean Soul Food
+- **City:** Victoria, BC
+- **Date:** 2026-04-01
+- **Model:** claude-sonnet-4-6 (subagent, Lucy)
+- **Agent:** Lucy (full 12-phase pipeline)
+- **Hero pattern:** image-top-text-below (hero-jerk-chicken.png full-bleed 68vh, editorial text section below)
+- **Typography:** Fraunces 300/700/italic (display) + Inter 400/500/600 (body)
+- **Palette:** #100804 espresso + #C4791A amber + #F4EFE6 warm cream
+- **Review layout:** No standalone section — rating stat woven into quick-strip and Find Us row
+- **Visit/hours layout:** Quick-strip (amber bar) + two-column Find Us with styled map + "Open in Google Maps" button
+- **Stats bar style:** no-stats (rating woven into copy)
+- **Score:** 8.0 (WHY) / 7.67 (WHAT) / 7.67 (HOW) → **7.78 avg**
+- **Self-review:** 7.9 (ceiling 8.67; honest — strong editorial voice, food-forward hero lands, menu section the weakest)
+- **Live URL:** https://auto-sites.pages.dev/demos/stir-it-up-lucy-2/
+- **Key decisions:**
+  - hero-jerk-chicken.png as hero (NOT owner portrait — finally correct)
+  - "Down the alley on Yates." as conviction headline — specific, implies discovery
+  - image-top-text-below pattern: food first, always
+  - Standalone reviews section removed (Rams: doesn't earn its space); rating woven into quick-strip + Find Us
+  - Fraunces italic serif brings Caribbean warmth without cliché
+  - Food section: editorial full-width patties photo break + 2-column dish list + Roti Wraps accent card
+  - Heritage section: roti-making.png + spices.png bg texture, trimmed to 1 tight paragraph
+  - Schema.org Restaurant markup added (v2)
+  - Copy audit: zero em dashes in visible copy, zero invented claims, zero owner name/gender assumptions
+  - CTAs: "Call 778-432-0133" primary + "Get Directions" secondary (no Instagram link in hero)
+  - Map: grayscale/darkened filter to match aesthetic + "Open in Google Maps" button
+  - sources.md documents every piece of copy's origin
+
+### Panel Scores
+| Round | Phase | Reviewers | Avg |
+|-------|-------|-----------|-----|
+| v0→v1 | WHY | Jobs 8.5, Graham 8.0, Ogilvy 7.5 | 8.0 |
+| v1→v2 | WHAT | Norman 8.0, Krug 8.0, Nielsen 7.0 | 7.67 ✓ |
+| v2→v3 | HOW | Vignelli 8.0, Spiekermann 8.0, Rams 7.0 | 7.67 ✓ |
+
+### Photo Assignments
+| File | Role | Quality |
+|------|------|---------|
+| hero-jerk-chicken.png | Hero (68vh full-bleed) | ★★★★★ Golden hour, steam, landscape |
+| patties.png | Food section full-width break | ★★★★ Pro lighting, landscape |
+| ig-photo-15.jpg | Roti Wraps accent card | ★★★ Colorful tablecloth, square |
+| roti-making.png | Heritage section (half-width) | ★★★★ Window light, hands, landscape |
+| spices.png | Heritage bg texture (0.14 opacity) | ★★★★ A+ composition, landscape |
+
+### Notes
+- Completely different from Build 110: food-forward hero, new typography, no standalone reviews section
+- Hero finally food-first (per brief instruction — every previous build used owner portrait)
+- No invented reviews, owner name, pronouns, prices, or Bob Marley reference
+- All copy traceable to brief, Instagram, Google listing, or visible photo content
+
 ## Build 110 — Stir It Up Lucy (Full Pipeline)
 - **Category:** Caribbean Soul Food
 - **City:** Victoria, BC

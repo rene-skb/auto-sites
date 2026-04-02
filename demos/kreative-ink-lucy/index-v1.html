@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--
+KREATIVE INK TATTOO — index-v1.html
+
+DELTA: v0 → v1
+=================
+WHY scores: Jobs 6.5 / PG 7.0 / Ogilvy 6.5 → avg 6.67
+Changes:
+1. Hero headline rewritten — more specific, stops you. Away from literal description toward conviction.
+2. Gallery expanded to 4 images + different grid treatment (2-up + 2-up, not 3-col equal)
+3. Artist bio copy pulled from real source material — Nick's Instagram voice, Autumn's warmth
+4. Artist section gets a West Coast Ink credential prominence bump
+5. Right-side hero image repositioned to not compete with headline text
+6. Info strip stays — it works
+
+Hypothesis: Gallery expansion + specific artist bios will move the score most.
+           The hero headline is the biggest risk — needs to earn its space.
+-->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kreative Ink Tattoo — Victoria, BC</title>
+<meta name="description" content="Black and grey realism tattoo studio. Nick Chan and Autumn. Victoria, BC.">
+<meta property="og:title" content="Kreative Ink Tattoo — Victoria, BC">
+<meta property="og:description" content="Black and grey realism. Dark mythology. Victoria, BC. 4.7 stars.">
+<meta property="og:image" content="ig-photo-11.jpg">
+<meta property="og:url" content="https://auto-sites.pages.dev/demos/kreative-ink-lucy/">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --black: #0A0A0A;
+    --near-black: #111111;
+    --surface: #161616;
+    --bone: #E8E0D4;
+    --bone-dim: #968C82;
+    --white: #F4F0EB;
+
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-sans: 'Space Grotesk', system-ui, sans-serif;
+
+    --section-pad: clamp(64px, 10vw, 128px);
+    --content-width: 1200px;
+    --gutter: clamp(24px, 5vw, 64px);
+
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--black);
+    color: var(--bone);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px var(--gutter);
+    background: linear-gradient(to bottom, rgba(10,10,10,0.96) 0%, transparent 100%);
+  }
+
+  .nav-logo {
+    font-family: var(--font-serif);
+    font-size: 1.05rem;
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--bone);
+    text-decoration: none;
+  }
+
+  .nav-links { display: flex; gap: 40px; list-style: none; }
+  .nav-links a {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--bone-dim);
+    text-decoration: none;
+    transition: color 200ms var(--ease-out);
+  }
+  .nav-links a:hover { color: var(--bone); }
+
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+  .nav-hamburger span { display: block; width: 24px; height: 1px; background: var(--bone); }
+
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: var(--black);
+    z-index: 200;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 48px;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--bone);
+    text-decoration: none;
+    letter-spacing: 0.06em;
+  }
+  .mobile-close {
+    position: absolute;
+    top: 24px; right: var(--gutter);
+    background: none; border: none;
+    color: var(--bone); font-size: 1.5rem; cursor: pointer;
+  }
+
+  /* ─── HERO: ASYMMETRIC COLLAGE ─── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 55% 45%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-col-left {
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-col-left img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    opacity: 0.88;
+  }
+
+  /* Gradient fade from left image into right */
+  .hero-col-left::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 120px;
+    height: 100%;
+    background: linear-gradient(to right, transparent, var(--black));
+    pointer-events: none;
+  }
+
+  .hero-col-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 120px var(--gutter) 80px 40px;
+    position: relative;
+  }
+
+  /* Floating secondary image — top-right, doesn't compete with text */
+  .hero-secondary-img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 48%;
+    height: 45%;
+    overflow: hidden;
+    opacity: 0.5;
+  }
+  .hero-secondary-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+  .hero-secondary-img::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 50%, var(--black) 100%);
+  }
+
+  .hero-text {
+    position: relative;
+    z-index: 2;
+    max-width: 440px;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--bone-dim);
+    margin-bottom: 20px;
+  }
+
+  .hero-headline {
+    font-family: var(--font-serif);
+    font-size: clamp(3rem, 4.5vw, 5rem);
+    font-weight: 300;
+    line-height: 1.02;
+    color: var(--white);
+    margin-bottom: 28px;
+    letter-spacing: -0.01em;
+  }
+  .hero-headline em { font-style: italic; }
+
+  .hero-sub {
+    font-size: 0.88rem;
+    font-weight: 400;
+    color: var(--bone-dim);
+    line-height: 1.75;
+    margin-bottom: 40px;
+    max-width: 360px;
+  }
+
+  .hero-cta {
+    display: inline-block;
+    padding: 14px 32px;
+    border: 1px solid rgba(232,224,212,0.3);
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--bone);
+    text-decoration: none;
+    transition: background 200ms var(--ease-out), border-color 200ms var(--ease-out);
+  }
+  .hero-cta:hover { background: rgba(232,224,212,0.07); border-color: rgba(232,224,212,0.55); }
+  .hero-cta:active { transform: scale(0.97); }
+
+  /* ─── INFO STRIP ─── */
+  .info-strip {
+    border-top: 1px solid rgba(232,224,212,0.08);
+    border-bottom: 1px solid rgba(232,224,212,0.08);
+    padding: 18px var(--gutter);
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  .info-item {
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--bone-dim);
+  }
+  .info-item a { color: var(--bone-dim); text-decoration: none; transition: color 180ms; }
+  .info-item a:hover { color: var(--bone); }
+  .info-divider { width: 1px; height: 14px; background: rgba(232,224,212,0.15); flex-shrink: 0; }
+
+  /* ─── GALLERY — 2+2 ASYMMETRIC GRID ─── */
+  .gallery {
+    padding: var(--section-pad) 0;
+  }
+
+  .gallery-label {
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--bone-dim);
+    padding: 0 var(--gutter);
+    margin-bottom: 32px;
+  }
+
+  /* Two rows of two — left large, right small-small stacked */
+  .gallery-main {
+    display: grid;
+    grid-template-columns: 55% 45%;
+    gap: 2px;
+  }
+
+  .gallery-main-left {
+    overflow: hidden;
+  }
+  .gallery-main-left img {
+    width: 100%;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    display: block;
+    opacity: 0.88;
+    transition: opacity 300ms var(--ease-out);
+  }
+  .gallery-main-left img:hover { opacity: 1; }
+
+  .gallery-main-right {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 2px;
+  }
+  .gallery-main-right img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    opacity: 0.82;
+    transition: opacity 300ms var(--ease-out);
+  }
+  .gallery-main-right img:hover { opacity: 1; }
+
+  .gallery-view-more {
+    padding: 32px var(--gutter) 0;
+    text-align: right;
+  }
+  .gallery-view-more a {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--bone-dim);
+    text-decoration: none;
+    transition: color 180ms;
+  }
+  .gallery-view-more a:hover { color: var(--bone); }
+
+  /* ─── ARTISTS ─── */
+  .artists {
+    padding: var(--section-pad) var(--gutter);
+    border-top: 1px solid rgba(232,224,212,0.07);
+  }
+
+  .artists-inner {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(48px, 8vw, 96px);
+  }
+
+  .artist-label {
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--bone-dim);
+    margin-bottom: 28px;
+  }
+
+  .artist-name {
+    font-family: var(--font-serif);
+    font-size: clamp(2.2rem, 3.5vw, 3.2rem);
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1.05;
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+
+  .artist-handle {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    color: var(--bone-dim);
+    margin-bottom: 24px;
+  }
+  .artist-handle a { color: var(--bone-dim); text-decoration: none; transition: color 180ms; }
+  .artist-handle a:hover { color: var(--bone); }
+
+  .artist-bio {
+    font-size: 0.92rem;
+    line-height: 1.78;
+    color: var(--bone-dim);
+    max-width: 400px;
+  }
+
+  .artist-bio + .artist-bio { margin-top: 16px; }
+
+  .artist-credential {
+    display: inline-block;
+    margin-top: 24px;
+    padding: 8px 14px;
+    border: 1px solid rgba(232,224,212,0.14);
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--bone-dim);
+  }
+
+  /* ─── PULL QUOTE REVIEWS ─── */
+  .reviews {
+    padding: var(--section-pad) var(--gutter);
+    border-top: 1px solid rgba(232,224,212,0.07);
+    background: var(--near-black);
+  }
+
+  .reviews-header {
+    max-width: var(--content-width);
+    margin: 0 auto 64px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+
+  .reviews-label {
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--bone-dim);
+  }
+
+  .reviews-rating {
+    font-family: var(--font-serif);
+    font-size: 0.88rem;
+    font-weight: 400;
+    color: var(--bone-dim);
+    letter-spacing: 0.04em;
+  }
+
+  .pull-quote {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 40px 0;
+    border-top: 1px solid rgba(232,224,212,0.07);
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+  .pull-quote:last-child { border-bottom: 1px solid rgba(232,224,212,0.07); }
+
+  .pull-mark {
+    font-family: var(--font-serif);
+    font-size: 4rem;
+    line-height: 0.75;
+    color: rgba(232,224,212,0.12);
+    font-weight: 300;
+    user-select: none;
+  }
+
+  .pull-body {
+    font-family: var(--font-serif);
+    font-size: clamp(1.4rem, 2.2vw, 1.9rem);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.35;
+    color: var(--white);
+    margin-bottom: 14px;
+  }
+
+  .pull-attr {
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--bone-dim);
+  }
+
+  /* ─── CONTACT ─── */
+  .contact {
+    padding: var(--section-pad) var(--gutter);
+    border-top: 1px solid rgba(232,224,212,0.07);
+    text-align: center;
+  }
+  .contact-inner { max-width: 520px; margin: 0 auto; }
+
+  .contact-label {
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--bone-dim);
+    margin-bottom: 28px;
+  }
+
+  .contact-headline {
+    font-family: var(--font-serif);
+    font-size: clamp(2.2rem, 4vw, 3.4rem);
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1.15;
+    margin-bottom: 20px;
+    letter-spacing: -0.01em;
+  }
+  .contact-headline em { font-style: italic; }
+
+  .contact-sub {
+    font-size: 0.88rem;
+    color: var(--bone-dim);
+    line-height: 1.7;
+    margin-bottom: 40px;
+  }
+
+  .contact-btn {
+    display: inline-block;
+    padding: 16px 40px;
+    background: var(--bone);
+    color: var(--black);
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: opacity 200ms var(--ease-out);
+  }
+  .contact-btn:hover { opacity: 0.86; }
+  .contact-btn:active { transform: scale(0.97); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    padding: 28px var(--gutter);
+    border-top: 1px solid rgba(232,224,212,0.07);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .footer-name {
+    font-family: var(--font-serif);
+    font-size: 0.88rem;
+    color: var(--bone-dim);
+    letter-spacing: 0.06em;
+  }
+  .footer-right {
+    font-size: 0.65rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    color: var(--bone-dim);
+  }
+  .footer-right a { color: var(--bone-dim); text-decoration: none; transition: color 180ms; }
+  .footer-right a:hover { color: var(--bone); }
+
+  /* ─── REVEAL ─── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* ─── MOBILE ─── */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-col-left { height: 56vw; max-height: 380px; }
+    .hero-col-left::after { display: none; }
+    .hero-col-right { padding: 32px var(--gutter) 64px; }
+    .hero-secondary-img { display: none; }
+    .hero-headline { font-size: clamp(2.4rem, 8vw, 3rem); }
+
+    .gallery-main { grid-template-columns: 1fr; }
+    .gallery-main-left img { aspect-ratio: 4/3; }
+    .gallery-main-right { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+    .gallery-main-right img { aspect-ratio: 1/1; }
+
+    .artists-inner { grid-template-columns: 1fr; gap: 48px; }
+
+    .pull-quote { grid-template-columns: 1fr; gap: 12px; }
+    .pull-mark { display: none; }
+
+    .reviews-header { flex-direction: column; gap: 8px; }
+
+    footer { flex-direction: column; text-align: center; }
+    .footer-right { text-align: center; }
+
+    .info-strip { gap: 16px; }
+    .info-divider { display: none; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Kreative Ink</a>
+  <ul class="nav-links">
+    <li><a href="#gallery">Work</a></li>
+    <li><a href="#artists">Artists</a></li>
+    <li><a href="#book">Book</a></li>
+  </ul>
+  <button class="nav-hamburger" onclick="document.querySelector('.mobile-menu').classList.add('open')" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" role="dialog" aria-label="Navigation">
+  <button class="mobile-close" onclick="document.querySelector('.mobile-menu').classList.remove('open')" aria-label="Close menu">✕</button>
+  <a href="#gallery" onclick="document.querySelector('.mobile-menu').classList.remove('open')">Work</a>
+  <a href="#artists" onclick="document.querySelector('.mobile-menu').classList.remove('open')">Artists</a>
+  <a href="#book" onclick="document.querySelector('.mobile-menu').classList.remove('open')">Book</a>
+</div>
+
+<!-- HERO: ASYMMETRIC COLLAGE -->
+<section class="hero">
+  <div class="hero-col-left">
+    <img src="ig-photo-11.jpg" alt="Full back piece — wolves and the sacred, by Nick Chan at Kreative Ink" loading="eager">
+  </div>
+  <div class="hero-col-right">
+    <div class="hero-secondary-img">
+      <img src="ig-photo-04.jpg" alt="Antlered warrior deity, by Nick Chan" loading="eager">
+    </div>
+    <div class="hero-text">
+      <p class="hero-eyebrow">Victoria, BC · Black &amp; Grey Realism</p>
+      <h1 class="hero-headline">The best<br>dark realism<br><em>on the island.</em></h1>
+      <p class="hero-sub">Nick Chan and Autumn work in black and grey — mythology, warriors, portraits, animals. Victoria, BC.</p>
+      <a href="https://www.instagram.com/kreativeinknick/" target="_blank" rel="noopener" class="hero-cta">See the work</a>
+    </div>
+  </div>
+</section>
+
+<!-- INFO STRIP -->
+<div class="info-strip">
+  <span class="info-item">Victoria, BC</span>
+  <div class="info-divider"></div>
+  <span class="info-item">4.7★ · 38 Google reviews</span>
+  <div class="info-divider"></div>
+  <span class="info-item"><a href="https://www.instagram.com/kreativeinknick/" target="_blank" rel="noopener">@kreativeinknick</a></span>
+  <div class="info-divider"></div>
+  <span class="info-item"><a href="https://www.instagram.com/hotdamnitsautumn/" target="_blank" rel="noopener">@hotdamnitsautumn</a></span>
+  <div class="info-divider"></div>
+  <span class="info-item">Book via DM</span>
+</div>
+
+<!-- GALLERY -->
+<section class="gallery reveal" id="gallery">
+  <p class="gallery-label">Portfolio</p>
+  <div class="gallery-main">
+    <div class="gallery-main-left">
+      <img src="ig-photo-12.jpg" alt="Sacred and sinister chest piece — nun and wolves" loading="lazy">
+    </div>
+    <div class="gallery-main-right">
+      <img src="ig-photo-10.jpg" alt="Viking warrior with wolf — arm sleeve" loading="lazy">
+      <img src="ig-photo-09.jpg" alt="Dive Bar — full back narrative piece" loading="lazy">
+    </div>
+  </div>
+  <div class="gallery-view-more">
+    <a href="https://www.instagram.com/kreativeinknick/" target="_blank" rel="noopener">More work on Instagram →</a>
+  </div>
+</section>
+
+<!-- ARTISTS -->
+<section class="artists" id="artists">
+  <div class="artists-inner">
+
+    <div class="reveal">
+      <p class="artist-label">Lead Artist</p>
+      <h2 class="artist-name">Nick<br>Chan</h2>
+      <p class="artist-handle"><a href="https://www.instagram.com/kreativeinknick/" target="_blank" rel="noopener">@kreativeinknick</a></p>
+      <p class="artist-bio">Black and grey realism specialist. Mythology, warriors, animals, portraiture — the work that can't be mistaken for anyone else's on the island. Each piece is a commitment.</p>
+      <p class="artist-bio">Featured in West Coast Ink Magazine.</p>
+      <span class="artist-credential">West Coast Ink Magazine · Featured Artist</span>
+    </div>
+
+    <div class="reveal">
+      <p class="artist-label">Apprentice</p>
+      <h2 class="artist-name">Autumn</h2>
+      <p class="artist-handle"><a href="https://www.instagram.com/hotdamnitsautumn/" target="_blank" rel="noopener">@hotdamnitsautumn</a></p>
+      <p class="artist-bio">Apprentice at Kreative Ink. Stipple shading, traditional, dark figurative, portraits, animals. Her clients keep coming back — and her following has noticed the growth.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- PULL QUOTE REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="reviews-header reveal">
+    <p class="reviews-label">What clients say</p>
+    <p class="reviews-rating">4.7★ · 38 Google reviews</p>
+  </div>
+
+  <div class="pull-quote reveal">
+    <div class="pull-mark">"</div>
+    <div>
+      <p class="pull-body">Sickest artist on the island fr tho.</p>
+      <p class="pull-attr">@sirrealmusicofficial · Instagram</p>
+    </div>
+  </div>
+
+  <div class="pull-quote reveal">
+    <div class="pull-mark">"</div>
+    <div>
+      <p class="pull-body">Best animal tattooist ever, right there.</p>
+      <p class="pull-attr">@krystymcintyre · Instagram</p>
+    </div>
+  </div>
+
+  <div class="pull-quote reveal">
+    <div class="pull-mark">"</div>
+    <div>
+      <p class="pull-body">This piece is absolutely incredible. Nicely done!</p>
+      <p class="pull-attr">@dmcalverley · Instagram · On the baphomet piece</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT / BOOK -->
+<section class="contact" id="book">
+  <div class="contact-inner reveal">
+    <p class="contact-label">Book a consultation</p>
+    <h2 class="contact-headline">Ready to<br><em>start your piece?</em></h2>
+    <p class="contact-sub">DM on Instagram to start a conversation. Nick and Autumn take custom work — mythology, portraits, sleeves, animals.</p>
+    <a href="https://www.instagram.com/kreativeinknick/" target="_blank" rel="noopener" class="contact-btn">DM @kreativeinknick</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-name">Kreative Ink Tattoo</span>
+  <div class="footer-right">
+    Victoria, BC &nbsp;·&nbsp;
+    <a href="https://www.instagram.com/kreativeinknick/" target="_blank" rel="noopener">@kreativeinknick</a>
+    &nbsp;·&nbsp;
+    <a href="https://www.instagram.com/hotdamnitsautumn/" target="_blank" rel="noopener">@hotdamnitsautumn</a>
+  </div>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 60);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+
+<noscript><style>.reveal { opacity: 1; transform: none; }</style></noscript>
+</body>
+</html>

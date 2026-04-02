@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--
+KREATIVE INK TATTOO — index-v3.html
+
+DELTA: v2 → v3
+=================
+HOW scores: Vignelli 6.0 / Spiekermann 7.0 / Rams 6.5 → avg 6.5 → BELOW GATE, iterate
+Changes (targeting Vignelli — grid discipline):
+1. Master grid: ALL sections now use consistent --content-width + --gutter. No section invents its own spatial logic.
+2. Gallery: replaced 55/45 asymmetric with clean 3-column equal grid. Each piece visible and assessable.
+3. Middle typographic register added: section intros at 1.05rem (between display serif and micro-labels)
+4. CTA buttons: stronger visual presence — solid white border, more padding
+5. Reviews: replaced third quote with Autumn-specific one to differentiate sentiment
+6. Info strip: consistent with master grid gutter
+7. Removed gallery "More on Instagram" inline link — stays in footer only
+
+Hypothesis: Grid consistency + gallery clarity are the highest-impact changes for Vignelli.
+            Strengthened CTAs will help Rams' score on "elements earning their place."
+-->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kreative Ink Tattoo — Victoria, BC</title>
+<meta name="description" content="Black and grey realism tattoo studio. Nick Chan and Autumn. Victoria, BC.">
+<meta property="og:title" content="Kreative Ink Tattoo — Victoria, BC">
+<meta property="og:description" content="Black and grey realism. Dark mythology. Victoria, BC. 4.7 stars.">
+<meta property="og:image" content="ig-photo-11.jpg">
+<meta property="og:url" content="https://auto-sites.pages.dev/demos/kreative-ink-lucy/">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --black: #0A0A0A;
+    --near-black: #111111;
+    --bone: #E8E0D4;
+    --bone-dim: #8A8078;
+    --white: #F4F0EB;
+
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-sans: 'Space Grotesk', system-ui, sans-serif;
+
+    /* Master grid — ALL sections obey this */
+    --content-width: 1280px;
+    --gutter: clamp(28px, 5vw, 80px);
+    --section-pad: clamp(72px, 10vw, 128px);
+
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--black);
+    color: var(--bone);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* ─── MASTER GRID WRAPPER ─── */
+  .grid-wrap {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0; z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px var(--gutter);
+    background: linear-gradient(to bottom, rgba(10,10,10,0.97) 0%, transparent 100%);
+  }
+  .nav-logo {
+    font-family: var(--font-serif);
+    font-size: 1.05rem; font-weight: 400;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--bone); text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 40px; list-style: none; }
+  .nav-links a {
+    font-size: 0.7rem; font-weight: 500;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--bone-dim); text-decoration: none;
+    transition: color 200ms var(--ease-out);
+  }
+  .nav-links a:hover { color: var(--bone); }
+  .nav-hamburger {
+    display: none; flex-direction: column; gap: 5px;
+    background: none; border: none; cursor: pointer; padding: 4px;
+  }
+  .nav-hamburger span { display: block; width: 24px; height: 1px; background: var(--bone); }
+  .mobile-menu {
+    display: none; position: fixed; inset: 0;
+    background: var(--black); z-index: 200;
+    flex-direction: column; align-items: center; justify-content: center; gap: 48px;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    font-family: var(--font-serif);
+    font-size: 2rem; font-weight: 300;
+    color: var(--bone); text-decoration: none; letter-spacing: 0.06em;
+  }
+  .mobile-close {
+    position: absolute; top: 24px; right: var(--gutter);
+    background: none; border: none; color: var(--bone); font-size: 1.5rem; cursor: pointer;
+  }
+
+  /* ─── HERO: ASYMMETRIC COLLAGE ─── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 55% 45%;
+    overflow: hidden;
+  }
+  .hero-left { position: relative; overflow: hidden; }
+  .hero-left img {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center top;
+    display: block; opacity: 0.9;
+  }
+  .hero-left::after {
+    content: '';
+    position: absolute; top: 0; right: 0;
+    width: 100px; height: 100%;
+    background: linear-gradient(to right, transparent, var(--black));
+    pointer-events: none;
+  }
+
+  .hero-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 120px var(--gutter) 80px 48px;
+    position: relative;
+  }
+
+  .hero-bg-img {
+    position: absolute; top: 0; right: 0;
+    width: 55%; height: 42%;
+    overflow: hidden; pointer-events: none;
+    aria-hidden: true;
+  }
+  .hero-bg-img img {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center top; opacity: 0.28;
+  }
+  .hero-bg-img::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom, var(--black) 0%, transparent 25%, transparent 65%, var(--black) 100%),
+                linear-gradient(to left, transparent, var(--black) 80%);
+  }
+
+  .hero-text { position: relative; z-index: 2; max-width: 460px; }
+
+  .hero-eyebrow {
+    font-size: 0.68rem; font-weight: 500;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--bone-dim); margin-bottom: 20px;
+  }
+
+  /* Display: forte */
+  .hero-headline {
+    font-family: var(--font-serif);
+    font-size: clamp(3rem, 4.5vw, 5.2rem);
+    font-weight: 300; line-height: 1.02;
+    color: var(--white);
+    margin-bottom: 28px;
+    letter-spacing: -0.01em;
+  }
+  .hero-headline em { font-style: italic; }
+
+  /* Body: mezzo-forte — NEW middle register */
+  .hero-sub {
+    font-size: 1.05rem; line-height: 1.72;
+    color: var(--bone-dim);
+    margin-bottom: 40px; max-width: 380px;
+    font-weight: 400;
+  }
+
+  .hero-cta {
+    display: inline-block;
+    padding: 15px 36px;
+    border: 1px solid rgba(232,224,212,0.5);
+    font-size: 0.7rem; font-weight: 500;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--bone); text-decoration: none;
+    transition: background 200ms var(--ease-out), border-color 200ms var(--ease-out);
+  }
+  .hero-cta:hover { background: rgba(232,224,212,0.1); border-color: var(--bone); }
+  .hero-cta:active { transform: scale(0.97); }
+
+  /* ─── INFO STRIP — obeys master grid ─── */
+  .info-strip {
+    border-top: 1px solid rgba(232,224,212,0.08);
+    border-bottom: 1px solid rgba(232,224,212,0.08);
+    padding: 0 var(--gutter);
+  }
+  .info-strip-inner {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    display: flex; align-items: center;
+    gap: 40px; flex-wrap: wrap;
+    padding: 18px 0;
+  }
+  .info-item {
+    font-size: 0.68rem; font-weight: 500;
+    letter-spacing: 0.14em; text-transform: uppercase; color: var(--bone-dim);
+  }
+  .info-item a { color: var(--bone-dim); text-decoration: none; transition: color 180ms; }
+  .info-item a:hover { color: var(--bone); }
+  .info-div { width: 1px; height: 14px; background: rgba(232,224,212,0.15); flex-shrink: 0; }
+
+  /* ─── SECTION SHELL (all content sections use this) ─── */
+  .section {
+    padding: var(--section-pad) var(--gutter);
+    border-top: 1px solid rgba(232,224,212,0.07);
+  }
+
+  /* Section label: pianissimo */
+  .section-label {
+    font-size: 0.68rem; font-weight: 500;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--bone-dim); margin-bottom: 40px;
+  }
+
+  /* ─── GALLERY — clean 3-column equal grid ─── */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3px;
+  }
+
+  .gallery-item { overflow: hidden; position: relative; }
+  .gallery-item img {
+    width: 100%; aspect-ratio: 3/4;
+    object-fit: cover; object-position: center;
+    display: block; opacity: 0.88;
+    transition: opacity 280ms var(--ease-out);
+  }
+  .gallery-item img:hover { opacity: 1; }
+
+  .gallery-cap {
+    margin-top: 16px;
+    font-size: 0.65rem; font-weight: 400;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--bone-dim);
+  }
+
+  .gallery-footer {
+    margin-top: 32px;
+    text-align: right;
+  }
+  .gallery-footer a {
+    font-size: 0.7rem; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--bone-dim); text-decoration: none;
+    transition: color 180ms;
+  }
+  .gallery-footer a:hover { color: var(--bone); }
+
+  /* ─── ARTISTS ─── */
+  .artists-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(48px, 8vw, 96px);
+  }
+
+  .artist-role {
+    font-size: 0.68rem; font-weight: 500;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--bone-dim); margin-bottom: 24px;
+  }
+
+  /* Display: forte */
+  .artist-name {
+    font-family: var(--font-serif);
+    font-size: clamp(2.4rem, 3.8vw, 3.4rem);
+    font-weight: 300; color: var(--white);
+    line-height: 1.02; margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+
+  .artist-handle {
+    font-size: 0.7rem; letter-spacing: 0.1em;
+    color: var(--bone-dim); margin-bottom: 20px;
+  }
+  .artist-handle a { color: var(--bone-dim); text-decoration: none; transition: color 180ms; }
+  .artist-handle a:hover { color: var(--bone); }
+
+  /* Body: mezzo — middle register */
+  .artist-bio {
+    font-size: 1rem; line-height: 1.75;
+    color: var(--bone-dim); max-width: 400px;
+    margin-bottom: 20px;
+  }
+
+  /* Artist voice quote: mezzo-forte */
+  .artist-voice {
+    margin: 20px 0;
+    padding-left: 18px;
+    border-left: 1px solid rgba(232,224,212,0.18);
+    font-family: var(--font-serif);
+    font-size: 1.15rem; font-style: italic; font-weight: 300;
+    color: rgba(244,240,235,0.7);
+    line-height: 1.5;
+  }
+
+  .artist-cred {
+    display: inline-block;
+    padding: 8px 16px;
+    border: 1px solid rgba(232,224,212,0.15);
+    font-size: 0.64rem; font-weight: 500;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--bone-dim);
+  }
+
+  /* ─── REVIEWS — near-black bg ─── */
+  .reviews { background: var(--near-black); }
+
+  .reviews-meta {
+    display: flex; align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 64px;
+  }
+  .reviews-rating {
+    font-family: var(--font-serif);
+    font-size: 1rem; color: var(--bone-dim);
+    letter-spacing: 0.04em;
+  }
+
+  .pull-quote {
+    padding: 40px 0;
+    border-top: 1px solid rgba(232,224,212,0.07);
+    display: grid;
+    grid-template-columns: 52px 1fr;
+    gap: 40px; align-items: start;
+  }
+  .pull-quote:last-child { border-bottom: 1px solid rgba(232,224,212,0.07); }
+
+  .pull-mark {
+    font-family: var(--font-serif);
+    font-size: 3.5rem; line-height: 0.8;
+    color: rgba(232,224,212,0.1); font-weight: 300;
+    user-select: none; padding-top: 4px;
+  }
+
+  /* Pull quotes: forte */
+  .pull-body {
+    font-family: var(--font-serif);
+    font-size: clamp(1.5rem, 2.4vw, 2rem);
+    font-weight: 300; font-style: italic;
+    line-height: 1.32; color: var(--white);
+    margin-bottom: 14px;
+  }
+
+  /* Attribution: pianissimo */
+  .pull-attr {
+    font-size: 0.65rem; font-weight: 500;
+    letter-spacing: 0.14em; text-transform: uppercase; color: var(--bone-dim);
+  }
+
+  /* ─── CONTACT ─── */
+  .contact { text-align: center; }
+  .contact-inner { max-width: 520px; margin: 0 auto; }
+
+  /* Display: forte */
+  .contact-headline {
+    font-family: var(--font-serif);
+    font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+    font-weight: 300; color: var(--white);
+    line-height: 1.1; margin-bottom: 20px;
+    letter-spacing: -0.01em;
+  }
+  .contact-headline em { font-style: italic; }
+
+  /* Body: mezzo */
+  .contact-sub {
+    font-size: 1rem; color: var(--bone-dim);
+    line-height: 1.72; margin-bottom: 40px;
+  }
+
+  /* Primary CTA — solid fill, unmissable */
+  .contact-btn {
+    display: inline-block;
+    padding: 18px 44px;
+    background: var(--bone);
+    color: var(--black);
+    font-family: var(--font-sans);
+    font-size: 0.72rem; font-weight: 600;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    text-decoration: none;
+    transition: opacity 200ms var(--ease-out);
+  }
+  .contact-btn:hover { opacity: 0.84; }
+  .contact-btn:active { transform: scale(0.97); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    padding: 28px var(--gutter);
+    border-top: 1px solid rgba(232,224,212,0.07);
+  }
+  .footer-inner {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    display: flex; align-items: center;
+    justify-content: space-between; flex-wrap: wrap; gap: 12px;
+  }
+  .footer-name {
+    font-family: var(--font-serif);
+    font-size: 0.92rem; color: var(--bone-dim); letter-spacing: 0.06em;
+  }
+  .footer-right { font-size: 0.65rem; color: var(--bone-dim); letter-spacing: 0.1em; }
+  .footer-right a { color: var(--bone-dim); text-decoration: none; transition: color 180ms; }
+  .footer-right a:hover { color: var(--bone); }
+
+  /* ─── REVEAL ─── */
+  .reveal {
+    opacity: 0; transform: translateY(20px);
+    transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* ─── MOBILE ─── */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { height: 60vw; max-height: 400px; }
+    .hero-left::after { display: none; }
+    .hero-right { padding: 36px var(--gutter) 64px; }
+    .hero-bg-img { display: none; }
+    .hero-headline { font-size: clamp(2.4rem, 8vw, 3.2rem); }
+    .hero-sub { font-size: 0.95rem; }
+
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .gallery-grid .gallery-item:last-child { display: none; }
+    .gallery-cap { display: none; }
+
+    .artists-grid { grid-template-columns: 1fr; gap: 48px; }
+
+    .pull-quote { grid-template-columns: 1fr; gap: 12px; }
+    .pull-mark { display: none; }
+    .reviews-meta { flex-direction: column; gap: 8px; }
+
+    .info-strip-inner { gap: 16px; }
+    .info-div { display: none; }
+
+    footer .footer-inner { flex-direction: column; text-align: center; }
+    .footer-right { text-align: center; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Kreative Ink</a>
+  <ul class="nav-links">
+    <li><a href="#gallery">Work</a></li>
+    <li><a href="#artists">Artists</a></li>
+    <li><a href="#book">Book</a></li>
+  </ul>
+  <button class="nav-hamburger" onclick="document.querySelector('.mobile-menu').classList.add('open')" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" role="dialog" aria-label="Navigation">
+  <button class="mobile-close" onclick="document.querySelector('.mobile-menu').classList.remove('open')" aria-label="Close">✕</button>
+  <a href="#gallery" onclick="document.querySelector('.mobile-menu').classList.remove('open')">Work</a>
+  <a href="#artists" onclick="document.querySelector('.mobile-menu').classList.remove('open')">Artists</a>
+  <a href="#book" onclick="document.querySelector('.mobile-menu').classList.remove('open')">Book</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <img src="ig-photo-11.jpg" alt="Full back piece — wolves and sacred imagery, by Nick Chan at Kreative Ink" loading="eager">
+  </div>
+  <div class="hero-right">
+    <div class="hero-bg-img" aria-hidden="true">
+      <img src="ig-photo-04.jpg" alt="">
+    </div>
+    <div class="hero-text">
+      <p class="hero-eyebrow">Victoria, BC · Black &amp; Grey Realism</p>
+      <h1 class="hero-headline">The best<br>dark realism<br><em>on the island.</em></h1>
+      <p class="hero-sub">Nick Chan and Autumn work in black and grey — mythology, warriors, portraits, animals.</p>
+      <a href="#gallery" class="hero-cta">See the portfolio</a>
+    </div>
+  </div>
+</section>
+
+<!-- INFO STRIP -->
+<div class="info-strip">
+  <div class="info-strip-inner">
+    <span class="info-item">Victoria, BC</span>
+    <div class="info-div"></div>
+    <span class="info-item">4.7★ · 38 Google reviews</span>
+    <div class="info-div"></div>
+    <span class="info-item"><a href="https://www.instagram.com/kreativeinknick/" target="_blank" rel="noopener">@kreativeinknick</a></span>
+    <div class="info-div"></div>
+    <span class="info-item"><a href="https://www.instagram.com/hotdamnitsautumn/" target="_blank" rel="noopener">@hotdamnitsautumn</a></span>
+    <div class="info-div"></div>
+    <span class="info-item"><a href="https://www.instagram.com/kreativeinknick/" target="_blank" rel="noopener">Custom work · Book via DM</a></span>
+  </div>
+</div>
+
+<!-- GALLERY -->
+<section class="section reveal" id="gallery">
+  <div class="grid-wrap">
+    <p class="section-label">Portfolio</p>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="ig-photo-12.jpg" alt="Sacred and sinister chest piece — nun and wolves, by Nick Chan" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="ig-photo-10.jpg" alt="Viking warrior with wolf — arm sleeve, by Nick Chan" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="ig-photo-09.jpg" alt="Dive Bar — full back narrative piece, by Nick Chan" loading="lazy">
+      </div>
+    </div>
+    <div class="gallery-footer">
+      <a href="https://www.instagram.com/kreativeinknick/" target="_blank" rel="noopener">Full portfolio on Instagram ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- ARTISTS -->
+<section class="section" id="artists">
+  <div class="grid-wrap">
+    <p class="section-label">The Artists</p>
+    <div class="artists-grid">
+
+      <div class="reveal">
+        <p class="artist-role">Lead Artist</p>
+        <h2 class="artist-name">Nick<br>Chan</h2>
+        <p class="artist-handle"><a href="https://www.instagram.com/kreativeinknick/" target="_blank" rel="noopener">@kreativeinknick</a></p>
+        <p class="artist-bio">Black and grey realism: dark mythology, warriors, animals, portraiture. Featured in West Coast Ink Magazine. Based in Victoria, BC.</p>
+        <blockquote class="artist-voice">"Watch darkness turn into art."</blockquote>
+        <span class="artist-cred">West Coast Ink Magazine · Featured Artist</span>
+      </div>
+
+      <div class="reveal">
+        <p class="artist-role">Apprentice</p>
+        <h2 class="artist-name">Autumn</h2>
+        <p class="artist-handle"><a href="https://www.instagram.com/hotdamnitsautumn/" target="_blank" rel="noopener">@hotdamnitsautumn</a></p>
+        <p class="artist-bio">Stipple shading, traditional, dark figurative, portraits, animals. Apprentice at Kreative Ink, building her following in Victoria.</p>
+        <blockquote class="artist-voice">"I am so grateful for my amazing clients."</blockquote>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PULL QUOTE REVIEWS -->
+<section class="section reviews" id="reviews">
+  <div class="grid-wrap">
+    <div class="reviews-meta reveal">
+      <p class="section-label" style="margin-bottom:0;">What clients say</p>
+      <p class="reviews-rating">4.7★ · 38 Google reviews</p>
+    </div>
+
+    <div class="pull-quote reveal">
+      <div class="pull-mark">"</div>
+      <div>
+        <p class="pull-body">Sickest artist on the island fr tho.</p>
+        <p class="pull-attr">@sirrealmusicofficial · Instagram</p>
+      </div>
+    </div>
+
+    <div class="pull-quote reveal">
+      <div class="pull-mark">"</div>
+      <div>
+        <p class="pull-body">Best animal tattooist ever, right there.</p>
+        <p class="pull-attr">@krystymcintyre · Instagram</p>
+      </div>
+    </div>
+
+    <div class="pull-quote reveal">
+      <div class="pull-mark">"</div>
+      <div>
+        <p class="pull-body">Every post, your skills improve so much — oh my god.</p>
+        <p class="pull-attr">@optsu · Instagram · On Autumn's work</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT / BOOK -->
+<section class="section contact" id="book">
+  <div class="grid-wrap">
+    <div class="contact-inner reveal">
+      <h2 class="contact-headline">Ready to<br><em>start your piece?</em></h2>
+      <p class="contact-sub">DM on Instagram to begin. Nick and Autumn take custom work — mythology, portraits, sleeves, animals.</p>
+      <a href="https://www.instagram.com/kreativeinknick/" target="_blank" rel="noopener" class="contact-btn">DM @kreativeinknick</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <span class="footer-name">Kreative Ink Tattoo</span>
+    <div class="footer-right">
+      Victoria, BC &nbsp;·&nbsp;
+      <a href="https://www.instagram.com/kreativeinknick/" target="_blank" rel="noopener">@kreativeinknick</a>
+      &nbsp;·&nbsp;
+      <a href="https://www.instagram.com/hotdamnitsautumn/" target="_blank" rel="noopener">@hotdamnitsautumn</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 60);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+
+<noscript><style>.reveal { opacity: 1; transform: none; }</style></noscript>
+</body>
+</html>

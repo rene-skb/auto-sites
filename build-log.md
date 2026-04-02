@@ -1,5 +1,49 @@
 # Auto-Sites Build Log
 
+## Build 109 — Sow Song Lucy 3 (Full Pipeline)
+- **Category:** Custom Heirloom Jewelry
+- **City:** Nanaimo, BC (consultations in Tofino)
+- **Date:** 2026-04-01
+- **Model:** claude-opus-4-6 (subagent, Lucy)
+- **Agent:** Lucy (full 12-phase pipeline)
+- **Hero pattern:** dark-immersive (centered product photo floating on near-black, italic serif headline)
+- **Typography:** Cormorant Garamond 400/italic (display) + DM Sans 400-500 (body)
+- **Palette:** #111010 dark + #8B1D2C burgundy + #EDE8DD cream-bright + #C9A050 gold accent
+- **Review layout:** N/A (email-only inquiry, no formal reviews)
+- **Visit/hours layout:** N/A (studio-based custom, email-only)
+- **Stats bar style:** no-stats
+- **Score:** 5.33 (WHY) / 6.2 (WHAT, below gate, max retry) / 6.33 (HOW, below gate, max retry) → **5.95 avg panels**
+- **Self-review:** 6.5
+- **Live URL:** https://auto-sites.pages.dev/demos/sowsong-lucy-3/
+- **Key decisions:**
+  - Dark-immersive hero: pearl earrings in red box photo centered on near-black bg (genuinely different from builds 1+2)
+  - "Traces of history, marks of moments" — Tia's exact words as italic Cormorant headline
+  - Gallery grid BEFORE maker section (per task brief)
+  - Triple video row (dog ring, cushion solitaire, sea rings) — no header, let them speak
+  - "How It Works" moved from bottom to after gallery (WHAT panel feedback)
+  - Services as clean border-top list on burgundy background
+  - B&W Tia portrait in side-by-side maker section
+  - Scroll-reveal animations with stagger on gallery items
+  - Removed self-referential quote strip (Rams: doesn't serve user)
+  - Strict 2-typeface system (Cormorant Garamond + DM Sans)
+
+### Panel Scores
+| Round | Reviewers | Scores | Avg |
+|-------|-----------|--------|-----|
+| WHY (v0) | Jobs 6, Graham 5, Ogilvy 5 | 5.33 | proceed |
+| WHAT (v1) | Norman 5, Krug 4, Nielsen 4 | 4.33 | below gate |
+| WHAT retry (v2) | Norman 7, Krug 5.5, Nielsen 6 | 6.2 | below gate (max retry) |
+| HOW (v2) | Vignelli 4, Spiekermann 5, Rams 5 | 4.7 | below gate |
+| HOW retry (v3) | Vignelli 7, Spiekermann 6, Rams 6 | 6.33 | below gate (max retry) |
+
+### Notes
+- Third distinct hero approach for Sow Song: Build 1 = split-image-right, Build 2 = giant-display-type, Build 3 = dark-immersive
+- Dark palette created persistent contrast challenges — WHAT and HOW panels flagged readability across multiple iterations
+- The dark-immersive direction is visually striking but harder to score well on usability panels due to inherent contrast constraints
+- All real photos, no AI-generated images
+
+---
+
 ## Build 108 — Sow Song Lucy 2 (Full Pipeline)
 - **Category:** Custom Heirloom Jewelry
 - **City:** Nanaimo, BC (consultations in Tofino)

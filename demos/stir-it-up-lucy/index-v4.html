@@ -1,13 +1,4 @@
 <!--
-DELTA: v4 → v5
-Changes:
-- Review section: larger centered serif text with amber accent star
-- Food section: tighter menu list spacing, food photos get more height
-- Copy audit: humanizer pass on all text
-- Footer text size bumped
-- About photo height adjusted
-Self-review score: 7.0 (ceiling: 7.0 + 1 = 8.0 from HOW avg)
-
 DELTA: v3 → v4
 Changes:
 - Added scroll-reveal animations via IntersectionObserver
@@ -53,7 +44,7 @@ Stats bar: no-stats ✓
 <title>Stir It Up — Caribbean Soul Food | Victoria, BC</title>
 <meta name="description" content="St. Lucian home cooking in Victoria, BC. Jerk chicken, curry goat, roti wraps, rice and peas. Tue–Sat, 11am–7pm.">
 <meta property="og:title" content="Stir It Up — Caribbean Soul Food">
-<meta property="og:description" content="St. Lucian home cooking in Victoria, BC. Made from scratch, down the alley off Yates.">
+<meta property="og:description" content="St. Lucian home cooking in Victoria, BC. One cook. One kitchen. Everything from scratch.">
 <meta property="og:image" content="ig-photo-owner.jpg">
 <meta property="og:url" content="https://auto-sites.pages.dev/demos/stir-it-up-lucy/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -388,7 +379,7 @@ nav {
 }
 .food-card img {
   width: 100%;
-  height: 280px;
+  height: 320px;
   object-fit: cover;
 }
 .food-card-label {
@@ -409,7 +400,7 @@ nav {
   margin-top: 32px;
 }
 .menu-item {
-  padding: 16px 0;
+  padding: 20px 0;
   border-bottom: 1px solid rgba(26, 10, 10, 0.1);
   display: flex;
   justify-content: space-between;
@@ -484,20 +475,25 @@ nav {
 }
 .review-text {
   font-family: 'Bitter', serif;
-  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
   font-weight: 400;
-  line-height: 1.4;
+  font-style: italic;
+  line-height: 1.5;
   color: var(--dark);
-  margin-bottom: 16px;
+  margin-bottom: 24px;
 }
-.review-text .amber { color: var(--amber); }
-.review-link {
-  font-size: 0.875rem;
-  font-weight: 500;
+.review-meta {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: var(--ls-md);
+  text-transform: uppercase;
   color: var(--text-dim);
-  transition: color 200ms;
 }
-.review-link:hover { color: var(--amber-dark); }
+.review-stat {
+  font-size: 0.9375rem;
+  color: var(--text-dim);
+  margin-top: 32px;
+}
 
 /* VISIT */
 .visit-section {
@@ -565,7 +561,7 @@ footer {
   margin-bottom: 8px;
 }
 .footer-meta {
-  font-size: 0.8125rem;
+  font-size: 0.75rem;
   color: rgba(250, 247, 242, 0.4);
 }
 .footer-social {
@@ -702,7 +698,7 @@ body.js-ready .hero-ctas { opacity: 1; transform: none; }
   </div>
   <div class="hero-content">
     <p class="hero-label">Caribbean Soul Food · Victoria, BC</p>
-    <h1>Caribbean soul food. Made from scratch.</h1>
+    <h1>One cook. One kitchen. Everything from scratch.</h1>
     <p class="hero-body">St. Lucian home cooking down an alley off Yates Street. Jerk chicken, curry goat, roti wraps, rice and peas. Tuesday through Saturday.</p>
     <div class="hero-ctas">
       <a href="tel:7784320133" class="btn-primary">Call 778-432-0133</a>
@@ -724,7 +720,7 @@ body.js-ready .hero-ctas { opacity: 1; transform: none; }
 <section class="section" id="food">
   <div class="section-inner">
     <p class="section-label reveal">What to Order</p>
-    <h2 class="section-h2 reveal">The menu is short. Everything is made that morning.</h2>
+    <h2 class="section-h2 reveal">St. Lucian home cooking. Made fresh, every day.</h2>
 
     <div class="food-grid">
       <div class="food-card reveal stagger-1">
@@ -783,7 +779,7 @@ body.js-ready .hero-ctas { opacity: 1; transform: none; }
       <div class="about-body">
         <p class="section-label reveal">The Cook</p>
         <h2 class="section-h2 reveal">From Saint Lucia to Yates Street.</h2>
-        <p>Stir It Up is a small kitchen with big flavor. St. Lucian home cooking made from scratch — the recipes, the spices, the techniques, all from back home. The flavors are real.</p>
+        <p>Stir It Up is one woman's kitchen. She cooks everything herself, from scratch, the way she learned back home in Saint Lucia. The recipes are hers. The flavors are real.</p>
         <p>The restaurant is tucked down an alley between Yates and Johnson. It's small. The menu changes depending on what she has. If you get there late, the oxtail is probably gone.</p>
         <p>That's the kind of place this is.</p>
       </div>
@@ -797,8 +793,7 @@ body.js-ready .hero-ctas { opacity: 1; transform: none; }
 <section class="section review-section" id="reviews">
   <div class="section-inner">
     <div class="review-quote reveal">
-      <p class="review-text"><span class="amber">4.5★</span> from 188 reviews on Google.</p>
-      <a href="https://maps.google.com/maps?q=Stir+It+Up+Caribbean+Soul+Food+Victoria+BC" target="_blank" rel="noopener" class="review-link">Read them on Google →</a>
+      <p class="review-text">4.5 stars. 188 reviews on Google.</p>
     </div>
   </div>
 </section>

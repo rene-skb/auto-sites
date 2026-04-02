@@ -52,7 +52,11 @@
 - ig-photo-05.jpg → Instagram @stiritup.yyj (restaurant interior)
 - ig-photo-14.jpg → Instagram @stiritup.yyj (jerk roti with Grace Island Soda)
 
-### NOT USED (cut for lack of source)
+### CORRECTED
+- "One cook. One kitchen." → REMOVED. Original brief claimed one-woman operation but this is unverified and may be outdated. Replaced with "small kitchen" which is verifiable from the 760A alley location.
+- Owner portrait as hero → May want to rotate. We consistently use this but should verify she's comfortable with it being the first thing visitors see.
+
+## NOT USED (cut for lack of source)
 - Owner's name (not confirmed in brief — referred to as "the owner" or "she")
 - Menu prices (not available — no prices shown)
 - Bob Marley / "Stir It Up" song reference (not confirmed)

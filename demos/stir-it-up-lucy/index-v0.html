@@ -1,34 +1,4 @@
 <!--
-DELTA: v4 → v5
-Changes:
-- Review section: larger centered serif text with amber accent star
-- Food section: tighter menu list spacing, food photos get more height
-- Copy audit: humanizer pass on all text
-- Footer text size bumped
-- About photo height adjusted
-Self-review score: 7.0 (ceiling: 7.0 + 1 = 8.0 from HOW avg)
-
-DELTA: v3 → v4
-Changes:
-- Added scroll-reveal animations via IntersectionObserver
-- Hero entrance stagger animation
-- Button :active scale
-- Reduced address redundancy (removed from quick-strip, kept in hero body + visit)
-- Menu items get stagger animation
-- prefers-reduced-motion respected
-- noscript fallback
-HOW scores: Vignelli 7, Spiekermann 7, Rams 7 → 7.0 avg (gate pass)
-
-DELTA: v2 → v3
-Changes:
-- Grid unified: about section now uses same 1fr 1fr grid as food (Vignelli: consistency)
-- Menu descriptions bumped to weight 500 (Spiekermann: reading gap)
-- Review section simplified to single statement, removed redundant stars + quip (Rams: reduction)
-- Interior photo break removed (Rams: interrupts flow without function)
-- Visit section map made taller, grid aligned with content width
-HOW scores: Vignelli 6, Spiekermann 7, Rams 7 → 6.67 avg (below gate, retry)
-Hypothesis: Grid unification + review reduction will move Vignelli score most
-
 PHOTO RANKING & ASSIGNMENTS:
 1. ig-photo-owner.jpg (9/10) — HERO: Owner at storefront, landscape, editorial quality
 2. owner-greens.jpg (7/10) — ABOUT: Owner holding callaloo, community warmth
@@ -53,7 +23,7 @@ Stats bar: no-stats ✓
 <title>Stir It Up — Caribbean Soul Food | Victoria, BC</title>
 <meta name="description" content="St. Lucian home cooking in Victoria, BC. Jerk chicken, curry goat, roti wraps, rice and peas. Tue–Sat, 11am–7pm.">
 <meta property="og:title" content="Stir It Up — Caribbean Soul Food">
-<meta property="og:description" content="St. Lucian home cooking in Victoria, BC. Made from scratch, down the alley off Yates.">
+<meta property="og:description" content="St. Lucian home cooking in Victoria, BC. One cook. One kitchen. Everything from scratch.">
 <meta property="og:image" content="ig-photo-owner.jpg">
 <meta property="og:url" content="https://auto-sites.pages.dev/demos/stir-it-up-lucy/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -222,7 +192,7 @@ nav {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(26, 10, 10, 0.9) 0%, rgba(26, 10, 10, 0.5) 40%, rgba(26, 10, 10, 0.2) 100%);
+  background: linear-gradient(to top, rgba(26, 10, 10, 0.85) 0%, rgba(26, 10, 10, 0.4) 40%, rgba(26, 10, 10, 0.15) 100%);
 }
 .hero-content {
   position: relative;
@@ -354,8 +324,8 @@ nav {
 /* ABOUT */
 .about-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
+  grid-template-columns: 5fr 7fr;
+  gap: 48px;
   align-items: start;
 }
 .about-photo {
@@ -388,20 +358,20 @@ nav {
 }
 .food-card img {
   width: 100%;
-  height: 280px;
+  height: 320px;
   object-fit: cover;
 }
 .food-card-label {
   position: absolute;
-  bottom: 12px;
-  left: 12px;
-  padding: 6px 14px;
-  background: rgba(26, 10, 10, 0.85);
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16px 20px;
+  background: linear-gradient(to top, rgba(26, 10, 10, 0.8), transparent);
   color: var(--cream);
   font-family: 'Bitter', serif;
-  font-size: 0.875rem;
-  font-weight: 600;
-  border-radius: 3px;
+  font-size: 1rem;
+  font-weight: 500;
 }
 
 /* MENU ITEMS */
@@ -409,7 +379,7 @@ nav {
   margin-top: 32px;
 }
 .menu-item {
-  padding: 16px 0;
+  padding: 20px 0;
   border-bottom: 1px solid rgba(26, 10, 10, 0.1);
   display: flex;
   justify-content: space-between;
@@ -425,7 +395,6 @@ nav {
 }
 .menu-desc {
   font-size: 0.875rem;
-  font-weight: 500;
   color: var(--text-dim);
   margin-top: 4px;
 }
@@ -444,27 +413,11 @@ nav {
   height: 50vh;
   min-height: 300px;
   overflow: hidden;
-  position: relative;
 }
 .photo-break img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-.photo-break-caption {
-  position: absolute;
-  bottom: 24px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(26, 10, 10, 0.75);
-  color: var(--cream);
-  padding: 10px 24px;
-  font-size: 0.8125rem;
-  font-weight: 500;
-  letter-spacing: var(--ls-md);
-  text-transform: uppercase;
-  border-radius: 3px;
-  white-space: nowrap;
 }
 
 /* REVIEW */
@@ -484,20 +437,25 @@ nav {
 }
 .review-text {
   font-family: 'Bitter', serif;
-  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
   font-weight: 400;
-  line-height: 1.4;
+  font-style: italic;
+  line-height: 1.5;
   color: var(--dark);
-  margin-bottom: 16px;
+  margin-bottom: 24px;
 }
-.review-text .amber { color: var(--amber); }
-.review-link {
-  font-size: 0.875rem;
-  font-weight: 500;
+.review-meta {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: var(--ls-md);
+  text-transform: uppercase;
   color: var(--text-dim);
-  transition: color 200ms;
 }
-.review-link:hover { color: var(--amber-dark); }
+.review-stat {
+  font-size: 0.9375rem;
+  color: var(--text-dim);
+  margin-top: 32px;
+}
 
 /* VISIT */
 .visit-section {
@@ -507,7 +465,7 @@ nav {
 .visit-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 24px;
+  gap: 48px;
   align-items: start;
 }
 .visit-details h3 {
@@ -537,7 +495,7 @@ nav {
 .visit-map {
   border-radius: 4px;
   overflow: hidden;
-  height: 380px;
+  height: 320px;
 }
 .visit-map iframe {
   width: 100%;
@@ -565,7 +523,7 @@ footer {
   margin-bottom: 8px;
 }
 .footer-meta {
-  font-size: 0.8125rem;
+  font-size: 0.75rem;
   color: rgba(250, 247, 242, 0.4);
 }
 .footer-social {
@@ -610,62 +568,7 @@ footer {
 
 /* SCROLL MARGIN */
 [id] { scroll-margin-top: 80px; }
-
-/* MOTION */
-.reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
-}
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-.stagger-1 { transition-delay: 0ms; }
-.stagger-2 { transition-delay: 60ms; }
-.stagger-3 { transition-delay: 120ms; }
-.stagger-4 { transition-delay: 180ms; }
-.stagger-5 { transition-delay: 240ms; }
-
-/* Hero entrance */
-body.js-ready .hero-label,
-body.js-ready .hero h1,
-body.js-ready .hero-body,
-body.js-ready .hero-ctas {
-  opacity: 0;
-  transform: translateY(20px);
-}
-body.js-loaded .hero-label {
-  opacity: 1; transform: translateY(0);
-  transition: opacity 500ms var(--ease-out), transform 500ms var(--ease-out);
-  transition-delay: 150ms;
-}
-body.js-loaded .hero h1 {
-  opacity: 1; transform: translateY(0);
-  transition: opacity 500ms var(--ease-out), transform 500ms var(--ease-out);
-  transition-delay: 300ms;
-}
-body.js-loaded .hero-body {
-  opacity: 1; transform: translateY(0);
-  transition: opacity 500ms var(--ease-out), transform 500ms var(--ease-out);
-  transition-delay: 450ms;
-}
-body.js-loaded .hero-ctas {
-  opacity: 1; transform: translateY(0);
-  transition: opacity 500ms var(--ease-out), transform 500ms var(--ease-out);
-  transition-delay: 570ms;
-}
-
-/* noscript fallback */
-noscript + style { display: none; }
 </style>
-<noscript><style>
-.reveal { opacity: 1; transform: none; }
-body.js-ready .hero-label,
-body.js-ready .hero h1,
-body.js-ready .hero-body,
-body.js-ready .hero-ctas { opacity: 1; transform: none; }
-</style></noscript>
 </head>
 <body>
 <a href="#main" class="skip-link">Skip to content</a>
@@ -678,7 +581,7 @@ body.js-ready .hero-ctas { opacity: 1; transform: none; }
       <li><a href="#about">About</a></li>
       <li><a href="#reviews">Reviews</a></li>
       <li><a href="#visit">Find Us</a></li>
-      <li><a href="tel:7784320133" class="nav-cta">Call 778-432-0133</a></li>
+      <li><a href="tel:7784320133" class="nav-cta">Call to Order</a></li>
     </ul>
     <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.mobile-menu').classList.toggle('open')">
       <span></span><span></span><span></span>
@@ -690,7 +593,7 @@ body.js-ready .hero-ctas { opacity: 1; transform: none; }
   <a href="#about" onclick="this.parentElement.classList.remove('open')">About</a>
   <a href="#reviews" onclick="this.parentElement.classList.remove('open')">Reviews</a>
   <a href="#visit" onclick="this.parentElement.classList.remove('open')">Find Us</a>
-  <a href="tel:7784320133" onclick="this.parentElement.classList.remove('open')">Call 778-432-0133</a>
+  <a href="tel:7784320133" onclick="this.parentElement.classList.remove('open')">Call to Order</a>
 </div>
 
 <main id="main">
@@ -702,7 +605,7 @@ body.js-ready .hero-ctas { opacity: 1; transform: none; }
   </div>
   <div class="hero-content">
     <p class="hero-label">Caribbean Soul Food · Victoria, BC</p>
-    <h1>Caribbean soul food. Made from scratch.</h1>
+    <h1>One cook. One kitchen. Everything from scratch.</h1>
     <p class="hero-body">St. Lucian home cooking down an alley off Yates Street. Jerk chicken, curry goat, roti wraps, rice and peas. Tuesday through Saturday.</p>
     <div class="hero-ctas">
       <a href="tel:7784320133" class="btn-primary">Call 778-432-0133</a>
@@ -714,8 +617,9 @@ body.js-ready .hero-ctas { opacity: 1; transform: none; }
 <!-- QUICK STRIP -->
 <div class="quick-strip">
   <div class="quick-strip-inner">
-    <div class="quick-item"><strong>4.5★</strong> 188 reviews</div>
+    <div class="quick-item"><strong>4.5★</strong> 188 reviews on Google</div>
     <div class="quick-item"><strong>Tue – Sat</strong> 11am – 7pm</div>
+    <div class="quick-item"><strong>760A Yates St</strong> Down the alley</div>
     <div class="quick-item"><strong>778-432-0133</strong></div>
   </div>
 </div>
@@ -723,15 +627,15 @@ body.js-ready .hero-ctas { opacity: 1; transform: none; }
 <!-- FOOD -->
 <section class="section" id="food">
   <div class="section-inner">
-    <p class="section-label reveal">What to Order</p>
-    <h2 class="section-h2 reveal">The menu is short. Everything is made that morning.</h2>
+    <p class="section-label">What to Order</p>
+    <h2 class="section-h2">St. Lucian home cooking. Made fresh, every day.</h2>
 
     <div class="food-grid">
-      <div class="food-card reveal stagger-1">
+      <div class="food-card">
         <img src="roti-tablecloth.jpg" alt="Fresh roti on a colorful Caribbean tablecloth">
         <div class="food-card-label">Roti Wraps</div>
       </div>
-      <div class="food-card reveal stagger-2">
+      <div class="food-card">
         <img src="ig-photo-14.jpg" alt="Jerk chicken roti with Grace Island Soda">
         <div class="food-card-label">Jerk Chicken</div>
       </div>
@@ -741,33 +645,28 @@ body.js-ready .hero-ctas { opacity: 1; transform: none; }
       <div class="menu-item">
         <div>
           <div class="menu-name">Jerk Chicken</div>
-          <div class="menu-desc">Marinated and slow-cooked. Served with rice and peas.</div>
         </div>
       </div>
       <div class="menu-item">
         <div>
           <div class="menu-name">Curry Goat</div>
-          <div class="menu-desc">Caribbean-style curry, tender off the bone.</div>
         </div>
       </div>
       <div class="menu-item">
         <div>
           <div class="menu-name">Roti Wraps</div>
-          <div class="menu-desc">Hand-pulled roti filled with your choice of meat and sides.</div>
         </div>
       </div>
       <div class="menu-item">
         <div>
           <div class="menu-name">Rice and Peas</div>
-          <div class="menu-desc">Coconut rice with kidney beans. Comes with every plate.</div>
         </div>
       </div>
       <div class="menu-item">
         <div>
           <div class="menu-name">Oxtail</div>
-          <div class="menu-desc">Braised low and slow. Get there early.</div>
         </div>
-        <span class="menu-badge">Saturdays Only</span>
+        <span class="menu-badge">Saturdays</span>
       </div>
     </div>
   </div>
@@ -781,9 +680,9 @@ body.js-ready .hero-ctas { opacity: 1; transform: none; }
         <img src="owner-greens.jpg" alt="The owner holding fresh callaloo greens at a community dinner">
       </div>
       <div class="about-body">
-        <p class="section-label reveal">The Cook</p>
-        <h2 class="section-h2 reveal">From Saint Lucia to Yates Street.</h2>
-        <p>Stir It Up is a small kitchen with big flavor. St. Lucian home cooking made from scratch — the recipes, the spices, the techniques, all from back home. The flavors are real.</p>
+        <p class="section-label">The Cook</p>
+        <h2 class="section-h2">From Saint Lucia to Yates Street.</h2>
+        <p>Stir It Up is one woman's kitchen. She cooks everything herself, from scratch, the way she learned back home in Saint Lucia. The recipes are hers. The flavors are real.</p>
         <p>The restaurant is tucked down an alley between Yates and Johnson. It's small. The menu changes depending on what she has. If you get there late, the oxtail is probably gone.</p>
         <p>That's the kind of place this is.</p>
       </div>
@@ -791,14 +690,18 @@ body.js-ready .hero-ctas { opacity: 1; transform: none; }
   </div>
 </section>
 
-<!-- Interior break removed per Rams: interrupts flow without advancing user decision -->
+<!-- INTERIOR BREAK -->
+<div class="photo-break">
+  <img src="ig-photo-05.jpg" alt="Inside Stir It Up: blue walls, yellow ceiling, Caribbean art and colorful furniture">
+</div>
 
 <!-- REVIEWS -->
 <section class="section review-section" id="reviews">
   <div class="section-inner">
-    <div class="review-quote reveal">
-      <p class="review-text"><span class="amber">4.5★</span> from 188 reviews on Google.</p>
-      <a href="https://maps.google.com/maps?q=Stir+It+Up+Caribbean+Soul+Food+Victoria+BC" target="_blank" rel="noopener" class="review-link">Read them on Google →</a>
+    <div class="review-quote">
+      <div class="review-stars">★★★★½</div>
+      <p class="review-text">4.5 stars from 188 reviews on Google.</p>
+      <p class="review-stat">That's 188 people who found the alley and came back to write about it.</p>
     </div>
   </div>
 </section>
@@ -806,8 +709,8 @@ body.js-ready .hero-ctas { opacity: 1; transform: none; }
 <!-- VISIT -->
 <section class="section visit-section" id="visit">
   <div class="section-inner">
-    <p class="section-label" style="color: #F0C040;">Find Us</p>
-    <h2 class="section-h2" style="color: var(--cream);">760A Yates Street, Victoria.</h2>
+    <p class="section-label" style="color: var(--amber);">Find Us</p>
+    <h2 class="section-h2" style="color: var(--cream);">Down the alley off Yates. Worth finding.</h2>
 
     <div class="visit-grid">
       <div class="visit-details">
@@ -844,30 +747,5 @@ body.js-ready .hero-ctas { opacity: 1; transform: none; }
   </div>
 </footer>
 
-<script>
-// Hero entrance
-document.body.classList.add('js-ready');
-requestAnimationFrame(() => {
-  requestAnimationFrame(() => {
-    document.body.classList.add('js-loaded');
-  });
-});
-
-// Scroll reveal
-if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-} else {
-  document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
-}
-</script>
 </body>
 </html>

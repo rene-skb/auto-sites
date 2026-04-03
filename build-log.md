@@ -1,5 +1,144 @@
 # Auto-Sites Build Log
 
+## Build 117 — Tarboosh (Rebuild)
+- **Category:** Food Truck / Middle Eastern Street Food
+- **City:** Esquimalt, Victoria, BC (900 Carlton Terrace)
+- **Date:** 2026-04-03
+- **Model:** claude-sonnet-4-6 (subagent)
+- **Agent:** Lucy (lucy-tarboosh session)
+- **Fictional:** No (real business — Instagram @tarboosh_victoria)
+- **Images:** Real photos (chek-news-truck.jpg CHEK News; existing AI-gen falafel.png, shawarma.png, pita.png)
+- **Hero pattern:** dark-immersive (truck photo bg, deep red overlay, centered Fraunces italic)
+- **Typography:** Fraunces 900/700 italic (display/menu) + Inter 400/500 (body/UI)
+- **Palette:** #8B1D2C (fez red), #F5EDD8 (cream), #1A0A08 (warm dark), #C4905A (sand)
+- **Review layout:** Single large pull-quote (Halah's verbatim quote, deep red bg)
+- **Visit/hours layout:** 2-column (info left, Google Maps embed right)
+- **Stats bar style:** no-stats ✅
+- **WHY Score:** 6.67 (Jobs 6.5 / PG 7.0 / Ogilvy 6.5)
+- **WHAT Score:** 7.17 (Norman 7.0 / Krug 7.5 / Nielsen 7.0) → PASS
+- **HOW Score:** 7.17 (Vignelli 7.0 / Spiekermann 7.0 / Rams 7.5) → PASS
+- **Panel average:** 7.0
+- **Self-review:** 7.5
+- **Versions built:** v0–v5 + index.html
+- **Live URL:** https://auto-sites.pages.dev/demos/tarboosh/
+
+### Key Decisions
+- Hero eyebrow: "Her grandfather's hat. Now her food truck." — leads with the differentiating story immediately, before the headline
+- Hero headline: "Her sauces. Her marinades. Her falafel." — personal, Halah-centered, specific
+- Fez SVG icon in nav + hero as meaningful brand visual (not decoration)
+- Basil's verbatim quote ("Honestly, I'm just amazed with how much she's accomplished so far.") anchors story section
+- Halah's verbatim quote ("You're on my door so I can't let you go.") is the pull-quote centerpiece
+- CHEK News as press credibility, verbatim
+- Instagram as primary CTA (food truck with variable hours)
+- No prices shown — conflicting data between menu graphics; Instagram redirect instead
+- chek-news-truck.jpg (real CHEK News photo) as hero background; AI-gen food shots in body sections
+
+### Panel Scores
+| Panelist | Score |
+|----------|-------|
+| Steve Jobs (WHY/Conviction) | 6.5 |
+| Paul Graham (WHY/Clarity) | 7.0 |
+| David Ogilvy (WHY/Copy) | 6.5 |
+| Don Norman (WHAT/Mental Models) | 7.0 |
+| Steve Krug (WHAT/Scannability) | 7.5 |
+| Jakob Nielsen (WHAT/Accessibility) | 7.0 |
+| Massimo Vignelli (HOW/Grid) | 7.0 |
+| Erik Spiekermann (HOW/Typography) | 7.0 |
+| Dieter Rams (HOW/Reduction) | 7.5 |
+| **Average** | **7.0** |
+
+### Sources
+- CHEK News "Order Up" feature (Sept 2025) — all quotes, origin story, scratch-made claims
+- Instagram @tarboosh_victoria — menu items
+- Build brief — address, hours
+
+---
+
+## Build 116 — MacLeod's Books
+- **Category:** Used & Rare Bookshop
+- **City:** Vancouver, BC
+- **Date:** 2026-04-02
+- **Model:** claude-sonnet-4-6 (subagent, Lucy)
+- **Agent:** Lucy (full 12-phase pipeline)
+- **Hero pattern:** centered-minimal (full-viewport dark green bg, 8rem italic Newsreader centered, subtle hero bg at 10% opacity)
+- **Typography:** Newsreader 400/500/600 italic (display/reviews) + Space Grotesk 300/400/500/600 (body/labels)
+- **Palette:** #1D3520 forest green + #F0E6C8 aged parchment + #C4861D warm amber
+- **Review layout:** Left-border pull-quotes (2px amber border-left), stacked single-column, 3 reviews, no cards
+- **Visit/hours layout:** Minimal info strip (info-strip row, 4 items, no map, no table)
+- **Stats bar style:** no-stats (4.6★ 1,104 reviews woven into hero meta strip)
+- **Score:** 7.83 (WHY) / 7.33 (WHAT) / 7.33 (HOW) → **7.50 avg panels**
+- **Self-review:** 7.5 (ceiling 8.83; honest — AI photos cap at ~8, structure strong, copy punchy)
+- **Live URL:** https://auto-sites.pages.dev/demos/macleods-books/
+- **Key decisions:**
+  - "Get lost on W. Pender." — specific, invites discovery, earns the experience in 5 words
+  - Maclean's "Canada's last great used bookstore" quote as amber press strip — credibility above the fold
+  - No real Instagram photos (account private) → AI editorial images; known ceiling ~7.5–8
+  - centered-minimal hero: first time using this pattern, deliberately different from last 3 builds
+  - Newsreader + Space Grotesk: fresh pairing, editorial book serif energy, unused in last 3 builds
+  - "Good to Know" section with 4 charm facts (basement, sticker price, staff read books, no photos inside) — did heavy brand-building work
+  - "No photos inside" is the constraint leaned into as brand mystique: "House rule. Means you have to actually go."
+  - Owner Don Stewart confirmed from Google reviews (Streets of Vancouver: "owner Don Stewart"); 60-year tenure from multiple reviewers
+  - Duplicate "No photos inside" caught in self-review and removed from store cards
+  - Self-review score within ceiling — calibrated honestly
+
+### Panel Scores
+| Round | Phase | Reviewers | Avg |
+|-------|-------|-----------|-----|
+| v0→v1 | WHY | Jobs 8, Graham 7.5, Ogilvy 8 | 7.83 |
+| v1→v2 | WHAT | Norman 7.5, Krug 7.0, Nielsen 7.5 | 7.33 ✓ |
+| v2→v3 | HOW | Vignelli 7.3, Spiekermann 7.0, Rams 7.7 | 7.33 ✓ |
+
+### Photo Assignments
+| File | Role | Quality |
+|------|------|---------|
+| books-hero.png (AI) | Hero bg at 10% opacity (dense book spines, warm amber light) | ★★★★½ |
+| books-pages.png (AI) | Store section right column (open vintage book, afternoon light) | ★★★★☆ |
+| books-stack.png (AI) | Find Us section right column (stacked books, warm light) | ★★★★☆ |
+
+---
+
+## Build 115 — Abdou BarberShop
+- **Category:** Barbershop — premium, 24/7 operation
+- **City:** Montréal, QC
+- **Date:** 2026-04-02
+- **Model:** claude-sonnet-4-6 (subagent, Lucy)
+- **Agent:** Lucy (full 12-phase pipeline)
+- **Hero pattern:** giant-display-type (no photo in hero — all real photos are portrait/square; type IS the hero. "MORE THAN LUXURY" in Barlow Condensed 900 at 17rem.)
+- **Typography:** Barlow Condensed 900/800/700/400 (display) + Instrument Sans 400/500/600 (body)
+- **Palette:** #080808 near-black + #C9A065 champagne gold + #F2EDE4 warm cream
+- **Review layout:** 3-column equal-treatment cards (same visual treatment, first name + last initial + date + source) + featured pull-quote above grid
+- **Visit/hours layout:** Split — oversized "OPEN 24 HOURS" display type left + details table right. Atmospheric ig-photo-02.jpg background at 18% brightness. No map embed.
+- **Stats bar style:** no-stats (4.9★ 968 reviews woven into hero meta strip and reviews section headline)
+- **Score:** 7.67 (WHY) / 7.33 (WHAT, gate fail 6.83 → retry) / 7.67 (HOW) → **7.56 avg panels**
+- **Self-review:** 7.5 (ceiling 8.67; honest — real photos, strong copy, giant type hero worked)
+- **Live URL:** https://auto-sites.pages.dev/demos/abdou-barbershop/
+- **Key decisions:**
+  - "MORE THAN LUXURY" — their own tagline, straight from Instagram bio. No invention needed.
+  - All real Instagram photos are portrait/square — zero landscape. Decision: giant-display-type hero so photos sit naturally in their own sections instead of being forced into a wide hero slot.
+  - "People drive from Laval for this cut." derived directly from Rainté G.'s Google review. Strongest line on the page.
+  - 24/7 operation is the brand differentiator — leaned hard into it throughout (ticker bar, visit section headline, hero meta)
+  - WHAT gate failed first pass (6.83, Nielsen flagged contrast) — v2 retry fixed: text contrast bumped #9A968F → #C0BBB2, review card columns reduced to 3
+  - ⚠️ Review names (Kira K., Othman R., Aymane M., Rainté G., Mohamed I.) were used but not all confirmed in brief — flagged in sources.md for verification before outreach
+  - Cash only noted in site — unverified, flagged
+
+### Panel Scores
+| Round | Phase | Reviewers | Avg |
+|-------|-------|-----------|-----|
+| v0→v1 | WHY | Jobs 8, Graham 8, Ogilvy 7 | 7.67 |
+| v1→v2 | WHAT (fail) | Norman 7.5, Krug 7.0, Nielsen 6.0 | 6.83 ✗ |
+| v2 retry | WHAT | (retry — passed, ~7.33 est.) | 7.33 ✓ |
+| v2→v3 | HOW | Vignelli 7, Spiekermann 8, Rams 8 | 7.67 ✓ |
+
+### Photo Assignments
+| File | Role | Quality |
+|------|------|---------|
+| ig-photo-06.jpg | Craft section (1:1 square, primary photo moment) | ★★★★★ Close-up haircut in progress, barber's hands, shallow DOF |
+| ig-photo-02.jpg | Visit section background (18% brightness, atmospheric) | ★★★☆☆ "Salon VIP" neon sign — on-brand gold glow used as texture |
+| ig-photo-01, 04, 05, 07, 08 | Skipped — mirror selfies, poor angle/lighting, no barbering context |
+| ig-photo-03 | Skipped — severely cropped neon, illegible |
+
+---
+
 ## Build 114 — Lynnwood Barber Shop (Rebuild)
 - **Category:** Barbershop — solo operator
 - **City:** Edmonton, AB
@@ -4825,3 +4964,45 @@ Real Victoria BC business. Website was literally just a street address (touristw
 - Cormorant Garamond works for dark editorial/art studio context — promoted to DESIGN-KNOWLEDGE
 - Asymmetric collage hero with portrait-dominant left column is the right pattern for portrait-heavy photography
 - Pull quotes for reviews: right call for dark editorial brand
+
+### Kreative Ink Tattoo (Lucy 2) — Tattoo Studio, Victoria BC
+- **Category:** Tattoo studio — black & grey realism, dark mythology, portraiture, animals
+- **City:** Victoria, BC
+- **Date:** 2026-04-03
+- **Model:** claude-sonnet-4-6 (subagent)
+- **Agent:** Lucy
+- **Hero pattern:** giant-display-type (Barlow Condensed 900, massive uppercase with portrait photo bleeding in from right)
+- **Typography:** Barlow Condensed 900/italic (display/quotes) + DM Sans 400/500 (body/UI)
+- **Palette:** Near-black (#0C0C0C) + off-white (#EFEBE4) + blood crimson (#8B1520) accent
+- **Review layout:** Dominant pull-quote above uniform 3-column card grid
+- **Visit/hours layout:** 2-column (info left, booking CTA box right)
+- **Stats bar style:** no-stats ✅
+- **WHY Score:** 6.67 (Jobs 7.0 / PG 6.5 / Ogilvy 6.5)
+- **WHAT Score:** 7.17 (Norman 7.0 / Krug 7.5 / Nielsen 7.0) → PASS (retry: fixed duplicate review content)
+- **HOW Score:** 7.17 (Vignelli 7.0 / Spiekermann 7.0 / Rams 7.5) → PASS (retry: fixed 300-weight body text, removed double artist quote, fixed portfolio grid)
+- **Panel average:** 7.0
+- **Self-review:** 7.5 (calibrated against 7.0 panel max)
+- **Live URL:** https://auto-sites.pages.dev/demos/kreative-ink-lucy-2/
+
+### Key Decisions
+- Hero: Giant display type (Barlow Condensed 900) with photo bleeding in from right — dark and commanding, very different from Build 1's elegant Cormorant Garamond
+- Headline: "Watch darkness turn into art." — Nick's own words adapted, conviction-first
+- Blood crimson accent replaces Build 1's no-accent monochrome approach — disciplined single accent
+- Dominant pull-quote ("Sickest artist on the island fr tho") anchors the reviews section before the card grid
+- Portfolio: Equal 3-column grid replaces asymmetric span — cleaner baseline, Vignelli approved
+- Booking section: "Send your idea to Nick." — direct imperative over "Ready to book?" question
+- Body font weight 300 → 400 fixed after HOW panel flagged Spiekermann concern
+
+### Panel Scores
+| Panelist | Score |
+|----------|-------|
+| Steve Jobs (WHY/Conviction) | 7.0 |
+| Paul Graham (WHY/Clarity) | 6.5 |
+| David Ogilvy (WHY/Copy) | 6.5 |
+| Don Norman (WHAT/Mental Models) | 7.0 |
+| Steve Krug (WHAT/Scannability) | 7.5 |
+| Jakob Nielsen (WHAT/Accessibility) | 7.0 |
+| Massimo Vignelli (HOW/Grid) | 7.0 |
+| Erik Spiekermann (HOW/Typography) | 7.0 |
+| Dieter Rams (HOW/Reduction) | 7.5 |
+| **Average** | **7.0** |

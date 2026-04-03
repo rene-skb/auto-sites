@@ -1,34 +1,5 @@
 <!DOCTYPE html>
 <!--
-  DELTA: v4 → v5 (Self-review polish)
-  Changes:
-  - Removed large phone number from visit section (reduce repetition: 4→3 appearances)
-  - Fixed 982 stat lockup: stacked layout instead of inline baseline mismatch
-  - Tightened section spacing consistency: --section-pad 96px→80px, harmonized gaps
-  - Reviews: added amber top-border accent on each card for brand visual anchor
-  - Footer: added tagline "One chair. One barber." under brand name
-  Self-review: 7.5/10 (ceiling 8.83)
-  Copy audit: PASS — no AI slop, specific to Kelly, all claims traceable
-
-  DELTA: v3 → v4 (Motion + Polish)
-  Changes:
-  - Motion: enhanced IntersectionObserver stagger (60ms between siblings)
-  - Review cards + hours rows: stagger animation on scroll entry
-  - Hero: staggered line-by-line reveal for h1 + staggered following elements
-  - Removed kelly-photo-frame accent (Spiekermann: leftover embellishment)
-  - Unified hours/footer weight and spacing (Rams: two design systems)
-  - Verified: no hover effects on non-clickable images
-  - Added smooth-scroll polyfill for Safari
-  HOW scores: Vignelli 8.0 / Spiekermann 7.5 / Rams 8.0 → 7.83 avg (gate passed)
-
-  DELTA: v2 → v3
-  Changes:
-  - Review cards: removed box/border containers, now bare quote blocks on open grid (Vignelli — cards broke grid language)
-  - Body text line-height: 1.75 → 1.9 + increased font-size 16px → 17px for dark-bg legibility (Spiekermann)
-  - Removed decorative photo-break section entirely (Rams — redundant, no new info)
-  HOW scores: Vignelli 7.0 / Spiekermann 6.5 / Rams 7.0 → 6.83 avg (below gate — retry)
-  Hypothesis: Clean review layout + better body legibility + removal of ornamental photo should move HOW to 7.5+
-
   DELTA: v1 → v2
   Changes:
   - Added visible desktop nav links (About / Reviews / Hours & Location) for IA clarity (Norman, Nielsen)
@@ -121,7 +92,7 @@
       --cream:      #F2E6D2;
       --cream-muted: rgba(242, 230, 210, 0.65);
       --cream-dim:   rgba(242, 230, 210, 0.35);
-      --section-pad: 80px;
+      --section-pad: 96px;
       --max-w: 1120px;
       --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
     }
@@ -317,27 +288,23 @@
     }
     .kelly-text h2 em { font-style: italic; }
     .kelly-text p {
-      font-size: 17px; line-height: 1.85;
+      font-size: 16px; line-height: 1.75;
       color: var(--cream-muted);
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
     .kelly-proof {
       margin-top: 32px;
       padding-top: 28px;
       border-top: 1px solid rgba(242, 230, 210, 0.1);
+      display: flex; align-items: baseline; gap: 10px;
     }
     .kelly-num {
       font-family: 'Fraunces', serif;
-      font-size: 60px; font-weight: 600;
+      font-size: 52px; font-weight: 600;
       color: var(--amber); line-height: 1;
-      display: block;
     }
     .kelly-num-label {
-      font-size: 13px; font-weight: 500;
-      letter-spacing: 0.06em;
-      color: var(--cream-dim);
-      display: block;
-      margin-top: 6px;
+      font-size: 14px; color: var(--cream-muted);
     }
     .kelly-photo {
       position: relative;
@@ -346,7 +313,13 @@
       width: 100%; aspect-ratio: 5/4;
       object-fit: cover; display: block;
     }
-    .kelly-photo-frame { display: none; }
+    .kelly-photo-frame {
+      position: absolute; top: -14px; left: -14px;
+      width: 64px; height: 64px;
+      border-top: 2px solid rgba(196, 136, 31, 0.35);
+      border-left: 2px solid rgba(196, 136, 31, 0.35);
+      pointer-events: none;
+    }
 
     /* ── REVIEWS ── */
     .reviews {
@@ -367,9 +340,9 @@
       gap: 24px;
     }
     .review-card {
-      padding: 28px 0 40px;
-      border-top: 2px solid var(--amber);
-      border-bottom: 1px solid rgba(242, 230, 210, 0.08);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(242, 230, 210, 0.08);
+      padding: 32px;
     }
     .review-stars {
       color: var(--amber); font-size: 13px;
@@ -481,10 +454,6 @@
     .footer-info {
       font-size: 13px; color: var(--cream-dim);
       text-align: center;
-    }
-    .footer-tagline {
-      font-size: 13px; color: var(--cream-dim);
-      margin-top: 4px; letter-spacing: 0.04em;
     }
     .footer-copy {
       font-size: 13px; color: var(--cream-dim);
@@ -607,7 +576,7 @@
       <p class="reveal">You can tell this is more than a job for him. His name appears in nearly every one of his 982 five-star reviews. Word of mouth built all of it.</p>
       <div class="kelly-proof reveal">
         <span class="kelly-num">982</span>
-        <span class="kelly-num-label">Five-star Google reviews</span>
+        <span class="kelly-num-label">five-star<br>Google reviews</span>
       </div>
     </div>
     <div class="kelly-photo reveal">
@@ -645,6 +614,11 @@
   </div>
 </section>
 
+<!-- ── PHOTO BREAK ── -->
+<div class="photo-break" aria-hidden="true">
+  <img src="comb-clipper.png" alt="Vintage barber clippers and comb, warm amber light">
+</div>
+
 <!-- ── VISIT ── -->
 <section class="visit" id="visit">
   <div class="visit-inner">
@@ -656,7 +630,10 @@
           15004 87 Ave NW, Edmonton, AB T5R 1E4
         </a>
       </p>
-      <a href="tel:+17804895911" class="visit-btn reveal">Call (780) 489-5911</a>
+      <div class="visit-phone reveal">
+        <a href="tel:+17804895911">(780) 489-5911</a>
+      </div>
+      <a href="tel:+17804895911" class="visit-btn reveal">Call to Book</a>
       <p class="visit-walkin reveal">Call ahead to check current wait times.</p>
     </div>
     <div>
@@ -676,86 +653,64 @@
 
 <!-- ── FOOTER ── -->
 <footer>
-  <div>
-    <div class="footer-name">Lynnwood Barber Shop</div>
-    <div class="footer-tagline">One chair. One barber.</div>
-  </div>
+  <div class="footer-name">Lynnwood Barber Shop</div>
   <div class="footer-info">15004 87 Ave NW, Edmonton, AB · (780) 489-5911</div>
   <div class="footer-copy">West Edmonton</div>
 </footer>
 
 <script>
 (function () {
-  var ease = 'cubic-bezier(0.23,1,0.32,1)';
-  var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Hero entrance
+  var sequence = [
+    ['.hero-eyebrow', 200],
+    ['.hero h1',      400],
+    ['.hero-sub',     650],
+    ['.hero-btn',     880],
+  ];
+  sequence.forEach(function (pair) {
+    var el = document.querySelector(pair[0]);
+    if (!el) return;
+    setTimeout(function () {
+      el.style.transition = 'opacity 650ms cubic-bezier(0.23,1,0.32,1), transform 650ms cubic-bezier(0.23,1,0.32,1)';
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+    }, pair[1]);
+  });
 
-  // ── Hero entrance ──
-  if (!reducedMotion) {
-    [
-      ['.hero-eyebrow', 180],
-      ['.hero h1',      360],
-      ['.hero-sub',     580],
-      ['.hero-btn',     800],
-    ].forEach(function (pair) {
-      var el = document.querySelector(pair[0]);
-      if (!el) return;
-      setTimeout(function () {
-        el.style.transition = 'opacity 680ms ' + ease + ', transform 680ms ' + ease;
-        el.style.opacity = '1';
-        el.style.transform = 'none';
-      }, pair[1]);
-    });
-  } else {
-    ['.hero-eyebrow', '.hero h1', '.hero-sub', '.hero-btn'].forEach(function (sel) {
-      var el = document.querySelector(sel);
-      if (el) { el.style.opacity = '1'; el.style.transform = 'none'; }
-    });
-  }
-
-  // ── Scroll reveal with sibling stagger ──
-  function getStaggerDelay(el) {
-    var parent = el.parentElement;
-    if (!parent) return 0;
-    var siblings = Array.from(parent.querySelectorAll('.reveal'));
-    var idx = siblings.indexOf(el);
-    return idx * 65;
-  }
-
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (!entry.isIntersecting) return;
-      var delay = reducedMotion ? 0 : getStaggerDelay(entry.target);
-      setTimeout(function () {
-        entry.target.classList.add('in');
-      }, delay);
-      io.unobserve(entry.target);
-    });
-  }, { threshold: 0.12 });
-
-  document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
-
-  // ── Nav scroll ──
+  // Nav scroll
   var nav = document.getElementById('nav');
   window.addEventListener('scroll', function () {
     nav.classList.toggle('scrolled', window.scrollY > 60);
   }, { passive: true });
 
-  // ── Mobile menu ──
+  // Hamburger
   var btn = document.getElementById('hamburger');
   var menu = document.getElementById('mobileMenu');
   btn.addEventListener('click', function () {
     var open = menu.classList.toggle('open');
     menu.setAttribute('aria-hidden', String(!open));
-    btn.setAttribute('aria-expanded', String(open));
   });
   ['mmAbout','mmReviews','mmVisit'].forEach(function (id) {
     var a = document.getElementById(id);
     if (a) a.addEventListener('click', function () {
       menu.classList.remove('open');
       menu.setAttribute('aria-hidden', 'true');
-      btn.setAttribute('aria-expanded', 'false');
     });
   });
+
+  // Scroll reveal
+  var reveals = document.querySelectorAll('.reveal');
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry, i) {
+      if (entry.isIntersecting) {
+        setTimeout(function () {
+          entry.target.classList.add('in');
+        }, i * 60);
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(function (el) { io.observe(el); });
 })();
 </script>
 

@@ -1,5 +1,156 @@
 # Auto-Sites Build Log
 
+## Build 114 — Lynnwood Barber Shop (Rebuild)
+- **Category:** Barbershop — solo operator
+- **City:** Edmonton, AB
+- **Date:** 2026-04-02
+- **Model:** claude-sonnet-4-6 (subagent, Lucy)
+- **Agent:** Lucy (full 12-phase pipeline, rebuild of Build 70)
+- **Hero pattern:** dark-immersive (hero-tools.png at 18% opacity behind radial gradient vignette, centered conviction text)
+- **Typography:** Fraunces 300/400/600/italic (display) + Inter 400/500/600 (body)
+- **Palette:** #120C07 espresso + #D4A030 warm amber + #F2E6D2 cream
+- **Review layout:** Bare open grid, no card containers — quotes on dark field, amber top-border accent
+- **Visit/hours layout:** Two-column — address/CTA left, full hours table right. No map embed.
+- **Stats bar style:** no-stats (982 woven into Kelly section as display-size stat)
+- **Score:** 7.33 (WHY) / 7.33 (WHAT) / 7.83 (HOW, after retry) → **7.50 avg panels**
+- **Self-review:** 7.5 (ceiling 8.83; honest — dark palette landed, copy grounded in reviews, AI photo ceiling ~8)
+- **Live URL:** https://auto-sites.pages.dev/demos/lynnwood-barber/
+- **Key decisions:**
+  - "One chair. Kelly behind it." — constraint-as-brand hero headline (builds on brief: "The brand IS Kelly")
+  - dark-immersive hero: hero-tools.png at 18% opacity with radial vignette — tools product shot, non-interior
+  - Fraunces + Inter: fresh pairing, warm editorial vs recent Barlow Condensed/Playfair builds
+  - Review cards started as boxed (v0) — Vignelli flagged immediately → removed in v3, bare quote blocks
+  - Body text line-height 1.75 → 1.85 after Spiekermann flag (dark bg physics)
+  - Decorative photo break removed after Rams: "redundant, zero new information"
+  - Phone appeared 4× in v0 → reduced to 3 in v5 (self-review catch)
+  - 982 stat as stacked display-size lockup (amber #, cream label)
+  - All copy traceable to brief or verbatim reviews — zero fabrication
+  - HOW gate failed (6.83) → retry passed (7.83) after card/leading/photo fixes
+
+### Panel Scores
+| Round | Phase | Reviewers | Avg |
+|-------|-------|-----------|-----|
+| v0→v1 | WHY | Jobs 8.0, Graham 7.0, Ogilvy 7.0 | 7.33 |
+| v1→v2 | WHAT | Norman 8.0, Krug 7.5, Nielsen 6.5 | 7.33 ✓ |
+| v2→v3 | HOW (fail) | Vignelli 7.0, Spiekermann 6.5, Rams 7.0 | 6.83 ✗ |
+| v3 retry | HOW | Vignelli 8.0, Spiekermann 7.5, Rams 8.0 | 7.83 ✓ |
+
+### Photo Assignments
+| File | Role | Quality |
+|------|------|---------|
+| hero-tools.png (AI) | Hero dark-immersive background | ★★★★★ Straight razor + scissors, warm leather |
+| shave-brush.png (AI) | Kelly section portrait slot | ★★★★★ Lather brush, golden backlighting, rich texture |
+| comb-clipper.png (AI) | Photo break (removed v3) | ★★★★½ Vintage Oster clippers — atmospheric but redundant |
+| hot-towel.png (AI) | Skipped — implied interior | — |
+
+---
+
+## Build 113 — Wakado Ramen
+- **Category:** Ramen Restaurant / Japanese
+- **City:** Calgary, AB
+- **Date:** 2026-04-01
+- **Model:** claude-sonnet-4-6 (subagent, Lucy)
+- **Agent:** Lucy (full 12-phase pipeline)
+- **Hero pattern:** split-image-right (bold conviction text left, hero-bowl.png right, 50/50)
+- **Typography:** Barlow Condensed 600/700/800 (display) + Instrument Sans 400/500/600 (body)
+- **Palette:** #0E0A07 espresso black + #C94B2D ember red + #F5EEE6 warm cream
+- **Review layout:** 2 equal cards (same visual treatment, first name + last initial, Google source)
+- **Visit/hours layout:** Two-column — hours table left with address/phone/Instagram links, Google Maps embed right (grayscale/darkened filter)
+- **Stats bar style:** no-stats (4.5★ 1,279 reviews woven into info strip and reviews section headline)
+- **Score:** 8.0 (WHY) / 8.5 (WHAT) / 7.0 (HOW) → **7.83 avg panels**
+- **Self-review:** 7.5 (ceiling 8.0; honest — strong hero + bowls section, AI photos rather than real, craft section compelling)
+- **Live URL:** https://auto-sites.pages.dev/demos/wakado-ramen/
+- **Key decisions:**
+  - "The noodles are made here. Twice a day." — specific, provable, differentiating (Ogilvy: 8.5)
+  - split-image-right hero: conviction text left, warm editorial bowl photo right
+  - Barlow Condensed: Japanese signage/izakaya energy, condensed and authoritative
+  - Ember red (#C94B2D) pulled from ramen broth color — palette from the food itself
+  - 和歌堂 kanji used as brand element throughout (from restaurant interior photo)
+  - Real photos unusable for primary slots (all portrait with baked-in text overlays) → AI editorial shots
+  - ig-photo-02 (sake bottle) available clean but not needed — site focused on bowls
+  - Reviews reduced from 3 to 2 cards (Rams: redundant after 4.5★/1,279 aggregate stat)
+  - Bowl descriptions uniformly specific: ingredient-level detail on all 6 bowls
+  - Mala Tonkotsu: numbing described specifically, no "ask about spice" friction
+  - Hero entrance stagger: kanji → headline → sub → CTAs, each delayed 120ms
+  - Schema.org Restaurant markup added
+  - sources.md: all copy traced to Google reviews, Instagram, or Outscraper API data
+  - No owner name, no prices, no fabricated origin story
+
+### Panel Scores
+| Round | Phase | Reviewers | Avg |
+|-------|-------|-----------|-----|
+| v0→v1 | WHY | Jobs 8, Graham 7.5, Ogilvy 8.5 | 8.0 |
+| v1→v2 | WHAT | Norman 8.5, Krug 9, Nielsen 8 | 8.5 ✓ |
+| v2→v3 | HOW | Vignelli 7.5, Spiekermann 7, Rams 6.5 | 7.0 ✓ |
+
+### Photo Assignments
+| File | Role | Quality |
+|------|------|---------|
+| hero-bowl.png (AI) | Hero split-image-right | ★★★★★ Chiaroscuro, warm amber, editorial |
+| noodle-craft.png (AI) | Craft section | ★★★½ Process, flour dust, window light |
+| spicy-miso.png (AI) | Photo break full-bleed | ★★★★ Vibrant red-orange, lanterns |
+| ig-photo-01–08 | Not used (text overlays / portrait only) | — |
+
+### Notes
+- Different from Build 112 (Stir It Up): ramen vs Caribbean, split-image-right vs editorial-spread, Barlow vs Playfair
+- First Calgary build in the project
+- Wakado has 1,279 Google reviews at 4.5★ — no website, strong candidate
+- All real IG photos had baked-in text overlays preventing professional hero use
+- AI editorial ceiling demonstrated: WHY 8.0, WHAT 8.5 — strong scores despite no real food photos
+
+---
+
+## Build 112 — Stir It Up Lucy 3 (Food-Forward, Editorial Spread)
+- **Category:** Caribbean Soul Food
+- **City:** Victoria, BC
+- **Date:** 2026-04-01
+- **Model:** claude-sonnet-4-6 (subagent, Lucy)
+- **Agent:** Lucy (full 12-phase pipeline)
+- **Hero pattern:** editorial-spread (hero-jerk-chicken.png in right 58%, conviction text dark left panel)
+- **Typography:** Playfair Display 400/500/600/700/italic (display) + DM Sans 300/400/500/600 (body)
+- **Palette:** #100804 espresso + #C4771A amber + #F4EFE6 warm cream
+- **Review layout:** Centered aggregate stat section (no individual reviews — facts-only)
+- **Visit/hours layout:** Two-column: hours+phone left, dark address card right with Google Maps link
+- **Stats bar style:** no-stats (rating/count in reviews section headline)
+- **Score:** 7.17 (WHY) / 7.0 (WHAT) / 6.5 (HOW, retry 5.33) → **6.89 avg panels**
+- **Self-review:** 6.5 (ceiling 7.5; honest — strong editorial voice, food-forward hero works, culture section improved in v5, menu section weakest)
+- **Live URL:** https://auto-sites.pages.dev/demos/stir-it-up-lucy-3/
+- **Key decisions:**
+  - editorial-spread hero (not image-top-text-below from Lucy 2, not full-viewport-bg from Lucy 1)
+  - hero-jerk-chicken.png as dominant right panel — food-first from first frame
+  - Playfair Display + DM Sans: new pairing, not Fraunces/Bitter/Cormorant
+  - Culture section redesigned from split-layout to dark panel grid — broke layout monotony of two identical splits in a row
+  - Reviews: aggregate stat + Google link only (no invented quotes)
+  - Map embed removed in favor of styled dark address card (per Rams: reduces visual noise)
+  - Copy humanized: "charcoal-kissed", "get there early — it goes fast", callaloo sourced directly
+  - No owner name/gender, no "one cook", no Bob Marley reference
+  - sources.md documents all copy origins; unverified claims flagged
+
+### Panel Scores
+| Round | Phase | Reviewers | Avg |
+|-------|-------|-----------|-----|
+| v0→v1 | WHY | Jobs 7, Graham 7.5, Ogilvy 7 | 7.17 |
+| v1→v2 | WHAT | Norman 7, Krug 8, Nielsen 6 | 7.0 ✓ |
+| v2→v3 | HOW | Vignelli 6, Spiekermann 7, Rams 6.5 | 6.5 (below gate) |
+| v3 retry | HOW | Vignelli 6, Spiekermann 5, Rams 5 | 5.33 (max retry, proceed) |
+
+### Photo Assignments
+| File | Role | Quality |
+|------|------|---------|
+| hero-jerk-chicken.png | Hero (editorial-spread right panel) | ★★★★★ Golden hour, steam, landscape |
+| patties.png | Food section full-bleed break | ★★★★ Pro lighting, landscape |
+| roti-making.png | Heritage section (left column) | ★★★★ Window light, hands |
+| owner-greens.jpg | About section (left column) | ★★★★ Community warmth |
+| ig-photo-04.jpg | Culture section (dark panel, left) | ★★★ Jerk roti + Grace soda, square |
+| spices.png | Heritage section bg texture (0.06 opacity) | ★★★★★ Excellent composition |
+
+### Notes
+- Third distinct Lucy build for Stir It Up: different hero pattern, typography, color treatment, section layout
+- HOW panel gate failed twice — Vignelli flagged grid discipline, Spiekermann type system, Rams redundancy
+- Key improvement over Lucy 1+2: culture section with dark panel breaks layout monotony
+- Culture redesign from split-layout to dark image+text panel was v5 improvement
+- All content verified: no invented claims, no owner name/gender, no Bob Marley
+
 ## Build 111 — Stir It Up Lucy 2 (Food-Forward Rebuild)
 - **Category:** Caribbean Soul Food
 - **City:** Victoria, BC
@@ -4625,3 +4776,52 @@ Real Victoria BC business. Website was literally just a street address (touristw
 - Reviews use featured layout (1 large + 2 small) for visual hierarchy
 - 3-column photo grid with labels: "The vibe inside" / "Roti done right" / "Rice & peas"
 - Hours strip headline changed from hours to address: "760A Yates St — Down the Alley"
+
+### Kreative Ink Tattoo (Lucy) — Tattoo Studio, Victoria BC
+- **Category:** Tattoo studio — black & grey realism, dark mythology, portraiture, animals
+- **City:** Victoria, BC
+- **Date:** 2026-04-02
+- **Model:** claude-sonnet-4-6 (subagent)
+- **Agent:** Lucy
+- **Hero pattern:** asymmetric-collage
+- **Typography:** Cormorant Garamond 300/italic (headlines) + Space Grotesk 400-600 (body/UI)
+- **Palette:** Near-black (#0A0A0A) + bone white (#E8E0D4) + no accent — monochrome editorial
+- **Review layout:** Pull quotes — full-width italic serif, no cards
+- **Visit/hours layout:** Info strip only (text, no map — DM-based booking)
+- **Stats bar style:** no-stats ✅
+- **WHY Score:** 6.67 (Jobs 6.5 / PG 7.0 / Ogilvy 6.5)
+- **WHAT Score:** 7.17 (Norman 7.0 / Krug 7.5 / Nielsen 7.0) → PASS
+- **HOW Score:** 6.5 (retry) → 6.6 → below gate, max retries reached, proceeded with v3
+- **Panel average:** 6.79
+- **Self-review:** 7.0 (calibrated)
+- **Live URL:** https://auto-sites.pages.dev/demos/kreative-ink-lucy/
+
+### Key Decisions
+- Hero: Full-back nun/wolves masterwork (ig-photo-11) as dominant left column — strongest photo on the right subject
+- Headline: "The best dark realism on the island." — peer-certified claim (adapted from @sirrealmusicofficial)
+- Zero accent color — all warmth from the tattoo photography itself
+- Cormorant Garamond: editorial serif pairing that reads as luxury art without being precious
+- Pull quotes instead of cards: elevates authentic client voice to editorial statements
+- Gallery: clean 3-column equal grid after asymmetric hero (Vignelli: consistent column logic)
+- Skipped: ig-photo-08 (faded), ig-photo-05 (American Traditional, off-brand), ig-photo-02 (distracting background), ig-photo-03 (clinical photography), ig-photo-06 (tonally incompatible)
+- HOW gate notes: Grid discipline and three-register typography are the two factors that consistently suppress early HOW scores. Both improved across iterations but couldn't clear 7.0 gate before max retries.
+
+### Panel Scores
+| Panelist | Score |
+|----------|-------|
+| Steve Jobs (WHY/Conviction) | 6.5 |
+| Paul Graham (WHY/Clarity) | 7.0 |
+| David Ogilvy (WHY/Copy) | 6.5 |
+| Don Norman (WHAT/Mental Models) | 7.0 |
+| Steve Krug (WHAT/Scannability) | 7.5 |
+| Jakob Nielsen (WHAT/Accessibility) | 7.0 |
+| Massimo Vignelli (HOW/Grid) | 6.7 |
+| Erik Spiekermann (HOW/Typography) | 6.0 |
+| Dieter Rams (HOW/Reduction) | 7.0 |
+| **Average** | **6.79** |
+
+### Lessons Learned
+- Three-voice type register (display/section-intro/body) improved Spiekermann score when added in v3
+- Cormorant Garamond works for dark editorial/art studio context — promoted to DESIGN-KNOWLEDGE
+- Asymmetric collage hero with portrait-dominant left column is the right pattern for portrait-heavy photography
+- Pull quotes for reviews: right call for dark editorial brand

@@ -1,15 +1,5 @@
 <!DOCTYPE html>
 <!--
-  DELTA: v4 → v5 (Self-review polish)
-  Changes:
-  - Removed large phone number from visit section (reduce repetition: 4→3 appearances)
-  - Fixed 982 stat lockup: stacked layout instead of inline baseline mismatch
-  - Tightened section spacing consistency: --section-pad 96px→80px, harmonized gaps
-  - Reviews: added amber top-border accent on each card for brand visual anchor
-  - Footer: added tagline "One chair. One barber." under brand name
-  Self-review: 7.5/10 (ceiling 8.83)
-  Copy audit: PASS — no AI slop, specific to Kelly, all claims traceable
-
   DELTA: v3 → v4 (Motion + Polish)
   Changes:
   - Motion: enhanced IntersectionObserver stagger (60ms between siblings)
@@ -121,7 +111,7 @@
       --cream:      #F2E6D2;
       --cream-muted: rgba(242, 230, 210, 0.65);
       --cream-dim:   rgba(242, 230, 210, 0.35);
-      --section-pad: 80px;
+      --section-pad: 96px;
       --max-w: 1120px;
       --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
     }
@@ -325,19 +315,15 @@
       margin-top: 32px;
       padding-top: 28px;
       border-top: 1px solid rgba(242, 230, 210, 0.1);
+      display: flex; align-items: baseline; gap: 10px;
     }
     .kelly-num {
       font-family: 'Fraunces', serif;
-      font-size: 60px; font-weight: 600;
+      font-size: 52px; font-weight: 600;
       color: var(--amber); line-height: 1;
-      display: block;
     }
     .kelly-num-label {
-      font-size: 13px; font-weight: 500;
-      letter-spacing: 0.06em;
-      color: var(--cream-dim);
-      display: block;
-      margin-top: 6px;
+      font-size: 14px; color: var(--cream-muted);
     }
     .kelly-photo {
       position: relative;
@@ -367,8 +353,7 @@
       gap: 24px;
     }
     .review-card {
-      padding: 28px 0 40px;
-      border-top: 2px solid var(--amber);
+      padding: 0 0 40px;
       border-bottom: 1px solid rgba(242, 230, 210, 0.08);
     }
     .review-stars {
@@ -481,10 +466,6 @@
     .footer-info {
       font-size: 13px; color: var(--cream-dim);
       text-align: center;
-    }
-    .footer-tagline {
-      font-size: 13px; color: var(--cream-dim);
-      margin-top: 4px; letter-spacing: 0.04em;
     }
     .footer-copy {
       font-size: 13px; color: var(--cream-dim);
@@ -607,7 +588,7 @@
       <p class="reveal">You can tell this is more than a job for him. His name appears in nearly every one of his 982 five-star reviews. Word of mouth built all of it.</p>
       <div class="kelly-proof reveal">
         <span class="kelly-num">982</span>
-        <span class="kelly-num-label">Five-star Google reviews</span>
+        <span class="kelly-num-label">five-star<br>Google reviews</span>
       </div>
     </div>
     <div class="kelly-photo reveal">
@@ -656,7 +637,10 @@
           15004 87 Ave NW, Edmonton, AB T5R 1E4
         </a>
       </p>
-      <a href="tel:+17804895911" class="visit-btn reveal">Call (780) 489-5911</a>
+      <div class="visit-phone reveal">
+        <a href="tel:+17804895911">(780) 489-5911</a>
+      </div>
+      <a href="tel:+17804895911" class="visit-btn reveal">Call to Book</a>
       <p class="visit-walkin reveal">Call ahead to check current wait times.</p>
     </div>
     <div>
@@ -676,10 +660,7 @@
 
 <!-- ── FOOTER ── -->
 <footer>
-  <div>
-    <div class="footer-name">Lynnwood Barber Shop</div>
-    <div class="footer-tagline">One chair. One barber.</div>
-  </div>
+  <div class="footer-name">Lynnwood Barber Shop</div>
   <div class="footer-info">15004 87 Ave NW, Edmonton, AB · (780) 489-5911</div>
   <div class="footer-copy">West Edmonton</div>
 </footer>

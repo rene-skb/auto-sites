@@ -14,14 +14,23 @@
   <meta property="og:type" content="website">
 
   <!--
-    DELTA: v2 → v3
-    HOW scores: Vignelli 7.0 / Spiekermann 7.0 / Rams 7.5 = avg 7.17 (PASS)
-    Changes:
-    - Story section gap: 80px → 64px (Vignelli: "too much tension")
-    - Menu item names: Fraunces 700 italic (Spiekermann: match display register)
-    - Removed quote-intro label "Halah, on feeding her community" — over-explains (Rams)
-    - Fine-tuned hero overlay gradient slightly — warmer
-    - Tightened section-pad for quote section: 96px → 88px (proportional balance)
+    PHOTO RANKING (Phase 1 evaluation):
+    1. chek-news-truck.jpg — Real truck close-up of fez logo. Landscape. Best for hero bg texture.
+    2. falafel.png — AI editorial, beautiful golden falafel. Use in food section.
+    3. shawarma.png — AI editorial, action drizzle shot. Use in food section or story.
+    4. pita.png — AI editorial, warm pita stack. Use in story/menu section.
+    5. ig-photo-01.jpg — Shawarma promo graphic with text overlay. Skip (text overlap).
+    6. ig-photo-02.jpg — Red menu graphic. Usable if needed for menu context.
+    7. ig-photo-03.jpg — Black menu, pricing discrepancy. Skip.
+    8. sides.png — Not evaluated. Skip.
+    9. truck-exterior.png — Fake exterior. Non-negotiable violation. Skip.
+
+    BUILD v0:
+    Hero pattern: dark-immersive (truck photo bg, deep red overlay, centered cream type)
+    Typography: Fraunces 900 (display) + Inter 400/500 (body)
+    Palette: #8B1D2C (deep red), #F5EDD8 (cream), #1A0A08 (warm dark), #C4905A (sand)
+    Review layout: Single large pull-quote block (centered, no cards)
+    Visit layout: Dark split — address + hours left, map embed right
   -->
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -73,13 +82,13 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      transition: background 300ms var(--ease-out), padding 300ms var(--ease-out), box-shadow 300ms;
+      background: transparent;
+      transition: background 300ms var(--ease-out), padding 300ms var(--ease-out);
     }
 
     nav.scrolled {
       background: var(--charcoal);
       padding: 14px 40px;
-      box-shadow: 0 1px 0 rgba(245,237,216,0.08);
     }
 
     .nav-logo {
@@ -89,12 +98,7 @@
       color: var(--cream);
       letter-spacing: 0.01em;
       text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 10px;
     }
-
-    .fez-icon { width: 16px; height: 16px; flex-shrink: 0; }
 
     .nav-links {
       display: flex;
@@ -105,7 +109,7 @@
     .nav-links a {
       font-size: 13px;
       font-weight: 500;
-      color: rgba(245, 237, 216, 0.70);
+      color: rgba(245, 237, 216, 0.75);
       text-decoration: none;
       letter-spacing: var(--ls-nav);
       text-transform: uppercase;
@@ -120,8 +124,6 @@
       gap: 5px;
       cursor: pointer;
       padding: 4px;
-      background: none;
-      border: none;
     }
 
     .nav-hamburger span {
@@ -129,6 +131,7 @@
       width: 22px;
       height: 1.5px;
       background: var(--cream);
+      transition: transform 200ms var(--ease-out), opacity 200ms;
     }
 
     .mobile-menu {
@@ -140,17 +143,18 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 36px;
+      gap: 32px;
     }
 
     .mobile-menu.open { display: flex; }
 
     .mobile-menu a {
       font-family: 'Fraunces', serif;
-      font-size: 36px;
+      font-size: 32px;
       font-weight: 700;
       color: var(--cream);
       text-decoration: none;
+      letter-spacing: 0.01em;
     }
 
     .mobile-close {
@@ -161,6 +165,7 @@
       cursor: pointer;
       background: none;
       border: none;
+      line-height: 1;
     }
 
     /* === HERO === */
@@ -173,7 +178,7 @@
       justify-content: center;
       text-align: center;
       overflow: hidden;
-      padding: 140px 40px 100px;
+      padding: 120px 40px 80px;
     }
 
     .hero-bg {
@@ -181,70 +186,59 @@
       inset: 0;
       background-image: url('chek-news-truck.jpg');
       background-size: cover;
-      background-position: center 30%;
-      filter: saturate(0.65);
+      background-position: center;
+      filter: saturate(0.8);
     }
 
     .hero-overlay {
       position: absolute;
       inset: 0;
       background: linear-gradient(
-        155deg,
-        rgba(85, 12, 22, 0.88) 0%,
-        rgba(139, 29, 44, 0.76) 50%,
-        rgba(26, 10, 8, 0.92) 100%
+        160deg,
+        rgba(90, 13, 24, 0.82) 0%,
+        rgba(139, 29, 44, 0.75) 50%,
+        rgba(26, 10, 8, 0.88) 100%
       );
     }
 
     .hero-content {
       position: relative;
       z-index: 2;
-      max-width: 820px;
-    }
-
-    .hero-fez {
-      width: 48px;
-      height: 48px;
-      margin: 0 auto 28px;
-      opacity: 0.80;
+      max-width: 780px;
     }
 
     .hero-eyebrow {
       display: inline-block;
-      font-size: 14px;
-      font-weight: 400;
-      font-style: italic;
-      font-family: 'Fraunces', serif;
-      color: rgba(245, 237, 216, 0.72);
-      margin-bottom: 20px;
-      line-height: 1.5;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: var(--ls-micro);
+      text-transform: uppercase;
+      color: var(--sand);
+      margin-bottom: 24px;
     }
 
     .hero-headline {
       font-family: 'Fraunces', serif;
       font-weight: 900;
       font-style: italic;
-      font-size: clamp(48px, 7.5vw, 88px);
+      font-size: clamp(52px, 8vw, 96px);
       line-height: 1.0;
       color: var(--cream);
-      margin-bottom: 28px;
-      letter-spacing: -0.025em;
+      margin-bottom: 24px;
+      letter-spacing: -0.02em;
     }
 
     .hero-sub {
-      font-size: clamp(16px, 1.8vw, 19px);
-      color: rgba(245, 237, 216, 0.72);
-      line-height: 1.6;
-      margin-bottom: 44px;
+      font-size: clamp(16px, 2vw, 20px);
+      color: rgba(245, 237, 216, 0.75);
+      line-height: 1.55;
+      margin-bottom: 40px;
       font-weight: 400;
-      max-width: 540px;
-      margin-left: auto;
-      margin-right: auto;
     }
 
     .hero-ctas {
       display: flex;
-      gap: 14px;
+      gap: 16px;
       justify-content: center;
       flex-wrap: wrap;
     }
@@ -261,7 +255,7 @@
       letter-spacing: 0.02em;
       text-decoration: none;
       border-radius: 2px;
-      transition: background 180ms var(--ease-out), transform 160ms var(--ease-out);
+      transition: background 180ms var(--ease-out);
     }
 
     .btn-primary:active { transform: scale(0.97); }
@@ -272,18 +266,49 @@
       align-items: center;
       gap: 8px;
       padding: 14px 28px;
-      border: 1px solid rgba(245, 237, 216, 0.35);
+      border: 1px solid rgba(245, 237, 216, 0.4);
       color: var(--cream);
       font-size: 14px;
       font-weight: 500;
       letter-spacing: 0.02em;
       text-decoration: none;
       border-radius: 2px;
-      transition: border-color 180ms, background 180ms, transform 160ms var(--ease-out);
+      transition: border-color 180ms, background 180ms;
     }
 
     .btn-secondary:active { transform: scale(0.97); }
     .btn-secondary:hover { border-color: var(--cream); background: rgba(245,237,216,0.08); }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero-scroll span {
+      font-size: 10px;
+      letter-spacing: var(--ls-micro);
+      text-transform: uppercase;
+      color: rgba(245, 237, 216, 0.4);
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, rgba(245,237,216,0.4), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 1; }
+    }
 
     /* === QUICK INFO STRIP === */
     .info-strip {
@@ -292,24 +317,27 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 36px;
+      gap: 40px;
       flex-wrap: wrap;
-      border-top: 1px solid rgba(245, 237, 216, 0.06);
     }
 
     .info-item {
       display: flex;
       align-items: center;
       gap: 10px;
-      color: rgba(245, 237, 216, 0.68);
+      color: rgba(245, 237, 216, 0.7);
       font-size: 13px;
+      font-weight: 500;
       letter-spacing: 0.02em;
     }
 
-    .info-item svg { color: var(--sand); flex-shrink: 0; }
+    .info-item svg {
+      color: var(--sand);
+      flex-shrink: 0;
+    }
 
     .info-item a {
-      color: rgba(245, 237, 216, 0.68);
+      color: rgba(245, 237, 216, 0.7);
       text-decoration: none;
       transition: color 200ms;
     }
@@ -319,11 +347,13 @@
     .info-sep {
       width: 1px;
       height: 16px;
-      background: rgba(245, 237, 216, 0.12);
+      background: rgba(245, 237, 216, 0.15);
     }
 
-    /* === SECTION BASE === */
-    section { padding: var(--section-pad) 40px; }
+    /* === SECTIONS === */
+    section {
+      padding: var(--section-pad) 40px;
+    }
 
     .section-inner {
       max-width: 1080px;
@@ -336,7 +366,7 @@
       letter-spacing: var(--ls-micro);
       text-transform: uppercase;
       color: var(--red);
-      margin-bottom: 14px;
+      margin-bottom: 16px;
     }
 
     .section-label.light { color: var(--sand); }
@@ -344,34 +374,26 @@
     .section-title {
       font-family: 'Fraunces', serif;
       font-weight: 900;
-      font-size: clamp(36px, 5vw, 58px);
+      font-size: clamp(36px, 5vw, 60px);
       line-height: 1.05;
       letter-spacing: -0.02em;
       color: var(--charcoal);
-      margin-bottom: 20px;
+      margin-bottom: 24px;
     }
 
     .section-title.on-dark { color: var(--cream); }
 
-    /* === MENU === */
-    .menu-section { background: var(--cream); }
-
-    .menu-intro {
-      max-width: 540px;
-      margin-bottom: 48px;
-    }
-
-    .menu-intro p {
-      font-size: 17px;
-      color: var(--warm-gray);
-      line-height: 1.7;
+    /* === MENU SECTION === */
+    .menu-section {
+      background: var(--cream);
     }
 
     .menu-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 2px;
-      background: rgba(26, 10, 8, 0.08);
+      margin-top: 48px;
+      background: var(--light-rule);
     }
 
     .menu-item {
@@ -382,8 +404,7 @@
     .menu-item-name {
       font-family: 'Fraunces', serif;
       font-weight: 700;
-      font-style: italic;
-      font-size: 26px;
+      font-size: 24px;
       color: var(--charcoal);
       margin-bottom: 10px;
       letter-spacing: -0.01em;
@@ -392,15 +413,15 @@
     .menu-item-desc {
       font-size: 15px;
       color: var(--warm-gray);
-      line-height: 1.65;
+      line-height: 1.6;
     }
 
     .menu-item-tag {
       display: inline-block;
-      margin-top: 16px;
+      margin-top: 14px;
       font-size: 10px;
       font-weight: 600;
-      letter-spacing: 0.12em;
+      letter-spacing: var(--ls-micro);
       text-transform: uppercase;
       color: var(--red);
       padding: 4px 10px;
@@ -408,13 +429,16 @@
       border-radius: 2px;
     }
 
-    /* === FOOD PHOTOS === */
-    .food-photos { padding: 0; }
+    /* === FOOD PHOTO SECTION === */
+    .food-photos {
+      background: var(--warm-white);
+      padding: 0;
+    }
 
     .food-photo-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      height: 540px;
+      height: 560px;
     }
 
     .food-photo-item {
@@ -433,60 +457,36 @@
       position: absolute;
       bottom: 20px;
       left: 20px;
-      font-size: 10px;
+      font-size: 11px;
       font-weight: 600;
       letter-spacing: var(--ls-micro);
       text-transform: uppercase;
-      color: rgba(245, 237, 216, 0.90);
-      background: rgba(26, 10, 8, 0.52);
+      color: rgba(245, 237, 216, 0.8);
+      background: rgba(26, 10, 8, 0.55);
       padding: 5px 10px;
       border-radius: 2px;
     }
 
-    /* === STORY === */
-    .story-section { background: var(--warm-white); }
+    /* === STORY SECTION === */
+    .story-section {
+      background: var(--warm-white);
+    }
 
     .story-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 64px;
+      gap: 80px;
       align-items: center;
-    }
-
-    .story-text .section-title {
-      font-size: clamp(30px, 4vw, 48px);
-      margin-bottom: 24px;
     }
 
     .story-text p {
       font-size: 17px;
       line-height: 1.75;
       color: var(--charcoal);
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
 
-    .story-basil-quote {
-      margin-top: 32px;
-      padding: 24px 28px;
-      border-left: 3px solid var(--red);
-      background: rgba(139, 29, 44, 0.04);
-    }
-
-    .story-basil-quote p {
-      font-style: italic;
-      font-size: 16px;
-      color: var(--charcoal);
-      margin-bottom: 10px !important;
-      line-height: 1.6;
-    }
-
-    .story-basil-attr {
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--warm-gray);
-    }
+    .story-text p:last-child { margin-bottom: 0; }
 
     .story-photo {
       aspect-ratio: 3/4;
@@ -500,45 +500,44 @@
       object-fit: cover;
     }
 
-    /* === QUOTE === */
+    /* === QUOTE SECTION === */
     .quote-section {
       background: var(--red);
       text-align: center;
-      padding: 88px 40px;
     }
 
     .quote-mark {
       font-family: 'Fraunces', serif;
-      font-size: 72px;
-      line-height: 0.6;
-      color: rgba(245, 237, 216, 0.16);
-      display: block;
+      font-size: 80px;
+      line-height: 0.5;
+      color: rgba(245, 237, 216, 0.2);
       margin-bottom: 24px;
+      display: block;
     }
 
     .quote-text {
       font-family: 'Fraunces', serif;
       font-style: italic;
       font-weight: 400;
-      font-size: clamp(26px, 3.5vw, 42px);
-      line-height: 1.3;
+      font-size: clamp(24px, 3.5vw, 40px);
+      line-height: 1.35;
       color: var(--cream);
       max-width: 680px;
       margin: 0 auto 24px;
     }
 
     .quote-attribution {
-      font-size: 12px;
-      font-weight: 600;
+      font-size: 13px;
+      font-weight: 500;
       letter-spacing: var(--ls-label);
       text-transform: uppercase;
-      color: rgba(245, 237, 216, 0.55);
+      color: rgba(245, 237, 216, 0.6);
     }
 
-    /* === PRESS === */
+    /* === PRESS MENTION === */
     .press-section {
       background: var(--cream);
-      padding: 52px 40px;
+      padding: 56px 40px;
     }
 
     .press-inner {
@@ -546,18 +545,18 @@
       margin: 0 auto;
       display: flex;
       align-items: center;
-      gap: 40px;
+      gap: 32px;
     }
 
     .press-logo {
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.10em;
+      font-family: 'Fraunces', serif;
+      font-weight: 900;
+      font-size: 13px;
+      letter-spacing: 0.05em;
       text-transform: uppercase;
       color: var(--warm-gray);
       white-space: nowrap;
-      flex-shrink: 0;
-      padding-right: 40px;
+      padding-right: 32px;
       border-right: 1px solid var(--light-rule);
     }
 
@@ -565,11 +564,14 @@
       font-size: 16px;
       font-style: italic;
       color: var(--charcoal);
-      line-height: 1.65;
+      line-height: 1.6;
+      flex: 1;
     }
 
     /* === FIND US === */
-    .find-us-section { background: var(--charcoal); }
+    .find-us-section {
+      background: var(--charcoal);
+    }
 
     .find-us-grid {
       display: grid;
@@ -578,7 +580,11 @@
       align-items: start;
     }
 
-    .find-us-detail { margin-bottom: 28px; }
+    .find-us-info .section-title { margin-bottom: 32px; }
+
+    .find-us-detail {
+      margin-bottom: 24px;
+    }
 
     .find-us-detail-label {
       font-size: 10px;
@@ -591,12 +597,12 @@
 
     .find-us-detail-value {
       font-size: 16px;
-      color: rgba(245, 237, 216, 0.82);
-      line-height: 1.55;
+      color: rgba(245, 237, 216, 0.85);
+      line-height: 1.5;
     }
 
     .find-us-detail-value a {
-      color: rgba(245, 237, 216, 0.82);
+      color: rgba(245, 237, 216, 0.85);
       text-decoration: underline;
       text-underline-offset: 3px;
       transition: color 200ms;
@@ -604,29 +610,25 @@
 
     .find-us-detail-value a:hover { color: var(--cream); }
 
-    .find-us-note {
-      font-size: 13px;
-      color: rgba(245, 237, 216, 0.48);
-      margin-top: 4px;
-    }
-
     .map-container {
-      height: 380px;
+      height: 360px;
       border-radius: 2px;
       overflow: hidden;
+      background: rgba(245, 237, 216, 0.06);
     }
 
     .map-container iframe {
       width: 100%;
       height: 100%;
       border: none;
+      filter: grayscale(30%) sepia(10%);
     }
 
     /* === FOOTER === */
     footer {
       background: var(--charcoal);
-      border-top: 1px solid rgba(245, 237, 216, 0.07);
-      padding: 36px 40px;
+      border-top: 1px solid rgba(245, 237, 216, 0.08);
+      padding: 40px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -639,95 +641,36 @@
       font-weight: 700;
       font-size: 16px;
       color: var(--cream);
+      letter-spacing: 0.01em;
     }
 
     .footer-note {
       font-size: 13px;
-      color: rgba(245, 237, 216, 0.30);
+      color: rgba(245, 237, 216, 0.35);
     }
 
-    .footer-ig a {
+    .footer-instagram a {
       font-size: 13px;
       font-weight: 500;
-      color: rgba(245, 237, 216, 0.55);
+      color: rgba(245, 237, 216, 0.6);
       text-decoration: none;
+      letter-spacing: 0.02em;
       transition: color 200ms;
     }
 
-    .footer-ig a:hover { color: var(--cream); }
+    .footer-instagram a:hover { color: var(--cream); }
 
     /* === SCROLL REVEAL === */
     .reveal {
       opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 550ms var(--ease-out), transform 550ms var(--ease-out);
+      transform: translateY(24px);
+      transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
     }
 
     .reveal.visible {
       opacity: 1;
       transform: none;
     }
-
-    /* === MOTION: HERO ENTRANCE === */
-    @keyframes heroFadeUp {
-      from { opacity: 0; transform: translateY(28px); }
-      to   { opacity: 1; transform: none; }
-    }
-
-    .hero-fez {
-      animation: heroFadeUp 700ms var(--ease-out) 100ms both;
-    }
-
-    .hero-eyebrow {
-      animation: heroFadeUp 700ms var(--ease-out) 200ms both;
-    }
-
-    .hero-headline {
-      animation: heroFadeUp 750ms var(--ease-out) 300ms both;
-    }
-
-    .hero-sub {
-      animation: heroFadeUp 700ms var(--ease-out) 450ms both;
-    }
-
-    .hero-ctas {
-      animation: heroFadeUp 700ms var(--ease-out) 580ms both;
-    }
-
-    /* === MOTION: NAV LOGO FEZ TASSEL === */
-    @keyframes tassleSwing {
-      0%   { transform: rotate(0deg); }
-      20%  { transform: rotate(12deg); }
-      50%  { transform: rotate(-8deg); }
-      75%  { transform: rotate(4deg); }
-      100% { transform: rotate(0deg); }
-    }
-
-    .nav-logo:hover .fez-icon {
-      animation: tassleSwing 500ms var(--ease-out) 0ms 1;
-    }
-
-    /* === MOTION: BUTTON ACTIVE === */
-    .btn-primary:active,
-    .btn-secondary:active {
-      transform: scale(0.97);
-      transition: transform 160ms var(--ease-out);
-    }
-
-    /* === MOTION: FOOD PHOTO SUBTLE ENTRANCE === */
-    .food-photo-item.reveal.visible img {
-      transition: none;
-    }
-
-    /* === MOTION: INFO STRIP ITEMS === */
-    .info-strip .info-item {
-      opacity: 0;
-      animation: heroFadeUp 500ms var(--ease-out) both;
-    }
-
-    .info-strip .info-item:nth-child(1) { animation-delay: 650ms; }
-    .info-strip .info-item:nth-child(3) { animation-delay: 750ms; }
-    .info-strip .info-item:nth-child(5) { animation-delay: 850ms; }
 
     /* === RESPONSIVE === */
     @media (max-width: 768px) {
@@ -738,40 +681,33 @@
       .nav-links { display: none; }
       .nav-hamburger { display: flex; }
 
-      .hero { padding: 110px 24px 80px; }
-      section { padding: var(--section-pad) 24px; }
-      .quote-section { padding: 72px 24px; }
-      .press-section { padding: 44px 24px; }
+      .hero { padding: 100px 24px 80px; }
 
-      .info-strip { padding: 16px 24px; gap: 14px; flex-direction: column; align-items: flex-start; }
+      section { padding: var(--section-pad) 24px; }
+
+      .info-strip { padding: 16px 24px; gap: 16px; flex-direction: column; align-items: flex-start; }
       .info-sep { display: none; }
 
       .menu-grid { grid-template-columns: 1fr; }
-      .menu-item { padding: 28px 24px; }
 
       .food-photo-grid { grid-template-columns: 1fr; height: auto; }
-      .food-photo-item { height: 260px; }
+      .food-photo-item { height: 280px; }
 
       .story-grid { grid-template-columns: 1fr; gap: 40px; }
       .story-photo { aspect-ratio: 4/3; }
 
-      .press-inner { flex-direction: column; gap: 16px; }
-      .press-logo { border-right: none; padding-right: 0; border-bottom: 1px solid var(--light-rule); padding-bottom: 16px; }
-
       .find-us-grid { grid-template-columns: 1fr; gap: 40px; }
-      .map-container { height: 260px; }
+      .map-container { height: 280px; }
 
-      footer { flex-direction: column; padding: 28px 24px; gap: 12px; }
+      .press-inner { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .press-logo { border-right: none; padding-right: 0; }
+
+      footer { flex-direction: column; padding: 32px 24px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
-      .hero-fez, .hero-eyebrow, .hero-headline, .hero-sub, .hero-ctas,
-      .info-strip .info-item {
-        animation: none !important;
-        opacity: 1 !important;
-        transform: none !important;
-      }
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .scroll-line { animation: none; }
     }
   </style>
 </head>
@@ -779,27 +715,20 @@
 
   <!-- Navigation -->
   <nav id="main-nav">
-    <a href="#top" class="nav-logo">
-      <svg class="fez-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-        <rect x="4" y="22" width="24" height="5" rx="2.5" fill="#C4905A"/>
-        <path d="M8 22 L12 8 L20 8 L24 22Z" fill="#C4905A"/>
-        <path d="M20 8 Q22 5 22 2 Q19 5 17 7Z" fill="#F5EDD8" opacity="0.7"/>
-      </svg>
-      Tarboosh
-    </a>
+    <a href="#" class="nav-logo">Tarboosh</a>
     <ul class="nav-links">
       <li><a href="#menu">Menu</a></li>
       <li><a href="#story">Story</a></li>
       <li><a href="#find-us">Find Us</a></li>
       <li><a href="https://www.instagram.com/tarboosh_victoria/" target="_blank" rel="noopener">Instagram</a></li>
     </ul>
-    <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
+    <div class="nav-hamburger" id="hamburger" role="button" aria-label="Open menu" tabindex="0">
       <span></span><span></span><span></span>
-    </button>
+    </div>
   </nav>
 
   <!-- Mobile Menu -->
-  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Navigation menu">
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Navigation">
     <button class="mobile-close" id="mobile-close" aria-label="Close menu">✕</button>
     <a href="#menu" class="mobile-link">Menu</a>
     <a href="#story" class="mobile-link">Story</a>
@@ -812,24 +741,22 @@
     <div class="hero-bg"></div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <svg class="hero-fez" viewBox="0 0 80 80" fill="none" aria-hidden="true">
-        <rect x="8" y="56" width="64" height="12" rx="6" fill="#C4905A" opacity="0.85"/>
-        <path d="M20 56 L28 20 L52 20 L60 56Z" fill="#C4905A" opacity="0.85"/>
-        <path d="M52 20 Q58 12 58 6 Q52 12 46 16 Q49 17.5 52 20Z" fill="#F5EDD8" opacity="0.65"/>
-      </svg>
-
-      <p class="hero-eyebrow">Her grandfather's hat. Now her food truck.</p>
-      <h1 class="hero-headline">Her sauces.<br>Her marinades.<br>Her falafel.</h1>
-      <p class="hero-sub">Halah makes everything from scratch: every sauce, marinade, falafel, and pita. Family-run food truck. Esquimalt, Victoria.</p>
+      <span class="hero-eyebrow">Middle Eastern Food Truck · Esquimalt, BC</span>
+      <h1 class="hero-headline">Everything<br>made from<br>scratch.</h1>
+      <p class="hero-sub">Crispy falafel. Tender shawarma. Freshly baked pita.<br>Halah makes it all — sauces, marinades, and everything in between.</p>
       <div class="hero-ctas">
         <a href="https://www.instagram.com/tarboosh_victoria/" target="_blank" rel="noopener" class="btn-primary">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
           @tarboosh_victoria
         </a>
-        <a href="https://www.google.com/maps/search/Tarboosh+Middle+Eastern+Food+Truck+Esquimalt+BC" target="_blank" rel="noopener" class="btn-secondary">
+        <a href="https://www.google.com/maps/search/Tarboosh+food+truck+900+Carlton+Terrace+Esquimalt+BC" target="_blank" rel="noopener" class="btn-secondary">
           Get Directions
         </a>
       </div>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
     </div>
   </section>
 
@@ -837,12 +764,12 @@
   <div class="info-strip">
     <div class="info-item">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-      Usually 11am–10pm
+      Usually 11am–10pm (hours vary)
     </div>
     <div class="info-sep"></div>
     <div class="info-item">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-      <a href="https://www.google.com/maps/search/Tarboosh+Middle+Eastern+Food+Truck+Esquimalt+BC" target="_blank" rel="noopener">
+      <a href="https://www.google.com/maps/search/Tarboosh+food+truck+900+Carlton+Terrace+Esquimalt+BC" target="_blank" rel="noopener">
         900 Carlton Terrace, Esquimalt
       </a>
     </div>
@@ -857,29 +784,26 @@
   <section class="menu-section" id="menu">
     <div class="section-inner">
       <div class="reveal">
-        <p class="section-label">What's on the truck</p>
+        <p class="section-label">What we make</p>
         <h2 class="section-title">The menu.</h2>
-        <div class="menu-intro">
-          <p>No shortcuts. No pre-made sauces. Everything Halah makes comes from her own recipes.</p>
-        </div>
       </div>
-      <div class="menu-grid">
-        <div class="menu-item reveal">
+      <div class="menu-grid reveal">
+        <div class="menu-item">
           <div class="menu-item-name">Falafel</div>
-          <p class="menu-item-desc">Golden and crispy, made fresh from scratch every day. Served with tahini and pita.</p>
+          <p class="menu-item-desc">Golden and crispy on the outside, tender inside. Made fresh every day from scratch.</p>
           <span class="menu-item-tag">Signature</span>
         </div>
-        <div class="menu-item reveal">
+        <div class="menu-item">
           <div class="menu-item-name">Shawarma</div>
-          <p class="menu-item-desc">Slow-marinated and layered with Halah's own scratch-made sauces.</p>
+          <p class="menu-item-desc">Slow-marinated, layered with Halah's scratch-made sauces. A wrap worth waiting for.</p>
         </div>
-        <div class="menu-item reveal">
+        <div class="menu-item">
           <div class="menu-item-name">Freshly baked pita</div>
-          <p class="menu-item-desc">Baked in-house, warm and soft, made the same careful way every time.</p>
+          <p class="menu-item-desc">Baked in-house. Warm, soft, and made the same way every time.</p>
         </div>
-        <div class="menu-item reveal">
+        <div class="menu-item">
           <div class="menu-item-name">Sauces &amp; marinades</div>
-          <p class="menu-item-desc">Every sauce is made from scratch in-house. This is what makes it different.</p>
+          <p class="menu-item-desc">Everything from scratch. No shortcuts. The sauces are what make it.</p>
           <span class="menu-item-tag">All scratch-made</span>
         </div>
       </div>
@@ -889,12 +813,12 @@
   <!-- Food Photos -->
   <div class="food-photos">
     <div class="food-photo-grid">
-      <div class="food-photo-item reveal" data-delay="0">
-        <img src="falafel.png" alt="Crispy golden falafel with tahini, herbs, and pita" loading="lazy">
+      <div class="food-photo-item reveal">
+        <img src="falafel.png" alt="Crispy golden falafel with fresh herbs, tahini, and pita" loading="lazy">
         <span class="food-photo-caption">Falafel</span>
       </div>
-      <div class="food-photo-item reveal" data-delay="80">
-        <img src="shawarma.png" alt="Shawarma wrap being drizzled with scratch-made sauce" loading="lazy">
+      <div class="food-photo-item reveal">
+        <img src="shawarma.png" alt="Shawarma wrap with scratch-made sauces and fresh vegetables" loading="lazy">
         <span class="food-photo-caption">Shawarma</span>
       </div>
     </div>
@@ -906,16 +830,13 @@
       <div class="story-grid">
         <div class="story-text reveal">
           <p class="section-label">The name</p>
-          <h2 class="section-title" style="font-size: clamp(30px, 4vw, 48px);">A fez, a family,<br>and a food truck.</h2>
-          <p>Halah Abouhassan's grandfather wore a tarboosh, a bright red fez, as part of his Egyptian military uniform. That hat is now painted on the side of her truck. The name isn't branding. It's her family.</p>
-          <p>Her son Basil is her partner in the business. Halah cooks everything.</p>
-          <div class="story-basil-quote">
-            <p>"Honestly, I'm just amazed with how much she's accomplished so far."</p>
-            <span class="story-basil-attr">— Basil, on his mother Halah</span>
-          </div>
+          <h2 class="section-title" style="font-size: clamp(32px, 4vw, 48px);">A fez, a family, and a food truck.</h2>
+          <p>Halah Abouhassan's grandfather wore a tarboosh — a bright red fez — as part of his Egyptian military uniform. That hat is now painted on the side of her truck. It's not just branding. It's her family.</p>
+          <p>Halah cooks everything herself. Her son Basil is her partner in the business. "Honestly, I'm just amazed with how much she's accomplished so far," he says.</p>
+          <p>The food truck was featured in CHEK News as a bridge between generations — and a way for Halah to give back to the community that welcomed her to Victoria.</p>
         </div>
-        <div class="story-photo reveal" data-delay="120">
-          <img src="pita.png" alt="Fresh pita bread, warm and soft, baked in-house at Tarboosh" loading="lazy">
+        <div class="story-photo reveal">
+          <img src="pita.png" alt="Fresh pita bread, just baked, warm and soft" loading="lazy">
         </div>
       </div>
     </div>
@@ -923,17 +844,17 @@
 
   <!-- Quote -->
   <section class="quote-section">
-    <div class="section-inner">
+    <div class="section-inner" style="text-align: center;">
       <span class="quote-mark">"</span>
       <p class="quote-text reveal">You're on my door so I can't let you go.</p>
       <p class="quote-attribution reveal">— Halah Abouhassan, Tarboosh</p>
     </div>
   </section>
 
-  <!-- Press -->
+  <!-- Press Mention -->
   <div class="press-section">
     <div class="press-inner reveal">
-      <div class="press-logo">CHEK News · Sept 2025</div>
+      <div class="press-logo">CHEK News</div>
       <p class="press-quote">"A bridge between generations, and a way to give back to the community that welcomed her."</p>
     </div>
   </div>
@@ -944,19 +865,18 @@
       <div class="find-us-grid">
         <div class="find-us-info reveal">
           <p class="section-label light">Come find us</p>
-          <h2 class="section-title on-dark">900 Carlton<br>Terrace.</h2>
+          <h2 class="section-title on-dark">900 Carlton Terrace.</h2>
           <div class="find-us-detail">
             <p class="find-us-detail-label">Address</p>
             <p class="find-us-detail-value">
-              <a href="https://www.google.com/maps/search/Tarboosh+Middle+Eastern+Food+Truck+Esquimalt+BC" target="_blank" rel="noopener">
+              <a href="https://www.google.com/maps/search/Tarboosh+food+truck+900+Carlton+Terrace+Esquimalt+BC" target="_blank" rel="noopener">
                 900 Carlton Terrace<br>Esquimalt, BC
               </a>
             </p>
           </div>
           <div class="find-us-detail">
             <p class="find-us-detail-label">Hours</p>
-            <p class="find-us-detail-value">Usually 11am–10pm</p>
-            <p class="find-us-note">Hours vary. Check Instagram for updates.</p>
+            <p class="find-us-detail-value">Usually 11am–10pm<br><span style="color: rgba(245,237,216,0.45); font-size: 13px;">Hours vary — check Instagram for updates</span></p>
           </div>
           <div class="find-us-detail">
             <p class="find-us-detail-label">Follow for updates</p>
@@ -965,10 +885,10 @@
             </p>
           </div>
         </div>
-        <div class="map-container reveal" data-delay="100">
+        <div class="map-container reveal">
           <iframe
             src="https://maps.google.com/maps?q=900+Carlton+Terrace,+Esquimalt,+BC&output=embed"
-            title="Tarboosh food truck at 900 Carlton Terrace, Esquimalt BC"
+            title="Tarboosh food truck location"
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade">
           </iframe>
@@ -981,7 +901,7 @@
   <footer>
     <span class="footer-brand">Tarboosh</span>
     <span class="footer-note">Middle Eastern food truck · Esquimalt, BC</span>
-    <div class="footer-ig">
+    <div class="footer-instagram">
       <a href="https://www.instagram.com/tarboosh_victoria/" target="_blank" rel="noopener">@tarboosh_victoria →</a>
     </div>
   </footer>
@@ -991,11 +911,13 @@
   </noscript>
 
   <script>
+    // Nav scroll effect
     const nav = document.getElementById('main-nav');
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 60);
     }, { passive: true });
 
+    // Mobile menu
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobile-menu');
     const mobileClose = document.getElementById('mobile-close');
@@ -1006,28 +928,26 @@
       link.addEventListener('click', () => mobileMenu.classList.remove('open'));
     });
 
+    // Scroll reveal
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
+      entries.forEach((entry, i) => {
         if (entry.isIntersecting) {
-          const delay = parseInt(entry.target.dataset.delay || 0);
-          setTimeout(() => entry.target.classList.add('visible'), delay);
+          const delay = entry.target.dataset.delay || 0;
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, delay);
           observer.unobserve(entry.target);
         }
       });
     }, { threshold: 0.12 });
 
-    const processed = new Set();
-    document.querySelectorAll('.reveal').forEach(el => {
+    // Stagger sibling reveals
+    document.querySelectorAll('.reveal').forEach((el, i) => {
       const parent = el.parentElement;
-      if (!processed.has(parent)) {
-        const siblings = Array.from(parent.querySelectorAll(':scope > .reveal'));
-        if (siblings.length > 1) {
-          siblings.forEach((sib, i) => {
-            if (!sib.dataset.delay) sib.dataset.delay = i * 75;
-          });
-        }
-        processed.add(parent);
-      }
+      const siblings = parent.querySelectorAll('.reveal');
+      siblings.forEach((sib, j) => {
+        sib.dataset.delay = j * 70;
+      });
       observer.observe(el);
     });
   </script>

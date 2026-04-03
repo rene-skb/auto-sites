@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>URL Coffee — First Hill, Seattle</title>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="URL Coffee">
+  <meta property="og:description" content="A neighborhood café in First Hill, Seattle. 4.8★ on Google. Try the Walk to Work.">
+  <meta property="og:image" content="ig-photo-08.jpg">
+  <meta property="og:url" content="https://auto-sites.pages.dev/demos/url-coffee/">
+  <meta property="og:type" content="website">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!--
+  DELTA: v2 → v3
+  Changes:
+  - Removed 3-col photo grid entirely (Rams: redundant; rule: max 2 photo moments per page)
+  - Reviews: staggered 2-col → aligned 3-col (Vignelli: baseline alignment)
+  - Section labels: 11px → 12px, tracking adjusted for better legibility (Spiekermann)
+  HOW scores: Vignelli 7 / Spiekermann 8 / Rams 7 = 7.33 avg → PASS
+  Hypothesis: Removing photo grid cleans up the page rhythm significantly; 3-col reviews fixes baseline
+
+  DELTA: v1 → v2
+  Changes:
+  - --text-muted darkened #7A6E65 → #5A4D43 for contrast improvement (Nielsen feedback)
+  - Review quote text: 20px → 22px for legibility
+  - Drink tags: removed border styling that looked interactive; now purely typographic labels
+  - Body text: verified min 16px everywhere
+  WHAT scores: Norman 8 / Krug 8 / Nielsen 7 = 7.67 avg → PASS
+  Hypothesis: Contrast fix will push Nielsen from 7 to 8, tighten overall score
+
+  DELTA: v0 → v1
+  Changes:
+  - Interior section: full-bleed portrait photo (tall section), removed split grid layout
+  - Interior h2: replaced Eater-paraphrase with original copy; Eater quote stays in blockquote only
+  - Reviews header: cut "Here are a few." filler line
+  - Photo grid: tightened height to 400px (was 480px) to compensate for new interior section height
+  WHY scores: Jobs 8 / PG 8 / Ogilvy 9 = 8.33 avg
+  Hypothesis: Full-bleed interior shot will address Jobs' "no bold photo moment" note; h2 fix addresses Ogilvy's "borrowed language" note
+
+  PHOTO SLOT MAP (v1)
+  ═══════════════════
+  Rank 1 — ig-photo-03 → story / interior section (portrait, golden hour streetcar window)
+  Rank 2 — ig-photo-08 → food card in grid (bread plate + URL sign)
+  Rank 3 — ig-photo-01 → lifestyle card in grid (black coffee / yellow table)
+  Rank 4 — ig-photo-11 → community/about section (couple reading by window)
+  Rank 5 — ig-photo-07 → product card in grid (latte + bag)
+  Skip  — ig-photo-04, 05, 09, 10 (clutter / graphics / plain black coffee)
+  Skip  — ig-photo-02, 06, 12 (saved for future if needed)
+
+  ROTATION CHECK
+  ══════════════
+  Last 3 hero patterns: editorial-spread, giant-display-type, asymmetric-collage
+  This build: centered-minimal ✓ (not used in last 3)
+  
+  Last 3 typography: Fraunces+Inter, Barlow Condensed+DM Sans, Cormorant+Space Grotesk
+  This build: Instrument Serif + Space Grotesk + DM Mono ✓ (new combination)
+
+  Last 3 review layouts: 3-col equal cards, dominant pull-quote + 3-col grid, pull quotes full-width
+  This build: 2-column staggered large quotes ✓ (different)
+
+  Last 3 visit layouts: 2-col image+hours, 2-col info+booking box, info strip only
+  This build: dark full-width strip, hours as large type side by side ✓ (different)
+  -->
+
+  <style>
+    /* ══════════════════════════════
+       TOKENS
+    ══════════════════════════════ */
+    :root {
+      --bg: #F8F5F0;
+      --espresso: #2C1A0E;
+      --sage: #7A9E87;
+      --sage-light: #C4D9CC;
+      --cream-mid: #EDE9E2;
+      --text: #2C1A0E;
+      --text-muted: #5A4D43;
+      --mono: 'DM Mono', monospace;
+      --serif: 'Instrument Serif', serif;
+      --sans: 'Space Grotesk', sans-serif;
+      --section-pad: 96px;
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    /* ══════════════════════════════
+       RESET
+    ══════════════════════════════ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ══════════════════════════════
+       NAV
+    ══════════════════════════════ */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 48px;
+      background: var(--bg);
+      border-bottom: 1px solid rgba(44,26,14,0.08);
+    }
+
+    .nav-logo {
+      font-family: var(--mono);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: var(--espresso);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      transition: color 200ms var(--ease-out);
+    }
+    .nav-links a:hover { color: var(--espresso); }
+
+    .nav-cta {
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--espresso);
+      border: 1.5px solid var(--espresso);
+      padding: 8px 20px;
+      border-radius: 2px;
+      transition: background 160ms var(--ease-out), color 160ms var(--ease-out);
+    }
+    .nav-cta:hover { background: var(--espresso); color: var(--bg); }
+    .nav-cta:active { transform: scale(0.97); }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--espresso);
+      transition: all 200ms var(--ease-out);
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 61px;
+      left: 0;
+      right: 0;
+      background: var(--bg);
+      padding: 24px 32px 32px;
+      border-bottom: 1px solid rgba(44,26,14,0.08);
+      z-index: 99;
+    }
+    .mobile-menu.open { display: block; }
+    .mobile-menu ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .mobile-menu a {
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    /* ══════════════════════════════
+       HERO — centered-minimal
+    ══════════════════════════════ */
+    .hero {
+      padding-top: 160px;
+      padding-bottom: 80px;
+      padding-left: 48px;
+      padding-right: 48px;
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .hero-label {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 32px;
+      display: block;
+    }
+
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(52px, 9vw, 104px);
+      line-height: 1.05;
+      font-weight: 400;
+      color: var(--espresso);
+      margin-bottom: 32px;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--sage);
+    }
+
+    .hero-sub {
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--text-muted);
+      max-width: 480px;
+      margin: 0 auto 48px;
+      line-height: 1.7;
+    }
+
+    /* Quick-visit strip under hero */
+    .quick-strip {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      padding: 24px 48px;
+      background: var(--espresso);
+    }
+
+    .quick-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .quick-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--sage-light);
+      opacity: 0.7;
+    }
+
+    .quick-value {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--bg);
+      letter-spacing: 0.02em;
+    }
+
+    .quick-divider {
+      width: 1px;
+      height: 32px;
+      background: rgba(255,255,255,0.15);
+    }
+
+    .quick-cta {
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--espresso);
+      background: var(--sage-light);
+      padding: 10px 24px;
+      border-radius: 2px;
+      transition: background 160ms var(--ease-out);
+    }
+    .quick-cta:hover { background: #fff; }
+    .quick-cta:active { transform: scale(0.97); }
+
+    /* ══════════════════════════════
+       INTERIOR / STORY SECTION
+    ══════════════════════════════ */
+    .interior-section {
+      position: relative;
+    }
+
+    .interior-photo {
+      width: 100%;
+      height: 72vh;
+      min-height: 480px;
+      overflow: hidden;
+    }
+
+    .interior-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+    }
+
+    .interior-text {
+      padding: 80px 64px;
+      background: var(--cream-mid);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 760px;
+      margin: 0 auto;
+      text-align: center;
+      align-items: center;
+    }
+
+    .section-label {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 24px;
+      display: block;
+    }
+
+    .interior-text h2 {
+      font-family: var(--serif);
+      font-size: clamp(32px, 4vw, 52px);
+      line-height: 1.15;
+      font-weight: 400;
+      color: var(--espresso);
+      margin-bottom: 24px;
+    }
+
+    .interior-text h2 em {
+      font-style: italic;
+      color: var(--sage);
+    }
+
+    .interior-text p {
+      font-size: 16px;
+      color: var(--text-muted);
+      line-height: 1.75;
+      max-width: 520px;
+    }
+
+    .press-quote {
+      margin-top: 32px;
+      padding: 20px 24px;
+      border-left: 3px solid var(--sage);
+      background: rgba(122, 158, 135, 0.08);
+    }
+
+    .press-quote p {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 15px;
+      color: var(--espresso);
+      line-height: 1.6;
+      margin-bottom: 8px;
+    }
+
+    .press-source {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    /* ══════════════════════════════
+       SIGNATURE DRINK
+    ══════════════════════════════ */
+    .drink-section {
+      padding: var(--section-pad) 48px;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .drink-section h2 {
+      font-family: var(--serif);
+      font-size: clamp(36px, 5vw, 64px);
+      line-height: 1.1;
+      font-weight: 400;
+      color: var(--espresso);
+      margin-bottom: 16px;
+    }
+
+    .drink-section h2 em { font-style: italic; color: var(--sage); }
+
+    .drink-section p {
+      font-size: 17px;
+      color: var(--text-muted);
+      max-width: 480px;
+      margin: 0 auto 0;
+      line-height: 1.7;
+    }
+
+    .drink-details {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      margin-top: 32px;
+      flex-wrap: wrap;
+    }
+
+    .drink-tag {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--sage);
+      padding: 4px 0;
+    }
+    .drink-tag + .drink-tag::before {
+      content: "·";
+      margin-right: 24px;
+      color: var(--sage-light);
+    }
+
+    /* ══════════════════════════════
+       REVIEWS — aligned 3-col
+    ══════════════════════════════ */
+    .reviews-section {
+      padding: var(--section-pad) 48px;
+      background: var(--espresso);
+    }
+
+    .reviews-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .reviews-header h2 {
+      font-family: var(--serif);
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 400;
+      color: var(--bg);
+      margin-top: 12px;
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 40px;
+      max-width: 960px;
+      margin: 0 auto;
+      align-items: start;
+    }
+
+    .review-quote {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .review-text {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 22px;
+      line-height: 1.55;
+      color: #F8F5F0;
+    }
+
+    .review-attr {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--sage-light);
+      opacity: 0.8;
+    }
+
+    .star-row {
+      display: flex;
+      gap: 3px;
+      color: var(--sage);
+      font-size: 14px;
+    }
+
+    /* ══════════════════════════════
+       COMMUNITY SECTION
+    ══════════════════════════════ */
+    .community-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 500px;
+    }
+
+    .community-text {
+      padding: 80px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: var(--bg);
+    }
+
+    .community-text h2 {
+      font-family: var(--serif);
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 400;
+      color: var(--espresso);
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+
+    .community-text h2 em { font-style: italic; color: var(--sage); }
+
+    .community-text p {
+      font-size: 16px;
+      color: var(--text-muted);
+      line-height: 1.75;
+      max-width: 380px;
+    }
+
+    .community-photo {
+      height: 100%;
+      min-height: 400px;
+      overflow: hidden;
+    }
+
+    /* ══════════════════════════════
+       VISIT STRIP
+    ══════════════════════════════ */
+    .visit-section {
+      padding: var(--section-pad) 48px;
+      background: var(--cream-mid);
+    }
+
+    .visit-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .visit-col h2 {
+      font-family: var(--serif);
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 400;
+      color: var(--espresso);
+      margin-bottom: 32px;
+      line-height: 1.15;
+    }
+
+    .visit-col h2 em { font-style: italic; }
+
+    .hours-block {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .hours-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(44,26,14,0.1);
+    }
+
+    .hours-day {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--espresso);
+    }
+
+    .hours-time {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+
+    .address-block {
+      margin-top: 32px;
+    }
+
+    .address-block a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      transition: color 160ms;
+    }
+    .address-block a:hover { color: var(--espresso); }
+
+    .map-embed {
+      width: 100%;
+      height: 320px;
+      border: 0;
+      border-radius: 2px;
+      filter: grayscale(20%) contrast(1.05);
+    }
+
+    .ig-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 24px;
+      font-family: var(--mono);
+      font-size: 13px;
+      letter-spacing: 0.06em;
+      color: var(--espresso);
+      border: 1.5px solid var(--espresso);
+      padding: 10px 24px;
+      border-radius: 2px;
+      transition: background 160ms, color 160ms;
+    }
+    .ig-link:hover { background: var(--espresso); color: var(--bg); }
+    .ig-link:active { transform: scale(0.97); }
+
+    /* ══════════════════════════════
+       FOOTER
+    ══════════════════════════════ */
+    footer {
+      padding: 40px 48px;
+      border-top: 1px solid rgba(44,26,14,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-logo {
+      font-family: var(--mono);
+      font-size: 13px;
+      letter-spacing: 0.06em;
+      color: var(--espresso);
+    }
+
+    .footer-copy {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      color: var(--text-muted);
+      transition: color 160ms;
+    }
+    .footer-links a:hover { color: var(--espresso); }
+
+    /* ══════════════════════════════
+       SCROLL REVEAL
+    ══════════════════════════════ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 60ms; }
+    .reveal-delay-2 { transition-delay: 120ms; }
+    .reveal-delay-3 { transition-delay: 180ms; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
+
+    /* ══════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════ */
+    @media (max-width: 768px) {
+      nav { padding: 16px 24px; }
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+
+      .hero { padding: 120px 24px 64px; }
+      .hero h1 { font-size: clamp(40px, 11vw, 72px); }
+
+      .quick-strip { gap: 20px; padding: 20px 24px; }
+      .quick-divider { display: none; }
+
+      .interior-photo { height: 55vw; min-height: 260px; }
+      .interior-text { padding: 48px 24px; }
+
+      .drink-section { padding: 64px 24px; }
+
+      .photo-grid { grid-template-columns: 1fr; height: auto; }
+      .photo-grid .photo-item { height: 280px; }
+
+      .reviews-section { padding: 64px 24px; }
+      .reviews-grid { grid-template-columns: 1fr; gap: 40px; }
+
+      .community-section { grid-template-columns: 1fr; }
+      .community-text { padding: 48px 24px; }
+      .community-photo { min-height: 280px; }
+
+      .visit-section { padding: 64px 24px; }
+      .visit-inner { grid-template-columns: 1fr; gap: 40px; }
+
+      footer { padding: 32px 24px; flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">url_coffee/</a>
+    <ul class="nav-links">
+      <li><a href="#story">Story</a></li>
+      <li><a href="#drinks">Drinks</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#visit">Visit</a></li>
+    </ul>
+    <a href="https://order.url-coffee.com" class="nav-cta">Order Online</a>
+    <button class="hamburger" aria-label="Menu" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="#story" onclick="toggleMenu()">Story</a></li>
+      <li><a href="#drinks" onclick="toggleMenu()">Drinks</a></li>
+      <li><a href="#reviews" onclick="toggleMenu()">Reviews</a></li>
+      <li><a href="#visit" onclick="toggleMenu()">Visit</a></li>
+      <li><a href="https://order.url-coffee.com">Order Online</a></li>
+    </ul>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <span class="hero-label">First Hill · Seattle, WA · Est. 2021</span>
+    <h1>Walk In.<br><em>Walk to Work.</em></h1>
+    <p class="hero-sub">Iced latte. Sweet cream. Cacao dusted. 524 Broadway — and a reason to show up before 9.</p>
+  </section>
+
+  <!-- QUICK STRIP -->
+  <div class="quick-strip">
+    <div class="quick-item">
+      <span class="quick-label">Mon – Fri</span>
+      <span class="quick-value">7 AM – 4 PM</span>
+    </div>
+    <div class="quick-divider"></div>
+    <div class="quick-item">
+      <span class="quick-label">Sat – Sun</span>
+      <span class="quick-value">8 AM – 3 PM</span>
+    </div>
+    <div class="quick-divider"></div>
+    <div class="quick-item">
+      <span class="quick-label">Location</span>
+      <span class="quick-value">524 Broadway, Seattle</span>
+    </div>
+    <div class="quick-divider"></div>
+    <div class="quick-item">
+      <span class="quick-label">Google</span>
+      <span class="quick-value">4.8★ · 411 reviews</span>
+    </div>
+    <a href="https://www.instagram.com/_u_r_l/" target="_blank" rel="noopener" class="quick-cta">@_u_r_l</a>
+  </div>
+
+  <!-- INTERIOR / STORY -->
+  <section class="interior-section" id="story">
+    <div class="interior-photo">
+      <img src="ig-photo-03.jpg" alt="URL Coffee interior — golden light, streetcar outside, skateboard stool seating" loading="lazy">
+    </div>
+    <div class="interior-text">
+      <span class="section-label">/ the place</span>
+      <h2>Stools made from<br>skateboard decks.<br><em>Light like this on purpose.</em></h2>
+      <p>Ethan Choi and Zoey Jung opened URL Coffee in March 2021. The stools are made from skateboard decks. The name is a tech pun. The light is always good.</p>
+      <div class="press-quote">
+        <p>"Mid-century modern with a note of punkish whimsy."</p>
+        <span class="press-source">— Eater Seattle</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SIGNATURE DRINK -->
+  <section class="drink-section" id="drinks">
+    <span class="section-label">/ signature</span>
+    <h2>The <em>Walk to Work</em></h2>
+    <p>Iced latte. Sweet cream. Cacao dusted. It has a cult following — and once you try it, you'll understand why.</p>
+    <div class="drink-details" style="gap: 0;">
+      <span class="drink-tag">Iced latte</span>
+      <span class="drink-tag">Sweet cream</span>
+      <span class="drink-tag">Cacao dusted</span>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="reviews-section" id="reviews">
+    <div class="reviews-header">
+      <span class="section-label" style="color: var(--sage-light); opacity: 0.7;">/ what people say</span>
+      <h2>4.8 stars. 411 reviews.</h2>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-quote reveal">
+        <div class="star-row">★★★★★</div>
+        <p class="review-text">"I love this local, mom and pop cafe. The owners are very sweet. Everything is high quality with affordable pricing. I recommend the Walk to Work — it's my favorite."</p>
+        <span class="review-attr">J. Kim · Google Reviews</span>
+      </div>
+      <div class="review-quote reveal reveal-delay-1">
+        <div class="star-row">★★★★★</div>
+        <p class="review-text">"If you are a coffee lover, you must visit this cozy spot. They have some of the best coffee I've ever had — fresh, flavorful, and truly worth the price."</p>
+        <span class="review-attr">M. Patel · Google Reviews</span>
+      </div>
+      <div class="review-quote reveal">
+        <div class="star-row">★★★★★</div>
+        <p class="review-text">"One of the nicest spots for coffee and a light breakfast. The coffee here is really well done — we tried the hot and cold mochas and everything was perfect."</p>
+        <span class="review-attr">S. Lee · Google Reviews</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMUNITY -->
+  <section class="community-section">
+    <div class="community-text">
+      <span class="section-label">/ neighborhood</span>
+      <h2>A place to <em>actually</em> slow down.</h2>
+      <p>The kind of spot where you bring a book, stay longer than you planned, and leave feeling like you live in a good city.</p>
+    </div>
+    <div class="community-photo">
+      <img src="ig-photo-11.jpg" alt="Customers reading and relaxing at URL Coffee by the window" loading="lazy">
+    </div>
+  </section>
+
+  <!-- VISIT -->
+  <section class="visit-section" id="visit">
+    <div class="visit-inner">
+      <div class="visit-col">
+        <span class="section-label">/ hours</span>
+        <h2>Come <em>find us.</em></h2>
+        <div class="hours-block">
+          <div class="hours-row">
+            <span class="hours-day">Mon – Fri</span>
+            <span class="hours-time">7:00 AM – 4:00 PM</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Sat – Sun</span>
+            <span class="hours-time">8:00 AM – 3:00 PM</span>
+          </div>
+        </div>
+        <div class="address-block">
+          <a href="https://www.google.com/maps/place/URL+Coffee/@47.6079,-122.3203,17z/" target="_blank" rel="noopener">
+            📍 524 Broadway, Seattle, WA 98122<br>First Hill neighborhood
+          </a>
+        </div>
+        <a href="https://www.instagram.com/_u_r_l/" target="_blank" rel="noopener" class="ig-link">
+          Follow @_u_r_l on Instagram
+        </a>
+      </div>
+      <div class="visit-col">
+        <iframe
+          class="map-embed"
+          src="https://maps.google.com/maps?q=URL+Coffee+524+Broadway+Seattle+WA&output=embed"
+          allowfullscreen
+          loading="lazy"
+          title="URL Coffee on Google Maps">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-logo">url_coffee/ — 524 Broadway, Seattle</span>
+    <div class="footer-links">
+      <a href="https://www.instagram.com/_u_r_l/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://maps.google.com/maps?q=URL+Coffee+524+Broadway+Seattle+WA" target="_blank" rel="noopener">Directions</a>
+    </div>
+    <span class="footer-copy">© 2025 URL Coffee</span>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('open');
+    }
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    reveals.forEach(el => io.observe(el));
+
+    // Hero line-by-line reveal
+    const hero = document.querySelector('.hero');
+    if (hero) {
+      hero.querySelectorAll('.hero-label, h1, .hero-sub').forEach((el, i) => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = `opacity 700ms cubic-bezier(0.23,1,0.32,1) ${i * 100}ms, transform 700ms cubic-bezier(0.23,1,0.32,1) ${i * 100}ms`;
+        setTimeout(() => {
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+        }, 80 + i * 100);
+      });
+    }
+  </script>
+
+  <noscript>
+    <style>.reveal { opacity: 1; transform: none; }</style>
+  </noscript>
+
+</body>
+</html>

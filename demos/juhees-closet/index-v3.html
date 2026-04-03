@@ -1,13 +1,7 @@
 <!DOCTYPE html>
 <!--
   Juhee's Closet — Clothing Alterations, Montreal QC
-  Build: v5 (self-review + copy audit)
-  Self-review fixes:
-    - Removed duplicate quotes from work cards (Aki + Evan S. already in review section)
-    - Work section left column: added a featured quote to fill visual balance
-    - Review section: elevated to pull-quote style for David G. (shortest quote, middle card)
-    - Added "Call to book a fitting" framing to visit CTA
-    - Humanizer pass applied to all copy
+  Build: v3
   DELTA: v2 → v3
   Changes:
     - Removed rating badge overlay from hero image (redundant with hero body copy — Rams)
@@ -361,33 +355,6 @@
       font-size: 15px;
     }
 
-    .work-pull-quote {
-      margin-top: 40px;
-      padding-left: 20px;
-      border-left: 2px solid var(--sage);
-    }
-
-    .work-pull-quote p,
-    .work-pull-quote {
-      font-family: 'Fraunces', serif;
-      font-size: 20px;
-      font-weight: 300;
-      font-style: italic;
-      line-height: 1.45;
-      color: var(--dark);
-    }
-
-    .work-pull-quote cite {
-      display: block;
-      margin-top: 10px;
-      font-size: 12px;
-      font-weight: 500;
-      font-style: normal;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--sage);
-    }
-
     /* ── Reviews ── */
     .reviews {
       padding: var(--section-pad) clamp(40px, 7vw, 120px);
@@ -678,8 +645,6 @@
     <h2 class="section-headline">Two worlds.<br>One standard.</h2>
     <p class="section-body">A suit for a board meeting. A costume for a competition. The seams are the same quality either way.</p>
     <p class="section-body">Wednesday and Saturday only. Two days, full attention.</p>
-
-    <blockquote class="work-pull-quote">"Her seams are a class above."<cite>— David G.</cite></blockquote>
   </div>
   <div class="work-cards">
     <div class="work-card reveal" style="transition-delay: 80ms;">
@@ -688,7 +653,7 @@
       </div>
       <div class="work-card-body">
         <h3 class="work-card-title">Suits &amp; Tailoring</h3>
-        <p class="work-card-desc">Taken in, let out, relined, rebuilt. Alterations that make the garment fit like it was cut for you the first time.</p>
+        <p class="work-card-desc">Taken in, let out, relined, rebuilt. Alterations that make the garment fit like it was made for you.<span class="inline-quote">"I will be going back with all my suits." — Evan S.</span></p>
       </div>
     </div>
     <div class="work-card reveal" style="transition-delay: 160ms;">
@@ -697,7 +662,7 @@
       </div>
       <div class="work-card-body">
         <h3 class="work-card-title">Cosplay &amp; Costume</h3>
-        <p class="work-card-desc">Costumes built to last. Bespoke seam quality, applied to competition cosplay.</p>
+        <p class="work-card-desc">Costumes built to last. Attention to the same seam detail you'd expect from a bespoke tailor.<span class="inline-quote">"Her seams were way better than the original cosplay." — Aki</span></p>
       </div>
     </div>
   </div>
@@ -758,8 +723,7 @@
       <p class="address-line" style="margin-top: 8px;"><span style="font-size: 11px; font-weight: 500; letter-spacing: 0.10em; text-transform: uppercase; color: var(--sage);">NDG · Near Sherbrooke Metro</span></p>
     </div>
 
-    <p style="font-size: 14px; color: var(--mid); margin-bottom: 12px; margin-top: 32px; font-weight: 500; letter-spacing: 0.04em;">Book a fitting</p>
-    <a href="tel:+15148000065" class="cta-phone" style="margin-top: 0;">+1 514-800-0065</a>
+    <a href="tel:+15148000065" class="cta-phone">Call +1 514-800-0065</a>
   </div>
 </section>
 

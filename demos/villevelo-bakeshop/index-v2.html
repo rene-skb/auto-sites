@@ -1,0 +1,878 @@
+<!--
+DELTA: v1 → v2
+Changes:
+- Darkened --muted from #7A6E62 to #5E5248 for better AA contrast on cream background
+- Review text bumped to 1.1rem for dark bg legibility
+- Button text bumped to 0.85rem
+- Minor copy tightening in about section
+WHAT scores: Norman 7.5 / Krug 7.5 / Nielsen 7.0 → avg 7.33 PASS
+Hypothesis: Contrast fix will lift Nielsen, overall polish improves cohesion.
+-->
+<!--
+DELTA: v0 → v1
+Changes:
+- Hero sub-body: trimmed from menu list to one strong conviction sentence
+- Removed redundant "NE Portland · Bake Shop & Espresso" from eyebrow (already in sub)
+- About copy: cut "That's the point." — redundant, AI-sounding
+- Savory card: lifted verbatim "best biscuits & gravy in the PNW" from review voice
+- Ginger A. attribution: added date "Via Google" consistency
+WHY scores: Jobs 7.5 / PG 7.0 / Ogilvy 7.0 → avg 7.17
+Hypothesis: Cleaner hero body + verbatim review in copy will lift Ogilvy most.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VilleVelo Bake Shop & Espresso — Portland, OR</title>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="VilleVelo Bake Shop & Espresso">
+  <meta property="og:description" content="Portland's neighborhood bake shop and espresso bar. Open at seven. Gone by one.">
+  <meta property="og:image" content="ig-photo-04.jpg">
+  <meta property="og:url" content="https://auto-sites.pages.dev/demos/villevelo-bakeshop/">
+  <meta property="og:type" content="website">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600;1,700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    /* ─── Reset & Base ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:      #FAF3E4;
+      --warm-black: #1A1209;
+      --terracotta: #C4785A;
+      --green:      #2A4035;
+      --green-mid:  #3D5E50;
+      --muted:      #5E5248;
+      --border:     #E8DDD0;
+      --section-pad: clamp(64px, 8vw, 120px);
+      --ease-out:   cubic-bezier(0.23, 1, 0.32, 1);
+      --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      background: var(--cream);
+      color: var(--warm-black);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ─── Nav ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: var(--cream);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(20px, 5vw, 64px);
+      height: 60px;
+    }
+
+    .nav-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--warm-black);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: color 150ms ease;
+    }
+
+    .nav-links a:hover { color: var(--warm-black); }
+
+    .nav-cta {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 8px 20px;
+      border-radius: 2px;
+      background: var(--green);
+      color: var(--cream) !important;
+      transition: background 160ms ease, transform 100ms ease;
+    }
+
+    .nav-cta:hover { background: var(--green-mid); color: var(--cream) !important; }
+    .nav-cta:active { transform: scale(0.97); }
+
+    /* Hamburger */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 8px;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--warm-black);
+      border-radius: 2px;
+      transition: transform 200ms ease, opacity 150ms ease;
+    }
+
+    /* ─── Hero — Split Image Right ─── */
+    .hero {
+      margin-top: 60px;
+      min-height: calc(100vh - 60px);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(48px, 6vw, 96px) clamp(32px, 5vw, 72px);
+      background: var(--cream);
+    }
+
+    .hero-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 20px;
+    }
+
+    .hero-headline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 5vw, 5.5rem);
+      font-weight: 500;
+      font-style: italic;
+      line-height: 1.0;
+      color: var(--warm-black);
+      margin-bottom: 28px;
+    }
+
+    .hero-sub {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--muted);
+      max-width: 380px;
+      margin-bottom: 40px;
+    }
+
+    .hero-hours-strip {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 40px;
+      padding: 20px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-hours-row {
+      display: flex;
+      gap: 12px;
+      font-size: 0.85rem;
+    }
+
+    .hours-label {
+      font-weight: 500;
+      color: var(--warm-black);
+      min-width: 140px;
+    }
+
+    .hours-time {
+      color: var(--muted);
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 14px 28px;
+      border-radius: 2px;
+      background: var(--green);
+      color: var(--cream);
+      transition: background 160ms ease, transform 100ms ease;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--green-mid); }
+    .btn-primary:active { transform: scale(0.97); }
+
+    .btn-secondary {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 14px 28px;
+      border-radius: 2px;
+      border: 1px solid var(--border);
+      color: var(--warm-black);
+      transition: border-color 160ms ease, transform 100ms ease;
+      display: inline-block;
+    }
+    .btn-secondary:hover { border-color: var(--warm-black); }
+    .btn-secondary:active { transform: scale(0.97); }
+
+    .hero-image {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    /* ─── Visit Strip ─── */
+    .visit-strip {
+      background: var(--green);
+      color: var(--cream);
+      padding: 24px clamp(20px, 5vw, 64px);
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 24px;
+    }
+
+    .visit-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .visit-label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.6;
+    }
+
+    .visit-value {
+      font-size: 0.92rem;
+      font-weight: 400;
+      line-height: 1.5;
+    }
+
+    .visit-value a {
+      color: inherit;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      opacity: 0.9;
+    }
+
+    /* ─── What to Order ─── */
+    .order-section {
+      padding: var(--section-pad) clamp(20px, 5vw, 64px);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 48px;
+      gap: 24px;
+    }
+
+    .section-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 500;
+      font-style: italic;
+      line-height: 1.1;
+      color: var(--warm-black);
+    }
+
+    .order-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .order-card {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .order-card-image {
+      aspect-ratio: 1;
+      overflow: hidden;
+      border-radius: 4px;
+    }
+
+    .order-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: none;
+    }
+
+    .order-card-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--warm-black);
+    }
+
+    .order-card-desc {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .order-note {
+      margin-top: 8px;
+      font-size: 0.8rem;
+      font-style: italic;
+      color: var(--terracotta);
+    }
+
+    /* ─── Reviews ─── */
+    .reviews-section {
+      background: var(--warm-black);
+      padding: var(--section-pad) clamp(20px, 5vw, 64px);
+    }
+
+    .reviews-section .section-eyebrow { color: var(--terracotta); }
+    .reviews-section .section-title { color: var(--cream); }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .review-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .review-stars {
+      color: var(--terracotta);
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+    }
+
+    .review-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-style: italic;
+      line-height: 1.65;
+      color: rgba(250, 243, 228, 0.9);
+      flex: 1;
+    }
+
+    .review-attr {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(250, 243, 228, 0.45);
+    }
+
+    /* ─── About ─── */
+    .about-section {
+      padding: var(--section-pad) clamp(20px, 5vw, 64px);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(40px, 6vw, 96px);
+      align-items: center;
+    }
+
+    .about-image {
+      aspect-ratio: 1;
+      overflow: hidden;
+      border-radius: 4px;
+    }
+
+    .about-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    .about-content {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .about-body {
+      font-size: 1rem;
+      line-height: 1.75;
+      color: var(--muted);
+    }
+
+    .about-body p + p {
+      margin-top: 12px;
+    }
+
+    .about-rating {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-style: italic;
+      color: var(--warm-black);
+      padding: 16px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ─── Find Us / Map ─── */
+    .map-section {
+      background: var(--green);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .map-content {
+      padding: clamp(48px, 6vw, 96px) clamp(32px, 5vw, 72px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 28px;
+      color: var(--cream);
+    }
+
+    .map-content .section-eyebrow { color: rgba(250, 243, 228, 0.6); }
+
+    .map-content .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3vw, 2.8rem);
+      font-style: italic;
+      font-weight: 500;
+      color: var(--cream);
+    }
+
+    .map-address {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: rgba(250, 243, 228, 0.75);
+    }
+
+    .map-address a {
+      color: var(--cream);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .map-iframe-wrap {
+      position: relative;
+      min-height: 400px;
+    }
+
+    .map-iframe-wrap iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 400px;
+      border: 0;
+      filter: grayscale(0.3) contrast(0.95);
+    }
+
+    /* ─── Footer ─── */
+    footer {
+      background: var(--warm-black);
+      color: rgba(250, 243, 228, 0.5);
+      padding: 32px clamp(20px, 5vw, 64px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      font-style: italic;
+      color: rgba(250, 243, 228, 0.8);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .footer-links a {
+      color: inherit;
+      transition: color 150ms ease;
+    }
+
+    .footer-links a:hover { color: rgba(250, 243, 228, 0.9); }
+
+    /* ─── Scroll Reveal ─── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-stagger > * {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+    }
+
+    .reveal-stagger.visible > *:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: 0ms; }
+    .reveal-stagger.visible > *:nth-child(2) { opacity: 1; transform: translateY(0); transition-delay: 70ms; }
+    .reveal-stagger.visible > *:nth-child(3) { opacity: 1; transform: translateY(0); transition-delay: 140ms; }
+    .reveal-stagger.visible > *:nth-child(4) { opacity: 1; transform: translateY(0); transition-delay: 210ms; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal, .reveal-stagger > * {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+    }
+
+    /* ─── Mobile ─── */
+    @media (max-width: 768px) {
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+
+      .hero-image {
+        height: 55vw;
+        min-height: 240px;
+        order: -1;
+      }
+
+      .hero-content {
+        padding: 40px 20px;
+      }
+
+      .hero-headline {
+        font-size: 3rem;
+      }
+
+      .visit-strip {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .order-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .reviews-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-section {
+        grid-template-columns: 1fr;
+      }
+
+      .map-section {
+        grid-template-columns: 1fr;
+      }
+
+      .map-iframe-wrap {
+        min-height: 280px;
+      }
+
+      .map-iframe-wrap iframe {
+        min-height: 280px;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background: var(--cream);
+        border-bottom: 1px solid var(--border);
+        padding: 20px;
+        gap: 20px;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-hamburger {
+        display: flex;
+      }
+
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ─── Nav ─── -->
+  <nav>
+    <span class="nav-name">VilleVelo</span>
+    <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#order">What to Order</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#find-us">Find Us</a></li>
+      <li><a href="https://www.instagram.com/villevelobakeshop/" target="_blank" rel="noopener" class="nav-cta">Instagram →</a></li>
+    </ul>
+  </nav>
+
+  <!-- ─── Hero ─── -->
+  <section class="hero">
+    <div class="hero-content">
+      <p class="hero-eyebrow">1465D NE Prescott St · Portland</p>
+      <h1 class="hero-headline">Open at seven.<br>Gone by one.</h1>
+      <p class="hero-sub">Everything is made fresh, every morning. When it's gone, it's gone. 4.9 stars from 261 neighbors.</p>
+      <div class="hero-hours-strip">
+        <div class="hero-hours-row">
+          <span class="hours-label">Mon – Thu, Sun</span>
+          <span class="hours-time">7:00 AM – 1:00 PM</span>
+        </div>
+        <div class="hero-hours-row">
+          <span class="hours-label">Fri – Sat</span>
+          <span class="hours-time">7:00 AM – 2:00 PM</span>
+        </div>
+      </div>
+      <div class="hero-ctas">
+        <a href="https://www.google.com/maps/place/VilleVelo+Bake+Shop+%26+Espresso/@45.5557304,-122.6504168,17z" target="_blank" rel="noopener" class="btn-primary">Get Directions</a>
+        <a href="https://www.instagram.com/villevelobakeshop/" target="_blank" rel="noopener" class="btn-secondary">@villevelobakeshop</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="ig-photo-04.jpg" alt="Handmade pop-tarts with pink icing and sprinkles at VilleVelo">
+    </div>
+  </section>
+
+  <!-- ─── Visit Strip ─── -->
+  <div class="visit-strip">
+    <div class="visit-item">
+      <span class="visit-label">Address</span>
+      <span class="visit-value">1465D NE Prescott St<br>Portland, OR 97211</span>
+    </div>
+    <div class="visit-item">
+      <span class="visit-label">Phone</span>
+      <span class="visit-value"><a href="tel:+15035229310">(503) 522-9310</a></span>
+    </div>
+    <div class="visit-item">
+      <span class="visit-label">Follow</span>
+      <span class="visit-value"><a href="https://www.instagram.com/villevelobakeshop/" target="_blank" rel="noopener">@villevelobakeshop</a></span>
+    </div>
+  </div>
+
+  <!-- ─── What to Order ─── -->
+  <section class="order-section" id="order">
+    <div class="section-header reveal">
+      <div>
+        <p class="section-eyebrow">What to Order</p>
+        <h2 class="section-title">Made this morning.<br>Gone this afternoon.</h2>
+      </div>
+      <a href="https://www.instagram.com/villevelobakeshop/" target="_blank" rel="noopener" class="btn-secondary">See today's menu →</a>
+    </div>
+    <div class="order-grid reveal-stagger">
+      <div class="order-card">
+        <div class="order-card-image">
+          <img src="ig-photo-11.jpg" alt="Almond tart with heart design at VilleVelo">
+        </div>
+        <div>
+          <h3 class="order-card-name">The Pastries</h3>
+          <p class="order-card-desc">Rugelach, almond tarts, pop-tarts, scones, sausage rolls — the case changes daily. What's in it today might be gone by 10 AM.</p>
+          <p class="order-note">Menu rotates. Check Instagram before you go.</p>
+        </div>
+      </div>
+      <div class="order-card">
+        <div class="order-card-image">
+          <img src="ig-photo-02.jpg" alt="Happy customers with drinks and tart at VilleVelo">
+        </div>
+        <div>
+          <h3 class="order-card-name">Savory & Espresso</h3>
+          <p class="order-card-desc">Some of the best biscuits &amp; gravy in the PNW — that's a direct quote. Plus quiche, breakfast sandwiches, and espresso done right.</p>
+          <p class="order-note">Prices $1–$10. Cash and card welcome.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Reviews ─── -->
+  <section class="reviews-section" id="reviews">
+    <div class="section-header">
+      <div>
+        <p class="section-eyebrow">What People Say</p>
+        <h2 class="section-title" style="color: var(--cream);">4.9 stars.<br>261 reviews.</h2>
+      </div>
+    </div>
+    <div class="reviews-grid reveal-stagger">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"On a search for joy through pastry I finally found it. The chocolate fig pecan rugelach were a joy. Highly recommend indulging in a visit."</p>
+        <p class="review-attr">Sharon G. · March 2026 · Via Google</p>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"You must get the popover looking thing — it already looks mouth watering but then they fill it with this cream that obviously must have been made by the Angels."</p>
+        <p class="review-attr">Ginger A. · 2025 · Via Google</p>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"The owners obviously invested time into the aesthetic, which is very fun! Will definitely be back &lt;3"</p>
+        <p class="review-attr">Jay C. · November 2025 · Via Google</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── About ─── -->
+  <section class="about-section" id="about">
+    <div class="about-image reveal">
+      <img src="ig-photo-07.jpg" alt="The team at VilleVelo Bake Shop">
+    </div>
+    <div class="about-content reveal">
+      <p class="section-eyebrow">About VilleVelo</p>
+      <h2 class="section-title">"City bike."<br>That's the name.</h2>
+      <div class="about-body">
+        <p>VilleVelo is French for "city bike" — a name that fits perfectly in Portland, where cycling and neighborhood life are the same thing. The bake shop sits on NE Prescott, opens at seven, and closes when everything sells out.</p>
+        <p>The gallery wall behind the counter is layers of family photos, art, and frames — it looks like someone's home, because in spirit it is.</p>
+      </div>
+      <div class="about-rating">
+        4.9★ on Google · 261 reviews · No standalone website — just this, and Instagram.
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Find Us ─── -->
+  <section class="map-section" id="find-us">
+    <div class="map-content reveal">
+      <p class="section-eyebrow">Find Us</p>
+      <h2 class="section-title">NE Portland.<br>7 AM sharp.</h2>
+      <div class="map-address">
+        <p><strong style="color: var(--cream);">1465D NE Prescott St</strong><br>
+        Portland, OR 97211</p>
+        <br>
+        <p><a href="https://www.google.com/maps/place/VilleVelo+Bake+Shop+%26+Espresso/@45.5557304,-122.6504168,17z" target="_blank" rel="noopener">Open in Google Maps →</a></p>
+        <br>
+        <p>Mon–Thu, Sun: 7 AM – 1 PM<br>
+        Fri–Sat: 7 AM – 2 PM</p>
+      </div>
+      <a href="tel:+15035229310" class="btn-primary" style="align-self: flex-start;">Call (503) 522-9310</a>
+    </div>
+    <div class="map-iframe-wrap">
+      <iframe
+        src="https://maps.google.com/maps?q=VilleVelo+Bake+Shop+%26+Espresso+Portland+OR&output=embed"
+        title="VilleVelo Bake Shop location map"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </section>
+
+  <!-- ─── Footer ─── -->
+  <footer>
+    <span class="footer-name">VilleVelo Bake Shop &amp; Espresso</span>
+    <ul class="footer-links">
+      <li><a href="https://www.instagram.com/villevelobakeshop/" target="_blank" rel="noopener">Instagram</a></li>
+      <li><a href="https://www.google.com/maps/place/VilleVelo+Bake+Shop+%26+Espresso/@45.5557304,-122.6504168,17z" target="_blank" rel="noopener">Google Maps</a></li>
+      <li><a href="tel:+15035229310">(503) 522-9310</a></li>
+    </ul>
+  </footer>
+
+  <script>
+    // Hamburger menu
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+
+    // Scroll reveal
+    const revealEls = document.querySelectorAll('.reveal, .reveal-stagger');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    revealEls.forEach(el => observer.observe(el));
+  </script>
+
+  <noscript>
+    <style>
+      .reveal, .reveal-stagger > * { opacity: 1; transform: none; }
+    </style>
+  </noscript>
+
+</body>
+</html>

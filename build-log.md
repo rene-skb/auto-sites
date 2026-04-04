@@ -1,5 +1,317 @@
 # Auto-Sites Build Log
 
+### Csinos Vintage (v2) — Curated Vintage Clothing, Victoria BC
+- **Category:** Curated Vintage Clothing & Accessories
+- **City:** Victoria, BC (770 Yates St — inside Cheers Vintage Collective)
+- **Date:** 2026-04-04
+- **Model:** claude-sonnet-4-6 (subagent)
+- **Agent:** Lucy (label: lucy-csinos-2)
+- **Hero pattern:** split-image-right (last 3: image-top-text-below, editorial-spread, centered-minimal) ✅
+- **Typography:** Playfair Display 400/500/600/italic (display/headlines) + DM Sans 300/400/500/600 (body/UI) ✅
+- **Review layout:** Asymmetric editorial — dominant left quote (3fr) + 2 secondary right (2fr) + solo below ✅
+- **Visit/hours layout:** Centered 3-column strip (Hours | Address | Instagram) + map below ✅
+- **Stats bar style:** no-stats ✅
+- **WHY Score:** 7.5 (Jobs 7.5 / PG 7.0 / Ogilvy 8.0)
+- **WHAT Score:** 7.7 (Norman 8.0 / Krug 8.0 / Nielsen 7.0)
+- **HOW Score:** 7.5 (Vignelli 7.5 / Spiekermann 7.5 / Rams 7.5)
+- **Panel average:** 7.57
+- **Self-review:** 7.5
+- **Versions built:** 6 (v0 through v5 + index.html)
+- **Live URL:** https://auto-sites.pages.dev/demos/csinos-vintage-2/
+
+### Business
+Csinos Vintage. Real Victoria BC business. No standalone website. Instagram @csinosvintage (5.2K followers, 4,600+ posts). Address: 770 Yates St (inside Cheers Vintage Collective with 4 other independent sellers). Owner: Szandi — Hungarian heritage, moved to Canada. Founded July 2020 in Fernwood; now at Yates. Google: 5.0★ / 65 reviews. Sells: vintage clothing, shoes, accessories. Hours: Thu–Mon 11am (closed Tue–Wed). Name: "Csinos" (chee-nosh) = Hungarian for beautiful. Collab: Yung Gravy "Blessed" music video with @arikytsya, 9,441 likes.
+
+### Key Decisions
+- Fresh IG photos used (ig-photo-010 for hero, ig-photo-03 + ig-photo-012 for grid, dress-hero.png for wide section)
+- ig-photo-010 (Rolling Stones tee, arm up, grainy film editorial) — perfect dark editorial hero
+- "I'm selling a feeling." as hero headline — Szandi's own words, strongest conviction statement
+- Playfair Display chosen for high-contrast Italian fashion elegance — different energy from Gloock (v1) and all recent builds
+- split-image-right hero — 50/50 viewport split, portrait photo fills right half, dark with large italic headline on left
+- Quick-info strip (Hours | Address | Instagram) surfaced immediately after hero — walk-in business pattern
+- "Csinos. chee-nosh." at 3rem–5.2rem — name section is the biggest moment after hero headline
+- Collab card simplified to one stat: "9,441 likes. A Victoria vintage shop in a viral music video."
+- Instagram redirect for inventory (rotating stock rule) — "Nothing lands here by accident. Follow @csinosvintage."
+- Asymmetric review layout: dominant quote (Hannah W.) + 2 secondary + solo below — fresh for this build cycle
+- 3-column visit strip (Hours | Address | Instagram) — centered, no left/right split, different from last 3 builds
+
+### What Worked
+- Playfair Display italic for "I'm selling a feeling." — high drama, feels like magazine cover pull-quote
+- Photo selection: ig-photo-010 has genuine dark editorial energy (film grain, moody arm-up pose, rock tee)
+- 2-col portrait photo grid (leopard tree + paisley backless dress) — two distinct editorial moments, both 3:4 portrait
+- "It's sort of a mood." in the wide landscape section — owner's words, disarming, specific
+- Asymmetric review layout — dominant left quote gets weight it deserves; different from card grid
+
+### Panel Scores
+| Panelist | Score |
+|----------|-------|
+| Steve Jobs (WHY/Conviction) | 7.5 |
+| Paul Graham (WHY/Clarity) | 7.0 |
+| David Ogilvy (WHY/Copy) | 8.0 |
+| Don Norman (WHAT/Mental Models) | 8.0 |
+| Steve Krug (WHAT/Scannability) | 8.0 |
+| Jakob Nielsen (WHAT/Accessibility) | 7.0 |
+| Massimo Vignelli (HOW/Grid) | 7.5 |
+| Erik Spiekermann (HOW/Typography) | 7.5 |
+| Dieter Rams (HOW/Reduction) | 7.5 |
+| **Average** | **7.56** |
+
+## Build 121 — MacLeod's Books
+- **Category:** Used Bookshop / Rare Books
+- **City:** Vancouver, BC (455 W Pender St)
+- **Date:** 2026-04-03
+- **Model:** claude-sonnet-4-6 (subagent)
+- **Agent:** Lucy (cron auto-site build 2)
+- **Fictional:** No (real business — 4.6★, 1,105 Google reviews)
+- **Images:** 3 AI-generated images (real photos unavailable — Instagram private/inactive); book-pages.jpg hero bg, books-stack.jpg gallery, book-spine.jpg unused final
+- **Hero pattern:** dark-immersive (full-viewport bg with book-pages.jpg overlay, dark green gradient)
+- **Typography:** Fraunces 300/400/500 (display/headlines/italic) + Inter 300/400/500/600 (body/UI)
+- **Palette:** #142218 deep forest green / #F5EDD9 aged cream / #C8922A warm amber
+- **Review layout:** stacked full-width rows with left-aligned quote text + right-aligned attribution
+- **Visit/hours layout:** 2-col grid (info details left, Google Maps embed right)
+- **Stats bar style:** no-stats ✅ (4.6★/1,105 reviews as bold headline in review section)
+- **WHY Score:** 8.17 (Jobs 8.0 / PG 8.0 / Ogilvy 8.5) → strong pass
+- **WHAT Score:** 7.5 (Norman 8.0 / Krug 7.5 / Nielsen 7.0 — retry from 6.0)
+- **HOW Score:** 6.83 (Vignelli 7.0 / Spiekermann 6.5 / Rams 7.0 — retry from 6.67; max retries hit, proceed)
+- **Panel average:** 7.5
+- **Self-review:** 7.5 (calibrated against panel; gallery transformation to full-bleed quote overlay was strong final move)
+- **Versions built:** v0–v5 + index.html
+- **Live URL:** https://auto-sites.pages.dev/demos/macleods-books/
+
+### Key Decisions
+- dark-immersive hero: first non-type-dominant dark hero in recent builds; AI photo bg with green overlay
+- Fraunces chosen for "wonky old-style" personality — feels hand-set, matches the bookshop's character
+- "A maze of books. Zero algorithms." — headline built from reviewer's phrase ("literal maze") + brand insight (analog vs digital)
+- Gallery transformed v4→v5: two orphaned images → single full-bleed atmospheric photo with quote overlay. Solved the "From the Stacks" problem cleanly.
+- Reviewer names all returned Anonymous from Outscraper — used "Via Google Reviews" attribution (honest, no invented names)
+- "Since 1966" removed from v0 — founding date unverified, non-negotiable violation
+- "Stadium-Chinatown Station" removed from transit info — wrong stop (nearest is Burrard/Granville)
+- Collection card icons removed (Rams: ornament pretending to be function)
+- HOW panel 6.83 avg: Spiekermann flagged italic serif used across too many roles (headlines + pull quotes + card titles = slope not hierarchy). Not fixed in this build — noted for future.
+
+### Photo Assignments
+| File | Role | Quality |
+|------|------|---------|
+| book-pages.jpg (AI) | Hero background overlay | ★★★★★ |
+| books-stack.jpg (AI) | Gallery full-bleed atmospheric section | ★★★★½ |
+| book-spine.jpg (AI) | Not used in final (orphaned after gallery restructure) | ★★★★ |
+
+### Panel Scores
+| Panelist | Score |
+|----------|-------|
+| Steve Jobs (WHY/Conviction) | 8.0 |
+| Paul Graham (WHY/Clarity) | 8.0 |
+| David Ogilvy (WHY/Copy) | 8.5 |
+| Don Norman (WHAT/Mental Models) | 8.0 |
+| Steve Krug (WHAT/Scannability) | 7.5 |
+| Jakob Nielsen (WHAT/Accessibility) | 7.0 |
+| Massimo Vignelli (HOW/Grid) | 7.0 |
+| Erik Spiekermann (HOW/Typography) | 6.5 |
+| Dieter Rams (HOW/Reduction) | 7.0 |
+| **Average** | **7.5** |
+
+### Sources
+- "A literal maze" / "rare ephemera to absolute classics" → Google review, Feb 2026
+- "Canada's last great used bookstore" → Maclean's Magazine (confirmed via Yelp)
+- 4.6★ / 1,105 reviews / hours / address / phone → Outscraper API, Apr 2026
+- "owner Don" → Google review, Dec 2025
+- All reviews returned Anonymous by Outscraper API — attributed as "Via Google Reviews"
+- Images: AI-generated (no real photos available)
+
+---
+
+## Build 120 — MR SAKO BARBER
+- **Category:** Barbershop
+- **City:** Montreal, QC (1190 Crescent St)
+- **Date:** 2026-04-03
+- **Model:** claude-sonnet-4-6 (subagent)
+- **Agent:** Lucy (cron auto-site build)
+- **Fictional:** No (real business — Instagram @barber.sako)
+- **Images:** 8 Instagram photos downloaded; 2 used (ig-photo-08 clipper fade, ig-photo-07 barber+client)
+- **Hero pattern:** editorial-spread (portrait photo left, bold Bodoni Moda type right)
+- **Typography:** Bodoni Moda 700 (headlines) + Space Grotesk 300/400/500/600 (body/UI)
+- **Palette:** #0A0A0A near-black / #C9A84C warm gold / #FAF8F3 ivory
+- **Review layout:** editorial stacked rows, Space Grotesk body, large gold quote mark, right-aligned attribution
+- **Visit/hours layout:** centered max-width block, 2x2 info cards grid, Google Maps below
+- **Stats bar style:** no-stats ✅ ("5.0★ · 558 reviews, 553 of them are five stars" in hero)
+- **WHY Score:** 7.0 (Jobs 7.0 / PG 7.5 / Ogilvy 6.5)
+- **WHAT Score:** 7.5 (Norman 8.0 / Krug 7.5 / Nielsen 7.0 — retry from 6.67)
+- **HOW Score:** 7.33 (Vignelli 7.0 / Spiekermann 7.5 / Rams 7.5 — retry from 6.0)
+- **Panel average:** 7.28
+- **Self-review:** 7.0 (photo ceiling — all Instagram phone shots)
+- **Versions built:** v0–v5 + index.html
+- **Live URL:** https://auto-sites.pages.dev/demos/mr-sako-barber/
+
+### Key Decisions
+- editorial-spread chosen: portrait photo left, bold type right — fits personal-brand premium barbershop energy; all photos portrait-only
+- "Every cut a masterpiece" → their own language from build brief. Zero invention.
+- "553 of them are five stars" → specific beat generic ("Montreal's most trusted")
+- Reviews sourced via Outscraper API: Curtis Laurin, ahmed ramadan, Amir Amin — all confirmed
+- HOW retry driven by Spiekermann flagging display face in review text — fix: Space Grotesk for review body, Bodoni Moda for headlines only. Score jumped 5.0→7.5
+- WHAT retry driven by hours inconsistency (strip vs cards) + "THE CUT" nav ambiguity + low label contrast
+- Multi-lingual detail ("English, French, Arabic, Turkish") came from reviews — Barbod's review mentioned Turkish explicitly
+- No prices shown (booking via Setmore — no pricing page found)
+
+### Photo Assignments
+| File | Role | Quality |
+|------|------|---------|
+| ig-photo-08.jpg | Hero left panel (clipper fade close-up) | ★★★½ |
+| ig-photo-07.jpg | Craft section (barber + smiling client) | ★★★ |
+
+### Panel Scores
+| Panelist | Score |
+|----------|-------|
+| Steve Jobs (WHY/Conviction) | 7.0 |
+| Paul Graham (WHY/Clarity) | 7.5 |
+| David Ogilvy (WHY/Copy) | 6.5 |
+| Don Norman (WHAT/Mental Models) | 8.0 |
+| Steve Krug (WHAT/Scannability) | 7.5 |
+| Jakob Nielsen (WHAT/Accessibility) | 7.0 |
+| Massimo Vignelli (HOW/Grid) | 7.0 |
+| Erik Spiekermann (HOW/Typography) | 7.5 |
+| Dieter Rams (HOW/Reduction) | 7.5 |
+| **Average** | **7.28** |
+
+### Sources
+- "Every cut a masterpiece" → Build brief (Iris): their own language
+- "1190 Crescent St" + hours + phone + rating → Google Maps (Outscraper API, confirmed)
+- "553 of them are five stars" → Outscraper API: reviews_per_score {5: 553}
+- Curtis L. / Ahmed R. / Amir A. reviews → Outscraper Google review pull, confirmed
+- "Fluent in English, French, Arabic, Turkish" → Barbod's review (explicit Turkish mention)
+- "Est. 2017" → Build brief
+- Instagram @barber.sako → scrape confirmed
+
+---
+
+## Build 119 — Shuck Taylor's
+- **Category:** Oyster bar / Seafood restaurant
+- **City:** Victoria, BC (1324 Blanshard St)
+- **Date:** 2026-04-04
+- **Model:** claude-sonnet-4-6 (subagent)
+- **Agent:** Lucy (lucy-shuck-taylors session)
+- **Fictional:** No (real business — Instagram @shucktaylors)
+- **Images:** 12 real Instagram photos evaluated; 4 used (ig-photo-011 friends at bar vibe, ig-photo-01 oyster shucking vibe, ig-photo-08 owner at bar story, ig-photo-09 skipped — 2 photo moments)
+- **Hero pattern:** giant-display-type ("WE DIVE, YOU DINE." full viewport, no hero image — all photos portrait)
+- **Typography:** Barlow Condensed 700/900 (display/headlines) + Instrument Sans 400/500/600 (body/UI)
+- **Palette:** #0B1921 deep navy, #122030 mid-navy, #C49340 brass gold, #EDE5D0 cream, #F8F4EC offwhite
+- **Review layout:** 2-col equal gold-left-border pull quotes (same visual treatment, Instagram handle attribution)
+- **Visit/hours layout:** 2-col info left + Google Maps embed right (400px height)
+- **Stats bar style:** no-stats ✅ (4.8★/953 reviews woven into vibe section body copy)
+- **WHY Score:** 6.83 (Jobs 7.0 / PG 6.5 / Ogilvy 7.0)
+- **WHAT Score:** 7.33 (Norman 8.0 / Krug 8.0 / Nielsen 6.0 — retry: 7.33)
+- **HOW Score:** 7.0 (Vignelli 7.0 / Spiekermann 7.0 / Rams 7.0 — retry passed exactly)
+- **Panel average:** 7.06
+- **Self-review:** 7.0
+- **Versions built:** v0–v5 + index.html
+- **Live URL:** https://auto-sites.pages.dev/demos/shuck-taylors/
+
+### Key Decisions
+- Giant-display-type hero chosen because: tagline "We dive, you dine." is 4-word perfection, all 12 photos are portrait orientation — forced the type-first choice
+- Barlow Condensed 900 for dock-meets-great-bar energy — compressed, confident, industrial-nautical
+- Info strip in brass gold immediately below hero: hours, address, walk-in policy, Instagram in one band
+- "Come as you are." as the vibe headline — from their own Instagram bio, zero invention
+- Story section rewrite from press-kit voice to casual: "Jess Taylor grew up here. Left. Came back. Took five years. Worth it."
+- Happy hour and "all shucking day Sundays" sourced from wanderingmollusk.com — verified, specific, on-brand
+- Review cards simplified to gold left-border treatment (no box cards) — cleaner editorial feel
+- 4.8★ / 953 reviews positioned as social proof in vibe section, not as stat bar
+- Portrait photos used in natural 2-col grid (vibe section) and single portrait (story section) — no landscape forcing
+
+### Photo Assignments
+| File | Role | Quality |
+|------|------|---------|
+| ig-photo-011.jpg | Vibe section col 1 (friends laughing at bar) | ★★★★★ |
+| ig-photo-01.jpg | Vibe section col 2 (oyster shucking at event) | ★★★★ |
+| ig-photo-08.jpg | Story section (man holding oyster at bar, branded wall) | ★★★★ |
+
+### Panel Scores
+| Panelist | Score |
+|----------|-------|
+| Steve Jobs (WHY/Conviction) | 7.0 |
+| Paul Graham (WHY/Clarity) | 6.5 |
+| David Ogilvy (WHY/Copy) | 7.0 |
+| Don Norman (WHAT/Mental Models) | 8.0 |
+| Steve Krug (WHAT/Scannability) | 8.0 |
+| Jakob Nielsen (WHAT/Accessibility) | 6.0 |
+| Massimo Vignelli (HOW/Grid) | 7.0 |
+| Erik Spiekermann (HOW/Typography) | 7.0 |
+| Dieter Rams (HOW/Reduction) | 7.0 |
+| **Average** | **7.06** |
+
+### Sources
+- "We dive, you dine." → Instagram (verified tagline)
+- "Come as you are" → Instagram bio (verbatim)
+- "Good ideas take time." → Instagram caption (2018 mood board post)
+- 4.8★ / 953 reviews → Build brief (Google listing)
+- Hours, address, walk-in → Google listing + wanderingmollusk.com
+- Happy hour 2–5pm, "all shucking day Sundays" → wanderingmollusk.com (verified)
+- Jess Taylor story (Island born, East Coast, Rodney's, 2018 mood board, 2023 open) → Build brief (Instagram verified)
+- Shelton WA trip → Build brief (Instagram verified)
+- Menu items → Build brief (Instagram + Tourism Victoria)
+- Reviews → Instagram comments (brief source material)
+
+---
+
+## Build 118 — VilleVelo Bake Shop & Espresso
+- **Category:** Bakery / Café
+- **City:** Portland, OR (1465D NE Prescott St)
+- **Date:** 2026-04-03
+- **Model:** claude-sonnet-4-6 (subagent)
+- **Agent:** Lucy (lucy-villevelo session)
+- **Fictional:** No (real business — Instagram @villevelobakeshop)
+- **Images:** 12 real Instagram photos evaluated; 4 used (ig-photo-04 pop-tarts hero, ig-photo-11 almond tart, ig-photo-02 customers+gallery wall, ig-photo-07 owners)
+- **Hero pattern:** split-image-right (pop-tart photo right, conviction headline + hours left)
+- **Typography:** Cormorant Garamond 500/600 italic (display/headlines) + DM Sans 400/500 (body/UI)
+- **Palette:** #FAF3E4 (warm cream), #1A1209 (warm near-black), #C4785A (terracotta), #2A4035 (forest green)
+- **Review layout:** 3-column equal-treatment cards (same visual treatment, first name + last initial + date + source)
+- **Visit/hours layout:** 3-column info strip (address | phone | Instagram) in forest green banner under hero
+- **Stats bar style:** no-stats ✅ (4.9★/261 reviews woven into hero sub-body)
+- **WHY Score:** 7.17 (Jobs 7.5 / PG 7.0 / Ogilvy 7.0)
+- **WHAT Score:** 7.33 (Norman 7.5 / Krug 7.5 / Nielsen 7.0) → PASS
+- **HOW Score:** 7.33 (Vignelli 7.5 / Spiekermann 7.5 / Rams 7.0) → PASS
+- **Panel average:** 7.28
+- **Self-review:** 7.5
+- **Versions built:** v0–v5 + index.html
+- **Live URL:** https://auto-sites.pages.dev/demos/villevelo-bakeshop/
+
+### Key Decisions
+- Hero conviction: "Open at seven. Gone by one." — leads with scarcity as brand identity, not description
+- "Made this morning. Gone this afternoon." echoes hero scarcity in What to Order section
+- Cormorant Garamond italic chosen for French brand name authenticity — earned, not default
+- Photo 04 (pop-tarts with pink icing) as hero — vibrant, handmade, strong enough to carry a split layout alone
+- Photo 11 (almond tart heart) as pastries card — warm wheat tones perfectly match palette direction
+- Google Maps reviewer names sourced via browser session (Sharon Griffin, Ginger Anne, Jay Crosby)
+- "Cash and card welcome" removed — unverified; $1–$10 price range kept (confirmed Google Maps)
+- 3 em-dash violations caught and fixed in copy audit pass
+- "City bike. That's the name." — meaningful brand name as about headline, per proven pattern
+
+### Photo Assignments
+| File | Role | Quality |
+|------|------|---------|
+| ig-photo-04.jpg (real) | Hero right panel (pop-tarts, square) | ★★★★★ |
+| ig-photo-11.jpg (real) | What to Order left (almond tart heart, square) | ★★★★★ |
+| ig-photo-02.jpg (real) | What to Order right (customers + gallery wall, square) | ★★★★½ |
+| ig-photo-07.jpg (real) | About section (owners at counter, square) | ★★★★ |
+
+### Panel Scores
+| Panelist | Score |
+|----------|-------|
+| Steve Jobs (WHY/Conviction) | 7.5 |
+| Paul Graham (WHY/Clarity) | 7.0 |
+| David Ogilvy (WHY/Copy) | 7.0 |
+| Don Norman (WHAT/Mental Models) | 7.5 |
+| Steve Krug (WHAT/Scannability) | 7.5 |
+| Jakob Nielsen (WHAT/Accessibility) | 7.0 |
+| Massimo Vignelli (HOW/Grid) | 7.5 |
+| Erik Spiekermann (HOW/Typography) | 7.5 |
+| Dieter Rams (HOW/Reduction) | 7.0 |
+| **Average** | **7.28** |
+
+### Sources
+- All facts from: Build brief, Google Maps listing (confirmed via browser session), Instagram @villevelobakeshop
+- Reviews: Sharon Griffin, Ginger Anne, Jay Crosby — confirmed Google Maps
+
+---
+
 ## Build 117 — Tarboosh (Rebuild)
 - **Category:** Food Truck / Middle Eastern Street Food
 - **City:** Esquimalt, Victoria, BC (900 Carlton Terrace)
@@ -5006,3 +5318,135 @@ Real Victoria BC business. Website was literally just a street address (touristw
 | Erik Spiekermann (HOW/Typography) | 7.0 |
 | Dieter Rams (HOW/Reduction) | 7.5 |
 | **Average** | **7.0** |
+
+### Juhee's Closet — Alterations/Tailor, Montreal QC
+- **Category:** Clothing alterations / tailor
+- **City:** Montréal, QC
+- **Date:** 2026-04-03
+- **Model:** claude-sonnet-4-6 (subagent)
+- **Agent:** Lucy
+- **Hero pattern:** editorial-spread (split: text left column, image right column, full viewport)
+- **Typography:** Fraunces 300/400/italic (display/headlines) + Inter 400/500 (body/UI)
+- **Palette:** Cream #F5F0E8 + Sage #5A7A57 + Dark #2A2822
+- **Review layout:** 3-column equal cards (dark background section, italic Fraunces quotes)
+- **Visit/hours layout:** 2-column image left, hours key-value right with phone CTA
+- **Stats bar style:** no-stats ✅
+- **WHY Score:** 7.0 (Jobs 7.0 / PG 7.0 / Ogilvy 6.5) = 6.83 avg
+- **WHAT Score:** 7.17 (Norman 7.5 / Krug 7.0 / Nielsen 7.0) → PASS
+- **HOW Score:** 7.17 (Vignelli 7.0 / Spiekermann 7.5 / Rams 7.0) → PASS
+- **Panel average:** 7.06
+- **Self-review:** 7.5 (calibrated)
+- **Versions built:** 6 (v0 through v5 + index.html)
+- **Build time:** ~90 minutes
+- **Token estimate:** ~45k (5 phase files + 4 image gens + 4 panel passes + 6 HTML builds)
+- **Live URL:** https://auto-sites.pages.dev/demos/juhees-closet/
+
+### Key Decisions
+- Hero: editorial-spread with Fraunces italic accent on "works when it matters" — confidence-first positioning
+- The 2-days-a-week constraint surfaced in eyebrow label, hero, work section, and visit section — consistent thread
+- Dual-world contrast (suits + cosplay) explicit from first scroll via eyebrow "SUITS. COSPLAY. TWO DAYS A WEEK."
+- Pull-quote (David G.) anchors work section left column, solves the orphan dead-space problem
+- No AI images of finished garments (brief constraint) limits trust-proof ceiling; acknowledged in build
+
+### Panel Scores
+| Panelist | Score |
+|----------|-------|
+| Steve Jobs (WHY/Conviction) | 7.0 |
+| Paul Graham (WHY/Clarity) | 7.0 |
+| David Ogilvy (WHY/Copy) | 6.5 |
+| Don Norman (WHAT/Mental Models) | 7.5 |
+| Steve Krug (WHAT/Scannability) | 7.0 |
+| Jakob Nielsen (WHAT/Accessibility) | 7.0 |
+| Massimo Vignelli (HOW/Grid) | 7.0 |
+| Erik Spiekermann (HOW/Typography) | 7.5 |
+| Dieter Rams (HOW/Reduction) | 7.0 |
+| **Average** | **7.06** |
+
+### URL Coffee — Coffee Shop, Seattle WA
+- **Category:** Coffee shop / café
+- **City:** Seattle, WA (First Hill)
+- **Date:** 2026-04-03
+- **Model:** claude-sonnet-4-6 (subagent)
+- **Agent:** Lucy
+- **Hero pattern:** centered-minimal (giant Instrument Serif headline, text-dominant, no forced landscape hero photo)
+- **Typography:** Instrument Serif 400/italic (display/headlines) + Space Grotesk 400/500/600 (body/UI) + DM Mono 400/500 (accent labels — plays on URL tech pun)
+- **Palette:** Warm cream #F8F5F0 + Espresso #2C1A0E + Muted sage #7A9E87
+- **Review layout:** Dominant pull-quote (large, full-width) + 2-column secondary quotes
+- **Visit/hours layout:** 2-col: hours/address/CTA left, Google Maps embed right (heavy grayscale filter)
+- **Stats bar style:** no-stats ✅
+- **WHY Score:** 8.33 (Jobs 8.0 / PG 8.0 / Ogilvy 9.0)
+- **WHAT Score:** 7.67 (Norman 8.0 / Krug 8.0 / Nielsen 7.0) → PASS
+- **HOW Score:** 7.33 (Vignelli 7.0 / Spiekermann 8.0 / Rams 7.0) → PASS
+- **Panel average:** 7.78
+- **Self-review:** 7.5 (calibrated against 7.78 panel avg)
+- **Versions built:** 6 (v0 through v5 + index.html)
+- **Build time:** ~75 minutes
+- **Token estimate:** ~50k (5 phase files + design knowledge + 5 screenshot/panel passes + 6 HTML builds)
+- **Live URL:** https://auto-sites.pages.dev/demos/url-coffee/
+
+### Key Decisions
+- No landscape hero photos in set → chose centered-minimal text hero rather than forcing portrait photo into landscape slot
+- DM Mono for nav logo and section labels creates a subtle URL/domain reference (url_coffee/ looks like a file path)
+- "Walk In. Walk to Work." does triple duty: invitation, pun, signature drink name — strongest headline of this build
+- Interior/streetcar photo (ig-photo-03) given full-bleed viewport section instead of cramped split-grid
+- Removed 3-col photo grid entirely (Rams: redundant; page already had 2 photo moments)
+- Fabricated reviewer names (J. Kim, M. Patel, S. Lee) caught in humanizer pass and replaced with "Via Google Reviews"
+- All 411 reviews / 4.8★ sourced from brief; no data invented
+
+### Panel Scores
+| Panelist | Score |
+|----------|-------|
+| Steve Jobs (WHY/Conviction) | 8.0 |
+| Paul Graham (WHY/Clarity) | 8.0 |
+| David Ogilvy (WHY/Copy) | 9.0 |
+| Don Norman (WHAT/Mental Models) | 8.0 |
+| Steve Krug (WHAT/Scannability) | 8.0 |
+| Jakob Nielsen (WHAT/Accessibility) | 7.0 |
+| Massimo Vignelli (HOW/Grid) | 7.0 |
+| Erik Spiekermann (HOW/Typography) | 8.0 |
+| Dieter Rams (HOW/Reduction) | 7.0 |
+| **Average** | **7.78** |
+
+### Kid Sister Ice Cream — Artisan Ice Cream, Victoria BC
+- **Category:** Small-batch artisan ice cream shop
+- **City:** Esquimalt, Victoria BC
+- **Date:** 2026-04-03
+- **Model:** claude-sonnet-4-6 (subagent)
+- **Agent:** Lucy
+- **Hero pattern:** image-top-text-below (cherry blossom flatlay portrait photo at top; conviction headline below)
+- **Typography:** Cormorant Garamond 300/400/500/600 (display/headlines, with italic for emphasis) + Jost 300/400/500/600 (body/UI)
+- **Palette:** Cream #FAF7F2 + Forest #3A5245 + Blush #A06050 + Bark #2A1F14 + Mist #F2EDE6
+- **Review layout:** Stacked full-width editorial pull-quotes — no cards, botanical dot separator between quote and attribution
+- **Visit/hours layout:** Centered 2-col with map left (3fr) + info block right (2fr)
+- **Stats bar style:** no-stats ✅
+- **WHY Score:** 8.33 (Jobs 8.0 / PG 9.0 / Ogilvy 8.0)
+- **WHAT Score:** 7.0 (Norman 7.0 / Krug 7.5 / Nielsen 6.5) retry from 4.83 → PASS
+- **HOW Score:** 7.17 (Vignelli 7.5 / Spiekermann 7.0 / Rams 7.0) → PASS
+- **Panel average:** 7.5
+- **Self-review:** 7.5 (final gut-check returned 8.5 from external eye; calibrated to panel avg)
+- **Versions built:** 6 (v0 through v5 + index.html)
+- **Build time:** ~90 minutes
+- **Token estimate:** ~55k (5 phase files + design knowledge + 6 screenshot/panel passes + 6 HTML builds + photo analysis)
+- **Live URL:** https://auto-sites.pages.dev/demos/kid-sister-new/
+
+### Key Decisions
+- All photos portrait orientation → chose image-top-text-below hero pattern (cherry blossom 9:16 flatlay as full-width top, headline below). No forced landscape crop.
+- "This is Victoria in a cone" elevated to hero headline after WHY panel noted it was the real thesis statement, buried. Kiwi quote moved to WHY section as supporting material.
+- Cormorant Garamond chosen for botanical/editorial energy — fresh for this build cycle (last 3 used Instrument Serif, Fraunces, Barlow Condensed).
+- WHAT panel (v1) failed at 4.83 — critical miss: no hours. Added shoulder-season hours from brief ("Noon–6pm shoulder season, extended in summer"). Resolved most WHAT concerns without inventing data.
+- Instagram redirect for flavours per DESIGN-KNOWLEDGE rotating-inventory rule — but still listed all 7 verified flavours with farm attributions.
+- Graduated: `[STRUCTURE]` Treating major sections as distinct visual chapters — confirmed 5th build. Added to DESIGN-KNOWLEDGE.md.
+
+### Panel Scores
+| Panelist | Score |
+|----------|-------|
+| Steve Jobs (WHY/Conviction) | 8.0 |
+| Paul Graham (WHY/Clarity) | 9.0 |
+| David Ogilvy (WHY/Copy) | 8.0 |
+| Don Norman (WHAT/Mental Models) | 7.0 |
+| Steve Krug (WHAT/Scannability) | 7.5 |
+| Jakob Nielsen (WHAT/Accessibility) | 6.5 |
+| Massimo Vignelli (HOW/Grid) | 7.5 |
+| Erik Spiekermann (HOW/Typography) | 7.0 |
+| Dieter Rams (HOW/Reduction) | 7.0 |
+| **Average** | **7.5** |

@@ -2,877 +2,827 @@
 <html lang="en">
 <head>
 <!--
-  MacLeod's Books — Vancouver, BC
-  Auto-Site Build 102 | Agent: Lucy | 2026-03-31
+  MacLeod's Books — v2
+  DELTA: v1→v2 (WHAT retry)
+  Changes: hero CTA filled amber, section labels cream+bigger, review quotes trimmed to 2 sentences, collection card text brighter, font-weight 400 on dark bg verified
+  DELTA: v0→v1
+  Changes: specific hero CTA (Get Directions), gallery editorial heading, We Also Buy surface in collection, card text 14→15px, map filter stronger, amber button fill state improved
+  WHY scores: 8.0 / 8.0 / 8.5 → avg 8.17
+  Hypothesis: "We Also Buy" visibility + specific CTA will improve PG + Ogilvy scores
+  =====================
+  PHOTO ASSIGNMENTS:
+  book-pages.jpg   | Hero overlay bg (landscape, atmospheric warm lamp light) | ★★★★★
+  books-stack.jpg  | Gallery feature tile (landscape, stacked classics) | ★★★★½
+  book-spine.jpg   | Gallery accent tile (landscape/portrait, gold spine close-up) | ★★★★
 
-  PHOTO RANKING (No real photos — Instagram private. AI-generated only.)
-  -------------------------------------------------------------------------
-  1. book-spines.jpg   → Hero background (landscape, editorial, close-up of aged spines)
-  2. open-book.jpg     → About section (warm light, open pages, tactile detail)
-  3. shelf-detail.jpg  → Browse section (floor-to-ceiling shelves, depth, wonder)
+  ROTATION CHECK:
+  Hero pattern: dark-immersive (last 4 used: editorial-spread, giant-display-type, split-image-right, centered-minimal) ✅
+  Typography: Fraunces + Inter (last 4 used: Bodoni Moda+Space Grotesk, Barlow Condensed+Instrument Sans, Cormorant+DM Sans, Instrument Serif+Space Grotesk+DM Mono) ✅
+  Review layout: stacked full-width pull quotes ✅
+  Visit/hours: single column card stack centered ✅
+  Stats: no-stats ✅
 
-  AI photo ceiling acknowledged: ~7.5–8.0
-
-  DELTA: v2 → v3 (HOW retry)
-  Changes (HOW retry):
-  - Strict 5-size type scale: 12px labels / 16px body / 22px cards+reviews / 32-40px section H2 / 60-88px display
-  - Remove full-width bookshelf photo (redundant with hero atmosphere)
-  - Remove "1964" badge on about image (headline already says it)
-  - Sell-a-collection callout moved into Visit section (was floating)
-  - Section spacing unified: --section-pad CSS variable applied rigorously
-  - Review quotes: bumped to large pullquote size (28px) for clear register
-  HOW scores (v2): Vignelli 7 / Spiekermann 6.5 / Rams 6.5 → avg 6.67 (below gate, retry)
-  Hypothesis: typography consolidation and photo removal will most move Spiekermann + Rams scores
+  SOURCE NOTES:
+  "Canada's last great used bookstore" → Maclean's Magazine (confirmed in Yelp listing)
+  "A literal maze of meticulously organized books" → Google review, Feb 2026
+  4.6★ / 1,105 reviews → Outscraper API, Apr 2026
+  Hours: Mon-Sun 11AM-5:30PM → Outscraper API
+  Address: 455 W Pender St, Vancouver, BC → Google listing
+  Phone: +1 604-681-7654 → Google listing
+  Owner Don → Google review (Dec 2025): "The owner Don is very helpful"
+  Sections (Indigenous, philosophy, queer, rare ephemera) → Google review, Feb 2026
 -->
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MacLeod's Books — Vancouver, BC</title>
-  <meta name="description" content="Used & rare books, bought, sold, and appraised since 1964. Canada's last great used bookstore. 455 W Pender St, Vancouver.">
-  <!-- Open Graph -->
-  <meta property="og:title" content="MacLeod's Books">
-  <meta property="og:description" content="Used & rare books since 1964. Canada's last great used bookstore. 455 W Pender St, Vancouver.">
-  <meta property="og:image" content="book-spines.jpg">
-  <meta property="og:url" content="https://auto-sites.pages.dev/demos/macleods-books/">
-  <meta property="og:type" content="website">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MacLeod's Books — Vancouver, BC</title>
+<meta name="description" content="Used and rare books in the heart of Vancouver. Open daily, 11AM to 5:30PM.">
+<meta property="og:title" content="MacLeod's Books">
+<meta property="og:description" content="Canada's last great used bookstore. 1,105 reviews. 455 West Pender, Vancouver.">
+<meta property="og:image" content="book-pages.jpg">
+<meta property="og:url" content="https://macleods-books.ca">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-deep: #142218;
+    --green-mid: #1F3428;
+    --green-leaf: #2D4A37;
+    --cream: #F5EDD9;
+    --cream-muted: #E8DBBD;
+    --amber: #C8922A;
+    --amber-light: #D9A84E;
+    --text-on-dark: #F0E6CC;
+    --text-muted: #B8CEAA;
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+    --section-pad: clamp(64px, 8vw, 120px);
+  }
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Bitter:wght@400;500;600&display=swap" rel="stylesheet">
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  <style>
-    :root {
-      --green: #1C3528;
-      --green-mid: #2A4A38;
-      --cream: #F4EFE4;
-      --cream-dark: #E8E0CC;
-      --brass: #C9993B;
-      --brass-light: #D4A84A;
-      --ink: #0E1E15;
-      --muted: #8A9A8E;
+  html { font-size: 16px; scroll-behavior: smooth; }
 
-      /* Strict 5-size type scale */
-      --t-label: 12px;     /* section labels, eyebrows, meta */
-      --t-body: 16px;      /* body copy, card descriptions */
-      --t-quote: 28px;     /* review quotes, callout text */
-      --t-section: clamp(28px, 3.5vw, 42px); /* section headlines */
-      --t-display: clamp(44px, 7vw, 88px);   /* hero, display */
+  body {
+    background: var(--green-deep);
+    color: var(--cream);
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
 
-      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
-      --section-pad: clamp(80px, 10vw, 120px);
-      --content-width: 900px;
-    }
+  img { display: block; max-width: 100%; }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  /* ——— NAV ——— */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background: linear-gradient(to bottom, rgba(20,34,24,0.9) 0%, transparent 100%);
+  }
 
-    html { scroll-behavior: smooth; }
+  .nav-logo {
+    font-family: 'Fraunces', serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--cream);
+    text-decoration: none;
+  }
 
-    body {
-      font-family: 'Bitter', Georgia, serif;
-      background: var(--ink);
-      color: var(--cream);
-      font-size: 17px;
-      line-height: 1.7;
-      -webkit-font-smoothing: antialiased;
-    }
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
 
-    /* ─── NAV ─── */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      padding: 20px 40px;
+  .nav-links a {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(245,237,217,0.75);
+    text-decoration: none;
+    transition: color 160ms var(--ease-out);
+  }
+
+  .nav-links a:hover { color: var(--cream); }
+
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 4px;
+  }
+
+  .nav-hamburger span {
+    width: 22px;
+    height: 1.5px;
+    background: var(--cream);
+    display: block;
+    transition: all 200ms var(--ease-out);
+  }
+
+  /* ——— HERO — DARK IMMERSIVE ——— */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('book-pages.jpg');
+    background-size: cover;
+    background-position: center 30%;
+    transform: scale(1.04);
+    transition: transform 8s var(--ease-out);
+  }
+
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      linear-gradient(to top, rgba(20,34,24,0.97) 0%, rgba(20,34,24,0.5) 50%, rgba(20,34,24,0.3) 100%),
+      radial-gradient(ellipse at 70% 50%, transparent 40%, rgba(20,34,24,0.4) 100%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 40px 72px;
+    max-width: 820px;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 24px;
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+  }
+
+  .hero-headline {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(3rem, 7vw, 6.5rem);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--cream);
+    letter-spacing: -0.02em;
+    margin-bottom: 32px;
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 700ms 100ms var(--ease-out), transform 700ms 100ms var(--ease-out);
+  }
+
+  .hero-headline em {
+    font-style: italic;
+    color: var(--green-deep);
+  }
+
+  .hero-sub {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--text-muted);
+    letter-spacing: 0.02em;
+    margin-bottom: 40px;
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 700ms 200ms var(--ease-out), transform 700ms 200ms var(--ease-out);
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 28px;
+    background: var(--amber); border: 1.5px solid var(--amber);
+    color: var(--green-deep);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 200ms var(--ease-out);
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 700ms 300ms var(--ease-out), transform 700ms 300ms var(--ease-out);
+  }
+
+  .hero-cta:hover {
+    background: var(--amber-light);
+    border-color: var(--amber-light);
+    color: var(--green-deep);
+  }
+
+  .hero-cta:active { transform: scale(0.97); }
+
+  /* ——— LOADED STATE ——— */
+  body.loaded .hero-eyebrow,
+  body.loaded .hero-headline,
+  body.loaded .hero-sub,
+  body.loaded .hero-cta {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  body.loaded .hero-bg { transform: scale(1); }
+
+  /* ——— PRESS QUOTE STRIP ——— */
+  .press-strip {
+    background: var(--amber);
+    padding: 14px 40px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .press-strip p {
+    font-family: 'Fraunces', serif;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    font-style: italic;
+    color: var(--green-deep);
+    white-space: nowrap;
+  }
+
+  .press-strip span {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(20,34,24,0.7);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* ——— INFO STRIP ——— */
+  .info-strip {
+    background: var(--green-mid);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    divide-color: rgba(255,255,255,0.06);
+  }
+
+  .info-item {
+    padding: 28px 40px;
+    border-right: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .info-item:last-child { border-right: none; }
+
+  .info-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--amber);
+  }
+
+  .info-value {
+    font-size: 0.9375rem;
+    font-weight: 400;
+    color: var(--cream);
+  }
+
+  .info-value a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .info-value a:hover { color: var(--green-deep); }
+
+  /* ——— SECTION BASE ——— */
+  section {
+    padding: var(--section-pad) 40px;
+  }
+
+  .section-inner {
+    max-width: 1120px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--cream-muted);
+    margin-bottom: 20px;
+  }
+
+  /* ——— COLLECTION ——— */
+  .collection {
+    background: var(--green-mid);
+  }
+
+  .collection-headline {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.75rem, 3vw, 2.75rem);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.2;
+    color: var(--cream);
+    margin-bottom: 16px;
+    max-width: 680px;
+  }
+
+  .collection-body {
+    font-size: 1rem;
+    color: var(--text-muted);
+    max-width: 560px;
+    margin-bottom: 56px;
+    line-height: 1.7;
+  }
+
+  .collection-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.06);
+  }
+
+  .collection-card {
+    background: var(--green-mid);
+    padding: 36px 32px;
+    transition: background 200ms var(--ease-out);
+  }
+
+  .collection-card:hover { background: var(--green-leaf); }
+
+  .collection-card-icon {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 20px;
+    opacity: 0.5;
+  }
+
+  .collection-card-title {
+    font-family: 'Fraunces', serif;
+    font-size: 1.375rem;
+    font-weight: 500;
+    color: var(--cream);
+    margin-bottom: 10px;
+  }
+
+  .collection-card-text {
+    font-size: 1rem;
+    color: var(--text-muted);
+    line-height: 1.72;
+  }
+
+  /* ——— GALLERY ——— */
+  .gallery {
+    background: var(--green-deep);
+    padding-top: 0;
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 480px;
+    gap: 3px;
+    max-width: 1120px;
+    margin: 0 auto;
+  }
+
+  .gallery-item {
+    overflow: hidden;
+    position: relative;
+  }
+
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 600ms var(--ease-out);
+  }
+
+  /* ——— GALLERY FULLBLEED ——— */
+  .gallery-fullbleed {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .gallery-fullbleed-inner {
+    position: relative;
+    height: 520px;
+  }
+
+  .gallery-fullbleed-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 40%;
+  }
+
+  .gallery-fullbleed-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(20,34,24,0.85) 0%, rgba(20,34,24,0.2) 60%, transparent 100%);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 56px 40px;
+  }
+
+  .gallery-quote {
+    text-align: center;
+    max-width: 640px;
+  }
+
+  .gallery-quote p {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.25rem, 2vw, 1.75rem);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--cream);
+    line-height: 1.5;
+    margin-bottom: 12px;
+  }
+
+  .gallery-quote cite {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--amber);
+    font-style: normal;
+  }
+
+  @media (max-width: 768px) {
+    .gallery-fullbleed-inner { height: 320px; }
+    .gallery-fullbleed-overlay { padding: 32px 24px; }
+    .gallery-quote p { font-size: 1.125rem; }
+  }
+
+  /* ——— REVIEWS ——— */
+  .reviews {
+    background: var(--green-mid);
+  }
+
+  .reviews-headline {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.5rem, 2.5vw, 2.25rem);
+    font-weight: 400;
+    color: var(--cream);
+    margin-bottom: 8px;
+  }
+
+  .reviews-meta {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    margin-bottom: 56px;
+  }
+
+  .reviews-meta strong {
+    color: var(--green-deep);
+    font-weight: 500;
+  }
+
+  .reviews-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .review-item {
+    padding: 40px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    display: grid;
+    grid-template-columns: 1fr 200px;
+    gap: 40px;
+    align-items: start;
+  }
+
+  .review-text {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.125rem, 1.75vw, 1.5rem);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--cream);
+    line-height: 1.55;
+    position: relative;
+    padding-left: 28px;
+  }
+
+  .review-text::before {
+    content: '\201C';
+    position: absolute;
+    left: 0;
+    top: -4px;
+    font-size: 2.5rem;
+    line-height: 1;
+    color: var(--amber);
+    font-family: 'Fraunces', serif;
+  }
+
+  .review-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: flex-end;
+    padding-top: 8px;
+  }
+
+  .review-source {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--amber);
+  }
+
+  .review-date {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    letter-spacing: 0.06em;
+  }
+
+  /* ——— VISIT ——— */
+  .visit {
+    background: var(--green-deep);
+  }
+
+  .visit-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .visit-headline {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 300;
+    color: var(--cream);
+    line-height: 1.15;
+    margin-bottom: 40px;
+  }
+
+  .visit-details {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .visit-detail-group label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--amber);
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .visit-detail-group p {
+    font-size: 1rem;
+    color: var(--cream);
+    line-height: 1.6;
+  }
+
+  .visit-detail-group a {
+    color: var(--cream);
+    text-decoration: none;
+    transition: color 160ms var(--ease-out);
+  }
+
+  .visit-detail-group a:hover { color: var(--green-deep); }
+
+  .map-wrapper {
+    height: 440px;
+    overflow: hidden;
+    position: relative;
+    background: var(--green-leaf);
+  }
+
+  .map-wrapper iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    filter: grayscale(90%) sepia(30%) brightness(0.7) contrast(1.1);
+  }
+
+  /* ——— FOOTER ——— */
+  footer {
+    background: var(--green-deep);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 40px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-name {
+    font-family: 'Fraunces', serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--cream);
+  }
+
+  .footer-copy {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+  }
+
+  /* ——— SCROLL REVEAL ——— */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-stagger > * {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 550ms var(--ease-out), transform 550ms var(--ease-out);
+  }
+
+  .reveal-stagger.visible > *:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: 0ms; }
+  .reveal-stagger.visible > *:nth-child(2) { opacity: 1; transform: translateY(0); transition-delay: 70ms; }
+  .reveal-stagger.visible > *:nth-child(3) { opacity: 1; transform: translateY(0); transition-delay: 140ms; }
+  .reveal-stagger.visible > *:nth-child(4) { opacity: 1; transform: translateY(0); transition-delay: 210ms; }
+  .reveal-stagger.visible > *:nth-child(5) { opacity: 1; transform: translateY(0); transition-delay: 280ms; }
+  .reveal-stagger.visible > *:nth-child(6) { opacity: 1; transform: translateY(0); transition-delay: 350ms; }
+
+  /* ——— MOBILE ——— */
+  @media (max-width: 768px) {
+    nav { padding: 18px 24px; }
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+    .nav-links.open {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      mix-blend-mode: normal;
-      background: transparent;
-      transition: background 300ms var(--ease-out);
-    }
-    nav.scrolled {
-      background: rgba(14, 30, 21, 0.96);
-      backdrop-filter: blur(8px);
-    }
-    .nav-logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 20px;
-      font-weight: 500;
-      letter-spacing: 0.04em;
-      color: var(--cream);
-      text-decoration: none;
-    }
-    .nav-links {
-      display: flex;
-      gap: 36px;
-      list-style: none;
-    }
-    .nav-links a {
-      font-family: 'Bitter', serif;
-      font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--cream-dark);
-      text-decoration: none;
-      transition: color 200ms;
-    }
-    .nav-links a:hover { color: var(--brass); }
-
-    /* Mobile nav */
-    .nav-toggle {
-      display: none;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 4px;
       flex-direction: column;
-      gap: 5px;
-    }
-    .nav-toggle span {
-      display: block;
-      width: 24px;
-      height: 1.5px;
-      background: var(--cream);
-      transition: transform 200ms, opacity 200ms;
-    }
-    .mobile-menu {
-      display: none;
       position: fixed;
-      inset: 0;
-      background: var(--ink);
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--green-deep);
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
       z-index: 99;
-      padding: 100px 40px 40px;
-      flex-direction: column;
-      gap: 32px;
     }
-    .mobile-menu.open { display: flex; }
-    .mobile-menu a {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 32px;
-      font-weight: 400;
-      color: var(--cream);
-      text-decoration: none;
-      letter-spacing: 0.02em;
-    }
+    .nav-links.open a { font-size: 1.25rem; }
 
-    @media (max-width: 680px) {
-      nav { padding: 18px 24px; }
-      .nav-links { display: none; }
-      .nav-toggle { display: flex; }
-    }
+    section { padding: 64px 24px; }
+    .hero-content { padding: 0 24px 64px; }
+    .press-strip { padding: 14px 24px; flex-wrap: wrap; gap: 8px; }
+    .info-strip { grid-template-columns: 1fr; }
+    .info-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); padding: 20px 24px; }
+    .info-item:last-child { border-bottom: none; }
+    .collection-grid { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: 1fr; grid-template-rows: 280px 200px; }
+    .review-item { grid-template-columns: 1fr; gap: 16px; }
+    .review-meta { align-items: flex-start; }
+    .visit-grid { grid-template-columns: 1fr; gap: 40px; }
+    .map-wrapper { height: 280px; }
+    footer { flex-direction: column; gap: 12px; text-align: center; padding: 32px 24px; }
+  }
 
-    /* ─── HERO ─── */
-    .hero {
-      position: relative;
-      height: 100vh;
-      min-height: 600px;
-      display: flex;
-      align-items: flex-end;
-      padding: 0 clamp(24px, 6vw, 80px) clamp(60px, 8vh, 100px);
-      overflow: hidden;
-    }
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      background: var(--green);
-    }
-    .hero-bg img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      opacity: 0.45;
-      display: block;
-    }
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        to top,
-        rgba(14, 30, 21, 0.92) 0%,
-        rgba(14, 30, 21, 0.40) 50%,
-        rgba(14, 30, 21, 0.20) 100%
-      );
-    }
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 840px;
-    }
-    .hero-eyebrow {
-      font-family: 'Bitter', serif;
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--brass);
-      margin-bottom: 20px;
-      display: block;
-    }
-    .hero-headline {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: var(--t-display);
-      font-weight: 300;
-      line-height: 1.08;
-      letter-spacing: -0.01em;
-      color: var(--cream);
-      margin-bottom: 16px;
-    }
-    .hero-headline em {
-      font-style: italic;
-      color: var(--cream);
-    }
-    .hero-attribution {
-      font-family: 'Bitter', serif;
-      font-size: 13px;
-      font-weight: 400;
-      color: var(--muted);
-      letter-spacing: 0.08em;
-      margin-bottom: 32px;
-    }
-    .hero-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-family: 'Bitter', serif;
-      font-size: 14px;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--cream);
-      text-decoration: none;
-      padding: 14px 28px;
-      border: 1px solid rgba(244, 239, 228, 0.35);
-      transition: border-color 200ms, color 200ms, transform 160ms var(--ease-out);
-    }
-    .hero-cta:hover {
-      border-color: var(--brass);
-      color: var(--brass);
-    }
-    .hero-cta:active { transform: scale(0.97); }
-
-    /* ─── QUICK FIND ─── */
-    .quick-find {
-      background: var(--green);
-      padding: 28px clamp(24px, 6vw, 80px);
-      display: flex;
-      align-items: center;
-      gap: 48px;
-      flex-wrap: wrap;
-    }
-    .quick-find-item {
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-    }
-    .quick-find-label {
-      font-family: 'Bitter', serif;
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--brass);
-    }
-    .quick-find-value {
-      font-family: 'Bitter', serif;
-      font-size: 15px;
-      color: var(--cream);
-    }
-    .quick-find-value a {
-      color: var(--cream);
-      text-decoration: none;
-      transition: color 200ms;
-    }
-    .quick-find-value a:hover { color: var(--brass); }
-    .qf-divider {
-      width: 1px;
-      height: 40px;
-      background: rgba(244, 239, 228, 0.15);
-      flex-shrink: 0;
-    }
-
-    /* ─── SECTIONS ─── */
-    section { padding: var(--section-pad) clamp(24px, 6vw, 80px); }
-
-    .section-label {
-      font-family: 'Bitter', serif;
-      font-size: var(--t-label);
-      font-weight: 500;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--brass);
-      margin-bottom: 40px;
-      display: block;
-    }
-
-    .content-col {
-      max-width: var(--content-width);
-      margin: 0 auto;
-    }
-
-    /* ─── ABOUT ─── */
-    .about {
-      background: var(--ink);
-    }
-    .about-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: start;
-    }
-    .about-text h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: var(--t-section);
-      font-weight: 400;
-      line-height: 1.15;
-      color: var(--cream);
-      margin-bottom: 24px;
-    }
-    .about-text p {
-      color: var(--cream-dark);
-      margin-bottom: 16px;
-      font-size: var(--t-body);
-      line-height: 1.75;
-    }
-    .about-image {
-      position: relative;
-    }
-    .about-image img {
-      width: 100%;
-      aspect-ratio: 3/4;
-      object-fit: cover;
-      display: block;
-    }
-    .about-badge {
-      position: absolute;
-      bottom: -20px;
-      right: -20px;
-      background: var(--green);
-      padding: 20px 24px;
-      border-left: 3px solid var(--brass);
-    }
-    .about-badge-year {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 40px;
-      font-weight: 300;
-      color: var(--cream);
-      line-height: 1;
-      display: block;
-    }
-    .about-badge-text {
-      font-family: 'Bitter', serif;
-      font-size: 11px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--brass);
-    }
-
-    /* ─── WHAT'S HERE ─── */
-    .whats-here {
-      background: var(--green);
-    }
-    .whats-here h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: var(--t-section);
-      font-weight: 400;
-      color: var(--cream);
-      margin-bottom: 12px;
-    }
-    .whats-here-intro {
-      font-size: var(--t-body);
-      color: var(--cream-dark);
-      margin-bottom: 56px;
-      max-width: 560px;
-      line-height: 1.75;
-    }
-    /* Category list — typographic, not cards */
-    .categories-list {
-      display: flex;
-      flex-direction: column;
-    }
-    .category-item {
-      display: grid;
-      grid-template-columns: 220px 1fr;
-      gap: 32px;
-      padding: 28px 0;
-      border-top: 1px solid rgba(244, 239, 228, 0.10);
-      align-items: baseline;
-    }
-    .category-item:last-child {
-      border-bottom: 1px solid rgba(244, 239, 228, 0.10);
-    }
-    .category-num {
-      display: none;
-    }
-    .category-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 22px;
-      font-weight: 400;
-      color: var(--cream);
-    }
-    .category-desc {
-      font-size: var(--t-body);
-      color: var(--muted);
-      line-height: 1.65;
-    }
-    @media (max-width: 640px) {
-      .category-item {
-        grid-template-columns: 1fr;
-        gap: 8px;
-      }
-    }
-    .shelf-image {
-      margin-top: 56px;
-    }
-    .shelf-image img {
-      width: 100%;
-      max-height: 420px;
-      object-fit: cover;
-      display: block;
-    }
-
-    /* ─── REVIEWS ─── */
-    .reviews {
-      background: var(--ink);
-    }
-    .reviews h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: var(--t-section);
-      font-weight: 400;
-      color: var(--cream);
-      margin-bottom: 8px;
-    }
-    .reviews-count {
-      font-size: var(--t-body);
-      color: var(--muted);
-      margin-bottom: 64px;
-    }
-    .review-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-    }
-    .review-item {
-      padding: 40px 0;
-      border-top: 1px solid rgba(244, 239, 228, 0.10);
-    }
-    .review-item:last-child {
-      border-bottom: 1px solid rgba(244, 239, 228, 0.10);
-    }
-    .review-quote {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: var(--t-quote);
-      font-weight: 300;
-      font-style: italic;
-      line-height: 1.45;
-      color: var(--cream);
-      margin-bottom: 20px;
-    }
-    .review-meta {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-    .review-author {
-      font-family: 'Bitter', serif;
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--brass);
-    }
-    .review-sep {
-      width: 24px;
-      height: 1px;
-      background: var(--muted);
-    }
-    .review-source {
-      font-family: 'Bitter', serif;
-      font-size: 12px;
-      color: var(--muted);
-      letter-spacing: 0.06em;
-    }
-    .stars {
-      color: var(--brass);
-      font-size: 13px;
-      letter-spacing: 2px;
-    }
-
-    /* ─── VISIT ─── */
-    .visit {
-      background: var(--green);
-    }
-    .visit-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: start;
-    }
-    .visit h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: var(--t-section);
-      font-weight: 400;
-      color: var(--cream);
-      margin-bottom: 32px;
-    }
-    .visit-details {
-      display: flex;
-      flex-direction: column;
-      gap: 28px;
-    }
-    .visit-detail-group {}
-    .visit-detail-label {
-      font-family: 'Bitter', serif;
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--brass);
-      margin-bottom: 8px;
-      display: block;
-    }
-    .visit-detail-value {
-      font-size: var(--t-body);
-      color: var(--cream-dark);
-      line-height: 1.65;
-    }
-    .visit-detail-value a {
-      color: var(--cream);
-      text-decoration: none;
-      border-bottom: 1px solid rgba(244, 239, 228, 0.25);
-      transition: border-color 200ms, color 200ms;
-    }
-    .visit-detail-value a:hover {
-      color: var(--brass);
-      border-color: var(--brass);
-    }
-    .hours-row {
-      display: flex;
-      gap: 24px;
-      margin-bottom: 4px;
-    }
-    .hours-day {
-      width: 88px;
-      color: var(--muted);
-      font-size: var(--t-body);
-    }
-    .hours-time {
-      color: var(--cream-dark);
-      font-size: var(--t-body);
-    }
-    .visit-note {
-      margin-top: 40px;
-      padding: 24px;
-      border-left: 2px solid var(--brass);
-      background: rgba(14, 30, 21, 0.5);
-    }
-    .visit-note p {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 18px;
-      font-style: italic;
-      color: var(--cream-dark);
-      line-height: 1.6;
-    }
-    .cta-section {
-      padding-top: 56px;
-    }
-    .cta-section h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 28px;
-      font-weight: 400;
-      color: var(--cream);
-      margin-bottom: 20px;
-      line-height: 1.3;
-    }
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-family: 'Bitter', serif;
-      font-size: 14px;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--ink);
-      background: var(--brass);
-      text-decoration: none;
-      padding: 16px 32px;
-      transition: background 200ms, transform 160ms var(--ease-out);
-    }
-    .btn-primary:hover { background: var(--brass-light); }
-    .btn-primary:active { transform: scale(0.97); }
-    .btn-outline {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-family: 'Bitter', serif;
-      font-size: 14px;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--cream);
-      background: transparent;
-      text-decoration: none;
-      padding: 14px 28px;
-      border: 1px solid rgba(244, 239, 228, 0.35);
-      margin-top: 16px;
-      transition: border-color 200ms, color 200ms, transform 160ms var(--ease-out);
-    }
-    .btn-outline:hover {
-      border-color: var(--cream);
-    }
-    .btn-outline:active { transform: scale(0.97); }
-
-    /* ─── FOOTER ─── */
-    footer {
-      background: var(--ink);
-      padding: 48px clamp(24px, 6vw, 80px);
-      border-top: 1px solid rgba(244, 239, 228, 0.08);
-    }
-    .footer-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 24px;
-    }
-    .footer-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 18px;
-      font-weight: 400;
-      color: var(--cream);
-      letter-spacing: 0.04em;
-    }
-    .footer-tagline {
-      font-size: 13px;
-      color: var(--muted);
-      margin-top: 4px;
-    }
-    .footer-links {
-      display: flex;
-      gap: 32px;
-      list-style: none;
-    }
-    .footer-links a {
-      font-size: 13px;
-      color: var(--muted);
-      text-decoration: none;
-      letter-spacing: 0.06em;
-      transition: color 200ms;
-    }
-    .footer-links a:hover { color: var(--cream); }
-    .footer-abac {
-      font-size: 12px;
-      color: var(--muted);
-      letter-spacing: 0.06em;
-      margin-top: 24px;
-      padding-top: 24px;
-      border-top: 1px solid rgba(244, 239, 228, 0.08);
-      text-align: center;
-    }
-
-    /* ─── SCROLL REVEALS ─── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: none;
-    }
-    .reveal-delay-1 { transition-delay: 80ms; }
-    .reveal-delay-2 { transition-delay: 160ms; }
-    .reveal-delay-3 { transition-delay: 240ms; }
-    .reveal-delay-4 { transition-delay: 320ms; }
-
-    @media (prefers-reduced-motion: reduce) {
-      .reveal { opacity: 1; transform: none; transition: none; }
-      * { transition-duration: 0ms !important; }
-    }
-
-    /* ─── RESPONSIVE ─── */
-    @media (max-width: 820px) {
-      .about-inner { grid-template-columns: 1fr; gap: 48px; }
-      .about-image { display: none; }
-      .visit-inner { grid-template-columns: 1fr; gap: 48px; }
-      .quick-find { gap: 24px; }
-      .qf-divider { display: none; }
-    }
-
-    @media (max-width: 520px) {
-      .hero-headline { font-size: 38px; }
-    }
-  </style>
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition: none !important; animation: none !important; }
+    .reveal, .reveal-stagger > *, .hero-eyebrow, .hero-headline, .hero-sub, .hero-cta { opacity: 1 !important; transform: none !important; }
+  }
+</style>
 </head>
 <body>
 
 <!-- NAV -->
-<nav id="main-nav">
+<nav>
   <a href="#" class="nav-logo">MacLeod's Books</a>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#whats-here">Collections</a></li>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#collection">Collection</a></li>
     <li><a href="#reviews">Reviews</a></li>
     <li><a href="#visit">Visit</a></li>
   </ul>
-  <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
-<div class="mobile-menu" id="mobile-menu">
-  <a href="#about" class="mobile-link">About</a>
-  <a href="#whats-here" class="mobile-link">Collections</a>
-  <a href="#reviews" class="mobile-link">Reviews</a>
-  <a href="#visit" class="mobile-link">Visit</a>
-</div>
-
 <!-- HERO -->
-<section class="hero" id="home">
-  <div class="hero-bg">
-    <img src="book-spines.jpg" alt="Rows of aged book spines at MacLeod's Books">
-  </div>
-  <div class="hero-overlay"></div>
+<section class="hero" aria-label="Hero">
+  <div class="hero-bg" id="heroBg"></div>
   <div class="hero-content">
-    <span class="hero-eyebrow">Est. 1964 · Vancouver, BC · No website until now</span>
-    <h1 class="hero-headline">
-      "Canada's last great<br>used bookstore."
-    </h1>
-    <p class="hero-attribution">— Maclean's Magazine</p>
-    <a href="https://maps.google.com/maps?q=MacLeod%27s+Books+Vancouver&cid=0" target="_blank" rel="noopener" class="hero-cta">
-      Find us at 455 W Pender
-    </a>
+    <p class="hero-eyebrow">Vancouver, BC · Used &amp; Rare Books</p>
+    <h1 class="hero-headline">A maze of books.<br><em>Zero algorithms.</em></h1>
+    <p class="hero-sub">455 West Pender · Open daily 11AM to 5:30PM</p>
+    <a href="https://www.google.com/maps/place/MacLeod%27s+Books/@49.2834012,-123.1126481,14z/data=!4m8!1m2!2m1!1sMacLeod%27s+Books!3m4!1s0x54867178e4994c59:0xb1b49d4945810e09!8m2!3d49.2834012!4d-123.1126481" target="_blank" rel="noopener" class="hero-cta">Get Directions</a>
   </div>
 </section>
 
-<!-- QUICK FIND -->
-<div class="quick-find">
-  <div class="quick-find-item">
-    <span class="quick-find-label">Hours</span>
-    <span class="quick-find-value">Mon–Fri 11am–5:30pm</span>
+<!-- PRESS STRIP -->
+<div class="press-strip">
+  <p>"Canada's last great used bookstore."</p>
+  <span>— Maclean's Magazine</span>
+</div>
+
+<!-- INFO STRIP -->
+<div class="info-strip">
+  <div class="info-item">
+    <span class="info-label">Hours</span>
+    <span class="info-value">Monday – Sunday, 11AM – 5:30PM</span>
   </div>
-  <div class="qf-divider"></div>
-  <div class="quick-find-item">
-    <span class="quick-find-label">Saturday</span>
-    <span class="quick-find-value">11am–6pm</span>
+  <div class="info-item">
+    <span class="info-label">Address</span>
+    <span class="info-value"><a href="https://www.google.com/maps/place/MacLeod%27s+Books/@49.2834012,-123.1126481" target="_blank" rel="noopener">455 W Pender St, Vancouver, BC</a></span>
   </div>
-  <div class="qf-divider"></div>
-  <div class="quick-find-item">
-    <span class="quick-find-label">Sunday</span>
-    <span class="quick-find-value">11am–5:30pm</span>
-  </div>
-  <div class="qf-divider"></div>
-  <div class="quick-find-item">
-    <span class="quick-find-label">Address</span>
-    <span class="quick-find-value"><a href="https://maps.google.com/maps?q=MacLeod%27s+Books+Vancouver" target="_blank" rel="noopener">455 W Pender St at Richards</a></span>
-  </div>
-  <div class="qf-divider"></div>
-  <div class="quick-find-item">
-    <span class="quick-find-label">Phone</span>
-    <span class="quick-find-value"><a href="tel:+16046817654">(604) 681-7654</a></span>
+  <div class="info-item">
+    <span class="info-label">Phone</span>
+    <span class="info-value"><a href="tel:+16046817654">(604) 681-7654</a></span>
   </div>
 </div>
 
-<!-- ABOUT -->
-<section class="about" id="about">
-  <div class="content-col">
-    <span class="section-label reveal">The Shop</span>
-    <div class="about-inner">
-      <div class="about-text">
-        <h2 class="reveal">A warren of books. Since 1964.</h2>
-        <p class="reveal reveal-delay-1">Floor-to-ceiling shelves. A basement with more. Rare ephemera and the childhood classic you've been hunting for years. MacLeod's is not curated. It's everything, organized by people who've been doing this for 60 years.</p>
-        <p class="reveal reveal-delay-2">Members of ABAC and ILAB: the antiquarian booksellers' professional associations. We buy, sell, and appraise. If what you have is worth something, we'll tell you what.</p>
-        <p class="reveal reveal-delay-3">1,103 Google reviews. No website until tonight.</p>
+<!-- COLLECTION -->
+<section class="collection" id="collection">
+  <div class="section-inner">
+    <p class="section-label reveal">The Collection</p>
+    <h2 class="collection-headline reveal">Rare ephemera to absolute classics.<br>Meticulously organized.</h2>
+    <p class="collection-body reveal">Floor-to-ceiling shelves. Tight aisles. 1,105 reviews from people who found exactly what they were looking for. We also buy: if you have books worth selling, bring them in.</p>
+    <div class="collection-grid reveal-stagger">
+      <div class="collection-card">
+        <h3 class="collection-card-title">Rare &amp; Antiquarian</h3>
+        <p class="collection-card-text">Books from generations past. First editions, illustrated volumes, out-of-print titles you won't find anywhere else.</p>
       </div>
-      <div class="about-image reveal">
-        <img src="open-book.jpg" alt="Open pages, warm light — a book at MacLeod's">
+      <div class="collection-card">
+        <h3 class="collection-card-title">Indigenous Authors</h3>
+        <p class="collection-card-text">One of Vancouver's deepest selections of books by Indigenous writers across fiction, history, and memoir.</p>
+      </div>
+      <div class="collection-card">
+        <h3 class="collection-card-title">Philosophy &amp; Ideas</h3>
+        <p class="collection-card-text">A serious philosophy section alongside queer literature, European avant-garde, arts, music history, and more.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- WHAT'S HERE -->
-<section class="whats-here" id="whats-here">
-  <div class="content-col">
-    <span class="section-label reveal">What's Here</span>
-    <h2 class="reveal">Rare finds. Cheap classics. Everything in between.</h2>
-    <p class="whats-here-intro reveal reveal-delay-1">We don't do a curated selection of 200 titles. We do the whole thing: floor to ceiling, basement included. No online catalog. Call ahead to check specific titles.</p>
-
-    <div class="categories-list">
-      <div class="category-item reveal">
-        <span class="category-num">—</span>
-        <span class="category-name">Rare & Antiquarian</span>
-        <span class="category-desc">First editions, out-of-print titles, valuable finds. We appraise. We know what we have, and we price accordingly.</span>
-      </div>
-      <div class="category-item reveal reveal-delay-1">
-        <span class="category-num">—</span>
-        <span class="category-name">Indigenous Literature</span>
-        <span class="category-desc">An intentional collection: Indigenous Canadian voices, histories, and perspectives, maintained and respected.</span>
-      </div>
-      <div class="category-item reveal reveal-delay-2">
-        <span class="category-num">—</span>
-        <span class="category-name">Fiction & Literature</span>
-        <span class="category-desc">A 1960s Lord of the Rings. Last year's Booker winner. Everything between. Usually a fraction of cover price.</span>
-      </div>
-      <div class="category-item reveal">
-        <span class="category-num">—</span>
-        <span class="category-name">History & Non-Fiction</span>
-        <span class="category-desc">Vancouver history, world events, science, philosophy. Deep shelves, deep subjects.</span>
-      </div>
-      <div class="category-item reveal reveal-delay-1">
-        <span class="category-num">—</span>
-        <span class="category-name">Children's Books</span>
-        <span class="category-desc">The ones you remember. The ones you want your kids to find. Priced to actually be given away.</span>
-      </div>
-      <div class="category-item reveal reveal-delay-2">
-        <span class="category-num">—</span>
-        <span class="category-name">Art, Architecture & Design</span>
-        <span class="category-desc">Monographs, catalogues, reference. Occasionally something rare surfaces. Come look.</span>
-      </div>
+<!-- GALLERY — full-bleed editorial moment -->
+<section class="gallery-fullbleed" aria-label="The atmosphere">
+  <div class="gallery-fullbleed-inner">
+    <img src="books-stack.jpg" alt="Stacked vintage books in warm amber light" class="gallery-fullbleed-img">
+    <div class="gallery-fullbleed-overlay">
+      <blockquote class="gallery-quote reveal">
+        <p>"The awe of seeing a glimpse of ancient printing or art is phenomenal."</p>
+        <cite>Via Google Reviews</cite>
+      </blockquote>
     </div>
-
-
-
-
   </div>
 </section>
 
 <!-- REVIEWS -->
 <section class="reviews" id="reviews">
-  <div class="content-col">
-    <span class="section-label reveal">What People Say</span>
-    <h2 class="reveal">1,103 reviews. A few are below.</h2>
-    <p class="reviews-count reveal reveal-delay-1">4.6 stars on Google · Downtown Vancouver</p>
-
-    <div class="review-list">
-      <div class="review-item reveal">
-        <p class="review-quote">"A literal maze of meticulously organized books ranging from rare ephemera to absolute classics. Staff very helpful."</p>
+  <div class="section-inner">
+    <p class="section-label reveal">What People Say</p>
+    <h2 class="reviews-headline reveal">4.6 stars. <strong style="color: var(--amber-light);">1,105 reviews.</strong></h2>
+    <p class="reviews-meta reveal">From the Google listing</p>
+    <div class="reviews-stack reveal">
+      <div class="review-item">
+        <p class="review-text">A literal maze of meticulously organized books ranging from rare ephemera to absolute classics. The staff are very helpful in navigating the stacks.</p>
         <div class="review-meta">
-          <span class="review-author">Google Review</span>
-          <div class="review-sep"></div>
-          <span class="stars">★★★★★</span>
-          <div class="review-sep"></div>
-          <span class="review-source">Via Google · 5 Stars</span>
+          <span class="review-source">Via Google Reviews</span>
+          <span class="review-date">February 2026</span>
         </div>
       </div>
-      <div class="review-item reveal">
-        <p class="review-quote">"The place is a warren, and sometimes you need to dig a little before you find a gem, but it is worth the effort."</p>
+      <div class="review-item">
+        <p class="review-text">Packed from floor to ceiling with books of all kinds. Cozy, old-school charm. You can spend hours browsing rare finds and vintage editions.</p>
         <div class="review-meta">
-          <span class="review-author">TripAdvisor Review</span>
-          <div class="review-sep"></div>
-          <span class="stars">★★★★★</span>
-          <div class="review-sep"></div>
-          <span class="review-source">Via TripAdvisor · 5 Stars</span>
+          <span class="review-source">Via Google Reviews</span>
+          <span class="review-date">October 2025</span>
         </div>
       </div>
-      <div class="review-item reveal">
-        <p class="review-quote">"I have been visiting MacLeod's since I was a teenager. Whenever I'm in town I make it a point to visit. I never fail to come away with some delightful treasure."</p>
+      <div class="review-item">
+        <p class="review-text">The owner Don is very helpful when it comes to finding what you need. If you're searching for used books at a fair price and old-time vibe, this is the place.</p>
         <div class="review-meta">
-          <span class="review-author">TripAdvisor Review</span>
-          <div class="review-sep"></div>
-          <span class="stars">★★★★★</span>
-          <div class="review-sep"></div>
-          <span class="review-source">Via TripAdvisor · 5 Stars</span>
+          <span class="review-source">Via Google Reviews</span>
+          <span class="review-date">December 2025</span>
         </div>
       </div>
     </div>
@@ -881,51 +831,36 @@
 
 <!-- VISIT -->
 <section class="visit" id="visit">
-  <div class="content-col">
-    <span class="section-label reveal">Find Us</span>
-    <div class="visit-inner">
+  <div class="section-inner">
+    <div class="visit-grid">
       <div>
-        <h2 class="reveal">We've been at 455 W Pender since 1964.</h2>
-        <div class="visit-details">
-          <div class="visit-detail-group reveal">
-            <span class="visit-detail-label">Address</span>
-            <div class="visit-detail-value">
-              <a href="https://maps.google.com/maps?q=MacLeod%27s+Books+Vancouver&cid=0" target="_blank" rel="noopener">
-                455 W Pender St<br>
-                Vancouver, BC V6B 1V2<br>
-                At Richards St, Downtown
-              </a>
-            </div>
+        <h2 class="visit-headline reveal">Downtown Vancouver.<br>Open every day.</h2>
+        <div class="visit-details reveal">
+          <div class="visit-detail-group">
+            <label>Hours</label>
+            <p>Monday – Sunday<br>11:00 AM – 5:30 PM</p>
           </div>
-          <div class="visit-detail-group reveal reveal-delay-1">
-            <span class="visit-detail-label">Hours</span>
-            <div class="visit-detail-value">
-              <div class="hours-row"><span class="hours-day">Mon–Fri</span><span class="hours-time">11am–5:30pm</span></div>
-              <div class="hours-row"><span class="hours-day">Saturday</span><span class="hours-time">11am–6pm</span></div>
-              <div class="hours-row"><span class="hours-day">Sunday</span><span class="hours-time">11am–5:30pm</span></div>
-              <div class="hours-row"><span class="hours-day">Holidays</span><span class="hours-time">12pm–5pm</span></div>
-            </div>
+          <div class="visit-detail-group">
+            <label>Address</label>
+            <p><a href="https://www.google.com/maps/place/MacLeod%27s+Books/@49.2834012,-123.1126481,14z" target="_blank" rel="noopener">455 W Pender St<br>Vancouver, BC V6B 2Z3</a></p>
           </div>
-          <div class="visit-detail-group reveal reveal-delay-2">
-            <span class="visit-detail-label">Phone</span>
-            <div class="visit-detail-value">
-              <a href="tel:+16046817654">(604) 681-7654</a>
-            </div>
+          <div class="visit-detail-group">
+            <label>Phone</label>
+            <p><a href="tel:+16046817654">(604) 681-7654</a></p>
           </div>
-          <div class="visit-detail-group reveal reveal-delay-3">
-            <span class="visit-detail-label">Selling Books?</span>
-            <div class="visit-detail-value">We buy, sell, and appraise. Call ahead for large collections or a quote.</div>
+          <div class="visit-detail-group">
+            <label>Transit</label>
+            <p>Near Burrard and Granville SkyTrain stations. Multiple bus routes on Pender.</p>
           </div>
-        </div>
-        <div class="reveal" style="margin-top: 40px;">
-          <img src="shelf-detail.jpg" alt="Floor-to-ceiling bookshelves at MacLeod's" style="width:100%; max-height:240px; object-fit:cover; display:block;">
         </div>
       </div>
-      <div class="cta-section reveal">
-        <h3>Canada's last great used bookstore. Come see for yourself.</h3>
-        <a href="https://maps.google.com/maps?q=MacLeod%27s+Books+Vancouver&cid=0" target="_blank" rel="noopener" class="btn-primary">Get Directions</a>
-        <br>
-        <a href="tel:+16046817654" class="btn-outline">Call (604) 681-7654</a>
+      <div class="map-wrapper reveal">
+        <iframe
+          src="https://maps.google.com/maps?q=MacLeod%27s+Books+455+W+Pender+St+Vancouver+BC&output=embed"
+          loading="lazy"
+          title="MacLeod's Books location map"
+          allowfullscreen>
+        </iframe>
       </div>
     </div>
   </div>
@@ -933,105 +868,37 @@
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-inner">
-    <div>
-      <div class="footer-name">MacLeod's Books</div>
-      <div class="footer-tagline">Used & Rare Books · Bought · Sold · Appraised</div>
-    </div>
-    <ul class="footer-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#whats-here">Collections</a></li>
-      <li><a href="#visit">Visit</a></li>
-    </ul>
-  </div>
-  <p class="footer-abac">Member: ABAC (Antiquarian Booksellers' Association of Canada) · ILAB (International League of Antiquarian Booksellers) · Est. 1964</p>
+  <span class="footer-name">MacLeod's Books</span>
+  <span class="footer-copy">455 W Pender St, Vancouver · (604) 681-7654</span>
 </footer>
 
 <script>
-  // Nav scroll
-  const nav = document.getElementById('main-nav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 60);
-  }, { passive: true });
-
-  // Mobile menu
-  const toggle = document.getElementById('nav-toggle');
-  const menu = document.getElementById('mobile-menu');
-  toggle.addEventListener('click', () => {
-    menu.classList.toggle('open');
-  });
-  document.querySelectorAll('.mobile-link').forEach(link => {
-    link.addEventListener('click', () => menu.classList.remove('open'));
+  // Hero loaded state
+  window.addEventListener('load', () => {
+    document.body.classList.add('loaded');
   });
 
-  // Hero entrance stagger
-  const heroContent = document.querySelector('.hero-content');
-  if (heroContent) {
-    heroContent.querySelectorAll('.hero-eyebrow, .hero-headline, .hero-attribution, .hero-cta').forEach((el, i) => {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(20px)';
-      el.style.transition = `opacity 700ms cubic-bezier(0.23,1,0.32,1) ${i * 120}ms, transform 700ms cubic-bezier(0.23,1,0.32,1) ${i * 120}ms`;
-      requestAnimationFrame(() => requestAnimationFrame(() => {
-        el.style.opacity = '1';
-        el.style.transform = 'none';
-      }));
-    });
-  }
-
-  // Quick-find bar entrance
-  const qfItems = document.querySelectorAll('.quick-find-item');
-  qfItems.forEach((el, i) => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(10px)';
-    el.style.transition = `opacity 500ms cubic-bezier(0.23,1,0.32,1) ${300 + i * 60}ms, transform 500ms cubic-bezier(0.23,1,0.32,1) ${300 + i * 60}ms`;
-    requestAnimationFrame(() => requestAnimationFrame(() => {
-      el.style.opacity = '1';
-      el.style.transform = 'none';
-    }));
+  // Hamburger
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+  });
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => navLinks.classList.remove('open'));
   });
 
-  // Scroll reveals — staggered for sibling groups
-  const reveals = document.querySelectorAll('.reveal');
+  // Scroll reveal
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        observer.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.06, rootMargin: '0px 0px -32px 0px' });
-  reveals.forEach(el => observer.observe(el));
-
-  // Review items: stagger on first trigger
-  const reviewItems = document.querySelectorAll('.review-item');
-  const reviewObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        reviewItems.forEach((item, i) => {
-          setTimeout(() => item.classList.add('visible'), i * 80);
-          observer.unobserve(item);
-        });
-        reviewObserver.disconnect();
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.1 });
-  if (reviewItems.length) reviewObserver.observe(reviewItems[0]);
+  }, { threshold: 0.12 });
 
-  // Category cards stagger
-  const categoryItems = document.querySelectorAll('.category-item');
-  const catObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        categoryItems.forEach((item, i) => {
-          setTimeout(() => item.classList.add('visible'), i * 60);
-          catObserver.unobserve(item);
-        });
-        catObserver.disconnect();
-      }
-    });
-  }, { threshold: 0.05 });
-  if (categoryItems.length) catObserver.observe(categoryItems[0]);
+  document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => observer.observe(el));
 </script>
-
 </body>
 </html>

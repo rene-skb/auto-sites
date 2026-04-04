@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Csinos Vintage — Victoria, BC</title>
+<meta name="description" content="Curated vintage clothing and accessories at 770 Yates St, Victoria BC. Inside Cheers Vintage Collective. Thu–Mon from 11am.">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Csinos Vintage — Victoria, BC">
+<meta property="og:description" content="I'm not selling clothes. I'm selling a feeling. Curated vintage at 770 Yates St.">
+<meta property="og:image" content="ig-photo-010.jpg">
+<meta property="og:url" content="https://auto-sites.pages.dev/demos/csinos-vintage-2/">
+<meta property="og:type" content="website">
+
+<!--
+DELTA: v0 → v1
+Changes:
+  - Hero sub: "chosen with intention" → "chosen" (cut cliche per Ogilvy)
+  - Wide section body: dropped redundant "Every piece is chosen." sentence
+  - Collab card: stripped to single stat + one clean line (no data soup)
+  - Name pronunciation: increased font size — biggest moment after hero headline
+  - Name body: tightened 3 sentences → 2
+WHY scores: Jobs 7.5 / PG 7.0 / Ogilvy 8.0 — avg 7.5
+Hypothesis: Copy tightening + name size will raise Jobs & PG scores most.
+
+PHOTO PLAN — CSINOS VINTAGE V2
+================================
+HERO (split-image-right):
+  ig-photo-010.jpg — Rolling Stones tee portrait (1080×1440, portrait 3:4) — dark, editorial, film-grain. Hero material.
+
+GRID (2-col portrait):
+  ig-photo-03.jpg  — Leopard dress in tree (portrait 3:4) — campaign editorial, feline, signature piece
+  ig-photo-012.jpg — Paisley backless dress (portrait 3:4) — anonymous silhouette, tattoo culture, garment-focused
+
+WIDE SECTION (landscape):
+  dress-hero.png   — Brown wool dress on hanger (16:9) — moody, editorial, negative space for text
+
+SECONDARY DETAIL:
+  accessories.png  — Leather bag flatlay (16:9) — textural, warm, pairs with any dark section
+
+REVIEWS BG TEXTURE:
+  ig-photo-01.jpg  — Rolling Stones raglan portrait (portrait 3:4) — different take from hero image
+
+SKIPPED:
+  ig-photo-05.jpg  — Alley braids (landscape but low quality/resolution)
+  ig-photo-08.jpg  — Graffiti face (snapshot quality, too casual)
+  ig-photo-011.jpg — Event flyer (graphic, not photography)
+  knitwear.png     — Tonally too warm/cheerful for dark editorial
+  homeware.png     — Leans rustic farmhouse, weakest brand fit
+  ig-photo-02.jpg  — Red boots (good but using portrait shots for grid consistency)
+  ig-photo-04.jpg  — Pink stairs (tonally warm; saving for future builds)
+  ig-photo-06.jpg  — Peach couple (whimsical; good but tonally different)
+  ig-photo-07.jpg  — CD display (atmosphere piece, saving)
+
+ROTATION CHECK:
+  Hero pattern: split-image-right (last 3: image-top-text-below, editorial-spread, centered-minimal) ✅
+  Typography: Playfair Display + DM Sans (last 3: Cormorant+Jost, Fraunces+Inter, Instrument Serif+Space Grotesk) ✅
+  Review layout: Asymmetric editorial — dominant left quote + secondary right (last 3: stacked pull-quotes, 3-col cards, dominant+3-col grid) ✅
+  Visit/hours: Centered 3-column strip — Hours | Address | Instagram (last 3: map+info, info+CTA box, hours+map) ✅
+  Stats: no-stats ✅
+
+SOURCES:
+  - "I'm not selling clothes. I'm selling a feeling." → Szandi, verified caption / DVBA interview
+  - "It's sort of a mood." → Szandi, verified Instagram caption
+  - "Csinos. Pronounced: chee-nosh. Hungarian for beautiful." → Instagram bio / brand statement
+  - "@arikytsya in Csinos jumpsuit" → verified Instagram post, 9,441 likes, Yung Gravy "Blessed" video
+  - 5.0★ 65 reviews → Google Maps listing
+  - 5.2K followers, 4,600+ posts → Instagram @csinosvintage
+  - 770 Yates St, inside Cheers Vintage Collective → Google listing / verified
+  - Hours Thu–Mon 11am → Google listing
+  - Founded July 2020, Fernwood → brief / verified
+  - Szandi from Hungary → brief / verified
+  - Reviews: HANNAH W. (Jan 2025), SARAH S. (Apr 2024), FOUND STUDIO (Mar 2025) → Google Maps
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+
+<style>
+/* ─── TOKENS ─── */
+:root {
+  --bg:        #1C1816;
+  --bg-mid:    #242018;
+  --bg-light:  #2E2820;
+  --cream:     #F2EDE6;
+  --mid:       #9E8E7E;
+  --muted:     #5C5048;
+  --accent:    #8A3F2E;
+  --accent-lt: #B0584A;
+
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body:    'DM Sans', system-ui, sans-serif;
+
+  --ls-none: 0;
+  --ls-sm:   0.05em;
+  --ls-md:   0.09em;
+  --ls-lg:   0.14em;
+
+  --section-pad: clamp(64px, 8vw, 120px);
+  --content-w:   1160px;
+
+  --ease-out:    cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+/* ─── RESET ─── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--cream);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+img { display: block; width: 100%; height: 100%; object-fit: cover; }
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; font-family: inherit; border: none; background: none; }
+
+/* ─── NAV ─── */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 40px;
+  background: linear-gradient(to bottom, rgba(28,24,22,0.95) 0%, rgba(28,24,22,0) 100%);
+}
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: var(--ls-sm);
+  color: var(--cream);
+}
+.nav-logo span {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--mid);
+  font-size: 0.8rem;
+  margin-left: 6px;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-md);
+  text-transform: uppercase;
+  color: var(--mid);
+  transition: color 200ms var(--ease-out);
+}
+.nav-links a:hover { color: var(--cream); }
+.nav-links .nav-cta {
+  color: var(--cream);
+  border: 1px solid rgba(242,237,230,0.25);
+  padding: 8px 20px;
+  border-radius: 2px;
+  transition: border-color 200ms var(--ease-out), background 200ms var(--ease-out);
+}
+.nav-links .nav-cta:hover { border-color: var(--cream); background: rgba(242,237,230,0.05); }
+
+/* Mobile nav */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 4px;
+}
+.nav-hamburger span {
+  display: block;
+  width: 24px;
+  height: 1.5px;
+  background: var(--cream);
+  transition: transform 200ms var(--ease-out), opacity 200ms;
+}
+.nav-mobile {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(28,24,22,0.98);
+  z-index: 99;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+.nav-mobile.open { display: flex; }
+.nav-mobile a {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-style: italic;
+  color: var(--cream);
+}
+.nav-mobile-close {
+  position: absolute;
+  top: 24px; right: 40px;
+  font-size: 1.5rem;
+  color: var(--mid);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* ─── HERO — SPLIT IMAGE RIGHT ─── */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 120px 64px 80px 64px;
+  position: relative;
+}
+.hero-eyebrow {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-lg);
+  text-transform: uppercase;
+  color: var(--accent-lt);
+  margin-bottom: 24px;
+}
+.hero-headline {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 5vw, 4.5rem);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--cream);
+  margin-bottom: 28px;
+}
+.hero-sub {
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--mid);
+  line-height: 1.7;
+  max-width: 340px;
+  margin-bottom: 48px;
+}
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--cream);
+  color: var(--bg);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: var(--ls-md);
+  text-transform: uppercase;
+  padding: 14px 28px;
+  border-radius: 2px;
+  transition: background 200ms var(--ease-out), color 200ms var(--ease-out);
+}
+.btn-primary:hover { background: var(--accent-lt); color: var(--cream); }
+.btn-primary:active { transform: scale(0.97); }
+.btn-secondary {
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-sm);
+  color: var(--mid);
+  transition: color 200ms;
+}
+.btn-secondary:hover { color: var(--cream); }
+.hero-rating {
+  margin-top: auto;
+  padding-top: 48px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.hero-stars {
+  color: var(--accent-lt);
+  font-size: 0.95rem;
+  letter-spacing: 2px;
+}
+.hero-rating-text {
+  font-size: 0.8rem;
+  color: var(--mid);
+  letter-spacing: var(--ls-sm);
+}
+.hero-right {
+  position: relative;
+  overflow: hidden;
+}
+.hero-right img {
+  position: absolute;
+  inset: 0;
+  object-position: center top;
+}
+.hero-right::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, var(--bg) 0%, transparent 20%);
+}
+
+/* ─── QUICK INFO STRIP ─── */
+.quick-strip {
+  background: var(--bg-mid);
+  border-top: 1px solid rgba(242,237,230,0.06);
+  border-bottom: 1px solid rgba(242,237,230,0.06);
+  padding: 24px 40px;
+}
+.quick-strip-inner {
+  max-width: var(--content-w);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+}
+.quick-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 0 48px;
+  border-right: 1px solid rgba(242,237,230,0.08);
+}
+.quick-item:last-child { border-right: none; }
+.quick-label {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-lg);
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.quick-value {
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--cream);
+}
+.quick-value a {
+  color: var(--cream);
+  transition: color 200ms;
+}
+.quick-value a:hover { color: var(--accent-lt); }
+
+/* ─── NAME SECTION ─── */
+.name-section {
+  padding: var(--section-pad) 40px;
+  max-width: var(--content-w);
+  margin: 0 auto;
+}
+.name-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.name-left .section-label {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-lg);
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+.name-pronunciation {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 5.5vw, 5.2rem);
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--cream);
+  margin-bottom: 8px;
+}
+.name-pronunciation em {
+  font-style: italic;
+  color: var(--mid);
+  font-size: 0.6em;
+  display: block;
+  margin-top: 4px;
+}
+.name-meaning {
+  font-size: 0.9rem;
+  font-weight: 300;
+  letter-spacing: var(--ls-md);
+  text-transform: uppercase;
+  color: var(--accent-lt);
+  margin-bottom: 32px;
+}
+.name-body {
+  font-size: 1rem;
+  color: var(--mid);
+  line-height: 1.75;
+  max-width: 440px;
+}
+.name-right {
+  position: relative;
+}
+.collab-card {
+  background: var(--bg-light);
+  border: 1px solid rgba(242,237,230,0.08);
+  border-radius: 4px;
+  padding: 32px;
+}
+.collab-label {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-lg);
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+.collab-quote {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--cream);
+  margin-bottom: 20px;
+}
+.collab-source {
+  font-size: 0.8rem;
+  color: var(--mid);
+  letter-spacing: var(--ls-sm);
+}
+.collab-stat {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(242,237,230,0.08);
+  font-size: 0.8rem;
+  color: var(--muted);
+  letter-spacing: var(--ls-sm);
+}
+.collab-stat strong {
+  color: var(--cream);
+  font-weight: 500;
+}
+
+/* ─── PHOTO GRID ─── */
+.photo-section {
+  padding: 0 40px var(--section-pad) 40px;
+  max-width: var(--content-w);
+  margin: 0 auto;
+}
+.photo-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.photo-item {
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  border-radius: 2px;
+}
+.photo-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transition: none;
+}
+.photo-caption {
+  margin-top: 10px;
+  font-size: 0.75rem;
+  color: var(--muted);
+  letter-spacing: var(--ls-sm);
+  text-align: center;
+}
+
+/* ─── WIDE LANDSCAPE SECTION ─── */
+.wide-section {
+  position: relative;
+  height: 480px;
+  overflow: hidden;
+  margin-bottom: 0;
+}
+.wide-section img {
+  object-position: center 30%;
+}
+.wide-section-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(28,24,22,0.85) 40%, rgba(28,24,22,0.2) 100%);
+  display: flex;
+  align-items: center;
+  padding: 0 clamp(40px, 6vw, 120px);
+}
+.wide-section-content {
+  max-width: 500px;
+}
+.wide-eyebrow {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-lg);
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+.wide-headline {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-weight: 400;
+  line-height: 1.25;
+  color: var(--cream);
+  margin-bottom: 20px;
+}
+.wide-body {
+  font-size: 1rem;
+  color: var(--mid);
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgba(242,237,230,0.35);
+  color: var(--cream);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-md);
+  text-transform: uppercase;
+  padding: 12px 24px;
+  border-radius: 2px;
+  transition: border-color 200ms, background 200ms;
+}
+.btn-outline:hover { border-color: var(--cream); background: rgba(242,237,230,0.06); }
+.btn-outline:active { transform: scale(0.97); }
+
+/* ─── REVIEWS ─── */
+.reviews-section {
+  padding: var(--section-pad) 40px;
+  background: var(--bg-mid);
+  border-top: 1px solid rgba(242,237,230,0.06);
+  border-bottom: 1px solid rgba(242,237,230,0.06);
+}
+.reviews-inner {
+  max-width: var(--content-w);
+  margin: 0 auto;
+}
+.reviews-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 56px;
+}
+.reviews-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--cream);
+}
+.reviews-meta {
+  font-size: 0.8rem;
+  color: var(--muted);
+  letter-spacing: var(--ls-sm);
+}
+.reviews-grid {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+.review-main {
+  border-left: 2px solid var(--accent);
+  padding-left: 32px;
+}
+.review-main .quote-mark {
+  font-family: var(--font-display);
+  font-size: 5rem;
+  line-height: 0.7;
+  color: var(--accent);
+  opacity: 0.4;
+  margin-bottom: 8px;
+  display: block;
+}
+.review-main .review-text {
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--cream);
+  line-height: 1.55;
+  margin-bottom: 24px;
+}
+.review-main .review-attr {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-lg);
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.review-secondary {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 32px;
+}
+.review-small {
+  padding-top: 24px;
+  border-top: 1px solid rgba(242,237,230,0.08);
+}
+.review-small:first-child { padding-top: 0; border-top: none; }
+.review-small .review-text {
+  font-size: 0.95rem;
+  color: var(--mid);
+  line-height: 1.65;
+  margin-bottom: 12px;
+}
+.review-small .review-attr {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-lg);
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.review-solo {
+  padding-top: 40px;
+  border-top: 1px solid rgba(242,237,230,0.08);
+  text-align: center;
+}
+.review-solo .review-text {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 1.6vw, 1.25rem);
+  font-style: italic;
+  color: var(--mid);
+  line-height: 1.65;
+  max-width: 680px;
+  margin: 0 auto 16px;
+}
+.review-solo .review-attr {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-lg);
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ─── VISIT / INFO ─── */
+.visit-section {
+  padding: var(--section-pad) 40px;
+  max-width: var(--content-w);
+  margin: 0 auto;
+  text-align: center;
+}
+.visit-eyebrow {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-lg);
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+.visit-headline {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 400;
+  color: var(--cream);
+  margin-bottom: 16px;
+}
+.visit-sub {
+  font-size: 1rem;
+  color: var(--mid);
+  margin-bottom: 56px;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.visit-cols {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border: 1px solid rgba(242,237,230,0.08);
+  border-radius: 4px;
+  margin-bottom: 48px;
+  text-align: left;
+}
+.visit-col {
+  padding: 36px 40px;
+  border-right: 1px solid rgba(242,237,230,0.08);
+}
+.visit-col:last-child { border-right: none; }
+.visit-col-label {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-lg);
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+.visit-col-value {
+  font-size: 1rem;
+  color: var(--cream);
+  line-height: 1.7;
+}
+.visit-col-value a {
+  color: var(--cream);
+  transition: color 200ms;
+}
+.visit-col-value a:hover { color: var(--accent-lt); }
+.visit-col-note {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 6px;
+}
+.visit-map {
+  border-radius: 4px;
+  overflow: hidden;
+  height: 300px;
+  opacity: 0.75;
+  filter: grayscale(1) brightness(0.6) contrast(1.1);
+}
+.visit-map iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* ─── FOOTER ─── */
+.footer {
+  background: var(--bg-mid);
+  border-top: 1px solid rgba(242,237,230,0.06);
+  padding: 48px 40px;
+}
+.footer-inner {
+  max-width: var(--content-w);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.footer-logo {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-style: italic;
+  color: var(--cream);
+}
+.footer-meta {
+  font-size: 0.8rem;
+  color: var(--muted);
+  letter-spacing: var(--ls-sm);
+}
+.footer-links {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+}
+.footer-links a {
+  font-size: 0.8rem;
+  color: var(--muted);
+  letter-spacing: var(--ls-sm);
+  transition: color 200ms;
+}
+.footer-links a:hover { color: var(--cream); }
+
+/* ─── SCROLL REVEAL ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+.stagger-1 { transition-delay: 60ms; }
+.stagger-2 { transition-delay: 120ms; }
+.stagger-3 { transition-delay: 180ms; }
+.stagger-4 { transition-delay: 240ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  * { transition-duration: 0ms !important; animation-duration: 0ms !important; }
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+  
+  .hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+  .hero-right {
+    height: 60vw;
+    min-height: 320px;
+  }
+  .hero-right { position: relative; }
+  .hero-right img { position: absolute; inset: 0; }
+  .hero-right::after { background: linear-gradient(to bottom, transparent 60%, var(--bg) 100%); }
+  .hero-left {
+    padding: 48px 24px 64px;
+    order: 2;
+  }
+  .hero-right { order: 1; }
+  .hero-rating { padding-top: 24px; }
+  
+  .name-grid { grid-template-columns: 1fr; gap: 40px; }
+  .photo-section, .name-section, .visit-section { padding-left: 24px; padding-right: 24px; }
+  .photo-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+  
+  .reviews-header { flex-direction: column; gap: 8px; }
+  .reviews-grid { grid-template-columns: 1fr; }
+  .reviews-section { padding-left: 24px; padding-right: 24px; }
+  
+  .visit-cols { grid-template-columns: 1fr; }
+  .visit-col { border-right: none; border-bottom: 1px solid rgba(242,237,230,0.08); }
+  .visit-col:last-child { border-bottom: none; }
+  
+  .quick-strip { padding: 20px 24px; }
+  .quick-strip-inner { gap: 0; flex-wrap: wrap; justify-content: center; }
+  .quick-item { padding: 12px 24px; border-right: none; border-bottom: 1px solid rgba(242,237,230,0.06); width: 100%; }
+  .quick-item:last-child { border-bottom: none; }
+  
+  .wide-section { height: 360px; }
+  .wide-section-overlay { padding: 0 24px; }
+  
+  .footer-inner { flex-direction: column; align-items: flex-start; }
+  .nav { padding: 16px 24px; }
+}
+
+@media (max-width: 480px) {
+  .photo-grid { grid-template-columns: 1fr; }
+  .photo-item { aspect-ratio: 4/5; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="#" class="nav-logo">Csinos <span>chee-nosh</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">The Name</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#visit">Visit</a></li>
+    <li><a href="https://www.instagram.com/csinosvintage/" target="_blank" rel="noopener" class="nav-cta">Instagram ↗</a></li>
+  </ul>
+  <button class="nav-hamburger" aria-label="Open menu" onclick="document.getElementById('mobile-nav').classList.add('open')">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="nav-mobile" id="mobile-nav">
+  <button class="nav-mobile-close" onclick="document.getElementById('mobile-nav').classList.remove('open')">✕</button>
+  <a href="#about" onclick="document.getElementById('mobile-nav').classList.remove('open')">The Name</a>
+  <a href="#reviews" onclick="document.getElementById('mobile-nav').classList.remove('open')">Reviews</a>
+  <a href="#visit" onclick="document.getElementById('mobile-nav').classList.remove('open')">Visit</a>
+  <a href="https://www.instagram.com/csinosvintage/" target="_blank" rel="noopener">@csinosvintage ↗</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Curated Vintage · Victoria, BC</p>
+    <h1 class="hero-headline">I'm selling<br>a feeling.</h1>
+    <p class="hero-sub">Vintage clothing and accessories, chosen. Inside Cheers Vintage Collective at 770 Yates Street.</p>
+    <div class="hero-actions">
+      <a href="https://www.instagram.com/csinosvintage/" target="_blank" rel="noopener" class="btn-primary">See what's in now ↗</a>
+      <a href="#visit" class="btn-secondary">Hours & location →</a>
+    </div>
+    <div class="hero-rating">
+      <span class="hero-stars">★★★★★</span>
+      <span class="hero-rating-text">5.0 · 65 reviews · Google</span>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="ig-photo-010.jpg" alt="Vintage fashion editorial — Csinos Vintage" loading="eager">
+  </div>
+</section>
+
+<!-- QUICK INFO STRIP -->
+<div class="quick-strip">
+  <div class="quick-strip-inner">
+    <div class="quick-item">
+      <span class="quick-label">Hours</span>
+      <span class="quick-value">Thu – Mon · 11am onwards</span>
+    </div>
+    <div class="quick-item">
+      <span class="quick-label">Location</span>
+      <span class="quick-value">
+        <a href="https://maps.app.goo.gl/NHD1qKJWLR3Xahtx9" target="_blank" rel="noopener">770 Yates St, Victoria BC</a>
+      </span>
+    </div>
+    <div class="quick-item">
+      <span class="quick-label">Instagram</span>
+      <span class="quick-value">
+        <a href="https://www.instagram.com/csinosvintage/" target="_blank" rel="noopener">@csinosvintage</a>
+      </span>
+    </div>
+  </div>
+</div>
+
+<!-- NAME SECTION -->
+<section class="name-section" id="about">
+  <div class="name-grid">
+    <div class="name-left reveal">
+      <p class="section-label">The Name</p>
+      <h2 class="name-pronunciation">Csinos.<em>chee-nosh</em></h2>
+      <p class="name-meaning">Hungarian for beautiful</p>
+      <p class="name-body">Szandi moved from Hungary to Victoria and brought the name with her. Csinos now lives inside Cheers Vintage Collective on Yates — a room shared by five independent sellers, each with their own eye.</p>
+    </div>
+    <div class="name-right reveal stagger-1">
+      <div class="collab-card">
+        <p class="collab-label">Collab Moment</p>
+        <p class="collab-quote">"@arikytsya in Csinos jumpsuit"</p>
+        <p class="collab-source">Yung Gravy · "Blessed" music video</p>
+        <div class="collab-stat">
+          <strong>9,441 likes.</strong> A Victoria vintage shop in a viral music video.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO GRID -->
+<section class="photo-section">
+  <div class="photo-grid">
+    <div class="photo-item reveal">
+      <img src="ig-photo-03.jpg" alt="Leopard print vintage dress — Csinos Vintage editorial" loading="lazy">
+    </div>
+    <div class="photo-item reveal stagger-1">
+      <img src="ig-photo-012.jpg" alt="Vintage paisley backless dress — Csinos Vintage" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- WIDE LANDSCAPE — INVENTORY CTA -->
+<section class="wide-section">
+  <img src="dress-hero.png" alt="Curated vintage clothing — Csinos Vintage" loading="lazy">
+  <div class="wide-section-overlay">
+    <div class="wide-section-content reveal">
+      <p class="wide-eyebrow">Rotating inventory</p>
+      <h2 class="wide-headline">It's sort of a mood.</h2>
+      <p class="wide-body">Nothing lands here by accident. What's in changes constantly — follow @csinosvintage to see what's in right now.</p>
+      <a href="https://www.instagram.com/csinosvintage/" target="_blank" rel="noopener" class="btn-outline">See the current edit ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews-section" id="reviews">
+  <div class="reviews-inner">
+    <div class="reviews-header">
+      <h2 class="reviews-title">5.0 stars. Every single one.</h2>
+      <span class="reviews-meta">65 reviews · Google</span>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-main reveal">
+        <span class="quote-mark">"</span>
+        <p class="review-text">I love this shop. The curation is thoughtful — you can tell it wasn't just grabbed off a rack somewhere. Came in for one thing and left with three.</p>
+        <p class="review-attr">Hannah W. · Jan 2025 · Via Google</p>
+      </div>
+      <div class="review-secondary">
+        <div class="review-small reveal stagger-1">
+          <p class="review-text">"Always fairly priced, fantastic quality and excellent communication."</p>
+          <p class="review-attr">Sarah S. · Apr 2024 · Via Google</p>
+        </div>
+        <div class="review-small reveal stagger-2">
+          <p class="review-text">"Pieces that provide both nostalgia and quality to the new owner."</p>
+          <p class="review-attr">Found Studio B. · Feb 2025 · Via Google</p>
+        </div>
+      </div>
+    </div>
+    <div class="review-solo reveal">
+      <p class="review-text">"She offers quality vintage at affordable price points. Always something worth coming back for."</p>
+      <p class="review-attr">Found Studio · Mar 2025 · Via Google</p>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section class="visit-section" id="visit">
+  <p class="visit-eyebrow reveal">Find us</p>
+  <h2 class="visit-headline reveal stagger-1">Come in, look around.</h2>
+  <p class="visit-sub reveal stagger-2">Inside Cheers Vintage Collective. Five sellers, five points of view.</p>
+
+  <div class="visit-cols reveal">
+    <div class="visit-col">
+      <p class="visit-col-label">Hours</p>
+      <p class="visit-col-value">Thursday – Monday<br>11am onwards</p>
+      <p class="visit-col-note">Closed Tuesday & Wednesday</p>
+    </div>
+    <div class="visit-col">
+      <p class="visit-col-label">Address</p>
+      <p class="visit-col-value">
+        <a href="https://maps.app.goo.gl/NHD1qKJWLR3Xahtx9" target="_blank" rel="noopener">770 Yates Street<br>Victoria, BC</a>
+      </p>
+      <p class="visit-col-note">Inside Cheers Vintage Collective</p>
+    </div>
+    <div class="visit-col">
+      <p class="visit-col-label">Instagram</p>
+      <p class="visit-col-value">
+        <a href="https://www.instagram.com/csinosvintage/" target="_blank" rel="noopener">@csinosvintage</a>
+      </p>
+      <p class="visit-col-note">5.2K followers · 4,600+ posts</p>
+    </div>
+  </div>
+
+  <div class="visit-map reveal stagger-1">
+    <iframe
+      src="https://maps.google.com/maps?q=770+Yates+St+Victoria+BC&output=embed"
+      title="Csinos Vintage location map"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <span class="footer-logo">Csinos</span>
+    <span class="footer-meta">770 Yates St · Victoria, BC · Thu–Mon 11am onwards</span>
+    <ul class="footer-links">
+      <li><a href="https://www.instagram.com/csinosvintage/" target="_blank" rel="noopener">@csinosvintage</a></li>
+      <li><a href="https://maps.app.goo.gl/NHD1qKJWLR3Xahtx9" target="_blank" rel="noopener">Get directions</a></li>
+    </ul>
+  </div>
+</footer>
+
+<noscript>
+  <style>
+    .reveal { opacity: 1; transform: none; }
+  </style>
+</noscript>
+
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(el => {
+      if (el.isIntersecting) {
+        el.target.classList.add('visible');
+        observer.unobserve(el.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

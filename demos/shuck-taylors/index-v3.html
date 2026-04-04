@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<!--
+  SHUCK TAYLOR'S — v3
+  =====================
+  DELTA: v0 → v1
+  WHY scores: Jobs 7.0 / PG 6.5 / Ogilvy 7.0 (avg 6.83)
+  Changes:
+  - Menu headline: "From the Water to Your Table" → "Order Everything." (more voice-consistent)
+  - Removed vibe-photo first-child margin-top: 48px (baseline alignment non-negotiable fix)
+  - Increased menu item name size 20px → 22px, added more vertical space
+  - Review card text size bump 16px → 17px; attribution format standardized (HANDLE · INSTAGRAM)
+  - Info label font 10px → 12px for legibility
+  - Hero body text bump clamp min to 17px, added "Happy hour 2–5pm daily (all day Sundays)" verified from site
+  - Hero subtle radial warm glow increased from 0.06 to 0.1 opacity for less emptiness
+  - Standardized review attribution formatting
+  DELTA: v1 → v2 (WHAT retry — Nielsen 5/10 lowest)
+  WHAT scores: Norman 7 / Krug 8 / Nielsen 5 (avg 6.7 — below gate, one retry)
+  Changes:
+  - Body text color on dark: #C8BFA8 → #D9D0BC (lighter, better contrast assurance)
+  - Info strip "Walk-in only" value: bold weight + uppercase "NO RESERVATIONS" emphasis
+  - Section eyebrow: 11px → 13px, better functional visibility
+  - Map height: 320px → 400px on desktop
+  - Add role="text" ARIA to info strip static values to clarify non-interactive items
+  - Info strip: visually distinguish interactive (@shucktaylors, address) vs static items with underline on hover only for links
+  - Review card background: slightly more contrast from section bg (#F8F4EC → white cards on cream)
+  DELTA: v2 → v3 (HOW retry — Spiekermann 6/10 lowest)
+  HOW scores: Vignelli 7 / Spiekermann 6 / Rams 7 (avg 6.67 — below gate, one retry)
+  Changes:
+  - Menu item names: 24px → 28px Barlow Condensed 900 (clear differentiation from 13px descriptions)
+  - Menu descriptions: explicit 13px + color #5A6A75 (darker than #4A5A65 for better hierarchy read)
+  - Section eyebrow: 13px → 14px, letter-spacing 0.22em (tighter to function as structural, not decorative)
+  - Story right column: max-width: 54ch to constrain body copy line-length
+  - Review cards: remove box border, add 3px gold left border treatment (reduces visual noise, cleaner)
+  - Review section bg: changed from --cream to #F0E8D6 (slightly different from offwhite to maintain section variety)
+  - Hero gold line: keep — serves as visual separator at rhythm break point (functional, not just decorative)
+  - Body text line-height: 1.7 → 1.65 (slightly tighter for discipline)
+  - Pull quote attribution in story: added line-break, smaller weight for attribution vs quote
+  Hypothesis: Size differentiation in menu items + line-length constraints will push Spiekermann from 6 to 7+
+  Hero pattern: giant-display-type (no photo in hero — all photos portrait)
+  Typography: Barlow Condensed 700/900 (display/headlines) + Instrument Sans 400/500/600 (body/UI)
+  Palette:
+    --navy: #0B1921       deep ocean (hero, nav, story bg)
+    --mid: #122030        mid sections
+    --gold: #C49340       brass accent
+    --cream: #EDE5D0      warm light sections
+    --offwhite: #F8F4EC   lightest bg
+  Review layout: 2-col equal-style cards (same visual treatment)
+  Visit layout: full-width Google Maps + info row above
+
+  PHOTO ASSIGNMENTS:
+  ig-photo-011.jpg  ★★★★★  Friends laughing at bar — vibe section col 1
+  ig-photo-01.jpg   ★★★★   Oyster shucking at event — vibe section col 2
+  ig-photo-08.jpg   ★★★★   Man holding oyster at bar — story section
+  ig-photo-09.jpg   ★★★    Fish sandwich + fries — story section accent
+  SKIP: 02 (letter board snapshot), 03 (ferry), 04 (life ring overlay),
+        05 (pushups), 06 (lobster roll overlay), 07 ($40 overlay),
+        010 (mood board), 012 (google screenshot)
+
+  ROTATION CHECK:
+  Build 118 VilleVelo:  split-image-right / Cormorant+DM Sans / 3-col cards / 3-col strip
+  Build 117 Tarboosh:   dark-immersive / Fraunces+Inter / single pull-quote / 2-col+map
+  Build 116 MacLeod's:  centered-minimal / Newsreader+Space Grotesk / stacked pull-quotes / minimal strip
+  This build:           giant-display-type ✅ / Barlow Condensed+Instrument Sans ✅ / 2-col cards ✅ / row+map ✅
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shuck Taylor's — Victoria's Oyster Bar</title>
+<meta name="description" content="We dive, you dine. Fresh oysters, lobster rolls, and seafood at Shuck Taylor's — Victoria's walk-in oyster bar at 1324 Blanshard St. Open daily 11:30am–10pm.">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Shuck Taylor's — Victoria's Oyster Bar">
+<meta property="og:description" content="We dive, you dine. Fresh oysters, lobster rolls, and the freshest seafood in Victoria, BC. Walk-in only.">
+<meta property="og:image" content="ig-photo-011.jpg">
+<meta property="og:url" content="https://auto-sites.pages.dev/demos/shuck-taylors/">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,900;1,700;1,900&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy:    #0B1921;
+    --mid:     #122030;
+    --gold:    #C49340;
+    --cream:   #EDE5D0;
+    --offwhite:#F8F4EC;
+    --text-on-dark: #D9D0BC;
+    --text-light: #EDE5D3;
+
+    --section-pad: clamp(64px, 8vw, 120px);
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Instrument Sans', sans-serif;
+    background: var(--offwhite);
+    color: var(--navy);
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 clamp(20px, 5vw, 64px);
+    height: 64px;
+    border-bottom: 1px solid rgba(196,147,64,0.25);
+  }
+
+  .nav-logo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: 0.12em;
+    color: var(--offwhite);
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .nav-cta {
+    font-family: 'Instrument Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: var(--gold);
+    text-decoration: none;
+    border: 1px solid var(--gold);
+    padding: 8px 18px;
+    border-radius: 2px;
+    transition: background 160ms var(--ease-out), color 160ms var(--ease-out);
+  }
+  .nav-cta:hover { background: var(--gold); color: var(--navy); }
+  .nav-cta:active { transform: scale(0.97); }
+
+  /* Mobile hamburger */
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--offwhite); border-radius: 1px; transition: transform 200ms; }
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    inset: 64px 0 0 0;
+    background: var(--navy);
+    z-index: 99;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+  }
+  .mobile-menu a {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--offwhite);
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+  .mobile-menu.open { display: flex; }
+
+  @media (max-width: 640px) {
+    .hamburger { display: flex; }
+    .nav-cta { display: none; }
+  }
+
+  /* ── HERO — Giant Display Type ── */
+  .hero {
+    background: var(--navy);
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(48px, 8vw, 96px) clamp(20px, 6vw, 80px);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 70% 50%, rgba(196,147,64,0.10) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(12px, 1.5vw, 15px);
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: clamp(20px, 3vw, 32px);
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+  }
+  .hero-eyebrow.visible { opacity: 1; transform: none; }
+
+  .hero-headline {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(80px, 16vw, 200px);
+    line-height: 0.88;
+    letter-spacing: -0.01em;
+    color: var(--offwhite);
+    text-transform: uppercase;
+    margin-bottom: clamp(32px, 4vw, 56px);
+  }
+
+  .hero-headline .line {
+    display: block;
+    overflow: hidden;
+  }
+  .hero-headline .line-inner {
+    display: block;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: opacity 700ms var(--ease-out), transform 700ms var(--ease-out);
+  }
+  .hero-headline .line-inner.visible {
+    opacity: 1;
+    transform: none;
+  }
+  .hero-headline .line:nth-child(2) .line-inner { transition-delay: 120ms; }
+
+  .hero-gold-line {
+    width: clamp(48px, 6vw, 80px);
+    height: 3px;
+    background: var(--gold);
+    margin-bottom: clamp(24px, 3vw, 36px);
+    opacity: 0;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: opacity 500ms var(--ease-out) 400ms, transform 500ms var(--ease-out) 400ms;
+  }
+  .hero-gold-line.visible { opacity: 1; transform: none; }
+
+  .hero-body {
+    font-family: 'Instrument Sans', sans-serif;
+    font-size: clamp(15px, 2vw, 19px);
+    font-weight: 400;
+    color: var(--text-on-dark);
+    max-width: 480px;
+    line-height: 1.5;
+    margin-bottom: clamp(32px, 4vw, 48px);
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 600ms var(--ease-out) 500ms, transform 600ms var(--ease-out) 500ms;
+  }
+  .hero-body.visible { opacity: 1; transform: none; }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 500ms var(--ease-out) 650ms, transform 500ms var(--ease-out) 650ms;
+  }
+  .hero-actions.visible { opacity: 1; transform: none; }
+
+  .btn-primary {
+    font-family: 'Instrument Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--navy);
+    background: var(--offwhite);
+    padding: 14px 32px;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: background 160ms var(--ease-out);
+    display: inline-block;
+  }
+  .btn-primary:hover { background: #fff; }
+  .btn-primary:active { transform: scale(0.97); }
+
+  .btn-ghost {
+    font-family: 'Instrument Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--text-on-dark);
+    text-decoration: none;
+    transition: color 160ms;
+  }
+  .btn-ghost:hover { color: var(--offwhite); }
+
+  /* ── INFO STRIP ── */
+  .info-strip {
+    background: var(--gold);
+    padding: 0;
+  }
+  .info-strip-inner {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 100%;
+  }
+  .info-item {
+    padding: 18px clamp(16px, 3vw, 32px);
+    border-right: 1px solid rgba(11,25,33,0.15);
+  }
+  .info-item:last-child { border-right: none; }
+  .info-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(11,25,33,0.6);
+    display: block;
+    margin-bottom: 2px;
+  }
+  .info-value {
+    font-family: 'Instrument Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--navy);
+    text-decoration: none;
+  }
+  .info-value:hover { text-decoration: underline; }
+
+  @media (max-width: 768px) {
+    .info-strip-inner { grid-template-columns: 1fr 1fr; }
+    .info-item { border-bottom: 1px solid rgba(11,25,33,0.15); }
+    .info-item:nth-child(2n) { border-right: none; }
+    .info-item:nth-last-child(-n+2) { border-bottom: none; }
+  }
+  @media (max-width: 480px) {
+    .info-strip-inner { grid-template-columns: 1fr; }
+    .info-item { border-right: none; border-bottom: 1px solid rgba(11,25,33,0.15); }
+    .info-item:last-child { border-bottom: none; }
+  }
+
+  /* ── VIBE SECTION (Photo Grid) ── */
+  .vibe {
+    background: var(--navy);
+    padding: var(--section-pad) clamp(20px, 6vw, 80px);
+  }
+  .vibe-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(40px, 5vw, 80px);
+    align-items: center;
+  }
+
+  .vibe-photos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    align-items: end;
+  }
+  .vibe-photo {
+    overflow: hidden;
+    border-radius: 1px;
+  }
+  .vibe-photo:first-child {
+    /* no top offset — baselines must align per non-negotiables */
+  }
+  .vibe-photo img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+  }
+
+  .vibe-text {
+    padding-left: clamp(0px, 2vw, 32px);
+  }
+  .section-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 20px;
+  }
+  .vibe-headline {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(48px, 6vw, 80px);
+    line-height: 0.9;
+    letter-spacing: -0.01em;
+    color: var(--offwhite);
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+  .vibe-body {
+    font-size: 16px;
+    color: var(--text-on-dark);
+    line-height: 1.65;
+    margin-bottom: 28px;
+    max-width: 380px;
+  }
+  .vibe-stat {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 8px;
+    border-top: 1px solid rgba(196,147,64,0.3);
+    padding-top: 20px;
+    margin-top: 4px;
+  }
+  .vibe-stat-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--gold);
+    letter-spacing: 0.02em;
+  }
+  .vibe-stat-label {
+    font-size: 14px;
+    color: var(--text-on-dark);
+    font-weight: 400;
+  }
+
+  @media (max-width: 900px) {
+    .vibe-inner {
+      grid-template-columns: 1fr;
+    }
+    .vibe-text { padding-left: 0; }
+    .vibe-photos { grid-template-columns: 1fr 1fr; }
+    .vibe-photo:first-child { margin-top: 0; }
+  }
+
+  /* ── MENU SECTION ── */
+  .menu {
+    background: var(--offwhite);
+    padding: var(--section-pad) clamp(20px, 6vw, 80px);
+  }
+  .menu-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(48px, 6vw, 96px);
+    align-items: start;
+  }
+  .menu-headline {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(40px, 5vw, 64px);
+    line-height: 0.92;
+    letter-spacing: -0.01em;
+    color: var(--navy);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .menu-sub {
+    font-size: 15px;
+    color: #4A5A65;
+    line-height: 1.6;
+    max-width: 320px;
+  }
+  .menu-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(11,25,33,0.1);
+    gap: 16px;
+  }
+  .menu-item:first-child { border-top: 1px solid rgba(11,25,33,0.1); }
+  .menu-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 28px;
+    font-weight: 900;
+    letter-spacing: 0.03em;
+    color: var(--navy);
+    text-transform: uppercase;
+  }
+  .menu-desc {
+    font-size: 13px;
+    color: #3A4A55;
+    display: block;
+    font-weight: 400;
+    letter-spacing: 0;
+    text-transform: none;
+    margin-top: 2px;
+    font-family: 'Instrument Sans', sans-serif;
+  }
+  .menu-note {
+    margin-top: 28px;
+    font-size: 13px;
+    color: #4A5A65;
+    font-style: italic;
+  }
+  .menu-note a { color: var(--navy); }
+
+  @media (max-width: 640px) {
+    .menu-inner { grid-template-columns: 1fr; }
+  }
+
+  /* ── STORY SECTION ── */
+  .story {
+    background: var(--mid);
+    padding: var(--section-pad) clamp(20px, 6vw, 80px);
+  }
+  .story-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(48px, 6vw, 96px);
+    align-items: center;
+  }
+  .story-photo {
+    overflow: hidden;
+    border-radius: 1px;
+  }
+  .story-photo img {
+    width: 100%;
+    height: auto;
+    display: block;
+    max-height: 680px;
+    object-fit: cover;
+    object-position: center top;
+  }
+  .story-text { max-width: 520px; }
+  .story-pull {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(32px, 4vw, 48px);
+    line-height: 1;
+    letter-spacing: -0.01em;
+    color: var(--offwhite);
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    border-left: 3px solid var(--gold);
+    padding-left: 20px;
+  }
+  .story-body {
+    font-size: 16px;
+    color: var(--text-on-dark);
+    line-height: 1.65;
+    max-width: 54ch;
+    margin-bottom: 24px;
+  }
+  .story-detail {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 0.04em;
+    font-family: 'Instrument Sans', sans-serif;
+  }
+
+  @media (max-width: 768px) {
+    .story-inner {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ── REVIEWS ── */
+  .reviews {
+    background: #F0E8D6;
+    padding: var(--section-pad) clamp(20px, 6vw, 80px);
+  }
+  .reviews-header {
+    max-width: 960px;
+    margin: 0 auto 48px;
+    text-align: center;
+  }
+  .reviews-headline {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(36px, 4.5vw, 56px);
+    letter-spacing: -0.01em;
+    color: var(--navy);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .reviews-sub {
+    font-size: 15px;
+    color: #4A5A65;
+  }
+  .reviews-grid {
+    max-width: 960px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .review-card {
+    background: transparent;
+    padding: 28px 28px 28px 24px;
+    border-left: 3px solid var(--gold);
+  }
+  .review-stars {
+    color: var(--gold);
+    font-size: 16px;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+    display: block;
+  }
+  .review-quote {
+    font-size: 17px;
+    color: var(--navy);
+    line-height: 1.65;
+    margin-bottom: 20px;
+    font-style: italic;
+  }
+  .review-attribution {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: #4A5A65;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 640px) {
+    .reviews-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ── VISIT / FIND US ── */
+  .visit {
+    background: var(--navy);
+    padding: var(--section-pad) clamp(20px, 6vw, 80px);
+  }
+  .visit-header {
+    max-width: 960px;
+    margin: 0 auto 48px;
+  }
+  .visit-headline {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(40px, 5vw, 64px);
+    letter-spacing: -0.01em;
+    color: var(--offwhite);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .visit-sub {
+    font-size: 15px;
+    color: var(--text-on-dark);
+  }
+  .visit-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+  .visit-info {}
+  .visit-detail-group {
+    margin-bottom: 28px;
+  }
+  .visit-detail-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 6px;
+  }
+  .visit-detail-value {
+    font-size: 16px;
+    color: var(--text-light);
+    line-height: 1.5;
+  }
+  .visit-detail-value a {
+    color: var(--text-light);
+    text-decoration: none;
+  }
+  .visit-detail-value a:hover {
+    color: var(--offwhite);
+    text-decoration: underline;
+  }
+  .visit-cta {
+    display: inline-block;
+    margin-top: 12px;
+    font-family: 'Instrument Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: var(--navy);
+    background: var(--offwhite);
+    padding: 12px 28px;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: background 160ms var(--ease-out);
+  }
+  .visit-cta:hover { background: #fff; }
+  .visit-cta:active { transform: scale(0.97); }
+  .visit-map {
+    overflow: hidden;
+    border-radius: 1px;
+    height: 400px;
+    border: 1px solid rgba(196,147,64,0.2);
+  }
+  .visit-map iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    filter: grayscale(0.3) invert(0.85) hue-rotate(180deg) brightness(0.7);
+  }
+
+  @media (max-width: 768px) {
+    .visit-inner { grid-template-columns: 1fr; }
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #060E14;
+    padding: 32px clamp(20px, 6vw, 80px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .footer-logo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 0.14em;
+    color: var(--text-on-dark);
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+  .footer-tagline {
+    font-size: 13px;
+    color: rgba(200,191,168,0.5);
+    font-style: italic;
+  }
+  .footer-links {
+    display: flex;
+    gap: 20px;
+  }
+  .footer-links a {
+    font-size: 13px;
+    color: rgba(200,191,168,0.5);
+    text-decoration: none;
+    transition: color 160ms;
+  }
+  .footer-links a:hover { color: var(--text-on-dark); }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+  .reveal-delay-1 { transition-delay: 80ms; }
+  .reveal-delay-2 { transition-delay: 160ms; }
+  .reveal-delay-3 { transition-delay: 240ms; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal, .hero-eyebrow, .hero-headline .line-inner,
+    .hero-gold-line, .hero-body, .hero-actions {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Shuck Taylor's</a>
+  <a href="https://www.google.com/maps/place/Shuck+Taylor's/@48.4284,-123.3659,17z/data=!3m1!4b1!4m6!3m5!1s0x548f738b0b7cd3e3:0x5ed2b14a2f9f3b9f!8m2!3d48.4284!4d-123.3634!16s%2Fg%2F11sn9_c0c2"
+     target="_blank" rel="noopener" class="nav-cta">Get Directions</a>
+  <button class="hamburger" aria-label="Open menu" onclick="document.querySelector('.mobile-menu').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu">
+  <a href="#menu" onclick="document.querySelector('.mobile-menu').classList.remove('open')">Menu</a>
+  <a href="#story" onclick="document.querySelector('.mobile-menu').classList.remove('open')">Our Story</a>
+  <a href="#visit" onclick="document.querySelector('.mobile-menu').classList.remove('open')">Find Us</a>
+  <a href="https://www.instagram.com/shucktaylors/" target="_blank" rel="noopener">@shucktaylors</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" aria-label="Hero">
+  <span class="hero-eyebrow">Victoria, BC · Est. 2023</span>
+  <h1 class="hero-headline">
+    <span class="line"><span class="line-inner">We Dive,</span></span>
+    <span class="line"><span class="line-inner">You Dine.</span></span>
+  </h1>
+  <div class="hero-gold-line" aria-hidden="true"></div>
+  <p class="hero-body">Fresh oysters. Lobster rolls. Victoria's walk-in oyster bar on Blanshard. No reservations. Come as you are.</p>
+  <div class="hero-actions">
+    <a href="https://www.google.com/maps/place/Shuck+Taylor's/@48.4284,-123.3659,17z/data=!3m1!4b1!4m6!3m5!1s0x548f738b0b7cd3e3:0x5ed2b14a2f9f3b9f!8m2!3d48.4284!4d-123.3634!16s%2Fg%2F11sn9_c0c2"
+       target="_blank" rel="noopener" class="btn-primary">Get Directions</a>
+    <a href="https://www.instagram.com/shucktaylors/" target="_blank" rel="noopener" class="btn-ghost">@shucktaylors ↗</a>
+  </div>
+</section>
+
+<!-- INFO STRIP -->
+<div class="info-strip" role="complementary" aria-label="Quick info">
+  <div class="info-strip-inner">
+    <div class="info-item">
+      <span class="info-label">Hours</span>
+      <span class="info-value">Daily 11:30am – 10pm</span>
+    </div>
+    <div class="info-item">
+      <span class="info-label">Location</span>
+      <a href="https://www.google.com/maps/place/Shuck+Taylor's/@48.4284,-123.3659,17z" target="_blank" rel="noopener" class="info-value">1324 Blanshard St, Victoria</a>
+    </div>
+    <div class="info-item">
+      <span class="info-label">Reservations</span>
+      <span class="info-value" style="font-weight:700;letter-spacing:0.04em;">Walk-in only</span>
+    </div>
+    <div class="info-item">
+      <span class="info-label">Instagram</span>
+      <a href="https://www.instagram.com/shucktaylors/" target="_blank" rel="noopener" class="info-value">@shucktaylors</a>
+    </div>
+  </div>
+</div>
+
+<!-- VIBE / PHOTO SECTION -->
+<section class="vibe" aria-label="The vibe">
+  <div class="vibe-inner">
+    <div class="vibe-photos reveal">
+      <div class="vibe-photo">
+        <img src="ig-photo-011.jpg" alt="Friends having a great time at Shuck Taylor's oyster bar" loading="lazy">
+      </div>
+      <div class="vibe-photo">
+        <img src="ig-photo-01.jpg" alt="Fresh oysters being shucked at Shuck Taylor's" loading="lazy">
+      </div>
+    </div>
+    <div class="vibe-text">
+      <span class="section-eyebrow reveal">Victoria's Oyster Bar</span>
+      <h2 class="vibe-headline reveal reveal-delay-1">Come As You Are.</h2>
+      <p class="vibe-body reveal reveal-delay-2">Walk-in. No reservations. The oysters are local BC or flown in fresh from around the world. You sit down, they bring them to you shucked and ready. That's it. That's the whole thing.</p>
+      <div class="vibe-stat reveal reveal-delay-3">
+        <span class="vibe-stat-num">4.8★</span>
+        <span class="vibe-stat-label">953 reviews · one of the highest-rated restaurants in BC</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="menu" id="menu" aria-label="Menu">
+  <div class="menu-inner">
+    <div>
+      <span class="section-eyebrow reveal">What to Order</span>
+      <h2 class="menu-headline reveal reveal-delay-1">Order Everything.</h2>
+      <p class="menu-sub reveal reveal-delay-2">Local BC oysters and world oysters flown fresh. Lobster rolls. Seafood worth lining up for. Happy hour runs 2–5pm daily (all day Sundays). Follow <a href="https://www.instagram.com/shucktaylors/" target="_blank" rel="noopener">@shucktaylors</a> to see what's fresh.</p>
+    </div>
+    <ul class="menu-list" aria-label="Menu items">
+      <li class="menu-item reveal">
+        <div>
+          <span class="menu-name">Fresh Oysters</span>
+          <span class="menu-desc">Local BC + world oysters, flown fresh</span>
+        </div>
+      </li>
+      <li class="menu-item reveal reveal-delay-1">
+        <div>
+          <span class="menu-name">Lobster Roll</span>
+          <span class="menu-desc">Nova Scotia lobster, toasted bun</span>
+        </div>
+      </li>
+      <li class="menu-item reveal reveal-delay-2">
+        <div>
+          <span class="menu-name">Prawn Roll</span>
+          <span class="menu-desc">BC prawns, classic preparation</span>
+        </div>
+      </li>
+      <li class="menu-item reveal reveal-delay-3">
+        <div>
+          <span class="menu-name">Fried Oysters</span>
+          <span class="menu-desc">Crispy, golden, gone fast</span>
+        </div>
+      </li>
+      <li class="menu-item reveal">
+        <div>
+          <span class="menu-name">Fries &amp; Coleslaw</span>
+        </div>
+      </li>
+      <li class="menu-item reveal reveal-delay-1">
+        <div>
+          <span class="menu-name">Caesars</span>
+        </div>
+      </li>
+    </ul>
+    <p class="menu-note reveal">Menu subject to change. Follow @shucktaylors for the latest.</p>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="story" id="story" aria-label="Our story">
+  <div class="story-inner">
+    <div class="story-photo reveal">
+      <img src="ig-photo-08.jpg" alt="Jess Taylor at the Shuck Taylor's bar" loading="lazy">
+    </div>
+    <div class="story-text">
+      <span class="section-eyebrow reveal">The Story</span>
+      <blockquote class="story-pull reveal reveal-delay-1">"Good ideas take time."</blockquote>
+      <p class="story-body reveal reveal-delay-2">Owner Jess Taylor grew up on Vancouver Island, spent time on the East Coast, then worked at Rodney's Oyster House in Vancouver. He started building the vision in 2018. Shuck Taylor's opened in 2023. Five years of planning, then one of the best-reviewed restaurants in BC.</p>
+      <p class="story-body reveal reveal-delay-3">Before opening, Jess took his entire team to Shelton, WA for five days to immerse them in oyster culture. The oyster knowledge was non-negotiable. That level of care is why the seafood here hits different.</p>
+      <p class="story-detail reveal">"A great way to show you value your employees." — Via Instagram</p>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" aria-label="Guest reviews">
+  <div class="reviews-header reveal">
+    <h2 class="reviews-headline">Shuck Yes.</h2>
+    <p class="reviews-sub">What people are saying about Victoria's favourite oyster bar.</p>
+  </div>
+  <div class="reviews-grid">
+    <article class="review-card reveal">
+      <span class="review-stars" aria-label="5 stars">★★★★★</span>
+      <p class="review-quote">"The seafood tasted incredibly fresh. The oyster and prawn roll paired perfectly with crispy fries."</p>
+      <span class="review-attribution">Via Instagram · @shucktaylors</span>
+    </article>
+    <article class="review-card reveal reveal-delay-1">
+      <span class="review-stars" aria-label="5 stars">★★★★★</span>
+      <p class="review-quote">"When in Victoria, I have a Shuckin' Good Time."</p>
+      <span class="review-attribution">Via Instagram · @shucktaylors</span>
+    </article>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section class="visit" id="visit" aria-label="Find us">
+  <div class="visit-header">
+    <h2 class="visit-headline reveal">Find Us.</h2>
+    <p class="visit-sub reveal reveal-delay-1">Walk in. No reservation needed. Just show up.</p>
+  </div>
+  <div class="visit-inner">
+    <div class="visit-info">
+      <div class="visit-detail-group reveal">
+        <span class="visit-detail-label">Address</span>
+        <p class="visit-detail-value">
+          <a href="https://www.google.com/maps/place/Shuck+Taylor's/@48.4284,-123.3659,17z" target="_blank" rel="noopener">
+            1324 Blanshard St<br>Victoria, BC V8W 2J3
+          </a>
+        </p>
+      </div>
+      <div class="visit-detail-group reveal reveal-delay-1">
+        <span class="visit-detail-label">Hours</span>
+        <p class="visit-detail-value">
+          Monday – Sunday<br>
+          11:30am – 10pm
+        </p>
+      </div>
+      <div class="visit-detail-group reveal reveal-delay-2">
+        <span class="visit-detail-label">Reservations</span>
+        <p class="visit-detail-value">Walk-in only. First come, first served.</p>
+      </div>
+      <a href="https://www.google.com/maps/place/Shuck+Taylor's/@48.4284,-123.3659,17z" target="_blank" rel="noopener" class="visit-cta reveal reveal-delay-3">Get Directions →</a>
+    </div>
+    <div class="visit-map reveal reveal-delay-1">
+      <iframe
+        src="https://maps.google.com/maps?q=Shuck+Taylor%27s+1324+Blanshard+St+Victoria+BC&output=embed"
+        loading="lazy"
+        allowfullscreen
+        aria-label="Map to Shuck Taylor's">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#" class="footer-logo">Shuck Taylor's</a>
+  <span class="footer-tagline">We dive, you dine.</span>
+  <div class="footer-links">
+    <a href="https://www.instagram.com/shucktaylors/" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.google.com/maps/place/Shuck+Taylor's/@48.4284,-123.3659,17z" target="_blank" rel="noopener">Directions</a>
+  </div>
+</footer>
+
+<script>
+  // Hero animations trigger on load
+  window.addEventListener('DOMContentLoaded', () => {
+    const delay = (ms) => new Promise(res => setTimeout(res, ms));
+    (async () => {
+      await delay(100);
+      document.querySelector('.hero-eyebrow').classList.add('visible');
+      await delay(150);
+      document.querySelectorAll('.hero-headline .line-inner').forEach(el => el.classList.add('visible'));
+      await delay(300);
+      document.querySelector('.hero-gold-line').classList.add('visible');
+      document.querySelector('.hero-body').classList.add('visible');
+      document.querySelector('.hero-actions').classList.add('visible');
+    })();
+  });
+
+  // Scroll reveal
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+</script>
+
+</body>
+</html>

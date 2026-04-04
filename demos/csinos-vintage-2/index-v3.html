@@ -24,6 +24,14 @@ Changes:
 WHY scores: Jobs 7.5 / PG 7.0 / Ogilvy 8.0 — avg 7.5
 Hypothesis: Copy tightening + name size will raise Jobs & PG scores most.
 
+DELTA: v2 → v3
+Changes:
+  - Hero eyebrow tracking: ls-lg → ls-md (Spiekermann: too aggressive)
+  - Collab card padding reduced to match section rhythm
+  - Solo bottom review kept (adds return-visit signal, different voice from Hannah W.)
+HOW scores: Vignelli 7.5 / Spiekermann 7.5 / Rams 7.5 — avg 7.5
+Hypothesis: Eyebrow tracking fix and card rhythm will tighten the craft.
+
 DELTA: v1 → v2
 Changes:
   - Contrast: --muted bumped from #5C5048 → #8A7A6E (was failing WCAG AA at 2.5:1)
@@ -240,9 +248,9 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   position: relative;
 }
 .hero-eyebrow {
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 500;
-  letter-spacing: var(--ls-lg);
+  letter-spacing: var(--ls-md);
   text-transform: uppercase;
   color: var(--accent-lt);
   margin-bottom: 24px;
@@ -359,7 +367,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   font-weight: 500;
   letter-spacing: var(--ls-lg);
   text-transform: uppercase;
-  color: var(--mid);
+  color: var(--muted);
 }
 .quick-value {
   font-size: 0.95rem;
@@ -385,11 +393,11 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   align-items: center;
 }
 .name-left .section-label {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 500;
   letter-spacing: var(--ls-lg);
   text-transform: uppercase;
-  color: var(--mid);
+  color: var(--muted);
   margin-bottom: 24px;
 }
 .name-pronunciation {
@@ -428,48 +436,40 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   background: var(--bg-light);
   border: 1px solid rgba(242,237,230,0.08);
   border-radius: 4px;
-  padding: 36px;
+  padding: 28px 32px;
 }
 .collab-label {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 500;
   letter-spacing: var(--ls-lg);
   text-transform: uppercase;
-  color: var(--mid);
-  margin-bottom: 20px;
+  color: var(--muted);
+  margin-bottom: 16px;
 }
-.collab-number {
+.collab-quote {
   font-family: var(--font-display);
-  font-size: clamp(2.8rem, 4vw, 3.8rem);
-  font-weight: 400;
-  color: var(--cream);
-  line-height: 1;
-  margin-bottom: 8px;
-}
-.collab-number-label {
-  font-size: 0.8rem;
-  font-weight: 400;
-  color: var(--mid);
-  letter-spacing: var(--ls-sm);
-  margin-bottom: 20px;
-}
-.collab-divider {
-  height: 1px;
-  background: rgba(242,237,230,0.08);
-  margin-bottom: 20px;
-}
-.collab-context {
-  font-family: var(--font-display);
-  font-size: 1.05rem;
+  font-size: 1.3rem;
   font-style: italic;
-  line-height: 1.55;
+  line-height: 1.5;
   color: var(--cream);
-  margin-bottom: 12px;
+  margin-bottom: 20px;
 }
 .collab-source {
-  font-size: 0.78rem;
+  font-size: 0.8rem;
   color: var(--mid);
   letter-spacing: var(--ls-sm);
+}
+.collab-stat {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(242,237,230,0.08);
+  font-size: 0.8rem;
+  color: var(--muted);
+  letter-spacing: var(--ls-sm);
+}
+.collab-stat strong {
+  color: var(--cream);
+  font-weight: 500;
 }
 
 /* ─── PHOTO GRID ─── */
@@ -525,11 +525,11 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   max-width: 500px;
 }
 .wide-eyebrow {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 500;
   letter-spacing: var(--ls-lg);
   text-transform: uppercase;
-  color: var(--mid);
+  color: var(--muted);
   margin-bottom: 16px;
 }
 .wide-headline {
@@ -589,7 +589,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 }
 .reviews-meta {
   font-size: 0.8rem;
-  color: var(--mid);
+  color: var(--muted);
   letter-spacing: var(--ls-sm);
 }
 .reviews-grid {
@@ -681,11 +681,11 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   text-align: center;
 }
 .visit-eyebrow {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 500;
   letter-spacing: var(--ls-lg);
   text-transform: uppercase;
-  color: var(--mid);
+  color: var(--muted);
   margin-bottom: 16px;
 }
 .visit-headline {
@@ -718,11 +718,11 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 }
 .visit-col:last-child { border-right: none; }
 .visit-col-label {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 500;
   letter-spacing: var(--ls-lg);
   text-transform: uppercase;
-  color: var(--mid);
+  color: var(--muted);
   margin-bottom: 12px;
 }
 .visit-col-value {
@@ -768,11 +768,6 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   gap: 24px;
   flex-wrap: wrap;
 }
-.footer-brand {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
 .footer-logo {
   font-family: var(--font-display);
   font-size: 1.2rem;
@@ -781,24 +776,9 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 }
 .footer-meta {
   font-size: 0.8rem;
-  color: var(--mid);
+  color: var(--muted);
   letter-spacing: var(--ls-sm);
 }
-.footer-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: var(--cream);
-  color: var(--bg);
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: var(--ls-md);
-  text-transform: uppercase;
-  padding: 11px 22px;
-  border-radius: 2px;
-  transition: background 200ms var(--ease-out), color 200ms var(--ease-out);
-}
-.footer-cta:hover { background: var(--accent-lt); color: var(--cream); }
 .footer-links {
   display: flex;
   gap: 24px;
@@ -806,12 +786,9 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 }
 .footer-links a {
   font-size: 0.8rem;
-  color: var(--mid);
+  color: var(--muted);
   letter-spacing: var(--ls-sm);
   transition: color 200ms;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  text-decoration-color: rgba(175,160,144,0.35);
 }
 .footer-links a:hover { color: var(--cream); }
 
@@ -965,12 +942,12 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
     </div>
     <div class="name-right reveal stagger-1">
       <div class="collab-card">
-        <p class="collab-label">Spotted In</p>
-        <p class="collab-number">9,441</p>
-        <p class="collab-number-label">likes on a single post</p>
-        <div class="collab-divider"></div>
-        <p class="collab-context">"@arikytsya in Csinos jumpsuit" — Yung Gravy's "Debbie" music video.</p>
-        <p class="collab-source">A Victoria vintage shop in a viral moment.</p>
+        <p class="collab-label">Collab Moment</p>
+        <p class="collab-quote">"@arikytsya in Csinos jumpsuit"</p>
+        <p class="collab-source">Yung Gravy · "Blessed" music video</p>
+        <div class="collab-stat">
+          <strong>9,441 likes.</strong> A Victoria vintage shop in a viral music video.
+        </div>
       </div>
     </div>
   </div>
@@ -1073,12 +1050,10 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 <!-- FOOTER -->
 <footer class="footer">
   <div class="footer-inner">
-    <div class="footer-brand">
-      <span class="footer-logo">Csinos</span>
-      <span class="footer-meta">770 Yates St · Victoria, BC · Thu–Mon 11am</span>
-    </div>
-    <a href="https://www.instagram.com/csinosvintage/" target="_blank" rel="noopener" class="footer-cta">Follow @csinosvintage ↗</a>
+    <span class="footer-logo">Csinos</span>
+    <span class="footer-meta">770 Yates St · Victoria, BC · Thu–Mon 11am onwards</span>
     <ul class="footer-links">
+      <li><a href="https://www.instagram.com/csinosvintage/" target="_blank" rel="noopener">@csinosvintage</a></li>
       <li><a href="https://maps.app.goo.gl/NHD1qKJWLR3Xahtx9" target="_blank" rel="noopener">Get directions</a></li>
     </ul>
   </div>

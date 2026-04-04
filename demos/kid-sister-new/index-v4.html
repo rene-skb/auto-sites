@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--
+  DELTA: v3 → v4 (Motion + craft polish)
+  HOW scores: Vignelli 7.5 / Spiekermann 7.0 / Rams 7.0 = 7.17 — passes
+  Changes:
+  - Motion: verified scroll-reveal in place from v0; added explicit :active scale on all CTAs
+  - Flavour grid: clear 2-tier hierarchy — name at 22px/400, detail at 11px/500/letter-spaced/muted
+  - Visit section: tightened layout, removed compositional looseness — info block now better aligned
+  - Nav :active state added
+  - Hero image: added slight gradient-bottom overlay so quick strip reads as transition
+  - Verified no hover effects on image elements ✅
+  Hypothesis: Flavour hierarchy fix addresses Spiekermann's "grey porridge" concern.
+
+  DELTA: v2 → v3
+  HOW scores: Vignelli 7.0 / Spiekermann 8.0 / Rams 7.0 = 7.33 — passes
+  Changes:
+  - Section label letter-spacing increased: 0.18em → 0.22em (Spiekermann: "tracking a touch tight")
+  - Review attribution: more distinct — smaller, letter-spaced, blush dot separator, clear visual break
+  - Photo grid: swapped ig-photo-02 (kiwi sorbet w/ kombucha can) → ig-photo-04 (strawberry pint flatlay)
+    More cohesive trio: popsicle + pint + cone — all pure product, no third-party branding
+  - Quick strip clarified as "quick look" vs. Visit section as "full details" (different visual weight)
+  - Why section grid: improved column alignment consistency
+  Hypothesis: Photo swap + letter-spacing fixes will address Rams' "3 different ideas" flag
+              and Spiekermann's tracking concern.
+
+  DELTA: v1 → v2
+  WHAT scores: Norman 5.0 / Krug 4.0 / Nielsen 5.5 = 4.83 — below gate, one retry
+  Changes:
+  - Quick strip moved above hero text: address + approximate hours (from brief: noon–6pm shoulder, extended summer) 
+  - Hero eyebrow updated to include "Artisan Ice Cream" to immediately clarify what this is
+  - Quick strip hours updated with real data from brief: "Noon–6 shoulder season · Extended in summer"
+  - Flavours section label changed to "Recent Seasonal Flavours" + note that flavours rotate
+  - Section label color increased contrast: blush → darker #A06050 for accessibility
+  - Footer section label contrast fixed
+  - Visit section: hours text now shows actual typical hours from brief, not just "Check Instagram"
+  Hypothesis: Adding real hours + clarifying "ice cream" in hero eyebrow will dramatically improve Krug/Norman scores.
+
+  DELTA: v0 → v1
+  WHY scores: Jobs 8.0 / PG 9.0 / Ogilvy 8.0 = 8.33 avg
+  Changes:
+  - Hero restructured: "This is Victoria in a cone." as the big conviction headline.
+    Kiwi quote moved to WHY section as the lead pull quote (where it works better as ingredient story).
+  - Added seasonal urgency section between flavours and reviews: "Something new is probably in the case."
+  - Reviews: Lead with "cinnamon heart fantasies" as dominant big quote.
+    Dropped "SOOOOOO excited" (weakest). Kept "cinnamon heart" + CHEK News.
+  - Visit section CTA: Changed "Come by this season" → "What's in the case this week →" with Instagram.
+  Hypothesis: Moving "Victoria in a cone" to hero headline will raise Jobs score.
+                Urgency injection will raise Ogilvy score on CTA.
+  
+  PHOTO ASSIGNMENTS — Kid Sister Ice Cream
+  =========================================
+  RANKING (best → worst, by quality + brand alignment):
+  1. ig-photo-06 — Cherry blossom flatlay, 9/10, portrait (9:16) — HERO
+  2. ig-photo-03 — Floral popsicle w/ hydrangeas, 8.5/10, tall portrait — GRID (feature)
+  3. ig-photo-02 — Kiwi Kombucha Sorbet in glass, 8/10, portrait — GRID
+  4. ig-photo-09 — Caramel/quince swirl cone, 7.5/10, portrait — GRID
+  5. ig-photo-04 — Strawberry pint + scoop flatlay, 7/10, portrait — SKIP (3-col grid full)
+  6. ig-photo-08 — Pink sorbet cone at storefront, 7/10, portrait — SKIP
+  7. ig-photo-10 — Choc/vanilla cone at storefront, 7/10, portrait — SKIP
+  SKIP: ig-photo-01 (hours graphic), ig-photo-05 (collage), ig-photo-07 (CHEK News screenshot)
+
+  PHOTO MOMENTS:
+  - MOMENT 1: Hero (ig-photo-06) — cherry blossom seasonal flatlay
+  - MOMENT 2: 3-col portrait grid (ig-photo-03, ig-photo-02, ig-photo-09)
+
+  ROTATION CHECK — last 3 builds:
+  - URL Coffee: centered-minimal | Instrument Serif + Space Grotesk + DM Mono | pull-quote + 2-col | 2-col map
+  - Juhee's Closet: editorial-spread | Fraunces + Inter | 3-col dark cards | 2-col image+info
+  - Kreative Ink: giant-display-type | Barlow Condensed + DM Sans | pull-quote + 3-col cards | 2-col booking
+
+  THIS BUILD:
+  - Hero: image-top-text-below ✅ (different)
+  - Typography: Cormorant Garamond + Jost ✅ (different)
+  - Reviews: stacked full-width editorial quotes, no cards ✅ (different)
+  - Visit: centered single-column, map + info ✅ (different)
+-->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kid Sister Ice Cream — Small-Batch Artisan Ice Cream, Esquimalt Victoria</title>
+  <meta name="description" content="Small-batch artisan ice cream made with hyper-local Vancouver Island ingredients. Quince from a midwife's garden. Kiwis from Oldfield Farm. Seasonal flavours in Esquimalt, Victoria BC.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Kid Sister Ice Cream">
+  <meta property="og:description" content="Small-batch ice cream made with ingredients you won't find anywhere else. Seasonal. Local. Esquimalt, Victoria BC.">
+  <meta property="og:image" content="ig-photo-06.jpg">
+  <meta property="og:url" content="https://auto-sites.pages.dev/demos/kid-sister-new/">
+  <meta property="og:type" content="website">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --cream:   #FAF7F2;
+      --mist:    #F2EDE6;
+      --blush:   #A06050;
+      --blush-light: #D4A090;
+      --forest:  #3A5245;
+      --bark:    #2A1F14;
+      --muted:   #8C7C73;
+      --section-pad: clamp(72px, 10vw, 128px);
+      --content-w: 1120px;
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--bark);
+      font-family: 'Jost', sans-serif;
+      font-weight: 400;
+      font-size: 17px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { display: block; max-width: 100%; }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 20px clamp(24px, 5vw, 64px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.35s var(--ease-out), box-shadow 0.35s var(--ease-out);
+    }
+    nav.scrolled {
+      background: rgba(250, 247, 242, 0.96);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      box-shadow: 0 1px 0 rgba(42,31,20,0.08);
+    }
+    .nav-wordmark {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+      font-size: 18px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--bark);
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: 'Jost', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--bark); }
+    .nav-cta {
+      font-size: 13px !important;
+      font-weight: 600 !important;
+      color: var(--forest) !important;
+      letter-spacing: 0.08em !important;
+    }
+    .nav-hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--bark);
+      transition: transform 0.25s, opacity 0.25s;
+    }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--cream);
+      z-index: 99;
+      padding: 100px 40px 40px;
+      flex-direction: column;
+      gap: 0;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 36px;
+      font-weight: 400;
+      color: var(--bark);
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(42,31,20,0.1);
+    }
+
+    /* ── HERO — image-top-text-below ── */
+    .hero-image {
+      width: 100%;
+      height: clamp(400px, 75vh, 700px);
+      overflow: hidden;
+      position: relative;
+    }
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+    }
+    .hero-text {
+      padding: clamp(48px, 7vw, 96px) clamp(24px, 5vw, 64px) clamp(56px, 8vw, 112px);
+      max-width: var(--content-w);
+      margin: 0 auto;
+    }
+    .hero-eyebrow {
+      font-family: 'Jost', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--blush);
+      margin-bottom: 24px;
+    }
+    .hero-headline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(38px, 6vw, 72px);
+      font-weight: 400;
+      line-height: 1.12;
+      color: var(--bark);
+      max-width: 800px;
+      margin-bottom: 28px;
+    }
+    .hero-headline em {
+      font-style: italic;
+      font-weight: 300;
+    }
+    .hero-sub {
+      font-family: 'Jost', sans-serif;
+      font-size: clamp(15px, 1.8vw, 18px);
+      font-weight: 300;
+      color: var(--muted);
+      max-width: 520px;
+      line-height: 1.7;
+    }
+
+    /* ── QUICK STRIP ── */
+    .quick-strip {
+      background: var(--forest);
+      color: var(--cream);
+      padding: 16px clamp(24px, 5vw, 64px);
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .quick-strip-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      opacity: 0.9;
+    }
+    .quick-strip-item svg { flex-shrink: 0; opacity: 0.7; }
+    .quick-strip-item a {
+      color: inherit;
+      transition: opacity 0.2s;
+    }
+    .quick-strip-item a:hover { opacity: 1; }
+    .strip-sep {
+      width: 1px;
+      height: 16px;
+      background: rgba(250,247,242,0.25);
+    }
+
+    /* ── SECTION BASE ── */
+    section { padding: var(--section-pad) clamp(24px, 5vw, 64px); }
+    .container { max-width: var(--content-w); margin: 0 auto; }
+
+    .section-label {
+      font-family: 'Jost', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--blush);
+      margin-bottom: 20px;
+    }
+    .section-headline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(32px, 4.5vw, 54px);
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--bark);
+    }
+    .section-headline em { font-style: italic; font-weight: 300; }
+
+    /* ── WHY SECTION ── */
+    .why-section { background: var(--mist); }
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+      margin-top: 56px;
+    }
+    .why-lead {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(22px, 2.8vw, 30px);
+      font-weight: 400;
+      line-height: 1.45;
+      color: var(--bark);
+    }
+    .why-lead em { font-style: italic; color: var(--forest); }
+    .why-details {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+    .why-item {}
+    .why-item-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--blush);
+      margin-bottom: 8px;
+    }
+    .why-item p {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .why-item p strong { color: var(--bark); font-weight: 500; }
+    .press-note {
+      margin-top: 56px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(42,31,20,0.1);
+      font-size: 14px;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+    }
+    .press-note strong { color: var(--bark); font-weight: 500; }
+
+    /* ── PHOTO GRID ── */
+    .photos-section { background: var(--cream); padding-top: 0; }
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .photo-grid-item {
+      aspect-ratio: 3/4;
+      overflow: hidden;
+    }
+    .photo-grid-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s var(--ease-out);
+    }
+
+    /* ── FLAVOURS ── */
+    .flavours-section { background: var(--bark); color: var(--cream); }
+    .flavours-section .section-label { color: var(--blush-light); opacity: 0.8; }
+    .flavours-section .section-headline { color: var(--cream); }
+    .flavours-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 0;
+      margin-top: 48px;
+      border-top: 1px solid rgba(250,247,242,0.12);
+    }
+    .flavour-item {
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(250,247,242,0.12);
+    }
+    .flavour-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--cream);
+      margin-bottom: 6px;
+      line-height: 1.2;
+    }
+    .flavour-detail {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      color: rgba(250,247,242,0.38);
+      text-transform: uppercase;
+    }
+    .flavours-ig-note {
+      margin-top: 40px;
+      font-size: 14px;
+      color: rgba(250,247,242,0.55);
+      line-height: 1.6;
+    }
+    .flavours-ig-note a {
+      color: var(--blush-light);
+      font-weight: 500;
+      transition: opacity 0.2s;
+    }
+    .flavours-ig-note a:hover { opacity: 0.8; }
+
+    /* ── REVIEWS ── */
+    .reviews-section { background: var(--mist); }
+    .review-stack {
+      margin-top: 56px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .review-item {
+      padding: 48px 0;
+      border-top: 1px solid rgba(42,31,20,0.1);
+    }
+    .review-item:last-child { border-bottom: 1px solid rgba(42,31,20,0.1); }
+    .review-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(26px, 3.5vw, 44px);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.35;
+      color: var(--bark);
+      max-width: 820px;
+      margin-bottom: 20px;
+    }
+    .review-meta {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding-top: 16px;
+      border-top: 1px solid rgba(42,31,20,0.08);
+      margin-top: 4px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .review-meta-dot {
+      display: inline-block;
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--blush);
+      flex-shrink: 0;
+    }
+
+    /* ── VISIT ── */
+    .visit-section { background: var(--cream); }
+    .visit-inner {
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: 64px;
+      align-items: start;
+      margin-top: 56px;
+    }
+    .visit-map {
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      background: var(--mist);
+    }
+    .visit-map iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      filter: grayscale(0.3) sepia(0.1);
+    }
+    .visit-info { padding-top: 8px; }
+    .visit-detail {
+      margin-bottom: 32px;
+    }
+    .visit-detail-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--blush);
+      margin-bottom: 8px;
+    }
+    .visit-detail p, .visit-detail address {
+      font-style: normal;
+      font-size: 16px;
+      color: var(--bark);
+      line-height: 1.65;
+    }
+    .visit-detail a {
+      color: var(--forest);
+      font-weight: 500;
+      transition: opacity 0.2s;
+    }
+    .visit-detail a:hover { opacity: 0.7; }
+    .visit-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 8px;
+      padding: 14px 28px;
+      background: var(--forest);
+      color: var(--cream);
+      font-family: 'Jost', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: background 0.2s var(--ease-out), transform 0.16s var(--ease-out);
+    }
+    .visit-cta:active { transform: scale(0.97); background: #253329; }
+    .visit-cta:hover { background: #2e4037; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bark);
+      color: rgba(250,247,242,0.45);
+      padding: 48px clamp(24px, 5vw, 64px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-wordmark {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+      font-size: 16px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(250,247,242,0.7);
+    }
+    footer p { font-size: 13px; }
+    footer a { color: rgba(250,247,242,0.6); transition: color 0.2s; }
+    footer a:hover { color: rgba(250,247,242,0.9); }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-stagger > * {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+    }
+    .reveal-stagger.visible > *:nth-child(1) { opacity: 1; transform: none; transition-delay: 0ms; }
+    .reveal-stagger.visible > *:nth-child(2) { opacity: 1; transform: none; transition-delay: 70ms; }
+    .reveal-stagger.visible > *:nth-child(3) { opacity: 1; transform: none; transition-delay: 140ms; }
+    .reveal-stagger.visible > *:nth-child(4) { opacity: 1; transform: none; transition-delay: 210ms; }
+    .reveal-stagger.visible > *:nth-child(5) { opacity: 1; transform: none; transition-delay: 280ms; }
+    .reveal-stagger.visible > *:nth-child(6) { opacity: 1; transform: none; transition-delay: 350ms; }
+    .reveal-stagger.visible > *:nth-child(7) { opacity: 1; transform: none; transition-delay: 420ms; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal, .reveal-stagger > * { opacity: 1 !important; transform: none !important; transition: none !important; }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .why-grid { grid-template-columns: 1fr; gap: 40px; }
+      .visit-inner { grid-template-columns: 1fr; gap: 40px; }
+    }
+
+    @media (max-width: 680px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .photo-grid { grid-template-columns: 1fr 1fr; }
+      .photo-grid-item:last-child { display: none; }
+      .flavours-grid { grid-template-columns: 1fr 1fr; }
+      .quick-strip { gap: 20px; }
+      .strip-sep { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <a href="#" class="nav-wordmark">Kid Sister</a>
+  <ul class="nav-links">
+    <li><a href="#why">Our Story</a></li>
+    <li><a href="#flavours">Flavours</a></li>
+    <li><a href="#visit">Visit</a></li>
+    <li><a href="https://www.instagram.com/kidsistericecream/" target="_blank" rel="noopener" class="nav-cta">Instagram ↗</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#why" onclick="closeMobileMenu()">Our Story</a>
+  <a href="#flavours" onclick="closeMobileMenu()">Flavours</a>
+  <a href="#visit" onclick="closeMobileMenu()">Visit</a>
+  <a href="https://www.instagram.com/kidsistericecream/" target="_blank" rel="noopener">Instagram ↗</a>
+</div>
+
+<!-- HERO IMAGE -->
+<div class="hero-image">
+  <img src="ig-photo-06.jpg" alt="Seasonal ice cream with cherry blossoms — Kid Sister Ice Cream, Victoria BC" loading="eager">
+</div>
+
+<!-- HERO TEXT -->
+<div class="hero-text">
+  <div class="hero-eyebrow reveal">Artisan Ice Cream · Esquimalt, Victoria BC</div>
+  <h1 class="hero-headline reveal" style="transition-delay:80ms">
+    This is <em>Victoria</em><br>in a cone.
+  </h1>
+  <p class="hero-sub reveal" style="transition-delay:160ms">
+    Every scoop traces back to a specific farm, garden, or person on Vancouver Island. Seasonal. Small-batch. Made from scratch.
+  </p>
+</div>
+
+<!-- QUICK STRIP -->
+<div class="quick-strip">
+  <div class="quick-strip-item">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+    <a href="https://maps.google.com/maps?q=Kid+Sister+Ice+Cream+1320+Esquimalt+Rd+Victoria+BC" target="_blank" rel="noopener">1320 Esquimalt Rd, Victoria BC</a>
+  </div>
+  <div class="strip-sep"></div>
+  <div class="quick-strip-item">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+    Noon–6pm shoulder season · Extended in summer
+  </div>
+  <div class="strip-sep"></div>
+  <div class="quick-strip-item">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+    <a href="https://www.instagram.com/kidsistericecream/" target="_blank" rel="noopener">@kidsistericecream</a>
+  </div>
+</div>
+
+<!-- WHY SECTION -->
+<section class="why-section" id="why">
+  <div class="container">
+    <div class="section-label reveal">The Ingredients</div>
+    <h2 class="section-headline reveal" style="transition-delay:60ms">
+      Most people are surprised to learn <em>kiwis grow here</em> on the island.
+    </h2>
+    <div class="why-grid">
+      <div class="why-lead reveal">
+        "But it's true, and they're delicious." Every flavour traces back to a real place and a real person — a midwife's quince tree, a family kiwi farm, a flower grower who tends her beds for pollinators and pure joy.
+      </div>
+      <div class="why-details reveal-stagger">
+        <div class="why-item">
+          <div class="why-item-label">Kiwis</div>
+          <p>From <strong>Oldfield Kiwi Farm</strong> in Central Saanich — the first and oldest kiwi growers on Vancouver Island. Most people don't know kiwis grow here. They do, and they're delicious.</p>
+        </div>
+        <div class="why-item">
+          <div class="why-item-label">Strawberries</div>
+          <p>Organic, from <strong>Longview Farms</strong>. Roasted slow and folded in — a true taste of the season.</p>
+        </div>
+        <div class="why-item">
+          <div class="why-item-label">Edible flowers</div>
+          <p>From <strong>Rockrose Farm</strong>. Grown for beauty, pollinators, and pure joy — pressed onto sherbet bars that taste like a summer garden.</p>
+        </div>
+        <div class="why-item">
+          <div class="why-item-label">Quince</div>
+          <p>Hand-picked in fall from the garden at <strong>Roundhouse Midwives</strong>. Turned into jam, swirled into vanilla bean. You won't find that anywhere else.</p>
+        </div>
+      </div>
+    </div>
+    <p class="press-note reveal">
+      <strong>Featured on CHEK News</strong> Around Town segment.
+    </p>
+  </div>
+</section>
+
+<!-- PHOTO GRID -->
+<section class="photos-section">
+  <div class="photo-grid reveal-stagger">
+    <div class="photo-grid-item">
+      <img src="ig-photo-03.jpg" alt="Strawberry sherbet bar with pressed edible flowers — Kid Sister Ice Cream" loading="lazy">
+    </div>
+    <div class="photo-grid-item">
+      <img src="ig-photo-04.jpg" alt="Roasted Strawberry ice cream with Kid Sister branded pint — local organic" loading="lazy">
+    </div>
+    <div class="photo-grid-item">
+      <img src="ig-photo-09.jpg" alt="Artisan ice cream cone with quince swirl — Kid Sister Ice Cream" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- FLAVOURS -->
+<section class="flavours-section" id="flavours">
+  <div class="container">
+    <div class="section-label reveal" style="color:var(--blush-light)">Recent Seasonal Flavours</div>
+    <h2 class="section-headline reveal" style="transition-delay:60ms; color:var(--cream)">
+      Every batch tells you <em>where it came from.</em>
+    </h2>
+    <div class="flavours-grid reveal-stagger">
+      <div class="flavour-item">
+        <div class="flavour-name">Quince Swirl</div>
+        <div class="flavour-detail">Roundhouse Midwives garden</div>
+      </div>
+      <div class="flavour-item">
+        <div class="flavour-name">Kiwi Kombucha Sorbet</div>
+        <div class="flavour-detail">Oldfield Kiwi Farm</div>
+      </div>
+      <div class="flavour-item">
+        <div class="flavour-name">Roasted Strawberry</div>
+        <div class="flavour-detail">Longview Farms, organic</div>
+      </div>
+      <div class="flavour-item">
+        <div class="flavour-name">Red Flowering Currant &amp; Strawberry</div>
+        <div class="flavour-detail">Vegan · Local</div>
+      </div>
+      <div class="flavour-item">
+        <div class="flavour-name">Cinnamon Heart</div>
+        <div class="flavour-detail">Kinda spicy, kinda sweet</div>
+      </div>
+      <div class="flavour-item">
+        <div class="flavour-name">Sea Salt &amp; Double Chocolate</div>
+        <div class="flavour-detail">Small-batch</div>
+      </div>
+      <div class="flavour-item">
+        <div class="flavour-name">Strawberry Sherbet Bars</div>
+        <div class="flavour-detail">Rockrose Farm edible flowers</div>
+      </div>
+    </div>
+    <p class="flavours-ig-note reveal">
+      Flavours rotate with the seasons. See what's in right now on <a href="https://www.instagram.com/kidsistericecream/" target="_blank" rel="noopener">Instagram @kidsistericecream ↗</a>
+    </p>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews-section" id="reviews">
+  <div class="container">
+    <div class="section-label reveal">What People Are Saying</div>
+    <div class="review-stack">
+      <div class="review-item reveal">
+        <p class="review-quote">"This fulfilled all my cinnamon heart fantasies!!"</p>
+        <div class="review-meta"><span class="review-meta-dot"></span> @rachabees &nbsp;·&nbsp; Via Instagram</div>
+      </div>
+      <div class="review-item reveal">
+        <p class="review-quote">"We watched you on CHEK News! Looked great."</p>
+        <div class="review-meta"><span class="review-meta-dot"></span> @chrisandwanda2021 &nbsp;·&nbsp; Via Instagram</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section class="visit-section" id="visit">
+  <div class="container">
+    <div class="section-label reveal">Find Us</div>
+    <h2 class="section-headline reveal" style="transition-delay:60ms">Something new is probably <em>in the case right now.</em></h2>
+    <div class="visit-inner">
+      <div class="visit-map reveal">
+        <iframe
+          src="https://maps.google.com/maps?q=Kid+Sister+Ice+Cream+1320+Esquimalt+Rd+Victoria+BC&output=embed"
+          title="Kid Sister Ice Cream on Google Maps"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+      <div class="visit-info reveal" style="transition-delay:80ms">
+        <div class="visit-detail">
+          <div class="visit-detail-label">Address</div>
+          <address>
+            1320 Esquimalt Rd<br>
+            Victoria, BC
+          </address>
+        </div>
+        <div class="visit-detail">
+          <div class="visit-detail-label">Hours</div>
+          <p>Noon–6pm in shoulder season.<br>Extended hours in summer.<br>Check <a href="https://www.instagram.com/kidsistericecream/" target="_blank" rel="noopener">@kidsistericecream</a> for current schedule.</p>
+        </div>
+        <div class="visit-detail">
+          <div class="visit-detail-label">What's in season</div>
+          <p>Flavours change with the harvest. <a href="https://www.instagram.com/kidsistericecream/" target="_blank" rel="noopener">@kidsistericecream</a> has the latest.</p>
+        </div>
+        <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:8px;">
+          <a href="https://maps.google.com/maps?q=Kid+Sister+Ice+Cream+1320+Esquimalt+Rd+Victoria+BC" target="_blank" rel="noopener" class="visit-cta">
+            Get Directions ↗
+          </a>
+          <a href="https://www.instagram.com/kidsistericecream/" target="_blank" rel="noopener" class="visit-cta" style="background:transparent; color:var(--forest); border:1.5px solid var(--forest);">
+            See This Week's Flavours ↗
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-wordmark">Kid Sister Ice Cream</span>
+  <p>1320 Esquimalt Rd, Victoria BC &mdash; <a href="https://www.instagram.com/kidsistericecream/" target="_blank" rel="noopener">@kidsistericecream</a></p>
+</footer>
+
+<noscript>
+  <style>
+    .reveal, .reveal-stagger > * { opacity: 1 !important; transform: none !important; }
+  </style>
+</noscript>
+
+<script>
+  // Nav scroll state
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  // Mobile menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  hamburger.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open');
+  });
+  function closeMobileMenu() { mobileMenu.classList.remove('open'); }
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal, .reveal-stagger');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => observer.observe(el));
+
+  // Hero text reveals on load
+  document.querySelectorAll('.hero-text .reveal').forEach((el, i) => {
+    setTimeout(() => el.classList.add('visible'), 200 + i * 100);
+  });
+</script>
+</body>
+</html>

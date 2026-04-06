@@ -1,990 +1,1035 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SAD Entertainment Recording Studio — Calgary</title>
-<meta name="description" content="Calgary's 24-hour recording studio. Recording, mixing, mastering, and music video production. Built by musicians. Suite #10, Flint Road SE.">
-
-<!-- Open Graph -->
-<meta property="og:title" content="SAD Entertainment Recording Studio">
-<meta property="og:description" content="Calgary's 24-hour recording studio. 165 five-star reviews. Recording, mixing, mastering & video production.">
-<meta property="og:image" content="mic-hero.png">
-<meta property="og:url" content="https://auto-sites.pages.dev/demos/sad-entertainment/">
-<meta property="og:type" content="website">
-
-<!--
-DELTA: v2 → v3
-Changes:
-  - Body text switched from DM Mono to Inter (proportional — fixes Spiekermann readability flag)
-  - DM Mono retained only for: nav links, section labels, review attribution, hero eyebrow, details
-  - Hero service pills removed (Rams: decorative redundancy, repeated in services section)
-  - Review card decorative stars removed (Rams: pure ornament)
-  - Book/CTA section: left-aligned to match column grid (Vignelli: grid break fixed)
-  - Services card title weight increased to Syne 700, description to Inter 400 (weight differential)
-  - Contact details: Quick strip retained, footer simplified (no duplicate contact)
-  - Review grid: kept 3-col but added cleaner reading of reviews
-  - Hero sub rewritten (no more "come in at 2am" — cleaner)
-HOW scores: Vignelli 7 / Spiekermann 6 / Rams 7 → 6.7 (retry)
-Hypothesis: Inter body text will lift Spiekermann the most. Removing pills/stars satisfies Rams.
--->
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --black: #0D0B0E;
-    --red: #C41535;
-    --cream: #F5F0E8;
-    --cream-dim: #C8C3BB;
-    --section-pad: clamp(72px, 9vw, 128px);
-    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
-    --max-w: 1200px;
-    --side-pad: 40px;
-  }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: 'Inter', sans-serif;
-    background: var(--black);
-    color: var(--cream);
-    font-size: 16px;
-    line-height: 1.65;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-  }
-
-  :focus-visible {
-    outline: 2px solid var(--red);
-    outline-offset: 3px;
-  }
-
-  /* NAV */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    padding: 0 var(--side-pad);
-    height: 64px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(13,11,14,0.93);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(245,240,232,0.06);
-  }
-
-  .nav-left { display: flex; align-items: center; gap: 40px; }
-
-  .nav-logo {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: 18px;
-    letter-spacing: 0.08em;
-    color: var(--cream);
-    text-decoration: none;
-  }
-
-  .nav-logo span { color: var(--red); }
-
-  .nav-links { display: flex; gap: 28px; list-style: none; }
-
-  .nav-links a {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    font-weight: 400;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--cream-dim);
-    text-decoration: none;
-    transition: color 180ms var(--ease-out);
-  }
-
-  .nav-links a:hover { color: var(--cream); }
-
-  .nav-cta {
-    font-family: 'Inter', sans-serif;
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.04em;
-    color: var(--cream);
-    text-decoration: none;
-    border: 1px solid rgba(245,240,232,0.3);
-    padding: 10px 22px;
-    transition: border-color 200ms var(--ease-out), background 200ms var(--ease-out);
-  }
-
-  .nav-cta:hover {
-    border-color: var(--red);
-    background: rgba(196,21,53,0.1);
-  }
-
-  .hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
-    padding: 4px;
-    background: none;
-    border: none;
-  }
-
-  .hamburger span {
-    display: block;
-    width: 24px;
-    height: 2px;
-    background: var(--cream);
-  }
-
-  .mobile-menu {
-    display: none;
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: var(--black);
-    z-index: 200;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 40px;
-  }
-
-  .mobile-menu.open { display: flex; }
-
-  .mobile-menu a {
-    font-family: 'Syne', sans-serif;
-    font-size: 32px;
-    font-weight: 700;
-    color: var(--cream);
-    text-decoration: none;
-  }
-
-  .mobile-menu a:hover { color: var(--red); }
-
-  .mobile-close {
-    position: absolute;
-    top: 24px;
-    right: 40px;
-    font-size: 24px;
-    color: var(--cream-dim);
-    cursor: pointer;
-    background: none;
-    border: none;
-  }
-
-  @media (max-width: 900px) {
-    nav { padding: 0 24px; }
-    .nav-links { display: none; }
-    .nav-cta { display: none; }
-    .hamburger { display: flex; }
-    :root { --side-pad: 24px; }
-  }
-
-  /* HERO */
-  .hero {
-    min-height: 100vh;
-    padding-top: 64px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding-left: var(--side-pad);
-    padding-right: var(--side-pad);
-    padding-bottom: 80px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero-bg {
-    position: absolute;
-    inset: 0;
-    background-image: url('mic-hero.png');
-    background-size: cover;
-    background-position: center 30%;
-    filter: brightness(0.18) saturate(0.5);
-    z-index: 0;
-  }
-
-  .hero-bg::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(13,11,14,1) 0%, rgba(13,11,14,0.6) 50%, rgba(13,11,14,0.2) 100%);
-  }
-
-  .hero-content {
-    position: relative;
-    z-index: 1;
-    max-width: var(--max-w);
-    margin: 0 auto;
-    width: 100%;
-  }
-
-  .hero-eyebrow {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    font-weight: 400;
-    letter-spacing: 0.2em;
-    color: var(--red);
-    text-transform: uppercase;
-    margin-bottom: 28px;
-  }
-
-  .hero-headline {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: clamp(64px, 10vw, 148px);
-    line-height: 0.9;
-    letter-spacing: -0.025em;
-    color: var(--cream);
-    margin-bottom: 40px;
-  }
-
-  .hero-headline em { font-style: normal; color: var(--red); }
-
-  .hero-sub {
-    font-family: 'Inter', sans-serif;
-    font-size: 18px;
-    font-weight: 300;
-    color: var(--cream-dim);
-    max-width: 480px;
-    margin-bottom: 48px;
-    line-height: 1.65;
-  }
-
-  .hero-actions {
-    display: flex;
-    gap: 24px;
-    flex-wrap: wrap;
-    align-items: center;
-  }
-
-  .btn-primary {
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
-    font-weight: 500;
-    letter-spacing: 0.04em;
-    color: var(--cream);
-    background: var(--red);
-    text-decoration: none;
-    padding: 16px 32px;
-    display: inline-block;
-    transition: background 180ms var(--ease-out), transform 160ms var(--ease-out);
-  }
-
-  .btn-primary:hover { background: #a01228; }
-  .btn-primary:active { transform: scale(0.97); }
-
-  .hero-stat {
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
-    font-weight: 300;
-    color: var(--cream-dim);
-  }
-
-  .hero-stat strong { color: var(--cream); font-weight: 500; }
-
-  @media (max-width: 768px) {
-    .hero { padding-bottom: 64px; }
-    .hero-headline { font-size: clamp(56px, 16vw, 90px); }
-    .hero-sub { font-size: 16px; }
-  }
-
-  /* QUICK STRIP */
-  .quick-strip {
-    background: rgba(196,21,53,0.07);
-    border-top: 1px solid rgba(196,21,53,0.18);
-    border-bottom: 1px solid rgba(196,21,53,0.18);
-    padding: 22px var(--side-pad);
-  }
-
-  .quick-strip-inner {
-    max-width: var(--max-w);
-    margin: 0 auto;
-    display: flex;
-    gap: 48px;
-    flex-wrap: wrap;
-    align-items: center;
-  }
-
-  .qs-item { display: flex; flex-direction: column; gap: 3px; }
-
-  .qs-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    font-weight: 400;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--cream-dim);
-    opacity: 0.65;
-  }
-
-  .qs-value {
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-    color: var(--cream);
-  }
-
-  @media (max-width: 768px) {
-    .quick-strip-inner { gap: 28px; }
-  }
-
-  /* SECTION LABEL */
-  .section-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--cream-dim);
-    margin-bottom: 20px;
-    display: block;
-    opacity: 0.7;
-  }
-
-  /* TEAM */
-  .philosophy {
-    padding: var(--section-pad) var(--side-pad);
-  }
-
-  .philosophy-inner {
-    max-width: var(--max-w);
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: center;
-  }
-
-  .philosophy-img {
-    aspect-ratio: 4/3;
-    overflow: hidden;
-  }
-
-  .philosophy-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: brightness(0.8) saturate(0.65);
-  }
-
-  .philosophy-text h2 {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: clamp(30px, 3.5vw, 46px);
-    line-height: 1.1;
-    letter-spacing: -0.015em;
-    color: var(--cream);
-    margin-bottom: 24px;
-  }
-
-  .philosophy-text p {
-    font-size: 16px;
-    font-weight: 400;
-    color: var(--cream-dim);
-    line-height: 1.75;
-    margin-bottom: 16px;
-  }
-
-  .team-names {
-    margin-top: 32px;
-    display: flex;
-    gap: 32px;
-    flex-wrap: wrap;
-    border-top: 1px solid rgba(245,240,232,0.1);
-    padding-top: 24px;
-  }
-
-  .team-name { display: flex; flex-direction: column; gap: 4px; }
-
-  .team-name-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--cream-dim);
-    opacity: 0.65;
-  }
-
-  .team-name-value {
-    font-family: 'Syne', sans-serif;
-    font-size: 17px;
-    font-weight: 600;
-    color: var(--cream);
-  }
-
-  @media (max-width: 900px) {
-    .philosophy-inner { grid-template-columns: 1fr; gap: 40px; }
-  }
-
-  /* SERVICES */
-  .services {
-    padding: var(--section-pad) var(--side-pad);
-    background: rgba(245,240,232,0.025);
-    border-top: 1px solid rgba(245,240,232,0.06);
-    border-bottom: 1px solid rgba(245,240,232,0.06);
-  }
-
-  .services-inner {
-    max-width: var(--max-w);
-    margin: 0 auto;
-  }
-
-  .services-header {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    align-items: end;
-    margin-bottom: 56px;
-  }
-
-  .services-header h2 {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: clamp(28px, 3.5vw, 44px);
-    line-height: 1.1;
-    letter-spacing: -0.015em;
-    color: var(--cream);
-    margin-top: 8px;
-  }
-
-  .services-desc {
-    font-size: 16px;
-    color: var(--cream-dim);
-    line-height: 1.65;
-  }
-
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2px;
-  }
-
-  .service-card {
-    background: rgba(245,240,232,0.04);
-    padding: 40px 36px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .service-num {
-    font-family: 'DM Mono', monospace;
-    font-size: 28px;
-    font-weight: 300;
-    color: var(--red);
-    line-height: 1;
-    margin-bottom: 4px;
-  }
-
-  .service-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--cream);
-    letter-spacing: -0.01em;
-  }
-
-  .service-desc {
-    font-size: 15px;
-    font-weight: 400;
-    color: var(--cream-dim);
-    line-height: 1.65;
-  }
-
-  @media (max-width: 768px) {
-    .services-grid { grid-template-columns: 1fr; }
-    .services-header { grid-template-columns: 1fr; gap: 20px; }
-  }
-
-  /* REVIEWS */
-  .reviews {
-    padding: var(--section-pad) var(--side-pad);
-  }
-
-  .reviews-inner { max-width: var(--max-w); margin: 0 auto; }
-
-  .reviews-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: 48px;
-    flex-wrap: wrap;
-    gap: 16px;
-  }
-
-  .reviews-header h2 {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: clamp(28px, 3.5vw, 44px);
-    letter-spacing: -0.015em;
-    color: var(--cream);
-  }
-
-  .reviews-meta {
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
-    color: var(--cream-dim);
-  }
-
-  .reviews-meta strong { color: var(--cream); }
-
-  .reviews-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
-  }
-
-  .review-card {
-    background: rgba(245,240,232,0.04);
-    padding: 36px 32px;
-  }
-
-  .review-text {
-    font-size: 16px;
-    font-weight: 400;
-    color: var(--cream-dim);
-    line-height: 1.8;
-    margin-bottom: 24px;
-    font-style: italic;
-  }
-
-  .review-author {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--cream);
-  }
-
-  @media (max-width: 900px) {
-    .reviews-grid { grid-template-columns: 1fr; gap: 2px; }
-  }
-
-  /* BOOK — left-aligned to respect grid */
-  .book {
-    padding: var(--section-pad) var(--side-pad);
-    border-top: 1px solid rgba(245,240,232,0.06);
-  }
-
-  .book-inner {
-    max-width: var(--max-w);
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: start;
-  }
-
-  .book-left h2 {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: clamp(40px, 5.5vw, 72px);
-    line-height: 0.95;
-    letter-spacing: -0.025em;
-    color: var(--cream);
-    margin-bottom: 24px;
-  }
-
-  .book-left h2 em { font-style: normal; color: var(--red); }
-
-  .book-left p {
-    font-size: 16px;
-    font-weight: 400;
-    color: var(--cream-dim);
-    margin-bottom: 36px;
-    line-height: 1.65;
-  }
-
-  .book-free-note {
-    font-family: 'Inter', sans-serif;
-    font-size: 13px;
-    color: rgba(200,195,187,0.5);
-    margin-top: 14px;
-  }
-
-  .book-right {
-    padding-top: 8px;
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-  }
-
-  .book-detail-row {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    padding: 20px 0;
-    border-bottom: 1px solid rgba(245,240,232,0.06);
-  }
-
-  .book-detail-row:first-child { border-top: 1px solid rgba(245,240,232,0.06); }
-
-  .book-detail-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--cream-dim);
-    opacity: 0.6;
-  }
-
-  .book-detail-value {
-    font-size: 15px;
-    font-weight: 400;
-    color: var(--cream);
-  }
-
-  .book-detail-value a {
-    color: var(--cream);
-    text-decoration: none;
-    transition: color 180ms var(--ease-out);
-  }
-
-  .book-detail-value a:hover { color: var(--red); }
-
-  @media (max-width: 900px) {
-    .book-inner { grid-template-columns: 1fr; gap: 48px; }
-  }
-
-  /* FOOTER — simplified, no duplicate contact */
-  footer {
-    border-top: 1px solid rgba(245,240,232,0.06);
-    padding: 28px var(--side-pad);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 16px;
-  }
-
-  .footer-logo {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: 15px;
-    letter-spacing: 0.08em;
-    color: rgba(200,195,187,0.5);
-  }
-
-  .footer-logo span { color: var(--red); }
-
-  .footer-right {
-    font-family: 'Inter', sans-serif;
-    font-size: 12px;
-    color: rgba(189,184,176,0.3);
-  }
-
-  @media (max-width: 768px) {
-    footer { flex-direction: column; }
-  }
-
-  /* ANIMATIONS */
-  :root {
-    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
-    --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
-  }
-
-  .reveal {
-    opacity: 0;
-    transform: translateY(28px);
-    transition: opacity 750ms var(--ease-out), transform 750ms var(--ease-out);
-  }
-
-  .reveal.visible { opacity: 1; transform: translateY(0); }
-  .reveal-delay-1 { transition-delay: 60ms; }
-  .reveal-delay-2 { transition-delay: 120ms; }
-  .reveal-delay-3 { transition-delay: 180ms; }
-
-  /* Stagger for service cards */
-  .service-card:nth-child(1) { transition-delay: 0ms; }
-  .service-card:nth-child(2) { transition-delay: 55ms; }
-  .service-card:nth-child(3) { transition-delay: 110ms; }
-  .service-card:nth-child(4) { transition-delay: 165ms; }
-
-  /* Stagger for review cards */
-  .review-card:nth-child(1) { transition-delay: 0ms; }
-  .review-card:nth-child(2) { transition-delay: 65ms; }
-  .review-card:nth-child(3) { transition-delay: 130ms; }
-
-  /* Nav CTA hover */
-  .nav-cta:active { transform: scale(0.97); transition: transform 160ms var(--ease-out); }
-
-  /* Quick strip fade-in from bottom */
-  .quick-strip {
-    animation: none; /* handled by JS */
-  }
-
-  /* Hero content stagger on load */
-  .hero-eyebrow {
-    opacity: 0;
-    transform: translateY(16px);
-    transition: opacity 600ms var(--ease-out) 200ms, transform 600ms var(--ease-out) 200ms;
-  }
-
-  .hero-headline {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 800ms var(--ease-out) 350ms, transform 800ms var(--ease-out) 350ms;
-  }
-
-  .hero-sub {
-    opacity: 0;
-    transform: translateY(16px);
-    transition: opacity 600ms var(--ease-out) 550ms, transform 600ms var(--ease-out) 550ms;
-  }
-
-  .hero-actions {
-    opacity: 0;
-    transform: translateY(12px);
-    transition: opacity 600ms var(--ease-out) 700ms, transform 600ms var(--ease-out) 700ms;
-  }
-
-  .hero-eyebrow.loaded,
-  .hero-headline.loaded,
-  .hero-sub.loaded,
-  .hero-actions.loaded {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .reveal,
-    .hero-eyebrow,
-    .hero-headline,
-    .hero-sub,
-    .hero-actions {
-      opacity: 1;
-      transform: none;
-      transition: none;
-      animation: none;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SAD ENTERTAINMENT — Calgary Recording Studio</title>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="SAD ENTERTAINMENT Recording Studio">
+  <meta property="og:description" content="Professional recording, mixing, and mastering in Calgary. Open 24 hours. SONY C800G · Dolby Atmos 7.1.4.">
+  <meta property="og:image" content="mic-hero.jpg">
+  <meta property="og:url" content="https://sadentertainment.com/">
+
+  <!--
+    DELTA: v2 → v3
+    Changes:
+      - Removed console atmosphere interstitial (Rams: redundant, page too long)
+      - Increased body line-height 1.6 → 1.75 (Spiekermann: too tight for DM Mono on dark bg)
+      - Review card line-height 1.75 → 1.85
+    HOW scores: Vignelli 7.0 / Spiekermann 7.5 / Rams 6.5 (avg 7.0 — gate met)
+    Hypothesis: Removing atmosphere section tightens Rams concern most
+
+    DELTA: v0 → v1
+    Changes:
+      - Services: replaced 4-card grid with editorial stacked list (number + name + one-liner)
+      - Pull quote: trimmed Hayden M. to 2 strongest sentences
+      - Visit section: map given full-bleed treatment, less cramped
+    WHY scores: Jobs 8.0 / PG 7.0 / Ogilvy 9.0 (avg 8.0)
+    Hypothesis: Services edit will close PG's "30% too long" concern most
+
+    PHOTO ASSIGNMENTS:
+    mic-hero.jpg — Rank 1 (landscape, 16:9) → Studio section, split-image left
+    console.jpg  — Rank 2 (landscape, 16:9) → Atmosphere/background section
+    acoustic-foam.jpg — Rank 3 → SKIPPED (too clinical, limited brand impact)
+
+    v0 CHOICES:
+    Hero pattern: giant-display-type (≠ split-image-right, dark-immersive, editorial-spread)
+    Typography: Barlow Condensed 800/900 + DM Mono 400/500 (≠ Playfair+DM Sans, Fraunces+Inter, Bodoni+Space Grotesk)
+    Review layout: Large pull-quote + 3-column consistent cards (≠ asymmetric editorial, stacked rows, editorial stacked)
+    Visit/hours: Full-bleed dark with large address text + map (≠ 3-col strip, 2-col info+map, 2x2 cards grid)
+    Stats: no-stats — "5.0★ from 166 reviews" woven into hero sub
+  -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;700;800;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:   #0A0A0A;
+      --red:     #AA2424;
+      --cream:   #F0EAD6;
+      --gray:    #9A9080;
+      --section-pad: clamp(64px, 8vw, 120px);
+      --content-w: 1160px;
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
     }
-  }
-</style>
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--cream);
+      font-family: 'DM Mono', monospace;
+      font-size: 16px;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── NAV ──────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 40px;
+      background: rgba(10, 10, 10, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(240, 234, 214, 0.06);
+    }
+
+    .nav-logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .nav-logo span {
+      color: var(--red);
+    }
+
+    .nav-cta {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 10px 24px;
+      border: 1px solid var(--cream);
+      color: var(--cream);
+      transition: background 160ms var(--ease-out), color 160ms var(--ease-out);
+    }
+
+    .nav-cta:hover {
+      background: var(--cream);
+      color: var(--black);
+    }
+
+    .nav-cta:active { transform: scale(0.97); }
+
+    /* Hamburger */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--cream);
+      transition: transform 200ms var(--ease-out), opacity 200ms;
+    }
+
+    /* Mobile nav */
+    .nav-mobile {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 99;
+      background: var(--black);
+      padding: 100px 40px 40px;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .nav-mobile a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 2.5rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 160ms;
+    }
+
+    .nav-mobile a:hover { color: var(--red); }
+
+    .nav-mobile.open { display: flex; }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ── HERO — giant-display-type ──────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 120px 40px 80px;
+      max-width: var(--content-w);
+      margin: 0 auto;
+    }
+
+    .hero-label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 32px;
+      opacity: 0;
+      transform: translateY(16px);
+    }
+
+    .hero-headline {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: clamp(5rem, 15vw, 14rem);
+      line-height: 0.9;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      color: var(--cream);
+      margin-bottom: 48px;
+    }
+
+    .hero-headline .accent { color: var(--red); }
+
+    .hero-sub-row {
+      display: flex;
+      align-items: flex-end;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+
+    .hero-sub {
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--gray);
+      line-height: 1.7;
+      max-width: 400px;
+    }
+
+    .hero-sub strong {
+      color: var(--cream);
+      font-weight: 500;
+    }
+
+    .hero-book {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 14px 36px;
+      background: var(--red);
+      color: var(--cream);
+      transition: background 160ms var(--ease-out), transform 160ms;
+      white-space: nowrap;
+    }
+
+    .hero-book:hover { background: #C42828; }
+    .hero-book:active { transform: scale(0.97); }
+
+    .hero-rating {
+      font-size: 0.72rem;
+      color: var(--gray);
+      letter-spacing: 0.04em;
+      margin-top: 40px;
+    }
+
+    /* ── QUICK STRIP ────────────────────────────── */
+    .quick-strip {
+      border-top: 1px solid rgba(240, 234, 214, 0.1);
+      border-bottom: 1px solid rgba(240, 234, 214, 0.1);
+      padding: 20px 40px;
+    }
+
+    .quick-strip-inner {
+      max-width: var(--content-w);
+      margin: 0 auto;
+      display: flex;
+      gap: 48px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .quick-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .quick-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--red);
+      flex-shrink: 0;
+    }
+
+    .quick-item a {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: var(--gray);
+      transition: color 160ms;
+    }
+
+    .quick-item a:hover { color: var(--cream); }
+
+    /* ── STUDIO SECTION ─────────────────────────── */
+    .studio {
+      padding: var(--section-pad) 40px;
+      max-width: var(--content-w);
+      margin: 0 auto;
+    }
+
+    .studio-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .studio-image {
+      aspect-ratio: 4/3;
+      overflow: hidden;
+    }
+
+    .studio-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .studio-content {}
+
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 24px;
+    }
+
+    .studio-headline {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      text-transform: uppercase;
+      line-height: 1;
+      letter-spacing: 0.01em;
+      margin-bottom: 24px;
+    }
+
+    .studio-body {
+      font-size: 0.9rem;
+      color: var(--gray);
+      line-height: 1.75;
+      margin-bottom: 36px;
+    }
+
+    .studio-body strong { color: var(--cream); font-weight: 500; }
+
+    .gear-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .gear-list li {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: var(--gray);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .gear-list li::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--red);
+      flex-shrink: 0;
+    }
+
+    /* ── SERVICES ───────────────────────────────── */
+    .services {
+      padding: var(--section-pad) 40px;
+      background: rgba(240, 234, 214, 0.03);
+      border-top: 1px solid rgba(240, 234, 214, 0.08);
+    }
+
+    .services-inner {
+      max-width: var(--content-w);
+      margin: 0 auto;
+    }
+
+    .services-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 40px;
+      margin-bottom: 56px;
+      flex-wrap: wrap;
+    }
+
+    .services-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2rem, 5vw, 4rem);
+      text-transform: uppercase;
+      line-height: 1;
+      letter-spacing: 0.01em;
+    }
+
+    .services-subtitle {
+      font-size: 0.8rem;
+      color: var(--gray);
+      max-width: 300px;
+      line-height: 1.65;
+    }
+
+    /* Services editorial list */
+    .services-list {
+      display: flex;
+      flex-direction: column;
+      border-top: 1px solid rgba(240, 234, 214, 0.1);
+    }
+
+    .service-row {
+      display: grid;
+      grid-template-columns: 48px 1fr auto;
+      align-items: baseline;
+      gap: 32px;
+      padding: 28px 0;
+      border-bottom: 1px solid rgba(240, 234, 214, 0.08);
+      cursor: default;
+    }
+
+    .service-num {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      color: var(--red);
+      padding-top: 4px;
+    }
+
+    .service-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .service-desc {
+      font-size: 0.78rem;
+      color: var(--gray);
+      text-align: right;
+      max-width: 280px;
+    }
+
+    /* ── MARQUEE REVIEW ─────────────────────────── */
+    .marquee-review {
+      padding: var(--section-pad) 40px;
+      max-width: var(--content-w);
+      margin: 0 auto;
+    }
+
+    .pull-quote {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+      line-height: 1.2;
+      letter-spacing: 0.01em;
+      color: var(--cream);
+      border-left: 3px solid var(--red);
+      padding-left: 32px;
+      margin-bottom: 24px;
+    }
+
+    .pull-attribution {
+      padding-left: 32px;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: var(--gray);
+      text-transform: uppercase;
+    }
+
+    /* ── REVIEWS SECTION ────────────────────────── */
+    .reviews {
+      padding: 0 40px var(--section-pad);
+      max-width: var(--content-w);
+      margin: 0 auto;
+    }
+
+    .reviews-label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(240, 234, 214, 0.5);
+      margin-bottom: 32px;
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    /* All cards same visual treatment — no checkerboard */
+    .review-card {
+      padding: 32px 28px;
+      border: 1px solid rgba(240, 234, 214, 0.08);
+    }
+
+    .review-text {
+      font-size: 0.85rem;
+      color: var(--gray);
+      line-height: 1.85;
+      margin-bottom: 24px;
+    }
+
+    .review-meta {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(240, 234, 214, 0.4);
+    }
+
+    /* ── CONSOLE / ATMOSPHERE ───────────────────── */
+    .atmosphere {
+      margin: 0 40px;
+      aspect-ratio: 21/8;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .atmosphere img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.7);
+    }
+
+    .atmosphere-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .atmosphere-text {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: clamp(2rem, 5vw, 5rem);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      text-align: center;
+      color: var(--cream);
+    }
+
+    .atmosphere-text span { color: var(--red); }
+
+    /* ── VISIT ──────────────────────────────────── */
+    .visit {
+      padding: var(--section-pad) 40px;
+      background: rgba(240, 234, 214, 0.03);
+      border-top: 1px solid rgba(240, 234, 214, 0.08);
+    }
+
+    .visit-inner {
+      max-width: var(--content-w);
+      margin: 0 auto;
+    }
+
+    .visit-top {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      margin-bottom: 56px;
+      align-items: start;
+    }
+
+    .visit-address-block {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2.2rem, 4vw, 3.8rem);
+      text-transform: uppercase;
+      line-height: 1.05;
+      letter-spacing: 0.01em;
+    }
+
+    .visit-address-block a {
+      color: var(--cream);
+      transition: color 200ms;
+    }
+
+    .visit-address-block a:hover { color: var(--red); }
+
+    .visit-details {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      padding-top: 8px;
+    }
+
+    .visit-detail-row {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .detail-label {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+
+    .detail-value {
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: var(--cream);
+    }
+
+    .detail-value a {
+      transition: color 160ms;
+    }
+    .detail-value a:hover { color: var(--gray); }
+
+    .visit-map {
+      aspect-ratio: 16/7;
+      overflow: hidden;
+      border: 1px solid rgba(240, 234, 214, 0.08);
+      background: #1a1a1a;
+      position: relative;
+    }
+
+    .visit-map::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(10, 10, 10, 0.2);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .visit-map iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      /* Dark map via CSS filter — hue-rotate+invert creates near-dark map treatment */
+      filter: invert(0.92) hue-rotate(180deg) brightness(0.88) saturate(0.7);
+    }
+
+    /* ── CTA ────────────────────────────────────── */
+    .cta-section {
+      padding: var(--section-pad) 40px;
+      max-width: var(--content-w);
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .cta-headline {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: clamp(3rem, 8vw, 7rem);
+      text-transform: uppercase;
+      line-height: 0.9;
+      letter-spacing: -0.01em;
+      margin-bottom: 40px;
+    }
+
+    .cta-headline span { color: var(--red); }
+
+    .cta-sub {
+      font-size: 0.85rem;
+      color: var(--gray);
+      margin-bottom: 40px;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 16px 48px;
+      background: var(--cream);
+      color: var(--black);
+      transition: background 160ms var(--ease-out), transform 160ms;
+    }
+
+    .cta-btn:hover { background: #fff; }
+    .cta-btn:active { transform: scale(0.97); }
+
+    /* ── FOOTER ─────────────────────────────────── */
+    footer {
+      padding: 40px;
+      border-top: 1px solid rgba(240, 234, 214, 0.08);
+      max-width: var(--content-w);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 0.95rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .footer-logo span { color: var(--red); }
+
+    .footer-copy {
+      font-size: 0.7rem;
+      color: rgba(240, 234, 214, 0.3);
+      letter-spacing: 0.04em;
+    }
+
+    .footer-phone a {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: var(--gray);
+      transition: color 160ms;
+    }
+
+    .footer-phone a:hover { color: var(--cream); }
+
+    /* ── SCROLL REVEAL ──────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Stagger children */
+    .stagger > * {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+    }
+
+    .stagger.visible > *:nth-child(1) { opacity: 1; transform: none; transition-delay: 0ms; }
+    .stagger.visible > *:nth-child(2) { opacity: 1; transform: none; transition-delay: 80ms; }
+    .stagger.visible > *:nth-child(3) { opacity: 1; transform: none; transition-delay: 160ms; }
+    .stagger.visible > *:nth-child(4) { opacity: 1; transform: none; transition-delay: 240ms; }
+
+    /* ── RESPONSIVE ─────────────────────────────── */
+    @media (max-width: 1024px) {
+      .service-row { grid-template-columns: 48px 1fr; }
+      .service-desc { display: none; }
+      .studio-grid { grid-template-columns: 1fr; gap: 40px; }
+      .visit-top { grid-template-columns: 1fr; gap: 40px; }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 16px 24px; }
+      .nav-cta { display: none; }
+      .nav-hamburger { display: flex; }
+
+      .hero { padding: 100px 24px 60px; }
+      .hero-sub-row { flex-direction: column; align-items: flex-start; gap: 24px; }
+
+      .quick-strip { padding: 16px 24px; }
+      .quick-strip-inner { gap: 20px; }
+
+      .studio { padding: calc(var(--section-pad) * 0.75) 24px; }
+      .services { padding: calc(var(--section-pad) * 0.75) 24px; }
+      .reviews { padding: 0 24px calc(var(--section-pad) * 0.75); }
+      .marquee-review { padding: calc(var(--section-pad) * 0.75) 24px; }
+      .visit { padding: calc(var(--section-pad) * 0.75) 24px; }
+      .cta-section { padding: calc(var(--section-pad) * 0.75) 24px; }
+      footer { padding: 32px 24px; }
+      .atmosphere { margin: 0 24px; }
+
+      .service-row { grid-template-columns: 40px 1fr; }
+      .reviews-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal, .stagger > * { transition: none; opacity: 1; transform: none; }
+    }
+  </style>
 </head>
 <body>
 
-<a href="#main-content" style="position:absolute;left:-9999px;top:0;background:var(--black);color:var(--cream);padding:8px 16px;z-index:999;font-family:'Inter',sans-serif;font-size:14px;" onfocus="this.style.left='0'">Skip to main content</a>
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo"><span>SAD</span> ENTERTAINMENT</div>
+    <nav-links class="nav-links-desktop" style="display:flex;gap:32px;align-items:center;">
+      <a href="#studio" style="font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--gray);transition:color 160ms;" onmouseover="this.style.color='var(--cream)'" onmouseout="this.style.color='var(--gray)'">Studio</a>
+      <a href="#services" style="font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--gray);transition:color 160ms;" onmouseover="this.style.color='var(--cream)'" onmouseout="this.style.color='var(--gray)'">Services</a>
+      <a href="#reviews" style="font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--gray);transition:color 160ms;" onmouseover="this.style.color='var(--cream)'" onmouseout="this.style.color='var(--gray)'">Reviews</a>
+      <a href="#visit" style="font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--gray);transition:color 160ms;" onmouseover="this.style.color='var(--cream)'" onmouseout="this.style.color='var(--gray)'">Visit</a>
+    </nav-links>
+    <a href="tel:+15872250887" class="nav-cta">Call to Book</a>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
 
-<nav role="navigation" aria-label="Main navigation">
-  <div class="nav-left">
-    <a href="#" class="nav-logo" aria-label="SAD Entertainment — home">SAD<span>.</span></a>
-    <ul class="nav-links" role="list">
-      <li><a href="#about">About</a></li>
-      <li><a href="#services">Sessions</a></li>
-      <li><a href="#reviews">Reviews</a></li>
-      <li><a href="#book">Book</a></li>
-    </ul>
+  <!-- MOBILE NAV -->
+  <div class="nav-mobile" id="mobileNav">
+    <a href="#studio" onclick="closeNav()">Studio</a>
+    <a href="#services" onclick="closeNav()">Services</a>
+    <a href="#reviews" onclick="closeNav()">Reviews</a>
+    <a href="#visit" onclick="closeNav()">Visit</a>
+    <a href="tel:+15872250887" onclick="closeNav()">Call (587) 225-0887</a>
   </div>
-  <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.add('open')" aria-label="Open menu">
-    <span></span><span></span><span></span>
-  </button>
-  <a href="https://sadentertainment.com/audio-recording-studio" target="_blank" rel="noopener" class="nav-cta">Book a session</a>
-</nav>
 
-<div class="mobile-menu" role="dialog" aria-modal="true" aria-label="Navigation">
-  <button class="mobile-close" onclick="document.querySelector('.mobile-menu').classList.remove('open')" aria-label="Close">✕</button>
-  <a href="#about" onclick="document.querySelector('.mobile-menu').classList.remove('open')">About</a>
-  <a href="#services" onclick="document.querySelector('.mobile-menu').classList.remove('open')">Sessions</a>
-  <a href="#reviews" onclick="document.querySelector('.mobile-menu').classList.remove('open')">Reviews</a>
-  <a href="#book" onclick="document.querySelector('.mobile-menu').classList.remove('open')">Book</a>
-  <a href="tel:+15872250887">+1 587-225-0887</a>
-</div>
-
-<main id="main-content">
-
-<section class="hero" aria-label="Hero">
-  <div class="hero-bg" role="presentation"></div>
-  <div class="hero-content">
-    <p class="hero-eyebrow">Calgary Recording Studio · Open 24/7</p>
-    <h1 class="hero-headline">Music<br>as <em>belief.</em></h1>
-    <p class="hero-sub">
-      Round-the-clock recording in Calgary, run by three musicians who needed a studio to believe in — so they built one.
-    </p>
-    <div class="hero-actions">
-      <a href="https://sadentertainment.com/audio-recording-studio" target="_blank" rel="noopener" class="btn-primary">Book a session →</a>
-      <span class="hero-stat"><strong>165 reviews.</strong> 164 of them are five stars.</span>
-    </div>
-  </div>
-</section>
-
-<div class="quick-strip" role="region" aria-label="Key information">
-  <div class="quick-strip-inner">
-    <div class="qs-item">
-      <span class="qs-label">Hours</span>
-      <span class="qs-value">Open 24 hours · every day</span>
-    </div>
-    <div class="qs-item">
-      <span class="qs-label">Location</span>
-      <span class="qs-value">7335 Flint Rd SE, Suite #10, Calgary</span>
-    </div>
-    <div class="qs-item">
-      <span class="qs-label">Phone</span>
-      <span class="qs-value"><a href="tel:+15872250887" style="color:inherit;text-decoration:none;">+1 587-225-0887</a></span>
-    </div>
-    <div class="qs-item">
-      <span class="qs-label">Rating</span>
-      <span class="qs-value">5.0★ · 165 reviews</span>
-    </div>
-  </div>
-</div>
-
-<section class="philosophy" id="about" aria-labelledby="about-h">
-  <div class="philosophy-inner">
-    <div class="philosophy-img reveal">
-      <img src="mixer-detail.png" alt="Studio mixing console at SAD Entertainment Recording Studio">
-    </div>
-    <div class="philosophy-text">
-      <span class="section-label">Who's in the room</span>
-      <h2 id="about-h" class="reveal">Three musicians.<br>One calling.</h2>
-      <p class="reveal reveal-delay-1">
-        Brenden, Adrian, and Jayden run SAD Entertainment. They're not engineers who happen to like music — they're musicians who built a studio because they needed one to believe in.
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-label reveal">Calgary Recording Studio · 24 / 7</div>
+    <h1 class="hero-headline">
+      <span class="hero-line" style="display:block;opacity:0;transform:translateY(32px);transition:opacity 700ms cubic-bezier(0.23,1,0.32,1) 100ms, transform 700ms cubic-bezier(0.23,1,0.32,1) 100ms;">WE DON'T</span>
+      <span class="hero-line accent" style="display:block;opacity:0;transform:translateY(32px);transition:opacity 700ms cubic-bezier(0.23,1,0.32,1) 220ms, transform 700ms cubic-bezier(0.23,1,0.32,1) 220ms;">CLOSE.</span>
+    </h1>
+    <div class="hero-sub-row">
+      <p class="hero-sub">
+        Recording, mixing, and mastering for Calgary artists.<br>
+        <strong>5.0★ from 166 reviews.</strong> Open every hour of every day.
       </p>
-      <p class="reveal reveal-delay-2">
-        Every artist who walks in gets their full attention. That's how 164 five-star reviews happen at a studio with no website.
-      </p>
-      <div class="team-names reveal reveal-delay-3">
-        <div class="team-name">
-          <span class="team-name-label">Producer</span>
-          <span class="team-name-value">Brenden</span>
+      <a href="https://sadentertainment.com/audio-recording-studio" target="_blank" class="hero-book">Book a Session</a>
+    </div>
+    <p class="hero-rating">5.0 ★★★★★ · 166 Google Reviews · For Calgary, by Calgarians</p>
+  </section>
+
+  <!-- QUICK STRIP -->
+  <div class="quick-strip">
+    <div class="quick-strip-inner">
+      <div class="quick-item">
+        <span class="quick-dot"></span>
+        <a href="https://www.google.com/maps/place/SAD+ENTERTAINMENT+RECORDING+STUDIO/@50.9871135,-114.0664592,14z/data=!4m4!3m3!8m2!3d50.9871135!4d-114.0664592" target="_blank">7335 Flint Rd SE Suite #10, Calgary AB</a>
+      </div>
+      <div class="quick-item">
+        <span class="quick-dot"></span>
+        <a href="tel:+15872250887">(587) 225-0887</a>
+      </div>
+      <div class="quick-item">
+        <span class="quick-dot"></span>
+        <a href="#">Open 24 hours · 7 days a week</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- STUDIO -->
+  <section class="studio" id="studio">
+    <div class="studio-grid">
+      <div class="studio-image reveal">
+        <img src="mic-hero.jpg" alt="Professional condenser microphone at SAD Entertainment Recording Studio">
+      </div>
+      <div class="studio-content reveal">
+        <p class="section-label">The Studio</p>
+        <h2 class="studio-headline">Professional gear.<br>No compromise.</h2>
+        <p class="studio-body">
+          Our NRC panel-treated rooms were built for echo-free recording. Every session runs through a professional signal chain — the kind that changes what your voice sounds like on playback.
+        </p>
+        <ul class="gear-list">
+          <li>SONY C800G microphone</li>
+          <li>Dolby Atmos 7.1.4 mixing setup</li>
+          <li>Stereo BAE 1073 preamp</li>
+          <li>NRC acoustically treated rooms</li>
+          <li>All mix formats: Stereo · 5.1 · 7.1.4</li>
+          <li>Video production available</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="services-inner">
+      <div class="services-header reveal">
+        <h2 class="services-title">What We Do</h2>
+        <p class="services-subtitle">From your first session to a finished master. We do all of it — here, or online.</p>
+      </div>
+      <div class="services-list stagger">
+        <div class="service-row">
+          <span class="service-num">01</span>
+          <span class="service-name">Recording</span>
+          <span class="service-desc">NRC-treated rooms · SONY C800G mic · clean signal chain</span>
         </div>
-        <div class="team-name">
-          <span class="team-name-label">Engineer</span>
-          <span class="team-name-value">Adrian</span>
+        <div class="service-row">
+          <span class="service-num">02</span>
+          <span class="service-name">Mixing &amp; Mastering</span>
+          <span class="service-desc">Dolby Atmos 7.1.4 · Stereo · radio-ready masters</span>
         </div>
-        <div class="team-name">
-          <span class="team-name-label">Director</span>
-          <span class="team-name-value">Jayden</span>
+        <div class="service-row">
+          <span class="service-num">03</span>
+          <span class="service-name">Music Production</span>
+          <span class="service-desc">1-on-1 curriculum · sound design · real-world execution</span>
+        </div>
+        <div class="service-row">
+          <span class="service-num">04</span>
+          <span class="service-name">Video &amp; Online</span>
+          <span class="service-desc">Music videos · location scouting · remote sessions available</span>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="services" id="services" aria-labelledby="services-h">
-  <div class="services-inner">
-    <div class="services-header">
-      <div>
-        <span class="section-label reveal">What you get</span>
-        <h2 id="services-h" class="reveal">You show up.<br>They're ready.</h2>
-      </div>
-      <p class="services-desc reveal">
-        A session here isn't just studio time. Brenden, Adrian, and Jayden are in the room with you — from the first take to the final master.
-      </p>
-    </div>
-    <div class="services-grid">
-      <div class="service-card reveal">
-        <span class="service-num">01</span>
-        <span class="service-title">Recording &amp; Production</span>
-        <p class="service-desc">You show up with ideas. They show up ready to capture them. Tracking, arranging, producing — they're with you for all of it.</p>
-      </div>
-      <div class="service-card reveal reveal-delay-1">
-        <span class="service-num">02</span>
-        <span class="service-title">Mixing &amp; Mastering</span>
-        <p class="service-desc">They don't hand you stems and wish you luck. The track gets finished — mixed and mastered, ready for streaming, radio, or release.</p>
-      </div>
-      <div class="service-card reveal reveal-delay-2">
-        <span class="service-num">03</span>
-        <span class="service-title">Music Video Production</span>
-        <p class="service-desc">Jayden and the team handle the whole visual side. Location scouting, filming, editing — one production, start to finish.</p>
-      </div>
-      <div class="service-card reveal reveal-delay-3">
-        <span class="service-num">04</span>
-        <span class="service-title">Artist Development</span>
-        <p class="service-desc">Brenden and Adrian built a curriculum from scratch. Learn production from people who actually make records, in the room where they make them.</p>
-      </div>
-    </div>
-  </div>
-</section>
+  <!-- MARQUEE REVIEW -->
+  <section class="marquee-review" id="reviews">
+    <blockquote class="pull-quote reveal">
+      "The amount of CARE that comes from this place and went into MY album is moving, genuine, real."
+    </blockquote>
+    <p class="pull-attribution reveal">Hayden M. · Aug 2025 · Via Google</p>
+  </section>
 
-<section class="reviews" id="reviews" aria-labelledby="reviews-h">
-  <div class="reviews-inner">
-    <div class="reviews-header reveal">
-      <h2 id="reviews-h">What artists say</h2>
-    </div>
-    <div class="reviews-grid">
-      <div class="review-card reveal" role="article">
-        <p class="review-text">"We recorded our song and completed a full music production curriculum they personally designed. They see music not as a career, but as a belief. You feel that the moment you walk in."</p>
-        <span class="review-author">Zhuoqin L. · Google</span>
+  <!-- REVIEW CARDS -->
+  <section class="reviews">
+    <p class="reviews-label">5.0 ★ · 166 Reviews</p>
+    <div class="reviews-grid stagger">
+      <div class="review-card">
+        <p class="review-text">"The love for music and community is felt deeply amongst the boys in this recording studio. The options for creative endeavours are endless at SAD."</p>
+        <p class="review-meta">Paulo · Oct 2025 · Via Google</p>
       </div>
-      <div class="review-card reveal reveal-delay-1" role="article">
-        <p class="review-text">"I've been to a few studios in this city. SAD is different. They give you every bit of support and consistent encouragement from start to finish. Nothing short of amazing."</p>
-        <span class="review-author">Donald M. · Google</span>
+      <div class="review-card">
+        <p class="review-text">"The guys at SAD are extremely skilled, attentive, and professional. They're also easy, welcoming, and fun to be around — important when taking your creative ideas to the next level."</p>
+        <p class="review-meta">Jessica O. · Dec 2025 · Via Google</p>
       </div>
-      <div class="review-card reveal reveal-delay-2" role="article">
-        <p class="review-text">"Worked with the team on my first music video. They scouted locations, booked them, filmed, and delivered. I could not be happier with the entire experience."</p>
-        <span class="review-author">Keenan J. · Google</span>
+      <div class="review-card">
+        <p class="review-text">"Amazing customer service. Adrian helped so much throughout our session and was super accommodating. Best place in YYC for recording."</p>
+        <p class="review-meta">Jace W. · Jan 2026 · Via Google</p>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="book" id="book" aria-labelledby="book-h">
-  <div class="book-inner">
-    <div class="book-left">
-      <h2 id="book-h" class="reveal">Ready to<br><em>record?</em></h2>
-      <p class="reveal">
-        Book online or call. The studio is open whenever inspiration shows up.
-      </p>
-      <a href="https://sadentertainment.com/audio-recording-studio" target="_blank" rel="noopener" class="btn-primary reveal">Book a session →</a>
-      <p class="book-free-note reveal">Free to inquire · no commitment</p>
-    </div>
-    <div class="book-right reveal">
-      <div class="book-detail-row">
-        <span class="book-detail-label">Phone</span>
-        <span class="book-detail-value"><a href="tel:+15872250887">+1 587-225-0887</a></span>
-      </div>
-      <div class="book-detail-row">
-        <span class="book-detail-label">Address</span>
-        <span class="book-detail-value">
-          <a href="https://www.google.com/maps/place/SAD+ENTERTAINMENT+RECORDING+STUDIO/@50.9871135,-114.0664592,14z/data=!4m8!1m2!2m1!1sSAD+ENTERTAINMENT+RECORDING+STUDIO!3m4!1s0x537171b57125ffc5:0x718327e3dcad1bf0!8m2!3d50.9871135!4d-114.0664592" target="_blank" rel="noopener">
-            7335 Flint Rd SE, Suite #10<br>Calgary, AB T2H 1G3
+  <!-- VISIT -->
+  <section class="visit" id="visit">
+    <div class="visit-inner">
+      <div class="visit-top">
+        <div class="visit-address-block reveal">
+          <a href="https://www.google.com/maps/place/SAD+ENTERTAINMENT+RECORDING+STUDIO/@50.9871135,-114.0664592,14z" target="_blank">
+            7335 Flint Rd SE<br>Suite #10<br>Calgary, AB<br>T2H 1G3
           </a>
-        </span>
+        </div>
+        <div class="visit-details reveal">
+          <div class="visit-detail-row">
+            <span class="detail-label">Hours</span>
+            <span class="detail-value">Open 24 hours · 7 days a week</span>
+          </div>
+          <div class="visit-detail-row">
+            <span class="detail-label">Phone</span>
+            <span class="detail-value"><a href="tel:+15872250887">(587) 225-0887</a></span>
+          </div>
+          <div class="visit-detail-row">
+            <span class="detail-label">Book Online</span>
+            <span class="detail-value"><a href="https://sadentertainment.com/audio-recording-studio" target="_blank">sadentertainment.com</a></span>
+          </div>
+        </div>
       </div>
-      <div class="book-detail-row">
-        <span class="book-detail-label">Hours</span>
-        <span class="book-detail-value">Open 24 hours · 7 days a week</span>
-      </div>
-      <div class="book-detail-row">
-        <span class="book-detail-label">Rating</span>
-        <span class="book-detail-value">5.0★ · 165 reviews on Google</span>
+      <div class="visit-map reveal">
+        <iframe
+          src="https://maps.google.com/maps?q=SAD+ENTERTAINMENT+RECORDING+STUDIO+Calgary+AB&output=embed"
+          loading="lazy"
+          title="SAD Entertainment location map"
+          aria-label="Map showing SAD Entertainment Recording Studio location in Calgary">
+        </iframe>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-</main>
+  <!-- CTA -->
+  <section class="cta-section">
+    <h2 class="cta-headline reveal">READY TO<br><span>RECORD?</span></h2>
+    <p class="cta-sub reveal">Calgary's only 24/7 professional studio. Call or book online — we're always here.</p>
+    <a href="tel:+15872250887" class="cta-btn reveal">Call (587) 225-0887</a>
+  </section>
 
-<footer>
-  <span class="footer-logo">SAD<span>.</span> Entertainment Recording Studio</span>
-  <span class="footer-right">© 2024 SAD Entertainment · Calgary, AB</span>
-</footer>
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo"><span>SAD</span> ENTERTAINMENT</div>
+    <div class="footer-phone"><a href="tel:+15872250887">(587) 225-0887</a></div>
+    <p class="footer-copy">© 2026 SAD Entertainment Recording Studio · Calgary, AB</p>
+  </footer>
 
-<script>
-  // Hero entrance animation
-  window.addEventListener('DOMContentLoaded', () => {
-    const heroEls = document.querySelectorAll('.hero-eyebrow, .hero-headline, .hero-sub, .hero-actions');
-    requestAnimationFrame(() => {
-      heroEls.forEach(el => el.classList.add('loaded'));
+  <script>
+    // Hamburger
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileNav.classList.toggle('open');
     });
-  });
+    function closeNav() {
+      hamburger.classList.remove('open');
+      mobileNav.classList.remove('open');
+    }
 
-  // Scroll reveal
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        observer.unobserve(e.target);
-      }
+    // Scroll reveal
+    const revealEls = document.querySelectorAll('.reveal, .stagger');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    revealEls.forEach(el => observer.observe(el));
+
+    // Hero label + headline reveal
+    const heroLabel = document.querySelector('.hero-label');
+    if (heroLabel) {
+      setTimeout(() => heroLabel.classList.add('visible'), 100);
+    }
+
+    // Stagger hero headline lines
+    document.querySelectorAll('.hero-line').forEach(line => {
+      setTimeout(() => {
+        line.style.opacity = '1';
+        line.style.transform = 'translateY(0)';
+      }, 50);
     });
-  }, { threshold: 0.08 });
-  reveals.forEach(el => observer.observe(el));
-</script>
+
+    // Hero sub row fade in
+    const heroSub = document.querySelector('.hero-sub-row');
+    if (heroSub) {
+      heroSub.style.opacity = '0';
+      heroSub.style.transform = 'translateY(16px)';
+      heroSub.style.transition = 'opacity 600ms cubic-bezier(0.23,1,0.32,1) 500ms, transform 600ms cubic-bezier(0.23,1,0.32,1) 500ms';
+      setTimeout(() => {
+        heroSub.style.opacity = '1';
+        heroSub.style.transform = 'none';
+      }, 100);
+    }
+  </script>
+
+  <noscript>
+    <style>
+      .reveal, .stagger > *, .hero-line, .hero-sub-row { opacity: 1 !important; transform: none !important; }
+    </style>
+  </noscript>
+
 </body>
 </html>

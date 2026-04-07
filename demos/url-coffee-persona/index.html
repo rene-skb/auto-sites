@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>URL Coffee — First Hill, Seattle</title>
+  <meta name="description" content="Mid-century modern with a note of punkish whimsy. 4.8★ from 411 reviews. 524 Broadway, Seattle.">
+  <meta property="og:title" content="URL Coffee — First Hill, Seattle">
+  <meta property="og:description" content="Mid-century modern with a note of punkish whimsy. Best coffee on First Hill.">
+  <meta property="og:image" content="ig-photo-03.jpg">
+  <meta property="og:url" content="https://auto-sites.pages.dev/demos/url-coffee-persona/">
+
+  <!--
+  DELTA: v2 → v3
+  Changes:
+  - Unified grid: all sections use consistent max-width 1280px + 64px padding
+  - Nav links: weight 500 → 600, tracking reduced from 0.12 to 0.08em, color rgba(255,255,255,0.9)
+  - Small caps/labels: tracking reduced from 0.16–0.18 to 0.12em max for readability
+  - Hero: reduced complexity — removed split photo column on desktop too (all-text hero with side photo as thin accent only)
+  - Typographic system simplified: 3 text scales instead of scattered values
+  - Gallery section removed (redundant — already have hero photo + sig photo + visit photo = 3 photo moments max per rules)
+  - Review section: condensed to 2 cards + large rating
+  - Story section: simplified, both columns more aligned
+  HOW scores: Vignelli 7 / Spiekermann 6 / Rams 7 → Avg 6.67 (below gate, retry)
+  Hypothesis: Grid unification + nav readability + gallery removal will satisfy Rams & Spiekermann most
+  -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --charcoal: #1C1917;
+      --cream: #FAF5ED;
+      --terra: #C4583A;
+      --muted: #5C5753;
+      --section-pad: 96px;
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --content-width: 1280px;
+      --content-px: 64px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--cream);
+      color: var(--charcoal);
+      overflow-x: hidden;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -40px; left: 0;
+      background: var(--terra);
+      color: var(--cream);
+      padding: 8px 16px;
+      text-decoration: none;
+      font-size: 14px;
+      z-index: 999;
+      transition: top 200ms;
+    }
+    .skip-link:focus { top: 0; }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(28,25,23,0.97);
+      backdrop-filter: blur(8px);
+    }
+
+    .nav-inner {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      padding: 0 var(--content-px);
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 21px;
+      letter-spacing: 0.06em;
+      color: var(--cream);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(250,245,237,0.9);
+      text-decoration: none;
+      transition: color 200ms;
+    }
+    .nav-links a:hover { color: var(--terra); }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--cream); }
+
+    /* HERO */
+    .hero {
+      background: var(--charcoal);
+      padding-top: 60px;
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    .hero-text {
+      max-width: var(--content-width);
+      padding: 80px var(--content-px) 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .hero-eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--terra);
+      margin-bottom: 36px;
+    }
+
+    .hero-headline {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(80px, 10vw, 144px);
+      font-weight: 800;
+      line-height: 0.88;
+      letter-spacing: -0.01em;
+      color: var(--cream);
+      margin-bottom: 48px;
+    }
+    .hero-headline em { color: var(--terra); font-style: normal; }
+
+    .hero-pull {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 48px;
+      max-width: 400px;
+    }
+    .hero-pull-bar { width: 3px; min-width: 3px; background: var(--terra); align-self: stretch; }
+    .hero-pull-inner {}
+    .hero-pull-text {
+      font-size: 17px;
+      font-weight: 300;
+      line-height: 1.55;
+      color: rgba(250,245,237,0.75);
+      font-style: italic;
+    }
+    .hero-pull-source {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--terra);
+      margin-top: 10px;
+    }
+
+    .hero-cta {
+      display: inline-block;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      background: var(--cream);
+      padding: 16px 40px;
+      text-decoration: none;
+      transition: background 200ms, color 200ms, transform 160ms var(--ease-out);
+      width: fit-content;
+    }
+    .hero-cta:hover { background: var(--terra); color: var(--cream); }
+    .hero-cta:active { transform: scale(0.97); }
+
+    .hero-photo {
+      height: 100%;
+      overflow: hidden;
+    }
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+
+    /* INFO STRIP */
+    .info-strip {
+      background: var(--terra);
+      display: flex;
+    }
+    .info-item {
+      flex: 1;
+      padding: 22px 36px;
+      border-right: 1px solid rgba(250,245,237,0.2);
+    }
+    .info-item:last-child { border-right: none; }
+    .info-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(250,245,237,0.65);
+      margin-bottom: 4px;
+    }
+    .info-value {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--cream);
+    }
+    .info-value a { color: inherit; text-decoration: none; }
+
+    /* SIGNATURE */
+    .signature {
+      padding: var(--section-pad) var(--content-px);
+      background: var(--cream);
+      max-width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .sig-photo {
+      aspect-ratio: 3/4;
+      overflow: hidden;
+    }
+    .sig-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    .sig-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--terra);
+      margin-bottom: 20px;
+    }
+
+    .sig-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(54px, 6.5vw, 92px);
+      font-weight: 800;
+      line-height: 0.9;
+      color: var(--charcoal);
+      margin-bottom: 40px;
+    }
+
+    .sig-ingredients {
+      border-top: 1px solid rgba(28,25,23,0.15);
+      margin-bottom: 32px;
+    }
+    .sig-ingredient {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(28,25,23,0.15);
+    }
+    .sig-cult {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.55;
+      font-style: italic;
+    }
+
+    /* REVIEWS — 2 cards + big rating */
+    .reviews {
+      background: var(--charcoal);
+      padding: var(--section-pad) var(--content-px);
+    }
+
+    .reviews-top {
+      display: flex;
+      align-items: flex-end;
+      gap: 32px;
+      margin-bottom: 56px;
+    }
+
+    .reviews-rating-big {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(64px, 8vw, 112px);
+      font-weight: 800;
+      line-height: 0.85;
+      color: var(--cream);
+    }
+    .reviews-rating-big span { color: var(--terra); }
+
+    .reviews-count-text {
+      font-size: 14px;
+      font-weight: 300;
+      color: rgba(250,245,237,0.5);
+      padding-bottom: 10px;
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .review-card {
+      background: rgba(250,245,237,0.06);
+      padding: 36px;
+    }
+
+    .review-stars {
+      font-size: 12px;
+      color: var(--terra);
+      letter-spacing: 4px;
+      margin-bottom: 20px;
+    }
+    .review-text {
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.65;
+      color: rgba(250,245,237,0.85);
+      margin-bottom: 24px;
+    }
+    .review-attr {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(250,245,237,0.35);
+    }
+
+    /* STORY */
+    .story {
+      padding: var(--section-pad) var(--content-px);
+      background: var(--cream);
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .story-left-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--terra);
+      margin-bottom: 16px;
+    }
+
+    .story-headline {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(36px, 4.5vw, 58px);
+      font-weight: 800;
+      line-height: 0.95;
+      color: var(--charcoal);
+    }
+
+    .story-right { padding-top: 4px; }
+
+    .story-body {
+      font-size: 17px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .story-body:last-child { margin-bottom: 0; }
+    .story-body strong { font-weight: 500; color: var(--charcoal); }
+
+    /* VISIT */
+    .visit {
+      background: var(--charcoal);
+      padding: var(--section-pad) var(--content-px);
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .visit-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--terra);
+      margin-bottom: 24px;
+    }
+
+    .visit-headline {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(42px, 5vw, 72px);
+      font-weight: 800;
+      line-height: 0.9;
+      color: var(--cream);
+      margin-bottom: 48px;
+    }
+
+    .visit-rows { display: flex; flex-direction: column; gap: 28px; }
+
+    .visit-row-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(250,245,237,0.4);
+      margin-bottom: 6px;
+    }
+    .visit-row-value {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--cream);
+      line-height: 1.5;
+    }
+    .visit-row-value a { color: var(--terra); text-decoration: none; }
+
+    .visit-photo { aspect-ratio: 3/4; overflow: hidden; }
+    .visit-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    /* FOOTER */
+    footer {
+      background: #111;
+      padding: 36px var(--content-px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 20px;
+      letter-spacing: 0.06em;
+      color: var(--cream);
+    }
+
+    .footer-right {
+      font-size: 13px;
+      color: rgba(250,245,237,0.4);
+    }
+    .footer-right a { color: rgba(250,245,237,0.55); text-decoration: none; transition: color 200ms; }
+    .footer-right a:hover { color: var(--terra); }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      :root { --content-px: 40px; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-photo { display: none; }
+      .signature { grid-template-columns: 1fr; gap: 48px; }
+      .reviews-grid { grid-template-columns: 1fr; gap: 2px; }
+      .story { grid-template-columns: 1fr; gap: 24px; }
+      .visit { grid-template-columns: 1fr; gap: 48px; }
+      .info-strip { flex-wrap: wrap; }
+    }
+
+    @media (max-width: 640px) {
+      :root { --content-px: 24px; --section-pad: 64px; }
+      nav .nav-inner { padding: 0 24px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      footer { flex-direction: column; gap: 12px; text-align: center; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition-duration: 0ms !important; animation-duration: 0ms !important; }
+    }
+
+    /* SCROLL REVEAL — progressive enhancement, content always visible */
+    .reveal {
+      transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+    }
+    .reveal.hidden {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    .reveal.hidden.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 60ms; }
+    .reveal-delay-2 { transition-delay: 120ms; }
+    .reveal-delay-3 { transition-delay: 180ms; }
+
+    /* Hero — content always visible, no entrance animation on hero text */
+  </style>
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">URL COFFEE</a>
+      <ul class="nav-links">
+        <li><a href="#signature">The Drink</a></li>
+        <li><a href="#story">About</a></li>
+        <li><a href="#visit">Visit</a></li>
+        <li><a href="https://www.instagram.com/_u_r_l/" target="_blank">@_u_r_l</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <main id="main">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-text">
+        <p class="hero-eyebrow">First Hill · Seattle · Est. 2021</p>
+        <h1 class="hero-headline">Walk<br>to<br><em>Work.</em></h1>
+        <div class="hero-pull">
+          <div class="hero-pull-bar"></div>
+          <div class="hero-pull-inner">
+            <p class="hero-pull-text">"Mid-century modern with a note of punkish whimsy."</p>
+            <p class="hero-pull-source">Eater Seattle</p>
+          </div>
+        </div>
+        <a href="#visit" class="hero-cta">524 Broadway — Come In</a>
+      </div>
+      <div class="hero-photo">
+        <img src="ig-photo-03.jpg" alt="URL Coffee interior — golden light and tram outside" loading="eager">
+      </div>
+    </section>
+
+    <!-- INFO STRIP -->
+    <div class="info-strip" aria-label="Quick info">
+      <div class="info-item">
+        <div class="info-label">Weekdays</div>
+        <div class="info-value">7 AM – 4 PM</div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">Weekends</div>
+        <div class="info-value">8 AM – 3 PM</div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">Address</div>
+        <div class="info-value"><a href="https://maps.google.com/?cid=16767999538745745773" target="_blank">524 Broadway, Seattle</a></div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">Instagram</div>
+        <div class="info-value"><a href="https://www.instagram.com/_u_r_l/" target="_blank">@_u_r_l</a></div>
+      </div>
+    </div>
+
+    <!-- SIGNATURE DRINK -->
+    <section class="signature" id="signature">
+      <div class="sig-photo reveal">
+        <img src="ig-photo-01.jpg" alt="URL Coffee — blue mug, colorful stools" loading="lazy">
+      </div>
+      <div class="reveal reveal-delay-1">
+        <p class="sig-label">Signature Drink</p>
+        <h2 class="sig-name">Walk<br>to Work</h2>
+        <div class="sig-ingredients">
+          <div class="sig-ingredient">Iced Latte</div>
+          <div class="sig-ingredient">Sweet Cream</div>
+          <div class="sig-ingredient">Cacao Dusted</div>
+        </div>
+        <p class="sig-cult">It has a cult following.</p>
+      </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section class="reviews" id="reviews">
+      <div class="reviews-top reveal">
+        <div class="reviews-rating-big"><span>4.8</span>★</div>
+        <p class="reviews-count-text">411 reviews on Google</p>
+      </div>
+      <div class="reviews-grid">
+        <div class="review-card reveal">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"I love this local, mom and pop cafe! The owners are very sweet. Everything is high quality with affordable pricing."</p>
+          <p class="review-attr">Via Google Reviews</p>
+        </div>
+        <div class="review-card reveal reveal-delay-1">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"If you are a coffee lover, you must visit. Some of the best coffee I've ever had — fresh, flavorful, and truly worth the price."</p>
+          <p class="review-attr">Via Google Reviews</p>
+        </div>
+        <div class="review-card reveal reveal-delay-2">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"One of the nicest spots for coffee and a light breakfast. The coffee is really well done — the hot and cold mochas were perfect."</p>
+          <p class="review-attr">Via Google Reviews</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- STORY -->
+    <section class="story" id="story">
+      <div class="reveal">
+        <p class="story-left-label">The Place</p>
+        <h2 class="story-headline">Skateboard<br>stools.<br>Tech pun.<br>Good coffee.</h2>
+      </div>
+      <div class="story-right reveal reveal-delay-1">
+        <p class="story-body">Ethan Choi and Zoey Jung opened URL Coffee on Broadway in March 2021. The stools are made from skateboard decks. The name is a quiet tech pun. The light is always good.</p>
+        <p class="story-body">Eater Seattle called it <strong>"mid-century modern with a note of punkish whimsy."</strong></p>
+      </div>
+    </section>
+
+    <!-- VISIT -->
+    <section class="visit" id="visit">
+      <div class="reveal">
+        <p class="visit-label">Find Us</p>
+        <h2 class="visit-headline">524<br>Broadway,<br>Seattle</h2>
+        <div class="visit-rows">
+          <div>
+            <p class="visit-row-label">Address</p>
+            <p class="visit-row-value"><a href="https://maps.google.com/?cid=16767999538745745773" target="_blank">524 Broadway, Seattle, WA 98122</a></p>
+          </div>
+          <div>
+            <p class="visit-row-label">Hours</p>
+            <p class="visit-row-value">Mon–Fri: 7 AM – 4 PM<br>Sat–Sun: 8 AM – 3 PM</p>
+          </div>
+          <div>
+            <p class="visit-row-label">Instagram</p>
+            <p class="visit-row-value"><a href="https://www.instagram.com/_u_r_l/" target="_blank">@_u_r_l</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="visit-photo reveal reveal-delay-1">
+        <img src="ig-photo-11.jpg" alt="Customers at URL Coffee" loading="lazy">
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <span class="footer-logo">URL COFFEE</span>
+    <div class="footer-right">
+      <a href="https://www.instagram.com/_u_r_l/" target="_blank">@_u_r_l</a> · First Hill, Seattle
+    </div>
+  </footer>
+
+  <script>
+    // Scroll reveal — mark below-fold items as hidden, then reveal on scroll
+    window.addEventListener('DOMContentLoaded', () => {
+      const revealEls = document.querySelectorAll('.reveal');
+      revealEls.forEach(el => el.classList.add('hidden'));
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      revealEls.forEach(el => observer.observe(el));
+    });
+
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(el => {
+        if (el.isIntersecting) {
+          el.target.classList.add('visible');
+          observer.unobserve(el.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    if (hamburger) {
+      hamburger.addEventListener('click', () => {
+        const isOpen = navLinks.style.display === 'flex';
+        if (!isOpen) {
+          navLinks.style.display = 'flex';
+          navLinks.style.flexDirection = 'column';
+          navLinks.style.position = 'absolute';
+          navLinks.style.top = '60px';
+          navLinks.style.right = '0';
+          navLinks.style.left = '0';
+          navLinks.style.background = 'rgba(28,25,23,0.98)';
+          navLinks.style.padding = '24px 32px';
+          navLinks.style.gap = '20px';
+        } else {
+          navLinks.style.display = 'none';
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>

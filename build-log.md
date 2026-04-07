@@ -5592,3 +5592,22 @@ Real Victoria BC business. Website was literally just a street address (touristw
 | Erik Spiekermann (HOW/Typography) | 7.0 |
 | Dieter Rams (HOW/Reduction) | 7.0 |
 | **Average** | **7.5** |
+
+### URL Coffee Codex — Coffee Shop / Café, Seattle WA
+- **Date:** 2026-04-07
+- **Model:** openai-codex/gpt-5.4 (subagent)
+- **Agent:** Lucy
+- **Hero pattern:** split-image-right
+- **Typography:** Newsreader + Inter
+- **Review layout:** open quote stack with supporting dark-summary panel
+- **Visit/hours layout:** 3-column utility block (address / hours / links), no map embed
+- **Stats bar style:** no-stats ✅
+- **WHY Score:** 7.0 (Jobs 7.0 / PG 8.0 / Ogilvy 6.0)
+- **WHAT Score:** 7.7 (Norman 8.1 / Krug 7.6 / Nielsen 7.4) → PASS
+- **HOW Score:** 7.9 (Vignelli 8.2 / Spiekermann 7.6 / Rams 7.9) → PASS
+- **Panel average:** 7.53
+- **Self-review:** 7.7
+- **Versions built:** 6 (v0 through v5 + index.html)
+- **Build time:** ~85 minutes
+- **Token estimate:** ~40k
+- **Key decisions:** Built a genuinely different URL Coffee direction around a split-image editorial hero instead of the previous text-dominant route. Removed the map embed in the final track and used a tighter utility block so the page felt less repetitive and more confident.

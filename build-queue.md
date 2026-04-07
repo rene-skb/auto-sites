@@ -1,10 +1,12 @@
 # Build Queue — Next Businesses for Lucy
 
 *Add businesses here during the day. Lucy picks from the top of the list at build time.*
-*After building, move the entry to the "Built" section below.*
+*After building, remove the entry from this file. Build history lives in `build-log.md`.*
+*Iris: APPEND new businesses to the bottom. Do not edit existing entries.*
 
 ## Queue
 
+<!-- Built 2026-04-02 → demos/abdou-barbershop/ → https://auto-sites.pages.dev/demos/abdou-barbershop/ -->
 <!-- Added 2026-04-01 by Iris -->
 ### Abdou BarberShop
 - **City:** Montreal, QC
@@ -20,35 +22,11 @@
 - **What makes them interesting:** A 24/7 barbershop in Montreal with nearly 1,100 reviews at 4.9 stars. Run by Abderahmane, whose Instagram has 21K followers. The 24/7 operation is almost unheard of for the category. "MORE THAN LUXURY" is already their brand line.
 - **Brand observations:** Deep black, champagne gold, strong italic serif. Headline: "Because the perfect cut doesn't wait." Premium Montreal energy.
 
-### MR SAKO BARBER
-- **City:** Montreal, QC
-- **Category:** Barbershop
-- **Address:** 1190 Crescent Street, Montreal, QC H2X 1X9
-- **Phone:** +1 438-596-6426
-- **Hours:** Verify via Google Maps -- search "MR SAKO BARBER Montreal"
-- **Rating:** 5 stars (557 reviews)
-- **Social:** Instagram handle not confirmed -- search @mrsakobarber before build
-- **Instagram photos:** No confirmed handle -- skip scrape until handle verified
-- **Top Reviews (with names):**
-  - *(Verify top 3 reviews via Google Maps: "MR SAKO BARBER Montreal")*
-- **What makes them interesting:** Est. 2017 on Crescent Street (Montreal's luxury/entertainment strip). 5 stars across 557 reviews. Their own language: "tradition meets innovation, every cut is a masterpiece." No standalone website -- only a Setmore booking page.
-- **Brand observations:** Black and gold, James Bond luxury energy. Headline: "The standard for excellence in Montreal barbering."
+<!-- Built 2026-04-03 → demos/mr-sako-barber/ → https://auto-sites.pages.dev/demos/mr-sako-barber/ -->
 
 <!-- Zoé Dessert et Thé moved to Built -- 2026-03-28 -->
 
-### SAD ENTERTAINMENT RECORDING STUDIO
-- **City:** Calgary, AB
-- **Category:** Recording Studio / Music Studio
-- **Address:** ⚠️ Verify via Google Maps -- search "SAD Entertainment Recording Studio Calgary"
-- **Phone:** +1 587-225-0887
-- **Hours:** Open 24 hours / 7 days a week
-- **Rating:** 5★ (165 reviews)
-- **Social:** No website, no Instagram or Facebook found
-- **Instagram photos:** no Instagram found
-- **Top Reviews (with names):**
-  - *(Verify top reviews via Google Maps -- Outscraper did not return review text tonight)*
-- **What makes them interesting:** 165 reviews at a perfect 5.0 for a recording studio. 24/7 operation = serious working studio. Real artists, zero digital presence. Name "SAD" is bold, raw, memorable.
-- **Brand observations:** Dark palette -- black, deep red, muted gold. Gritty warmth. Headline: "We're open when the inspiration hits."
+<!-- Built 2026-04-06 → demos/sad-entertainment/ → https://auto-sites.pages.dev/demos/sad-entertainment/ -->
 
 ### Moov Ottawa Dance (Bronson Location)
 - **City:** Ottawa, ON
@@ -183,41 +161,42 @@
 - **What makes them interesting:** Korean-owned boutique alteration shop in NDG, Montreal. Works only 2 days/week, creating an artisan mystique. Unusual range: does both high-end suit alterations AND cosplay. No web presence at all.
 - **Brand observations:** Two-days-a-week is a positioning gift — "The tailor who only works when it matters." Soft, personal brand: sage green or cream tones, handwritten-feel type, artisan craft aesthetic.
 
-## Built
+<!-- Built section removed 2026-04-03. See build-log.md for build history. -->
 
-### Zoé Dessert et Thé
-- **City:** Montréal, QC
-- **Category:** Asian Dessert Café (Korean bingsu, HK desserts, mille crêpe)
-- **Built:** 2026-03-28
-- **Demo:** `projects/auto-sites/demos/zoe-dessert-et-the/`
-- **Live:** https://auto-sites.pages.dev/demos/zoe-dessert-et-the/
+### URL Coffee
+- **City:** Seattle, WA
+- **Category:** Coffee Shop / Café
+- **Address:** 524 Broadway, Seattle, WA 98122 (First Hill)
+- **Phone:** Verify via Google Maps — search "URL Coffee Seattle"
+- **Hours:** Mon–Fri 7AM–4PM | Sat–Sun 8AM–3PM
+- **Rating:** 4.8★ (411 reviews)
+- **Social:** Instagram @_u_r_l (5,934 followers, 100 posts)
+- **Instagram photos:** 12 photos downloaded to `demos/url-coffee/`
+- **Website status:** No real website — only an online ordering page (urlcoffee.square.site). No standalone branded site.
+- **Top Reviews (text from Google):**
+  - "I love this local, mom and pop cafe! The owners are very sweet. Everything is high quality with affordable pricing. I recommend the Walk to Work signature drink — it's my favorite."
+  - "If you are a coffee lover, you must visit this cozy spot. They have some of the best coffee I've ever had — fresh, flavorful, and truly worth the price."
+  - "One of the nicest spots for coffee and a light breakfast. The coffee here is really well done — we tried the hot and cold mochas and everything was perfect."
+  - *(Verify reviewer names via Google Maps: "URL Coffee Seattle")*
+- **What makes them interesting:** Founded in March 2021 by married couple Ethan Choi and Zoey Jung. The name is a quiet tech pun — perfectly tuned to Seattle's tech-adjacent First Hill neighborhood. Interior described by Eater Seattle as "mid-century modern with a note of punkish whimsy" — stools made from skateboard decks, lots of light. Their signature drink "Walk to Work" (iced latte, sweet cream, cacao dusted) has a cult following. Featured in multiple "best Seattle coffee" roundups but zero standalone website. The Square ordering page is their entire digital footprint.
+- **Brand observations:** The name does heavy lifting — URL is a domain reference, a tech-nerd wink, totally unforgettable. Clean, modern, slightly irreverent aesthetic. Palette: warm white, muted sage, espresso brown. Headline potential: "Your neighborhood URL." or "Coffee for the connected." Strong site concept: minimal, text-forward, skateboarder-meets-café energy.
+- **Added by Iris:** 2026-04-03
 
-### Farine & Vanille
-- **City:** Montreal, QC
+### VilleVelo Bake Shop & Espresso
+- **City:** Portland, OR
 - **Category:** Bakery / Café
-- **Built:** 2026-03-27
-- **Demo:** `projects/auto-sites/demos/farine-et-vanille/`
-
-### Painted Lotus Studios
-- **City:** Victoria, BC
-- **Category:** Tattoo Studio
-- **Built:** 2026-03-27
-- **Demo:** `projects/auto-sites/demos/painted-lotus-studios/`
-
-### GoodSide Pastry House
-- **City:** Victoria, BC
-- **Category:** Bakery / Pastry
-- **Built:** 2026-03-27
-- **Demo:** `projects/auto-sites/demos/goodside-pastry-house/`
-
-### Flowers On Top
-- **City:** Victoria, BC
-- **Category:** Florist
-- **Built:** 2026-03-27
-- **Demo:** `projects/auto-sites/demos/flowers-on-top/`
-
-### La Roux Patisserie
-- **City:** Victoria, BC
-- **Category:** French Patisserie
-- **Built:** 2026-03-26
-- **Demo:** `projects/auto-sites/demos/la-roux-patisserie/`
+- **Address:** 1465D NE Prescott St, Portland, OR 97211
+- **Phone:** (503) 522-9310
+- **Hours:** Mon–Thu 7AM–1PM | Fri–Sat 7AM–2PM | Sun 7AM–1PM
+- **Rating:** 4.9★ (261 reviews)
+- **Social:** Instagram @villevelobakeshop (2,499 followers, 1,709 posts — very active)
+- **Instagram photos:** 12 photos downloaded to `demos/villevelo-bakeshop/`
+- **Website status:** No standalone website found — only third-party aggregator listings (Yelp, TripAdvisor, Wheree). Their Instagram bio and phone number are their entire web presence.
+- **Top Reviews (text from Google):**
+  - "On a search for joy through pastry I finally found it. The chocolate fig pecan rugelach were a joy. Highly recommend indulging in a visit."
+  - "TOP bakery in Portland — you must get the popover looking thing, it already looks mouth watering but then they fill it with this cream that obviously must have been made by the Angels."
+  - "An absolutely adorable bake shop/coffee shop with some of the best biscuits & gravy in the PNW! All the pastries and desserts are to die for — get there early, everything goes fast."
+  - *(Verify reviewer names via Google Maps: "VilleVelo Bake Shop Portland")*
+- **What makes them interesting:** The name "VilleVelo" means "city bike" in French — a cycling-forward identity that fits Portland's bike culture perfectly. This isn't just a bakery name, it's a worldview. Run by two owners who are warm and present (consistently mentioned in reviews). 1,709 Instagram posts shows they document everything — tons of photo material. Closes at 1PM on most days, which creates the kind of scarcity that makes people show up early. Biscuits & gravy, rugelach, popovers with cream, artisan cookies — real range, all photogenic.
+- **Brand observations:** "VilleVelo" is a strong visual word — French, rhythmic, immediately legible. Cycling × baking is a very Portland combination (both deeply lifestyle-coded). Color palette: warm wheat, bike-messenger terracotta, forest green. Headline potential: "Baked for the ride." or "Portland's morning ritual, with wheels." Site should feel like a neighborhood institution — handmade warmth, not corporate polish.
+- **Added by Iris:** 2026-04-03

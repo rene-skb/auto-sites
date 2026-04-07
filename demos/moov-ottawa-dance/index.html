@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moov Ottawa Dance — Hip Hop & Street Dance</title>
+  <meta name="description" content="Ottawa's home for Hip Hop, Breaking, House, and Waacking. Weekly classes, drop-ins, and live events rooted in real street dance culture. 211 Bronson Ave.">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Moov Ottawa Dance">
+  <meta property="og:description" content="Hip Hop, Breaking, House, Waacking. Real street dance culture in Ottawa. Drop in from $30.">
+  <meta property="og:image" content="dancer-motion.jpg">
+  <meta property="og:url" content="https://moovottawa.com">
+  <meta property="og:type" content="website">
+
+  <!--
+  ===================================================
+  MOOV OTTAWA DANCE — Auto-Site Build v5 (FINAL)
+  Agent: Lucy | Date: 2026-04-06 | Build #124
+
+  FINAL PASS:
+  - Added mid-page CTA after About section (post-emotional-peak conversion moment)
+  - Standardized program card data: all 4 cards now have consistent info (tag / name / detail / price / schedule)
+  - Copy audit (humanizer pass): no significant violations found
+  HOW scores v3: Vignelli 7.0 / Spiekermann 7.0 / Rams 7.0 = avg 7.0 (gate met)
+  Self-review: 8.0 (calibrated against WHY avg 7.83)
+  ===================================================
+  -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --black: #090909;
+      --off-white: #F0EBE0;
+      --neon: #CCFF00;
+      --neon-dim: #a8d400;
+      --gray-mid: #4a4a4a;
+      --gray-light: #1e1e1e;
+      --section-pad: clamp(64px, 10vw, 120px);
+      --side-pad: clamp(24px, 4vw, 48px);
+      --max-w: 1280px;
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--black);
+      color: var(--off-white);
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 40px;
+      background: rgba(9, 9, 9, 0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(240, 235, 224, 0.08);
+    }
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.05rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--off-white);
+    }
+    .nav-logo span { color: var(--neon); }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(240, 235, 224, 0.55);
+      transition: color 200ms var(--ease-out);
+    }
+    .nav-links a:hover { color: var(--off-white); }
+    .nav-cta {
+      background: var(--neon);
+      color: var(--black);
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 10px 22px;
+      border: none;
+      transition: background 160ms var(--ease-out), transform 160ms var(--ease-out);
+    }
+    .nav-cta:hover { background: var(--neon-dim); }
+    .nav-cta:active { transform: scale(0.97); }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--off-white);
+      transition: all 200ms var(--ease-out);
+    }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 99;
+      background: var(--black);
+      padding: 100px 40px 40px;
+      flex-direction: column;
+      gap: 32px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1.8rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--off-white);
+    }
+    .mobile-menu .mobile-cta {
+      display: inline-block;
+      background: var(--neon);
+      color: var(--black);
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 16px 32px;
+      margin-top: 8px;
+    }
+    @media (max-width: 768px) {
+      nav { padding: 16px 24px; }
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    /* HERO — EDITORIAL SPREAD */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 52fr 48fr;
+      padding-top: 72px;
+    }
+    .hero-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(40px, 6vw, 80px) clamp(32px, 5vw, 72px);
+    }
+    .hero-overline {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--neon);
+      margin-bottom: 28px;
+    }
+    .hero-headline {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2.8rem, 5.5vw, 5.5rem);
+      line-height: 1.02;
+      letter-spacing: -0.025em;
+      color: var(--off-white);
+      margin-bottom: 28px;
+    }
+    .hero-headline em { font-style: italic; color: var(--neon); }
+    .hero-sub {
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+      font-size: clamp(0.95rem, 1.5vw, 1.3rem);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(240, 235, 224, 0.45);
+      margin-bottom: 52px;
+      line-height: 1.7;
+    }
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      display: inline-block;
+      background: var(--neon);
+      color: var(--black);
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 16px 32px;
+      transition: background 160ms var(--ease-out), transform 160ms var(--ease-out);
+    }
+    .btn-primary:hover { background: var(--neon-dim); }
+    .btn-primary:active { transform: scale(0.97); }
+    .btn-ghost {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: rgba(240, 235, 224, 0.5);
+      letter-spacing: 0.03em;
+      border-bottom: 1px solid rgba(240, 235, 224, 0.25);
+      padding-bottom: 2px;
+      transition: color 200ms, border-color 200ms;
+    }
+    .btn-ghost:hover { color: var(--off-white); border-color: var(--off-white); }
+    .hero-photo {
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .hero-photo::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, var(--black) 0%, transparent 28%);
+      pointer-events: none;
+    }
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-photo { height: 55vw; min-height: 280px; }
+      .hero-photo::after { background: linear-gradient(180deg, transparent 60%, var(--black) 100%); }
+    }
+
+    /* QUICK INFO STRIP */
+    .info-strip {
+      border-top: 1px solid rgba(240, 235, 224, 0.1);
+      border-bottom: 1px solid rgba(240, 235, 224, 0.1);
+      background: #0f0f0f;
+    }
+    .info-strip-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 var(--side-pad);
+      display: flex;
+      align-items: stretch;
+      flex-wrap: wrap;
+    }
+    .info-item {
+      flex: 1;
+      min-width: 160px;
+      padding: 22px 28px;
+      border-right: 1px solid rgba(240, 235, 224, 0.07);
+    }
+    .info-item:last-child { border-right: none; }
+    .info-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--neon);
+      margin-bottom: 5px;
+    }
+    .info-value {
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--off-white);
+      line-height: 1.4;
+    }
+    @media (max-width: 768px) {
+      .info-strip-inner { flex-direction: column; }
+      .info-item { border-right: none; border-bottom: 1px solid rgba(240, 235, 224, 0.07); }
+      .info-item:last-child { border-bottom: none; }
+    }
+
+    /* SECTION BASE */
+    section { padding: var(--section-pad) var(--side-pad); }
+    .inner { max-width: var(--max-w); margin: 0 auto; }
+    .section-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--neon);
+      margin-bottom: 20px;
+    }
+    .section-headline {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2rem, 3.5vw, 3.2rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--off-white);
+      margin-bottom: 48px;
+    }
+    /* side-pad handles responsive automatically via clamp */
+
+    /* CLASSES */
+    .classes { background: var(--black); }
+    .classes-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: rgba(240, 235, 224, 0.07);
+      border: 1px solid rgba(240, 235, 224, 0.07);
+    }
+    .class-card {
+      background: var(--black);
+      padding: 40px 36px;
+    }
+    .class-tag {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--black);
+      background: var(--neon);
+      padding: 3px 10px;
+      margin-bottom: 16px;
+    }
+    .class-tag.alt {
+      background: transparent;
+      color: rgba(240, 235, 224, 0.45);
+      border: 1px solid rgba(240, 235, 224, 0.2);
+    }
+    .class-name {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.4rem;
+      letter-spacing: -0.01em;
+      color: var(--off-white);
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+    .class-detail {
+      font-size: 1rem;
+      color: rgba(240, 235, 224, 0.55);
+      line-height: 1.65;
+      margin-bottom: 24px;
+    }
+    .class-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .class-price {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--neon);
+    }
+    .class-schedule {
+      font-size: 0.75rem;
+      color: rgba(240, 235, 224, 0.35);
+      letter-spacing: 0.05em;
+    }
+    @media (max-width: 768px) {
+      .classes-grid { grid-template-columns: 1fr; }
+    }
+
+    /* PHOTO FEATURE */
+    .photo-feature {
+      padding: 0;
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 16/7;
+      max-height: 540px;
+    }
+    .photo-feature img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    .photo-feature-caption {
+      position: absolute;
+      bottom: 40px;
+      left: 48px;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2rem, 4vw, 4rem);
+      line-height: 1.0;
+      letter-spacing: -0.01em;
+      color: var(--off-white);
+      text-shadow: 0 2px 32px rgba(0,0,0,0.7);
+    }
+    .photo-feature-caption em { color: var(--neon); font-style: italic; }
+    @media (max-width: 768px) {
+      .photo-feature { aspect-ratio: 4/3; max-height: none; }
+      .photo-feature-caption { bottom: 24px; left: 24px; }
+    }
+
+    /* ABOUT */
+    .about { background: #0d0d0d; }
+    .about-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 5fr 4fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .about-quote {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      color: var(--off-white);
+      margin-bottom: 32px;
+    }
+    .about-quote em { color: var(--neon); font-style: italic; }
+    .about-body {
+      font-size: 1rem;
+      color: rgba(240, 235, 224, 0.6);
+      line-height: 1.75;
+      margin-bottom: 16px;
+    }
+    .founders-stats {
+      margin-top: 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+    .founder-stat {
+      padding: 28px 32px 28px 0;
+      border-top: 1px solid rgba(240, 235, 224, 0.1);
+    }
+    .founder-stat:nth-child(2) { padding-left: 32px; padding-right: 0; border-left: 1px solid rgba(240, 235, 224, 0.1); }
+    .founder-stat-number {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2.5rem, 4vw, 3.5rem);
+      line-height: 1;
+      color: var(--neon);
+      margin-bottom: 8px;
+    }
+    .founder-stat-name {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--off-white);
+      margin-bottom: 6px;
+    }
+    .founder-stat-detail {
+      font-size: 0.82rem;
+      color: rgba(240, 235, 224, 0.45);
+      line-height: 1.55;
+    }
+    .about-photo {
+      position: relative;
+      overflow: hidden;
+    }
+    .about-photo img {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+    }
+    @media (max-width: 900px) {
+      .about-inner { grid-template-columns: 1fr; gap: 40px; }
+      .about-photo { max-width: 420px; }
+    }
+
+    /* REVIEWS */
+    .reviews { background: var(--black); }
+    .review-feature {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .review-quote {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(1.6rem, 2.8vw, 2.6rem);
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      color: var(--off-white);
+      margin-bottom: 28px;
+    }
+    .review-quote em { font-style: italic; color: var(--neon); }
+    .review-attribution {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(240, 235, 224, 0.4);
+    }
+    .review-stats {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .review-rating-big {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(4rem, 8vw, 7rem);
+      line-height: 1;
+      color: var(--neon);
+    }
+    .review-rating-label {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(240, 235, 224, 0.35);
+      margin-top: 8px;
+    }
+    .review-link {
+      display: inline-block;
+      font-family: 'Syne', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--neon);
+      border-bottom: 1px solid rgba(204, 255, 0, 0.3);
+      padding-bottom: 2px;
+      transition: border-color 200ms;
+    }
+    .review-link:hover { border-color: var(--neon); }
+    @media (max-width: 768px) {
+      .review-feature { grid-template-columns: 1fr; gap: 40px; }
+    }
+
+    /* LOCATION */
+    .location { background: #0e0e0e; }
+    .location-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .location-address {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2rem, 3.5vw, 3.2rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--off-white);
+      margin-bottom: 40px;
+    }
+    .location-rows { display: flex; flex-direction: column; gap: 20px; margin-bottom: 44px; }
+    .location-row { display: flex; gap: 20px; }
+    .location-row-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--neon);
+      min-width: 88px;
+      padding-top: 2px;
+      flex-shrink: 0;
+    }
+    .location-row-value {
+      font-size: 1rem;
+      color: rgba(240, 235, 224, 0.6);
+      line-height: 1.55;
+    }
+    .location-row-value a {
+      border-bottom: 1px solid rgba(240, 235, 224, 0.2);
+      padding-bottom: 1px;
+      transition: color 200ms, border-color 200ms;
+    }
+    .location-row-value a:hover { color: var(--off-white); border-color: rgba(240,235,224,0.5); }
+    .location-map {
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      border: 1px solid rgba(240, 235, 224, 0.07);
+    }
+    .location-map iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      filter: grayscale(1) invert(1) contrast(0.8);
+    }
+    @media (max-width: 900px) {
+      .location-inner { grid-template-columns: 1fr; gap: 40px; }
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 36px var(--side-pad);
+      border-top: 1px solid rgba(240, 235, 224, 0.07);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .footer-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 0.95rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(240, 235, 224, 0.35);
+    }
+    .footer-logo span { color: var(--neon); }
+    .footer-links { display: flex; gap: 28px; list-style: none; }
+    .footer-links a {
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+      color: rgba(240, 235, 224, 0.3);
+      transition: color 200ms;
+    }
+    .footer-links a:hover { color: rgba(240, 235, 224, 0.65); }
+    .footer-copy { font-size: 0.72rem; color: rgba(240, 235, 224, 0.2); }
+    @media (max-width: 768px) {
+      footer { padding: 32px var(--side-pad); flex-direction: column; align-items: flex-start; }
+    }
+
+    /* SCROLL REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 640ms var(--ease-out), transform 640ms var(--ease-out);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .stagger > * {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 520ms var(--ease-out), transform 520ms var(--ease-out);
+    }
+    .stagger > *.visible { opacity: 1; transform: translateY(0); }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal, .stagger > * { opacity: 1; transform: none; transition: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">Moov<span>·</span>Ottawa</div>
+    <ul class="nav-links">
+      <li><a href="#classes">Classes</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#location">Find Us</a></li>
+    </ul>
+    <a href="https://www.moovottawa.com/register" target="_blank" rel="noopener" class="nav-cta">Register Now</a>
+    <button class="hamburger" aria-label="Open menu" onclick="document.querySelector('.mobile-menu').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" role="dialog" aria-label="Navigation">
+    <a href="#classes" onclick="this.closest('.mobile-menu').classList.remove('open')">Classes</a>
+    <a href="#about" onclick="this.closest('.mobile-menu').classList.remove('open')">About</a>
+    <a href="#reviews" onclick="this.closest('.mobile-menu').classList.remove('open')">Reviews</a>
+    <a href="#location" onclick="this.closest('.mobile-menu').classList.remove('open')">Find Us</a>
+    <a href="https://www.moovottawa.com/register" target="_blank" rel="noopener" class="mobile-cta">Register for Spring 2026</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" style="padding: 0;">
+    <div class="hero-text">
+      <p class="hero-overline reveal">Ottawa · Est. 2018 · All levels welcome</p>
+      <h1 class="hero-headline reveal" style="transition-delay:80ms;">
+        We are<br><em>not</em> a dance<br>studio.
+      </h1>
+      <p class="hero-sub reveal" style="transition-delay:160ms;">
+        Hip Hop · Breaking<br>House · Waacking
+      </p>
+      <div class="hero-actions reveal" style="transition-delay:240ms;">
+        <a href="https://www.moovottawa.com/register" target="_blank" rel="noopener" class="btn-primary">Register for Spring 2026</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="dancer-motion.jpg" alt="Dancer mid-movement at Moov Ottawa">
+    </div>
+  </section>
+
+  <!-- QUICK INFO STRIP -->
+  <div class="info-strip">
+    <div class="info-strip-inner">
+      <div class="info-item">
+        <div class="info-label">Drop-In Fridays</div>
+        <div class="info-value">7PM (Beginner) · 8PM (Intermediate)</div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">Drop-In Price</div>
+        <div class="info-value">$30 per class · no registration</div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">Chinatown Studio</div>
+        <div class="info-value">211 Bronson Ave, Ottawa ON</div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">Also in Barrhaven</div>
+        <div class="info-value">3333 Greenbank Rd</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CLASSES -->
+  <section class="classes" id="classes">
+    <div class="inner">
+      <p class="section-label reveal">Programs</p>
+      <h2 class="section-headline reveal" style="transition-delay:60ms;">
+        Start anywhere.<br>Stay because of the culture.
+      </h2>
+      <div class="classes-grid stagger">
+
+        <div class="class-card">
+          <div class="class-tag">Start Here</div>
+          <div class="class-name">Feel Good Fridays</div>
+          <div class="class-detail">Drop in, no registration. Beginner at 7PM, Intermediate at 8PM. Rotating instructors every week so you always learn something new.</div>
+          <div class="class-meta">
+            <div class="class-price">$30 / class</div>
+            <div class="class-schedule">Every Friday · 211 Bronson Ave</div>
+          </div>
+        </div>
+
+        <div class="class-card">
+          <div class="class-tag alt">Program</div>
+          <div class="class-name">6-Week Sessions</div>
+          <div class="class-detail">Structured programs in Hip Hop, Breaking, and House. Adult-focused, all levels. Consistent instructors, real progression over six weeks.</div>
+          <div class="class-meta">
+            <div class="class-price">From $157.50</div>
+            <div class="class-schedule">Mon, Thu, Sun schedule</div>
+          </div>
+        </div>
+
+        <div class="class-card">
+          <div class="class-tag alt">Community</div>
+          <div class="class-name">Moov for Men</div>
+          <div class="class-detail">Beginner Hip Hop for men 18+. Taught by Terrence. A space to move without judgment — built for guys who want to start from zero.</div>
+          <div class="class-meta">
+            <div class="class-price">See registration</div>
+            <div class="class-schedule">Mondays 6PM · 211 Bronson Ave</div>
+          </div>
+        </div>
+
+        <div class="class-card">
+          <div class="class-tag alt">Event</div>
+          <div class="class-name">Shake the Room</div>
+          <div class="class-detail">Moov's signature Hip Hop and Breaking battle event. Open to all levels. Watch, compete, or both. Ottawa's best street dance gathering.</div>
+          <div class="class-meta">
+            <div class="class-price">Free to attend</div>
+            <div class="class-schedule">See schedule · moovottawa.com</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PHOTO FEATURE -->
+  <div class="photo-feature">
+    <img src="dance-floor.jpg" alt="Street dance culture at Moov Ottawa">
+    <div class="photo-feature-caption">
+      Culture first.<br><em>Always.</em>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="about-inner">
+      <div class="about-text">
+        <p class="section-label reveal">About Moov</p>
+        <h2 class="about-quote reveal" style="transition-delay:60ms;">
+          Born with one mission:<br>bring <em>real</em> street dance<br>to Ottawa.
+        </h2>
+        <p class="about-body reveal" style="transition-delay:120ms;">
+          Founded in 2018 by Alea "Didi" de Castro and Arnaldo "Effect" Betancourt Silva. Two competitive performers who decided Ottawa needed a home for hip hop and street dance taught with cultural depth, not just choreography.
+        </p>
+        <p class="about-body reveal" style="transition-delay:160ms;">
+          Today Moov runs weekly classes, workshops, school programs, and live performances across two Ottawa locations. Bilingual. All levels. Spring 2026 registration is open now.
+        </p>
+        <div class="founders-stats reveal" style="transition-delay:220ms;">
+          <div class="founder-stat">
+            <div class="founder-stat-number">100+</div>
+            <div class="founder-stat-name">Effect</div>
+            <div class="founder-stat-detail">Battle victories worldwide. Cirque du Soleil at the Pan-Am Games. Competed at IBE, Juste Debut, Top Wanted.</div>
+          </div>
+          <div class="founder-stat">
+            <div class="founder-stat-number">5★</div>
+            <div class="founder-stat-name">Didi</div>
+            <div class="founder-stat-detail">Co-director, choreographer, instructor. Competes across Canada and the US. Founded North Moovement for young women.</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-photo reveal" style="transition-delay:80ms;">
+        <img src="founders-workshop.jpg" alt="Moov Ottawa founders in workshop">
+      </div>
+    </div>
+  </section>
+
+  <!-- MID-PAGE CTA -->
+  <div style="background: var(--neon); padding: clamp(48px, 8vw, 96px) var(--side-pad); text-align: center;">
+    <div style="max-width: var(--max-w); margin: 0 auto;">
+      <p style="font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(0,0,0,0.5); margin-bottom: 16px;">Spring 2026 is open</p>
+      <h2 style="font-family: 'Syne', sans-serif; font-weight: 800; font-size: clamp(2rem, 4vw, 3.5rem); line-height: 1.05; letter-spacing: -0.02em; color: var(--black); margin-bottom: 32px;">Ready to show up?</h2>
+      <a href="https://www.moovottawa.com/register" target="_blank" rel="noopener"
+        style="display: inline-block; background: var(--black); color: var(--neon); font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 18px 40px; transition: background 160ms, transform 160ms; text-decoration: none;"
+        onmouseover="this.style.background='#1a1a1a'"
+        onmouseout="this.style.background='var(--black)'"
+        onmousedown="this.style.transform='scale(0.97)'"
+        onmouseup="this.style.transform='scale(1)'">
+        Register for Spring 2026
+      </a>
+    </div>
+  </div>
+
+  <!-- REVIEWS -->
+  <section class="reviews" id="reviews">
+    <div class="inner">
+      <p class="section-label reveal">What people say</p>
+      <div class="review-feature reveal" style="transition-delay:60ms;">
+        <div>
+          <div class="review-quote">
+            "The Hip Hop and Breakdancing battles were so good. We will definitely go back."
+          </div>
+          <div class="review-attribution">Karina Z · May 2024 · Via Google</div>
+        </div>
+        <div class="review-stats">
+          <div>
+            <div class="review-rating-big">5.0★</div>
+            <div class="review-rating-label">132 Google reviews</div>
+          </div>
+          <div>
+            <a href="https://www.google.com/maps/search/Moov+Ottawa+Dance" target="_blank" rel="noopener" class="review-link">Read all reviews →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATION -->
+  <section class="location" id="location">
+    <div class="location-inner">
+      <div class="location-text">
+        <p class="section-label reveal">Find Us</p>
+        <div class="location-address reveal" style="transition-delay:60ms;">
+          Two locations.<br>One community.
+        </div>
+        <div class="location-rows">
+          <div class="location-row reveal">
+            <span class="location-row-label">Chinatown</span>
+            <span class="location-row-value">
+              <a href="https://www.google.com/maps/search/Bronson+Centre+211+Bronson+Ave+Ottawa" target="_blank" rel="noopener">211 Bronson Ave (Bronson Centre), Ottawa ON</a>
+            </span>
+          </div>
+          <div class="location-row reveal" style="transition-delay:40ms;">
+            <span class="location-row-label">Barrhaven</span>
+            <span class="location-row-value">3333 Greenbank Rd (St. Joseph High School), Ottawa ON</span>
+          </div>
+          <div class="location-row reveal" style="transition-delay:80ms;">
+            <span class="location-row-label">Schedule</span>
+            <span class="location-row-value">Mon 6–9PM · Thu 6–9PM · Fri 7–9PM · Sun 10:30AM–12:30PM</span>
+          </div>
+          <div class="location-row reveal" style="transition-delay:120ms;">
+            <span class="location-row-label">Email</span>
+            <span class="location-row-value"><a href="mailto:alea@moovottawa.com">alea@moovottawa.com</a></span>
+          </div>
+          <div class="location-row reveal" style="transition-delay:160ms;">
+            <span class="location-row-label">Instagram</span>
+            <span class="location-row-value"><a href="https://instagram.com/moovottawa" target="_blank" rel="noopener">@moovottawa</a></span>
+          </div>
+        </div>
+        <div class="reveal" style="transition-delay:200ms;">
+          <a href="https://www.moovottawa.com/register" target="_blank" rel="noopener" class="btn-primary">Register for Spring 2026</a>
+        </div>
+      </div>
+      <div class="location-map reveal" style="transition-delay:80ms;">
+        <iframe
+          src="https://maps.google.com/maps?q=211+Bronson+Ave+Ottawa+ON&output=embed"
+          title="Moov Ottawa Dance — 211 Bronson Ave, Ottawa"
+          loading="lazy"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">Moov<span>·</span>Ottawa</div>
+    <ul class="footer-links">
+      <li><a href="https://www.moovottawa.com" target="_blank" rel="noopener">moovottawa.com</a></li>
+      <li><a href="https://instagram.com/moovottawa" target="_blank" rel="noopener">@moovottawa</a></li>
+      <li><a href="mailto:alea@moovottawa.com">Email</a></li>
+    </ul>
+    <p class="footer-copy">© 2026 Moov Ottawa Dance</p>
+  </footer>
+
+  <noscript>
+    <style>.reveal,.stagger>*{opacity:1!important;transform:none!important;}</style>
+  </noscript>
+
+  <script>
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const d = parseFloat(el.style.transitionDelay) || 0;
+          setTimeout(() => el.classList.add('visible'), d * 1000);
+          obs.unobserve(el);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+    document.querySelectorAll('.stagger').forEach(container => {
+      Array.from(container.children).forEach((child, i) => {
+        child.style.transitionDelay = `${i * 75}ms`;
+        obs.observe(child);
+      });
+    });
+  </script>
+</body>
+</html>

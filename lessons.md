@@ -4,6 +4,21 @@
 
 ---
 
+### [GALLERY] Full-bleed photo with quote overlay > two orphaned photos.
+Gallery sections with paired images and no context consistently get flagged as "atmospheric but purposeless." The fix: single full-bleed photo with an editorial quote overlaid. It transforms the section from decoration into an editorial beat — the quote tells you what to feel, the photo provides evidence. Applied in b121 (MacLeod's) gallery v4→v5; self-review called it "massively improved." — MacLeod's Books b121
+
+### [ICONS] Remove card icons unless they're semantically meaningful.
+Collection cards had SVG icons that didn't communicate the category (a generic diamond for "Indigenous Authors"). Rams: "ornament that pretends to be function is worse than ornament that admits to being ornament." Removed in v4 — cleaner. Rule: if you can swap the icon for a different category and it still makes sense, the icon adds nothing. — MacLeod's Books b121
+
+### [HOW] Italic serif used across too many roles creates slope, not hierarchy.
+Fraunces italic appeared in: hero headlines, collection intro subheads, pull quotes, and review text. Spiekermann: "That's not a hierarchy, that's a slope." Result: HOW score 6.5 from Spiekermann (dragged average below gate on retry). Fix in next build using this typeface: reserve italic for exactly ONE role (pull quotes or headline, not both). — MacLeod's Books b121
+
+### [COPY] Unverified transit details are a trap for local businesses.
+Added "Steps from Stadium-Chinatown Station" for a business at 455 W Pender — wrong station (Burrard/Granville are the nearest). Caught in self-review copy audit. Always verify transit details geographically or omit them. "Near [Station]" is acceptable; invented specifics are not. — MacLeod's Books b121
+
+### [QUEUE] Build queue entries can be unbuilt even if the business was built previously.
+MacLeod's Books had two prior builds (b102, b116) but remained in the queue without a "Built" marker. Resulted in a third build of the same business. Iris: when a business is built, add a comment with the build number AND date, regardless of whether the folder already exists. — MacLeod's Books b121
+
 ## Tier 1 — Recent Observations
 *New patterns from 1-2 builds. Watch for repetition.*
 

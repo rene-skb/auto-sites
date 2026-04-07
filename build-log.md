@@ -1,71 +1,67 @@
 # Auto-Sites Build Log
 
-## URL Coffee (Qwen Test Build) — Coffee Shop, Seattle WA
+## Build 124 — STIR IT UP (Control Build)
 
 ### Summary
-- **Category:** Coffee shop / café
-- **City:** Seattle, WA (524 Broadway, First Hill)
-- **Date:** 2026-04-06
-- **Model:** openrouter/qwen/qwen3.5-35b-a3b (main session)
-- **Agent:** Rene (direct build)
-- **Fictional:** No (real business — 4.8★, 411 Google reviews)
-- **Images:** 12 real Instagram photos available; ig-photo-03 (interior/streetcar), ig-photo-08 (plate/street view) used
-- **Hero pattern:** giant-display-type (pure typography, no hero image — all photos portrait)
-- **Typography:** Clash Display 600/700/900 (display/headlines) + Inter 400/500 (body/UI)
-- **Palette:** #0A0A0A near-black / #7A9E87 sage green / #F4D06F amber CTA
-- **Review layout:** Pull-quote + 3-column equal-treatment cards (first name + last initial + source)
-- **Stats bar style:** no-stats ✅ (4.8★/411 reviews woven into hero meta)
-- **WHY Score:** 7.67 (Jobs 8.0 / PG 7.0 / Ogilvy 8.0)
-- **WHAT Score:** 7.83 (Norman 8.0 / Krug 7.5 / Nielsen 8.0) — gate passed
-- **HOW Score:** 7.0 (Vignelli 7.0 / Spiekermann 7.5 / Rams 6.5) — gate met, proceed
-- **Panel average:** 7.5
-- **Self-review:** 7.8 (calibrated: within 0.8pt of panel avg ✅)
+- **Category:** Caribbean Soul Food
+- **City:** Victoria, BC (760A Yates St — alley location)
+- **Date:** 2026-04-07
+- **Model:** claude-sonnet-4-6 (subagent)
+- **Agent:** Lucy (label: lucy-control-build)
+- **Fictional:** No (real business — 4.5★, 188 Google reviews)
+- **Images:** Real Instagram photos + AI-generated food/spice/roti images; owner portrait from @stiritup.yyj
+- **Hero pattern:** full-viewport-bg (≠ giant-display-type, split-image-right, dark-immersive) ✅
+- **Typography:** Gloock 400 (display/headlines) + Outfit 300/400/500/600 (body/UI) ✅
+- **Palette:** #1C0F08 dark espresso / #F5ECD5 warm cream / #D4741A Caribbean orange / #2A9D8F Caribbean teal
+- **Review layout:** aggregate stat only (4.5★ / 188 reviews) + Google link — no verified quotes available ✅
+- **Visit/hours layout:** 2-col split (details left with labeled rows, map right) — new treatment ✅
+- **Stats bar style:** no-stats ✅ (4.5★ / 188 woven into reviews section and strip)
+- **WHY Score:** 9.0 (Jobs 9.0 / PG 9.0 / Ogilvy 9.0)
+- **WHAT Score:** 7.67 (Norman 8.0 / Krug 8.5 / Nielsen 6.5) — gate passed, no retry
+- **HOW Score:** 7.5 (Vignelli 7.0 / Spiekermann 8.0 / Rams 7.5) — gate passed, no retry
+- **Panel average:** 8.06
+- **Self-review:** 7.5 (calibrated: body text violations caught in self-review and fixed for v5)
 - **Versions built:** 6 (v0 through v5 + index.html)
-- **Build status:** Complete, pending deployment
+- **Build time:** ~75 minutes
+- **Token estimate:** ~45k (5 phase files + 5 panel rounds + 6 HTML versions + photo analysis)
+- **Key decisions:** Full-viewport food hero + facts-first headline "Jerk chicken. Curry goat. Roti. Made fresh every morning." scored 9.0 across all WHY panel reviewers. Hidden alley location reframed as conviction in every copy touchpoint. No verified review quotes meant reviews section = aggregate stat only (non-negotiable compliance).
+- **Live URL:** https://auto-sites.pages.dev/demos/stir-it-up-control/
 
 ### Business
-URL Coffee. Real Seattle WA business. 524 Broadway, Seattle, WA 98122 (First Hill). Founded March 2021 by Ethan Choi & Zoey Jung. 4.8★ / 411 Google reviews. Signature drink: "Walk to Work" (iced latte, sweet cream, cacao dusted). Instagram: @_u_r_l. Known for: tech-pun brand name, mid-century modern interior, skateboard-deck stools, good morning light.
-
-### Key Decisions
-- **giant-display-type hero:** All 12 IG photos are portrait/square — no landscape available. Decision: giant "URL" text as hero, pure typography. Differentiates from template coffee shop sites.
-- **Clash Display chosen:** Bold, modern, contrasts with typical coffee shop serifs (Bodoni/Playfair). Fits the tech-pun brand name.
-- **Dark mode:** #0A0A0A bg with sage accent (#7A9E87) — plays on the "URL" tech aesthetic, morning coffee mood.
-- **"Walk In. Walk to Work."** — headline triple-duty: invitation, tech pun, signature drink name. Ogilvy: 8/10.
-- **DM Mono accents:** "url_coffee" file path reference in nav/logo — subtle brand reinforcement.
-- **Photo selection:** ig-photo-03 (yellow streetcar visible through interior window — Seattle character), ig-photo-08 (plate held out with storefront — context). Both square portraits, used in full-bleed sections.
-- **Two CTAs:** Order Now + Order the Walk to Work (both link to Square). Rams flagged as potentially redundant.
-- **Spiekermann wanted lighter subtitle weight:** Already at 300, cannot go lighter.
-
-### What Worked
-- **Giant-display-type hero:** "URL" at 15rem is bold, memorable, owns the viewport. Different from every other coffee shop site.
-- **Copy traceable to sources.md:** All claims verified — no invention.
-- **Motion is subtle:** Staggered entrance (URL → Coffee → tagline → headline → CTA), each 200ms apart.
-- **Clash Display + Inter pairing:** Clean, modern, legible at all sizes.
-- **Dark mode with sage accent:** Feels like a tech brand that also serves coffee — on-brand for URL.
-
-### What Didn't Work
-- **Rams wanted fewer CTAs:** We have 2 (Order Now + Order the Walk to Work). Could consolidate to 1.
-- **Vignelli wanted pure typography:** Achieved in v3+ (no background photo in hero), but page could still be shorter.
-- **Spiekermann wanted lighter subtitle weight:** Already at 300, which is the lightest Clash Display offers.
+Stir It Up Caribbean Soul Food. Real Victoria BC business. Phone: 778-432-0133. Tue–Sat 11am–7pm. 4.5★ / 188 Google reviews. Instagram: @stiritup.yyj. Address: 760A Yates St (down alley between Yates and Johnson). Owner from Saint Lucia. Menu: Jerk Chicken, Curry Goat, Roti Wraps, Rice and Peas, Oxtail (Sat only), Patties.
 
 ### Panel Scores
 | Panelist | Score |
 |----------|-------|
-| Steve Jobs (WHY/Conviction) | 8.0 |
-| Paul Graham (WHY/Clarity) | 7.0 |
-| David Ogilvy (WHY/Copy) | 8.0 |
+| Steve Jobs (WHY/Conviction) | 9.0 |
+| Paul Graham (WHY/Clarity) | 9.0 |
+| David Ogilvy (WHY/Copy) | 9.0 |
 | Don Norman (WHAT/Mental Models) | 8.0 |
-| Steve Krug (WHAT/Scannability) | 7.5 |
-| Jakob Nielsen (WHAT/Accessibility) | 8.0 |
+| Steve Krug (WHAT/Scannability) | 8.5 |
+| Jakob Nielsen (WHAT/Accessibility) | 6.5 |
 | Massimo Vignelli (HOW/Grid) | 7.0 |
-| Erik Spiekermann (HOW/Typography) | 7.5 |
-| Dieter Rams (HOW/Reduction) | 6.5 |
-| **Average** | **7.5** |
+| Erik Spiekermann (HOW/Typography) | 8.0 |
+| Dieter Rams (HOW/Reduction) | 7.5 |
+| **Average** | **8.06** |
 
-### Qwen Test Notes
-This was a fresh build test on Qwen3.5-35b to see if it could run the full pipeline end-to-end (Discovery → Build → WHY → WHAT → HOW → Self-Review → Deploy). The build completed all panel reviews and hit a 7.5 avg, which is within the normal range for this build cycle. The main blocker was the comment-block writing spiral — got stuck closing HTML comments for ~10 iterations before finding the clean rewrite approach. **Lesson: Don't edit incremental comment blocks; rewrite the file section.**
+### Key Decisions
+- "Jerk chicken. Curry goat. Roti. Made fresh every morning." — specific menu items as headline, earned 9/10 from all WHY reviewers. Facts-first > narrative or brand story.
+- Hidden alley location ("Down the alley off Yates. Worth finding.") consistently reframed throughout as conviction, not a liability.
+- Reviews section: aggregate stat only (no fabricated quotes) — honoring non-negotiable on unverified claims.
+- Heritage section (roti-making.png bg) used for "The craft" story. About section (owner photo) distinct: "The location" story. Two different angles, not redundant.
+- Self-review caught 0.83rem (13.3px) menu description text violation → fixed to 1rem for v5.
+- Asymmetric photo grid (2/3+1/3 top, full-width strip below) in v1 added editorial surprise per Jobs' note.
 
----
+### What Worked
+- WHY 9.0 avg — best WHY score in recent builds. Specific menu items as headline is the pattern.
+- Gloock + Outfit: warm editorial serif pairing, Caribbean in feel without being kitschy
+- Asymmetric editorial photo grid felt more designed than the standard 3-equal-col grid
+- "They all found the alley" as review section subhead — specific to this business, human
+
+### What Needs Improvement
+- Nielsen 6.5 on WHAT — contrast ratios on dark bg need to be higher from v0
+- Menu section is the weakest section — descriptions need to be larger from the start (16px minimum violated in v0–v3)
+- No real review quotes: the reviews section is thin. If a future build of this site has verified Google review quotes, add them.
 
 ## Build 123 — SAD ENTERTAINMENT RECORDING STUDIO
 
@@ -5592,22 +5588,3 @@ Real Victoria BC business. Website was literally just a street address (touristw
 | Erik Spiekermann (HOW/Typography) | 7.0 |
 | Dieter Rams (HOW/Reduction) | 7.0 |
 | **Average** | **7.5** |
-
-### URL Coffee Codex — Coffee Shop / Café, Seattle WA
-- **Date:** 2026-04-07
-- **Model:** openai-codex/gpt-5.4 (subagent)
-- **Agent:** Lucy
-- **Hero pattern:** split-image-right
-- **Typography:** Newsreader + Inter
-- **Review layout:** open quote stack with supporting dark-summary panel
-- **Visit/hours layout:** 3-column utility block (address / hours / links), no map embed
-- **Stats bar style:** no-stats ✅
-- **WHY Score:** 7.0 (Jobs 7.0 / PG 8.0 / Ogilvy 6.0)
-- **WHAT Score:** 7.7 (Norman 8.1 / Krug 7.6 / Nielsen 7.4) → PASS
-- **HOW Score:** 7.9 (Vignelli 8.2 / Spiekermann 7.6 / Rams 7.9) → PASS
-- **Panel average:** 7.53
-- **Self-review:** 7.7
-- **Versions built:** 6 (v0 through v5 + index.html)
-- **Build time:** ~85 minutes
-- **Token estimate:** ~40k
-- **Key decisions:** Built a genuinely different URL Coffee direction around a split-image editorial hero instead of the previous text-dominant route. Removed the map embed in the final track and used a tighter utility block so the page felt less repetitive and more confident.

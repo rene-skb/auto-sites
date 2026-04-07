@@ -38,6 +38,8 @@
 
 ❌ **NO invented origin stories or claims.** Don't assume where a name came from, why the business started, or any backstory unless it's explicitly confirmed in reviews, social posts, or the brief. "Stir It Up" might reference Bob Marley — or might not. If you don't know, don't claim it.
 
+❌ **NO solo-operator assumptions.** Never claim "one barber," "one cook," "one chair," "just Kelly," or any variation unless a review, caption, or the brief explicitly confirms it. A business with one famous name in the reviews might still have multiple staff. If you don't know, don't say it.
+
 *Last updated: April 1, 2026*
 
 ## Menu & Pricing

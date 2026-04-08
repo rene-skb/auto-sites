@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stir It Up — Caribbean Soul Food | Victoria, BC</title>
+  <meta name="description" content="Authentic Caribbean soul food down the alley off Yates. Jerk chicken, curry roti, oxtail stew. 760A Yates St, Victoria, BC.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Stir It Up — Caribbean Soul Food">
+  <meta property="og:description" content="Authentic Caribbean soul food down the alley off Yates. Victoria, BC.">
+  <meta property="og:image" content="hero-jerk-chicken.png">
+  <meta property="og:url" content="https://stiritup.yyj.com">
+  <meta property="og:type" content="website">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ============================================
+       RESET & BASE
+       ============================================ */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      font-size: 17px;
+      line-height: 1.7;
+      color: #FAF5EE;
+      background-color: #1a1210;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ============================================
+       TYPOGRAPHY
+       ============================================ */
+    h1, h2, h3 {
+      font-family: 'Bitter', serif;
+      font-weight: 700;
+      line-height: 1.15;
+    }
+
+    .section-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #E5B94E;
+      margin-bottom: 16px;
+    }
+
+    /* ============================================
+       LAYOUT
+       ============================================ */
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    section {
+      overflow: hidden;
+    }
+
+    /* ============================================
+       BUTTONS
+       ============================================ */
+    .btn {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      padding: 14px 36px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      transition: transform 100ms ease, opacity 150ms ease;
+    }
+
+    .btn:active {
+      transform: scale(0.97);
+    }
+
+    .btn-gold {
+      background-color: #E5B94E;
+      color: #1a1210;
+    }
+
+    .btn-gold:hover {
+      opacity: 0.9;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid #E5B94E;
+      color: #E5B94E;
+    }
+
+    .btn-outline:hover {
+      background-color: rgba(229, 185, 78, 0.1);
+    }
+
+    /* ============================================
+       HERO
+       ============================================ */
+    .hero {
+      background-color: #1a1210;
+      padding: 120px 0 80px;
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .hero-text h1 {
+      font-size: 60px;
+      color: #FAF5EE;
+      margin-bottom: 16px;
+    }
+
+    .hero-text .subhead {
+      font-family: 'Bitter', serif;
+      font-size: 28px;
+      font-weight: 400;
+      color: #E5B94E;
+      margin-bottom: 40px;
+    }
+
+    .hero-image {
+      position: relative;
+    }
+
+    .hero-image img {
+      width: 100%;
+      border-radius: 8px;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+    }
+
+    /* ============================================
+       INFO STRIP
+       ============================================ */
+    .info-strip {
+      background-color: #1B4D4D;
+      padding: 20px 0;
+    }
+
+    .info-strip .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px 36px;
+      text-align: center;
+    }
+
+    .info-strip span {
+      font-size: 14px;
+      font-weight: 500;
+      color: #A89585;
+    }
+
+    .info-strip .highlight {
+      color: #E5B94E;
+    }
+
+    .info-strip .separator {
+      color: #A89585;
+      opacity: 0.4;
+    }
+
+    /* ============================================
+       THE FOOD
+       ============================================ */
+    .food-section {
+      background-color: #1a1210;
+      padding: 120px 0;
+    }
+
+    .food-section .container {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 72px;
+      align-items: center;
+    }
+
+    .food-text h2 {
+      font-size: 40px;
+      color: #FAF5EE;
+      margin-bottom: 24px;
+    }
+
+    .food-text p {
+      font-size: 17px;
+      color: #A89585;
+      line-height: 1.8;
+      max-width: 440px;
+    }
+
+    .food-image img {
+      width: 100%;
+      border-radius: 8px;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+    }
+
+    /* ============================================
+       MENU
+       ============================================ */
+    .menu-section {
+      background-color: #1B4D4D;
+      padding: 100px 0;
+    }
+
+    .menu-section h2 {
+      font-size: 40px;
+      color: #FAF5EE;
+      margin-bottom: 56px;
+    }
+
+    .menu-list {
+      max-width: 640px;
+    }
+
+    .menu-item {
+      padding: 24px 0;
+      border-bottom: 1px solid rgba(250, 245, 238, 0.08);
+    }
+
+    .menu-item:last-child {
+      border-bottom: none;
+    }
+
+    .menu-item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 4px;
+    }
+
+    .menu-item-name {
+      font-family: 'Bitter', serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: #FAF5EE;
+    }
+
+    .menu-item-price {
+      font-family: 'Inter', sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: #E5B94E;
+      white-space: nowrap;
+    }
+
+    .menu-item-desc {
+      font-size: 15px;
+      color: #b8a898;
+      line-height: 1.6;
+    }
+
+    .menu-item-note {
+      font-size: 13px;
+      color: #E5B94E;
+      font-weight: 500;
+      margin-top: 4px;
+    }
+
+    .menu-note {
+      margin-top: 40px;
+      font-size: 14px;
+      color: #A89585;
+      font-style: italic;
+    }
+
+    /* ============================================
+       PHOTO GRID
+       ============================================ */
+    .photo-grid-section {
+      background-color: #1a1210;
+      padding: 100px 0;
+    }
+
+    .photo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .photo-grid img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+
+    /* ============================================
+       REVIEWS
+       ============================================ */
+    .reviews-section {
+      background-color: #FAF5EE;
+      padding: 100px 0;
+    }
+
+    .reviews-section .section-label {
+      color: #C4472A;
+    }
+
+    .reviews-section h2 {
+      font-size: 40px;
+      color: #1a1210;
+      margin-bottom: 56px;
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    .review-card {
+      background-color: #F0EAE0;
+      border-radius: 8px;
+      padding: 40px 36px;
+    }
+
+    .review-stars {
+      color: #D4A63E;
+      font-size: 18px;
+      margin-bottom: 16px;
+      letter-spacing: 3px;
+    }
+
+    .review-text {
+      font-size: 17px;
+      color: #2a2018;
+      line-height: 1.75;
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+
+    .review-author {
+      font-size: 13px;
+      font-weight: 600;
+      color: #A89585;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* ============================================
+       FIND US
+       ============================================ */
+    .find-us-section {
+      background-color: #1a1210;
+      padding: 100px 0;
+    }
+
+    .find-us-section h2 {
+      font-size: 40px;
+      color: #FAF5EE;
+      margin-bottom: 48px;
+    }
+
+    .find-us-details {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 48px;
+    }
+
+    .find-us-details p {
+      font-size: 18px;
+      color: #A89585;
+      line-height: 1.7;
+    }
+
+    .find-us-details .highlight {
+      color: #E5B94E;
+    }
+
+    /* ============================================
+       FOOTER
+       ============================================ */
+    .site-footer {
+      background-color: #120e0c;
+      padding: 40px 0;
+      text-align: center;
+    }
+
+    .site-footer p {
+      font-size: 13px;
+      color: #A89585;
+      line-height: 1.6;
+    }
+
+    /* ============================================
+       SCROLL REVEAL
+       ============================================ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 600ms cubic-bezier(0.23, 1, 0.32, 1),
+                  transform 600ms cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Stagger children */
+    .stagger > .reveal:nth-child(2) { transition-delay: 100ms; }
+    .stagger > .reveal:nth-child(3) { transition-delay: 200ms; }
+    .stagger > .reveal:nth-child(4) { transition-delay: 300ms; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+    }
+
+    /* ============================================
+       RESPONSIVE
+       ============================================ */
+    @media (max-width: 900px) {
+      .hero .container {
+        grid-template-columns: 1fr;
+        gap: 48px;
+        text-align: center;
+      }
+
+      .hero-text h1 {
+        font-size: 44px;
+      }
+
+      .hero-text .subhead {
+        font-size: 22px;
+      }
+
+      .hero-image {
+        order: -1;
+        max-width: 400px;
+        margin: 0 auto;
+      }
+
+      .food-section .container {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      .food-image {
+        order: -1;
+      }
+
+      .reviews-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .photo-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero {
+        padding: 60px 0 48px;
+        min-height: auto;
+      }
+
+      .hero-text h1 {
+        font-size: 36px;
+      }
+
+      .hero-text .subhead {
+        font-size: 20px;
+      }
+
+      .food-section,
+      .menu-section,
+      .photo-grid-section,
+      .reviews-section,
+      .find-us-section {
+        padding: 72px 0;
+      }
+
+      .food-text h2,
+      .menu-section h2,
+      .reviews-section h2,
+      .find-us-section h2 {
+        font-size: 32px;
+      }
+
+      .info-strip .container {
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .info-strip .separator {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================
+       HERO
+       ========================================== -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-text">
+        <h1 class="reveal">Down the alley<br>off Yates.</h1>
+        <p class="subhead reveal">Worth finding.</p>
+        <a href="#menu" class="btn btn-gold reveal">See the menu</a>
+      </div>
+      <div class="hero-image reveal">
+        <img src="ig-photo-owner.jpg" alt="Stir It Up owner outside the restaurant on Yates Street, Victoria" width="560" height="747" loading="eager">
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       INFO STRIP
+       ========================================== -->
+  <div class="info-strip">
+    <div class="container">
+      <span class="highlight">760A Yates St, Victoria, BC</span>
+      <span class="separator">·</span>
+      <span>Tue–Sat <span class="highlight">11am–7pm</span></span>
+      <span class="separator">·</span>
+      <span>Cash Only</span>
+      <span class="separator">·</span>
+      <span><a href="https://www.instagram.com/stiritup.yyj/" target="_blank" rel="noopener" class="highlight">@stiritup.yyj</a></span>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       THE FOOD
+       ========================================== -->
+  <section class="food-section">
+    <div class="container">
+      <div class="food-text">
+        <p class="section-label reveal">The Food</p>
+        <h2 class="reveal">Small kitchen.<br>Big flavors.</h2>
+        <p class="reveal">Authentic Caribbean recipes, real ingredients, everything made fresh in a tiny kitchen down the alley off Yates.</p>
+      </div>
+      <div class="food-image reveal">
+        <img src="hero-jerk-chicken.png" alt="Jerk chicken plate with rice, peas, and fried plantains" width="720" height="540" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       MENU
+       ========================================== -->
+  <section class="menu-section" id="menu">
+    <div class="container">
+      <p class="section-label reveal">What's Cooking</p>
+      <h2 class="reveal">The Menu</h2>
+      <div class="menu-list stagger">
+        <div class="menu-item reveal">
+          <div class="menu-item-header">
+            <span class="menu-item-name">Curry Chicken Roti</span>
+            <span class="menu-item-price">$16</span>
+          </div>
+          <p class="menu-item-desc">Slow-cooked curry chicken wrapped in house-made roti</p>
+        </div>
+        <div class="menu-item reveal">
+          <div class="menu-item-header">
+            <span class="menu-item-name">Jerk Chicken</span>
+            <span class="menu-item-price">$18</span>
+          </div>
+          <p class="menu-item-desc">Charcoal-grilled with scotch bonnet heat, served with rice and peas</p>
+        </div>
+        <div class="menu-item reveal">
+          <div class="menu-item-header">
+            <span class="menu-item-name">Oxtail Stew</span>
+            <span class="menu-item-price">$22</span>
+          </div>
+          <p class="menu-item-desc">Braised low and slow with butter beans and island spices</p>
+          <p class="menu-item-note">Saturdays only</p>
+        </div>
+        <div class="menu-item reveal">
+          <div class="menu-item-header">
+            <span class="menu-item-name">Beef Patty</span>
+            <span class="menu-item-price">$5</span>
+          </div>
+          <p class="menu-item-desc">Flaky, golden, seasoned right</p>
+        </div>
+        <div class="menu-item reveal">
+          <div class="menu-item-header">
+            <span class="menu-item-name">Fried Plantains</span>
+            <span class="menu-item-price">$6</span>
+          </div>
+          <p class="menu-item-desc">Caramelized and crispy, the perfect side</p>
+        </div>
+      </div>
+      <p class="menu-note reveal">Cash only · Portions are generous</p>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       PHOTO GRID
+       ========================================== -->
+  <section class="photo-grid-section">
+    <div class="container">
+      <div class="photo-grid stagger">
+        <img class="reveal" src="ig-photo-12.jpg" alt="Golden fried plantains with slaw and sauce" width="540" height="405" loading="lazy">
+        <img class="reveal" src="ig-photo-15.jpg" alt="Caribbean lunch plate with rice and curried chicken" width="540" height="405" loading="lazy">
+        <img class="reveal" src="patties.png" alt="Fresh-baked Caribbean beef patties" width="540" height="405" loading="lazy">
+        <img class="reveal" src="spices.png" alt="Scotch bonnet peppers, turmeric, thyme, and island spices" width="540" height="405" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       REVIEWS
+       ========================================== -->
+  <section class="reviews-section">
+    <div class="container">
+      <p class="section-label reveal">Word on the Street</p>
+      <h2 class="reveal">Don't take our word for it.</h2>
+      <div class="reviews-grid stagger">
+        <div class="review-card reveal">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Best oxtail I've had outside of Jamaica. The portions are massive and the flavors are authentic."</p>
+          <p class="review-author">Marcus T. · Feb 2026</p>
+        </div>
+        <div class="review-card reveal">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Hidden gem! The curry chicken roti is incredible. Cash only but worth the trip to the ATM."</p>
+          <p class="review-author">Jenny L. · Jan 2026</p>
+        </div>
+        <div class="review-card reveal">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Finally, real Caribbean food in Victoria. The jerk chicken has actual heat. Thank you."</p>
+          <p class="review-author">David R. · Mar 2026</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       FIND US
+       ========================================== -->
+  <section class="find-us-section">
+    <div class="container">
+      <p class="section-label reveal">Find Us</p>
+      <h2 class="reveal">Down the alley off Yates</h2>
+      <div class="find-us-details reveal">
+        <p><span class="highlight">760A Yates St</span>, Victoria, BC</p>
+        <p>Tuesday – Saturday, <span class="highlight">11am – 7pm</span></p>
+        <p>Cash only</p>
+      </div>
+      <a href="https://www.google.com/maps/search/Stir+It+Up+Caribbean+Soul+Food+760A+Yates+St+Victoria+BC" target="_blank" rel="noopener" class="btn btn-gold reveal">Get Directions</a>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       FOOTER
+       ========================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>Stir It Up · 760A Yates St, Victoria, BC · Caribbean Soul Food.</p>
+    </div>
+  </footer>
+
+  <!-- ==========================================
+       SCROLL REVEAL
+       ========================================== -->
+  <script>
+    (function() {
+      // Respect reduced motion
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.querySelectorAll('.reveal').forEach(function(el) {
+          el.classList.add('visible');
+        });
+        return;
+      }
+
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -40px 0px'
+      });
+
+      document.querySelectorAll('.reveal').forEach(function(el) {
+        observer.observe(el);
+      });
+    })();
+  </script>
+
+</body>
+</html>

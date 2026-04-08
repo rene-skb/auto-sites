@@ -5588,3 +5588,25 @@ Real Victoria BC business. Website was literally just a street address (touristw
 | Erik Spiekermann (HOW/Typography) | 7.0 |
 | Dieter Rams (HOW/Reduction) | 7.0 |
 | **Average** | **7.5** |
+
+### Stir It Up (Codex Test) — Caribbean Soul Food, Victoria BC
+- **Category:** Caribbean soul food
+- **City:** Victoria, BC
+- **Date:** 2026-04-07
+- **Model:** Codex gpt-5.3
+- **Agent:** Lucy
+- **Hero pattern:** split-image-right
+- **Typography:** Gloock + Manrope
+- **Review layout:** no testimonial cards; social-proof statement + direct Google reviews CTA
+- **Visit/hours layout:** quick-facts strip near top + three-column visit card + full-width map block
+- **Stats bar style:** no-stats ✅
+- **WHY Score:** 7.0 (Jobs 7.0 / PG 6.8 / Ogilvy 7.2)
+- **WHAT Score:** 7.17 (Norman 7.2 / Krug 7.3 / Nielsen 7.0) -> PASS
+- **HOW Score:** 7.23 (Vignelli 7.2 / Spiekermann 7.4 / Rams 7.1) -> PASS
+- **Panel average:** 7.13
+- **Self-review:** 7.6
+- **Versions built:** 6 (v0 through v5 + index.html)
+- **Build time:** ~95 minutes
+- **Token estimate:** ~48k
+- **Key decisions:** Built fresh with a facts-first split hero and chaptered sections while preserving non-negotiables (no fabricated quotes, no invented pricing, no image-hover effects). Avoided testimonial cards because named review quotes were not verifiable in this offline run.
+- **Notes:** Screenshot automation failed in this sandbox (Playwright browser launch error) and AI image generation failed due blocked DNS/network; shipped with real existing photos only.

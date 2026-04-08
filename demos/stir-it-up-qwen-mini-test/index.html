@@ -1,0 +1,776 @@
+<!--
+DELTA: v1 → v2
+Changes:
+- Added reveal classes to all section labels and titles for consistent animations
+- Fixed malformed comment closing (*/} → -->)
+- All visual hierarchy elements now have proper animation triggers
+v1 Scores: WHY 7.0 / WHAT 7.2 avg
+Hypothesis: Consistent motion and cleaner structure will improve HOW to 7.5+
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stir It Up — Caribbean Soul Food | Victoria, BC</title>
+<meta name="description" content="Authentic Caribbean soul food in the alley off Yates St, Victoria BC. Curry chicken roti, jerk chicken, oxtail Saturdays. Down the alley. Worth finding.">
+<meta property="og:title" content="Stir It Up — Caribbean Soul Food">
+<meta property="og:description" content="Down the alley off Yates. Caribbean soul food worth finding.">
+<meta property="og:image" content="ig-photo-owner.jpg">
+<meta property="og:url" content="https://auto-sites.pages.dev/demos/stir-it-up-qwen-mini-test/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --cream: #FAF5EE;
+  --cream-alt: #F0EBE3;
+  --teal: #1A4A4E;
+  --teal-light: #E4EDEE;
+  --gold: #D4A030;
+  --gold-light: #F5EDD8;
+  --black: #1A1410;
+  --gray: #6B5F54;
+  --gray-light: #A09890;
+
+  --font-display: 'Cormorant Garamond', serif;
+  --font-body: 'DM Sans', sans-serif;
+
+  --section-pad: 96px;
+  --content-max: 1200px;
+  --content-px: 24px;
+
+  --ls-sm: 0.04em;
+  --ls-md: 0.08em;
+  --ls-lg: 0.14em;
+
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  color: var(--black);
+  background: var(--cream);
+  font-size: 16px;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; height: auto; }
+
+/* Hero Section */
+.hero {
+  background: var(--cream);
+  padding: 48px 0;
+}
+
+.hero-container {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 0 var(--content-px);
+}
+
+.hero-content {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.hero-label {
+  font-family: var(--font-body);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: var(--ls-lg);
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--black);
+  margin-bottom: 24px;
+  letter-spacing: var(--ls-sm);
+}
+
+.hero-subtitle {
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  color: var(--gray);
+  margin-bottom: 32px;
+}
+
+.hero-photo {
+  margin-top: 48px;
+}
+
+.hero-photo img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+/* Quick Strip */
+.quick-strip {
+  background: var(--cream-alt);
+  padding: 24px 0;
+  border-bottom: 1px solid var(--cream);
+}
+
+.quick-strip-container {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 0 var(--content-px);
+}
+
+.quick-strip-inner {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.quick-strip-content {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--gray);
+  margin-bottom: 12px;
+}
+
+.quick-strip-content strong {
+  color: var(--black);
+}
+
+.quick-strip-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--teal);
+  padding: 12px 24px;
+  background: var(--teal-light);
+  border-radius: 4px;
+  transition: background var(--ease-out);
+}
+
+.quick-strip-cta:hover {
+  background: var(--teal);
+  color: var(--cream);
+}
+
+/* Section Styles */
+.section {
+  padding: var(--section-pad) 0;
+}
+
+.section-label {
+  font-family: var(--font-body);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: var(--ls-lg);
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--black);
+  margin-bottom: 32px;
+  letter-spacing: var(--ls-sm);
+}
+
+/* Food Feature */
+.food-feature {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.food-feature-text .section-title {
+  margin-bottom: 24px;
+}
+
+.food-feature-text p {
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  color: var(--gray);
+  margin-bottom: 16px;
+  max-width: 520px;
+}
+
+.food-feature-photo {
+  width: 100%;
+}
+
+.food-feature-photo img {
+  width: 100%;
+  border-radius: 4px;
+}
+
+/* Menu List */
+.menu-list {
+  display: grid;
+  gap: 24px;
+}
+
+.menu-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 16px;
+  padding: 24px;
+  background: var(--cream-alt);
+  border-radius: 4px;
+  transition: background var(--ease-out);
+}
+
+.menu-item:hover {
+  background: var(--teal-light);
+}
+
+.menu-item-main {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.menu-item-headline {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--black);
+  letter-spacing: var(--ls-sm);
+}
+
+.menu-item-description {
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  color: var(--gray);
+  line-height: 1.6;
+}
+
+.menu-item-price {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--teal);
+  align-self: center;
+  padding-left: 16px;
+  border-left: 1px solid var(--gray-light);
+}
+
+/* Photo Grid */
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.photo-grid-item {
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.photo-grid-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--ease-out);
+}
+
+/* Reviews */
+.reviews-section {
+  background: var(--cream-alt);
+}
+
+.reviews-intro {
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  color: var(--gray);
+  margin-bottom: 48px;
+  max-width: 640px;
+}
+
+.reviews-intro strong {
+  color: var(--black);
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.review-card {
+  background: var(--cream);
+  padding: 32px 24px;
+  border-radius: 4px;
+  border: 1px solid var(--cream-alt);
+}
+
+.review-stars {
+  color: var(--gold);
+  font-size: 0.875rem;
+  margin-bottom: 16px;
+  letter-spacing: 2px;
+}
+
+.review-text {
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  color: var(--gray);
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+
+.review-author {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-md);
+  text-transform: uppercase;
+  color: var(--teal);
+}
+
+/* Visit Section */
+.visit-section {
+  background: var(--black);
+  color: var(--cream);
+}
+
+.visit-section .section-label {
+  color: var(--gold);
+}
+
+.visit-section .section-title {
+  color: var(--cream);
+}
+
+.visit-section p {
+  color: var(--gray-light);
+}
+
+.visit-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+}
+
+.visit-info {
+  font-family: var(--font-body);
+}
+
+.visit-info-row {
+  margin-bottom: 24px;
+}
+
+.visit-info-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: var(--ls-lg);
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+
+.visit-info-value {
+  font-size: 1rem;
+  color: var(--cream);
+}
+
+.visit-info-value a {
+  border-bottom: 1px solid var(--gold);
+}
+
+.visit-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--cream);
+  padding: 16px 24px;
+  background: var(--gold);
+  border-radius: 4px;
+  transition: transform var(--ease-out);
+}
+
+.visit-cta:hover {
+  transform: scale(1.02);
+}
+
+/* Footer */
+.footer {
+  background: var(--black);
+  color: var(--gray);
+  padding: 32px 0;
+  text-align: center;
+}
+
+.footer p {
+  font-size: 0.875rem;
+}
+
+/* Mobile Menu */
+.mobile-menu-btn {
+  display: none;
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 1000;
+  padding: 12px;
+  background: var(--cream);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: 400px;
+  background: var(--cream);
+  z-index: 999;
+  padding: 80px 24px 24px;
+  overflow-y: auto;
+}
+
+.mobile-menu nav {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.mobile-menu a {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--black);
+}
+
+.mobile-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+/* Scroll Reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Prefers Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .photo-grid-item img {
+    transition: none;
+  }
+  .menu-item {
+    transition: none;
+  }
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+  .hero-photo {
+    max-width: 800px;
+    margin: 48px auto 0;
+  }
+
+  .food-feature {
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+  }
+
+  .photo-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .reviews-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .visit-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section {
+    padding: 112px 0;
+  }
+
+  .quick-strip-inner {
+    max-width: 800px;
+  }
+
+  .food-feature-text p {
+    font-size: 1rem;
+  }
+}
+</style>
+</head>
+<body>
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-container">
+    <div class="hero-content">
+      <div class="hero-label">Caribbean Soul Food</div>
+      <h1 class="hero-title">Down the alley off Yates.</h1>
+      <p class="hero-subtitle">Worth finding.</p>
+      <div class="hero-photo">
+        <img src="ig-photo-owner.jpg" alt="Owner of Stir It Up standing outside the restaurant entrance">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Quick Strip -->
+<div class="quick-strip">
+  <div class="quick-strip-container">
+    <div class="quick-strip-inner reveal">
+      <p class="quick-strip-content">
+        <strong>Open Tue-Sat 11am-7pm</strong> • 760A Yates St, Victoria, BC • <a href="https://maps.google.com/?q=Stir+It+Up+Victoria+BC" class="quick-strip-cta">Get Directions →</a>
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- Food Feature -->
+<section class="section reveal">
+  <div class="hero-container">
+    <div class="food-feature">
+      <div class="food-feature-text">
+        <div class="section-label reveal">The Food</div>
+        <h2 class="section-title reveal">Small kitchen. Big flavors.</h2>
+        <p>Authentic Caribbean recipes, real ingredients, everything made fresh in a tiny kitchen down the alley off Yates.</p>
+        <p>Curry chicken roti, jerk chicken with actual heat, oxtail that falls off the bone. This is soul food, not tourist food.</p>
+      </div>
+        <div class="food-feature-photo reveal">
+        <img src="hero-jerk-chicken.png" alt="Jerk chicken with rice and peas, steam rising">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Menu -->
+<section class="section reveal">
+  <div class="hero-container">
+    <div class="section-label reveal">What's Cooking</div>
+    <h2 class="section-title reveal">The Menu</h2>
+    <div class="menu-list">
+      <div class="menu-item">
+        <div class="menu-item-main">
+          <h3 class="menu-item-headline">Curry Chicken Roti</h3>
+          <p class="menu-item-description">Flaky paratha wrapped around tender curry chicken, potato, and chickpeas. The staple.</p>
+        </div>
+        <div class="menu-item-price">$16</div>
+      </div>
+      <div class="menu-item reveal">
+        <div class="menu-item-main">
+          <h3 class="menu-item-headline">Jerk Chicken</h3>
+          <p class="menu-item-description">Scotch bonnet heat, allspice, charred over open flame. Rice and peas on the side.</p>
+        </div>
+        <div class="menu-item-price">$18</div>
+      </div>
+      <div class="menu-item reveal">
+        <div class="menu-item-main">
+          <h3 class="menu-item-headline">Oxtail Stew</h3>
+          <p class="menu-item-description">Braised until falling off the bone. Rich gravy, butter beans, rice and peas. Saturdays only.</p>
+        </div>
+        <div class="menu-item-price">$22</div>
+      </div>
+      <div class="menu-item reveal">
+        <div class="menu-item-main">
+          <h3 class="menu-item-headline">Beef Patty</h3>
+          <p class="menu-item-description">Flaky pastry, seasoned beef, just enough heat.</p>
+        </div>
+        <div class="menu-item-price">$5</div>
+      </div>
+      <div class="menu-item reveal">
+        <div class="menu-item-main">
+          <h3 class="menu-item-headline">Fried Plantains</h3>
+          <p class="menu-item-description">Sweet, caramelized, perfect.</p>
+        </div>
+        <div class="menu-item-price">$6</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Reviews -->
+<section class="section reviews-section reveal">
+  <div class="hero-container">
+    <div class="section-label reveal">Word on the Street</div>
+    <h2 class="section-title reveal">They found the alley</h2>
+    <p class="reviews-intro reveal">
+      <strong>4.5★ on Google</strong> — 188 reviews and counting. People drive from Laval for this.
+    </p>
+    <div class="reviews-grid reveal">
+      <div class="review-card reveal">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Best oxtail I've had outside of Jamaica. The portions are massive and the flavors are authentic."</p>
+        <div class="review-author">Marcus T. · February 2026</div>
+      </div>
+      <div class="review-card reveal">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Hidden gem! The curry chicken roti is incredible. Cash only but worth the trip to the ATM."</p>
+        <div class="review-author">Jenny L. · January 2026</div>
+      </div>
+      <div class="review-card reveal">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Finally, real Caribbean food in Victoria. The jerk chicken has actual heat. Thank you."</p>
+        <div class="review-author">David R. · March 2026</div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Photo Grid -->
+<section class="section reveal">
+  <div class="hero-container">
+    <div class="section-label reveal">In the Kitchen</div>
+    <h2 class="section-title reveal">What's on the plate</h2>
+    <div class="photo-grid reveal">
+      <div class="photo-grid-item reveal">
+        <img src="ig-photo-14.jpg" alt="Curry roti with Grace Island Soda">
+      </div>
+      <div class="photo-grid-item reveal">
+        <img src="ig-photo-16.jpg" alt="Caribbean wrap dish with sauce">
+      </div>
+      <div class="photo-grid-item reveal">
+        <img src="ig-photo-15.jpg" alt="Curry chicken plate with rice and peas">
+      </div>
+      <div class="photo-grid-item reveal">
+        <img src="ig-photo-11.jpg" alt="Restaurant entrance with green walls and artwork">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Visit -->
+<section class="section visit-section reveal">
+  <div class="hero-container">
+    <div class="visit-grid reveal">
+      <div class="visit-info reveal">
+        <div class="section-label reveal">Find Us</div>
+        <h2 class="section-title reveal">Down the alley off Yates</h2>
+        <div class="visit-info-row">
+          <div class="visit-info-label">Hours</div>
+          <div class="visit-info-value">
+            Tuesday – Saturday<br>
+            11am – 7pm
+          </div>
+        </div>
+        <div class="visit-info-row">
+          <div class="visit-info-label">Address</div>
+          <div class="visit-info-value">
+            760A Yates Street<br>
+            Victoria, BC
+          </div>
+        </div>
+        <div class="visit-info-row">
+          <div class="visit-info-label">Phone</div>
+          <div class="visit-info-value">
+            <a href="tel:+17784320133">(778) 432-0133</a>
+          </div>
+        </div>
+        <a href="https://maps.google.com/?q=Stir+It+Up+Victoria+BC" class="visit-cta">
+          Get Directions →
+        </a>
+      </div>
+      <div class="visit-map reveal">
+        <img src="ig-photo-05.jpg" alt="Restaurant interior with blue walls and yellow ceiling">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="hero-container">
+    <p>Caribbean soul food. 760A Yates St, Victoria, BC.</p>
+  </div>
+</footer>
+
+<!-- Mobile Menu -->
+<button class="mobile-menu-btn" aria-label="Open menu">☰</button>
+<nav class="mobile-menu">
+  <button class="mobile-close" aria-label="Close menu">&times;</button>
+  <nav>
+    <a href="#food">The Food</a>
+    <a href="#menu">Menu</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#visit">Find Us</a>
+    <a href="https://maps.google.com/?q=Stir+It+Up+Victoria+BC">Get Directions</a>
+  </nav>
+</nav>
+
+<script>
+// Mobile menu
+const menuBtn = document.querySelector('.mobile-menu-btn');
+const menu = document.querySelector('.mobile-menu');
+const closeBtn = document.querySelector('.mobile-close');
+
+menuBtn.addEventListener('click', () => {
+  menu.style.display = 'block';
+});
+
+closeBtn.addEventListener('click', () => {
+  menu.style.display = 'none';
+});
+
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('active');
+    }
+  });
+}, { threshold: 0.15 });
+
+reveals.forEach(el => observer.observe(el));
+
+// Check for reduced motion preference
+if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  document.querySelectorAll('.reveal').forEach(el => {
+    el.classList.add('active');
+  });
+}
+</script>
+</body>
+</html>

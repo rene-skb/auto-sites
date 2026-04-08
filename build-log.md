@@ -5610,3 +5610,46 @@ Real Victoria BC business. Website was literally just a street address (touristw
 - **Token estimate:** ~48k
 - **Key decisions:** Built fresh with a facts-first split hero and chaptered sections while preserving non-negotiables (no fabricated quotes, no invented pricing, no image-hover effects). Avoided testimonial cards because named review quotes were not verifiable in this offline run.
 - **Notes:** Screenshot automation failed in this sandbox (Playwright browser launch error) and AI image generation failed due blocked DNS/network; shipped with real existing photos only.
+
+### Stir It Up (Mac Mini Claude Test) — Caribbean Soul Food, Victoria BC
+- **Category:** Caribbean soul food
+- **City:** Victoria, BC
+- **Date:** 2026-04-07
+- **Model:** claude-sonnet-4-6 (Mac Mini subagent)
+- **Agent:** Lucy
+- **Hero pattern:** dark-immersive (hero-jerk-chicken.png full-bleed, dark gradient overlay 97%→35%, italic Bodoni Moda headline) ≠ giant-display-type, image-top-text-below, centered-minimal, split-image-right ✅
+- **Typography:** Bodoni Moda 400/700/italic (display) + Space Grotesk 300/400/500/600 (body) — fresh pairing ✅
+- **Palette:** #0C0705 near-black + #D4821A amber + #F5EFE4 cream
+- **Review layout:** Centered aggregate stat (4.5★ / 188 reviews) + editorial statement "Word of mouth. No website. 188 reviews and counting. They all found the alley." + amber CTA button to Google reviews ✅
+- **Visit/hours layout:** 2-col (address/alley note/map-link left, hours rows + phone right) + full-width grayscale map below ✅
+- **Stats bar style:** no-stats ✅ (rating woven into hero sub and reviews section)
+- **WHY Score:** 8.33 (Jobs 8.0 / PG 8.0 / Ogilvy 9.0)
+- **WHAT Score:** 7.33 (Norman 7.5 / Krug 8.0 / Nielsen 6.5) → PASS
+- **HOW Score:** 7.0 (Vignelli 7.0 / Spiekermann 6.0 / Rams 8.0) → PASS
+- **Panel average:** 7.55
+- **Self-review:** 7.5 (calibrated against 8.33 panel ceiling)
+- **Versions built:** 6 (v0 through v5 + index.html)
+- **Build time:** ~70 minutes
+- **Token estimate:** ~45k (4 phase files + design knowledge + 5 screenshot/panel passes + 6 HTML builds)
+- **Live URL:** https://auto-sites.pages.dev/demos/stir-it-up-mini-claude/
+
+### Key Decisions
+- dark-immersive hero with jerk chicken photo + italic Bodoni Moda headline: "Jerk chicken. Oxtail. Roti. Down the alley on Yates." Ogilvy scored 9.0 — specific nouns doing real work, no adjective bloat
+- Whole-headline italic (consistent register) fixed Spiekermann's "split personality" concern from v2
+- Heritage section rebuilt v4→v5: centered headline + 3-column (roti photo | text | owner photo) replaced flat text-left + small-photos-right
+- "They all found the alley" changed from blockquote (implied real quote) to editorial statement per non-negotiables (no invented quotes)
+- HOW gate passed at exactly 7.0 — typography tension between Bodoni Moda ornate and Space Grotesk minimal noted but not resolved within build cycle
+
+### Panel Scores
+| Panelist | Score |
+|----------|-------|
+| Steve Jobs (WHY/Conviction) | 8.0 |
+| Paul Graham (WHY/Clarity) | 8.0 |
+| David Ogilvy (WHY/Copy) | 9.0 |
+| Don Norman (WHAT/Mental Models) | 7.5 |
+| Steve Krug (WHAT/Scannability) | 8.0 |
+| Jakob Nielsen (WHAT/Accessibility) | 6.5 |
+| Massimo Vignelli (HOW/Grid) | 7.0 |
+| Erik Spiekermann (HOW/Typography) | 6.0 |
+| Dieter Rams (HOW/Reduction) | 8.0 |
+| **Average** | **7.55** |

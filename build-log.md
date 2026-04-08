@@ -1,5 +1,32 @@
 # Auto-Sites Build Log
 
+## Build 125 — STIR IT UP (Mac Mini Codex Test)
+
+### Summary
+- **Category:** Caribbean Soul Food
+- **City:** Victoria, BC (760A Yates St — alley location)
+- **Date:** 2026-04-07
+- **Model:** gpt-5.3 (Codex)
+- **Agent:** Lucy
+- **Fictional:** No (real business — 4.5★, 188 Google reviews)
+- **Images:** Real Stir It Up Instagram assets only (no generated photos)
+- **Hero pattern:** asymmetric-collage ✅
+- **Typography:** Bitter + Work Sans ✅
+- **Review layout:** editorial two-row review explainer + aggregate score + Google CTA (no fabricated quotes) ✅
+- **Visit/hours layout:** map-first left panel + dark fact rail right with day-by-day breakdown ✅
+- **Stats bar style:** no-stats ✅
+- **WHY Score:** 7.60 (Jobs 7.6 / PG 7.3 / Ogilvy 7.9)
+- **WHAT Score:** 7.43 (Norman 7.5 / Krug 7.7 / Nielsen 7.1)
+- **HOW Score:** 7.37 (Vignelli 7.4 / Spiekermann 7.5 / Rams 7.2)
+- **Panel average:** 7.47
+- **Self-review:** 7.8
+- **Versions built:** 6 (v0 through v5 + index.html)
+- **Build time:** ~95 minutes
+- **Token estimate:** ~48k
+- **Key decisions:** Built a fresh asymmetric-collage direction with facts-first copy and strict source-safe claims. Kept non-negotiables hard (no fabricated review quotes, no menu prices, no image hover effects).
+- **Notes:** Automated screenshot step failed in this sandbox (Playwright/Firefox headless SIGABRT). Proceeded with code-first panel iteration and documented the limitation.
+- **Live URL:** https://auto-sites.pages.dev/demos/stir-it-up-mini-codex/
+
 ## Build 124 — STIR IT UP (Control Build)
 
 ### Summary

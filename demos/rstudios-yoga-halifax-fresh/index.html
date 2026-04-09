@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RSTUDIOS — Hot Yoga + Pilates, Halifax</title>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="RSTUDIOS — Hot Yoga + Pilates in Halifax">
+  <meta property="og:description" content="Hot yoga, hot Pilates, and a sauna at 1512 Dresden Row. Rated 4.9★ by 714 members in Halifax.">
+  <meta property="og:image" content="hero-studio.jpg">
+  <meta property="og:url" content="https://rstudios.ca">
+  <meta property="og:type" content="website">
+
+  <!--
+    DELTA: v1 → v2 (WHAT retry)
+    Changes:
+      - Services: added tel: CTA link under each service card for booking affordance
+      - Reviews: strengthened section with Google link framing, removed confusion, made social proof feel more concrete
+      - RIO card: removed same-number confusion, reworded to be clear it's a second location
+      - CTA system: made all secondary CTAs consistent (text-link gold style)
+    WHAT scores: Norman 7 / Krug 7 / Nielsen 6 → avg 6.67 (below gate, retry)
+    Hypothesis: Booking affordance in services and reviews strengthening will push Nielsen higher
+
+    DELTA: v0 → v1
+    Changes:
+      - Hero sub: removed rating restat, replaced with sensory line about the heat
+      - Review section: cut the defensive "that's not a marketing number" commentary
+      - About section: condensed two paragraphs into one punchier block
+      - RIO location: given real address/detail that we DO have ("second Halifax location" framing cleaned up)
+      - Removed redundant rating from hero subtitle (quick strip already carries it)
+    WHY scores: Jobs 7 / PG 7 / Ogilvy 7 → avg 7.0
+    Hypothesis: Hero sub sensory line + removing defensive review commentary will move WHY panel most
+    -->
+
+    <!--
+    PHOTO ASSIGNMENTS (Phase 1 — Brand Research)
+    =============================================
+    1. hero-studio.jpg   — Landscape, yoga studio with steam + magenta/amber light
+                           → HERO (full-viewport-bg): most visually commanding, on-brand heat
+    2. sauna-glow.jpg    — Landscape, wood sauna interior with rising steam
+                           → SAUNA SECTION feature: directly on-brand RINSE concept
+    3. mat-hands.jpg     — Landscape, close-up sweaty hands in prayer
+                           → ABOUT/RITUAL section: emotional peak of practice
+    4. pilates-studio.jpg — Landscape, dark reformer with candles
+                           → SERVICES section: luxury pilates arm of the business
+
+    ROTATION (v0)
+    =============
+    Hero pattern: full-viewport-bg (≠ last 3: editorial-spread, giant-display-type, dark-immersive)
+    Typography: Cormorant Garamond + DM Sans (≠ last 3: Gloock+SpaceGrotesk, BarlowCond+Inter, BodoniModa+SpaceGrotesk)
+    Review layout: editorial aggregate + CTA (no fabricated quotes)
+    Visit/hours: two-column (locations left, map right)
+    Stats bar: no-stats ✅
+  -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* === TOKENS === */
+    :root {
+      --black: #0D0D0E;
+      --black-2: #141416;
+      --black-3: #1C1C1F;
+      --red: #8B1D1D;
+      --gold: #C49A3C;
+      --white: #F2EDE6;
+      --white-muted: rgba(242, 237, 230, 0.6);
+      --white-faint: rgba(242, 237, 230, 0.12);
+
+      --display: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
+
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+
+      --section-pad: 100px 24px;
+      --max-w: 1140px;
+    }
+
+    /* === RESET === */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; font-family: var(--sans); }
+
+    /* === NAV === */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 40px;
+      background: transparent;
+      transition: background 400ms var(--ease-out), backdrop-filter 400ms;
+    }
+    .nav.scrolled {
+      background: rgba(13, 13, 14, 0.92);
+      backdrop-filter: blur(12px);
+    }
+    .nav-logo {
+      font-family: var(--sans);
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--white-muted);
+      transition: color 200ms;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-cta {
+      background: var(--red);
+      color: var(--white);
+      border: none;
+      padding: 10px 22px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: background 200ms, transform 160ms var(--ease-out);
+    }
+    .nav-cta:hover { background: #a02222; }
+    .nav-cta:active { transform: scale(0.97); }
+
+    /* Hamburger */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      transition: transform 300ms, opacity 300ms;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Mobile nav drawer */
+    .nav-drawer {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 99;
+      background: rgba(13, 13, 14, 0.97);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+    }
+    .nav-drawer.open { display: flex; }
+    .nav-drawer a {
+      font-family: var(--display);
+      font-size: 36px;
+      font-style: italic;
+      color: var(--white);
+      letter-spacing: 0.02em;
+      transition: color 200ms;
+    }
+    .nav-drawer a:hover { color: var(--gold); }
+    .nav-drawer .drawer-cta {
+      background: var(--red);
+      color: var(--white);
+      border: none;
+      padding: 14px 36px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: 12px;
+      transition: background 200ms, transform 160ms var(--ease-out);
+    }
+    .nav-drawer .drawer-cta:active { transform: scale(0.97); }
+
+    /* === HERO — full-viewport-bg === */
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      min-height: 640px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+    }
+    .hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(13, 13, 14, 0.55) 0%,
+        rgba(13, 13, 14, 0.45) 40%,
+        rgba(13, 13, 14, 0.72) 100%
+      );
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 860px;
+      padding: 0 24px;
+    }
+    .hero-eyebrow {
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fadeUp 0.8s var(--ease-out) 0.3s forwards;
+    }
+    .hero-headline {
+      font-family: var(--display);
+      font-size: clamp(56px, 9vw, 104px);
+      font-style: italic;
+      font-weight: 600;
+      line-height: 1.0;
+      color: var(--white);
+      letter-spacing: -0.01em;
+      margin-bottom: 28px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.9s var(--ease-out) 0.5s forwards;
+    }
+    .hero-sub {
+      font-family: var(--sans);
+      font-size: clamp(15px, 2vw, 18px);
+      font-weight: 400;
+      color: rgba(242, 237, 230, 0.82);
+      line-height: 1.6;
+      max-width: 600px;
+      margin: 0 auto 40px;
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fadeUp 0.8s var(--ease-out) 0.7s forwards;
+    }
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      opacity: 0;
+      transform: translateY(14px);
+      animation: fadeUp 0.7s var(--ease-out) 0.9s forwards;
+    }
+    .btn-primary {
+      background: var(--red);
+      color: var(--white);
+      border: none;
+      padding: 14px 32px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      display: inline-block;
+      transition: background 200ms, transform 160ms var(--ease-out);
+    }
+    .btn-primary:hover { background: #a02222; }
+    .btn-primary:active { transform: scale(0.97); }
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid rgba(242, 237, 230, 0.4);
+      padding: 14px 32px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      display: inline-block;
+      transition: border-color 200ms, transform 160ms var(--ease-out);
+    }
+    .btn-outline:hover { border-color: var(--white); }
+    .btn-outline:active { transform: scale(0.97); }
+
+    /* hero scroll indicator */
+    .hero-scroll {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      opacity: 0;
+      animation: fadeIn 1s var(--ease-out) 1.4s forwards;
+    }
+    .hero-scroll span {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--white-muted);
+    }
+    .hero-scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--white-muted), transparent);
+      animation: scrollPulse 2s ease-in-out 2s infinite;
+    }
+
+    /* === QUICK STRIP === */
+    .quick-strip {
+      background: var(--black-3);
+      border-top: 1px solid var(--white-faint);
+      border-bottom: 1px solid var(--white-faint);
+    }
+    .quick-strip-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+    .quick-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--white-muted);
+    }
+    .quick-item strong {
+      color: var(--white);
+      font-weight: 500;
+    }
+    .quick-item .dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+    .rating-stars {
+      color: var(--gold);
+      font-size: 14px;
+      letter-spacing: 1px;
+    }
+
+    /* === ABOUT / RINSE SECTION === */
+    .about {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 120px 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .about-text {}
+    .about-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .about-headline {
+      font-family: var(--display);
+      font-size: clamp(36px, 5vw, 56px);
+      font-style: italic;
+      font-weight: 600;
+      line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 28px;
+    }
+    .about-body {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.75;
+      color: rgba(242, 237, 230, 0.72);
+      margin-bottom: 20px;
+    }
+    .about-flags {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 32px;
+    }
+    .flag {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(196, 154, 60, 0.35);
+      padding: 6px 14px;
+    }
+    .about-image {
+      aspect-ratio: 4/3;
+      overflow: hidden;
+    }
+
+    /* === SERVICES === */
+    .services {
+      background: var(--black-2);
+      padding: 100px 40px;
+    }
+    .services-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+    .section-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .section-title {
+      font-family: var(--display);
+      font-size: clamp(32px, 4.5vw, 52px);
+      font-style: italic;
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.1;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+    .service-card {
+      position: relative;
+      background: var(--black-3);
+      overflow: hidden;
+      aspect-ratio: 1/1;
+    }
+    .service-card-image {
+      position: absolute;
+      inset: 0;
+      transition: transform 600ms var(--ease-out);
+    }
+    .service-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(13,13,14,0.9) 0%, rgba(13,13,14,0.3) 60%, transparent 100%);
+    }
+    .service-card-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 32px 28px;
+    }
+    .service-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border-bottom: 1px solid rgba(196,154,60,0.35);
+      padding-bottom: 2px;
+      margin-top: 12px;
+      transition: border-color 200ms;
+    }
+    .service-link:hover { border-color: var(--gold); }
+    .service-number {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+    .service-name {
+      font-family: var(--display);
+      font-size: 28px;
+      font-style: italic;
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 10px;
+    }
+    .service-desc {
+      font-size: 14px;
+      font-weight: 400;
+      color: rgba(242,237,230,0.65);
+      line-height: 1.6;
+    }
+
+    /* service: text-only card for sauna (3rd slot uses sauna-glow.jpg) */
+    .service-card.sauna { }
+
+    /* === REVIEWS === */
+    .reviews {
+      padding: 100px 40px;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      text-align: center;
+    }
+    .review-big-number {
+      font-family: var(--display);
+      font-size: clamp(64px, 10vw, 120px);
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+    .review-stars-line {
+      font-size: 24px;
+      color: var(--gold);
+      letter-spacing: 4px;
+      margin: 8px 0 16px;
+    }
+    .review-statement {
+      font-family: var(--display);
+      font-size: clamp(20px, 3vw, 32px);
+      font-style: italic;
+      color: rgba(242, 237, 230, 0.75);
+      max-width: 700px;
+      margin: 0 auto 48px;
+      line-height: 1.4;
+    }
+    .review-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border-bottom: 1px solid rgba(196, 154, 60, 0.4);
+      padding-bottom: 4px;
+      transition: border-color 200ms, transform 160ms var(--ease-out);
+    }
+    .review-cta:hover { border-color: var(--gold); }
+    .review-cta:active { transform: scale(0.97); }
+    .review-divider {
+      width: 1px;
+      height: 60px;
+      background: linear-gradient(to bottom, transparent, var(--white-faint), transparent);
+      margin: 56px auto;
+    }
+    .review-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--white-muted);
+      border: 1px solid var(--white-faint);
+      padding: 8px 20px;
+    }
+    .review-badge .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--gold); }
+
+    /* === LOCATIONS === */
+    .locations {
+      background: var(--black-2);
+      padding: 100px 40px;
+    }
+    .locations-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+    }
+    .location-card {
+      background: var(--black-3);
+      padding: 56px 48px;
+    }
+    .location-name {
+      font-family: var(--display);
+      font-size: 48px;
+      font-style: italic;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+    .location-subtitle {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 36px;
+    }
+    .location-detail {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--white-muted);
+      line-height: 2;
+      margin-bottom: 32px;
+    }
+    .location-detail strong {
+      color: var(--white);
+      font-weight: 400;
+    }
+    .location-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border-bottom: 1px solid rgba(196, 154, 60, 0.35);
+      padding-bottom: 3px;
+      transition: border-color 200ms, transform 160ms var(--ease-out);
+    }
+    .location-link:hover { border-color: var(--gold); }
+    .location-link:active { transform: scale(0.97); }
+    .location-rio {
+      background: var(--black);
+    }
+    .location-rio .location-name { color: rgba(242, 237, 230, 0.5); }
+    .location-rio .location-subtitle { opacity: 0.6; }
+
+    /* === MEMBERSHIP CTA === */
+    .cta-section {
+      padding: 120px 40px;
+      text-align: center;
+      background: var(--black);
+    }
+    .cta-inner {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .cta-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+    }
+    .cta-headline {
+      font-family: var(--display);
+      font-size: clamp(36px, 5.5vw, 64px);
+      font-style: italic;
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+    .cta-body {
+      font-size: 16px;
+      font-weight: 400;
+      color: rgba(242, 237, 230, 0.65);
+      margin-bottom: 40px;
+      line-height: 1.7;
+    }
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* === FAQ === */
+    .faq-section {
+      background: var(--black-2);
+      padding: 100px 40px;
+    }
+    .faq-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      margin-top: 0;
+    }
+    .faq-item {
+      background: var(--black-3);
+      padding: 36px 40px;
+    }
+    .faq-q {
+      font-family: var(--display);
+      font-size: 20px;
+      font-style: italic;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .faq-a {
+      font-size: 15px;
+      font-weight: 400;
+      color: rgba(242, 237, 230, 0.7);
+      line-height: 1.65;
+    }
+    .faq-a a {
+      color: var(--gold);
+      border-bottom: 1px solid rgba(196, 154, 60, 0.35);
+      transition: border-color 200ms;
+    }
+    .faq-a a:hover { border-color: var(--gold); }
+    @media (max-width: 700px) {
+      .faq-grid { grid-template-columns: 1fr; }
+    }
+
+    /* === FOOTER === */
+    footer {
+      background: var(--black-3);
+      border-top: 1px solid var(--white-faint);
+      padding: 48px 40px;
+    }
+    .footer-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+    .footer-logo {
+      font-family: var(--sans);
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+    .footer-info {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--white-muted);
+      text-align: center;
+      line-height: 1.8;
+    }
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+    .footer-links a {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--white-muted);
+      transition: color 200ms;
+    }
+    .footer-links a:hover { color: var(--white); }
+    .footer-copy {
+      width: 100%;
+      text-align: center;
+      font-size: 12px;
+      color: rgba(242, 237, 230, 0.3);
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 1px solid var(--white-faint);
+    }
+
+    /* === ANIMATIONS === */
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+    @keyframes scrollPulse {
+      0%, 100% { transform: scaleY(1); opacity: 0.5; }
+      50% { transform: scaleY(0.6); opacity: 1; }
+    }
+
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 700ms var(--ease-out), transform 700ms var(--ease-out);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 60ms; }
+    .reveal-delay-2 { transition-delay: 120ms; }
+    .reveal-delay-3 { transition-delay: 180ms; }
+    .reveal-delay-4 { transition-delay: 240ms; }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 900px) {
+      .nav-links, .nav-cta { display: none; }
+      .nav-hamburger { display: flex; }
+      .nav { padding: 16px 24px; }
+      .about {
+        grid-template-columns: 1fr;
+        gap: 48px;
+        padding: 80px 24px;
+      }
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+      .service-card { aspect-ratio: 4/3; }
+      .locations-inner {
+        grid-template-columns: 1fr;
+      }
+      .quick-strip-inner {
+        gap: 24px;
+        padding: 16px 24px;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .cta-section { padding: 80px 24px; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+      .footer-info { text-align: left; }
+      .reviews { padding: 80px 24px; }
+    }
+
+    @media (max-width: 600px) {
+      .hero-headline { font-size: 48px; }
+    }
+
+    /* === MOTION PASS (v4) ===
+       Added: hero line-by-line stagger, quick-strip items fade, section item stagger refinements
+       All motion: transform + opacity only (GPU composited)
+       prefers-reduced-motion respected below
+    */
+
+    /* Hero line stagger extras */
+    .hero-eyebrow { animation-duration: 0.8s; }
+    .hero-headline { animation-duration: 0.9s; }
+    .hero-sub { animation-duration: 0.8s; }
+    .hero-ctas { animation-duration: 0.7s; }
+
+    /* Quick strip items fade in staggered */
+    .quick-item {
+      opacity: 0;
+      animation: fadeUp 0.6s var(--ease-out) forwards;
+    }
+    .quick-item:nth-child(1) { animation-delay: 0.1s; }
+    .quick-item:nth-child(2) { animation-delay: 0.2s; }
+    .quick-item:nth-child(3) { animation-delay: 0.3s; }
+    .quick-item:nth-child(4) { animation-delay: 0.4s; }
+
+    /* === prefers-reduced-motion === */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .reveal { opacity: 1 !important; transform: none !important; }
+      .hero-eyebrow, .hero-headline, .hero-sub, .hero-ctas, .hero-scroll,
+      .quick-item { opacity: 1 !important; transform: none !important; }
+    }
+
+    /* noscript fallback */
+    .noscript-visible { opacity: 1 !important; transform: none !important; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="nav-logo">RSTUDIOS</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Classes</a></li>
+      <li><a href="#locations">Locations</a></li>
+    </ul>
+    <button class="nav-cta" onclick="window.location='tel:+19029120207'">Book a Class</button>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE DRAWER -->
+  <div class="nav-drawer" id="drawer">
+    <a href="#about" onclick="closeDrawer()">About</a>
+    <a href="#services" onclick="closeDrawer()">Classes</a>
+    <a href="#locations" onclick="closeDrawer()">Locations</a>
+    <button class="drawer-cta" onclick="window.location='tel:+19029120207'">Book a Class</button>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg">
+      <img src="hero-studio.jpg" alt="RSTUDIOS hot yoga studio with steam and warm light">
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Halifax · Hot Yoga + Pilates</p>
+      <h1 class="hero-headline">Get in the hot room.</h1>
+      <p class="hero-sub">Hot yoga, hot Pilates, and a sauna. You'll be drenched before the first song ends. That's the point.</p>
+      <div class="hero-ctas">
+        <a href="tel:+19029120207" class="btn-primary">Call to Book</a>
+        <a href="#locations" class="btn-outline">Find a Location</a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <div class="hero-scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- QUICK STRIP -->
+  <div class="quick-strip">
+    <div class="quick-strip-inner">
+      <div class="quick-item">
+        <span class="dot"></span>
+        <span><strong>1512 Dresden Row</strong> · Halifax, NS</span>
+      </div>
+      <div class="quick-item">
+        <span class="dot"></span>
+        <span><strong>+1 902-912-0207</strong></span>
+      </div>
+      <div class="quick-item">
+        <span class="dot"></span>
+        <span class="rating-stars">★★★★★</span>
+        <span><strong>4.9</strong> &nbsp;·&nbsp; 714 reviews</span>
+      </div>
+      <div class="quick-item">
+        <span class="dot"></span>
+        <span>Women-owned &nbsp;·&nbsp; LGBTQ+ friendly</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT / RINSE -->
+  <section id="about" class="about">
+    <div class="about-text">
+      <p class="about-label reveal">The Concept</p>
+      <h2 class="about-headline reveal reveal-delay-1">Sweat hard.<br>Then rinse.</h2>
+      <p class="about-body reveal reveal-delay-2">Two locations in Halifax: RINSE and RIO. Hot yoga, hot Pilates, and a sauna at both. 714 five-star reviews, women-owned, LGBTQ+ friendly. The people who come here come back.</p>
+      <div class="about-flags reveal reveal-delay-3">
+        <span class="flag">Women-owned</span>
+        <span class="flag">LGBTQ+ friendly</span>
+        <span class="flag">Sauna on-site</span>
+        <span class="flag">Members</span>
+      </div>
+    </div>
+    <div class="about-image reveal reveal-delay-2">
+      <img src="mat-hands.jpg" alt="Hands in prayer after class — the moment of stillness after heat">
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="services">
+    <div class="services-inner">
+      <div class="section-header">
+        <p class="section-label reveal">What We Offer</p>
+        <h2 class="section-title reveal reveal-delay-1">Three ways to rinse.</h2>
+      </div>
+      <div class="services-grid">
+        <!-- Hot Yoga -->
+        <div class="service-card reveal">
+          <div class="service-card-image">
+            <img src="hero-studio.jpg" alt="Hot yoga studio with steam and warm light">
+          </div>
+          <div class="service-card-overlay"></div>
+          <div class="service-card-content">
+            <p class="service-number">01</p>
+            <h3 class="service-name">Hot Yoga</h3>
+            <p class="service-desc">A heated room, intentional breath, and a practice that meets you where you are.</p>
+            <a href="tel:+19029120207" class="service-link">Book a class →</a>
+          </div>
+        </div>
+        <!-- Hot Pilates -->
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-card-image">
+            <img src="pilates-studio.jpg" alt="Dark candlelit Pilates reformer studio">
+          </div>
+          <div class="service-card-overlay"></div>
+          <div class="service-card-content">
+            <p class="service-number">02</p>
+            <h3 class="service-name">Hot Pilates</h3>
+            <p class="service-desc">Reformer work in the heat. Controlled, challenging, and deeply satisfying.</p>
+            <a href="tel:+19029120207" class="service-link">Book a class →</a>
+          </div>
+        </div>
+        <!-- Sauna -->
+        <div class="service-card sauna reveal reveal-delay-2">
+          <div class="service-card-image">
+            <img src="sauna-glow.jpg" alt="Steam rising in the sauna — the ritual finale">
+          </div>
+          <div class="service-card-overlay"></div>
+          <div class="service-card-content">
+            <p class="service-number">03</p>
+            <h3 class="service-name">Sauna</h3>
+            <p class="service-desc">On-site at both locations. The finish line that earns the name RINSE.</p>
+            <a href="tel:+19029120207" class="service-link">Ask about access →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="reviews">
+    <div class="review-big-number reveal">4.9</div>
+    <div class="review-stars-line reveal reveal-delay-1">★★★★★</div>
+    <p class="review-statement reveal reveal-delay-2">714 Google reviews from Halifax. That score takes a while to earn and a lot of bad classes to lose.</p>
+    <a href="https://www.google.com/maps/search/RSTUDIOS+Halifax" target="_blank" class="review-cta reveal reveal-delay-3">
+      Read the reviews on Google ↗
+    </a>
+    <div class="review-divider"></div>
+    <div class="review-badge reveal">
+      <span class="dot"></span>
+      4.9★ · 714 reviews · Google · Halifax, NS
+    </div>
+  </section>
+
+  <!-- LOCATIONS -->
+  <section id="locations" class="locations">
+    <div class="locations-inner">
+      <div class="location-card reveal">
+        <div class="location-name">RINSE</div>
+        <div class="location-subtitle">Hot Yoga + Pilates + Sauna</div>
+        <div class="location-detail">
+          <strong>1512 Dresden Row</strong><br>
+          Halifax, NS  B3J 2K2<br>
+          <strong>+1 902-912-0207</strong>
+        </div>
+        <a href="https://www.google.com/maps/place/1512+Dresden+Row,+Halifax,+NS+B3J+2K2" target="_blank" class="location-link">
+          Get Directions ↗
+        </a>
+      </div>
+      <div class="location-card location-rio reveal reveal-delay-1">
+        <div class="location-name">RIO</div>
+        <div class="location-subtitle">Second Halifax Location</div>
+        <div class="location-detail">
+          Hot yoga, hot Pilates, and sauna.<br>
+          Halifax, NS<br>
+          <strong>+1 902-912-0207</strong>
+        </div>
+        <a href="tel:+19029120207" class="location-link">Call for class schedule →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FIRST TIME FAQ -->
+  <section class="faq-section">
+    <div class="faq-inner">
+      <div class="section-header">
+        <p class="section-label reveal">First Time?</p>
+        <h2 class="section-title reveal reveal-delay-1">What to expect.</h2>
+      </div>
+      <div class="faq-grid">
+        <div class="faq-item reveal">
+          <h3 class="faq-q">Hot yoga or hot Pilates?</h3>
+          <p class="faq-a">Hot yoga flows in the heated room. Hot Pilates is reformer-based work in the heat. Both are challenging. Both earn the sauna after.</p>
+        </div>
+        <div class="faq-item reveal reveal-delay-1">
+          <h3 class="faq-q">Do I need to be fit to start?</h3>
+          <p class="faq-a">No. The studio is membership-based and welcomes all levels. Call ahead and they'll point you toward the right class.</p>
+        </div>
+        <div class="faq-item reveal reveal-delay-2">
+          <h3 class="faq-q">What's the membership?</h3>
+          <p class="faq-a">RSTUDIOS runs on membership. Call <a href="tel:+19029120207">+1 902-912-0207</a> to ask about membership options and drop-in rates.</p>
+        </div>
+        <div class="faq-item reveal reveal-delay-3">
+          <h3 class="faq-q">Is the sauna included?</h3>
+          <p class="faq-a">The sauna is on-site at both RINSE and RIO. Ask about access when you book.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEMBERSHIP CTA -->
+  <section id="membership" class="cta-section">
+    <div class="cta-inner">
+      <p class="cta-label reveal">Join the Studio</p>
+      <h2 class="cta-headline reveal reveal-delay-1">Ready to get in the heat?</h2>
+      <p class="cta-body reveal reveal-delay-2">RSTUDIOS runs on membership. Drop in or commit to the practice. Either way, the hot room is waiting.</p>
+      <div class="cta-buttons reveal reveal-delay-3">
+        <a href="tel:+19029120207" class="btn-primary">Call +1 902-912-0207</a>
+        <a href="https://www.google.com/maps/place/1512+Dresden+Row,+Halifax,+NS+B3J+2K2" target="_blank" class="btn-outline">Find Us on Maps</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">RSTUDIOS</div>
+      <div class="footer-info">
+        1512 Dresden Row · Halifax, NS B3J 2K2<br>
+        +1 902-912-0207 · RINSE + RIO
+      </div>
+      <div class="footer-links">
+        <a href="#about">About</a>
+        <a href="#services">Classes</a>
+        <a href="#locations">Locations</a>
+      </div>
+    </div>
+    <p class="footer-copy">Women-owned · LGBTQ+ friendly · Halifax, NS · 4.9★ from 714 members</p>
+  </footer>
+
+  <!-- NAV SCROLL + HAMBURGER JS -->
+  <script>
+    // Nav scroll state
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // Hamburger menu
+    const hamburger = document.getElementById('hamburger');
+    const drawer = document.getElementById('drawer');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      drawer.classList.toggle('open');
+      document.body.style.overflow = drawer.classList.contains('open') ? 'hidden' : '';
+    });
+    function closeDrawer() {
+      hamburger.classList.remove('open');
+      drawer.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    // Scroll reveal
+    const revealEls = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      revealEls.forEach(el => io.observe(el));
+    } else {
+      revealEls.forEach(el => el.classList.add('visible'));
+    }
+  </script>
+
+  <noscript>
+    <style>
+      .reveal { opacity: 1 !important; transform: none !important; }
+      .hero-eyebrow, .hero-headline, .hero-sub, .hero-ctas, .hero-scroll {
+        opacity: 1 !important; transform: none !important;
+      }
+    </style>
+  </noscript>
+
+</body>
+</html>

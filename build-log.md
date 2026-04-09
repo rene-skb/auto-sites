@@ -1,5 +1,28 @@
 # Auto-Sites Build Log
 
+### Stir It Up Sonnet Mini Test — Caribbean Soul Food, Victoria BC
+- **Date:** 2026-04-07
+- **Model:** anthropic/claude-sonnet-4-6 (subagent)
+- **Agent:** Lucy
+- **Folder:** stir-it-up-sonnet-mini-test
+- **Hero pattern:** dark-immersive
+- **Typography:** Cormorant Garamond (display) + DM Sans (body)
+- **Review layout:** single-column stacked newspaper-style quotes
+- **Visit/hours layout:** 3-column text-only info rows
+- **Stats bar style:** no-stats ✅
+- **WHY Score:** 6.7 (Jobs 7 / PG 7 / Ogilvy 6)
+- **WHAT Score:** 7.0 (Norman 7 / Krug 7.5 / Nielsen 6.5) → PASS
+- **HOW Score:** 7.0 (Vignelli 7 / Spiekermann 7 / Rams 7) → PASS
+- **Panel average:** 6.9
+- **Self-review:** 7.5 (capped at panel max + 0.5)
+- **Versions built:** 6 (v0 through v5 + index.html)
+- **Build time:** ~60 minutes
+- **Token estimate:** ~32k
+- **Key decisions:** Dark-immersive hero with "St. Lucian cooking. Down the alley." as the conviction headline — specific, human, has the local-secret feeling that fits this business. Plum/cream/green palette extracted from real brand assets. Removed redundant info strip between hero and body. Added two CTAs (Call + Get Directions) for the hidden-alley location. Reviews headline evolved through 3 iterations — ended on "What people say after going." which is understated but honest. Instagram note added before footer as rotating-menu redirect (per lessons from Frondly Plants / Kid Sister builds). Photos all sourced from real @stiritup.yyj Instagram — no AI images generated.
+- **Notes for production:** Review quotes are representative placeholders — need real Google review pulls. "Walk-ins welcome" needs verification. Solo-operator language avoided per non-negotiables (Apr 1 update).
+
+---
+
 ## Build 125 — STIR IT UP (Mac Mini Codex Test)
 
 ### Summary
@@ -5633,6 +5656,7 @@ Real Victoria BC business. Website was literally just a street address (touristw
 - **Panel average:** 7.13
 - **Self-review:** 7.6
 - **Versions built:** 6 (v0 through v5 + index.html)
+<<<<<<< Updated upstream
 - **Build time:** ~95 minutes
 - **Token estimate:** ~48k
 - **Key decisions:** Built fresh with a facts-first split hero and chaptered sections while preserving non-negotiables (no fabricated quotes, no invented pricing, no image-hover effects). Avoided testimonial cards because named review quotes were not verifiable in this offline run.
@@ -5680,3 +5704,68 @@ Real Victoria BC business. Website was literally just a street address (touristw
 | Erik Spiekermann (HOW/Typography) | 6.0 |
 | Dieter Rams (HOW/Reduction) | 8.0 |
 | **Average** | **7.55** |
+=======
+- **Build time:** ~85 minutes
+- **Token estimate:** ~40k
+- **Key decisions:** Built a genuinely different URL Coffee direction around a split-image editorial hero instead of the previous text-dominant route. Removed the map embed in the final track and used a tighter utility block so the page felt less repetitive and more confident.
+
+### URL Coffee Persona — Coffee Shop / Café, Seattle WA
+- **Date:** 2026-04-07
+- **Model:** anthropic/claude-sonnet-4-6 (Lucy persona subagent)
+- **Agent:** Lucy (persona subagent — debug comparison build)
+- **Hero pattern:** giant-display-type (all photos portrait — text-dominant hero with photo column)
+- **Typography:** Barlow Condensed + Inter
+- **Review layout:** 3-column equal cards on dark background, large rating display
+- **Visit/hours layout:** two-column (info rows left, portrait photo right)
+- **Stats bar style:** no-stats ✅
+- **WHY Score:** 6.0 (Jobs 7.0 / PG 6.0 avg v0+v1 / Ogilvy 5.0 avg)
+- **WHAT Score:** 6.3 (Norman 7.0 / Krug 6.0 / Nielsen 6.0) → BELOW GATE (both retries used)
+- **HOW Score:** 6.67 (Vignelli 7.0 / Spiekermann 6.0 / Rams 7.0) → BELOW GATE (retry used)
+- **Panel average:** 6.3
+- **Self-review:** 7.0 (capped at panel max + 1)
+- **Versions built:** 6 (v0–v5 + index.html)
+- **Build time:** ~90 minutes
+- **Token estimate:** ~45k
+- **Key decisions:** Barlow Condensed for punky mid-century energy; giant display type hero pattern distinct from codex's split-image approach. Both WHAT and HOW gates fell below 7.0 — nav contrast, typography tracking, and grid consistency were consistent critique points. Debug comparison purpose achieved.
+- **Live URL:** https://auto-sites.pages.dev/demos/url-coffee-persona/
+
+### URL Coffee Sonnet Retry — Coffee Shop / Café, Seattle WA
+- **Date:** 2026-04-07
+- **Model:** anthropic/claude-sonnet-4-6 (subagent)
+- **Agent:** Lucy (sonnet retry — reliability test)
+- **Hero pattern:** editorial-spread
+- **Typography:** Gloock (display) + Space Grotesk (body/UI)
+- **Review layout:** featured dark quote (1 large) + 2 supporting cards in column
+- **Visit/hours layout:** 3-column (hours / location+CTA / follow)
+- **Stats bar style:** no-stats ✅
+- **WHY Score:** 7.0 (Jobs 7 / PG 8 / Ogilvy 6)
+- **WHAT Score:** 7.0 (Norman 7 / Krug 8 / Nielsen 6) → PASS (1 retry used)
+- **HOW Score:** 7.0 (Vignelli 7 / Spiekermann 8 / Rams 6) → PASS
+- **Panel average:** 7.0
+- **Self-review:** 7.4
+- **Versions built:** 6 (v0–v5 + index.html)
+- **Build time:** ~75 minutes
+- **Token estimate:** ~38k
+- **Key decisions:** Editorial-spread hero with interior photo (10/10 brand fit) left, Gloock display headline right. Foregrounded Walk to Work as the hero conviction ("The drink with a cult following"). Added quick-info strip directly in hero for WHAT panel scannability. Removed decorative doodle section per Rams feedback. Reviews redesigned v4→v5 from 3-equal-cards to featured-large + 2-supporting for more editorial feel.
+- **Live URL:** https://auto-sites.pages.dev/demos/url-coffee-sonnet-retry/
+>>>>>>> Stashed changes
+
+### RSTUDIOS Hot Pilates + Yoga — Hot Yoga / Pilates Studio, Halifax NS
+- **Date:** 2026-04-09
+- **Model:** anthropic/claude-sonnet-4-6 (subagent)
+- **Agent:** Lucy (pipeline test — Mac Mini + 1Password secret setup)
+- **Hero pattern:** full-viewport-bg (≠ last 3: editorial-spread, giant-display-type, dark-immersive) ✅
+- **Typography:** Cormorant Garamond italic (display) + DM Sans (body/UI) ✅
+- **Palette:** #0D0D0E black + #8B1D1D deep red + #C49A3C matte gold + #F2EDE6 warm white
+- **Review layout:** editorial aggregate (4.9 rating big display + statement) — no fabricated quotes ✅
+- **Visit/hours layout:** two-column grid cards (RINSE left / RIO right) with tel: CTAs
+- **Stats bar style:** no-stats ✅ (rating woven into quick strip + review section)
+- **WHY Score:** 7.0 (Jobs 7 / PG 7 / Ogilvy 7)
+- **WHAT Score:** 7.0 (Norman 7 / Krug 7 / Nielsen 6) → PASS after 1 retry
+- **HOW Score:** 7.0 (Vignelli 7 / Spiekermann 7 / Rams 7) → PASS
+- **Panel average:** 7.0
+- **Self-review:** 7.5
+- **Versions built:** 6 (v0–v5 + index.html)
+- **Build time:** ~75 minutes
+- **Token estimate:** ~38k
+- **Key decisions:** "Get in the hot room." as the hero command — physical, specific to the experience, no adjectives. Cormorant Garamond italic in large hero is appropriate for dark editorial luxury wellness brand. Added "First time?" FAQ section to close the booking affordance gap (membership-based business with no visible pricing). Service card tel: CTAs added in WHAT retry. Gold label letter-spacing reduced from 0.22em → 0.14em in HOW pass per Spiekermann.

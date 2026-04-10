@@ -1,5 +1,30 @@
 # Auto-Sites Build Log
 
+### Stir It Up — Caribbean Soul Food, Victoria BC
+- **Date:** 2026-04-10
+- **Model:** openai-codex/gpt-5.4 (subagent)
+- **Agent:** Lucy
+- **Folder:** stir-it-up-codex-opus-brief-v2
+- **Brief:** Written by Rene on Opus, manual build, brief-first
+- **Hero pattern:** split editorial hero with address-led display copy and real storefront portrait
+- **Typography:** Literata (display) + Public Sans (body)
+- **Review layout:** no testimonial cards, single integrated proof row linked to Google listing
+- **Visit/hours layout:** dark visit section with one info column + signage photo
+- **Stats bar style:** no-stats ✅
+- **WHY Score:** 8.5 (self-panel after iteration)
+- **WHAT Score:** 8.0 (self-panel after iteration)
+- **HOW Score:** 8.0 (self-panel after iteration)
+- **Panel average:** 8.17
+- **Self-review:** 8.0
+- **Versions built:** 2 HTML versions + final index.html
+- **Build time:** ~45 minutes
+- **Token estimate:** ~22k
+- **Key decisions:** Cut the page down hard after v0. Reduced the oversized pitchy hero, removed most card-like containers, and rewrote copy toward plain guide language. Kept the owner/storefront portrait as the proof-first hero image, then used food and signage shots as the only other photo moments. Google proof stayed aggregate only, with no fabricated quotes.
+- **Notes:** Final leak check passed for banned visible phrases. Real workspace photos only. Hours, phone, rating, and map link sourced from existing Stir It Up workspace materials and prior source files.
+- **Live URL:** pending push / Pages verification
+
+---
+
 ### Hannya Seattle Tattoo — Tattoo Studio, Belltown Seattle WA
 - **Date:** 2026-04-10
 - **Model:** anthropic/claude-sonnet-4-6 (subagent)

@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!--
+  DELTA: v0 → final
+  Changes: smaller opening, less card UI, plainer copy, fewer repeated alley references, tighter section count
+  Hypothesis: the page should feel more like a text from a friend than a designed case study
+  -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stir It Up, Caribbean soul food on Yates</title>
+  <meta name="description" content="Caribbean soul food at 760A Yates Street in Victoria, BC. Jerk chicken, curry goat, oxtail, patties, and roti wraps.">
+  <meta property="og:title" content="Stir It Up">
+  <meta property="og:description" content="Caribbean soul food. Down the alley at 760A Yates.">
+  <meta property="og:image" content="https://auto-sites.pages.dev/demos/stir-it-up-codex-opus-brief-v2/ig-photo-owner.jpg">
+  <meta property="og:url" content="https://auto-sites.pages.dev/demos/stir-it-up-codex-opus-brief-v2/">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,500;7..72,600&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f2eadf;
+      --paper: #fbf5ea;
+      --ink: #1d1510;
+      --muted: #66574b;
+      --line: rgba(29, 21, 16, 0.14);
+      --brown: #2b1a14;
+      --gold: #b3721f;
+      --gold-soft: #efc27d;
+      --green: #5f6b2e;
+      --content: 1180px;
+      --section-pad: clamp(76px, 9vw, 116px);
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Public Sans", system-ui, sans-serif;
+      color: var(--ink);
+      background: linear-gradient(180deg, #f6efe5 0%, var(--bg) 100%);
+      line-height: 1.68;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; width: 100%; }
+    a { color: inherit; }
+    .skip-link { position: absolute; left: 16px; top: -40px; background: var(--brown); color: #fff; padding: 10px 14px; border-radius: 10px; z-index: 100; }
+    .skip-link:focus { top: 16px; }
+    .container { width: min(var(--content), calc(100% - 32px)); margin: 0 auto; }
+
+    .topbar {
+      position: sticky; top: 0; z-index: 20; backdrop-filter: blur(14px);
+      background: rgba(242, 234, 223, 0.84); border-bottom: 1px solid rgba(29,21,16,0.08);
+    }
+    .topbar-inner {
+      width: min(var(--content), calc(100% - 32px)); margin: 0 auto; min-height: 72px;
+      display: flex; align-items: center; justify-content: space-between; gap: 20px;
+    }
+    .brand { font-family: "Literata", serif; font-size: 1.45rem; font-weight: 600; text-decoration: none; }
+    .nav { display: flex; align-items: center; gap: 22px; }
+    .nav a { text-decoration: none; color: var(--muted); font-size: 0.94rem; }
+    .nav .cta, .button {
+      display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 22px;
+      border-radius: 999px; text-decoration: none; font-weight: 600;
+      transition: transform 160ms var(--ease-out), background 160ms var(--ease-out), color 160ms var(--ease-out);
+    }
+    .nav .cta, .button.primary { background: var(--brown); color: #fff; }
+    .button.secondary { border: 1px solid rgba(29,21,16,0.14); background: rgba(255,255,255,0.38); }
+    .button.secondary:hover { background: rgba(255,255,255,0.72); }
+    .nav .cta:hover, .button.primary:hover { background: #140d09; transform: translateY(-1px); }
+    .nav .cta:active, .button:active { transform: scale(0.97); }
+
+    .hero { padding: 26px 0 0; }
+    .hero-grid {
+      width: min(var(--content), calc(100% - 32px)); margin: 0 auto; display: grid; grid-template-columns: minmax(0, 1.04fr) minmax(320px, 0.96fr);
+      gap: 32px; align-items: center;
+    }
+    .hero-copy { padding: clamp(24px, 3vw, 32px) 0; }
+    .eyebrow { display: inline-block; margin-bottom: 18px; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green); }
+    h1, h2, h3, h4, p { margin: 0; }
+    h1 {
+      font-family: "Literata", serif; font-size: clamp(3.2rem, 7vw, 6rem); line-height: 0.95; letter-spacing: -0.05em; font-weight: 500; max-width: 8ch;
+    }
+    .hero-copy p { margin-top: 18px; max-width: 40ch; color: var(--muted); font-size: 1.02rem; }
+    .hero-list {
+      margin: 28px 0 0; padding: 0; list-style: none; display: grid; gap: 16px; max-width: 500px;
+    }
+    .hero-list li {
+      display: grid; grid-template-columns: 120px 1fr; gap: 16px; padding-top: 14px; border-top: 1px solid var(--line);
+      align-items: baseline;
+    }
+    .hero-list strong { font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }
+    .hero-list span, .hero-list a { font-weight: 600; text-decoration: none; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 28px; }
+    .hero-photo { position: relative; border-radius: 30px; overflow: hidden; min-height: 660px; background: var(--brown); }
+    .hero-photo img { height: 100%; object-fit: cover; }
+    .hero-note {
+      position: absolute; left: 22px; bottom: 22px; background: rgba(251,245,234,0.94); color: var(--brown);
+      padding: 14px 16px; border-radius: 18px; max-width: 250px; font-size: 0.94rem; line-height: 1.45;
+    }
+
+    section { padding: var(--section-pad) 0; }
+    .section-head {
+      display: grid; grid-template-columns: minmax(0, 0.74fr) minmax(0, 1fr); gap: 32px; align-items: end; margin-bottom: 30px;
+    }
+    .label { display: inline-block; margin-bottom: 16px; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green); }
+    h2 { font-family: "Literata", serif; font-size: clamp(2.15rem, 5vw, 4rem); line-height: 0.98; letter-spacing: -0.045em; font-weight: 500; max-width: 10ch; }
+    .section-head p { max-width: 46ch; color: var(--muted); }
+
+    .menu-layout { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 34px; align-items: start; }
+    .menu-list { display: grid; gap: 20px; }
+    .dish {
+      display: grid; grid-template-columns: auto 1fr; gap: 18px; align-items: start; padding-top: 18px; border-top: 1px solid var(--line);
+    }
+    .dish:first-child { border-top: none; padding-top: 0; }
+    .dish-index { font-family: "Literata", serif; font-size: 1.85rem; line-height: 1; color: rgba(179,114,31,0.95); }
+    .dish h3 { font-size: 1.24rem; margin-bottom: 8px; }
+    .dish p { color: var(--muted); max-width: 42ch; }
+    .menu-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .menu-photos figure, .place-photo, .visit-photo { margin: 0; border-radius: 28px; overflow: hidden; }
+    .menu-photos img, .place-photo img, .visit-photo img { height: 100%; object-fit: cover; }
+    .menu-photos .tall img { min-height: 520px; }
+    .menu-photos .stack { display: grid; gap: 20px; }
+    .menu-photos .stack img { min-height: 250px; }
+
+    .place-layout { display: grid; grid-template-columns: minmax(320px, 0.92fr) minmax(0, 1.08fr); gap: 34px; align-items: start; }
+    .place-copy { display: grid; gap: 18px; }
+    .place-copy p { color: var(--muted); max-width: 48ch; }
+    .pull-fact {
+      padding-top: 18px; border-top: 1px solid var(--line); font-size: 1.05rem; font-weight: 600; color: var(--ink);
+    }
+    .proof-row {
+      margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: 16px 24px; align-items: center;
+    }
+    .proof-row strong {
+      font-family: "Literata", serif; font-size: clamp(2.6rem, 5vw, 4rem); line-height: 0.9; letter-spacing: -0.05em; color: var(--gold);
+    }
+    .proof-row span { color: var(--muted); }
+    .proof-row a { font-weight: 600; text-decoration: none; }
+
+    .visit { background: linear-gradient(180deg, #22150f 0%, #3a2015 100%); color: #fff8f0; }
+    .visit .label, .visit .section-head p { color: rgba(255,248,240,0.72); }
+    .visit-layout { display: grid; grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr); gap: 28px; align-items: stretch; }
+    .visit-card { padding: 30px 0; }
+    .visit-card h3 { font-size: 1.4rem; margin-bottom: 18px; }
+    .visit-rows { display: grid; gap: 16px; }
+    .visit-row { padding-top: 16px; border-top: 1px solid rgba(255,248,240,0.14); }
+    .visit-row strong { display: block; margin-bottom: 7px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,248,240,0.66); }
+    .visit-row span, .visit-row a { font-weight: 600; color: #fff8f0; text-decoration: none; }
+    .visit-photo { position: relative; min-height: 520px; }
+    .visit-photo img { width: 100%; height: 100%; }
+    .visit-caption {
+      position: absolute; right: 20px; bottom: 20px; max-width: 250px; padding: 15px 17px; border-radius: 18px;
+      background: rgba(251,245,234,0.94); color: var(--brown); font-size: 0.94rem; line-height: 1.45;
+    }
+
+    footer { padding: 28px 0 48px; }
+    .footer-inner {
+      width: min(var(--content), calc(100% - 32px)); margin: 0 auto; padding-top: 22px; border-top: 1px solid rgba(29,21,16,0.08);
+      display: flex; justify-content: space-between; gap: 18px; color: var(--muted); font-size: 0.92rem;
+    }
+
+    [data-reveal] { opacity: 0; transform: translateY(24px); transition: opacity 700ms var(--ease-out), transform 700ms var(--ease-out); }
+    [data-reveal].is-visible { opacity: 1; transform: translateY(0); }
+    .hero-line { display: block; opacity: 0; transform: translateY(22px); animation: rise 760ms var(--ease-out) forwards; }
+    .hero-line:nth-child(2) { animation-delay: 120ms; }
+    @keyframes rise { to { opacity: 1; transform: translateY(0); } }
+
+    @media (max-width: 1040px) {
+      .hero-grid, .section-head, .menu-layout, .place-layout, .visit-layout { grid-template-columns: 1fr; }
+      .hero-photo { min-height: 440px; }
+    }
+    @media (max-width: 760px) {
+      .nav a:not(.cta) { display: none; }
+      .hero-list li { grid-template-columns: 1fr; gap: 6px; }
+      .menu-photos { grid-template-columns: 1fr; }
+      .button, .nav .cta { width: 100%; }
+      .footer-inner { flex-direction: column; }
+      .visit-photo { min-height: 380px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      [data-reveal] { opacity: 1 !important; transform: none !important; }
+      .hero-line { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <nav class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#top">Stir It Up</a>
+      <div class="nav">
+        <a href="#food">What they cook</a>
+        <a href="#place">The place</a>
+        <a href="#visit">How to find it</a>
+        <a class="cta" href="https://www.google.com/maps?cid=9538700895898696702" target="_blank" rel="noreferrer">Get directions</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <div class="eyebrow">Caribbean soul food, Victoria BC</div>
+        <h1 aria-label="Down the alley. 760A Yates.">
+          <span class="hero-line">Down the alley.</span>
+          <span class="hero-line">760A Yates.</span>
+        </h1>
+        <p>Jerk chicken. Curry goat. Oxtail. Patties. Roti wraps. Entrance is in the alley at 760A Yates Street.</p>
+        <ul class="hero-list">
+          <li><strong>Hours</strong><span>Tuesday to Saturday, 11am to 7pm</span></li>
+          <li><strong>Phone</strong><a href="tel:+17784320133">778-432-0133</a></li>
+          <li><strong>Google</strong><span>4.5 stars from 188 people</span></li>
+          <li><strong>Instagram</strong><a href="https://www.instagram.com/stiritup.yyj/" target="_blank" rel="noreferrer">@stiritup.yyj</a></li>
+        </ul>
+        <div class="hero-actions">
+          <a class="button primary" href="https://www.google.com/maps?cid=9538700895898696702" target="_blank" rel="noreferrer">Open Google Maps</a>
+          <a class="button secondary" href="#food">What to order</a>
+        </div>
+      </div>
+      <figure class="hero-photo">
+        <img src="ig-photo-owner.jpg" alt="Person standing outside Stir It Up beside the storefront on Yates Street.">
+        <div class="hero-note">Look for the sign. The entrance is in the alley.</div>
+      </figure>
+    </div>
+  </header>
+
+  <main id="main">
+    <section id="food">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <div>
+            <div class="label">What they cook</div>
+            <h2>If it is your first time, start here.</h2>
+          </div>
+          <p>Jerk chicken and curry goat if you want a plate. Oxtail on Saturday. Patties and roti wraps if you want one more thing to carry out.</p>
+        </div>
+        <div class="menu-layout">
+          <div class="menu-list">
+            <article class="dish" data-reveal>
+              <div class="dish-index">01</div>
+              <div>
+                <h3>Jerk chicken</h3>
+                <p>The easiest place to start.</p>
+              </div>
+            </article>
+            <article class="dish" data-reveal>
+              <div class="dish-index">02</div>
+              <div>
+                <h3>Curry goat</h3>
+                <p>Go here if you want the heavier plate.</p>
+              </div>
+            </article>
+            <article class="dish" data-reveal>
+              <div class="dish-index">03</div>
+              <div>
+                <h3>Oxtail</h3>
+                <p>Saturday move.</p>
+              </div>
+            </article>
+            <article class="dish" data-reveal>
+              <div class="dish-index">04</div>
+              <div>
+                <h3>Roti wraps</h3>
+                <p>Lunch you pick up with both hands.</p>
+              </div>
+            </article>
+            <article class="dish" data-reveal>
+              <div class="dish-index">05</div>
+              <div>
+                <h3>Jamaican patties</h3>
+                <p>Easy extra.</p>
+              </div>
+            </article>
+          </div>
+          <div class="menu-photos">
+            <figure class="tall" data-reveal><img src="ig-photo-16.jpg" alt="Roti plate on a blue floral table at Stir It Up."></figure>
+            <div class="stack">
+              <figure data-reveal><img src="ig-photo-04.jpg" alt="Roti and an Island Soda at Stir It Up."></figure>
+              <figure data-reveal><img src="ig-photo-14.jpg" alt="Plate with roti, plantains, and sides at Stir It Up."></figure>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="place">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <div>
+            <div class="label">The place</div>
+            <h2>Small room. Bright walls. Lunch that moves fast.</h2>
+          </div>
+          <p>That is really all most people need to know. It is on Yates, the entrance is in the alley, and once you have been once you will not miss it again.</p>
+        </div>
+        <div class="place-layout">
+          <figure class="place-photo" data-reveal>
+            <img src="ig-photo-11.jpg" alt="Interior of Stir It Up with paintings on a bright green wall.">
+          </figure>
+          <div class="place-copy" data-reveal>
+            <p>Stir It Up looks like the kind of place somebody tells you about, not the kind of place that buys ads.</p>
+            <p>Painted walls. Hand-done sign. Food that already has people talking. That is enough.</p>
+            <div class="pull-fact">188 people on Google, 4.5 stars, and no big sales pitch anywhere in sight.</div>
+            <div class="proof-row">
+              <strong>4.5</strong>
+              <span>Google rating from 188 people.</span>
+              <a href="https://www.google.com/maps?cid=9538700895898696702" target="_blank" rel="noreferrer">See the Google listing</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="visit" id="visit">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <div>
+            <div class="label">How to find it</div>
+            <h2>760A Yates Street. In the alley.</h2>
+          </div>
+          <p>Look for the sign. If you are standing on Yates and not seeing it yet, keep walking.</p>
+        </div>
+        <div class="visit-layout">
+          <div class="visit-card" data-reveal>
+            <h3>Stir It Up</h3>
+            <div class="visit-rows">
+              <div class="visit-row"><strong>Address</strong><a href="https://www.google.com/maps?cid=9538700895898696702" target="_blank" rel="noreferrer">760A Yates Street, Victoria, BC</a></div>
+              <div class="visit-row"><strong>Hours</strong><span>Tuesday to Saturday, 11am to 7pm</span></div>
+              <div class="visit-row"><strong>Phone</strong><a href="tel:+17784320133">778-432-0133</a></div>
+              <div class="visit-row"><strong>Instagram</strong><a href="https://www.instagram.com/stiritup.yyj/" target="_blank" rel="noreferrer">@stiritup.yyj</a></div>
+            </div>
+            <div style="display:flex; flex-wrap:wrap; gap:12px; margin-top:24px;">
+              <a class="button primary" href="https://www.google.com/maps?cid=9538700895898696702" target="_blank" rel="noreferrer">Get directions</a>
+            </div>
+          </div>
+          <figure class="visit-photo" data-reveal>
+            <img src="signage.jpg" alt="Close-up of the Stir It Up painted sign.">
+            <div class="visit-caption">If you see the sign, you are there.</div>
+          </figure>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>Stir It Up, Victoria BC</div>
+      <div>Caribbean soul food on Yates</div>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const items = document.querySelectorAll('[data-reveal]');
+      if (reduce) {
+        items.forEach((item) => item.classList.add('is-visible'));
+        return;
+      }
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+      items.forEach((item, index) => {
+        item.style.transitionDelay = `${Math.min(index % 4, 3) * 70}ms`;
+        observer.observe(item);
+      });
+    })();
+  </script>
+</body>
+</html>

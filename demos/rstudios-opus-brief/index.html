@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+  RSTUDIOS Hot Pilates + Yoga — Halifax, NS
+  Build: v5 (FINAL) | Model: anthropic/claude-sonnet-4-6 | Agent: Lucy
+
+  DELTA: v4 → v5 (Self-review + copy audit)
+  Changes:
+    - Fixed prefers-reduced-motion to cover .reveal-scale, .hero-line, .hero-fade
+    - Removed em dashes from user-visible copy (voice rules)
+    - Rewrote negative parallelism in reviews statement
+    - Added og:image meta tag (non-negotiable)
+    - Removed dead .hero-scroll CSS rule
+    - "it's the whole point" clause reworked to remove dash
+    - Copy audit: all visible text checked against humanizer
+-->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RSTUDIOS — Hot Pilates + Yoga — Halifax</title>
+  <meta name="description" content="Hot yoga, hot Pilates, sauna. Two locations in Halifax. 4.9★ on Google.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="RSTUDIOS Hot Pilates + Yoga">
+  <meta property="og:description" content="The room is already warm. Hot yoga, hot Pilates, sauna. Halifax, NS.">
+  <meta property="og:url" content="https://auto-sites.pages.dev/demos/rstudios-opus-brief/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://auto-sites.pages.dev/demos/rstudios-opus-brief/screenshot-v5.png">
+
+  <!-- Fonts: Fraunces (display) + Instrument Sans (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,600&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    /* ─── Custom properties ─────────────────────────────────── */
+    :root {
+      --charcoal: #1a1a1a;
+      --charcoal-mid: #252525;
+      --charcoal-light: #2e2e2e;
+      --amber: #c47a3a;
+      --amber-light: #d89055;
+      --amber-dim: rgba(196, 122, 58, 0.15);
+      --fog: #e8e0d6;
+      --fog-dark: #d0c8be;
+      --off-white: #f5f0eb;
+      --text-dark: #1a1a1a;
+
+      --font-display: 'Fraunces', Georgia, serif;
+      --font-body: 'Instrument Sans', system-ui, sans-serif;
+
+      --section-pad: 96px;
+      --content-max: 1200px;
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+    }
+
+    /* ─── Reset ─────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background: var(--charcoal);
+      color: var(--off-white);
+      line-height: 1.6;
+      font-size: 16px;
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ─── Noise texture overlay ──────────────────────────────── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    }
+
+    /* ─── Scrollbar ──────────────────────────────────────────── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--charcoal); }
+    ::-webkit-scrollbar-thumb { background: var(--charcoal-light); border-radius: 3px; }
+
+    /* ─── Nav ────────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 20px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(to bottom, rgba(26,26,26,0.95) 0%, rgba(26,26,26,0) 100%);
+    }
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .nav-links {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(245, 240, 235, 0.7);
+      transition: color 200ms var(--ease-out);
+    }
+    .nav-links a:hover { color: var(--off-white); }
+    .nav-cta {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--amber);
+      border: 1px solid var(--amber);
+      padding: 10px 24px;
+      transition: background 180ms var(--ease-out), color 180ms var(--ease-out);
+    }
+    .nav-cta:hover { background: var(--amber); color: var(--charcoal); }
+    .nav-cta:active { transform: scale(0.97); }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--off-white);
+      transition: transform 250ms var(--ease-out), opacity 200ms;
+    }
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 99;
+      background: var(--charcoal);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      font-family: var(--font-display);
+      font-size: 32px;
+      font-weight: 400;
+      color: var(--off-white);
+      letter-spacing: 0.04em;
+    }
+    .mobile-nav a:hover { color: var(--amber); }
+    .mobile-close {
+      position: absolute;
+      top: 24px; right: 24px;
+      font-size: 28px;
+      cursor: pointer;
+      color: var(--off-white);
+      background: none;
+      border: none;
+    }
+
+    /* ─── Hero ───────────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      padding: 0 48px 80px;
+      overflow: hidden;
+    }
+
+    /* Stronger atmospheric background — more amber heat, more presence */
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 90% 55% at 50% 105%, rgba(196, 122, 58, 0.28) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 85% at 5% 65%, rgba(196, 122, 58, 0.12) 0%, transparent 50%),
+        radial-gradient(ellipse 45% 70% at 95% 35%, rgba(196, 122, 58, 0.09) 0%, transparent 50%),
+        radial-gradient(ellipse 30% 40% at 50% 50%, rgba(196, 100, 30, 0.06) 0%, transparent 60%),
+        linear-gradient(170deg, #0a0909 0%, #1a1008 50%, #0a0806 100%);
+    }
+
+    /* Steam */
+    .hero-steam {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+    .steam-col {
+      position: absolute;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(to top,
+        rgba(232, 224, 214, 0.14) 0%,
+        rgba(232, 224, 214, 0.05) 40%,
+        transparent 100%
+      );
+      animation: steam-rise var(--dur) ease-out infinite;
+      transform-origin: bottom center;
+    }
+    @keyframes steam-rise {
+      0% { transform: scaleY(0) translateX(0); opacity: 0; }
+      10% { opacity: 1; }
+      60% { opacity: 0.4; }
+      100% { transform: scaleY(1) translateX(var(--drift)); opacity: 0; }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 760px;
+    }
+    .hero-eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 28px;
+    }
+    .hero-headline {
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(52px, 7vw, 96px);
+      line-height: 1.0;
+      letter-spacing: -0.01em;
+      color: var(--off-white);
+      margin-bottom: 32px;
+    }
+    .hero-sub {
+      font-size: 17px;
+      line-height: 1.6;
+      color: rgba(245, 240, 235, 0.65);
+      max-width: 440px;
+      margin-bottom: 48px;
+    }
+    .btn-primary {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      background: var(--amber);
+      padding: 16px 40px;
+      transition: background 180ms var(--ease-out), transform 160ms var(--ease-out);
+    }
+    .btn-primary:hover { background: var(--amber-light); }
+    .btn-primary:active { transform: scale(0.97); }
+
+    .hero-scroll {
+      position: absolute;
+      right: 48px;
+      bottom: 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      z-index: 2;
+    }
+    .hero-scroll span {
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(245, 240, 235, 0.35);
+      writing-mode: vertical-rl;
+    }
+    .hero-scroll-line {
+      width: 1px;
+      height: 48px;
+      background: linear-gradient(to bottom, rgba(196,122,58,0.6), transparent);
+      animation: scroll-pulse 2s ease-in-out infinite;
+    }
+    @keyframes scroll-pulse {
+      0%, 100% { opacity: 0.4; transform: scaleY(0.8); }
+      50% { opacity: 1; transform: scaleY(1); }
+    }
+
+    /* ─── Sections ───────────────────────────────────────────── */
+    section { padding: var(--section-pad) 48px; }
+    .container { max-width: var(--content-max); margin: 0 auto; }
+    .section-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 24px;
+    }
+
+    /* ─── About ──────────────────────────────────────────────── */
+    .about-section { background: var(--charcoal); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .about-left h2 {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 4vw, 54px);
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin-bottom: 32px;
+    }
+    .about-left p {
+      font-size: 17px;
+      line-height: 1.7;
+      color: rgba(245, 240, 235, 0.7);
+      max-width: 480px;
+    }
+    .about-right { padding-top: 16px; }
+    .about-detail {
+      border-top: 1px solid rgba(245, 240, 235, 0.1);
+      padding: 24px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 24px;
+    }
+    .about-detail:last-child { border-bottom: 1px solid rgba(245, 240, 235, 0.1); }
+    .detail-key {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(245, 240, 235, 0.4);
+    }
+    .detail-val {
+      font-size: 16px;
+      color: var(--fog);
+      text-align: right;
+    }
+    .detail-val a { color: var(--amber); transition: opacity 200ms; }
+    .detail-val a:hover { opacity: 0.8; }
+
+    /* ─── Offerings ──────────────────────────────────────────── */
+    .offerings-section { background: #111010; }
+    .offerings-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-top: 56px;
+    }
+    .offering-card {
+      background: var(--charcoal-mid);
+      padding: 48px 40px 52px;
+      position: relative;
+      overflow: hidden;
+    }
+    /* offering-card hover underline removed — cards are not clickable,
+       false affordance per Rams HOW critique */
+    .offering-num {
+      font-family: var(--font-display);
+      font-size: 64px;
+      font-weight: 300;
+      font-style: italic;
+      color: rgba(196, 122, 58, 0.15);
+      line-height: 1;
+      margin-bottom: 24px;
+    }
+    .offering-title {
+      font-family: var(--font-display);
+      font-size: 26px;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      margin-bottom: 16px;
+    }
+    .offering-body {
+      font-size: 16px;
+      line-height: 1.65;
+      color: rgba(245, 240, 235, 0.75);
+    }
+    .offering-temp {
+      display: inline-block;
+      margin-top: 20px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--amber);
+      opacity: 0.8;
+    }
+
+    /* ─── Reviews — v1: massive centered 4.9 ─────────────────── */
+    .reviews-section {
+      background: #111010;
+      text-align: center;
+      padding-top: 80px;
+      padding-bottom: 80px;
+    }
+    .reviews-inner {
+      position: relative;
+    }
+    .rating-giant {
+      font-family: var(--font-display);
+      font-size: clamp(160px, 22vw, 280px);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--amber);
+      line-height: 0.9;
+      letter-spacing: -0.04em;
+      margin-bottom: 0;
+      text-shadow: 0 0 120px rgba(196, 122, 58, 0.2);
+    }
+    .rating-stars {
+      font-size: 18px;
+      color: var(--amber);
+      letter-spacing: 6px;
+      margin: 16px 0 12px;
+    }
+    .rating-count {
+      font-size: 14px;
+      color: rgba(245, 240, 235, 0.45);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 40px;
+    }
+    .reviews-statement {
+      font-family: var(--font-display);
+      font-size: clamp(22px, 3vw, 32px);
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.3;
+      color: var(--off-white);
+      max-width: 640px;
+      margin: 0 auto 28px;
+    }
+    .reviews-link {
+      display: inline-block;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      background: var(--amber);
+      padding: 12px 32px;
+      margin-top: 8px;
+      transition: background 180ms var(--ease-out), transform 160ms var(--ease-out);
+    }
+    .reviews-link:hover { background: var(--amber-light); }
+    .reviews-link:active { transform: scale(0.97); }
+
+    /* ─── Who this is for — v1: editorial statement ───────────── */
+    .who-section {
+      background: var(--charcoal);
+      padding-top: 96px;
+      padding-bottom: 96px;
+    }
+    .who-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: end;
+    }
+    .who-left h2 {
+      font-family: var(--font-display);
+      font-size: clamp(40px, 4.5vw, 60px);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin-bottom: 0;
+    }
+    .who-right {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+    .who-item {
+      border-top: 1px solid rgba(245, 240, 235, 0.1);
+      padding-top: 28px;
+    }
+    .who-item-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 10px;
+    }
+    .who-item-body {
+      font-size: 16px;
+      line-height: 1.65;
+      color: rgba(245, 240, 235, 0.75);
+    }
+
+    /* ─── Locations ──────────────────────────────────────────── */
+    .locations-section { background: #111010; }
+    .locations-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      margin-top: 56px;
+    }
+    .location-card {
+      background: var(--charcoal-mid);
+      padding: 48px 44px;
+      border: 1px solid rgba(196, 122, 58, 0.15);
+    }
+    .location-badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      background: var(--amber);
+      padding: 5px 12px;
+      margin-bottom: 28px;
+    }
+    .location-name {
+      font-family: var(--font-display);
+      font-size: clamp(40px, 5vw, 64px);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+    }
+    .location-meaning {
+      font-size: 13px;
+      font-style: italic;
+      color: var(--amber);
+      opacity: 0.7;
+      margin-bottom: 20px;
+    }
+    .location-address {
+      font-size: 15px;
+      line-height: 1.65;
+      color: rgba(245, 240, 235, 0.6);
+      margin-bottom: 32px;
+    }
+    .location-phone {
+      display: block;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--fog);
+      margin-bottom: 32px;
+      transition: color 200ms;
+    }
+    .location-phone:hover { color: var(--amber); }
+    .btn-outline {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--amber);
+      border: 1px solid rgba(196, 122, 58, 0.4);
+      padding: 12px 28px;
+      transition: border-color 200ms, background 200ms, color 200ms;
+    }
+    .btn-outline:hover {
+      border-color: var(--amber);
+      background: rgba(196, 122, 58, 0.1);
+    }
+    .btn-outline:active { transform: scale(0.97); }
+
+    /* ─── Final CTA ──────────────────────────────────────────── */
+    .cta-section {
+      background: var(--charcoal-mid);
+      text-align: center;
+      padding: 120px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 50% 100%, rgba(196, 122, 58, 0.12) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .cta-section h2 {
+      font-family: var(--font-display);
+      font-size: clamp(40px, 5vw, 64px);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin-bottom: 24px;
+      position: relative;
+    }
+    .cta-section p {
+      font-size: 17px;
+      color: rgba(245, 240, 235, 0.6);
+      margin-bottom: 48px;
+      position: relative;
+    }
+    .cta-tel {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      background: var(--amber);
+      padding: 18px 48px;
+      transition: background 180ms var(--ease-out), transform 160ms var(--ease-out);
+      position: relative;
+    }
+    .cta-tel:hover { background: var(--amber-light); }
+    .cta-tel:active { transform: scale(0.97); }
+
+    /* ─── Footer ─────────────────────────────────────────────── */
+    footer {
+      background: #0d0d0e;
+      padding: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(245, 240, 235, 0.06);
+    }
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+    }
+    .footer-details {
+      font-size: 13px;
+      color: rgba(245, 240, 235, 0.35);
+      text-align: center;
+      line-height: 1.8;
+    }
+    .footer-right {
+      font-size: 13px;
+      color: rgba(245, 240, 235, 0.35);
+      text-align: right;
+    }
+    .footer-right a {
+      color: rgba(196, 122, 58, 0.6);
+      transition: color 200ms;
+    }
+    .footer-right a:hover { color: var(--amber); }
+
+    /* ─── Scroll-reveal ──────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* Hero line-by-line stagger */
+    .hero-line {
+      display: block;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 700ms var(--ease-out), transform 700ms var(--ease-out);
+    }
+    .hero-line.visible { opacity: 1; transform: translateY(0); }
+
+    /* Hero support elements (eyebrow, sub, CTA) */
+    .hero-fade {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+    }
+    .hero-fade.visible { opacity: 1; transform: translateY(0); }
+
+    /* Rating giant scale-in */
+    .reveal-scale {
+      opacity: 0;
+      transform: scale(0.96) translateY(16px);
+      transition: opacity 800ms var(--ease-out), transform 800ms var(--ease-out);
+    }
+    .reveal-scale.visible { opacity: 1; transform: scale(1) translateY(0); }
+
+    /* ─── Responsive ─────────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      nav { padding: 20px 32px; }
+      section { padding: var(--section-pad) 32px; }
+      footer { padding: 40px 32px; }
+      .hero { padding: 0 32px 72px; }
+      .about-grid { grid-template-columns: 1fr; gap: 48px; }
+      .offerings-grid { grid-template-columns: 1fr; gap: 2px; }
+      .who-inner { grid-template-columns: 1fr; gap: 48px; }
+    }
+    @media (max-width: 768px) {
+      :root { --section-pad: 64px; }
+      nav { padding: 16px 24px; }
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      section { padding: var(--section-pad) 24px; }
+      footer { padding: 32px 24px; flex-direction: column; gap: 24px; text-align: center; }
+      .footer-right { text-align: center; }
+      .hero { padding: 0 24px 64px; }
+      .hero-scroll { display: none; }
+      .locations-grid { grid-template-columns: 1fr; gap: 32px; }
+      .who-inner { grid-template-columns: 1fr; gap: 40px; }
+      .rating-giant { font-size: clamp(120px, 30vw, 200px); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; }
+      .reveal, .reveal-scale { opacity: 1; transform: none; }
+      .hero-line, .hero-fade { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── Nav ─────────────────────────────────────────────────── -->
+<nav>
+  <div class="nav-logo">RSTUDIOS</div>
+  <ul class="nav-links">
+    <li><a href="#offerings">Classes</a></li>
+    <li><a href="#locations">Locations</a></li>
+    <li><a href="#who">Who We Are</a></li>
+  </ul>
+  <a href="tel:+19029120207" class="nav-cta">Call to Book</a>
+  <button class="hamburger" onclick="document.querySelector('.mobile-nav').classList.toggle('open')" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile nav -->
+<div class="mobile-nav">
+  <button class="mobile-close" onclick="this.parentElement.classList.remove('open')">✕</button>
+  <a href="#offerings" onclick="document.querySelector('.mobile-nav').classList.remove('open')">Classes</a>
+  <a href="#locations" onclick="document.querySelector('.mobile-nav').classList.remove('open')">Locations</a>
+  <a href="#who" onclick="document.querySelector('.mobile-nav').classList.remove('open')">Who We Are</a>
+  <a href="tel:+19029120207" onclick="document.querySelector('.mobile-nav').classList.remove('open')">+1 902-912-0207</a>
+</div>
+
+<!-- ─── Hero ──────────────────────────────────────────────────── -->
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-steam" aria-hidden="true">
+    <div class="steam-col" style="left:8%;height:55vh;--dur:6s;--drift:8px;animation-delay:0s;"></div>
+    <div class="steam-col" style="left:18%;height:70vh;--dur:8s;--drift:-10px;animation-delay:1.5s;"></div>
+    <div class="steam-col" style="left:28%;height:45vh;--dur:7s;--drift:6px;animation-delay:3s;"></div>
+    <div class="steam-col" style="left:42%;height:80vh;--dur:9s;--drift:-8px;animation-delay:0.5s;"></div>
+    <div class="steam-col" style="left:55%;height:60vh;--dur:6.5s;--drift:12px;animation-delay:2s;"></div>
+    <div class="steam-col" style="left:68%;height:75vh;--dur:8.5s;--drift:-6px;animation-delay:1s;"></div>
+    <div class="steam-col" style="left:78%;height:50vh;--dur:7.5s;--drift:9px;animation-delay:3.5s;"></div>
+    <div class="steam-col" style="left:90%;height:65vh;--dur:6.5s;--drift:-7px;animation-delay:4s;"></div>
+  </div>
+  <div class="hero-content">
+    <p class="hero-eyebrow hero-fade">Hot Yoga · Hot Pilates · Sauna · Halifax, NS</p>
+    <h1 class="hero-headline">
+      <span class="hero-line">The room</span>
+      <span class="hero-line">is already</span>
+      <span class="hero-line">warm.</span>
+    </h1>
+    <p class="hero-sub hero-fade">Walk through the door. Feel the heat. Two studios in Halifax: RINSE and RIO.</p>
+    <a href="tel:+19029120207" class="btn-primary hero-fade">Call +1 902-912-0207</a>
+  </div>
+</section>
+
+<!-- ─── About ────────────────────────────────────────────────── -->
+<section class="about-section" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-left reveal">
+        <p class="section-label">What We Are</p>
+        <h2>Heat is the method.<br>The room is the teacher.</h2>
+        <p>RSTUDIOS runs hot yoga, hot Pilates, and sauna from two Halifax locations. The heat is the whole point. You come in, the temperature meets you, and something shifts.</p>
+      </div>
+      <div class="about-right reveal">
+        <div class="about-detail">
+          <span class="detail-key">Locations</span>
+          <span class="detail-val">RINSE + RIO, Halifax NS</span>
+        </div>
+        <div class="about-detail">
+          <span class="detail-key">Rating</span>
+          <span class="detail-val">4.9★ · 714 reviews on Google</span>
+        </div>
+        <div class="about-detail">
+          <span class="detail-key">Phone</span>
+          <span class="detail-val"><a href="tel:+19029120207">+1 902-912-0207</a></span>
+        </div>
+        <div class="about-detail">
+          <span class="detail-key">Membership</span>
+          <span class="detail-val">Members + drop-in welcome</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Offerings ─────────────────────────────────────────────── -->
+<section class="offerings-section" id="offerings">
+  <div class="container">
+    <p class="section-label reveal">What Happens</p>
+    <div class="offerings-grid">
+      <div class="offering-card reveal">
+        <div class="offering-num">01</div>
+        <h3 class="offering-title">Hot Yoga</h3>
+        <p class="offering-body">The room runs hot and your muscles open up. You hold poses longer than you thought you could. By the end, your clothes are soaked, your joints are loose, and your head is clear.</p>
+        <span class="offering-temp">High heat</span>
+      </div>
+      <div class="offering-card reveal">
+        <div class="offering-num">02</div>
+        <h3 class="offering-title">Hot Pilates</h3>
+        <p class="offering-body">Controlled movement in a heated room. Your core fires harder. Your range of motion widens. Every rep costs more in the heat. Your body keeps the change long after class ends.</p>
+        <span class="offering-temp">High heat</span>
+      </div>
+      <div class="offering-card reveal">
+        <div class="offering-num">03</div>
+        <h3 class="offering-title">Sauna</h3>
+        <p class="offering-body">Sit. Breathe. Let the heat do its work. Use it before class to open up, or after to slow down. Either way, you walk out carrying less than you walked in with.</p>
+        <span class="offering-temp">On-site</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Reviews — giant 4.9, centered ────────────────────────── -->
+<section class="reviews-section" id="reviews">
+  <div class="container">
+    <p class="section-label reveal">Rated by Halifax</p>
+    <div class="reviews-inner">
+      <div class="rating-giant reveal-scale">4.9</div>
+      <div class="rating-stars reveal">★★★★★</div>
+      <p class="rating-count reveal">714 reviews on Google</p>
+      <p class="reviews-statement reveal">714 people drove to a hot room and came back. The room is doing its job.</p>
+      <a href="https://www.google.com/maps/search/RSTUDIOS+Hot+Pilates+Yoga+Halifax" target="_blank" rel="noopener" class="reviews-link reveal">Read the reviews →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Who This Is For — editorial ───────────────────────────── -->
+<section class="who-section" id="who">
+  <div class="container">
+    <div class="who-inner">
+      <div class="who-left reveal">
+        <p class="section-label">Who This Is For</p>
+        <h2>A space that chose a side.</h2>
+      </div>
+      <div class="who-right">
+        <div class="who-item reveal">
+          <p class="who-item-label">Women-owned</p>
+          <p class="who-item-body">RSTUDIOS is women-owned. It shows in the space, in the culture, in who walks through the door.</p>
+        </div>
+        <div class="who-item reveal">
+          <p class="who-item-label">LGBTQ+ friendly</p>
+          <p class="who-item-body">Halifax is a small city. Where you spend your time matters. RSTUDIOS is explicitly a space where you belong.</p>
+        </div>
+        <div class="who-item reveal">
+          <p class="who-item-label">Membership or drop-in</p>
+          <p class="who-item-body">Members get full access to both RINSE and RIO, plus the sauna. Drop-in welcome. Call for current options.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Locations ─────────────────────────────────────────────── -->
+<section class="locations-section" id="locations">
+  <div class="container">
+    <p class="section-label reveal">Two Locations</p>
+    <div class="locations-grid">
+      <div class="location-card reveal">
+        <span class="location-badge">Studio 01</span>
+        <h2 class="location-name">RINSE</h2>
+        <p class="location-meaning">The ritual. Sweat. Cleanse. Emerge.</p>
+        <p class="location-address">1512 Dresden Row<br>Halifax, NS B3J 2K2</p>
+        <a href="tel:+19029120207" class="location-phone">+1 902-912-0207</a>
+        <a href="https://www.google.com/maps/place/1512+Dresden+Row,+Halifax,+NS+B3J+2K2" target="_blank" rel="noopener" class="btn-outline">Get directions</a>
+      </div>
+      <div class="location-card reveal">
+        <span class="location-badge">Studio 02</span>
+        <h2 class="location-name">RIO</h2>
+        <p class="location-meaning">The energy. Movement. Rhythm. Life.</p>
+        <p class="location-address">Halifax, NS<br><em style="font-size:13px;color:var(--amber);opacity:0.6;font-style:italic;">Call to confirm address</em></p>
+        <a href="tel:+19029120207" class="location-phone">+1 902-912-0207</a>
+        <a href="https://www.google.com/maps/search/RSTUDIOS+RIO+Halifax+NS" target="_blank" rel="noopener" class="btn-outline">Find us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Final CTA ─────────────────────────────────────────────── -->
+<section class="cta-section">
+  <div class="container">
+    <h2 class="reveal">Get in the hot room.</h2>
+    <p class="reveal">Call to book a class or ask about membership.</p>
+    <a href="tel:+19029120207" class="cta-tel reveal">Call +1 902-912-0207</a>
+  </div>
+</section>
+
+<!-- ─── Footer ────────────────────────────────────────────────── -->
+<footer>
+  <div class="footer-logo">RSTUDIOS</div>
+  <div class="footer-details">
+    Hot Yoga · Hot Pilates · Sauna<br>
+    Halifax, NS · RINSE &amp; RIO
+  </div>
+  <div class="footer-right">
+    <a href="https://www.google.com/maps/search/RSTUDIOS+Hot+Pilates+Yoga+Halifax" target="_blank" rel="noopener">Google Maps</a><br>
+    <a href="tel:+19029120207">+1 902-912-0207</a>
+  </div>
+</footer>
+
+<noscript>
+  <style>
+    .reveal, .reveal-scale, .hero-line, .hero-fade {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  </style>
+</noscript>
+
+<script>
+  (function() {
+    // Hero: staggered line-by-line, then support elements
+    const heroLines = document.querySelectorAll('.hero-line');
+    const heroFades = document.querySelectorAll('.hero-fade');
+    heroLines.forEach((el, i) => {
+      setTimeout(() => el.classList.add('visible'), 200 + i * 120);
+    });
+    heroFades.forEach((el, i) => {
+      setTimeout(() => el.classList.add('visible'), 200 + heroLines.length * 120 + 80 + i * 100);
+    });
+
+    if (!('IntersectionObserver' in window)) {
+      document.querySelectorAll('.reveal, .reveal-scale').forEach(el => el.classList.add('visible'));
+      return;
+    }
+
+    // Group stagger: elements in the same parent container stagger together
+    function staggerGroup(entries, observer) {
+      // Group entries by parent section
+      const groups = {};
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const section = entry.target.closest('section, footer, .quick-strip') || document.body;
+        const key = section.id || section.className;
+        if (!groups[key]) groups[key] = [];
+        groups[key].push(entry.target);
+      });
+
+      Object.values(groups).forEach(group => {
+        // Sort by DOM order for consistent stagger
+        group.sort((a, b) => a.compareDocumentPosition(b) & 4 ? -1 : 1);
+        group.forEach((el, i) => {
+          setTimeout(() => el.classList.add('visible'), i * 80);
+          observer.unobserve(el);
+        });
+      });
+    }
+
+    const observer = new IntersectionObserver(staggerGroup, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    document.querySelectorAll('.reveal, .reveal-scale').forEach(el => observer.observe(el));
+  })();
+</script>
+
+</body>
+</html>

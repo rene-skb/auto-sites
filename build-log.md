@@ -1,5 +1,29 @@
 # Auto-Sites Build Log
 
+### RSTUDIOS Hot Pilates + Yoga — Wellness Studio, Halifax NS
+- **Date:** 2026-04-09
+- **Model:** anthropic/claude-sonnet-4-6 (subagent)
+- **Agent:** Lucy
+- **Folder:** rstudios-opus-brief
+- **Brief:** Written by Rene (Opus) — this build was brief-first, no discovery phase
+- **Hero pattern:** dark-immersive (CSS atmospheric gradient + steam animation — no photos)
+- **Typography:** Fraunces italic (display) + Instrument Sans (body)
+- **Review layout:** Massive centered 4.9 (clamp 160-280px, full width), no card containers
+- **Visit/hours layout:** Two location cards with badge + location name + meaning line + address
+- **Stats bar style:** no-stats ✅ (quick strip from v0 was killed in v1)
+- **WHY Score:** 7.0 (Jobs 7 / PG 7 / Ogilvy 7) — avg 7.0
+- **WHAT Score:** 7.2 (Norman 7.5 / Krug 7 / Nielsen 7) — PASS
+- **HOW Score:** 7.3 (Vignelli 7.5 / Spiekermann 7 / Rams 7.5) — PASS
+- **Panel average:** 7.17
+- **Self-review:** 7.5 (calibrated: panel max 7.3 + 0.5 ceiling = 7.8; landed at 7.5)
+- **Versions built:** 6 (v0 through v5 + index.html)
+- **Build time:** ~90 minutes (continuation build — brief + v0 pre-built)
+- **Token estimate:** ~40k
+- **Key decisions:** Brief from Opus was exceptionally strong creative direction. "The room is already warm." as the hero headline was already specified and correct — didn't touch it. Biggest structural evolution: killed the quick-strip (stats bar in disguise) in v1, rebuilt "Who This Is For" from SVG icon cards to editorial two-column. Biggest visual move: exploded the 4.9 rating to near 280px display type, centered, let it dominate its own section. Fraunces italic at weight 300 does the heavy lifting throughout. No real photos available — CSS gradient atmosphere + steam animation substitutes.
+- **Notes:** No fabricated review quotes per brief's explicit instruction. OG image is the v5 screenshot (placeholder until Cloudflare Pages serves). RIO location address unconfirmed — "Call to confirm address" in amber italic per non-negotiables.
+
+---
+
 ### Stir It Up Sonnet Mini Test — Caribbean Soul Food, Victoria BC
 - **Date:** 2026-04-07
 - **Model:** anthropic/claude-sonnet-4-6 (subagent)

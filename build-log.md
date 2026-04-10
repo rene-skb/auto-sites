@@ -1,5 +1,30 @@
 # Auto-Sites Build Log
 
+### Hannya Seattle Tattoo — Tattoo Studio, Belltown Seattle WA
+- **Date:** 2026-04-10
+- **Model:** anthropic/claude-sonnet-4-6 (subagent)
+- **Agent:** Lucy
+- **Folder:** hannya-seattle
+- **Brief:** Written by Iris (build-queue.md) — new business category (tattoo studio, first in pipeline)
+- **Hero pattern:** giant-display-type ✅ (Bodoni Moda italic at clamp 72-220px, 般若 kanji as second line in red)
+- **Typography:** Bodoni Moda italic (display) + Space Grotesk (body) ✅
+- **Review layout:** Single centered pull-quote, no card containers, bare open-quote format ✅
+- **Visit/hours layout:** Three-item horizontal visit bar (address, booking, Instagram) ✅
+- **Stats bar style:** no-stats ✅
+- **WHY Score:** 7.5 (Jobs 7.5 / PG 7.5 / Ogilvy 7.5) — avg 7.5 (v0 was 6.83, retry passed)
+- **WHAT Score:** 7.0 (Norman 7 / Krug 7 / Nielsen 7) — PASS
+- **HOW Score:** 7.17 (Vignelli 7.5 / Spiekermann 7 / Rams 7) — PASS
+- **Panel average:** 7.22
+- **Self-review:** 7.5 (panel max 7.5 + 0.5 ceiling = 8.0; calibrated to 7.5 given no real photos)
+- **Versions built:** 6 (v0 through v5 + index.html)
+- **Build time:** ~90 minutes
+- **Token estimate:** ~45k
+- **Key decisions:** Outscraper API key empty, Instagram scraper failed, image gen APIs unconfigured — built CSS/SVG-only. Inline SVG hannya mask illustrations serve as visual texture at very low opacity. Giant-display-type hero with Bodoni Moda italic + 般若 kanji in oxblood red is the visual centerpiece. Pull-quote elevated immediately below hero (v0 had it buried). WHY panel failed v0 at 6.83 — conviction line + pull-quote position fixed it to 7.5 in v1. "The Work" section restructured from 3-item generic to 2-item style-specific in v2.
+- **Notes:** Phone number not included (unverified). Hours not included (unverified). Review attribution is "Via Google Reviews" — reviewer name not surfaced in search. No fabricated data per non-negotiables. First tattoo studio in the auto-sites pipeline.
+- **Live URL:** https://auto-sites.pages.dev/demos/hannya-seattle/
+
+---
+
 ### RSTUDIOS Hot Pilates + Yoga — Wellness Studio, Halifax NS
 - **Date:** 2026-04-09
 - **Model:** anthropic/claude-sonnet-4-6 (subagent)

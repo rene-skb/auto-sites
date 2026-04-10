@@ -27,20 +27,7 @@
 <!-- Zoé Dessert et Thé moved to Built -- 2026-03-28 -->
 
 <!-- Built 2026-04-06 → demos/sad-entertainment/ → https://auto-sites.pages.dev/demos/sad-entertainment/ -->
-
-### Moov Ottawa Dance (Bronson Location)
-- **City:** Ottawa, ON
-- **Category:** Dance Studio
-- **Address:** ⚠️ Verify via Google Maps -- search "Moov Ottawa Dance Bronson"
-- **Phone:** ⚠️ Verify via Google Maps
-- **Hours:** Mon 6-9PM | Thu 6-9PM | Fri 6-9PM | Sun 10:30AM-12:30PM | Tue/Wed/Sat Closed
-- **Rating:** 5★ (134 reviews)
-- **Social:** No website, no Instagram found
-- **Instagram photos:** no Instagram found
-- **Top Reviews (with names):**
-  - *(Verify top reviews via Google Maps -- Outscraper did not return review text tonight)*
-- **What makes them interesting:** 4-day schedule, evenings + Sunday mornings. 134 reviews at 5 stars. Limited hours create community intensity. Ottawa arts underground.
-- **Brand observations:** Movement + exclusivity. Dark background, electric accent. Headline: "Ottawa's favourite dance studio."
+<!-- Built 2026-04-07 → demos/moov-ottawa-dance/ → https://auto-sites.pages.dev/demos/moov-ottawa-dance/ (not yet in build-log) -->
 
 ### Vintage Glory
 - **City:** Montreal, QC
@@ -55,8 +42,10 @@
 - **What makes them interesting:** Korean-Hong Kong dessert café in downtown Montreal. Compact space with a cult following for their mango bingsu. Also houses a Presotea bubble tea inside. The visual appeal of bingsu and crêpe cakes is a designer's dream — vibrant colors, Instagram-native aesthetic.
 - **Brand observations:** Asian dessert cafés have natural visual identity — pastel tones, vibrant fruit colors, clean modern Asian aesthetic. The "Zoé" name adds a French-Montreal twist to an Asian concept. Cream, soft pink, mango gold palette. Think minimalist Asian café meets Montreal cool.
 - **Iris note:** 2026-03-27 — Google rating needs verification. All search APIs were rate-limited during research. Instagram handle confirmed via Startpage search results showing Montreal location and dessert content.
+<!-- Built 2026-03-28 → demos/zoe-dessert-et-the/ (Montreal Zoé -- build #72) -->
 
 <!-- Vintage Glory (Winnipeg) moved to top of queue after Zoé was built -->
+<!-- Built 2026-03-28 → demos/vintage-glory-v2/ → https://auto-sites.pages.dev/demos/vintage-glory-v2/ (build #76) -->
 ### Vintage Glory
 - **City:** Winnipeg, MB
 - **Category:** Vintage Clothing Store
@@ -71,6 +60,7 @@
 - **Brand observations:** "20th Century" focus is strong positioning. Warm vintage tones — mustard, olive, burgundy, cream. Think mid-century modern typography meets thrift culture. The Elmwood location adds neighbourhood character.
 - **Iris note:** 2026-03-27 — Partial research. Google rating, exact address, phone, and review count all need verification. Search APIs exhausted. Instagram handle confirmed via Startpage.
 
+<!-- Built 2026-03-28 → demos/kavod-thrift/ → https://auto-sites.pages.dev/demos/kavod-thrift/ (build #75) -->
 ### Kavod Thrift Store
 - **City:** Winnipeg, MB
 - **Category:** Thrift / Secondhand Store
@@ -86,7 +76,7 @@
 - **Iris note:** 2026-03-27 — Partial research. Google rating, phone, and review details all need verification. Search APIs exhausted during this session. Instagram handle confirmed.
 
 
-
+<!-- Built multiple times → demos/macleods-books/ → https://auto-sites.pages.dev/demos/macleods-books/ (builds #102, #116, #121) -->
 ### MacLeod's Books
 - **City:** Vancouver, BC
 - **Category:** Used Bookshop
@@ -119,6 +109,8 @@
 - **What makes them interesting:** One person, one name, near-perfect reviews. Owner Oliver grooms both dogs AND cats (unusual). Animals consistently described as calm with him. Built on trust and word-of-mouth, zero digital presence.
 - **Brand observations:** Warm personal energy - terracotta, cream, sage tones. Headline: "Your pet's favourite person."
 
+<!-- Built 2026-03-29 → demos/oliver-grooming/ → https://auto-sites.pages.dev/demos/oliver-grooming/ (build #90) -->
+
 ### RSTUDIOS Hot Pilates + Yoga
 - **City:** Halifax, NS
 - **Category:** Hot Yoga / Pilates Studio
@@ -130,6 +122,8 @@
 - **What makes them interesting:** Women-owned hot yoga and pilates studio in downtown Halifax with 714 reviews at 4.9 stars — exceptional for a boutique fitness studio. They have two locations (RINSE + RIO) running on the same phone number with zero web presence. LGBTQ+ friendly, membership-based, sauna on-site. The "RINSE" branding is already distinctive and visual — implies sweat, cleanse, ritual.
 - **Brand observations:** "RINSE" is a gift of a word — steam, heat, ritual, clean. Dark moody palette (charcoal, deep red, matte gold), bold type, sweaty/transcendent energy. Like a luxury spa met a gritty fitness brand. No website at all — wide open opportunity.
 - **Iris note:** 2026-03-27 — Added to queue. Instagram handle research needed before build (check Google Maps listing or local press mentions).
+
+<!-- Built multiple times → demos/rstudios-yoga-halifax/ and demos/rstudios-opus-brief/ (builds #73, Apr 9 opus brief) -->
 
 ### Lynnwood Barber Shop
 - **City:** Edmonton, AB
@@ -146,6 +140,8 @@
 - **What makes them interesting:** One-man shop run by Kelly, a barber with near-mythological neighbourhood loyalty in West Edmonton. 982 reviews at a perfect 5 stars — essentially unheard of for a solo barbershop. Zero web presence. The brand story is already written: Kelly IS the shop. His name appears in nearly every review.
 - **Brand observations:** No logo, no Instagram, no website. Warm, neighbourhood-institution energy. Classic amber tones, serif type, "since [year]" pride.
 
+<!-- Built 2026-04-02 → demos/lynnwood-barber/ → https://auto-sites.pages.dev/demos/lynnwood-barber/ (builds #70, #114) -->
+
 ### Juhee's Closet
 - **City:** Montreal, QC
 - **Category:** Clothing Alterations / Tailor
@@ -161,8 +157,11 @@
 - **What makes them interesting:** Korean-owned boutique alteration shop in NDG, Montreal. Works only 2 days/week, creating an artisan mystique. Unusual range: does both high-end suit alterations AND cosplay. No web presence at all.
 - **Brand observations:** Two-days-a-week is a positioning gift — "The tailor who only works when it matters." Soft, personal brand: sage green or cream tones, handwritten-feel type, artisan craft aesthetic.
 
+<!-- Built 2026-03-28 → demos/juhees-closet/ → https://auto-sites.pages.dev/demos/juhees-closet/ (build #82) -->
+
 <!-- Built section removed 2026-04-03. See build-log.md for build history. -->
 
+<!-- Built multiple times → demos/url-coffee/, url-coffee-codex, url-coffee-persona, url-coffee-sonnet, url-coffee-sonnet-retry (build #118 and Apr 7 tests) -->
 ### URL Coffee
 - **City:** Seattle, WA
 - **Category:** Coffee Shop / Café
@@ -182,6 +181,7 @@
 - **Brand observations:** The name does heavy lifting — URL is a domain reference, a tech-nerd wink, totally unforgettable. Clean, modern, slightly irreverent aesthetic. Palette: warm white, muted sage, espresso brown. Headline potential: "Your neighborhood URL." or "Coffee for the connected." Strong site concept: minimal, text-forward, skateboarder-meets-café energy.
 - **Added by Iris:** 2026-04-03
 
+<!-- Built 2026-04-03 → demos/villevelo-bakeshop/ → https://auto-sites.pages.dev/demos/villevelo-bakeshop/ (build #118) -->
 ### VilleVelo Bake Shop & Espresso
 - **City:** Portland, OR
 - **Category:** Bakery / Café
@@ -200,3 +200,22 @@
 - **What makes them interesting:** The name "VilleVelo" means "city bike" in French — a cycling-forward identity that fits Portland's bike culture perfectly. This isn't just a bakery name, it's a worldview. Run by two owners who are warm and present (consistently mentioned in reviews). 1,709 Instagram posts shows they document everything — tons of photo material. Closes at 1PM on most days, which creates the kind of scarcity that makes people show up early. Biscuits & gravy, rugelach, popovers with cream, artisan cookies — real range, all photogenic.
 - **Brand observations:** "VilleVelo" is a strong visual word — French, rhythmic, immediately legible. Cycling × baking is a very Portland combination (both deeply lifestyle-coded). Color palette: warm wheat, bike-messenger terracotta, forest green. Headline potential: "Baked for the ride." or "Portland's morning ritual, with wheels." Site should feel like a neighborhood institution — handmade warmth, not corporate polish.
 - **Added by Iris:** 2026-04-03
+
+<!-- Built 2026-04-10 → demos/hannya-seattle/ → https://auto-sites.pages.dev/demos/hannya-seattle/ -->
+### Hannya Seattle Tattoo
+- **City:** Seattle, WA
+- **Category:** Tattoo Studio (Japanese-influenced, minimalist/realism)
+- **Address:** 2514 4th Ave, Seattle, WA 98121 (Belltown)
+- **Phone:** ⚠️ Verify via Google Maps — search "Hannya Seattle Tattoo"
+- **Hours:** ⚠️ Verify via Google Maps — Roadtrippers listing shows hours unavailable
+- **Rating:** ⚠️ Needs verification — Yelp listing exists with review text but star count not surfaced in search. Reddit users spontaneously name them one of Seattle's top 2 studios ("Nieu Studio and Hannya Seattle are my favorite tattoo shops and in my opinion the best" — r/Seattle, Feb 2025).
+- **Social:** Instagram @hannyaseattle (CONFIRMED — active account featuring Japanese-influenced tattoo work)
+- **Instagram photos:** Pending scrape on build day — Japanese traditional + fine line work expected, highly visual category
+- **Website status:** No standalone website found — Instagram + Yelp + Facebook only. Wide-open opportunity.
+- **Top Reviews (text from aggregators):**
+  - "Amazing experience and amazing tattoo! The studio itself is breathtakingly gorgeous, minimalist, peaceful, with soothing music." — MapQuest listing
+  - *(Verify top 3 reviews via Google Maps: "Hannya Seattle Tattoo")*
+- **What makes them interesting:** Named after the Hannya (般若) — the iconic jealous female demon mask from Japanese Noh theatre, a classic subject in irezumi (traditional Japanese tattooing). The name is already doing brand work: it signals Japanese tradition, craft, and a specific aesthetic. The studio is described by customers as "breathtakingly gorgeous, minimalist, peaceful, with soothing music" — the exact opposite of the grimy street-shop stereotype. Located on 4th Ave in Belltown (walking distance from Amazon HQ), they're positioned to catch the tech crowd willing to pay premium rates for thoughtful, quiet tattoo experiences. Reddit users name them as one of the two best studios in Seattle despite having no real web presence beyond Instagram.
+- **Brand observations:** The Hannya mask is a gift — deep red, black, gold, with the iconic horned-mask silhouette. Palette: oxblood red, bone white, charcoal, brushed gold. Typography: minimalist Japanese-influenced sans or a carefully-weighted serif with ample whitespace. The site should feel like walking into a gallery, not a tattoo shop — quiet confidence, irezumi craft lineage, high-end editorial photography of the work. Headline potential: "The mask tells you what's underneath." or "Irezumi craft, in Belltown." Think Aesop store meets tattoo portfolio.
+- **Iris note:** 2026-04-09 — Phone, hours, exact rating, and review count all need verification on build day. Instagram handle confirmed. The category (tattoo studio) is new for the pipeline — would make a great diverse portfolio addition alongside the cafés, barbers, and dance studios.
+- **Added by Iris:** 2026-04-09

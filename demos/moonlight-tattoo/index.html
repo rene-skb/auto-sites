@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Moonlight Tattoo, Seattle WA</title>
+  <meta name="description" content="Custom tattooing in North Seattle. Walk-ins welcome, artist-led booking, and a calm shop on Roosevelt Way." />
+  <meta property="og:title" content="Moonlight Tattoo" />
+  <meta property="og:description" content="Custom tattooing in North Seattle. Walk-ins welcome, artist-led booking, and a calm shop on Roosevelt Way." />
+  <meta property="og:image" content="https://auto-sites.pages.dev/demos/moonlight-tattoo/tattoo-1.jpg" />
+  <meta property="og:url" content="https://auto-sites.pages.dev/demos/moonlight-tattoo/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #111111;
+      --panel: #181818;
+      --panel-2: #222222;
+      --text: #f3eee7;
+      --muted: #ddd2c4;
+      --line: rgba(255,255,255,0.12);
+      --accent: #d7b07a;
+      --accent-soft: #8e6a46;
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --section-pad: clamp(72px, 10vw, 132px);
+      --max: 1180px;
+      --radius: 28px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    .shell { width: min(calc(100% - 32px), var(--max)); margin: 0 auto; }
+    .nav {
+      position: sticky; top: 0; z-index: 20;
+      backdrop-filter: blur(16px);
+      background: rgba(17,17,17,0.75);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 20px; padding: 16px 0;
+    }
+    .brand { font-size: 1rem; letter-spacing: 0.14em; text-transform: uppercase; }
+    .brand strong { color: var(--accent); }
+    .nav-links { display: flex; gap: 20px; color: var(--muted); font-size: 1rem; }
+    .cta-row, .nav-cta { display:flex; flex-wrap:wrap; gap: 12px; }
+    .button {
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      min-height: 48px; padding: 0 20px; border-radius: 999px;
+      border: 1px solid var(--line); transition: transform 160ms var(--ease-out), background 160ms var(--ease-out), border-color 160ms var(--ease-out);
+    }
+    .button:active { transform: scale(0.97); }
+    .button.primary { background: var(--text); color: #111; border-color: var(--text); }
+    .button.secondary { background: transparent; color: var(--text); }
+    .hero { padding: 34px 0 22px; }
+    .hero-grid {
+      display: grid; grid-template-columns: 1.05fr 0.95fr; min-height: min(82vh, 860px);
+      background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 32px; overflow: hidden;
+    }
+    .hero-copy { padding: clamp(28px, 5vw, 56px); display:flex; flex-direction:column; justify-content:space-between; }
+    .eyebrow { color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase; font-size: 0.82rem; margin-bottom: 18px; }
+    h1, h2, h3 { font-family: "Instrument Serif", serif; line-height: 0.98; margin: 0; font-weight: 400; }
+    h1 { font-size: clamp(3.6rem, 8vw, 7.2rem); max-width: 8ch; }
+    .hero-copy p { max-width: 38rem; font-size: 1.125rem; color: var(--muted); margin: 18px 0 0; }
+    .hero-photo { position: relative; min-height: 420px; }
+    .hero-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .hero-photo::after {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(17,17,17,0.05), rgba(17,17,17,0.22));
+    }
+    .quick-strip {
+      display:grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+      margin-top: 18px; border:1px solid var(--line); border-radius: 24px; overflow:hidden;
+    }
+    .quick-strip div { padding: 18px 20px; background: var(--panel); border-right: 1px solid var(--line); }
+    .quick-strip div:last-child { border-right: 0; }
+    .label { display:block; text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.75rem; color: var(--accent); margin-bottom: 8px; }
+    .value { font-size: 1rem; }
+    section { padding: var(--section-pad) 0; }
+    .section-head { display:grid; grid-template-columns: 0.8fr 1.2fr; gap: 24px; margin-bottom: 34px; }
+    .section-head p { margin: 0; color: var(--muted); max-width: 42rem; }
+    .process {
+      display:grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+    }
+    .process article, .review, .visit-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+    .process h3 { font-size: 2rem; margin-bottom: 12px; }
+    .process p, .review p, .visit-card p, .roster p { margin: 0; color: var(--muted); font-size: 1.06rem; }
+    .gallery {
+      display:grid; grid-template-columns: 1.15fr 0.85fr; gap: 18px; align-items: stretch;
+    }
+    .gallery-main, .gallery-stack img, .visit-photo img { border-radius: 26px; object-fit: cover; width:100%; height:100%; }
+    .gallery-main { min-height: 580px; overflow:hidden; }
+    .gallery-stack { display:grid; grid-template-rows: 1fr 1fr; gap: 18px; }
+    .gallery-stack figure { margin:0; min-height: 280px; }
+    .reviews-wrap {
+      display:grid; grid-template-columns: 1.05fr 0.95fr; gap: 18px;
+    }
+    .review.feature { padding: 32px; }
+    .review small { display:block; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 14px; }
+    .review blockquote { margin: 0 0 18px; font-family: "Instrument Serif", serif; font-size: clamp(2rem, 4vw, 3.6rem); line-height: 1.02; }
+    .review-grid { display:grid; gap: 18px; }
+    .visit-grid {
+      display:grid; grid-template-columns: 0.95fr 1.05fr; gap: 18px; align-items: stretch;
+    }
+    .visit-stack { display:grid; gap: 18px; }
+    .visit-photo { min-height: 100%; overflow:hidden; border-radius: 26px; }
+    footer { padding: 24px 0 44px; color: var(--muted); }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 700ms var(--ease-out), transform 700ms var(--ease-out); }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+    @media (max-width: 960px) {
+      .hero-grid, .section-head, .gallery, .reviews-wrap, .visit-grid { grid-template-columns: 1fr; }
+      .process, .quick-strip { grid-template-columns: 1fr 1fr; }
+      .hero-photo { min-height: 360px; }
+      .gallery-main { min-height: 360px; }
+    }
+    @media (max-width: 720px) {
+      .nav-links { display:none; }
+      .process, .quick-strip { grid-template-columns: 1fr; }
+      h1 { font-size: clamp(3rem, 18vw, 5rem); }
+      .review blockquote { font-size: 2rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+  <!--
+  PHOTO RANKING
+  1. tattoo-1.jpg — hand drawing, cinematic landscape, best hero image, shows custom process clearly
+  2. tattoo-3.jpg — gloved hand tattooing, strong process detail, ideal supporting craft image
+  3. hero-shop.jpg — warm interior with Moonlight banner, best atmosphere image
+  4. tattoo-2.jpg — storefront/window, useful for visit section
+
+  DELTA: v4 → v5
+  Changes: tightened hero subcopy, simplified review labels, improved OG description, reduced visit copy length
+  Self-review: weakest section was visit stack, so copy was cut and clarified
+  Hypothesis: less copy makes the page feel more confident and easier to scan
+  -->
+</head>
+<body>
+  <nav class="nav">
+    <div class="shell nav-inner">
+      <div class="brand">Moonlight <strong>Tattoo</strong></div>
+      <div class="nav-links">
+        <a href="#process">How booking works</a>
+        <a href="#reviews">What people say</a>
+        <a href="#visit">Visit</a>
+      </div>
+      <div class="nav-cta"><a class="button secondary" href="https://www.instagram.com/moonlighttattooseattle/?hl=en">Instagram</a></div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero shell">
+      <div class="hero-grid reveal">
+        <div class="hero-copy">
+          <div>
+            <div class="eyebrow">Seattle, WA · Walk-ins welcome</div>
+            <h1>Pick the artist. Start there.</h1>
+            <p>Moonlight Tattoo runs like a real studio, not a booking funnel. You look through the artists, find the style that fits, then talk to that artist directly. The shop is on Roosevelt Way, open noon to 8, Monday through Saturday.</p>
+          </div>
+          <div>
+            <div class="cta-row">
+              <a class="button primary" href="https://moonlighttattooseattle.com/how-to-schedule-an-appointment">How to book</a>
+              <a class="button secondary" href="tel:+12064026705">Call 206-402-6705</a>
+            </div>
+          </div>
+        </div>
+        <div class="hero-photo"><img src="tattoo-1.jpg" alt="Hand sketching tattoo linework on paper" /></div>
+      </div>
+      <div class="quick-strip reveal">
+        <div><span class="label">Hours</span><span class="value">Mon-Sat, 12 PM-8 PM</span></div>
+        <div><span class="label">Phone</span><span class="value">206-402-6705</span></div>
+        <div><span class="label">Address</span><span class="value">8927 Roosevelt Way NE</span></div>
+        <div><span class="label">Instagram</span><span class="value">@moonlighttattooseattle</span></div>
+      </div>
+    </section>
+
+    <section id="process">
+      <div class="shell">
+        <div class="section-head reveal">
+          <h2>Booking here is artist-led on purpose.</h2>
+          <p>The shop asks you to look through portfolios first, choose the artist whose style fits your tattoo, and contact that artist directly. They also ask you not to contact multiple artists for the same piece. Clear, adult, and way better than a vague intake form.</p>
+        </div>
+        <div class="process">
+          <article class="reveal">
+            <span class="label">01</span>
+            <h3>Look through the work.</h3>
+            <p>Moonlight points people to artist portfolios, Instagram links, and personal sites before anything else.</p>
+          </article>
+          <article class="reveal">
+            <span class="label">02</span>
+            <h3>Choose the right fit.</h3>
+            <p>Different artists, different styles. The studio makes that distinction part of the process instead of burying it.</p>
+          </article>
+          <article class="reveal">
+            <span class="label">03</span>
+            <h3>Contact one artist directly.</h3>
+            <p>That artist handles booking and waitlist details. Walk-ins are welcome, but custom work starts with the artist.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="shell">
+        <div class="section-head reveal">
+          <h2>A calm room, sharp work, no fake edge.</h2>
+          <p>People describing Moonlight keep landing on the same tone, welcoming, comfortable, and genuinely skilled. The studio says safety is the top priority, and the booking page makes the boundaries plain, from sickness rescheduling to no extra support people in the shop.</p>
+        </div>
+        <div class="gallery reveal">
+          <figure class="gallery-main"><img src="hero-shop.jpg" alt="Warm interior of Moonlight Tattoo with artwork and Moonlight banner" /></figure>
+          <div class="gallery-stack">
+            <figure><img src="tattoo-3.jpg" alt="Tattoo artist working with machine on client's arm" /></figure>
+            <figure><img src="tattoo-2.jpg" alt="Moonlight Tattoo storefront window on Roosevelt Way" /></figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="reviews">
+      <div class="shell">
+        <div class="section-head reveal">
+          <h2>People talk about the artists by name.</h2>
+          <p>That matters more than generic hype. The recent public signals around Moonlight are personal, specific, and tied to individual trust.</p>
+        </div>
+        <div class="reviews-wrap">
+          <article class="review feature reveal">
+            <small>Seattle tattoo guide</small>
+            <blockquote>"A hidden gem nestled in the heart of Seattle, where artistry and comfort dance beautifully together."</blockquote>
+            <p>That line is a little dramatic, sure, but the useful part is the combination: strong work plus a comfortable room.</p>
+          </article>
+          <div class="review-grid">
+            <article class="review reveal">
+              <small>Reddit · Seattle</small>
+              <p>"Bryan and Jacqui at Moonlight Tattoo are awesome."</p>
+            </article>
+            <article class="review reveal">
+              <small>Reddit · Seattle</small>
+              <p>"Jacqui at Moonlight Tattoo did a piece for me similar to the second pic and killed it!"</p>
+            </article>
+            <article class="review reveal">
+              <small>Studio site</small>
+              <p>Moonlight lists Bryan Kachel, Mason Montgomery, Megon Shore, Chris Velesara, Jacob McCallum, Halima Gardenia, Khalil Justice Linane, Shawn Paradis, and Jacqui Alberts on Instagram, which tells you this is a real rostered studio, not a single-artist placeholder site.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="visit">
+      <div class="shell">
+        <div class="section-head reveal">
+          <h2>North Seattle, noon to eight.</h2>
+          <p>Roosevelt Way location, direct phone line, artist-first scheduling, and a clear walk-in signal if you want to try your luck the same day.</p>
+        </div>
+        <div class="visit-grid">
+          <div class="visit-stack">
+            <article class="visit-card reveal">
+              <span class="label">Visit</span>
+              <p>8927 Roosevelt Way NE, Seattle, WA 98115</p>
+            </article>
+            <article class="visit-card reveal">
+              <span class="label">Hours</span>
+              <p>Monday through Saturday, 12 PM to 8 PM. Closed Sunday.</p>
+            </article>
+            <article class="visit-card reveal">
+              <span class="label">Contact</span>
+              <p><a href="tel:+12064026705">206-402-6705</a><br><a href="https://moonlighttattooseattle.com/">moonlighttattooseattle.com</a><br><a href="https://www.instagram.com/moonlighttattooseattle/?hl=en">@moonlighttattooseattle</a></p>
+            </article>
+            <div class="cta-row reveal">
+              <a class="button primary" href="https://www.google.com/maps/search/?api=1&query=Moonlight+Tattoo+Seattle">Get directions</a>
+              <a class="button secondary" href="https://moonlighttattooseattle.com/how-to-schedule-an-appointment">Scheduling details</a>
+            </div>
+          </div>
+          <figure class="visit-photo reveal"><img src="tattoo-2.jpg" alt="Moonlight Tattoo storefront window and sign" /></figure>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="shell">
+    <p>Moonlight Tattoo · Seattle, WA · Built from public business info, public reviews, and public studio imagery.</p>
+  </footer>
+
+  <script>
+    const items = [...document.querySelectorAll('.reveal')];
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) {
+      items.forEach(el => el.classList.add('is-visible'));
+    } else {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.14 });
+      items.forEach((el, i) => {
+        el.style.transitionDelay = `${Math.min(i * 45, 260)}ms`;
+        io.observe(el);
+      });
+    }
+  </script>
+</body>
+</html>

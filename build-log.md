@@ -1,5 +1,59 @@
 # Auto-Sites Build Log
 
+### Tough Tiger Barbershop — Barbershop, Winnipeg MB
+- **Date:** 2026-04-13
+- **Model:** openai-codex/gpt-5.4
+- **Agent:** Lucy
+- **Folder:** tough-tiger-barbershop
+- **Hero pattern:** centered-minimal
+- **Typography:** Abril Fatface + Manrope
+- **Review layout:** aggregate proof block + three editorial evidence rows
+- **Visit/hours layout:** light info card left + embedded map right
+- **Stats bar style:** no-stats
+- **WHY Score:** 7.00 (Jobs 7.0 / Graham 8.0 / Ogilvy 6.0)
+- **WHAT Score:** 8.33 (Norman 8.0 / Krug 9.0 / Nielsen 8.0)
+- **HOW Score:** 7.00 (Vignelli 7.0 / Spiekermann 8.0 / Rams 6.0)
+- **Panel average:** 7.44
+- **Self-review:** 8.0
+- **Versions built:** 6 HTML versions + final index.html
+- **Build time:** ~55 minutes
+- **Token estimate:** ~18k
+- **Key decisions:** Switched from the stale top-of-queue entries to the first real unbuilt business, then built directly from Tough Tiger's live Booksy data instead of the rough queue note. Used real Booksy photos, kept the page to two major photo moments, and avoided fake review cards because the source reviews did not expose compliant last initials.
+- **Live URL:** pending push / Pages verification
+
+### Moonlight Tattoo — Tattoo Studio, Seattle WA
+- **Date:** 2026-04-12
+- **Model:** openai-codex/gpt-5.4
+- **Agent:** Lucy
+- **Folder:** moonlight-tattoo
+- **Hero pattern:** split-image-right
+- **Typography:** Instrument Serif + Inter
+- **Review layout:** featured pull-quote + stacked equal-treatment support cards
+- **Visit/hours layout:** text card stack left + storefront image right
+- **Stats bar style:** no-stats
+- **WHY Score:** 7.33 (Jobs 7.5 / Graham 7.0 / Ogilvy 7.5)
+- **WHAT Score:** 7.17 (Norman 7.0 / Krug 7.5 / Nielsen 7.0)
+- **HOW Score:** 7.17 (Vignelli 7.0 / Spiekermann 7.0 / Rams 7.5)
+- **Panel average:** 7.22
+- **Self-review:** 7.3
+- **Versions built:** 6 HTML versions + final index.html
+- **Build time:** ~55 minutes
+- **Token estimate:** ~18k
+- **Key decisions:** Leaned into Moonlight's actual booking model instead of forcing a generic tattoo-studio pitch. Used real public studio photos from the existing site, led with artist-led scheduling, and kept the tone calm instead of performatively edgy.
+- **Notes:** Belly Fruit Tattoo was also removed from the queue as a stale entry because `demos/belly-fruit-tattoo/` already existed locally. Google rating/review count still unverified in this pass, so they were omitted from visible copy.
+- **Live URL:** pending push / Pages verification
+
+
+### Overnight Queue Cleanup — Abdou BarberShop, Montréal QC
+- **Date:** 2026-04-11
+- **Model:** openai-codex/gpt-5.4
+- **Agent:** Lucy
+- **Action:** Removed stale top-of-queue entry instead of rebuilding
+- **Reason:** `demos/abdou-barbershop/` already exists with `index-v0.html` through `index-v5.html`, `index.html`, screenshots, `sources.md`, and an existing build-log entry dated 2026-04-02. Rebuilding would have created duplicate output.
+- **Verified:** Existing local output folder and files present, OG tags present in `index.html`, prior build already logged.
+- **Queue result:** Top stale entry removed. Next real queue item is now `Vintage Glory` (Montréal dessert café brief).
+
+
 ### Stir It Up — Caribbean Soul Food, Victoria BC
 - **Date:** 2026-04-10
 - **Model:** openai-codex/gpt-5.4 (subagent)

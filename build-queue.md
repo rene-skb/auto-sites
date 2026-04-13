@@ -6,21 +6,6 @@
 
 ## Queue
 
-<!-- Built 2026-04-02 → demos/abdou-barbershop/ → https://auto-sites.pages.dev/demos/abdou-barbershop/ -->
-<!-- Added 2026-04-01 by Iris -->
-### Abdou BarberShop
-- **City:** Montreal, QC
-- **Category:** Barbershop
-- **Address:** 3530 Rue Jean-Talon Est, Montreal, QC H2A 1X2
-- **Phone:** +1 438-990-8696
-- **Hours:** Open 24 hours / 7 days a week
-- **Rating:** 4.9 stars (968+ reviews)
-- **Social:** Instagram @abdou.barbershop (21K followers)
-- **Instagram photos:** Yes -- 8 photos downloaded to demos/abdou-barbershop/
-- **Top Reviews (with names):**
-  - *(Verify top 3 reviews via Google Maps: "Abdou BarberShop Montreal")*
-- **What makes them interesting:** A 24/7 barbershop in Montreal with nearly 1,100 reviews at 4.9 stars. Run by Abderahmane, whose Instagram has 21K followers. The 24/7 operation is almost unheard of for the category. "MORE THAN LUXURY" is already their brand line.
-- **Brand observations:** Deep black, champagne gold, strong italic serif. Headline: "Because the perfect cut doesn't wait." Premium Montreal energy.
 
 <!-- Built 2026-04-03 → demos/mr-sako-barber/ → https://auto-sites.pages.dev/demos/mr-sako-barber/ -->
 
@@ -219,3 +204,9 @@
 - **Brand observations:** The Hannya mask is a gift — deep red, black, gold, with the iconic horned-mask silhouette. Palette: oxblood red, bone white, charcoal, brushed gold. Typography: minimalist Japanese-influenced sans or a carefully-weighted serif with ample whitespace. The site should feel like walking into a gallery, not a tattoo shop — quiet confidence, irezumi craft lineage, high-end editorial photography of the work. Headline potential: "The mask tells you what's underneath." or "Irezumi craft, in Belltown." Think Aesop store meets tattoo portfolio.
 - **Iris note:** 2026-04-09 — Phone, hours, exact rating, and review count all need verification on build day. Instagram handle confirmed. The category (tattoo studio) is new for the pipeline — would make a great diverse portfolio addition alongside the cafés, barbers, and dance studios.
 - **Added by Iris:** 2026-04-09
+
+<!-- Built locally 2026-04-11 → demos/belly-fruit-tattoo/ (stale queue entry removed 2026-04-12) -->
+
+<!-- Built 2026-04-12 → demos/moonlight-tattoo/ → https://auto-sites.pages.dev/demos/moonlight-tattoo/ -->
+
+<!-- Built 2026-04-13 → demos/tough-tiger-barbershop/ → https://auto-sites.pages.dev/demos/tough-tiger-barbershop/ (pending push / Pages verification) -->

@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<!--
+SCOTT BELL — SONNET PROOF — index-v5.html
+FINAL PASS: motion + self-review
+
+DELTA from v4:
+- Removed non-clickable image hover treatment to respect non-negotiables
+- Refined hero proportions and copy rhythm
+- Smoothed section spacing and line treatments for a calmer editorial read
+- Tightened copy in current work and contact
+- Improved motion timing/stagger and reduced visual noise
+- Finalized palette balance: near-black hero, warm paper chapters, restrained amber emphasis
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scott Bell — Product Designer</title>
+<meta name="description" content="24 products in 14 years. Product designer and builder. Strike, AIOZ, Fountain, KOHO.">
+<meta property="og:title" content="Scott Bell — Product Designer">
+<meta property="og:description" content="24 products in 14 years. The last four, I built myself.">
+<meta property="og:image" content="assets/strike1.png">
+<meta property="og:url" content="https://auto-sites.pages.dev/demos/scott-bell-sonnet-proof/">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Space Grotesk',-apple-system,sans-serif;-webkit-font-smoothing:antialiased;background:#F4EDE3;color:#1A1410;line-height:1.65;overflow-x:hidden}
+img{display:block;width:100%;height:100%;object-fit:cover}
+a{color:inherit;text-decoration:none}
+:root{
+  --ink:#0D0C0A;
+  --ink-soft:#17130F;
+  --paper:#F4EDE3;
+  --paper-deep:#ECE2D5;
+  --amber:#C17A35;
+  --amber-soft:#E4A15E;
+  --amber-dark:#3B2211;
+  --text-muted:#756759;
+  --line-light:rgba(26,20,16,.1);
+  --line-dark:rgba(244,237,227,.08);
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Space Grotesk',sans-serif;
+  --max:1220px;
+  --gutter:clamp(24px,5vw,84px);
+  --section-pad:clamp(88px,11vw,132px);
+  --ease-out:cubic-bezier(0.23,1,0.32,1);
+  --ease-in-out:cubic-bezier(0.77,0,0.175,1);
+  --ease-drawer:cubic-bezier(0.32,0.72,0,1);
+}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
+.skip{position:absolute;left:16px;top:-80px;background:var(--amber);color:#F4EDE3;padding:10px 16px;border-radius:2px;z-index:200;font-size:.875rem}
+.skip:focus{top:16px}
+
+/* NAV */
+.site-nav{position:fixed;top:0;left:0;right:0;z-index:100;height:64px;display:flex;align-items:center;transition:background .28s var(--ease-out),border-color .28s var(--ease-out)}
+.site-nav.scrolled{background:rgba(13,12,10,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(244,237,227,.05)}
+.nav-inner{max-width:var(--max);width:100%;margin:0 auto;padding:0 var(--gutter);display:flex;align-items:center;justify-content:space-between}
+.nav-brand{font-family:var(--serif);font-size:1.15rem;font-weight:400;color:rgba(244,237,227,.86);letter-spacing:.03em}
+.nav-links{list-style:none;display:flex;gap:32px;align-items:center}
+.nav-links a{font-size:.875rem;color:rgba(244,237,227,.52);letter-spacing:.02em;transition:color .18s var(--ease-out)}
+.nav-links a:hover{color:rgba(244,237,227,.92)}
+.nav-cta{padding:8px 20px;border:1px solid rgba(244,237,227,.16);border-radius:2px;color:rgba(244,237,227,.78)!important;transition:border-color .18s,color .18s}
+.nav-cta:hover{border-color:rgba(244,237,227,.38)!important;color:#F4EDE3!important}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:8px;cursor:pointer}
+.nav-hamburger span{display:block;width:22px;height:1.5px;background:rgba(244,237,227,.68)}
+.nav-mobile{display:none;position:fixed;top:64px;left:0;right:0;background:rgba(13,12,10,.97);backdrop-filter:blur(20px);padding:32px var(--gutter) 44px;z-index:99}
+.nav-mobile.open{display:block}
+.nav-mobile ul{list-style:none;display:flex;flex-direction:column;gap:28px}
+.nav-mobile a{font-family:var(--serif);font-size:1.7rem;font-weight:300;color:rgba(244,237,227,.8)}
+
+/* HERO */
+.hero{background:var(--ink);min-height:100svh;padding:64px 0 96px;display:flex;flex-direction:column;justify-content:flex-end;position:relative}
+.hero::before{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.88' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)' opacity='0.04'/%3E%3C/svg%3E");background-size:160px;opacity:.32;pointer-events:none}
+.hero-topline{position:relative;z-index:1;border-bottom:1px solid rgba(244,237,227,.06);padding-bottom:22px;display:flex;gap:24px;flex-wrap:wrap}
+.hero-topline span{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(244,237,227,.25)}
+.hero-topline strong{font-weight:500;color:rgba(244,237,227,.5)}
+.hero-body{position:relative;z-index:1;padding-top:clamp(78px,15vh,156px);display:grid;grid-template-columns:minmax(0,1fr) 240px;gap:48px;align-items:end}
+.hero-main{max-width:780px}
+.hero-overline{display:block;margin-bottom:24px;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(193,122,53,.68)}
+.hero-title{font-family:var(--serif);font-weight:300;letter-spacing:-.03em;line-height:1}
+.hero-title .line1{display:block;font-size:clamp(3rem,8vw,7.15rem);color:rgba(244,237,227,.9)}
+.hero-title .line2{display:block;font-size:clamp(3rem,8vw,7.15rem);font-style:italic;color:var(--amber-soft)}
+.hero-copy{margin-top:34px;max-width:480px;font-size:clamp(1rem,1.5vw,1.1rem);font-weight:300;line-height:1.68;color:rgba(244,237,227,.5)}
+.hero-actions{margin-top:40px;display:flex;gap:12px;flex-wrap:wrap}
+.hero-note{padding-bottom:8px}
+.hero-note-label{display:block;margin-bottom:10px;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(193,122,53,.56)}
+.hero-note p{font-size:.9rem;line-height:1.55;color:rgba(244,237,227,.38)}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 26px;font-size:.875rem;font-weight:500;letter-spacing:.03em;border-radius:2px;cursor:pointer;border:none;transition:transform .16s var(--ease-out),background .18s,border-color .18s,color .18s}
+.btn:active{transform:scale(.97)}
+.btn-amber{background:var(--amber);color:#F4EDE3}.btn-amber:hover{background:#d58b40}
+.btn-outline{background:transparent;border:1px solid rgba(244,237,227,.17);color:rgba(244,237,227,.76)}
+.btn-outline:hover{border-color:rgba(244,237,227,.38);color:#F4EDE3}
+.btn-outline-dark{background:transparent;border:1px solid rgba(26,20,16,.18);color:rgba(26,20,16,.72)}
+.btn-outline-dark:hover{border-color:rgba(26,20,16,.38);color:#1A1410}
+
+/* CHAPTER */
+.chapter{padding:var(--section-pad) 0}
+.chapter-head{display:flex;align-items:baseline;gap:16px;padding-bottom:44px;border-bottom:1px solid var(--line-light);margin-bottom:60px}
+.chapter-head.dark{border-bottom-color:var(--line-dark)}
+.chapter-num{min-width:30px;font-family:var(--serif);font-size:.84rem;letter-spacing:.06em;color:rgba(193,122,53,.5)}
+.chapter-title{flex:1;font-family:var(--serif);font-size:clamp(1.9rem,3.5vw,3.2rem);font-weight:400;letter-spacing:-.02em;line-height:1.06}
+.chapter-title.dark{color:rgba(244,237,227,.92)}
+.chapter-copy{max-width:30ch;font-size:.92rem;line-height:1.55;color:var(--text-muted)}
+.chapter-copy.dark{color:rgba(244,237,227,.4)}
+
+/* CURRENT */
+.current{background:var(--paper)}
+.current-lead{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;margin-bottom:80px}
+.current-visuals{display:grid;grid-template-columns:1.45fr 1fr;gap:14px}
+.current-visuals img{border-radius:8px;border:1px solid var(--line-light);aspect-ratio:16/10}
+.current-copy .kicker{display:block;margin-bottom:16px;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--amber)}
+.current-copy h3{font-family:var(--serif);font-size:clamp(2.15rem,4.1vw,3.55rem);font-weight:400;letter-spacing:-.02em;line-height:1.02;margin-bottom:20px}
+.current-copy p{max-width:52ch;font-size:1rem;line-height:1.72;color:var(--text-muted);margin-bottom:14px}
+.current-aside{margin-top:22px;padding-top:18px;border-top:1px solid var(--line-light);display:grid;gap:10px}
+.current-aside span{font-size:.85rem;line-height:1.52;color:var(--text-muted)}
+.project-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.project-card{display:grid;gap:18px;align-content:start}
+.project-thumb{aspect-ratio:16/11;border-radius:8px;overflow:hidden;border:1px solid var(--line-light);background:rgba(26,20,16,.03)}
+.project-meta{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding-bottom:10px;border-bottom:1px solid var(--line-light)}
+.project-name{font-family:var(--serif);font-size:1.5rem;font-weight:400;letter-spacing:-.01em}
+.project-type{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(117,103,89,.62)}
+.project-card p{font-size:.92rem;line-height:1.6;color:var(--text-muted)}
+
+/* SELECTED */
+.selected{background:var(--ink);padding-bottom:var(--section-pad)}
+.case-list{display:grid;gap:0}
+.case{padding:60px 0 56px;border-top:1px solid rgba(244,237,227,.07)}
+.case-top{display:grid;grid-template-columns:190px 1fr;gap:40px;align-items:start;margin-bottom:30px}
+.case-meta{display:grid;gap:5px;padding-top:4px}
+.case-company{font-family:var(--serif);font-size:1.02rem;font-weight:500;letter-spacing:.03em;color:rgba(244,237,227,.84)}
+.case-role,.case-years{font-size:.82rem;font-weight:300;color:rgba(244,237,227,.34)}
+.case-headline{font-family:var(--serif);font-size:clamp(2.2rem,4vw,3.7rem);font-weight:300;letter-spacing:-.03em;line-height:1;max-width:24ch;color:rgba(244,237,227,.92)}
+.case-body{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:32px;margin-left:230px}
+.case-copy p{font-size:.98rem;line-height:1.7;color:rgba(244,237,227,.56);margin-bottom:14px;max-width:50ch}
+.case-images{display:grid;gap:10px}
+.case-images.three{grid-template-columns:repeat(3,1fr)}
+.case-images.two{grid-template-columns:repeat(2,1fr)}
+.case-images img{aspect-ratio:4/5;border-radius:6px;border:1px solid rgba(244,237,227,.05);background:rgba(255,255,255,.02)}
+.case.text-only .case-body{grid-template-columns:1fr}.case.text-only .case-copy p{max-width:60ch}
+
+/* RIBBON */
+.ribbon{background:var(--amber-dark);padding:98px 0;position:relative;overflow:hidden}
+.ribbon::before{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)' opacity='0.05'/%3E%3C/svg%3E");background-size:150px;opacity:.5;pointer-events:none}
+.ribbon-inner{position:relative;max-width:900px}
+.ribbon-label{display:block;margin-bottom:24px;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(232,160,85,.45)}
+.ribbon blockquote{font-family:var(--serif);font-size:clamp(1.9rem,4vw,4.25rem);font-weight:300;font-style:italic;line-height:1.12;letter-spacing:-.02em;color:rgba(244,237,227,.9)}
+.ribbon small{display:block;margin-top:22px;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(193,122,53,.5)}
+
+/* ABOUT */
+.about{background:var(--paper-deep)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:82px;align-items:start}
+.about-left h2{font-family:var(--serif);font-size:clamp(2.45rem,5vw,4.35rem);font-weight:300;font-style:italic;letter-spacing:-.03em;line-height:1.04;margin-bottom:30px}
+.about-left p{max-width:50ch;font-size:1.02rem;line-height:1.72;color:var(--text-muted);margin-bottom:18px}
+.about-facts{display:grid;gap:0}
+.fact{padding:22px 0;border-bottom:1px solid var(--line-light)}
+.fact:first-child{border-top:1px solid var(--line-light)}
+.fact-label{display:block;margin-bottom:8px;font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(193,122,53,.7);font-weight:600}
+.fact p{font-size:.95rem;line-height:1.56;color:var(--text-muted)}
+
+/* CONTACT */
+.contact{background:var(--ink-soft);padding:clamp(100px,13vw,160px) 0}
+.contact-inner{max-width:900px}
+.contact h2{font-family:var(--serif);font-size:clamp(3rem,8vw,7rem);font-weight:300;font-style:italic;letter-spacing:-.04em;line-height:1;color:rgba(244,237,227,.9);margin-bottom:24px}
+.contact p{max-width:46ch;font-size:1.05rem;line-height:1.65;color:rgba(244,237,227,.45);margin-bottom:42px}
+.contact-row{display:flex;gap:12px;flex-wrap:wrap}
+
+/* FOOTER */
+footer{background:var(--ink);padding:22px 0 28px;border-top:1px solid rgba(244,237,227,.04)}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
+.footer-brand{font-family:var(--serif);font-size:.9rem;color:rgba(244,237,227,.3)}
+.footer-note{font-size:.8rem;color:rgba(244,237,227,.2)}
+
+/* REVEALS */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .72s var(--ease-out),transform .72s var(--ease-out)}
+.reveal.in{opacity:1;transform:none}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}
+
+/* RESPONSIVE */
+@media (max-width:1024px){
+  .hero-body{grid-template-columns:1fr;gap:24px}.hero-note{max-width:320px}
+  .current-lead{grid-template-columns:1fr;gap:36px}
+  .about-grid{grid-template-columns:1fr;gap:56px}
+  .case-top{grid-template-columns:160px 1fr}.case-body{margin-left:190px}
+}
+@media (max-width:768px){
+  .nav-links{display:none}.nav-hamburger{display:flex}
+  .hero-topline{display:none}.hero-body{padding-top:86px}
+  .current-visuals{grid-template-columns:1fr}.current-visuals img:last-child{display:none}
+  .project-grid{grid-template-columns:1fr}
+  .case-top{grid-template-columns:1fr;gap:10px}.case-body{margin-left:0;grid-template-columns:1fr}.case-images.three,.case-images.two{grid-template-columns:repeat(2,1fr)}
+  .chapter-head{flex-direction:column;gap:8px}.chapter-copy{max-width:none}
+}
+@media (max-width:480px){
+  .contact-row{flex-direction:column}.btn{width:100%}.case-images.three,.case-images.two{grid-template-columns:repeat(2,1fr)}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}.btn,.nav-links a{transition:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<nav class="site-nav" id="site-nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="#top">Scott Bell</a>
+    <ul class="nav-links">
+      <li><a href="#current">Current</a></li>
+      <li><a href="#work">Selected Work</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact" class="nav-cta">Get in touch</a></li>
+    </ul>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="nav-mobile" id="nav-mobile">
+  <ul>
+    <li><a href="#current">Current</a></li>
+    <li><a href="#work">Selected Work</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</div>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-topline">
+      <span><strong>14 years</strong> product design</span>
+      <span><strong>Strike · AIOZ · Fountain · KOHO</strong></span>
+      <span>Victoria, BC · <strong>Open to work</strong></span>
+    </div>
+    <div class="hero-body">
+      <div class="hero-main reveal">
+        <span class="hero-overline">Scott Bell · Product Designer</span>
+        <h1 class="hero-title">
+          <span class="line1">24 products in 14 years.</span>
+          <span class="line2">The last four, I built myself.</span>
+        </h1>
+        <p class="hero-copy">I design, build, and ship technical products. That work has spanned neobanking, Bitcoin, Web3 infrastructure, and now AI-native tools and workflows.</p>
+        <div class="hero-actions">
+          <a href="mailto:hello@scottkbell.com" class="btn btn-amber">Email Scott</a>
+          <a href="#work" class="btn btn-outline">See selected work</a>
+        </div>
+      </div>
+      <div class="hero-note reveal d1">
+        <span class="hero-note-label">Best fit</span>
+        <p>Senior IC or staff work, especially where the product is technical, the system is still forming, and design needs to think like a builder.</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="chapter current" id="current">
+    <div class="wrap">
+      <div class="chapter-head reveal">
+        <span class="chapter-num">01</span>
+        <h2 class="chapter-title">What I’ve been building.</h2>
+        <p class="chapter-copy">Recent work first. It shows the direction clearly: builder, designer, operator.</p>
+      </div>
+
+      <div class="current-lead reveal">
+        <div class="current-visuals">
+          <img src="assets/autosite-stiritup.jpg" alt="Stir It Up auto-site demo">
+          <img src="assets/autosite-kreativeink.jpg" alt="Kreative Ink auto-site demo">
+        </div>
+        <div class="current-copy">
+          <span class="kicker">Studio · 2024–Present</span>
+          <h3>Nakamoto Design Co.</h3>
+          <p>A studio built as a pipeline. Research a business, pull real reviews, write the copy, make the visuals, ship a live site. One agent-assisted session from brief to launch.</p>
+          <p>So far that has turned into 80+ demos across Canada. The pipeline itself is the product and the proof.</p>
+          <div class="current-aside">
+            <span>AI-native from day one, not bolted on later.</span>
+            <span>End-to-end ownership, from research through production.</span>
+            <span>Quality control across dozens of distinct outputs, not one template.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-grid">
+        <article class="project-card reveal">
+          <div class="project-thumb"><img src="assets/loopin.jpg" alt="LoopIn preview"></div>
+          <div class="project-meta"><h3 class="project-name">LoopIn</h3><span class="project-type">Browser Tool</span></div>
+          <p>Click any element in the browser and send the DOM, applied styles, and context straight to a coding agent. It closes the gap between what a designer sees and what a developer gets.</p>
+        </article>
+        <article class="project-card reveal d1">
+          <div class="project-thumb"><img src="assets/mixid.jpg" alt="Mix’d preview"></div>
+          <div class="project-meta"><h3 class="project-name">Mix’d</h3><span class="project-type">Open Source</span></div>
+          <p>Paste a Mixcloud, SoundCloud, or YouTube URL. Get back a clean timestamped tracklist. Built to solve a real personal problem, then turned into something useful for other people too.</p>
+        </article>
+        <article class="project-card reveal d2">
+          <div class="project-thumb"><img src="assets/clawprint.jpg" alt="Clawprint preview"></div>
+          <div class="project-meta"><h3 class="project-name">Clawprint</h3><span class="project-type">AI Calibration</span></div>
+          <p>A psychology-based profile for AI agents. The point is not just personalization. It gives the agent a better model of who it’s working with, including how and when to push back.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="selected" id="work">
+    <div class="wrap">
+      <div class="chapter-head dark reveal">
+        <span class="chapter-num">02</span>
+        <h2 class="chapter-title dark">Work at scale.</h2>
+        <p class="chapter-copy dark">Systems work, under real constraints, with products that had to keep moving.</p>
+      </div>
+
+      <div class="case-list">
+        <article class="case reveal">
+          <div class="case-top">
+            <div class="case-meta">
+              <span class="case-company">Strike</span>
+              <span class="case-role">Senior Product Designer</span>
+              <span class="case-years">2021–2023</span>
+            </div>
+            <h3 class="case-headline">A complete redesign for 1.5 million users in 65 countries.</h3>
+          </div>
+          <div class="case-body">
+            <div class="case-copy">
+              <p>Strike is a Bitcoin payments app that handles real money for over 1.5 million users. I redesigned the entire product, 450+ screens, with five months to do it.</p>
+              <p>The hard part wasn’t the scale. It was making every surface work across currencies, regulatory contexts, and user expectations that changed by market, without creating a product that felt fragmented.</p>
+            </div>
+            <div class="case-images three">
+              <img src="assets/strike1.png" alt="Strike app screens">
+              <img src="assets/strike2.png" alt="Strike app screens">
+              <img src="assets/strike3.png" alt="Strike app screens">
+            </div>
+          </div>
+        </article>
+
+        <article class="case reveal">
+          <div class="case-top">
+            <div class="case-meta">
+              <span class="case-company">AIOZ Network</span>
+              <span class="case-role">Head of Design</span>
+              <span class="case-years">2023–2024</span>
+            </div>
+            <h3 class="case-headline">Eight products. Market cap from $13M to $1.38B.</h3>
+          </div>
+          <div class="case-body">
+            <div class="case-copy">
+              <p>AIOZ is a decentralized AI and media infrastructure network. As Head of Design I led across eight simultaneous products, from staking platforms to AI marketplaces to streaming infrastructure, while the company scaled roughly 100× in market cap.</p>
+              <p>The challenge was not just speed. It was holding the design quality together while each product was changing at a different rate for a different audience.</p>
+            </div>
+            <div class="case-images two">
+              <img src="assets/aioz1.png" alt="AIOZ product screens">
+              <img src="assets/aioz2.png" alt="AIOZ product screens">
+            </div>
+          </div>
+        </article>
+
+        <article class="case reveal">
+          <div class="case-top">
+            <div class="case-meta">
+              <span class="case-company">Fountain</span>
+              <span class="case-role">Lead Product Designer</span>
+              <span class="case-years">2022–2023</span>
+            </div>
+            <h3 class="case-headline">Full rebuild in under five months. Apple featured it twice.</h3>
+          </div>
+          <div class="case-body">
+            <div class="case-copy">
+              <p>Fountain is a Bitcoin podcasting app where listeners earn while they listen. The whole product needed rebuilding: new architecture, new design system, new everything. We shipped in five months.</p>
+              <p>Apple featured the result twice. The semantic design system I built gave the team a shared language, which meant new features could ship without re-litigating the basics every sprint.</p>
+            </div>
+            <div class="case-images two">
+              <img src="assets/fountain1.png" alt="Fountain app screens">
+              <img src="assets/fountain2.png" alt="Fountain app screens">
+            </div>
+          </div>
+        </article>
+
+        <article class="case text-only reveal">
+          <div class="case-top">
+            <div class="case-meta">
+              <span class="case-company">KOHO</span>
+              <span class="case-role">Product Designer, Employee #1</span>
+              <span class="case-years">2015–2018</span>
+            </div>
+            <h3 class="case-headline">Employee #1. Zero to 100,000 users and an $800M valuation.</h3>
+          </div>
+          <div class="case-body">
+            <div class="case-copy">
+              <p>KOHO is a Canadian neobank. I was the first employee and the first designer. No design team, no existing practice, no product language to inherit. I built the design function from scratch and helped take the product from concept to 100,000+ users.</p>
+              <p>The company later reached an $800M valuation. A lot of that later scale rested on decisions made in those first two years, when the system was still being invented.</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="ribbon reveal">
+    <div class="wrap">
+      <div class="ribbon-inner">
+        <span class="ribbon-label">Working style</span>
+        <blockquote>“I’m most useful early, when the problem is still soft and the constraints aren’t fixed. That’s when the right framing does the most work.”</blockquote>
+        <small>— Scott Bell</small>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter about" id="about">
+    <div class="wrap">
+      <div class="about-grid">
+        <div class="about-left reveal">
+          <h2>Scientist brain.<br>Design hands.</h2>
+          <p>I design from first principles. Start with what’s actually happening for the user, find the smallest intervention that changes it, then build the system that makes it repeatable.</p>
+          <p>I studied microbiology before design school. It turns out they train the same instinct: look closely, find the mechanism, change the right variable.</p>
+          <p>Based in Victoria, BC. Right now I’m focused on AI-native product design, especially interfaces where the AI is doing real work and the human still needs to stay oriented.</p>
+        </div>
+        <div class="about-facts reveal d1">
+          <div class="fact">
+            <span class="fact-label">Education</span>
+            <p>BSc Microbiology + BA Interaction Design, ten years combined post-secondary.</p>
+          </div>
+          <div class="fact">
+            <span class="fact-label">Career arc</span>
+            <p>Neobank → Bitcoin fintech → Web3 infrastructure → AI-native tools. Each move deeper into technical territory.</p>
+          </div>
+          <div class="fact">
+            <span class="fact-label">Best fit</span>
+            <p>Senior IC or staff work where design shapes the product itself, not just the polish on top.</p>
+          </div>
+          <div class="fact">
+            <span class="fact-label">Current focus</span>
+            <p>Agent UX, human-AI collaboration, and products where the interface needs to coordinate thinking as well as clicks.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div class="contact-inner reveal">
+        <h2>Let’s work together.</h2>
+        <p>I’m available for senior IC and staff roles in AI product design. Email is the fastest way to reach me.</p>
+        <div class="contact-row">
+          <a class="btn btn-amber" href="mailto:hello@scottkbell.com">hello@scottkbell.com</a>
+          <a class="btn btn-outline" href="https://www.scottkbell.com/" target="_blank" rel="noopener">scottkbell.com</a>
+          <a class="btn btn-outline" href="https://www.linkedin.com/in/scottkbell/" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span class="footer-brand">Scott Bell — Product Designer</span>
+    <span class="footer-note">Victoria, BC · Open to work</span>
+  </div>
+</footer>
+
+<script>
+const nav=document.getElementById('site-nav');
+const syncNav=()=>nav.classList.toggle('scrolled',window.scrollY>24);
+window.addEventListener('scroll',syncNav,{passive:true});syncNav();
+const ham=document.getElementById('hamburger');
+const mob=document.getElementById('nav-mobile');
+ham.addEventListener('click',()=>{const open=mob.classList.toggle('open');ham.setAttribute('aria-expanded',String(open));});
+document.querySelectorAll('#nav-mobile a').forEach(a=>a.addEventListener('click',()=>mob.classList.remove('open')));
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -36px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

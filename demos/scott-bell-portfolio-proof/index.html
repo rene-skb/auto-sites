@@ -1,0 +1,391 @@
+<!--
+DELTA: v5 iteration notes
+Final polish. Sharpened the hero, tuned spacing, restored the strongest closer from v8, and kept the proof load centered on Strike, AIOZ, Fountain, KOHO, and the recent self-built work.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scott Bell — Product Designer</title>
+  <meta name="description" content="24 products in 14 years. Product designer with experience across Strike, AIOZ, Fountain, KOHO, and recent AI-native tools.">
+  <meta property="og:title" content="Scott Bell — Product Designer">
+  <meta property="og:description" content="24 products in 14 years. The last four, he built himself.">
+  <meta property="og:image" content="assets/strike1.png">
+  <meta property="og:url" content="https://auto-sites.pages.dev/demos/scott-bell-portfolio-proof/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #111114;
+      --ink-soft: #1a1a20;
+      --paper: #f3ede4;
+      --paper-deep: #e6ddd1;
+      --mist: #dfe4df;
+      --white: #ffffff;
+      --text: #1a1a1f;
+      --text-soft: #615c56;
+      --text-light: rgba(243, 237, 228, 0.78);
+      --line-light: rgba(17, 17, 20, 0.08);
+      --line-dark: rgba(243, 237, 228, 0.12);
+      --accent: #7a6af2;
+      --accent-soft: rgba(122, 106, 242, 0.12);
+      --serif: 'Instrument Serif', Georgia, serif;
+      --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --radius: 24px;
+      --shadow: 0 30px 70px rgba(17, 17, 20, 0.08);
+      --ease: cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background: var(--paper); color: var(--text); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+    img { display: block; width: 100%; }
+    a { color: inherit; }
+
+    .skip-link { position: absolute; left: 16px; top: -80px; background: var(--accent); color: white; padding: 10px 14px; border-radius: 10px; z-index: 200; text-decoration: none; }
+    .skip-link:focus { top: 16px; }
+    a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 10px; }
+
+    .site-nav { position: fixed; inset: 0 0 auto 0; z-index: 100; padding: 20px 0; background: rgba(17, 17, 20, 0.88); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(243, 237, 228, 0.06); }
+    .nav-inner { width: min(1160px, calc(100vw - 40px)); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .nav-brand { font-size: 0.94rem; font-weight: 600; letter-spacing: -0.01em; text-decoration: none; color: var(--white); }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+    .nav-links a { text-decoration: none; color: rgba(243, 237, 228, 0.72); font-size: 0.92rem; transition: color 180ms var(--ease); }
+    .nav-links a:hover { color: var(--white); }
+
+    .container { width: min(1160px, calc(100vw - 40px)); margin: 0 auto; }
+    .hero { background: var(--ink); color: var(--white); padding: 132px 0 88px; min-height: 100vh; display: flex; align-items: center; }
+    .hero-inner { display: grid; gap: 40px; }
+    .eyebrow { font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(243, 237, 228, 0.58); }
+    .hero h1 { font-family: var(--serif); font-size: clamp(3rem, 8vw, 6.8rem); line-height: 0.96; max-width: 10ch; font-weight: 400; letter-spacing: -0.03em; }
+    .hero h1 em { font-style: italic; color: var(--accent); }
+    .hero-copy { max-width: 680px; font-size: clamp(1.05rem, 1.6vw, 1.28rem); color: var(--text-light); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; text-decoration: none; padding: 14px 20px; border-radius: 999px; font-weight: 600; font-size: 0.98rem; transition: transform 180ms var(--ease), background 180ms var(--ease), border-color 180ms var(--ease); }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary { background: var(--white); color: var(--ink); }
+    .btn-secondary { background: transparent; color: var(--white); border: 1px solid rgba(243, 237, 228, 0.18); }
+    .btn-secondary:hover { border-color: rgba(243, 237, 228, 0.34); }
+
+    .stat-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 28px; }
+    .stat-row-dark { grid-template-columns: repeat(4, minmax(0, 1fr)); padding-top: 28px; border-top: 1px solid var(--line-dark); }
+    .stat-item { display: grid; gap: 4px; }
+    .stat-value { font-family: var(--serif); font-size: clamp(1.6rem, 3vw, 2.3rem); line-height: 1; }
+    .stat-label { font-size: 0.9rem; color: var(--text-soft); }
+    .stat-row-dark .stat-label { color: rgba(243, 237, 228, 0.62); }
+    .stat-row-dark .stat-value { color: var(--white); }
+
+    .chapter { padding: 96px 0; }
+    .chapter-light { background: var(--paper); color: var(--text); }
+    .chapter-dark { background: #17171b; color: var(--white); }
+    .chapter-soft { background: var(--paper-deep); color: var(--text); }
+    .chapter-head { display: grid; grid-template-columns: 180px 1fr; gap: 32px; align-items: start; margin-bottom: 44px; }
+    .chapter-label { font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); font-weight: 700; }
+    .chapter-copy h2 { font-family: var(--serif); font-size: clamp(2.3rem, 5vw, 4rem); line-height: 1; font-weight: 400; margin-bottom: 14px; letter-spacing: -0.03em; }
+    .chapter-copy p { max-width: 660px; color: var(--text-soft); font-size: 1.05rem; }
+    .chapter-dark .chapter-copy p { color: rgba(243, 237, 228, 0.72); }
+
+    .feature-card { background: rgba(255,255,255,0.64); border: 1px solid var(--line-light); border-radius: var(--radius); padding: clamp(22px, 3vw, 34px); box-shadow: var(--shadow); display: grid; grid-template-columns: 1.15fr 0.95fr; gap: 28px; align-items: center; }
+    .feature-copy h3 { font-family: var(--serif); font-size: clamp(2rem, 4vw, 3rem); line-height: 0.98; font-weight: 400; margin-bottom: 14px; }
+    .feature-copy p { max-width: 52ch; font-size: 1rem; color: var(--text-soft); }
+    .feature-gallery { display: grid; grid-template-columns: 1.2fr 1fr; gap: 14px; }
+    .feature-gallery img, .mini-card-image, .image-grid img { border-radius: 18px; object-fit: cover; border: 1px solid rgba(17,17,20,0.06); }
+    .feature-gallery img:first-child { aspect-ratio: 16 / 11; }
+    .feature-gallery-stack { display: grid; gap: 14px; }
+    .feature-gallery-stack img { aspect-ratio: 1 / 1; }
+
+    .project-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 20px; }
+    .mini-card { background: rgba(255,255,255,0.64); border: 1px solid var(--line-light); border-radius: 22px; overflow: hidden; box-shadow: var(--shadow); }
+    .mini-card-image { aspect-ratio: 16 / 10; }
+    .mini-card-body { padding: 22px; }
+    .mini-card-eyebrow { display: inline-block; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 10px; }
+    .mini-card h3 { font-family: var(--serif); font-size: 1.9rem; line-height: 1; font-weight: 400; margin-bottom: 10px; }
+    .mini-card p { color: var(--text-soft); margin-bottom: 14px; }
+    .text-link { color: var(--text); text-decoration: none; font-weight: 600; }
+
+    .case-list { display: grid; gap: 24px; }
+    .case-study { border-top: 1px solid var(--line-dark); padding-top: 28px; display: grid; grid-template-columns: 220px 1fr; gap: 34px; }
+    .case-meta { display: grid; gap: 6px; align-content: start; }
+    .case-name { font-size: 1.2rem; font-weight: 700; }
+    .case-role, .case-years { color: rgba(243, 237, 228, 0.64); font-size: 0.96rem; }
+    .case-body h3 { font-family: var(--serif); font-size: clamp(2rem, 4vw, 3rem); line-height: 1; letter-spacing: -0.025em; font-weight: 400; margin-bottom: 12px; }
+    .case-body p { color: rgba(243, 237, 228, 0.74); max-width: 60ch; margin-bottom: 18px; font-size: 1.02rem; }
+    .case-body .stat-row { grid-template-columns: repeat(4, minmax(0, 1fr)); margin-bottom: 18px; }
+    .case-body .stat-label { color: rgba(243, 237, 228, 0.6); }
+    .case-body .stat-value { color: var(--white); }
+    .image-grid { display: grid; gap: 12px; margin-top: 8px; }
+    .image-grid-three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .image-grid-four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .image-grid img { aspect-ratio: 4 / 5; background: rgba(255,255,255,0.03); }
+    .case-study-compact .case-body .stat-row { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+    .about-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 28px; }
+    .about-card, .contact-card { background: rgba(255,255,255,0.58); border: 1px solid var(--line-light); border-radius: var(--radius); padding: clamp(24px, 3vw, 34px); box-shadow: var(--shadow); }
+    .about-card h3, .contact-card h3 { font-family: var(--serif); font-size: clamp(2rem, 4vw, 3rem); line-height: 1; font-weight: 400; margin-bottom: 14px; }
+    .about-card p, .contact-card p { color: var(--text-soft); font-size: 1.02rem; margin-bottom: 14px; max-width: 56ch; }
+    .about-notes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 18px; }
+    .note { border-top: 1px solid var(--line-light); padding-top: 12px; }
+    .note-label { display: block; font-size: 0.77rem; text-transform: uppercase; letter-spacing: 0.11em; color: var(--accent); margin-bottom: 6px; font-weight: 700; }
+    .note-copy { color: var(--text-soft); font-size: 0.96rem; }
+    .contact-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
+    .contact-links a { text-decoration: none; }
+
+    footer { background: var(--ink); color: rgba(243, 237, 228, 0.72); padding: 24px 0 34px; border-top: 1px solid rgba(243, 237, 228, 0.06); }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; font-size: 0.92rem; }
+
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s var(--ease), transform 0.6s var(--ease); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 960px) {
+      .chapter-head, .case-study, .about-grid, .feature-card { grid-template-columns: 1fr; }
+      .project-grid { grid-template-columns: 1fr; }
+      .feature-gallery { grid-template-columns: 1fr 1fr; }
+      .stat-row-dark, .case-body .stat-row, .about-notes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .nav-links { gap: 18px; }
+    }
+
+    @media (max-width: 720px) {
+      .site-nav { padding: 16px 0; }
+      .nav-inner { flex-direction: column; align-items: flex-start; }
+      .nav-links { flex-wrap: wrap; gap: 12px 18px; }
+      .hero { padding: 148px 0 72px; min-height: auto; }
+      .hero-inner { gap: 26px; }
+      .feature-gallery { grid-template-columns: 1fr; }
+      .feature-gallery-stack { grid-template-columns: 1fr 1fr; }
+      .image-grid-three, .image-grid-four, .stat-row, .stat-row-dark, .case-body .stat-row, .about-notes { grid-template-columns: 1fr 1fr; }
+      .chapter { padding: 76px 0; }
+    }
+
+    @media (max-width: 520px) {
+      .image-grid-three, .image-grid-four, .stat-row, .stat-row-dark, .case-body .stat-row, .about-notes { grid-template-columns: 1fr; }
+      .btn { width: 100%; }
+      .hero-actions { width: 100%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .btn:hover { transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a href="#top" class="nav-brand">Scott Bell</a>
+      <ul class="nav-links">
+        <li><a href="#current-work">Current</a></li>
+        <li><a href="#selected-work">Selected Work</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="container hero-inner">
+      <div class="reveal">
+        <div class="eyebrow">Scott Bell · Product Designer · Victoria, BC</div>
+      </div>
+      <div class="reveal">
+        <h1>24 products in 14 years. The last four, I built myself.</h1>
+      </div>
+      <div class="reveal">
+        <p class="hero-copy">I've led design at Strike, AIOZ, Fountain, and KOHO. Lately I've been building AI tools, a studio, and the workflows I wish already existed.</p>
+      </div>
+      <div class="hero-actions reveal">
+        <a href="mailto:hello@scottkbell.com" class="btn btn-primary">Email Scott</a>
+        <a href="#selected-work" class="btn btn-secondary">See selected work</a>
+      </div>
+      <div class="stat-row stat-row-dark"><div class="stat-item"><span class="stat-value">1.5M+</span><span class="stat-label">users reached</span></div><div class="stat-item"><span class="stat-value">65+</span><span class="stat-label">countries</span></div><div class="stat-item"><span class="stat-value">100×</span><span class="stat-label">market-cap growth at AIOZ</span></div><div class="stat-item"><span class="stat-value">80+</span><span class="stat-label">site demos built</span></div></div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="chapter chapter-light" id="current-work">
+      <div class="container chapter-head reveal">
+        <div class="chapter-label">Current</div>
+        <div class="chapter-copy">
+          <h2>What I've been building lately.</h2>
+          <p>Recent work first. It shows the direction clearly: builder, operator, product designer, and someone using AI in the actual work.</p>
+        </div>
+      </div>
+      <div class="container feature-card reveal">
+        <div class="feature-copy">
+          <span class="mini-card-eyebrow">Studio · 2024–Present</span>
+          <h3>Nakamoto Design Co.</h3>
+          <p>Nakamoto Design Co. is a studio built as a pipeline. I research a business, pull real reviews, write the copy, make the visuals, and ship a live site. So far that has turned into 80+ local-business demos across Canada.</p>
+          <div class="stat-row"><div class="stat-item"><span class="stat-value">80+</span><span class="stat-label">site demos</span></div><div class="stat-item"><span class="stat-value">1</span><span class="stat-label">designer</span></div><div class="stat-item"><span class="stat-value">End to end</span><span class="stat-label">workflow</span></div></div>
+        </div>
+        <div class="feature-gallery">
+          <img src="assets/nakamoto.jpg" alt="Nakamoto Design Co. preview collage">
+          <div class="feature-gallery-stack">
+            <img src="assets/autosite-stiritup.jpg" alt="Stir It Up demo preview">
+            <img src="assets/autosite-kreativeink.jpg" alt="Kreative Ink demo preview">
+          </div>
+        </div>
+      </div>
+      <div class="container project-grid">
+        
+          <article class="mini-card reveal">
+            <img src="assets/loopin.jpg" alt="LoopIn preview" class="mini-card-image">
+            <div class="mini-card-body">
+              <span class="mini-card-eyebrow">Browser Tool</span>
+              <h3>LoopIn</h3>
+              <p>Click an element in the browser and send the DOM, styles, and context straight to a coding agent.</p>
+              <a href="#contact" class="text-link">See project</a>
+            </div>
+          </article>
+        
+          <article class="mini-card reveal">
+            <img src="assets/mixid.jpg" alt="Mix'd preview" class="mini-card-image">
+            <div class="mini-card-body">
+              <span class="mini-card-eyebrow">Open Source</span>
+              <h3>Mix'd</h3>
+              <p>Paste a URL from Mixcloud, SoundCloud, or YouTube. Get a clean timestamped tracklist back.</p>
+              <a href="https://mix-id.vercel.app/" class="text-link">See project</a>
+            </div>
+          </article>
+        
+          <article class="mini-card reveal">
+            <img src="assets/clawprint.jpg" alt="Clawprint preview" class="mini-card-image">
+            <div class="mini-card-body">
+              <span class="mini-card-eyebrow">AI Calibration</span>
+              <h3>Clawprint</h3>
+              <p>A psychology-based profile that gives an AI agent a better sense of who it is working with and how to push back.</p>
+              <a href="#contact" class="text-link">See project</a>
+            </div>
+          </article>
+        
+      </div>
+    </section>
+
+    
+      <section class="chapter chapter-dark" id="selected-work">
+        <div class="container chapter-head reveal">
+          <div class="chapter-label">Selected Work</div>
+          <div class="chapter-copy">
+            <h2>Work at scale.</h2>
+            <p>The common thread is systems work: redesign the product, clarify the structure, and make the next hundred decisions easier for the team and the customer.</p>
+          </div>
+        </div>
+        <div class="container case-list">
+          <article class="case-study reveal">
+            <div class="case-meta">
+              <span class="case-name">Strike</span>
+              <span class="case-role">Senior Product Designer</span>
+              <span class="case-years">2021–2023</span>
+            </div>
+            <div class="case-body">
+              <h3>450+ screens in five months. Then it shipped to 65+ countries.</h3>
+              <p>I led the mobile redesign across onboarding, payments, KYC, and support, and co-owned the iOS and Android design system. Strike scaled to 1.5M+ users.</p>
+              <div class="stat-row"><div class="stat-item"><span class="stat-value">1.5M+</span><span class="stat-label">users</span></div><div class="stat-item"><span class="stat-value">65+</span><span class="stat-label">countries</span></div><div class="stat-item"><span class="stat-value">450+</span><span class="stat-label">screens</span></div><div class="stat-item"><span class="stat-value">iOS + Android</span><span class="stat-label">system</span></div></div>
+              <div class="image-grid image-grid-four reveal"><img src="assets/strike1.png" alt="Strike interface screenshot"><img src="assets/strike2.png" alt="Strike interface screenshot"><img src="assets/strike3.png" alt="Strike interface screenshot"><img src="assets/strike4.png" alt="Strike interface screenshot"></div>
+            </div>
+          </article>
+
+          <article class="case-study reveal">
+            <div class="case-meta">
+              <span class="case-name">AIOZ Network</span>
+              <span class="case-role">Principal Product Designer</span>
+              <span class="case-years">2023–2025</span>
+            </div>
+            <div class="case-body">
+              <h3>Eight products. One system. Market cap from $13M to $1.38B.</h3>
+              <p>I led design across the AIOZ ecosystem: AI marketplace, multichain wallet, browser extension, desktop node app, storage, and video infrastructure. The hard part was making eight products feel like one company.</p>
+              <div class="stat-row"><div class="stat-item"><span class="stat-value">8</span><span class="stat-label">products</span></div><div class="stat-item"><span class="stat-value">100×</span><span class="stat-label">growth</span></div><div class="stat-item"><span class="stat-value">$1.38B</span><span class="stat-label">peak market cap</span></div><div class="stat-item"><span class="stat-value">AI + Web3</span><span class="stat-label">ecosystem</span></div></div>
+              <div class="image-grid image-grid-three reveal"><img src="assets/aioz1.png" alt="Aioz interface screenshot"><img src="assets/aioz2.png" alt="Aioz interface screenshot"><img src="assets/aioz3.png" alt="Aioz interface screenshot"></div>
+            </div>
+          </article>
+
+          <article class="case-study reveal">
+            <div class="case-meta">
+              <span class="case-name">Fountain</span>
+              <span class="case-role">Design Advisor / Director</span>
+              <span class="case-years">2023–2024</span>
+            </div>
+            <div class="case-body">
+              <h3>Full mobile rebuild in under five months.</h3>
+              <p>I built a semantic design system and redesigned listening, tipping, wallet, and onboarding flows for a Bitcoin-native podcasting product. Apple featured the work twice.</p>
+              <div class="stat-row"><div class="stat-item"><span class="stat-value">5 months</span><span class="stat-label">to ship</span></div><div class="stat-item"><span class="stat-value">2×</span><span class="stat-label">Apple featured</span></div><div class="stat-item"><span class="stat-value">wallet + tipping</span><span class="stat-label">core flows</span></div><div class="stat-item"><span class="stat-value">semantic</span><span class="stat-label">design system</span></div></div>
+              <div class="image-grid image-grid-four reveal"><img src="assets/fountain1.png" alt="Fountain interface screenshot"><img src="assets/fountain2.png" alt="Fountain interface screenshot"><img src="assets/fountain3.png" alt="Fountain interface screenshot"><img src="assets/fountain4.png" alt="Fountain interface screenshot"></div>
+            </div>
+          </article>
+
+          <article class="case-study case-study-compact reveal">
+            <div class="case-meta">
+              <span class="case-name">KOHO</span>
+              <span class="case-role">Design Lead · Employee #1</span>
+              <span class="case-years">2015–2018</span>
+            </div>
+            <div class="case-body">
+              <h3>Zero users at the start. 100K+ users not long after.</h3>
+              <p>Employee #1 at KOHO. Built the product foundation from zero across onboarding, transactions, and budgeting. Grew to 100K+ users, and the company is now valued at $800M+.</p>
+              <div class="stat-row"><div class="stat-item"><span class="stat-value">#1</span><span class="stat-label">employee</span></div><div class="stat-item"><span class="stat-value">0 → 100K+</span><span class="stat-label">users</span></div><div class="stat-item"><span class="stat-value">$800M+</span><span class="stat-label">valuation</span></div></div>
+            </div>
+          </article>
+        </div>
+      </section>
+    
+
+    <section class="chapter chapter-soft" id="about">
+      <div class="container chapter-head reveal">
+        <div class="chapter-label">About</div>
+        <div class="chapter-copy">
+          <h2>Scientist brain. Design hands.</h2>
+          <p>The throughline has always been systems. First in a lab. Then in product teams. Now in AI-native tools and workflows.</p>
+        </div>
+      </div>
+      <div class="container about-grid">
+        <article class="about-card reveal">
+          <h3>How I work.</h3>
+          <p>I have a microbiology degree and an interaction design degree. Same instinct, different tools: observe the system, find the failure point, test the fix.</p>
+          <p>Now I'm focused on AI-agent design, product systems, and operator workflows where humans and agents can actually work together in useful ways.</p>
+          <div class="about-notes">
+            <div class="note"><span class="note-label">Education</span><span class="note-copy">BSc Microbiology, UVic · BA Interaction Design, Emily Carr</span></div>
+            <div class="note"><span class="note-label">Career</span><span class="note-copy">Fintech, Bitcoin, Web3, AI, design systems, zero-to-one work</span></div>
+            <div class="note"><span class="note-label">Strength</span><span class="note-copy">Product structure, interaction design, systems thinking, shipping</span></div>
+            <div class="note"><span class="note-label">Right now</span><span class="note-copy">AI-agent design, operator UX, and tools for real human + agent collaboration</span></div>
+          </div>
+        </article>
+        <article class="contact-card reveal" id="contact">
+          <h3>I'm most useful early.</h3>
+          <p>Before the scope locks and before the obvious solution wins.</p>
+          <p>Product design, AI systems, design leadership, or a strange new thing that needs shape.</p>
+          <div class="contact-links">
+            <a href="mailto:hello@scottkbell.com" class="btn btn-primary">hello@scottkbell.com</a>
+            <a href="https://www.linkedin.com/in/scottkbell/" class="btn btn-secondary">LinkedIn</a>
+            <a href="https://www.scottkbell.com/" class="btn btn-secondary">Current portfolio</a>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© 2026 Scott Bell</span>
+      <span>Victoria, BC · Product Designer · AI systems</span>
+    </div>
+  </footer>
+
+  <script>
+    const observer = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      ? null
+      : new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) entry.target.classList.add('visible');
+          });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    if (observer) {
+      document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    } else {
+      document.querySelectorAll('.reveal').forEach((el) => el.classList.add('visible'));
+    }
+  </script>
+</body>
+</html>

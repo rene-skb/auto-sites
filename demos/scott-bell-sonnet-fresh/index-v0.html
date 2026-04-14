@@ -1,0 +1,498 @@
+<!--
+SCOTT BELL — SONNET FRESH — index-v0.html
+Creative direction: "The Long View"
+
+Concept:
+A portfolio that leads with depth and duration rather than a single flashy claim.
+The hero uses large display numbers (14 years / 24 products) as typographic anchors —
+a completely different composition from the previous two builds.
+
+Divergence from scott-bell-portfolio-proof and scott-bell-sonnet-proof:
+- Different font stack: Fraunces (optical serif) + DM Sans (vs Inter+Instrument or SpaceGrotesk+Cormorant)
+- Different palette: terracotta/brick accent (#9B3D2E) vs purple or amber
+- Hero uses split numeric display — not a prose headline, not a 2-col layout
+- Selected work section is LIGHT (paper background, not dark)
+- Current work rendered as editorial table list, not cards or grids
+- Section order: Hero → Selected Work (light) → Building Now → Philosophy → Contact
+- No "chapter head" component — each section uses a floating label above
+
+Panel: v0 — creative direction established, rough structure, basic CSS
+Copy: first pass, factual, not yet refined
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scott Bell — Product Designer</title>
+  <meta name="description" content="Product designer with 14 years and 24 products. Strike, AIOZ, Fountain, KOHO. Now building his own.">
+  <meta property="og:title" content="Scott Bell — Product Designer">
+  <meta property="og:description" content="14 years. 24 products. Six of the latest ones, built alone.">
+  <meta property="og:image" content="../scott-bell-opus/assets/strike1.png">
+  <meta property="og:url" content="https://auto-sites.pages.dev/demos/scott-bell-sonnet-fresh/">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=DM+Sans:opsz,wght@9..40,300..500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink:       #0B0A08;
+      --ink-soft:  #141210;
+      --paper:     #F7F3EC;
+      --paper-mid: #EFE9DD;
+      --brick:     #9B3D2E;
+      --brick-dim: rgba(155, 61, 46, 0.15);
+      --text:      #1C1810;
+      --muted:     #7A6E62;
+      --line:      rgba(28, 24, 16, 0.1);
+      --line-dark: rgba(247, 243, 236, 0.08);
+      --serif:     'Fraunces', Georgia, serif;
+      --sans:      'DM Sans', -apple-system, sans-serif;
+      --max:       1200px;
+      --pad:       clamp(24px, 5vw, 80px);
+      --ease:      cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: var(--sans); background: var(--paper); color: var(--text);
+           line-height: 1.65; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    img { display: block; width: 100%; object-fit: cover; }
+    a { color: inherit; text-decoration: none; }
+
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--pad); }
+
+    .skip { position: absolute; left: 16px; top: -80px; background: var(--brick);
+            color: var(--paper); padding: 10px 16px; border-radius: 3px; z-index: 999;
+            font-size: 0.85rem; }
+    .skip:focus { top: 16px; }
+
+    /* NAV */
+    .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+           height: 60px; display: flex; align-items: center;
+           transition: background 0.25s var(--ease); }
+    .nav.scrolled { background: rgba(11, 10, 8, 0.92); backdrop-filter: blur(14px);
+                    -webkit-backdrop-filter: blur(14px);
+                    border-bottom: 1px solid var(--line-dark); }
+    .nav-inner { max-width: var(--max); width: 100%; margin: 0 auto; padding: 0 var(--pad);
+                 display: flex; align-items: center; justify-content: space-between; }
+    .nav-name { font-family: var(--serif); font-size: 1.05rem; font-weight: 400;
+                letter-spacing: 0.02em; color: rgba(247, 243, 236, 0.8); }
+    .nav-links { list-style: none; display: flex; gap: 28px; }
+    .nav-links a { font-size: 0.85rem; font-weight: 400; letter-spacing: 0.01em;
+                   color: rgba(247, 243, 236, 0.45);
+                   transition: color 0.18s; }
+    .nav-links a:hover { color: rgba(247, 243, 236, 0.9); }
+
+    /* HERO */
+    .hero { background: var(--ink); min-height: 100svh; padding: 60px 0 96px;
+            display: flex; flex-direction: column; justify-content: center;
+            position: relative; }
+
+    .hero-label { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+                  color: rgba(155, 61, 46, 0.7); margin-bottom: 40px; }
+
+    .hero-numbers { display: flex; gap: 0; align-items: baseline; margin-bottom: 48px; }
+    .hero-num-block { display: flex; flex-direction: column; }
+    .hero-num-block + .hero-num-block { margin-left: 80px; }
+    .hero-num { font-family: var(--serif); font-size: clamp(6rem, 18vw, 16rem);
+                font-weight: 300; line-height: 0.9; letter-spacing: -0.04em;
+                color: rgba(247, 243, 236, 0.9); }
+    .hero-num-label { font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase;
+                      color: rgba(247, 243, 236, 0.3); margin-top: 14px; }
+
+    .hero-divider { width: 100%; height: 1px; background: var(--line-dark); margin-bottom: 40px; }
+
+    .hero-copy-row { display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
+                     align-items: end; }
+    .hero-headline { font-family: var(--serif); font-size: clamp(1.5rem, 3vw, 2.4rem);
+                     font-weight: 300; font-style: italic; line-height: 1.2;
+                     letter-spacing: -0.02em; color: rgba(247, 243, 236, 0.85); }
+    .hero-sub { max-width: 480px; font-size: 1rem; line-height: 1.72;
+                color: rgba(247, 243, 236, 0.45); margin-bottom: 28px; }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    /* BUTTONS */
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 24px;
+           font-size: 0.875rem; font-weight: 500; border-radius: 3px; cursor: pointer;
+           border: none; transition: transform 0.15s, background 0.18s, border-color 0.18s; }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-brick { background: var(--brick); color: var(--paper); }
+    .btn-brick:hover { background: #b3462f; }
+    .btn-ghost { background: transparent; border: 1px solid rgba(247, 243, 236, 0.16);
+                 color: rgba(247, 243, 236, 0.75); }
+    .btn-ghost:hover { border-color: rgba(247, 243, 236, 0.38); color: var(--paper); }
+    .btn-ghost-dark { background: transparent; border: 1px solid var(--line);
+                      color: var(--muted); }
+    .btn-ghost-dark:hover { border-color: rgba(28, 24, 16, 0.35); color: var(--text); }
+
+    /* SECTION LABEL */
+    .section-label { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.18em;
+                     text-transform: uppercase; color: var(--brick); margin-bottom: 48px; }
+    .section-label.dim { color: rgba(155, 61, 46, 0.55); }
+
+    /* SELECTED WORK */
+    .work { background: var(--paper); padding: clamp(88px, 11vw, 128px) 0; }
+    .work-header { display: flex; align-items: baseline; justify-content: space-between;
+                   margin-bottom: 72px; }
+    .work-title { font-family: var(--serif); font-size: clamp(2rem, 4vw, 3.5rem);
+                  font-weight: 400; letter-spacing: -0.02em; line-height: 1.05; }
+    .work-note { max-width: 280px; font-size: 0.9rem; line-height: 1.6; color: var(--muted); }
+
+    .case-list { display: grid; gap: 0; }
+    .case { padding: 56px 0; border-top: 1px solid var(--line); }
+    .case:last-child { border-bottom: 1px solid var(--line); }
+
+    .case-top { display: grid; grid-template-columns: 200px 1fr; gap: 40px;
+                align-items: start; margin-bottom: 28px; }
+    .case-meta { padding-top: 6px; }
+    .case-company { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em;
+                    text-transform: uppercase; color: var(--brick); margin-bottom: 6px; }
+    .case-role { font-size: 0.85rem; color: var(--muted); }
+    .case-years { font-size: 0.82rem; color: rgba(122, 110, 98, 0.7); }
+
+    .case-headline { font-family: var(--serif); font-size: clamp(1.85rem, 3.5vw, 3rem);
+                     font-weight: 400; letter-spacing: -0.025em; line-height: 1.05;
+                     margin-bottom: 18px; max-width: 26ch; }
+    .case-copy { max-width: 60ch; font-size: 0.98rem; line-height: 1.72;
+                 color: var(--muted); }
+
+    .case-images { display: grid; gap: 10px; margin-top: 28px;
+                   grid-template-columns: repeat(4, 1fr); }
+    .case-images.three { grid-template-columns: repeat(3, 1fr); }
+    .case-images.two { grid-template-columns: repeat(2, 1fr); }
+    .case-images img { aspect-ratio: 4/3; border-radius: 6px;
+                       border: 1px solid var(--line);
+                       background: rgba(28, 24, 16, 0.04); }
+
+    /* BUILDING */
+    .building { background: var(--paper-mid); padding: clamp(88px, 11vw, 128px) 0; }
+    .building-header { margin-bottom: 64px; }
+    .building-title { font-family: var(--serif); font-size: clamp(2rem, 4vw, 3.5rem);
+                      font-weight: 400; letter-spacing: -0.02em; margin-bottom: 16px; }
+    .building-sub { max-width: 540px; font-size: 1rem; line-height: 1.7; color: var(--muted); }
+
+    /* Table layout for projects */
+    .project-table { display: grid; gap: 0; border-top: 1px solid var(--line); }
+    .project-row { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 24px;
+                   padding: 20px 0; border-bottom: 1px solid var(--line);
+                   align-items: baseline; }
+    .project-row-header { grid-template-columns: 2fr 1fr 1fr; color: var(--muted);
+                          font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+                          padding: 14px 0 14px; }
+    .project-name { font-family: var(--serif); font-size: 1.35rem; font-weight: 400;
+                    letter-spacing: -0.01em; }
+    .project-type { font-size: 0.85rem; color: var(--muted); }
+    .project-desc { font-size: 0.88rem; line-height: 1.52; color: var(--muted); }
+
+    /* PHILOSOPHY */
+    .philosophy { background: var(--ink); padding: clamp(88px, 11vw, 120px) 0; }
+    .phil-quote { font-family: var(--serif); font-size: clamp(1.9rem, 4.5vw, 4rem);
+                  font-weight: 300; font-style: italic; letter-spacing: -0.025em;
+                  line-height: 1.12; color: rgba(247, 243, 236, 0.9);
+                  max-width: 22ch; margin-bottom: 32px; }
+    .phil-body { max-width: 58ch; font-size: 1.02rem; line-height: 1.72;
+                 color: rgba(247, 243, 236, 0.48); }
+
+    /* CONTACT */
+    .contact { background: var(--ink-soft); padding: clamp(96px, 12vw, 148px) 0; }
+    .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+                     align-items: start; }
+    .contact-left h2 { font-family: var(--serif); font-size: clamp(2.5rem, 6vw, 5.5rem);
+                       font-weight: 300; font-style: italic; letter-spacing: -0.035em;
+                       line-height: 1.02; color: rgba(247, 243, 236, 0.9); margin-bottom: 24px; }
+    .contact-left p { max-width: 46ch; font-size: 1rem; line-height: 1.7;
+                      color: rgba(247, 243, 236, 0.45); margin-bottom: 32px; }
+    .contact-right { padding-top: 12px; }
+    .contact-fact { padding: 18px 0; border-bottom: 1px solid rgba(247, 243, 236, 0.06); }
+    .contact-fact:first-child { border-top: 1px solid rgba(247, 243, 236, 0.06); }
+    .contact-fact-label { display: block; font-size: 0.65rem; letter-spacing: 0.18em;
+                          text-transform: uppercase; color: rgba(155, 61, 46, 0.6);
+                          margin-bottom: 6px; }
+    .contact-fact p { font-size: 0.95rem; color: rgba(247, 243, 236, 0.55);
+                      line-height: 1.5; }
+
+    /* FOOTER */
+    footer { background: var(--ink); padding: 20px 0 28px;
+             border-top: 1px solid rgba(247, 243, 236, 0.04); }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center;
+                    gap: 16px; flex-wrap: wrap; }
+    .footer-name { font-family: var(--serif); font-size: 0.9rem;
+                   color: rgba(247, 243, 236, 0.25); }
+    .footer-note { font-size: 0.78rem; color: rgba(247, 243, 236, 0.18); }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .hero-numbers { flex-wrap: wrap; gap: 24px; }
+      .hero-num-block + .hero-num-block { margin-left: 0; }
+      .hero-copy-row { grid-template-columns: 1fr; gap: 24px; }
+      .work-header { flex-direction: column; gap: 20px; }
+      .case-top { grid-template-columns: 1fr; gap: 12px; }
+      .case-images.four { grid-template-columns: repeat(2, 1fr); }
+      .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+      .project-row { grid-template-columns: 1fr; gap: 6px; }
+      .project-row-header { display: none; }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .case-images, .case-images.three, .case-images.two { grid-template-columns: repeat(2, 1fr); }
+      .hero-num { font-size: clamp(5rem, 18vw, 8rem); }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip">Skip to content</a>
+
+  <nav class="nav" id="top">
+    <div class="nav-inner">
+      <a href="#top" class="nav-name">Scott Bell</a>
+      <ul class="nav-links">
+        <li><a href="#work">Work</a></li>
+        <li><a href="#building">Building</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="main">
+
+    <!-- HERO -->
+    <header class="hero">
+      <div class="wrap">
+        <div class="hero-label">Product Designer · Victoria, BC</div>
+
+        <div class="hero-numbers">
+          <div class="hero-num-block">
+            <span class="hero-num">14</span>
+            <span class="hero-num-label">Years</span>
+          </div>
+          <div class="hero-num-block">
+            <span class="hero-num">24</span>
+            <span class="hero-num-label">Products shipped</span>
+          </div>
+        </div>
+
+        <div class="hero-divider"></div>
+
+        <div class="hero-copy-row">
+          <p class="hero-headline">Product designer.<br>Now a builder, too.</p>
+          <div>
+            <p class="hero-sub">Senior designer at Strike, AIOZ, Fountain, and KOHO. Over the past year, I've shipped six of my own — AI tools, a design studio, and the workflows I wished already existed.</p>
+            <div class="hero-actions">
+              <a href="mailto:scott.k.bell@gmail.com" class="btn btn-brick">Email Scott</a>
+              <a href="#work" class="btn btn-ghost">View work ↓</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- SELECTED WORK -->
+    <section class="work" id="work">
+      <div class="wrap">
+        <div class="work-header">
+          <h2 class="work-title">Selected Work</h2>
+          <p class="work-note">Four companies. Different scales, different problems. All shipping real product at speed.</p>
+        </div>
+
+        <div class="case-list">
+
+          <!-- STRIKE -->
+          <article class="case">
+            <div class="case-top">
+              <div class="case-meta">
+                <div class="case-company">Strike</div>
+                <div class="case-role">Senior Product Designer</div>
+                <div class="case-years">2021–2023</div>
+              </div>
+              <div>
+                <h3 class="case-headline">Complete app redesign. 450+ screens. 1.5 million users across 65 countries.</h3>
+                <p class="case-copy">Led the full redesign of Strike's mobile payment platform — onboarding, payments, KYC, and every major flow — shipped in five months. The app processes Lightning-native payments globally and remains one of the most technically complex consumer payment products in Bitcoin.</p>
+              </div>
+            </div>
+            <div class="case-images">
+              <img src="../scott-bell-opus/assets/strike1.png" alt="Strike app interface">
+              <img src="../scott-bell-opus/assets/strike2.png" alt="Strike app interface">
+              <img src="../scott-bell-opus/assets/strike3.png" alt="Strike app interface">
+              <img src="../scott-bell-opus/assets/strike4.png" alt="Strike app interface">
+            </div>
+          </article>
+
+          <!-- AIOZ -->
+          <article class="case">
+            <div class="case-top">
+              <div class="case-meta">
+                <div class="case-company">AIOZ Network</div>
+                <div class="case-role">Principal Product Designer</div>
+                <div class="case-years">2023–2025</div>
+              </div>
+              <div>
+                <h3 class="case-headline">8 products. One design system. Market cap from $13M to $1.38B.</h3>
+                <p class="case-copy">Designed across the full AIOZ ecosystem: AI marketplace, multichain wallet, desktop node app, IPFS pinning, and P2P transfer. Built the unified design system that tied it together. The platform grew 100× in market cap during this period.</p>
+              </div>
+            </div>
+            <div class="case-images three">
+              <img src="../scott-bell-opus/assets/aioz1.png" alt="AIOZ interface">
+              <img src="../scott-bell-opus/assets/aioz2.png" alt="AIOZ interface">
+              <img src="../scott-bell-opus/assets/aioz3.png" alt="AIOZ interface">
+            </div>
+          </article>
+
+          <!-- FOUNTAIN -->
+          <article class="case">
+            <div class="case-top">
+              <div class="case-meta">
+                <div class="case-company">Fountain</div>
+                <div class="case-role">Design Advisor &amp; Director</div>
+                <div class="case-years">2023–2024</div>
+              </div>
+              <div>
+                <h3 class="case-headline">Full rebuild in five months. Featured by Apple twice.</h3>
+                <p class="case-copy">Rebuilt the listening, tipping, and wallet flows for Fountain — a Bitcoin-native podcasting platform. Shipped a semantic, tokenized design system. Apple featured the app twice in the App Store following the redesign.</p>
+              </div>
+            </div>
+            <div class="case-images">
+              <img src="../scott-bell-opus/assets/fountain1.png" alt="Fountain app interface">
+              <img src="../scott-bell-opus/assets/fountain2.png" alt="Fountain app interface">
+              <img src="../scott-bell-opus/assets/fountain3.png" alt="Fountain app interface">
+              <img src="../scott-bell-opus/assets/fountain4.png" alt="Fountain app interface">
+            </div>
+          </article>
+
+          <!-- KOHO -->
+          <article class="case">
+            <div class="case-top">
+              <div class="case-meta">
+                <div class="case-company">KOHO</div>
+                <div class="case-role">Design Lead · Employee #1</div>
+                <div class="case-years">2015–2018</div>
+              </div>
+              <div>
+                <h3 class="case-headline">First employee. Built the design foundation. KOHO is now worth $800M+.</h3>
+                <p class="case-copy">Joined as the first employee and built the product design function from scratch — onboarding, transactions, budgeting — scaling from zero to 100K+ users. KOHO became Canada's highest-rated neobank and is now valued at over $800M.</p>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- BUILDING -->
+    <section class="building" id="building">
+      <div class="wrap">
+        <div class="building-header">
+          <div class="section-label">Self-initiated</div>
+          <h2 class="building-title">What I'm making</h2>
+          <p class="building-sub">Over the past year, I've shipped six of my own products — tools, experiments, and infrastructure I wanted to exist. Most of them are live.</p>
+        </div>
+
+        <div class="project-table">
+          <div class="project-row project-row-header">
+            <span>Project</span>
+            <span>Type</span>
+            <span>What it does</span>
+          </div>
+
+          <div class="project-row">
+            <span class="project-name">LoopIn</span>
+            <span class="project-type">AI Tool</span>
+            <span class="project-desc">Meeting and context management for designers and makers working with AI agents.</span>
+          </div>
+
+          <div class="project-row">
+            <span class="project-name">Mix'd</span>
+            <span class="project-type">Music App</span>
+            <span class="project-desc">Music discovery and curation tool.</span>
+          </div>
+
+          <div class="project-row">
+            <span class="project-name">Clawprint</span>
+            <span class="project-type">Dev Tool</span>
+            <span class="project-desc">Browser bookmarklet that sends UI elements directly to Claude Code via MCP. Click a UI element, send it to your AI IDE.</span>
+          </div>
+
+          <div class="project-row">
+            <span class="project-name">auto-sites</span>
+            <span class="project-type">Studio</span>
+            <span class="project-desc">AI-powered pipeline for generating fully produced local business websites. 80+ demos built.</span>
+          </div>
+
+          <div class="project-row">
+            <span class="project-name">Workout Tracker</span>
+            <span class="project-type">Mobile App</span>
+            <span class="project-desc">Personal workout logging and tracking app.</span>
+          </div>
+
+          <div class="project-row">
+            <span class="project-name">Food Pairing</span>
+            <span class="project-type">Web App</span>
+            <span class="project-desc">Ingredient flavor pairing tool for cooking and cocktail experimentation.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHILOSOPHY -->
+    <section class="philosophy">
+      <div class="wrap">
+        <div class="section-label dim">On design</div>
+        <blockquote class="phil-quote">"I find the structure nobody sees and turn it into something useful."</blockquote>
+        <p class="phil-body">BSc Microbiology + BA Interaction Design. Studying invisible systems for a decade before anyone called it design. The pattern is the same whether it's a cell wall or a payment flow: find the logic underneath, then make it feel obvious.</p>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+      <div class="wrap">
+        <div class="contact-inner">
+          <div class="contact-left">
+            <h2>Open to the right thing.</h2>
+            <p>Product design, AI-native tools, design leadership. Happy to talk about what I'm building or what you're working on.</p>
+            <a href="mailto:scott.k.bell@gmail.com" class="btn btn-brick">Email Scott</a>
+          </div>
+          <div class="contact-right">
+            <div class="contact-fact">
+              <span class="contact-fact-label">Focus</span>
+              <p>AI/agent design, product design, design leadership</p>
+            </div>
+            <div class="contact-fact">
+              <span class="contact-fact-label">Location</span>
+              <p>Victoria, BC — open to remote</p>
+            </div>
+            <div class="contact-fact">
+              <span class="contact-fact-label">Portfolio</span>
+              <p>scottkbell.com</p>
+            </div>
+            <div class="contact-fact">
+              <span class="contact-fact-label">LinkedIn</span>
+              <p>linkedin.com/in/scottbell</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-inner">
+        <span class="footer-name">Scott Bell</span>
+        <span class="footer-note">© 2026 · Victoria, BC</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll state
+    const nav = document.querySelector('.nav');
+    const onScroll = () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  </script>
+</body>
+</html>

@@ -1,0 +1,526 @@
+<!--
+SCOTT BELL — SONNET FRESH — index-v2.html
+WHAT CRITIQUE applied from v1.
+
+Changes:
+- Hero sub: removed company name repetition (cred bar handles that); hero copy focuses on posture
+- "Built on his own" → "Shipped independently"
+- KOHO copy: "It raised at" → cleaner phrasing
+- Building section: switched to paper-mid (warm light) background for dark→light→light→dark rhythm
+- Project table: added a subtle "Scale" or "Status" feel to smaller entries; tightened
+- "make it feel obvious" → "turn it into something tangible"
+- Nakamoto: removed from contact facts; added as a note inside the about copy instead
+- Tightened about copy in the close section
+- Thinned credential bar to just the four bullet points — less visual density
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scott Bell — Product Designer</title>
+  <meta name="description" content="Product designer with 14 years and 24 products. Strike, AIOZ, Fountain, KOHO. Building his own tools.">
+  <meta property="og:title" content="Scott Bell — Product Designer">
+  <meta property="og:description" content="14 years. 24 products. Six shipped independently.">
+  <meta property="og:image" content="../scott-bell-opus/assets/strike1.png">
+  <meta property="og:url" content="https://auto-sites.pages.dev/demos/scott-bell-sonnet-fresh/">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=DM+Sans:opsz,wght@9..40,300..500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink:       #0B0A08;
+      --ink-soft:  #101009;
+      --paper:     #F7F3EC;
+      --paper-mid: #EFE9DD;
+      --brick:     #9B3D2E;
+      --text:      #1C1810;
+      --muted:     #7A6E62;
+      --line:      rgba(28, 24, 16, 0.1);
+      --line-dark: rgba(247, 243, 236, 0.07);
+      --serif:     'Fraunces', Georgia, serif;
+      --sans:      'DM Sans', -apple-system, sans-serif;
+      --max:       1200px;
+      --pad:       clamp(24px, 5vw, 80px);
+      --ease:      cubic-bezier(0.23, 1, 0.32, 1);
+      --sec:       clamp(88px, 11vw, 128px);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: var(--sans); background: var(--paper); color: var(--text);
+           line-height: 1.65; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    img { display: block; width: 100%; object-fit: cover; }
+    a { color: inherit; text-decoration: none; }
+
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--pad); }
+    .skip { position: absolute; left: 16px; top: -80px; background: var(--brick);
+            color: var(--paper); padding: 10px 16px; border-radius: 3px; z-index: 999; font-size: 0.85rem; }
+    .skip:focus { top: 16px; }
+
+    /* NAV */
+    .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+           height: 60px; display: flex; align-items: center; transition: background 0.25s var(--ease); }
+    .nav.scrolled { background: rgba(11, 10, 8, 0.94); backdrop-filter: blur(14px);
+                    -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--line-dark); }
+    .nav-inner { max-width: var(--max); width: 100%; margin: 0 auto; padding: 0 var(--pad);
+                 display: flex; align-items: center; justify-content: space-between; }
+    .nav-name { font-family: var(--serif); font-size: 1.05rem; font-weight: 400;
+                letter-spacing: 0.02em; color: rgba(247, 243, 236, 0.8); }
+    .nav-links { list-style: none; display: flex; gap: 28px; }
+    .nav-links a { font-size: 0.85rem; color: rgba(247, 243, 236, 0.45); transition: color 0.18s; }
+    .nav-links a:hover { color: rgba(247, 243, 236, 0.9); }
+
+    /* HERO */
+    .hero { background: var(--ink); min-height: 100svh; padding: 60px 0 0;
+            display: flex; flex-direction: column; position: relative; }
+    .hero-body { flex: 1; display: flex; flex-direction: column; justify-content: center;
+                 padding: clamp(80px, 14vh, 140px) 0 clamp(56px, 8vw, 80px); }
+    .hero-label { font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase;
+                  color: rgba(155, 61, 46, 0.65); margin-bottom: 44px; }
+
+    .hero-numbers { display: grid; grid-template-columns: repeat(3, auto) 1fr; gap: 0;
+                    align-items: end; margin-bottom: 52px; }
+    .hero-num-block { display: flex; flex-direction: column; padding-right: 52px; }
+    .hero-num { font-family: var(--serif); font-size: clamp(5.5rem, 14vw, 13rem);
+                font-weight: 300; line-height: 0.88; letter-spacing: -0.04em;
+                color: rgba(247, 243, 236, 0.9); }
+    .hero-num-label { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase;
+                      color: rgba(247, 243, 236, 0.28); margin-top: 12px; }
+    .hero-num-spacer { flex: 1; }
+
+    .hero-rule { width: 100%; height: 1px; background: var(--line-dark); margin-bottom: 44px; }
+
+    .hero-copy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: end; }
+    .hero-statement { font-family: var(--serif); font-size: clamp(1.6rem, 3.2vw, 2.6rem);
+                      font-weight: 300; line-height: 1.15; letter-spacing: -0.02em;
+                      color: rgba(247, 243, 236, 0.9); }
+    .hero-statement em { font-style: italic; }
+    .hero-sub { font-size: clamp(0.9rem, 1.4vw, 1.02rem); line-height: 1.74;
+                color: rgba(247, 243, 236, 0.42); margin-bottom: 30px; max-width: 440px; }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    /* CREDENTIAL BAR */
+    .credential-bar { background: rgba(247, 243, 236, 0.03);
+                      border-top: 1px solid rgba(247, 243, 236, 0.06); padding: 16px 0; }
+    .cred-row { display: flex; gap: 36px; flex-wrap: wrap; align-items: center; }
+    .cred-item { font-size: 0.76rem; color: rgba(247, 243, 236, 0.32); letter-spacing: 0.03em; }
+    .cred-item strong { color: rgba(247, 243, 236, 0.55); font-weight: 500; }
+
+    /* BUTTONS */
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 24px;
+           font-size: 0.875rem; font-weight: 500; border-radius: 3px; cursor: pointer; border: none;
+           transition: transform 0.15s, background 0.18s, border-color 0.18s; }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-brick { background: var(--brick); color: var(--paper); }
+    .btn-brick:hover { background: #b3462f; }
+    .btn-ghost { background: transparent; border: 1px solid rgba(247, 243, 236, 0.16);
+                 color: rgba(247, 243, 236, 0.75); }
+    .btn-ghost:hover { border-color: rgba(247, 243, 236, 0.38); color: var(--paper); }
+
+    .section-label { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.2em;
+                     text-transform: uppercase; color: var(--brick); display: block; }
+    .section-label.dim { color: rgba(155, 61, 46, 0.55); }
+
+    /* SELECTED WORK */
+    .work { background: var(--paper); padding: var(--sec) 0; }
+    .work-header { display: grid; grid-template-columns: 1fr max-content; align-items: end;
+                   gap: 24px; padding-bottom: 52px; border-bottom: 1px solid var(--line); margin-bottom: 0; }
+    .work-title { font-family: var(--serif); font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+                  font-weight: 400; letter-spacing: -0.025em; line-height: 1.02; margin-top: 12px; }
+    .work-note { max-width: 280px; font-size: 0.88rem; line-height: 1.6; color: var(--muted); text-align: right; }
+
+    .case-list { display: grid; gap: 0; }
+    .case { padding: 60px 0 56px; border-bottom: 1px solid var(--line); }
+    .case-top { display: grid; grid-template-columns: 180px 1fr; gap: 40px; align-items: start; margin-bottom: 24px; }
+    .case-meta { padding-top: 8px; }
+    .case-company { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+                    color: var(--brick); margin-bottom: 8px; }
+    .case-role { font-size: 0.85rem; color: var(--text); }
+    .case-years { font-size: 0.8rem; color: rgba(122, 110, 98, 0.75); margin-top: 4px; }
+    .case-headline { font-family: var(--serif); font-size: clamp(1.7rem, 3.2vw, 2.7rem);
+                     font-weight: 400; letter-spacing: -0.025em; line-height: 1.06;
+                     margin-bottom: 18px; max-width: 28ch; }
+    .case-featured .case-headline { font-size: clamp(2rem, 4vw, 3.4rem); }
+    .case-copy { max-width: 62ch; font-size: 0.97rem; line-height: 1.74; color: var(--muted); }
+    .case-images { display: grid; gap: 10px; margin-top: 30px; grid-template-columns: repeat(4, 1fr); }
+    .case-images.three { grid-template-columns: repeat(3, 1fr); }
+    .case-images img { aspect-ratio: 4/3; border-radius: 6px; border: 1px solid var(--line);
+                       background: rgba(28, 24, 16, 0.04); }
+
+    /* BUILDING — warm paper now, not dark */
+    .building { background: var(--paper-mid); padding: var(--sec) 0; }
+    .building-header { margin-bottom: 56px; }
+    .building-header h2 { font-family: var(--serif); font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+                          font-weight: 400; letter-spacing: -0.025em; line-height: 1.02;
+                          color: var(--text); margin-top: 12px; margin-bottom: 16px; }
+    .building-header p { max-width: 540px; font-size: 1rem; line-height: 1.7; color: var(--muted); }
+
+    .project-table { border-top: 1px solid var(--line); }
+    .project-row { display: grid; grid-template-columns: 210px 1fr 1.6fr; gap: 24px;
+                   padding: 22px 0; border-bottom: 1px solid var(--line); align-items: start; }
+    .project-row-head { font-size: 0.65rem; letter-spacing: 0.16em; text-transform: uppercase;
+                        color: rgba(122, 110, 98, 0.5); padding: 14px 0; }
+    .project-name { font-family: var(--serif); font-size: 1.3rem; font-weight: 400;
+                    letter-spacing: -0.01em; color: var(--text); }
+    .project-type { font-size: 0.82rem; color: var(--brick); opacity: 0.75; padding-top: 3px; }
+    .project-desc { font-size: 0.88rem; line-height: 1.6; color: var(--muted); max-width: 44ch; }
+
+    /* CLOSE: ABOUT + CONTACT — dark */
+    .close { background: var(--ink); padding: clamp(96px, 12vw, 148px) 0; }
+    .close-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 96px; align-items: start; }
+    .close-left { }
+    .close-label { margin-bottom: 28px; }
+    .close-left h2 { font-family: var(--serif); font-size: clamp(2.4rem, 5.5vw, 5rem);
+                     font-weight: 300; font-style: italic; letter-spacing: -0.035em; line-height: 1.02;
+                     color: rgba(247, 243, 236, 0.9); margin-bottom: 28px; }
+    .close-left p { max-width: 46ch; font-size: 1rem; line-height: 1.72;
+                    color: rgba(247, 243, 236, 0.44); margin-bottom: 16px; }
+    .close-posture { display: block; margin-top: 24px; font-family: var(--serif);
+                     font-size: 1.08rem; font-style: italic; letter-spacing: -0.01em;
+                     color: rgba(247, 243, 236, 0.38); line-height: 1.5; }
+    .close-actions { margin-top: 36px; display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .close-right { padding-top: 6px; }
+    .close-right .section-label { margin-bottom: 32px; }
+    .fact-list { display: grid; gap: 0; }
+    .fact { padding: 18px 0; border-bottom: 1px solid rgba(247, 243, 236, 0.06); }
+    .fact:first-child { border-top: 1px solid rgba(247, 243, 236, 0.06); }
+    .fact-label { display: block; font-size: 0.63rem; letter-spacing: 0.18em; text-transform: uppercase;
+                  color: rgba(155, 61, 46, 0.55); margin-bottom: 6px; }
+    .fact p { font-size: 0.92rem; color: rgba(247, 243, 236, 0.5); line-height: 1.52; }
+    .fact a { color: rgba(247, 243, 236, 0.6); transition: color 0.18s; }
+    .fact a:hover { color: rgba(247, 243, 236, 0.9); }
+
+    /* FOOTER */
+    footer { background: var(--ink); padding: 20px 0 28px; border-top: 1px solid rgba(247, 243, 236, 0.04); }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .footer-name { font-family: var(--serif); font-size: 0.9rem; color: rgba(247, 243, 236, 0.22); }
+    .footer-note { font-size: 0.78rem; color: rgba(247, 243, 236, 0.15); }
+
+    /* RESPONSIVE */
+    @media (max-width: 1000px) {
+      .hero-numbers { grid-template-columns: repeat(3, auto); }
+      .hero-num-spacer { display: none; }
+      .hero-copy-grid { grid-template-columns: 1fr; gap: 24px; }
+      .work-header { grid-template-columns: 1fr; }
+      .work-note { text-align: left; }
+      .case-top { grid-template-columns: 1fr; gap: 12px; }
+      .project-row { grid-template-columns: 1fr; gap: 6px; }
+      .project-row-head { display: none; }
+      .close-grid { grid-template-columns: 1fr; gap: 56px; }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .hero-num { font-size: clamp(4.5rem, 20vw, 7.5rem); }
+      .hero-num-block { padding-right: 28px; }
+      .case-images, .case-images.three { grid-template-columns: repeat(2, 1fr); }
+      .cred-row { gap: 14px; }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip">Skip to content</a>
+
+  <nav class="nav" id="top">
+    <div class="nav-inner">
+      <a href="#top" class="nav-name">Scott Bell</a>
+      <ul class="nav-links">
+        <li><a href="#work">Work</a></li>
+        <li><a href="#building">Building</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="main">
+
+    <!-- HERO -->
+    <header class="hero">
+      <div class="hero-body">
+        <div class="wrap">
+          <div class="hero-label">Scott Bell · Product Designer · Victoria, BC</div>
+
+          <div class="hero-numbers">
+            <div class="hero-num-block">
+              <span class="hero-num">14</span>
+              <span class="hero-num-label">Years</span>
+            </div>
+            <div class="hero-num-block">
+              <span class="hero-num">24</span>
+              <span class="hero-num-label">Products</span>
+            </div>
+            <div class="hero-num-block">
+              <span class="hero-num">6</span>
+              <span class="hero-num-label">Shipped independently</span>
+            </div>
+            <div class="hero-num-spacer"></div>
+          </div>
+
+          <div class="hero-rule"></div>
+
+          <div class="hero-copy-grid">
+            <p class="hero-statement">
+              Product designer.<br>
+              <em>Builder.</em>
+            </p>
+            <div>
+              <p class="hero-sub">Veteran product designer now shipping his own. Veteran means fourteen years and twenty-four products across payments, crypto, and fintech. His own means six recent builds — tools, experiments, and infrastructure that didn't exist yet.</p>
+              <div class="hero-actions">
+                <a href="mailto:scott.k.bell@gmail.com" class="btn btn-brick">Email Scott</a>
+                <a href="#work" class="btn btn-ghost">Selected work</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Credential bar -->
+      <div class="credential-bar">
+        <div class="wrap">
+          <div class="cred-row">
+            <span class="cred-item"><strong>Strike</strong> — 1.5M users, 65 countries</span>
+            <span class="cred-item"><strong>AIOZ</strong> — 8 products, $1.38B market cap</span>
+            <span class="cred-item"><strong>Fountain</strong> — Apple featured twice</span>
+            <span class="cred-item"><strong>KOHO</strong> — Employee #1, now $800M+</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- SELECTED WORK — light -->
+    <section class="work" id="work">
+      <div class="wrap">
+        <div class="work-header">
+          <div>
+            <span class="section-label">Selected Work</span>
+            <h2 class="work-title">Four companies.<br>Real stakes, real scale.</h2>
+          </div>
+          <p class="work-note">Payments. Crypto. Podcasting. Fintech. Each one complex, each one shipped at speed.</p>
+        </div>
+
+        <div class="case-list">
+
+          <!-- STRIKE -->
+          <article class="case case-featured">
+            <div class="case-top">
+              <div class="case-meta">
+                <div class="case-company">Strike</div>
+                <div class="case-role">Senior Product Designer</div>
+                <div class="case-years">2021–2023</div>
+              </div>
+              <div>
+                <h3 class="case-headline">Complete app redesign. 450 screens. 1.5 million users across 65 countries.</h3>
+                <p class="case-copy">Led the full redesign of Strike's mobile payment platform — every major flow from onboarding and payments to KYC — shipped in five months. Strike processes Lightning-native payments globally and is one of the most technically demanding consumer payment apps on Bitcoin.</p>
+              </div>
+            </div>
+            <div class="case-images">
+              <img src="../scott-bell-opus/assets/strike1.png" alt="Strike app interface">
+              <img src="../scott-bell-opus/assets/strike2.png" alt="Strike app interface">
+              <img src="../scott-bell-opus/assets/strike3.png" alt="Strike app interface">
+              <img src="../scott-bell-opus/assets/strike4.png" alt="Strike app interface">
+            </div>
+          </article>
+
+          <!-- AIOZ -->
+          <article class="case">
+            <div class="case-top">
+              <div class="case-meta">
+                <div class="case-company">AIOZ Network</div>
+                <div class="case-role">Principal Product Designer</div>
+                <div class="case-years">2023–2025</div>
+              </div>
+              <div>
+                <h3 class="case-headline">8 products. One design system. Market cap from $13M to $1.38B.</h3>
+                <p class="case-copy">Designed across the full AIOZ ecosystem: AI marketplace, multichain wallet, desktop node app, IPFS pinning, and P2P transfer. Built the unified design system that tied it all together. The platform grew 100× in market cap during this time.</p>
+              </div>
+            </div>
+            <div class="case-images three">
+              <img src="../scott-bell-opus/assets/aioz1.png" alt="AIOZ interface">
+              <img src="../scott-bell-opus/assets/aioz2.png" alt="AIOZ interface">
+              <img src="../scott-bell-opus/assets/aioz3.png" alt="AIOZ interface">
+            </div>
+          </article>
+
+          <!-- FOUNTAIN -->
+          <article class="case">
+            <div class="case-top">
+              <div class="case-meta">
+                <div class="case-company">Fountain</div>
+                <div class="case-role">Design Advisor &amp; Director</div>
+                <div class="case-years">2023–2024</div>
+              </div>
+              <div>
+                <h3 class="case-headline">Full rebuild in five months. Featured by Apple twice.</h3>
+                <p class="case-copy">Rebuilt the listening, tipping, and wallet flows for Fountain — a Bitcoin-native podcasting platform. Shipped a semantic, tokenized design system. Apple featured the app twice in the App Store following the redesign.</p>
+              </div>
+            </div>
+            <div class="case-images">
+              <img src="../scott-bell-opus/assets/fountain1.png" alt="Fountain app interface">
+              <img src="../scott-bell-opus/assets/fountain2.png" alt="Fountain app interface">
+              <img src="../scott-bell-opus/assets/fountain3.png" alt="Fountain app interface">
+              <img src="../scott-bell-opus/assets/fountain4.png" alt="Fountain app interface">
+            </div>
+          </article>
+
+          <!-- KOHO -->
+          <article class="case">
+            <div class="case-top">
+              <div class="case-meta">
+                <div class="case-company">KOHO</div>
+                <div class="case-role">Design Lead · Employee #1</div>
+                <div class="case-years">2015–2018</div>
+              </div>
+              <div>
+                <h3 class="case-headline">First employee. Built the design function from scratch. KOHO is now valued at $800M+.</h3>
+                <p class="case-copy">Joined as the first employee and built product design from nothing — onboarding, transactions, budgeting, scaling from zero to 100K+ users. KOHO became Canada's highest-rated neobank. It's now valued at over $800 million.</p>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- BUILDING NOW — warm paper-mid -->
+    <section class="building" id="building">
+      <div class="wrap">
+        <div class="building-header">
+          <span class="section-label dim">Self-initiated · 2024–2026</span>
+          <h2>Building now.</h2>
+          <p>Six products shipped independently — some tools he needed, some experiments, some that didn't exist and probably should have.</p>
+        </div>
+
+        <div class="project-table">
+          <div class="project-row project-row-head">
+            <span>Project</span>
+            <span>Type</span>
+            <span>What it is</span>
+          </div>
+
+          <div class="project-row">
+            <div>
+              <div class="project-name">LoopIn</div>
+              <div class="project-type">AI Tool</div>
+            </div>
+            <div></div>
+            <span class="project-desc">Context management for designers and makers working alongside AI agents. Keeps context alive and useful across sessions.</span>
+          </div>
+
+          <div class="project-row">
+            <div>
+              <div class="project-name">auto-sites</div>
+              <div class="project-type">Design Studio</div>
+            </div>
+            <div></div>
+            <span class="project-desc">AI-powered pipeline for generating fully produced local business websites. 80+ demos built and deployed under Nakamoto Design Co.</span>
+          </div>
+
+          <div class="project-row">
+            <div>
+              <div class="project-name">Clawprint</div>
+              <div class="project-type">Dev Tool</div>
+            </div>
+            <div></div>
+            <span class="project-desc">Browser bookmarklet that sends UI elements directly to Claude Code via MCP. Click a component in any browser, ship the fix.</span>
+          </div>
+
+          <div class="project-row">
+            <div>
+              <div class="project-name">Mix'd</div>
+              <div class="project-type">Music App</div>
+            </div>
+            <div></div>
+            <span class="project-desc">Music discovery and curation app.</span>
+          </div>
+
+          <div class="project-row">
+            <div>
+              <div class="project-name">Workout Tracker</div>
+              <div class="project-type">Mobile App</div>
+            </div>
+            <div></div>
+            <span class="project-desc">Personal workout logging and progress tracking.</span>
+          </div>
+
+          <div class="project-row">
+            <div>
+              <div class="project-name">Food Pairing App</div>
+              <div class="project-type">Web App</div>
+            </div>
+            <div></div>
+            <span class="project-desc">Ingredient flavor pairing tool for cooking and cocktail experimentation.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLOSE: ABOUT + CONTACT — dark -->
+    <section class="close" id="contact">
+      <div class="wrap">
+        <div class="close-grid">
+
+          <div class="close-left">
+            <span class="section-label dim close-label">About</span>
+            <h2>I find the structure nobody sees.</h2>
+            <p>BSc Microbiology + BA Interaction Design. A decade studying systems you can't see before anyone called it design. The pattern's been the same: find the hidden layer, turn it into something tangible.</p>
+            <p>Senior roles across payments, crypto, and fintech. Currently building tools at the intersection of AI and design — and figuring out what the next ten years of human-computer collaboration actually looks like.</p>
+            <span class="close-posture">"I'm most useful early, when the problem is still fuzzy."</span>
+            <div class="close-actions">
+              <a href="mailto:scott.k.bell@gmail.com" class="btn btn-brick">Email Scott</a>
+              <a href="https://www.linkedin.com/in/scottkbell" class="btn btn-ghost">LinkedIn</a>
+            </div>
+          </div>
+
+          <div class="close-right">
+            <span class="section-label dim" style="margin-bottom: 32px;">Contact</span>
+            <div class="fact-list">
+              <div class="fact">
+                <span class="fact-label">Open to</span>
+                <p>AI/agent design, product design, design leadership</p>
+              </div>
+              <div class="fact">
+                <span class="fact-label">Location</span>
+                <p>Victoria, BC · Open to remote</p>
+              </div>
+              <div class="fact">
+                <span class="fact-label">Email</span>
+                <p><a href="mailto:scott.k.bell@gmail.com">scott.k.bell@gmail.com</a></p>
+              </div>
+              <div class="fact">
+                <span class="fact-label">Portfolio</span>
+                <p><a href="https://www.scottkbell.com" target="_blank" rel="noopener">scottkbell.com</a></p>
+              </div>
+              <div class="fact">
+                <span class="fact-label">GitHub</span>
+                <p><a href="https://github.com/skip5this" target="_blank" rel="noopener">github.com/skip5this</a></p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-inner">
+        <span class="footer-name">Scott Bell</span>
+        <span class="footer-note">© 2026 · Victoria, BC</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.querySelector('.nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+    if (window.scrollY > 40) nav.classList.add('scrolled');
+  </script>
+</body>
+</html>

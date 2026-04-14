@@ -118,7 +118,8 @@ Hypothesis: Grid consistency + gallery clarity are the highest-impact changes fo
 
   /* ─── HERO: ASYMMETRIC COLLAGE ─── */
   .hero {
-    min-height: calc(100svh - 56px);
+    height: calc(100svh - 40px);
+    min-height: calc(100svh - 40px);
     display: grid;
     grid-template-columns: 55% 45%;
     overflow: hidden;
@@ -141,7 +142,7 @@ Hypothesis: Grid consistency + gallery clarity are the highest-impact changes fo
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 120px var(--gutter) 80px 48px;
+    padding: clamp(72px, 8vh, 96px) var(--gutter) clamp(40px, 5vh, 56px) 48px;
     position: relative;
   }
 
@@ -173,10 +174,10 @@ Hypothesis: Grid consistency + gallery clarity are the highest-impact changes fo
   /* Display: forte */
   .hero-headline {
     font-family: var(--font-serif);
-    font-size: clamp(3rem, 4.5vw, 5.2rem);
+    font-size: clamp(3rem, 4.4vw, 5rem);
     font-weight: 300; line-height: 1.02;
     color: var(--white);
-    margin-bottom: 28px;
+    margin-bottom: 22px;
     letter-spacing: -0.01em;
   }
   .hero-headline em { font-style: italic; }
@@ -185,7 +186,7 @@ Hypothesis: Grid consistency + gallery clarity are the highest-impact changes fo
   .hero-sub {
     font-size: 1.05rem; line-height: 1.72;
     color: var(--bone-dim);
-    margin-bottom: 40px; max-width: 380px;
+    margin-bottom: 30px; max-width: 380px;
     font-weight: 400;
   }
 

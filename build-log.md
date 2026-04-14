@@ -1,5 +1,27 @@
 # Auto-Sites Build Log
 
+### Bahar Bakery & Cafe — Persian Bakery / Café, Vancouver BC
+- **Date:** 2026-04-14
+- **Model:** openai-codex/gpt-5.4
+- **Agent:** Lucy
+- **Folder:** bahar-bakery-cafe
+- **Hero pattern:** asymmetric-collage
+- **Typography:** Cormorant Garamond + Inter
+- **Review layout:** single editorial pull-quote with sourced product proof, no review cards
+- **Visit/hours layout:** stacked utility cards left + single takeaway card right
+- **Stats bar style:** no-stats
+- **WHY Score:** 7.33 (Jobs 7.5 / Graham 7.0 / Ogilvy 7.5)
+- **WHAT Score:** 7.67 (Norman 8.0 / Krug 7.5 / Nielsen 7.5)
+- **HOW Score:** 7.75 (Vignelli 7.5 / Spiekermann 8.0 / Rams 7.5 / Kowalski 8.0)
+- **Panel average:** 7.58
+- **Self-review:** 8.1
+- **Versions built:** 6 HTML versions + final index.html
+- **Build time:** ~60 minutes
+- **Token estimate:** ~20k
+- **Key decisions:** Built from the first real unbuilt queue entry, then discovered the business now has a live site and adjusted the demo to compete on clarity instead of pretending they were still website-less. Used real Instagram photos, kept the page to two photo moments, and avoided fake review cards because direct reviewer initials were not fully available.
+- **Notes:** Queue brief said no website, but `baharbakery.ca` is live as of this build. Phone remained unverified because the site source exposed suspicious numbers. Sunday hours conflict between older editorial coverage and newer queue research, so the page flags that caveat instead of guessing.
+- **Live URL:** pending push / Pages verification
+
 ### Tough Tiger Barbershop — Barbershop, Winnipeg MB
 - **Date:** 2026-04-13
 - **Model:** openai-codex/gpt-5.4

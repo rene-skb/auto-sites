@@ -5897,3 +5897,18 @@ Real Victoria BC business. Website was literally just a street address (touristw
 - **Build time:** ~75 minutes
 - **Token estimate:** ~38k
 - **Key decisions:** "Get in the hot room." as the hero command — physical, specific to the experience, no adjectives. Cormorant Garamond italic in large hero is appropriate for dark editorial luxury wellness brand. Added "First time?" FAQ section to close the booking affordance gap (membership-based business with no visible pricing). Service card tel: CTAs added in WHAT retry. Gold label letter-spacing reduced from 0.22em → 0.14em in HOW pass per Spiekermann.
+
+### Scott Bell Sonnet Panelproof — Portfolio, Victoria BC
+- **Date:** 2026-04-13
+- **Model:** openai-codex/gpt-5.4 (subagent)
+- **Hero pattern:** split-image-right
+- **Typography:** Libre Baskerville + Manrope
+- **Review layout:** N/A (portfolio — outcome-led case studies with inline metrics)
+- **Visit/hours layout:** N/A (portfolio)
+- **Stats bar style:** no-stats ✅
+- **Score:** 7.17 / 6.67 / 7.38 → 7.07
+- **Self-review:** 8.0
+- **Versions built:** 6 (v0–v5 + index.html)
+- **Build time:** ~95 minutes
+- **Token estimate:** ~36k
+- **Key decisions:** Lighter daylight portfolio direction instead of the darker editorial Scott variants. Used split-image-right hero with a restrained green accent, then unified the page into an editorial grid by converting Current Work from cards into rows. Panel-proof objective achieved: explicit WHY / WHAT / HOW artifacts, screenshots, deltas, and canonical inner-repo publish path.

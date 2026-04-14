@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<!--
+SCOTT BELL — PANELPROOF — index-v0.html
+Build: v0 — Creative direction + initial structure
+
+== ROTATION CHECK ==
+Last 3 hero patterns: full-viewport-bg, editorial-spread, giant-display-type
+This build: split-image-right ✅ (different from all 3)
+
+Last 3 typography combos: Cormorant Garamond+DM Sans, Gloock+Space Grotesk, Fraunces+DM Sans
+This build: Libre Baskerville (display) + Manrope (body/UI) ✅
+
+== CREATIVE DIRECTION ==
+Mood: clean, precise, confident — less editorial darkness, more daylight and clarity.
+The previous sonnet runs leaned dark and moody. This one breathes.
+Palette: off-white (#FAFAF7) + near-black (#111110) + signal green (#1A8C5F) — first green accent in portfolio builds.
+Green reads as: growth, precision, AI-forward, active. Unusual enough to be memorable.
+
+Hero: split-image-right. Text left, case study screenshot montage right. Professional,
+shows the work immediately, doesn't ask the viewer to scroll before seeing proof.
+
+Hero copy: "14 years. 24 products. Six shipped this year."
+Tighter, more immediate than previous hero lines. No metaphor, just proof.
+
+Throughline: Scott builds things. Real products. Currently building at pace.
+The 6 self-initiated recent releases in one year is the unusual fact.
+
+Section order: Hero → Now (current work) → Case Studies → About → Contact
+
+== IMAGE PLAN ==
+Using ../scott-bell-opus/assets/ for case study screenshots
+strike1.png (Strike hero), aioz1.png (AIOZ hero), fountain1.png (Fountain hero)
+Montage in hero right column: 2 images stacked (strike1, aioz1)
+
+== PANEL NOTE ==
+v0 is rough pass — copy and structure, not final polish
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scott Bell — Product Designer</title>
+<meta name="description" content="Product designer, 14 years, 24 products. Strike, AIOZ, Fountain, KOHO. Currently building.">
+<meta property="og:title" content="Scott Bell — Product Designer">
+<meta property="og:description" content="14 years. 24 products. Six shipped this year.">
+<meta property="og:image" content="../scott-bell-opus/assets/strike1.png">
+<meta property="og:url" content="https://auto-sites.pages.dev/demos/scott-bell-sonnet-panelproof/">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper:  #FAFAF7;
+    --ink:    #111110;
+    --mid:    #555552;
+    --faint:  #DDDDD8;
+    --green:  #1A8C5F;
+    --green-lt: #E8F5EF;
+    --body-max: 1160px;
+    --serif: 'Libre Baskerville', Georgia, serif;
+    --sans:  'Manrope', system-ui, sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { font-size: 16px; scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--paper);
+    border-bottom: 1px solid var(--faint);
+  }
+
+  .nav-name {
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: 0.03em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--mid);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--ink); }
+
+  /* HERO */
+  .hero {
+    min-height: 100svh;
+    padding-top: 72px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    max-width: var(--body-max);
+    margin: 0 auto;
+    padding-left: 40px;
+    padding-right: 40px;
+    gap: 64px;
+  }
+
+  .hero-text {}
+
+  .hero-label {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 24px;
+  }
+
+  .hero-headline {
+    font-family: var(--serif);
+    font-size: clamp(40px, 5vw, 68px);
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+  }
+
+  .hero-headline em {
+    font-style: italic;
+    color: var(--green);
+  }
+
+  .hero-body {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--mid);
+    max-width: 480px;
+    margin-bottom: 36px;
+  }
+
+  .hero-cta {
+    display: inline-block;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 14px 28px;
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .hero-cta:hover { background: var(--green); }
+  .hero-cta:active { transform: scale(0.97); }
+
+  .hero-images {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 16px;
+    height: 520px;
+  }
+
+  .hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* PROOF STRIP */
+  .proof-strip {
+    border-top: 1px solid var(--faint);
+    border-bottom: 1px solid var(--faint);
+    padding: 32px 40px;
+    display: flex;
+    justify-content: center;
+    gap: 64px;
+    flex-wrap: wrap;
+  }
+
+  .proof-item {
+    text-align: center;
+  }
+
+  .proof-num {
+    font-family: var(--serif);
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--ink);
+    display: block;
+  }
+
+  .proof-label {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--mid);
+  }
+
+  /* SECTIONS */
+  section {
+    max-width: var(--body-max);
+    margin: 0 auto;
+    padding: 96px 40px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 24px;
+    margin-bottom: 56px;
+    border-bottom: 1px solid var(--faint);
+    padding-bottom: 20px;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--mid);
+    min-width: 80px;
+  }
+
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(24px, 3vw, 36px);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  /* CASE STUDIES */
+  .case-list {
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+  }
+
+  .case-item {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+
+  .case-meta {
+    padding-top: 4px;
+  }
+
+  .case-company {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 8px;
+  }
+
+  .case-role {
+    font-size: 13px;
+    color: var(--mid);
+    line-height: 1.5;
+  }
+
+  .case-content {}
+
+  .case-headline {
+    font-family: var(--serif);
+    font-size: clamp(20px, 2.5vw, 28px);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    letter-spacing: -0.01em;
+  }
+
+  .case-body {
+    font-size: 16px;
+    color: var(--mid);
+    line-height: 1.7;
+    margin-bottom: 20px;
+    max-width: 600px;
+  }
+
+  .case-metrics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .metric-pill {
+    font-size: 13px;
+    font-weight: 600;
+    background: var(--green-lt);
+    color: var(--green);
+    padding: 4px 12px;
+    border-radius: 2px;
+  }
+
+  .case-images {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  .case-img {
+    width: 100%;
+    aspect-ratio: 16/10;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* NOW / CURRENT WORK */
+  .now-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .now-card {
+    border: 1px solid var(--faint);
+    padding: 28px;
+  }
+
+  .now-tag {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 12px;
+  }
+
+  .now-title {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    line-height: 1.2;
+  }
+
+  .now-body {
+    font-size: 14px;
+    color: var(--mid);
+    line-height: 1.65;
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .about-body {
+    font-family: var(--serif);
+    font-size: clamp(18px, 2vw, 22px);
+    line-height: 1.65;
+    font-weight: 400;
+  }
+
+  .about-body p { margin-bottom: 24px; }
+
+  .about-aside {}
+
+  .about-fact {
+    border-top: 1px solid var(--faint);
+    padding: 16px 0;
+  }
+
+  .fact-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 6px;
+  }
+
+  .fact-value {
+    font-size: 15px;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+
+  /* CONTACT */
+  .contact-section {
+    background: var(--ink);
+    color: var(--paper);
+    text-align: center;
+    padding: 120px 40px;
+  }
+
+  .contact-headline {
+    font-family: var(--serif);
+    font-size: clamp(32px, 5vw, 56px);
+    font-weight: 700;
+    margin-bottom: 20px;
+    letter-spacing: -0.02em;
+  }
+
+  .contact-body {
+    font-size: 17px;
+    color: rgba(250,250,247,0.65);
+    margin-bottom: 40px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.7;
+  }
+
+  .contact-link {
+    display: inline-block;
+    border: 1px solid var(--green);
+    color: var(--green);
+    padding: 14px 32px;
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .contact-link:hover { background: var(--green); color: var(--paper); }
+  .contact-link:active { transform: scale(0.97); }
+
+  /* FOOTER */
+  footer {
+    padding: 24px 40px;
+    border-top: 1px solid var(--faint);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    color: var(--mid);
+    max-width: var(--body-max);
+    margin: 0 auto;
+  }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    nav { padding: 16px 20px; }
+    .nav-links { display: none; }
+
+    .hero {
+      grid-template-columns: 1fr;
+      padding: 96px 20px 40px;
+      gap: 40px;
+      min-height: auto;
+    }
+
+    .hero-images {
+      height: 280px;
+      grid-template-rows: 1fr;
+    }
+
+    .hero-images img:last-child { display: none; }
+
+    .proof-strip { padding: 24px 20px; gap: 32px; }
+
+    section { padding: 64px 20px; }
+
+    .case-item {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .case-images { grid-template-columns: 1fr; }
+    .case-images img:last-child { display: none; }
+
+    .now-grid { grid-template-columns: 1fr; }
+
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+
+    .contact-section { padding: 80px 20px; }
+
+    footer { flex-direction: column; gap: 8px; padding: 20px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition: none !important; animation: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-name">Scott Bell</a>
+  <ul class="nav-links">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#now">Now</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-text">
+    <p class="hero-label">Product Designer · Victoria, BC</p>
+    <h1 class="hero-headline">14 years.<br><em>24 products.</em><br>Six shipped this year.</h1>
+    <p class="hero-body">Designer who builds. Strike, AIOZ, Fountain, KOHO — then left to build his own tools. Six independent releases in the past year. Currently: AI design systems, agent UX, and a micro-studio that ships demos at pace.</p>
+    <a href="#work" class="hero-cta">See the work</a>
+  </div>
+  <div class="hero-images">
+    <img class="hero-img" src="../scott-bell-opus/assets/strike1.png" alt="Strike app design">
+    <img class="hero-img" src="../scott-bell-opus/assets/aioz1.png" alt="AIOZ Network design">
+  </div>
+</div>
+
+<!-- PROOF STRIP -->
+<div class="proof-strip">
+  <div class="proof-item">
+    <span class="proof-num">14</span>
+    <span class="proof-label">Years</span>
+  </div>
+  <div class="proof-item">
+    <span class="proof-num">24</span>
+    <span class="proof-label">Products</span>
+  </div>
+  <div class="proof-item">
+    <span class="proof-num">6</span>
+    <span class="proof-label">Released This Year</span>
+  </div>
+  <div class="proof-item">
+    <span class="proof-num">100×</span>
+    <span class="proof-label">AIOZ Market Cap Growth</span>
+  </div>
+  <div class="proof-item">
+    <span class="proof-num">1.5M+</span>
+    <span class="proof-label">Strike Users</span>
+  </div>
+</div>
+
+<!-- CASE STUDIES -->
+<section id="work">
+  <div class="section-header">
+    <span class="section-label">Selected Work</span>
+    <h2 class="section-title">Where the proof lives</h2>
+  </div>
+
+  <div class="case-list">
+
+    <div class="case-item">
+      <div class="case-meta">
+        <p class="case-company">Strike</p>
+        <p class="case-role">Lead Product Designer<br>2021–2023</p>
+      </div>
+      <div class="case-content">
+        <h3 class="case-headline">450 screens in five months. Then it went to 65 countries.</h3>
+        <p class="case-body">Strike is a Bitcoin payments app. When I joined, the core product needed to scale globally — fast. I built the design system, led the product design across the full app, and shipped 450+ screens before the international launch. 1.5M+ users now.</p>
+        <div class="case-metrics">
+          <span class="metric-pill">1.5M+ users</span>
+          <span class="metric-pill">65+ countries</span>
+          <span class="metric-pill">450+ screens</span>
+          <span class="metric-pill">5 months to launch</span>
+        </div>
+        <div class="case-images">
+          <img class="case-img" src="../scott-bell-opus/assets/strike1.png" alt="Strike app">
+          <img class="case-img" src="../scott-bell-opus/assets/strike2.png" alt="Strike app detail">
+        </div>
+      </div>
+    </div>
+
+    <div class="case-item">
+      <div class="case-meta">
+        <p class="case-company">AIOZ Network</p>
+        <p class="case-role">Lead Product Designer<br>2023–2024</p>
+      </div>
+      <div class="case-content">
+        <h3 class="case-headline">The market cap went 100×. The design system held.</h3>
+        <p class="case-body">AIOZ is a decentralized AI and streaming network. I designed 8 products across the ecosystem — the main network dashboard, the streaming platform, the node operator experience, the staking UI — as the company scaled from a $13M market cap to $1.38B.</p>
+        <div class="case-metrics">
+          <span class="metric-pill">$13M → $1.38B market cap</span>
+          <span class="metric-pill">8 products</span>
+          <span class="metric-pill">~100× growth</span>
+        </div>
+        <div class="case-images">
+          <img class="case-img" src="../scott-bell-opus/assets/aioz1.png" alt="AIOZ Network">
+          <img class="case-img" src="../scott-bell-opus/assets/aioz2.png" alt="AIOZ dashboard">
+        </div>
+      </div>
+    </div>
+
+    <div class="case-item">
+      <div class="case-meta">
+        <p class="case-company">Fountain</p>
+        <p class="case-role">Product Designer<br>2020–2021</p>
+      </div>
+      <div class="case-content">
+        <h3 class="case-headline">Full rebuild in under five months. Apple featured it twice.</h3>
+        <p class="case-body">Fountain is a Bitcoin-powered podcast app. I redesigned the entire product — new design system, new architecture, new player experience — in under five months. Apple featured the app twice after launch.</p>
+        <div class="case-metrics">
+          <span class="metric-pill">Full rebuild</span>
+          <span class="metric-pill">Featured by Apple (×2)</span>
+          <span class="metric-pill">< 5 months</span>
+        </div>
+        <div class="case-images">
+          <img class="case-img" src="../scott-bell-opus/assets/fountain1.png" alt="Fountain app">
+          <img class="case-img" src="../scott-bell-opus/assets/fountain2.png" alt="Fountain app detail">
+        </div>
+      </div>
+    </div>
+
+    <div class="case-item">
+      <div class="case-meta">
+        <p class="case-company">KOHO</p>
+        <p class="case-role">Senior Product Designer<br>Employee #1</p>
+      </div>
+      <div class="case-content">
+        <h3 class="case-headline">Employee #1. Zero users. Now it's worth $800M.</h3>
+        <p class="case-body">I was KOHO's first design hire. Built the initial product from scratch, established the design practice, and helped grow the user base from 0 to 100K+. KOHO is now Canada's leading challenger bank with an $800M+ valuation.</p>
+        <div class="case-metrics">
+          <span class="metric-pill">Employee #1</span>
+          <span class="metric-pill">0 → 100K+ users</span>
+          <span class="metric-pill">$800M+ valuation</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- NOW -->
+<section id="now" style="background: #F2F2EE; margin: 0; max-width: 100%; padding: 96px 0;">
+  <div style="max-width: var(--body-max); margin: 0 auto; padding: 0 40px;">
+    <div class="section-header">
+      <span class="section-label">Now</span>
+      <h2 class="section-title">Building independently</h2>
+    </div>
+    <div class="now-grid">
+      <div class="now-card">
+        <p class="now-tag">Studio</p>
+        <h3 class="now-title">Nakamoto Design Co.</h3>
+        <p class="now-body">AI-native design studio. 80+ demo sites built with AI pipelines. Multi-panel review workflows, auto-generation, custom tooling. A working lab for human-AI collaboration in design.</p>
+      </div>
+      <div class="now-card">
+        <p class="now-tag">App</p>
+        <h3 class="now-title">LoopIn</h3>
+        <p class="now-body">Team visibility tool for async work. Shows who's working, what they're on, and when they'll be back — without the pings. Self-initiated and shipped.</p>
+      </div>
+      <div class="now-card">
+        <p class="now-tag">Tool</p>
+        <h3 class="now-title">Browser Bridge</h3>
+        <p class="now-body">A browser bookmarklet that sends UI elements directly to Claude Code via MCP server. Built to close the gap between clicking something broken and fixing it.</p>
+      </div>
+      <div class="now-card">
+        <p class="now-tag">App</p>
+        <h3 class="now-title">Mix'd / mix-id</h3>
+        <p class="now-body">Music identity app. Maps listening patterns, surfaces the throughlines you don't know are there. Another self-shipped experiment in AI-informed product design.</p>
+      </div>
+      <div class="now-card">
+        <p class="now-tag">Tool</p>
+        <h3 class="now-title">Clawprint</h3>
+        <p class="now-body">AI context tool. Helps agents understand a codebase faster by generating structured context files. Part of the broader AI-native tooling stack being built at Nakamoto.</p>
+      </div>
+      <div class="now-card">
+        <p class="now-tag">Research</p>
+        <h3 class="now-title">Agent UX</h3>
+        <p class="now-body">Deep focus on how people interact with AI agents — not chatbots. New interaction patterns, trust signals, handoff moments. The design layer that most AI teams are skipping.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-header">
+    <span class="section-label">About</span>
+    <h2 class="section-title">Background</h2>
+  </div>
+  <div class="about-grid">
+    <div class="about-body">
+      <p>I studied microbiology before I studied design. That's still in the work — the instinct to go one layer deeper, to ask what's actually happening before proposing a fix.</p>
+      <p>14 years of product design. Mostly 0-to-1 work at companies moving fast in hard markets: Bitcoin, fintech, decentralized infrastructure. Recently: AI-native tooling, agent interfaces, and a design studio that builds things at a different pace than most.</p>
+      <p>I'm looking for work in AI design — specifically the design of agent systems, AI-assisted workflows, and the human layer on top of complex AI capabilities.</p>
+    </div>
+    <div class="about-aside">
+      <div class="about-fact">
+        <p class="fact-label">Education</p>
+        <p class="fact-value">BSc Microbiology + BA Interaction Design</p>
+      </div>
+      <div class="about-fact">
+        <p class="fact-label">Based</p>
+        <p class="fact-value">Victoria, BC, Canada</p>
+      </div>
+      <div class="about-fact">
+        <p class="fact-label">Experience</p>
+        <p class="fact-value">14 years product design</p>
+      </div>
+      <div class="about-fact">
+        <p class="fact-label">Focus</p>
+        <p class="fact-value">AI design, agent UX, design systems, 0-to-1</p>
+      </div>
+      <div class="about-fact">
+        <p class="fact-label">Portfolio</p>
+        <p class="fact-value"><a href="https://scottkbell.com" style="color: var(--green);">scottkbell.com</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<div class="contact-section" id="contact">
+  <h2 class="contact-headline">Let's talk.</h2>
+  <p class="contact-body">Looking for staff-level product design roles in AI. Especially interested in agent design, AI-native interfaces, and 0-to-1 work.</p>
+  <a href="mailto:scottbell@scottkbell.com" class="contact-link">Get in touch</a>
+</div>
+
+<footer>
+  <span>Scott Bell — Product Designer</span>
+  <span>Victoria, BC · Available for work</span>
+</footer>
+
+</body>
+</html>

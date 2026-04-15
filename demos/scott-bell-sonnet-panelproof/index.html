@@ -226,6 +226,14 @@ nav {
 .naka-preview-wrap {
   background: var(--bg); border: 1px solid var(--faint); padding: 8px;
 }
+.naka-preview-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  transition: transform 120ms cubic-bezier(0.22, 1, 0.36, 1), opacity 200ms ease;
+}
+.naka-preview-link:hover { opacity: 0.9; }
+.naka-preview-link:active { transform: scale(0.98); }
 .naka-preview-wrap img { width: 100%; display: block; aspect-ratio: 4/3; object-fit: cover; }
 
 .product-list { display: flex; flex-direction: column; }
@@ -502,10 +510,10 @@ footer {
           <p>110+ custom websites for local businesses across Canada, built by AI agents I designed and direct. The agents find businesses, research them, pull Instagram, write copy from real reviews, and produce polished sites. The system compounds — prompts, examples, and decisions get better with each build. Bakeries in Montr&eacute;al. Barbers in Victoria. Each site is live.</p>
         </div>
         <div class="naka-previews">
-          <div class="naka-preview-wrap"><img src="assets/farine-et-vanille-preview.png" alt="Farine et Vanille — bakery site"></div>
-          <div class="naka-preview-wrap"><img src="assets/kid-sister-ice-cream-preview.png" alt="Kid Sister Ice Cream — dessert site"></div>
-          <div class="naka-preview-wrap"><img src="assets/status-barber-shop-preview.png" alt="Status Barber Shop — barber site"></div>
-          <div class="naka-preview-wrap"><img src="assets/33-acres-brewing-preview.png" alt="33 Acres Brewing — brewery site"></div>
+          <div class="naka-preview-wrap"><a class="naka-preview-link" href="https://auto-sites.pages.dev/demos/kid-sister-ice-cream/" target="_blank" rel="noreferrer"><img src="assets/kid-sister-ice-cream-preview.png" alt="Kid Sister Ice Cream — live site preview"></a></div>
+          <div class="naka-preview-wrap"><a class="naka-preview-link" href="https://auto-sites.pages.dev/demos/working-culture/" target="_blank" rel="noreferrer"><img src="assets/working-culture-preview.png" alt="Working Culture — live site preview"></a></div>
+          <div class="naka-preview-wrap"><a class="naka-preview-link" href="https://auto-sites.pages.dev/demos/33-acres-brewing/" target="_blank" rel="noreferrer"><img src="assets/33-acres-brewing-preview.png" alt="33 Acres Brewing — live site preview"></a></div>
+          <div class="naka-preview-wrap"><a class="naka-preview-link" href="https://auto-sites.pages.dev/demos/kreative-ink-v8/" target="_blank" rel="noreferrer"><img src="assets/kreative-ink-v8-preview.png" alt="Kreative Ink — live site preview"></a></div>
         </div>
         <p class="naka-caption">Recent sites built by the studio</p>
       </div>

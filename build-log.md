@@ -5956,3 +5956,19 @@ Real Victoria BC business. Website was literally just a street address (touristw
 - **Build time:** ~95 minutes
 - **Token estimate:** ~36k
 - **Key decisions:** Lighter daylight portfolio direction instead of the darker editorial Scott variants. Used split-image-right hero with a restrained green accent, then unified the page into an editorial grid by converting Current Work from cards into rows. Panel-proof objective achieved: explicit WHY / WHAT / HOW artifacts, screenshots, deltas, and canonical inner-repo publish path.
+
+### Scott Bell Sonnet Panelproof — Portfolio, Victoria BC (LayerZero pass)
+- **Date:** 2026-04-15
+- **Model:** anthropic/claude-sonnet-4-6 / Lucy pipeline pass, later copy-tightened locally
+- **Hero pattern:** split-image-right
+- **Typography:** Libre Baskerville + Manrope
+- **Review layout:** N/A (portfolio — outcome-led case studies with inline metrics)
+- **Visit/hours layout:** N/A (portfolio)
+- **Stats bar style:** no-stats ✅
+- **Score:** 7.17 / 6.67 / 7.38 → 7.07
+- **Self-review:** 8.0
+- **Versions built:** 6 (v0–v5 + index.html)
+- **Build time:** ~95 minutes + follow-up copy pass
+- **Token estimate:** ~36k + follow-up edits
+- **Key decisions:** Preserved the panelproof editorial structure while tightening the portfolio toward the LayerZero intro. Kept the split-image-right hero, expanded AIOZ/Strike image support, and published the current reviewed index as the canonical demo file.
+

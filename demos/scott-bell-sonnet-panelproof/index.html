@@ -16,7 +16,7 @@ DELTA: v5 final polish notes
 <title>Scott Bell | Product Designer</title>
 <meta name="description" content="Product designer, 14 years, 24 products. Strike, AIOZ, Fountain, KOHO. Currently building.">
 <meta property="og:title" content="Scott Bell | Product Designer">
-<meta property="og:description" content="14 years. 24 products. Six shipped this year.">
+<meta property="og:description" content="24 products in 14 years. Now designing and shipping AI tools.">
 <meta property="og:image" content="assets/strike1.png">
 <meta property="og:url" content="https://auto-sites.pages.dev/demos/scott-bell-sonnet-panelproof/">
 <meta property="og:type" content="website">
@@ -187,7 +187,34 @@ DELTA: v5 final polish notes
     background: #F0F1EC;
     padding: 14px;
   }
+  .case-images-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 24px;
+    max-width: 560px;
+  }
+  .case-images-grid.three-up {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 860px;
+  }
+  .case-images-grid .case-images {
+    margin-top: 0;
+    max-width: none;
+  }
   .case-img { width: 100%; aspect-ratio: 16/10; object-fit: cover; display: block; }
+  .case-study-link {
+    display: inline-block;
+    margin-top: 16px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--green);
+    text-decoration: none;
+    transition: opacity 220ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .case-study-link:hover { opacity: 0.72; }
 
   .inline-cta {
     margin-top: 72px;
@@ -250,6 +277,12 @@ DELTA: v5 final polish notes
     font-family: var(--serif); font-size: 26px; font-weight: 700;
     margin-bottom: 10px; line-height: 1.15;
   }
+  .now-title a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 220ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .now-title a:hover { color: var(--green); }
   .now-body { font-size: 15px; color: var(--mid); line-height: 1.7; max-width: 620px; }
 
   /* ABOUT */
@@ -348,10 +381,9 @@ DELTA: v5 final polish notes
 <!-- HERO -->
 <div class="hero reveal">
   <div class="hero-text">
-    <p class="hero-label">Lead Product Designer · 14 years, 24 products</p>
-    <h1 class="hero-headline">14 years. <em>24 products.</em><br>Six self-initiated ships this year.</h1>
-    <p class="hero-subhead">Senior product designer for AI, design systems, and 0-to-1 products.</p>
-    <p class="hero-body">Built products at Strike, AIOZ, Fountain, and KOHO. Then started building his own: tools, demos, and AI-native workflows that close the gap between concept and shipped product.</p>
+    <p class="hero-label">Design Leader · Builder · 14 years, 24 products</p>
+    <h1 class="hero-headline">24 products in 14 years.<br>Now I design and ship <em>AI tools.</em></h1>
+    <p class="hero-body">I've led design at Strike, KOHO, Fountain, and AIOZ. Now I'm building AI products end to end, from the first idea to the working thing.</p>
     <a href="#work" class="hero-cta">See the work</a>
   </div>
   <div class="hero-images">
@@ -374,16 +406,21 @@ DELTA: v5 final polish notes
         <p class="case-role">Lead Product Designer<br>2021–2023</p>
       </div>
       <div class="case-content">
-        <h3 class="case-headline">450 screens in five months. Then it went to 65 countries.</h3>
-        <p class="case-body">Strike is a Bitcoin payments app. I built the design system, led product design across the full app, and shipped 450+ screens before the international launch. It now serves 1.5M+ users across 65+ countries.</p>
+        <h3 class="case-headline">Redesigned the app in 5 months. 450+ screens, 80+ flows.</h3>
+        <p class="case-body">Strike is a Bitcoin payments app. I redesigned the mobile app in 5 months. Onboarding, payments, KYC, support. 450+ screens, 80+ flows. I co-owned the iOS and Android design system. The app scaled to 1.5M+ users across 65 countries.</p>
         <div class="case-metrics">
           <span class="metric-pill">1.5M+ users</span>
-          <span class="metric-pill">65+ countries</span>
+          <span class="metric-pill">65 countries</span>
           <span class="metric-pill">450+ screens</span>
+          <span class="metric-pill">80+ flows</span>
         </div>
-        <div class="case-images">
-          <img class="case-img" src="assets/strike1.png" alt="Strike app">
+        <div class="case-images-grid">
+          <div class="case-images"><img class="case-img" src="assets/strike1.png" alt="Strike app - home"></div>
+          <div class="case-images"><img class="case-img" src="assets/strike2.png" alt="Strike app - payments"></div>
+          <div class="case-images"><img class="case-img" src="assets/strike3.png" alt="Strike app - send"></div>
+          <div class="case-images"><img class="case-img" src="assets/strike4.png" alt="Strike app - receive"></div>
         </div>
+        <a class="case-study-link" href="https://www.scottkbell.com/strike-case-study">View case study →</a>
       </div>
     </div>
 
@@ -393,15 +430,17 @@ DELTA: v5 final polish notes
         <p class="case-role">Lead Product Designer<br>2023–2024</p>
       </div>
       <div class="case-content">
-        <h3 class="case-headline">The market cap went 100×. The design system held.</h3>
-        <p class="case-body">AIOZ is a decentralized AI and streaming network. I designed 8 products across the ecosystem as the company scaled from a $13M market cap to $1.38B.</p>
+        <h3 class="case-headline">8 products across one ecosystem. The market cap went 100×.</h3>
+        <p class="case-body">AIOZ is a decentralized AI and streaming network. I designed 8 products across the ecosystem: streaming apps, node dashboards, explorer tools, staking interfaces. The company scaled from a $13M market cap to $1.38B.</p>
         <div class="case-metrics">
           <span class="metric-pill">$13M → $1.38B</span>
           <span class="metric-pill">8 products</span>
           <span class="metric-pill">~100× growth</span>
         </div>
-        <div class="case-images">
-          <img class="case-img" src="assets/aioz1.png" alt="AIOZ Network">
+        <div class="case-images-grid three-up">
+          <div class="case-images"><img class="case-img" src="assets/aioz1.png" alt="AIOZ streaming product"></div>
+          <div class="case-images"><img class="case-img" src="assets/aioz2.png" alt="AIOZ dashboard product"></div>
+          <div class="case-images"><img class="case-img" src="assets/aioz3.png" alt="AIOZ network product"></div>
         </div>
       </div>
     </div>
@@ -412,11 +451,11 @@ DELTA: v5 final polish notes
         <p class="case-role">Product Designer<br>2020–2021</p>
       </div>
       <div class="case-content">
-        <h3 class="case-headline">Full rebuild in under five months. Apple featured it twice.</h3>
-        <p class="case-body">Fountain is a Bitcoin-powered podcast app. I redesigned the product, rebuilt the design system, and shipped the new experience in under five months. Apple featured it twice after launch.</p>
+        <h3 class="case-headline">Full rebuild in under five months.</h3>
+        <p class="case-body">Fountain is a Bitcoin-powered podcast app. I redesigned the product, rebuilt the design system, and shipped the new experience in under five months.</p>
         <div class="case-metrics">
           <span class="metric-pill">Full rebuild</span>
-          <span class="metric-pill">Apple featured ×2</span>
+          <span class="metric-pill">5 months</span>
         </div>
         <div class="case-images">
           <img class="case-img" src="assets/fountain1.png" alt="Fountain app">
@@ -430,11 +469,12 @@ DELTA: v5 final polish notes
         <p class="case-role">Senior Product Designer<br>Employee #1</p>
       </div>
       <div class="case-content">
-        <h3 class="case-headline">Employee #1. Zero users. Now it's worth $800M.</h3>
-        <p class="case-body">I was KOHO's first design hire. Built the initial product from scratch, established the design practice, and helped grow from 0 to 100K+ users. KOHO is now valued above $800M.</p>
+        <h3 class="case-headline">Employee #1. Built the first version from scratch.</h3>
+        <p class="case-body">I was KOHO's first design hire. I helped build the product from zero, set the early design direction, and helped grow it to 100K+ users. Apple featured the app, and KOHO is now valued above $800M.</p>
         <div class="case-metrics">
           <span class="metric-pill">Employee #1</span>
           <span class="metric-pill">0 → 100K+ users</span>
+          <span class="metric-pill">Apple featured</span>
           <span class="metric-pill">$800M+ valuation</span>
         </div>
       </div>
@@ -460,24 +500,31 @@ DELTA: v5 final polish notes
     </div>
     <div class="now-list">
       <div class="now-item reveal">
-        <p class="now-tag">Studio</p>
+        <p class="now-tag">Agentic Design Studio</p>
         <div>
-          <h3 class="now-title">80+ demos built through Nakamoto Design Co.</h3>
-          <p class="now-body">AI-native design studio and working lab. Multi-panel review workflows, auto-generation, custom tooling, and a production rhythm built around shipping.</p>
+          <h3 class="now-title">Nakamoto Design Co.</h3>
+          <p class="now-body">I built an agentic design studio. AI agents find businesses, research them, pull their Instagram, write copy from real reviews, and produce a polished website. The system gets smarter with each build. The prompts, examples, and decisions compound, so the sites keep getting better over time. I direct the work and make the final calls. 110+ sites for local businesses across Canada. Bakeries in Montréal. Barbers in Victoria. Florists, breweries, ice cream shops. Each site is custom. Each one is live.</p>
         </div>
       </div>
       <div class="now-item reveal">
-        <p class="now-tag">Product</p>
+        <p class="now-tag">Product · $29</p>
         <div>
-          <h3 class="now-title">LoopIn</h3>
-          <p class="now-body">Team visibility for async work. Shows who's working, what they're on, and when they'll be back, without the extra pings.</p>
+          <h3 class="now-title"><a href="https://clawprint.dev">Clawprint</a></h3>
+          <p class="now-body">An in-depth psychological assessment for you. Your agent learns how you think, how you communicate, and when to push back. Built on Big Five, Enneagram, and Holland Code. The output is a config file the agent reads on startup.</p>
         </div>
       </div>
       <div class="now-item reveal">
-        <p class="now-tag">Tooling</p>
+        <p class="now-tag">Dev Tool · Bookmarklet</p>
         <div>
-          <h3 class="now-title">Browser Bridge</h3>
-          <p class="now-body">A bookmarklet that sends UI elements straight to Claude Code through MCP. Built to shorten the path from broken UI to fixed code.</p>
+          <h3 class="now-title"><a href="https://www.scottkbell.com/loopin">LoopIn</a></h3>
+          <p class="now-body">Click any element in the browser. LoopIn grabs the DOM, React component, text, and CSS, then sends it straight to Claude Code. The agent gets the exact implementation context it needs.</p>
+        </div>
+      </div>
+      <div class="now-item reveal">
+        <p class="now-tag">Open Source · Free</p>
+        <div>
+          <h3 class="now-title"><a href="https://mix-id.vercel.app">Mix'd</a></h3>
+          <p class="now-body">Paste a URL from Mixcloud, SoundCloud, or YouTube. Get a timestamped tracklist. I built it because I have a radio show and this tracklist tool didn't exist.</p>
         </div>
       </div>
     </div>
@@ -494,6 +541,7 @@ DELTA: v5 final polish notes
     <div class="about-body">
       <p>I studied microbiology before I studied design. That's still in the work, the instinct to go one layer deeper and ask what's actually happening before proposing a fix.</p>
       <p>14 years of product design. Mostly 0-to-1 work at companies moving fast in hard markets: Bitcoin, fintech, decentralized infrastructure. Recently: AI-native tooling, agent interfaces, and a design studio that ships things at a different pace than most.</p>
+      <p>Outside of product work, I’ve hosted a radio show for 3+ years, and I make and sell craft vinegar. Different mediums, same impulse: taste, experimentation, and making things people actually want.</p>
       <p>Best fit: teams building AI products that need more than prompts and wrappers. Agent systems, AI-assisted workflows, trust and handoff design, the human layer on top of complex models. That's the work.</p>
     </div>
     <div class="about-aside">
@@ -524,7 +572,7 @@ DELTA: v5 final polish notes
 <!-- CONTACT -->
 <div class="contact-section reveal" id="contact">
   <h2 class="contact-headline">Work with someone who ships.</h2>
-  <p class="contact-body">14 years building products at scale, plus six self-initiated releases in the past year. If you need someone who can design, build, and close the loop on AI-native products, let's talk.</p>
+  <p class="contact-body">14 years building products at scale. Now designing and shipping AI tools end to end. If you need someone who can design, build, and close the loop on AI-native products, let's talk.</p>
   <a href="mailto:scottbell@scottkbell.com" class="contact-link">Get in touch</a>
 </div>
 

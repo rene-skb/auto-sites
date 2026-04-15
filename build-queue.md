@@ -212,3 +212,5 @@
 <!-- Built 2026-04-13 → demos/tough-tiger-barbershop/ → https://auto-sites.pages.dev/demos/tough-tiger-barbershop/ (pending push / Pages verification) -->
 
 <!-- Built 2026-04-14 → demos/bahar-bakery-cafe/ → https://auto-sites.pages.dev/demos/bahar-bakery-cafe/ (live verification pending push) -->
+
+<!-- Built 2026-04-15 → demos/jupiter-bakehouse/ → https://auto-sites.pages.dev/demos/jupiter-bakehouse/ (live verification pending push) -->

@@ -1,0 +1,428 @@
+<!--
+DELTA: v5 final polish notes
+- What changed from v4: tightened wording, checked visible copy for banned patterns, confirmed OG/meta and local asset paths
+- Self-review score: 7.8
+- Panel averages carried forward from panel-notes.md: WHY 7.33 / WHAT 7.5 / HOW 7.25
+- Final polish focus: calm food-first landing page with practical info up front
+-->
+<!--
+PHOTO RANKING / ASSIGNMENTS
+1. ig-photo-03.jpg — pastries by the window, soft natural light, premium pastry feel, portrait/square enough to crop wide, HERO
+2. ig-photo-06.jpg — glossy plated pastry, high-end and precise, GRID
+3. ig-photo-01.jpg — tray of sourdough loaves, strong bread credibility, GRID
+4. ig-photo-07.jpg — team in kitchen, useful for story/proof, GRID
+5. ig-photo-04.jpg — team portrait, supporting only
+6. ig-photo-02.jpg — storefront personality shot, skip
+7. ig-photo-05.jpg — coffee close-up, skip
+8. ig-photo-08.jpg — coffee close-up, skip
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jupiter Bakehouse, Toronto</title>
+  <meta name="description" content="Naturally leavened bread and French pastry on Gerrard East, built around Canadian grain and sold Wednesday through Sunday." />
+  <meta property="og:title" content="Jupiter Bakehouse" />
+  <meta property="og:description" content="Naturally leavened bread and French pastry on Gerrard East, built around Canadian grain and sold Wednesday through Sunday." />
+  <meta property="og:image" content="https://auto-sites.pages.dev/demos/jupiter-bakehouse/ig-photo-03.jpg" />
+  <meta property="og:url" content="https://auto-sites.pages.dev/demos/jupiter-bakehouse/" />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f7f0e7;
+      --paper: #fbf7f1;
+      --ink: #231913;
+      --muted: #675448;
+      --line: rgba(35,25,19,.12);
+      --accent: #9a6535;
+      --olive: #70653a;
+      --section-pad: clamp(72px, 8vw, 120px);
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+      --shadow: 0 24px 80px rgba(35,25,19,.12);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Work Sans', sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+    .wrap { width: min(1120px, calc(100vw - 40px)); margin: 0 auto; }
+    .site-header {
+      position: sticky; top: 0; z-index: 20;
+      backdrop-filter: blur(18px);
+      background: rgba(247,240,231,.86);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav {
+      display: flex; align-items: center; justify-content: space-between;
+      min-height: 74px; gap: 24px;
+    }
+    .brand { font: 600 1rem 'Work Sans', sans-serif; letter-spacing: .14em; text-transform: uppercase; text-decoration: none; }
+    .nav-links { display: flex; gap: 22px; align-items: center; }
+    .nav-links a { text-decoration: none; color: var(--muted); font-size: .95rem; }
+    .nav-links a:hover, .nav-links a:focus-visible { color: var(--ink); }
+    .nav-cta {
+      padding: 12px 18px; border-radius: 999px; background: var(--ink); color: #fff;
+      text-decoration: none; font-weight: 600; transition: transform 160ms var(--ease-out), background 160ms var(--ease-out);
+    }
+    .nav-cta:hover, .nav-cta:focus-visible { transform: translateY(-1px); background: #120d0a; }
+    .nav-cta:active, .button:active { transform: scale(0.97); }
+    .mobile-toggle { display: none; }
+
+    .hero-media { padding: 20px 20px 0; }
+    .hero-media img {
+      width: 100%; height: min(62vh, 760px); object-fit: cover; object-position: center;
+      border-radius: 28px; box-shadow: var(--shadow);
+    }
+    .hero-copy { padding: 42px 0 28px; }
+    .eyebrow {
+      display: inline-block; margin-bottom: 18px; color: var(--olive);
+      font-size: .78rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
+    }
+    h1, h2, h3 { margin: 0; font-family: 'Newsreader', serif; font-weight: 500; line-height: .96; }
+    h1 { font-size: clamp(3.6rem, 9vw, 7.8rem); max-width: 10ch; }
+    .hero-lead {
+      max-width: 43rem; font-size: clamp(1.08rem, 2vw, 1.28rem);
+      color: var(--muted); margin-top: 20px;
+    }
+    .hero-actions, .visit-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 28px; }
+    .button {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 14px 20px; border-radius: 999px; text-decoration: none; font-weight: 600;
+      transition: transform 180ms var(--ease-out), background 180ms var(--ease-out), color 180ms var(--ease-out), border-color 180ms var(--ease-out);
+    }
+    .button.primary { background: var(--ink); color: #fff; }
+    .button.secondary { border: 1px solid var(--line); color: var(--ink); background: rgba(255,255,255,.5); }
+    .button:hover, .button:focus-visible { transform: translateY(-1px); }
+
+    .quick-facts {
+      padding: 0 0 34px;
+    }
+    .quick-grid {
+      display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px;
+      border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 22px 0;
+    }
+    .fact-label { color: var(--muted); font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 6px; font-weight: 700; }
+    .fact-value { font-size: 1rem; }
+
+    section { padding: var(--section-pad) 0; }
+    .section-shell { display: grid; gap: 28px; }
+    .section-kicker {
+      color: var(--olive); font-size: .78rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
+    }
+    .section-intro {
+      display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(280px, .8fr); gap: 32px; align-items: start;
+    }
+    .section-intro p, .story-copy p, .proof-copy p, .visit-copy p { margin: 0; color: var(--muted); font-size: 1.03rem; }
+
+    .product-grid {
+      display: grid; grid-template-columns: 1.1fr .9fr; gap: 24px; align-items: stretch;
+      margin-top: 28px;
+    }
+    .product-card, .proof-card, .visit-card {
+      background: var(--paper); border: 1px solid var(--line); border-radius: 26px; overflow: hidden;
+      box-shadow: 0 18px 50px rgba(35,25,19,.06);
+    }
+    .product-card img { width: 100%; height: 100%; min-height: 400px; object-fit: cover; }
+    .product-copy { padding: 30px; display: grid; gap: 18px; }
+    .product-copy h3 { font-size: clamp(2rem, 4vw, 3rem); }
+    .mini-list { display: grid; gap: 14px; }
+    .mini-item { padding-top: 14px; border-top: 1px solid var(--line); }
+    .mini-item strong { display: block; margin-bottom: 4px; }
+
+    .proof-band {
+      background: #efe4d7;
+      border-top: 1px solid rgba(35,25,19,.08);
+      border-bottom: 1px solid rgba(35,25,19,.08);
+    }
+    .proof-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+    .proof-card { padding: 26px; }
+    .proof-source { color: var(--olive); font-size: .78rem; text-transform: uppercase; letter-spacing: .14em; font-weight: 700; margin-bottom: 12px; }
+    .proof-card p { margin: 0; color: var(--ink); }
+
+    .story-grid {
+      display: grid; grid-template-columns: .95fr 1.05fr; gap: 24px; align-items: stretch;
+      margin-top: 30px;
+    }
+    .story-grid img { width: 100%; height: 100%; min-height: 420px; object-fit: cover; border-radius: 26px; box-shadow: var(--shadow); }
+    .story-copy {
+      background: #2a211d; color: #f8f2eb; border-radius: 26px; padding: 34px;
+      display: grid; gap: 22px;
+    }
+    .story-copy .section-kicker, .story-copy p { color: rgba(248,242,235,.82); }
+    .story-copy h2 { color: #fff; font-size: clamp(2.2rem, 4vw, 3.5rem); }
+
+    .visit-grid {
+      display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin-top: 30px;
+    }
+    .visit-card { padding: 30px; }
+    .visit-card h3 { font-size: clamp(2rem, 3vw, 2.8rem); margin-bottom: 18px; }
+    .visit-list { display: grid; gap: 16px; margin-top: 18px; }
+    .visit-item { padding-top: 14px; border-top: 1px solid var(--line); }
+    .visit-item strong { display: block; margin-bottom: 3px; }
+    .map-link { text-decoration-thickness: 1px; }
+
+    .footer {
+      padding: 34px 0 54px; border-top: 1px solid var(--line); color: var(--muted);
+      font-size: .95rem;
+    }
+
+    [data-reveal] {
+      opacity: 1; transform: none; transition: transform 700ms var(--ease-out), opacity 700ms var(--ease-out);
+    }
+    .js [data-reveal] { opacity: 0; transform: translateY(24px); }
+    .js [data-reveal].is-visible { opacity: 1; transform: translateY(0); }
+    .hero-line { display: block; }
+    .js .hero-line { opacity: 0; transform: translateY(24px); transition: transform 700ms var(--ease-out), opacity 700ms var(--ease-out); }
+    .js .hero-line.is-visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 920px) {
+      .quick-grid, .section-intro, .product-grid, .proof-grid, .story-grid, .visit-grid { grid-template-columns: 1fr; }
+      .product-card img, .story-grid img { min-height: 320px; }
+      .nav-links { position: absolute; left: 20px; right: 20px; top: 74px; background: rgba(247,240,231,.98); border: 1px solid var(--line); border-radius: 20px; padding: 18px; flex-direction: column; align-items: stretch; display: none; }
+      .nav-links.open { display: flex; }
+      .mobile-toggle { display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--line); background: rgba(255,255,255,.5); color: var(--ink); border-radius: 999px; width: 44px; height: 44px; }
+      .nav-cta { display: none; }
+      h1 { max-width: 8.5ch; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .js [data-reveal], .js .hero-line { opacity: 1 !important; transform: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="brand" href="#top">Jupiter Bakehouse</a>
+      <button class="mobile-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle menu">☰</button>
+      <nav id="nav-links" class="nav-links" aria-label="Primary">
+        <a href="#what-to-get">What to get</a>
+        <a href="#story">Why it matters</a>
+        <a href="#visit">Visit</a>
+      </nav>
+      <a class="nav-cta" href="https://www.instagram.com/jupiterbakehouse/">See today on Instagram</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero-media" aria-label="Jupiter pastry hero">
+      <img src="ig-photo-03.jpg" alt="Fresh pastries on a tray in the window at Jupiter Bakehouse" />
+    </section>
+
+    <section class="hero-copy">
+      <div class="wrap">
+        <span class="eyebrow" data-reveal>Gerrard East bakery and espresso bar</span>
+        <h1 aria-label="Long-fermented bread. French pastry.">
+          <span class="hero-line">Long-fermented</span>
+          <span class="hero-line">bread.</span>
+          <span class="hero-line">French pastry.</span>
+        </h1>
+        <p class="hero-lead" data-reveal>
+          Jupiter Bakehouse is Jackson Forster's Toronto shop for naturally leavened loaves, laminated pastry, and coffee, built around Canadian grain and open Wednesday through Sunday at 1505 Gerrard St E.
+        </p>
+        <div class="hero-actions" data-reveal>
+          <a class="button primary" href="https://www.google.com/maps/search/?api=1&query=Jupiter%20Bakehouse%201505%20Gerrard%20St%20E%20Toronto">Get directions</a>
+          <a class="button secondary" href="tel:+16473521505">Call 647-352-1505</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="quick-facts">
+      <div class="wrap quick-grid" data-reveal>
+        <div>
+          <div class="fact-label">When</div>
+          <div class="fact-value">Wednesday to Sunday</div>
+        </div>
+        <div>
+          <div class="fact-label">Where</div>
+          <div class="fact-value">1505 Gerrard St E, Toronto</div>
+        </div>
+        <div>
+          <div class="fact-label">What</div>
+          <div class="fact-value">Naturally leavened bread and pastry</div>
+        </div>
+        <div>
+          <div class="fact-label">Follow</div>
+          <div class="fact-value">@jupiterbakehouse</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="what-to-get">
+      <div class="wrap section-shell">
+        <div class="section-intro" data-reveal>
+          <div>
+            <div class="section-kicker">What to get</div>
+            <h2 style="font-size:clamp(2.5rem,5vw,4.4rem); margin-top:10px;">Start with the bread, then wreck your plan with pastry.</h2>
+          </div>
+          <p>
+            The draw here is the split personality. Hardy sourdough that disappears fast, then pastry that still feels light on the way out. blogTO singled out the sesame sourdough, Ontario sourdough, olive and polenta fougasse, blueberry danish, tiramisu danish, buckwheat financier, and smoked-cheese pretzel for a reason.
+          </p>
+        </div>
+        <div class="product-grid">
+          <article class="product-card" data-reveal>
+            <img src="ig-photo-06.jpg" alt="A glossy pastry from Jupiter Bakehouse finished with pistachio" />
+          </article>
+          <article class="product-card product-copy" data-reveal>
+            <h3>Three easy calls.</h3>
+            <div class="mini-list">
+              <div class="mini-item">
+                <strong>Sesame or Ontario sourdough</strong>
+                Start with the bread that made the farmers' market following translate into a real storefront.
+              </div>
+              <div class="mini-item">
+                <strong>Tiramisu or blueberry danish</strong>
+                Jupiter leans French with laminated pastry, not just another loaf counter with a croissant on the side.
+              </div>
+              <div class="mini-item">
+                <strong>Smoked-cheese pretzel</strong>
+                The savory move, if you don't want to leave holding only sugar and butter.
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="proof-band" aria-label="Editorial proof">
+      <div class="wrap proof-grid">
+        <article class="proof-card" data-reveal>
+          <div class="proof-source">blogTO</div>
+          <p>"A Toronto bakery centred around Canadian grain and French pastry."</p>
+        </article>
+        <article class="proof-card" data-reveal>
+          <div class="proof-source">Daily Hive</div>
+          <p>Forster described the backbone of Jupiter as Canadian grain and produce, long-fermented sourdough, and traditional French pastry.</p>
+        </article>
+        <article class="proof-card" data-reveal>
+          <div class="proof-source">Instagram bio</div>
+          <p>Jupiter keeps the pitch plain: naturally leavened bread and pastry, Wednesday through Sunday, Gerrard East.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="story">
+      <div class="wrap section-shell">
+        <div class="section-intro" data-reveal>
+          <div>
+            <div class="section-kicker">Why this place matters</div>
+            <h2 style="font-size:clamp(2.5rem,5vw,4.4rem); margin-top:10px;">A farmers' market bakery that got its own corner.</h2>
+          </div>
+          <p>
+            Jupiter started in 2023 as a farmers' market operation before taking over the old Glory Hole Doughnuts space in late 2025. Press coverage keeps coming back to the same thing: Forster trained seriously, uses flour from Howick Community Farms, and built the shop around simple bread that tastes like real grain instead of stabilizers and shortcuts.
+          </p>
+        </div>
+        <div class="story-grid">
+          <img src="ig-photo-01.jpg" alt="A tray of sourdough loaves from Jupiter Bakehouse" data-reveal />
+          <div class="story-copy" data-reveal>
+            <div class="section-kicker">From the bakehouse</div>
+            <h2>Good bread first. The rest follows.</h2>
+            <p>
+              Jupiter's own materials are pretty restrained. That's part of the appeal. No giant brand speech, just bread, pastry, espresso, and a clear schedule.
+            </p>
+            <p>
+              The useful detail is underneath that restraint: Blackbird Baking and Petite Thuet in the background, Ontario ingredients, and long fermentation at the center of the menu.
+            </p>
+            <p>
+              If you want the newest pastry run or the loaf people were lining up for that morning, Instagram is still the fastest read on what's happening day to day.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="visit">
+      <div class="wrap section-shell">
+        <div class="section-intro" data-reveal>
+          <div>
+            <div class="section-kicker">Visit</div>
+            <h2 style="font-size:clamp(2.5rem,5vw,4.4rem); margin-top:10px;">Go early if you care about bread.</h2>
+          </div>
+          <p>
+            Jupiter has a live site now, but the useful behavior still feels like a neighbourhood bakery: check Instagram, show up during the Wednesday to Sunday window, and don't assume the best loaf will still be there late.
+          </p>
+        </div>
+        <div class="visit-grid">
+          <article class="visit-card visit-copy" data-reveal>
+            <h3>The practical part.</h3>
+            <div class="visit-list">
+              <div class="visit-item">
+                <strong>Address</strong>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Jupiter%20Bakehouse%201505%20Gerrard%20St%20E%20Toronto">1505 Gerrard St E, Toronto, ON M4L 2A4</a>
+              </div>
+              <div class="visit-item">
+                <strong>Phone</strong>
+                <a href="tel:+16473521505">647-352-1505</a>
+              </div>
+              <div class="visit-item">
+                <strong>Schedule</strong>
+                Wednesday to Sunday, per Instagram bio and current site materials.
+              </div>
+            </div>
+            <div class="visit-actions">
+              <a class="button primary" href="https://www.instagram.com/jupiterbakehouse/">See today's feed</a>
+            </div>
+          </article>
+          <article class="visit-card" data-reveal>
+            <img src="ig-photo-07.jpg" alt="The Jupiter Bakehouse team in the kitchen with trays of dough" style="width:100%; height:100%; min-height:420px; object-fit:cover;" />
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">Demo build for Jupiter Bakehouse. Built from public press, Instagram, and current website details.</div>
+  </footer>
+
+  <script>
+    document.documentElement.classList.add('js');
+    const toggle = document.querySelector('.mobile-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    if (toggle && navLinks) {
+      toggle.addEventListener('click', () => {
+        const open = navLinks.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', String(open));
+      });
+    }
+
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const revealables = document.querySelectorAll('[data-reveal]');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      revealables.forEach((el, index) => {
+        el.style.transitionDelay = `${Math.min(index * 70, 210)}ms`;
+        observer.observe(el);
+      });
+
+      const heroLines = document.querySelectorAll('.hero-line');
+      heroLines.forEach((line, index) => {
+        setTimeout(() => line.classList.add('is-visible'), 140 + (index * 120));
+      });
+    } else {
+      document.querySelectorAll('[data-reveal], .hero-line').forEach((el) => el.classList.add('is-visible'));
+    }
+  </script>
+</body>
+</html>

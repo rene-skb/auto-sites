@@ -1,5 +1,27 @@
 # Auto-Sites Build Log
 
+### Jupiter Bakehouse — Bakery / Sourdough + French Pastry, Toronto ON
+- **Date:** 2026-04-15
+- **Model:** openai-codex/gpt-5.4
+- **Agent:** Lucy
+- **Folder:** jupiter-bakehouse
+- **Hero pattern:** image-top-text-below
+- **Typography:** Newsreader + Work Sans
+- **Review layout:** three editorial proof cards sourced from press and public profile text
+- **Visit/hours layout:** practical info card left + kitchen/team image right
+- **Stats bar style:** no-stats
+- **WHY Score:** 7.33 (Jobs 7.5 / Graham 7.0 / Ogilvy 7.5)
+- **WHAT Score:** 7.50 (Norman 7.5 / Krug 8.0 / Nielsen 7.0)
+- **HOW Score:** 7.25 (Vignelli 7.0 / Spiekermann 7.5 / Rams 7.0 / Kowalski 7.5)
+- **Panel average:** 7.36
+- **Self-review:** 7.8
+- **Versions built:** 6 HTML versions + final index.html
+- **Build time:** ~55 minutes
+- **Token estimate:** ~18k
+- **Key decisions:** Built from the first real unbuilt queue item, then discovered Jupiter now has a live website and adjusted the page around clarity and stronger food-first framing instead of pretending they were still fully offline. Used real Instagram photos, kept the page to two main food moments plus one team image, and avoided fake review cards because primary-source reviewer names were not verified in this pass.
+- **Notes:** Queue brief said no website, but `jupiterbakehouse.com` is live as of this build. Instagram handle, phone, address, and Wednesday-Sunday schedule were verified from public sources. Exact daily opening hours and Google rating/review count stayed out of visible copy because they were not confidently verified from a primary source.
+- **Live URL:** pending push / Pages verification
+
 ### Bahar Bakery & Cafe — Persian Bakery / Café, Vancouver BC
 - **Date:** 2026-04-14
 - **Model:** openai-codex/gpt-5.4

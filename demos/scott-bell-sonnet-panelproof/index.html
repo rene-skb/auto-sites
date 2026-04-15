@@ -240,38 +240,27 @@ nav {
 .product-item {
   display: grid; grid-template-columns: 220px 1fr;
   gap: 40px; padding: 28px 0; border-top: 1px solid var(--faint);
+  color: inherit; text-decoration: none;
+  transition: opacity 200ms ease;
 }
 .product-item:last-child { border-bottom: 1px solid var(--faint); }
 .product-tag {
   font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
   text-transform: uppercase; color: var(--accent);
+  transition: color 200ms ease;
 }
 .product-title {
   font-family: var(--serif); font-size: 24px; font-weight: 400;
   margin-bottom: 8px; line-height: 1.2;
+  transition: color 200ms ease;
 }
-.product-title a { color: inherit; text-decoration: none; transition: color 200ms ease; }
-.product-title a:hover { color: var(--accent); }
 .product-body {
   font-size: 15px; color: var(--mid); line-height: 1.7; max-width: 560px;
   transition: color 200ms ease;
 }
-.product-link {
-  display: inline-block;
-  margin-top: 14px;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--accent);
-  text-decoration: none;
-  transition: opacity 200ms ease, color 200ms ease;
-}
-.product-link:hover { opacity: 0.7; }
 .product-item:hover .product-tag,
-.product-item:hover .product-title a,
-.product-item:hover .product-body,
-.product-item:hover .product-link {
+.product-item:hover .product-title,
+.product-item:hover .product-body {
   color: var(--accent);
 }
 
@@ -544,30 +533,27 @@ footer {
 
     <!-- Products -->
     <div class="product-list">
-      <div class="product-item reveal">
+      <a class="product-item reveal" href="https://clawprint.dev" target="_blank" rel="noreferrer">
         <p class="product-tag">Product &middot; $29</p>
         <div>
-          <h3 class="product-title"><a href="https://clawprint.dev">Clawprint</a></h3>
+          <h3 class="product-title">Clawprint</h3>
           <p class="product-body">Psychological profiling for AI agents. Your agent learns how you think, how you communicate, and when to push back. Built on Big Five, Enneagram, and Holland Code. The output is a config file the agent reads on startup.</p>
-          <a class="product-link" href="https://clawprint.dev" target="_blank" rel="noreferrer">Visit site &rarr;</a>
         </div>
-      </div>
-      <div class="product-item reveal">
+      </a>
+      <a class="product-item reveal" href="https://www.scottkbell.com/loopin" target="_blank" rel="noreferrer">
         <p class="product-tag">Dev Tool &middot; Chrome Extension</p>
         <div>
-          <h3 class="product-title"><a href="https://www.scottkbell.com/loopin">LoopIn</a></h3>
+          <h3 class="product-title">LoopIn</h3>
           <p class="product-body">Design-to-code bridge for Claude Code. Click any element in the browser. LoopIn grabs the DOM, styles, and a screenshot, then sends it straight to the agent. It sees exactly what the designer sees.</p>
-          <a class="product-link" href="https://www.scottkbell.com/loopin" target="_blank" rel="noreferrer">Visit site &rarr;</a>
         </div>
-      </div>
-      <div class="product-item reveal">
+      </a>
+      <a class="product-item reveal" href="https://mix-id.vercel.app" target="_blank" rel="noreferrer">
         <p class="product-tag">Open Source &middot; Free</p>
         <div>
-          <h3 class="product-title"><a href="https://mix-id.vercel.app">Mix'd</a></h3>
+          <h3 class="product-title">Mix'd</h3>
           <p class="product-body">Tracklist generator for DJ mixes. Paste a URL from Mixcloud, SoundCloud, or YouTube. Get a timestamped tracklist. I built it because I have a radio show and this tool didn't exist.</p>
-          <a class="product-link" href="https://mix-id.vercel.app" target="_blank" rel="noreferrer">Visit site &rarr;</a>
         </div>
-      </div>
+      </a>
     </div>
   </div>
 </div>

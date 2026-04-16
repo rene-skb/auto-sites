@@ -92,18 +92,41 @@ nav {
   padding: 120px 40px 80px;
 }
 .hero-visual {
-  background: #101010;
+  background: transparent;
   padding: 0;
-  overflow: hidden;
-  box-shadow: 0 0 0 1px rgba(26, 26, 24, 0.06) inset;
 }
 .hero-visual img,
 .hero-visual video {
   width: 100%;
-  height: 100%;
+  height: auto;
   display: block;
   object-fit: contain;
   object-position: center;
+}
+.hero-visual-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 20px;
+  padding-top: 12px;
+  font-size: 11px;
+  letter-spacing: 0.02em;
+  color: var(--mid);
+}
+.hero-visual-note {
+  max-width: 70%;
+}
+.hero-visual-credit {
+  flex-shrink: 0;
+  text-align: right;
+}
+.hero-visual-meta a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 200ms ease;
+}
+.hero-visual-meta a:hover {
+  color: var(--accent);
 }
 .naka-caption {
   font-size: 12px; color: var(--mid); margin-top: 12px;
@@ -446,6 +469,10 @@ footer span:last-child {
   </div>
   <div class="hero-visual">
     <img src="assets/hero-fix-the-money.png" alt="Fix the Money visual exploration">
+    <div class="hero-visual-meta">
+      <p class="hero-visual-note">A reminder that good product work should change something real.</p>
+      <p class="hero-visual-credit">Artwork by <a href="https://theafrix.co/" target="_blank" rel="noreferrer">The Afrix</a></p>
+    </div>
   </div>
 </header>
 

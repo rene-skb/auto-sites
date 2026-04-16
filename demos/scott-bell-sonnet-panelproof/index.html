@@ -228,12 +228,23 @@ nav {
   max-width: calc(75% - 3px);
 }
 .case-link {
-  display: inline-block; margin-top: 20px;
+  display: inline-flex; align-items: center; gap: 10px; margin-top: 20px;
   font-size: 13px; font-weight: 600; letter-spacing: 0.04em;
   text-transform: uppercase; color: var(--accent); text-decoration: none;
   transition: opacity 200ms ease;
 }
+.case-link::before {
+  content: '';
+  width: 10px;
+  height: 6px;
+  border: 1px solid currentColor;
+  border-radius: 1px;
+  box-shadow: inset 3px 0 0 currentColor;
+  opacity: 0.45;
+  flex-shrink: 0;
+}
 .case-link:hover { opacity: 0.7; }
+.case-link:hover::before { opacity: 0.7; }
 
 /* INLINE CTA */
 .inline-cta {

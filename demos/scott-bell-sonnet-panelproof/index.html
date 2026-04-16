@@ -35,8 +35,8 @@ DELTA: v5 final polish notes
   --surface: #F0EFEB;
   --footer-bg: #203a33;
   --footer-bg-deep: #1a312b;
-  --footer-text: rgba(248, 247, 244, 0.92);
-  --footer-text-muted: rgba(248, 247, 244, 0.72);
+  --footer-text: rgba(248, 247, 244, 0.96);
+  --footer-text-muted: rgba(248, 247, 244, 0.84);
   --max-w: 1120px;
   --serif: 'Instrument Serif', Georgia, serif;
   --sans: 'Inter', system-ui, sans-serif;
@@ -346,7 +346,8 @@ nav {
 }
 .contact-link {
   display: inline-block;
-  border: 1px solid rgba(45, 122, 95, 0.85); color: #8fd1b6;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(143, 209, 182, 0.58); color: #d7f2e7;
   padding: 14px 36px; font-size: 14px; font-weight: 600;
   letter-spacing: 0.04em; text-transform: uppercase; text-decoration: none;
   transition: background 200ms ease, color 200ms ease, border-color 200ms ease;
@@ -362,11 +363,14 @@ nav {
 }
 
 footer {
-  padding: 24px 40px; border-top: 1px solid rgba(248, 247, 244, 0.12);
+  padding: 24px 40px; border-top: 1px solid rgba(248, 247, 244, 0.14);
   display: flex; justify-content: space-between; align-items: center;
-  font-size: 13px; color: var(--footer-text-muted);
+  font-size: 13px; color: var(--footer-text);
   max-width: none; margin: 0 auto;
   background: var(--footer-bg-deep);
+}
+footer span:last-child {
+  color: var(--footer-text-muted);
 }
 
 /* REVEAL */

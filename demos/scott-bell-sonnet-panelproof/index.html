@@ -95,25 +95,43 @@ nav {
   background: none; border: none;
   padding: 0;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  align-items: start;
+  grid-template-columns: 1.05fr 1fr 1fr;
+  grid-auto-rows: 116px;
+  gap: 14px;
+  align-items: stretch;
 }
-.hero-visual img,
-.hero-visual video {
+.hero-card {
+  overflow: hidden;
+  background: var(--surface);
+  box-shadow: 0 0 0 1px rgba(26, 26, 24, 0.05) inset;
+}
+.hero-card img,
+.hero-card video {
   width: 100%;
+  height: 100%;
   display: block;
   object-fit: cover;
 }
-.hero-phone {
-  aspect-ratio: 9 / 19.5;
-  height: 100%;
-  overflow: hidden;
+.hero-card--clawprint {
+  grid-column: 1;
+  grid-row: 1 / span 4;
 }
-.hero-phone img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.hero-card--loopin {
+  grid-column: 2 / span 2;
+  grid-row: 1 / span 2;
+}
+.hero-card--mixid {
+  grid-column: 2;
+  grid-row: 3 / span 2;
+}
+.hero-card--nakamoto {
+  grid-column: 3;
+  grid-row: 3 / span 2;
+}
+.hero-card--clawprint img,
+.hero-card--loopin img,
+.hero-card--mixid img,
+.hero-card--nakamoto img {
   object-position: center top;
 }
 .hero-visual-caption {
@@ -416,6 +434,26 @@ footer span:last-child {
   .hamburger { display: block; }
   .hero { grid-template-columns: 1fr; padding: 100px 20px 60px; min-height: auto; gap: 32px; }
   .hero-headline { font-size: clamp(32px, 8vw, 44px); }
+  .hero-visual {
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 132px;
+  }
+  .hero-card--clawprint {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+  }
+  .hero-card--loopin {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+  }
+  .hero-card--mixid {
+    grid-column: 1;
+    grid-row: 3 / span 2;
+  }
+  .hero-card--nakamoto {
+    grid-column: 2;
+    grid-row: 3 / span 2;
+  }
   .section-wrap { padding: 0 20px; }
   .section-pad { padding-top: 64px; padding-bottom: 64px; }
   .section-header { flex-direction: column; gap: 8px; }
@@ -463,9 +501,11 @@ footer span:last-child {
     <a href="#work" class="hero-cta">See the work</a>
   </div>
   <div class="hero-visual">
-    <div class="hero-phone"><img src="assets/strike1.png" alt="Strike app screen designed by Scott Bell"></div>
-    <div class="hero-phone"><img src="assets/fountain1.png" alt="Fountain app screen designed by Scott Bell"></div>
-    <p class="hero-visual-caption">Selected mobile work — Strike and Fountain</p>
+    <div class="hero-card hero-card--clawprint"><img src="assets/hero-clawprint.jpg" alt="Clawprint AI product interface"></div>
+    <div class="hero-card hero-card--loopin"><img src="assets/hero-loopin.jpg" alt="LoopIn design-to-code workflow"></div>
+    <div class="hero-card hero-card--mixid"><img src="assets/hero-mixid.jpg" alt="Mix ID interface and results"></div>
+    <div class="hero-card hero-card--nakamoto"><img src="assets/hero-nakamoto.jpg" alt="Nakamoto Design Co. project grid"></div>
+    <p class="hero-visual-caption">Current work across AI products, tools, and the web</p>
   </div>
 </header>
 

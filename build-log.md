@@ -1,5 +1,27 @@
 # Auto-Sites Build Log
 
+### Bakerbots Baking — Bakery / Dessert Shop, Toronto ON
+- **Date:** 2026-04-16
+- **Model:** openai-codex/gpt-5.4
+- **Agent:** Lucy
+- **Folder:** bakerbots-baking
+- **Hero pattern:** editorial-spread
+- **Typography:** Fraunces + Instrument Sans
+- **Review layout:** three attributed editorial proof cards, no customer review cards
+- **Visit/hours layout:** four-card horizontal utility band
+- **Stats bar style:** no-stats
+- **WHY Score:** 7.33 (Jobs 7.5 / Graham 7.0 / Ogilvy 7.5)
+- **WHAT Score:** 7.33 (Norman 7.5 / Krug 7.5 / Nielsen 7.0)
+- **HOW Score:** 7.25 (Vignelli 7.0 / Spiekermann 7.5 / Rams 7.0 / Kowalski 7.5)
+- **Panel average:** 7.30
+- **Self-review:** 7.9
+- **Versions built:** 6 HTML versions + final index.html
+- **Build time:** ~55 minutes
+- **Token estimate:** ~18k
+- **Key decisions:** Started from the top queue entry, then discovered Bakerbots now has a live but fragmented web presence instead of no site at all. Built the demo around consolidation and appetite, using real Instagram dessert photos, one short acknowledgement of the scattered current site, and editorial proof blocks instead of fake customer review cards because compliant reviewer initials were not verified in this pass.
+- **Notes:** Queue brief drifted on the basics. Verified the live domain, Instagram handle, phone, Bloor address, and late-day hours during the build. The original queue address and likely handle were wrong. Google rating and review count were left out because they were not confidently confirmed from a primary source.
+- **Live URL:** pending push / Pages verification
+
 ### Jupiter Bakehouse — Bakery / Sourdough + French Pastry, Toronto ON
 - **Date:** 2026-04-15
 - **Model:** openai-codex/gpt-5.4

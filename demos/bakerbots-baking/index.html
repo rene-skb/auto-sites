@@ -1,0 +1,388 @@
+<!--
+DELTA: v5 final polish notes
+- Tightened the hero line, softened a few repeated phrases, and polished CTA copy
+- Self-review score: 7.9
+- Panel averages carried forward from panel-notes.md: WHY 7.33 / WHAT 7.33 / HOW 7.25
+- Final polish focus: appetite first, cleaner utility, warmer visual rhythm
+--><!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bakerbots Baking</title>
+<meta name="description" content="Bakerbots keeps Toronto stocked with ice cream sandwiches, pie, cookies, cakes, and a dessert case worth a detour down Bloor.">
+<meta property="og:title" content="Bakerbots Baking">
+<meta property="og:description" content="Ice cream sandwiches, pie, cookies, cakes, and a dessert case worth a detour on Bloor.">
+<meta property="og:image" content="https://auto-sites.pages.dev/demos/bakerbots-baking/ig-photo-01.jpg">
+<meta property="og:url" content="https://auto-sites.pages.dev/demos/bakerbots-baking/">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f5efe4;
+  --bg-soft: #fbf7f0;
+  --ink: #221913;
+  --muted: rgba(34, 25, 19, 0.78);
+  --line: rgba(34, 25, 19, 0.14);
+  --accent: #b54f3a;
+  --accent-deep: #8f3623;
+  --butter: #f2d27b;
+  --card: rgba(255,255,255,0.56);
+  --shadow: 0 24px 80px rgba(72, 42, 20, 0.10);
+  --radius: 28px;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --section-pad: clamp(72px, 9vw, 128px);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: 'Instrument Sans', system-ui, sans-serif;
+  background: radial-gradient(circle at top left, #fff7ea 0, var(--bg) 48%, #f0e2cf 100%);
+  color: var(--ink);
+  line-height: 1.5;
+}
+a { color: inherit; text-decoration: none; }
+img { display: block; width: 100%; }
+button { font: inherit; }
+.page-shell { width: min(1180px, calc(100% - 32px)); margin: 0 auto; }
+.topbar {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 20px 0 0;
+}
+.brand-lockup { display: flex; gap: 12px; align-items: center; }
+.brand-dot {
+  width: 14px; height: 14px; border-radius: 999px;
+  background: linear-gradient(135deg, var(--accent), var(--butter));
+  box-shadow: 0 0 0 6px rgba(181,79,58,0.08);
+}
+.brand-name {
+  font-size: 0.88rem; text-transform: uppercase; letter-spacing: 0.18em; font-weight: 700;
+}
+.desktop-nav { display: flex; gap: 24px; font-size: 0.95rem; color: var(--muted); }
+.desktop-nav a:hover, .desktop-nav a:focus-visible { color: var(--ink); }
+.menu-toggle {
+  display: none; border: 1px solid var(--line); background: rgba(255,255,255,0.65); color: var(--ink);
+  padding: 10px 14px; border-radius: 999px; cursor: pointer;
+}
+.mobile-nav {
+  display: none; flex-direction: column; gap: 12px; padding: 14px 0 0;
+  font-size: 1rem; color: var(--muted);
+}
+.hero {
+  padding: 30px 0 40px;
+}
+.hero-grid {
+  display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.72fr);
+  gap: clamp(28px, 5vw, 64px); align-items: end;
+}
+.kicker {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 8px 14px; border-radius: 999px; background: rgba(255,255,255,0.66);
+  border: 1px solid rgba(34,25,19,0.1); font-size: 0.76rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700;
+}
+.kicker::before {
+  content: ''; width: 8px; height: 8px; border-radius: 999px; background: var(--accent);
+}
+.hero h1 {
+  margin: 20px 0 18px; font-family: 'Fraunces', Georgia, serif; font-weight: 500;
+  font-size: clamp(4.2rem, 10vw, 8.8rem); line-height: 0.92; letter-spacing: -0.05em;
+  max-width: 8ch;
+}
+.hero p.lead {
+  margin: 0; max-width: 34rem; font-size: clamp(1.05rem, 1.8vw, 1.28rem); color: var(--muted);
+}
+.hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 28px; }
+.button {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 52px; padding: 0 22px; border-radius: 999px; font-weight: 700;
+  transition: transform 160ms var(--ease-out), background-color 160ms var(--ease-out), color 160ms var(--ease-out), box-shadow 160ms var(--ease-out);
+}
+.button.primary {
+  background: var(--ink); color: #fff8f1; box-shadow: 0 18px 40px rgba(34, 25, 19, 0.18);
+}
+.button.secondary {
+  background: rgba(255,255,255,0.72); color: var(--ink); border: 1px solid var(--line);
+}
+.button:hover, .button:focus-visible { transform: translateY(-2px); }
+.button:active { transform: scale(0.97); }
+.hero-card {
+  background: rgba(255,255,255,0.6); border: 1px solid rgba(34,25,19,0.12);
+  border-radius: 34px; box-shadow: var(--shadow); overflow: hidden;
+}
+.hero-card figure { margin: 0; }
+.hero-card img { aspect-ratio: 1 / 1; object-fit: cover; }
+.hero-card figcaption {
+  padding: 18px 20px 22px; display: flex; flex-direction: column; gap: 8px;
+}
+.eyebrow { text-transform: uppercase; letter-spacing: 0.14em; font-size: 0.74rem; color: var(--muted); font-weight: 700; }
+.section {
+  padding: var(--section-pad) 0;
+  border-top: 1px solid var(--line);
+}
+.section-header {
+  display: grid; grid-template-columns: 200px minmax(0,1fr); gap: 24px; align-items: start; margin-bottom: 32px;
+}
+.section-label {
+  text-transform: uppercase; letter-spacing: 0.14em; font-size: 0.74rem; color: var(--muted); font-weight: 700;
+  padding-top: 10px;
+}
+.section-header h2 {
+  margin: 0; font-family: 'Fraunces', Georgia, serif; font-size: clamp(2rem, 4.8vw, 4rem); line-height: 0.98; letter-spacing: -0.04em;
+}
+.section-header p { margin: 16px 0 0; max-width: 42rem; color: var(--muted); font-size: 1.02rem; }
+.proof-grid {
+  display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 18px;
+}
+.proof-item {
+  background: rgba(255,255,255,0.52); border: 1px solid rgba(34,25,19,0.1); border-radius: 24px; padding: 24px;
+  min-height: 230px; display: flex; flex-direction: column; justify-content: space-between;
+}
+.proof-item p { margin: 0 0 18px; font-size: 1rem; }
+.proof-item strong { display: block; font-size: 0.88rem; text-transform: uppercase; letter-spacing: 0.08em; }
+.gallery-grid {
+  display: grid; grid-template-columns: 1.2fr 0.9fr 0.9fr; gap: 16px; align-items: stretch;
+}
+.gallery-grid figure, .story-grid figure { margin: 0; }
+.gallery-grid img { border-radius: 26px; height: 100%; object-fit: cover; box-shadow: var(--shadow); }
+.gallery-grid .wide img { aspect-ratio: 1 / 1; }
+.gallery-grid .stack img { aspect-ratio: 1 / 1; }
+.gallery-grid .stack { display: grid; gap: 16px; }
+.story-grid {
+  display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 24px; align-items: start;
+}
+.story-copy {
+  background: rgba(255,255,255,0.5); border-radius: 28px; padding: 28px; border: 1px solid rgba(34,25,19,0.1);
+}
+.story-copy p { margin: 0 0 14px; font-size: 1rem; }
+.story-copy p:last-child { margin-bottom: 0; }
+.story-aside {
+  background: linear-gradient(180deg, rgba(181,79,58,0.08), rgba(255,255,255,0.74));
+  border: 1px solid rgba(34,25,19,0.1); border-radius: 28px; padding: 24px;
+}
+.story-aside ul { margin: 14px 0 0; padding: 0; list-style: none; display: grid; gap: 12px; color: var(--muted); }
+.story-aside li { padding-left: 18px; position: relative; }
+.story-aside li::before { content: '•'; position: absolute; left: 0; color: var(--accent); }
+.visit-band {
+  display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 14px;
+}
+.visit-item {
+  padding: 22px; border-radius: 22px; background: rgba(255,255,255,0.72); border: 1px solid rgba(34,25,19,0.1);
+}
+.visit-item span { display: block; font-size: 0.74rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); font-weight: 700; margin-bottom: 10px; }
+.visit-item strong { display: block; font-size: 1rem; }
+.footer-cta {
+  padding: calc(var(--section-pad) - 12px) 0 var(--section-pad);
+}
+.footer-card {
+  background: #251814; color: #f6efe7; border-radius: 36px; padding: clamp(32px, 5vw, 56px);
+  display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 24px; align-items: end;
+}
+.footer-card h2 {
+  margin: 0 0 14px; font-family: 'Fraunces', Georgia, serif; font-size: clamp(2.4rem, 6vw, 4.8rem); line-height: 0.95;
+}
+.footer-card p { margin: 0; color: rgba(246,239,231,0.72); max-width: 34rem; }
+.footer-links { display: flex; flex-wrap: wrap; gap: 12px; }
+.footer-links .button.primary { background: #fff4ea; color: #251814; box-shadow: none; }
+.footer-links .button.secondary { background: rgba(255,255,255,0.08); color: #f6efe7; border-color: rgba(255,255,255,0.14); }
+footer.site-footer {
+  padding: 0 0 28px; font-size: 0.82rem; color: var(--muted);
+}
+[data-reveal] {
+  opacity: 0; transform: translateY(24px);
+  transition: opacity 700ms var(--ease-out), transform 700ms var(--ease-out);
+}
+[data-reveal].is-visible { opacity: 1; transform: translateY(0); }
+[data-stagger] { transition-delay: calc(var(--stagger, 0) * 70ms); }
+@media (max-width: 920px) {
+  .desktop-nav { display: none; }
+  .menu-toggle { display: inline-flex; }
+  .hero-grid, .section-header, .story-grid, .footer-card { grid-template-columns: 1fr; }
+  .proof-grid, .visit-band, .gallery-grid { grid-template-columns: 1fr; }
+  .section-label { padding-top: 0; }
+}
+@media (max-width: 640px) {
+  .page-shell { width: min(100% - 24px, 1180px); }
+  .topbar { padding-top: 16px; }
+  .hero { padding-top: 22px; }
+  .hero h1 { font-size: clamp(3.2rem, 20vw, 5.6rem); }
+  .hero-actions, .footer-links { flex-direction: column; }
+  .button { width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  [data-reveal] { opacity: 1 !important; transform: none !important; }
+}
+</style></head><body>
+<div class="page-shell">
+  <header class="topbar">
+    <div class="brand-lockup"><span class="brand-dot"></span><span class="brand-name">Bakerbots Baking</span></div>
+    <nav class="desktop-nav" aria-label="Primary" style="padding:10px 14px;border:1px solid rgba(34,25,19,0.1);border-radius:999px;background:rgba(255,255,255,0.58);">
+      <a href="#proof">Proof</a>
+      <a href="#counter">At the counter</a>
+      <a href="#visit">Visit</a>
+    </nav>
+    <button class="menu-toggle" data-menu-toggle aria-expanded="false" aria-controls="mobile-nav">Menu</button>
+  </header>
+  <nav class="mobile-nav" id="mobile-nav" data-mobile-nav aria-label="Mobile">
+    <a href="#proof">Proof</a>
+    <a href="#counter">At the counter</a>
+    <a href="#visit">Visit</a>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <div class="hero-grid">
+        <div>
+          <div class="kicker">Toronto bakery and ice cream counter</div>
+          <h1 data-reveal>Dessert worth the Bloor detour.</h1>
+          <p class="lead" data-reveal>Bakerbots has been on Bloor since 2011. People still show up for oversized ice cream sandwiches, pie, cookies, and a pastry case that makes picking one thing harder than it should be.</p>
+          <div class="hero-actions" data-reveal>
+            <a class="button primary" href="https://www.google.com/maps/place/Bakerbots+Baking/@43.6591254,-79.4399924,17z/data=!3m1!4b1!4m6!3m5!1s0x882b345fcaee5b01:0xad1da848d959992!8m2!3d43.6591254!4d-79.4399924!16s%2Fg%2F1hc2tj5zy?entry=ttu" target="_blank" rel="noreferrer">Get directions</a>
+            <a class="button secondary" href="tel:+14169013500">Call 416-901-3500</a>
+          </div>
+        </div>
+        <aside class="hero-card" data-reveal>
+          <figure>
+            <img src="ig-photo-01.jpg" alt="Brownie topped with vanilla ice cream at Bakerbots Baking.">
+            <figcaption>
+              <span class="eyebrow">What keeps showing up</span>
+              <strong>Ice cream sandwiches up front, pie and pastry in reserve.</strong>
+            </figcaption>
+          </figure>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="proof">
+      <div class="section-header" data-reveal>
+        <div class="section-label">Proof</div>
+        <div>
+          <h2>People don’t come here for one thing.</h2>
+          <p>Bakery case, coffee, and the sandwich people already know them for. The only friction is deciding what makes the first cut.</p>
+        </div>
+      </div>
+      <div class="proof-grid">
+        <article class="proof-item" data-reveal data-stagger>
+          <p>“Hip bakery with a wide variety of cookies and other sweets, plus ice cream sandwiches and coffee drinks.”</p>
+          <strong>Robin W. · TasteToronto</strong>
+        </article>
+        <article class="proof-item" data-reveal data-stagger>
+          <p>Michael Eats called out the “tempting variety of cakes, cookies, pies, and other tasty stuff” at the newer Bloor location.</p>
+          <strong>Michael Eats · March 2025</strong>
+        </article>
+        <article class="proof-item" data-reveal data-stagger>
+          <p>The Instagram bio still leads with the same thing customers remember: “OG 🍦 Sammy... and a fine little bakery.” That tells you enough.</p>
+          <strong>@bakerbots_baking · Instagram bio</strong>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="counter">
+      <div class="section-header" data-reveal>
+        <div class="section-label">At the counter</div>
+        <div>
+          <h2>The case does most of the talking.</h2>
+          <p>Good bakery sites don’t need a fake origin story. They need a few real reasons to show up hungry. Bakerbots has those covered.</p>
+        </div>
+      </div>
+      <div class="gallery-grid">
+        <figure class="wide" data-reveal><img src="ig-photo-04.jpg" alt="Freshly iced cinnamon buns lined up on bakery racks at Bakerbots."></figure>
+        <div class="stack">
+          <figure data-reveal data-stagger><img src="ig-photo-05.jpg" alt="Slice of pie with a scoop of ice cream at Bakerbots."></figure>
+          <figure data-reveal data-stagger><img src="ig-photo-06.jpg" alt="Close-up of lemon meringue style tarts at Bakerbots."></figure>
+        </div>
+        <div class="story-copy" data-reveal>
+          <p>Bakerbots moved from a tiny original shop into a roomier Bloor address, but the appeal stayed the same: dessert first, coffee if you want it, and too many good options at once.</p>
+          <p>Editorial coverage keeps circling back to the same mix, cakes, cookies, pies, puffs, and ice cream sandwiches. That’s enough of a menu for a homepage.</p>
+          <p>If you’re checking before you leave the house, the useful stuff is easy: Tuesday through Thursday 3 to 10, Friday 3 to 11, Saturday 11 to 11, Sunday 11 to 10. Monday is closed.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header" data-reveal>
+        <div class="section-label">Why it works</div>
+        <div>
+          <h2>Warm, playful, and a little bit chaotic in the right way.</h2>
+          <p>The name does half the job. Bakerbots sounds homemade and slightly weird, which fits a shop where pie and ice cream sandwiches can share the same spotlight.</p>
+        </div>
+      </div>
+      <div class="story-grid">
+        <div class="story-copy" data-reveal>
+          <p>The visual direction leans into that contrast: cream, butter yellow, dark chocolate, and a tomato-red accent pulled from the desserts instead of pasted on top of them.</p>
+          <p>The page keeps the pitch short, because this business doesn’t need much explanation. It needs appetite, useful info, and a direct route to the counter.</p>
+        </div>
+        <aside class="story-aside" data-reveal>
+          <span class="eyebrow">What to expect</span>
+          <ul>
+            <li>Ice cream sandwiches are part of the identity, not an afterthought.</li>
+            <li>Pie, cookies, cakes, and pastry case variety all show up in public coverage.</li>
+            <li>Open later than most bakeries, especially on Friday and Saturday.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="visit">
+      <div class="section-header" data-reveal>
+        <div class="section-label">Visit</div>
+        <div>
+          <h2>1242 Bloor St W, Toronto.</h2>
+          <p>The current site exists, but it mostly sends people off to older pages and ordering flows. This version keeps the practical stuff in one place.</p>
+        </div>
+      </div>
+      <div class="visit-band">
+        <div class="visit-item" data-reveal data-stagger><span>Hours</span><strong>Tue to Thu 3PM to 10PM</strong></div>
+        <div class="visit-item" data-reveal data-stagger><span>Weekend</span><strong>Fri 3PM to 11PM, Sat 11AM to 11PM, Sun 11AM to 10PM</strong></div>
+        <div class="visit-item" data-reveal data-stagger><span>Call</span><strong><a href="tel:+14169013500">416-901-3500</a></strong></div>
+        <div class="visit-item" data-reveal data-stagger><span>Instagram</span><strong><a href="https://www.instagram.com/bakerbots_baking/" target="_blank" rel="noreferrer">@bakerbots_baking</a></strong></div>
+      </div>
+    </section>
+  </main>
+
+  <section class="footer-cta">
+    <div class="footer-card" data-reveal>
+      <div>
+        <h2>Start with the sandwich. Stay for the rest.</h2>
+        <p>Bakerbots already has the reputation. A cleaner site just makes the detour easier.</p>
+      </div>
+      <div class="footer-links">
+        <a class="button primary" href="https://www.google.com/maps/place/Bakerbots+Baking/@43.6591254,-79.4399924,17z/data=!3m1!4b1!4m6!3m5!1s0x882b345fcaee5b01:0xad1da848d959992!8m2!3d43.6591254!4d-79.4399924!16s%2Fg%2F1hc2tj5zy?entry=ttu" target="_blank" rel="noreferrer">Get directions</a>
+        <a class="button secondary" href="https://www.instagram.com/bakerbots_baking/" target="_blank" rel="noreferrer">Instagram</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    Built as an auto-sites demo for Bakerbots Baking, Toronto.
+  </footer>
+</div>
+
+<script>
+const menuButton = document.querySelector('[data-menu-toggle]');
+const mobileNav = document.querySelector('[data-mobile-nav]');
+if (menuButton && mobileNav) {
+  menuButton.addEventListener('click', () => {
+    const expanded = menuButton.getAttribute('aria-expanded') === 'true';
+    menuButton.setAttribute('aria-expanded', String(!expanded));
+    mobileNav.style.display = expanded ? 'none' : 'flex';
+  });
+}
+if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('[data-reveal]').forEach((node, index) => {
+    if (node.hasAttribute('data-stagger')) node.style.setProperty('--stagger', index % 4);
+    observer.observe(node);
+  });
+}
+</script>
+</body></html>

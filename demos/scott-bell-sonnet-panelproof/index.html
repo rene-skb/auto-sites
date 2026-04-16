@@ -234,22 +234,24 @@ nav {
   transition: opacity 200ms ease;
 }
 .case-link::before {
-  content: '[···]';
+  content: '+';
+  display: inline-block;
+  width: 10px;
+  text-align: center;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 600;
-  letter-spacing: 0.02em;
+  line-height: 1;
   color: currentColor;
   opacity: 0.58;
   flex-shrink: 0;
-  animation: case-link-loader 900ms steps(1) infinite;
+  transform-origin: center;
+  animation: case-link-loader 900ms linear infinite;
 }
 @keyframes case-link-loader {
-  0%, 19% { content: '[···]'; }
-  20%, 39% { content: '[•··]'; }
-  40%, 59% { content: '[••·]'; }
-  60%, 79% { content: '[•••]'; }
-  80%, 100% { content: '[·••]'; }
+  0% { transform: rotate(0deg); }
+  50% { transform: rotate(45deg); }
+  100% { transform: rotate(90deg); }
 }
 .case-link:hover { opacity: 0.7; }
 .case-link:hover::before { opacity: 0.82; }

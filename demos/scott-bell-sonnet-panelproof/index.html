@@ -100,10 +100,8 @@ nav {
   display: block;
   object-fit: cover;
 }
-.hero-visual video {
-  object-position: 50% 22%;
-  transform: scale(1.9);
-  transform-origin: 50% 22%;
+.hero-visual img {
+  object-position: center top;
 }
 .hero-visual-caption {
   font-size: 11px; color: var(--mid); margin-top: 10px;
@@ -197,7 +195,7 @@ nav {
 .case-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 .case-grid-aioz {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 16px;
 }
 .case-grid-aioz .case-img-wrap:first-child {
@@ -420,11 +418,8 @@ footer {
     <a href="#work" class="hero-cta">See the work</a>
   </div>
   <div class="hero-visual">
-    <video autoplay muted loop playsinline preload="auto" aria-label="Animated AIOZ dTransfer loader">
-      <source src="assets/hero-loader.webm" type="video/webm">
-      <source src="assets/hero-loader.mov" type="video/quicktime">
-    </video>
-    <p class="hero-visual-caption">AIOZ dTransfer — product loader study</p>
+    <img src="assets/aioz5.png" alt="AIOZ interface designed by Scott Bell">
+    <p class="hero-visual-caption">AIOZ — product interface</p>
   </div>
 </header>
 
@@ -456,7 +451,6 @@ footer {
               <div class="case-img-wrap"><img src="assets/aioz1.png" alt="AIOZ ecosystem interface"></div>
               <div class="case-img-wrap"><img src="assets/aioz2.png" alt="AIOZ dashboard"></div>
               <div class="case-img-wrap"><img src="assets/aioz3.png" alt="AIOZ models interface"></div>
-              <div class="case-img-wrap"><img src="assets/aioz5.png" alt="AIOZ creator or platform interface"></div>
             </div>
           </div>
         </div>

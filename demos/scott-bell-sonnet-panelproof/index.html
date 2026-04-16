@@ -216,6 +216,12 @@ nav {
   grid-column: 1 / -1;
 }
 .case-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.case-grid-3-match-4 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  max-width: calc(75% - 3px);
+}
 .case-link {
   display: inline-block; margin-top: 20px;
   font-size: 13px; font-weight: 600; letter-spacing: 0.04em;
@@ -416,6 +422,7 @@ footer span:last-child {
   .case-item { grid-template-columns: 1fr; gap: 16px; }
   .case-grid-3 { grid-template-columns: 1fr 1fr; }
   .case-grid-4 { grid-template-columns: 1fr 1fr; }
+  .case-grid-3-match-4 { grid-template-columns: 1fr 1fr; max-width: none; }
   .inline-cta { flex-direction: column; align-items: flex-start; }
   .current-inner { padding: 0 20px; }
   .naka-feature { grid-template-columns: 1fr; gap: 12px; }
@@ -556,7 +563,7 @@ footer span:last-child {
             <span class="metric-pill">$800M+ valuation</span>
           </div>
           <div class="case-media">
-            <div class="case-grid-4">
+            <div class="case-grid-3-match-4">
               <div class="case-img-wrap"><img src="assets/koho1.png" alt="KOHO savings experience screen"></div>
               <div class="case-img-wrap"><img src="assets/koho2.png" alt="KOHO savings goal details screen"></div>
               <div class="case-img-wrap"><img src="assets/koho3.png" alt="KOHO savings plan setup screen"></div>

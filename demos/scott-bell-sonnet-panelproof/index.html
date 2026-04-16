@@ -234,17 +234,25 @@ nav {
   transition: opacity 200ms ease;
 }
 .case-link::before {
-  content: '';
-  width: 10px;
-  height: 6px;
-  border: 1px solid currentColor;
-  border-radius: 1px;
-  box-shadow: inset 3px 0 0 currentColor;
-  opacity: 0.45;
+  content: '[···]';
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: currentColor;
+  opacity: 0.58;
   flex-shrink: 0;
+  animation: case-link-loader 900ms steps(1) infinite;
+}
+@keyframes case-link-loader {
+  0%, 19% { content: '[···]'; }
+  20%, 39% { content: '[•··]'; }
+  40%, 59% { content: '[••·]'; }
+  60%, 79% { content: '[•••]'; }
+  80%, 100% { content: '[·••]'; }
 }
 .case-link:hover { opacity: 0.7; }
-.case-link:hover::before { opacity: 0.7; }
+.case-link:hover::before { opacity: 0.82; }
 
 /* INLINE CTA */
 .inline-cta {

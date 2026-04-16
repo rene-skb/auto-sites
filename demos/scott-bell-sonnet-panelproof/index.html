@@ -103,6 +103,12 @@ nav {
 .hero-visual img {
   object-position: center top;
 }
+.hero-visual video {
+  object-position: 50% 22%;
+  transform: scale(1.9);
+  transform-origin: 50% 22%;
+  filter: sepia(0.62) hue-rotate(-18deg) saturate(0.62) brightness(1.04) contrast(0.96);
+}
 .hero-visual-caption {
   font-size: 11px; color: var(--mid); margin-top: 10px;
   letter-spacing: 0.03em; opacity: 0.7;
@@ -418,8 +424,11 @@ footer {
     <a href="#work" class="hero-cta">See the work</a>
   </div>
   <div class="hero-visual">
-    <img src="assets/aioz5.png" alt="AIOZ interface designed by Scott Bell">
-    <p class="hero-visual-caption">AIOZ — product interface</p>
+    <video autoplay muted loop playsinline preload="auto" aria-label="Animated AIOZ dTransfer loader">
+      <source src="assets/hero-loader.webm" type="video/webm">
+      <source src="assets/hero-loader.mov" type="video/quicktime">
+    </video>
+    <p class="hero-visual-caption">AIOZ dTransfer — loader study</p>
   </div>
 </header>
 

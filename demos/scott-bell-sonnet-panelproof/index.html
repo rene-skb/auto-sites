@@ -33,6 +33,10 @@ DELTA: v5 final polish notes
   --accent: #2D7A5F;
   --accent-bg: #EDF5F1;
   --surface: #F0EFEB;
+  --footer-bg: #203a33;
+  --footer-bg-deep: #1a312b;
+  --footer-text: rgba(248, 247, 244, 0.92);
+  --footer-text-muted: rgba(248, 247, 244, 0.72);
   --max-w: 1120px;
   --serif: 'Instrument Serif', Georgia, serif;
   --sans: 'Inter', system-ui, sans-serif;
@@ -328,38 +332,41 @@ nav {
 
 /* CONTACT */
 .contact-section {
-  background: var(--ink); color: var(--bg);
+  background: var(--footer-bg); color: var(--footer-text);
   text-align: center; padding: 120px 40px;
 }
 .contact-headline {
   font-family: var(--serif); font-size: clamp(32px, 5vw, 56px);
   font-weight: 400; margin-bottom: 20px;
+  color: var(--footer-text);
 }
 .contact-body {
-  font-size: 17px; color: rgba(248,247,244,0.7);
+  font-size: 17px; color: var(--footer-text-muted);
   max-width: 520px; margin: 0 auto 36px; line-height: 1.7;
 }
 .contact-link {
   display: inline-block;
-  border: 1px solid var(--accent); color: var(--accent);
+  border: 1px solid rgba(45, 122, 95, 0.85); color: #8fd1b6;
   padding: 14px 36px; font-size: 14px; font-weight: 600;
   letter-spacing: 0.04em; text-transform: uppercase; text-decoration: none;
-  transition: background 200ms ease, color 200ms ease;
+  transition: background 200ms ease, color 200ms ease, border-color 200ms ease;
 }
-.contact-link:hover { background: var(--accent); color: var(--bg); }
+.contact-link:hover { background: var(--accent); border-color: var(--accent); color: var(--bg); }
 .contact-link:active { transform: scale(0.97); }
 .contact-link, .inline-cta-link, .case-link {
   transition: background 220ms cubic-bezier(0.22, 1, 0.36, 1),
               color 220ms cubic-bezier(0.22, 1, 0.36, 1),
               opacity 220ms cubic-bezier(0.22, 1, 0.36, 1),
-              transform 120ms cubic-bezier(0.22, 1, 0.36, 1);
+              transform 120ms cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 220ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 footer {
-  padding: 24px 40px; border-top: 1px solid var(--faint);
+  padding: 24px 40px; border-top: 1px solid rgba(248, 247, 244, 0.12);
   display: flex; justify-content: space-between; align-items: center;
-  font-size: 13px; color: var(--mid);
-  max-width: var(--max-w); margin: 0 auto;
+  font-size: 13px; color: var(--footer-text-muted);
+  max-width: none; margin: 0 auto;
+  background: var(--footer-bg-deep);
 }
 
 /* REVEAL */

@@ -345,6 +345,27 @@ nav {
 .product-item:hover .product-body {
   color: var(--accent);
 }
+.product-previews {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 24px;
+}
+.product-preview-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  transition: transform 120ms cubic-bezier(0.22, 1, 0.36, 1), opacity 200ms ease;
+}
+.product-preview-link:hover { opacity: 0.9; }
+.product-preview-link:active { transform: scale(0.98); }
+.product-preview-link img {
+  width: 100%;
+  display: block;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  object-position: top center;
+}
 
 /* ABOUT */
 .about-grid { display: grid; grid-template-columns: 1.6fr 1fr; gap: 64px; align-items: start; }
@@ -454,6 +475,7 @@ footer span:last-child {
   .naka-feature { grid-template-columns: 1fr; gap: 12px; }
   .naka-previews { grid-template-columns: 1fr 1fr; }
   .product-item { grid-template-columns: 1fr; gap: 10px; }
+  .product-previews { grid-template-columns: 1fr 1fr; }
   .about-grid { grid-template-columns: 1fr; gap: 40px; }
   .contact-section { padding: 80px 20px; }
   footer { flex-direction: column; gap: 8px; padding: 20px; }
@@ -657,13 +679,18 @@ footer span:last-child {
           <p class="product-body">Design-to-code bridge for Claude Code. Click any element in the browser. LoopIn grabs the DOM, styles, and a screenshot, then sends it straight to the agent. It sees exactly what the designer sees.</p>
         </div>
       </a>
-      <a class="product-item reveal" href="https://mix-id.vercel.app" target="_blank" rel="noreferrer">
+      <a class="product-item reveal" href="https://auto-sites.pages.dev/demos/mixid/" target="_blank" rel="noreferrer">
         <p class="product-tag">Open Source &middot; Free</p>
         <div>
           <h3 class="product-title">Mix ID</h3>
           <p class="product-body">Tracklist generator for DJ mixes. Paste a URL from Mixcloud, SoundCloud, or YouTube. Get a timestamped tracklist. I built it because I have a radio show and this tool didn't exist.</p>
         </div>
       </a>
+    </div>
+    <div class="product-previews">
+      <div class="naka-preview-wrap"><a class="product-preview-link" href="https://clawprint.dev" target="_blank" rel="noreferrer"><img src="assets/clawprint-preview.jpg" alt="Clawprint site preview"></a></div>
+      <div class="naka-preview-wrap"><a class="product-preview-link" href="https://www.scottkbell.com/loopin" target="_blank" rel="noreferrer"><img src="assets/loopin-preview.jpg" alt="LoopIn site preview"></a></div>
+      <div class="naka-preview-wrap"><a class="product-preview-link" href="https://auto-sites.pages.dev/demos/mixid/" target="_blank" rel="noreferrer"><img src="assets/mixid-preview.png" alt="Mix ID site preview"></a></div>
     </div>
   </div>
 </div>

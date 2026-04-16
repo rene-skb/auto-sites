@@ -90,26 +90,29 @@ nav {
 .hero-visual {
   background: none; border: none;
   padding: 0;
-  aspect-ratio: 1 / 1;
-  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  align-items: start;
 }
 .hero-visual img,
 .hero-visual video {
   width: 100%;
-  height: 100%;
   display: block;
   object-fit: cover;
 }
-.hero-visual img {
+.hero-phone {
+  aspect-ratio: 9 / 19.5;
+  overflow: hidden;
+}
+.hero-phone img {
+  width: 100%;
+  height: 100%;
   object-position: center top;
 }
-.hero-visual video {
-  object-position: center;
-  transform: none;
-  filter: none;
-}
 .hero-visual-caption {
-  font-size: 11px; color: var(--mid); margin-top: 10px;
+  grid-column: 1 / -1;
+  font-size: 11px; color: var(--mid); margin-top: 2px;
   letter-spacing: 0.03em; opacity: 0.7;
 }
 .naka-caption {
@@ -418,16 +421,14 @@ footer {
 <header class="hero reveal">
   <div class="hero-text">
     <p class="hero-label">Design Leader &middot; Builder</p>
-    <h1 class="hero-headline">24 products in 14 years.<br>Now I design and ship <em>AI&nbsp;tools.</em></h1>
-    <p class="hero-body">I've led design at <a href="https://strike.me/" target="_blank" rel="noreferrer">Strike</a>, <a href="https://www.koho.ca/" target="_blank" rel="noreferrer">KOHO</a>, <a href="https://www.fountain.fm/" target="_blank" rel="noreferrer">Fountain</a>, and <a href="https://aioz.network/" target="_blank" rel="noreferrer">AIOZ</a>. Now I build AI products end to end — from the first idea to the working thing.</p>
+    <h1 class="hero-headline">24 products in 14 years.</h1>
+    <p class="hero-body">I've led design at <a href="https://strike.me/" target="_blank" rel="noreferrer">Strike</a>, <a href="https://www.koho.ca/" target="_blank" rel="noreferrer">KOHO</a>, <a href="https://www.fountain.fm/" target="_blank" rel="noreferrer">Fountain</a>, and <a href="https://aioz.network/" target="_blank" rel="noreferrer">AIOZ</a>. Now I design and ship AI tools end to end, from the first idea to the working thing.</p>
     <a href="#work" class="hero-cta">See the work</a>
   </div>
   <div class="hero-visual">
-    <video autoplay muted loop playsinline preload="auto" aria-label="Animated AIOZ orb loader">
-      <source src="assets/hero-loader.webm" type="video/webm">
-      <source src="assets/hero-loader.mov" type="video/quicktime">
-    </video>
-    <p class="hero-visual-caption">AIOZ dTransfer — orb loader motion</p>
+    <div class="hero-phone"><img src="assets/hero-phone-1.jpg" alt="Strike app screen designed by Scott Bell"></div>
+    <div class="hero-phone"><img src="assets/hero-phone-2.jpg" alt="Fountain app screen designed by Scott Bell"></div>
+    <p class="hero-visual-caption">Selected mobile work — Strike and Fountain</p>
   </div>
 </header>
 

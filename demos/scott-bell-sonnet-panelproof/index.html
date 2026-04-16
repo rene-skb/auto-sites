@@ -320,6 +320,7 @@ nav {
 .naka-preview-wrap img { width: 100%; display: block; aspect-ratio: 4/3; object-fit: cover; object-position: top center; }
 
 .product-list { display: flex; flex-direction: column; }
+.product-entry { display: flex; flex-direction: column; }
 .product-item {
   display: grid; grid-template-columns: 220px 1fr;
   gap: 40px; padding: 28px 0; border-top: 1px solid var(--faint);
@@ -345,11 +346,15 @@ nav {
 .product-item:hover .product-body {
   color: var(--accent);
 }
-.product-previews {
+.product-inline-preview {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  margin-top: 24px;
+  grid-template-columns: 220px 1fr;
+  gap: 40px;
+  margin-top: -4px;
+  padding: 0 0 28px;
+}
+.product-inline-preview-media {
+  max-width: 360px;
 }
 .product-preview-link {
   display: block;
@@ -475,7 +480,8 @@ footer span:last-child {
   .naka-feature { grid-template-columns: 1fr; gap: 12px; }
   .naka-previews { grid-template-columns: 1fr 1fr; }
   .product-item { grid-template-columns: 1fr; gap: 10px; }
-  .product-previews { grid-template-columns: 1fr 1fr; }
+  .product-inline-preview { grid-template-columns: 1fr; gap: 10px; margin-top: 0; padding: 0 0 24px; }
+  .product-inline-preview-media { max-width: none; }
   .about-grid { grid-template-columns: 1fr; gap: 40px; }
   .contact-section { padding: 80px 20px; }
   footer { flex-direction: column; gap: 8px; padding: 20px; }
@@ -665,32 +671,51 @@ footer span:last-child {
 
     <!-- Products -->
     <div class="product-list">
-      <a class="product-item reveal" href="https://clawprint.dev" target="_blank" rel="noreferrer">
-        <p class="product-tag">Product &middot; $29</p>
-        <div>
-          <h3 class="product-title">Clawprint</h3>
-          <p class="product-body">Psychological profiling for AI agents. Your agent learns how you think, how you communicate, and when to push back. Built on Big Five, Enneagram, and Holland Code. The output is a config file the agent reads on startup.</p>
+      <div class="product-entry">
+        <a class="product-item reveal" href="https://clawprint.dev" target="_blank" rel="noreferrer">
+          <p class="product-tag">Product &middot; $29</p>
+          <div>
+            <h3 class="product-title">Clawprint</h3>
+            <p class="product-body">Psychological profiling for AI agents. Your agent learns how you think, how you communicate, and when to push back. Built on Big Five, Enneagram, and Holland Code. The output is a config file the agent reads on startup.</p>
+          </div>
+        </a>
+        <div class="product-inline-preview reveal">
+          <div></div>
+          <div class="product-inline-preview-media">
+            <a class="product-preview-link" href="https://clawprint.dev" target="_blank" rel="noreferrer"><img src="assets/clawprint-preview.jpg" alt="Clawprint site preview"></a>
+          </div>
         </div>
-      </a>
-      <a class="product-item reveal" href="https://www.scottkbell.com/loopin" target="_blank" rel="noreferrer">
-        <p class="product-tag">Dev Tool &middot; Chrome Extension</p>
-        <div>
-          <h3 class="product-title">LoopIn</h3>
-          <p class="product-body">Design-to-code bridge for Claude Code. Click any element in the browser. LoopIn grabs the DOM, styles, and a screenshot, then sends it straight to the agent. It sees exactly what the designer sees.</p>
+      </div>
+      <div class="product-entry">
+        <a class="product-item reveal" href="https://www.scottkbell.com/loopin" target="_blank" rel="noreferrer">
+          <p class="product-tag">Dev Tool &middot; Chrome Extension</p>
+          <div>
+            <h3 class="product-title">LoopIn</h3>
+            <p class="product-body">Design-to-code bridge for Claude Code. Click any element in the browser. LoopIn grabs the DOM, styles, and a screenshot, then sends it straight to the agent. It sees exactly what the designer sees.</p>
+          </div>
+        </a>
+        <div class="product-inline-preview reveal">
+          <div></div>
+          <div class="product-inline-preview-media">
+            <a class="product-preview-link" href="https://www.scottkbell.com/loopin" target="_blank" rel="noreferrer"><img src="assets/loopin-preview.jpg" alt="LoopIn site preview"></a>
+          </div>
         </div>
-      </a>
-      <a class="product-item reveal" href="https://auto-sites.pages.dev/demos/mixid/" target="_blank" rel="noreferrer">
-        <p class="product-tag">Open Source &middot; Free</p>
-        <div>
-          <h3 class="product-title">Mix ID</h3>
-          <p class="product-body">Tracklist generator for DJ mixes. Paste a URL from Mixcloud, SoundCloud, or YouTube. Get a timestamped tracklist. I built it because I have a radio show and this tool didn't exist.</p>
+      </div>
+      <div class="product-entry">
+        <a class="product-item reveal" href="https://auto-sites.pages.dev/demos/mixid/" target="_blank" rel="noreferrer">
+          <p class="product-tag">Open Source &middot; Free</p>
+          <div>
+            <h3 class="product-title">Mix ID</h3>
+            <p class="product-body">Tracklist generator for DJ mixes. Paste a URL from Mixcloud, SoundCloud, or YouTube. Get a timestamped tracklist. I built it because I have a radio show and this tool didn't exist.</p>
+          </div>
+        </a>
+        <div class="product-inline-preview reveal">
+          <div></div>
+          <div class="product-inline-preview-media">
+            <a class="product-preview-link" href="https://auto-sites.pages.dev/demos/mixid/" target="_blank" rel="noreferrer"><img src="assets/mixid-preview.png" alt="Mix ID site preview"></a>
+          </div>
         </div>
-      </a>
-    </div>
-    <div class="product-previews">
-      <div class="naka-preview-wrap"><a class="product-preview-link" href="https://clawprint.dev" target="_blank" rel="noreferrer"><img src="assets/clawprint-preview.jpg" alt="Clawprint site preview"></a></div>
-      <div class="naka-preview-wrap"><a class="product-preview-link" href="https://www.scottkbell.com/loopin" target="_blank" rel="noreferrer"><img src="assets/loopin-preview.jpg" alt="LoopIn site preview"></a></div>
-      <div class="naka-preview-wrap"><a class="product-preview-link" href="https://auto-sites.pages.dev/demos/mixid/" target="_blank" rel="noreferrer"><img src="assets/mixid-preview.png" alt="Mix ID site preview"></a></div>
+      </div>
     </div>
   </div>
 </div>

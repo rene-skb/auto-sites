@@ -254,12 +254,22 @@ nav {
   text-transform: uppercase; color: var(--accent); margin-bottom: 16px;
   padding-top: 6px;
 }
+.naka-copy-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
 .naka-title {
   font-family: var(--serif); font-size: clamp(26px, 3vw, 34px);
   font-weight: 400; line-height: 1.15; margin-bottom: 16px;
+  transition: color 200ms ease;
 }
-.naka-body { font-size: 16px; color: var(--mid); line-height: 1.7; max-width: 600px; }
+.naka-body { font-size: 16px; color: var(--mid); line-height: 1.7; max-width: 600px; transition: color 200ms ease; }
 .naka-body p { margin-bottom: 16px; }
+.naka-copy-link:hover .naka-title,
+.naka-copy-link:hover .naka-body {
+  color: var(--accent);
+}
 .naka-previews {
   display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
   margin-top: 24px;
@@ -574,10 +584,12 @@ footer span:last-child {
         <p class="naka-tag">Agentic Design Studio</p>
       </div>
       <div>
-        <h3 class="naka-title"><a href="https://auto-sites.pages.dev" style="color: inherit; text-decoration: none; transition: color 200ms ease;">Nakamoto Design Co.</a></h3>
-        <div class="naka-body">
-          <p>110+ custom websites for local businesses across Canada, built by AI agents I designed and direct. The agents find businesses, research them, pull Instagram, write copy from real reviews, and produce polished sites. The system compounds — prompts, examples, and decisions get better with each build. Bakeries in Montr&eacute;al. Barbers in Victoria. Each site is live.</p>
-        </div>
+        <a class="naka-copy-link" href="https://auto-sites.pages.dev" target="_blank" rel="noreferrer">
+          <h3 class="naka-title">Nakamoto Design Co.</h3>
+          <div class="naka-body">
+            <p>110+ custom websites for local businesses across Canada, built by AI agents I designed and direct. The agents find businesses, research them, pull Instagram, write copy from real reviews, and produce polished sites. The system compounds — prompts, examples, and decisions get better with each build. Bakeries in Montr&eacute;al. Barbers in Victoria. Each site is live.</p>
+          </div>
+        </a>
         <div class="naka-previews">
           <div class="naka-preview-wrap"><a class="naka-preview-link" href="https://kid-sister-ice-cream.nakamotodesign.co/" target="_blank" rel="noreferrer"><img src="assets/kid-sister-ice-cream-preview.png" alt="Kid Sister Ice Cream — live site preview"></a></div>
           <div class="naka-preview-wrap"><a class="naka-preview-link" href="https://working-culture.nakamotodesign.co/" target="_blank" rel="noreferrer"><img src="assets/working-culture-preview.png" alt="Working Culture — live site preview"></a></div>

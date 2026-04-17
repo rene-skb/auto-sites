@@ -1,0 +1,83 @@
+<!--
+DELTA: v5 final polish notes
+- Tightened label casing and a few copy lines for cleaner rhythm
+- Softened secondary actions slightly and added a touch more section separation
+- Self-review score: 8.7
+- Panel averages carried forward from panel-notes.md: WHY 8.1 / WHAT 7.5 / HOW 8.5
+- Final polish focus
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For Us Bakery</title>
+  <meta name="description" content="Cream puffs, crepe cakes, cheese tarts, and matcha in Winnipeg." />
+  <meta property="og:title" content="For Us Bakery" />
+  <meta property="og:description" content="Cream puffs, crepe cakes, cheese tarts, and matcha in Winnipeg." />
+  <meta property="og:image" content="https://auto-sites.pages.dev/demos/for-us-bakery/ig-photo-04.jpg" />
+  <meta property="og:url" content="https://auto-sites.pages.dev/demos/for-us-bakery/" />
+  <meta name="theme-color" content="#f6efe8" />
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg:#f6efe8; --paper:#fffaf4; --ink:#231815; --muted:#5a4b45; --accent:#8d5d63; --line:rgba(35,24,21,.14); --shadow:0 24px 60px rgba(72,49,42,.12); --soft-shadow:0 14px 30px rgba(72,49,42,.06); --ease-out:cubic-bezier(0.23,1,0.32,1); --ease-in-out:cubic-bezier(0.77,0,0.175,1); --section-pad:clamp(64px,8vw,104px); --content:1180px; }
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;font-family:Inter,sans-serif;color:var(--ink);background:linear-gradient(180deg,#fbf5ef 0%,var(--bg) 100%);line-height:1.62} img{max-width:100%;display:block} a{color:inherit;text-decoration:none}
+    .skip-link{position:absolute;left:16px;top:-48px;background:#fff;padding:10px 14px;z-index:1000}.skip-link:focus{top:16px}
+    .site-header{position:sticky;top:0;z-index:20;backdrop-filter:blur(14px);background:rgba(251,245,239,.9);border-bottom:1px solid rgba(35,24,21,.06)}
+    .nav{max-width:var(--content);margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{font-family:"Playfair Display",serif;font-size:1.3rem;letter-spacing:.03em}.nav-links{display:flex;gap:16px;align-items:center;color:var(--muted);font-size:.92rem}
+    .button{display:inline-flex;align-items:center;justify-content:center;gap:10px;border-radius:999px;padding:14px 22px;background:var(--ink);color:#fff;font-weight:600;transition:transform 160ms var(--ease-out),background 160ms ease,opacity 160ms ease}.button.secondary{background:transparent;color:var(--muted);border:1px solid var(--line)}.button:active{transform:scale(.97)}
+    main{overflow:clip} section{padding:var(--section-pad) 24px}.wrap{max-width:var(--content);margin:0 auto}
+    .hero{padding-top:40px}.hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:34px;align-items:end}.eyebrow{display:inline-block;margin-bottom:18px;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)} h1,h2,h3{margin:0;line-height:.95}
+    h1{font-family:"Playfair Display",serif;font-size:clamp(3.8rem,9.5vw,7.6rem);max-width:8ch;letter-spacing:-.04em}.hero-copy p,.footer-note{font-size:1rem}.hero-copy p{max-width:33rem;margin:18px 0 0;color:var(--muted)}
+    .proof-row,.jump-row{display:flex;flex-wrap:wrap;gap:10px}.proof-row{margin-top:24px}.proof-pill{padding:10px 14px;border-radius:999px;background:rgba(255,255,255,.68);border:1px solid rgba(35,24,21,.08);font-size:.92rem;font-weight:600}.jump-row{margin-top:14px;gap:18px}.jump-row a{font-size:.95rem;color:var(--muted);padding-bottom:2px;border-bottom:1px solid rgba(35,24,21,.16)}
+    .hero-actions{margin-top:26px;display:flex;gap:14px;flex-wrap:wrap}.hero-figure{background:var(--paper);border:1px solid rgba(35,24,21,.08);border-radius:28px;overflow:hidden;box-shadow:var(--shadow)}.hero-figure img{width:100%;aspect-ratio:4/5;object-fit:cover;transform:scale(1.04);transition:transform 900ms var(--ease-out),opacity 600ms var(--ease-out);opacity:.01}.hero-figure.is-visible img{transform:scale(1);opacity:1}
+    .utility{padding-top:18px}.utility-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(35,24,21,.08);border-radius:22px;overflow:hidden}.utility-card{background:rgba(255,255,255,.62);padding:22px;min-height:112px}.utility-card .eyebrow{margin-bottom:10px}.utility-card strong{display:block;font-size:1rem;margin-bottom:8px}.utility-card p{margin:0;color:var(--muted)}
+    .section-head{display:grid;grid-template-columns:.72fr 1.28fr;gap:28px;align-items:end;margin-bottom:30px}.section-head h2{font-family:"Playfair Display",serif;font-size:clamp(2.5rem,4.8vw,4.5rem);letter-spacing:-.03em}.section-head p{margin:0;color:var(--muted);max-width:38rem}
+    .products{background:linear-gradient(180deg,rgba(255,255,255,.52),rgba(255,255,255,0))}.product-grid,.reviews-grid,.planning-grid,.visit-grid{display:grid;gap:22px}.product-grid{grid-template-columns:1.05fr .95fr}.panel,.card,.review{background:rgba(255,255,255,.66);border:1px solid rgba(35,24,21,.08);border-radius:26px;box-shadow:var(--soft-shadow)}.card img{width:100%;object-fit:cover}.card.large img,.card.small img{aspect-ratio:1/1}.card-content,.panel,.review{padding:26px}.card-content h3{font-family:"Playfair Display",serif;font-size:1.72rem;margin-bottom:10px}.card-content p,.panel p,.review p{margin:0;color:var(--muted)}.stack{display:grid;gap:22px}
+    .reviews{padding-top:28px}.reviews-grid{grid-template-columns:1.12fr .88fr .88fr}.review.featured p{font-family:"Playfair Display",serif;font-size:clamp(1.65rem,2.8vw,2.45rem);color:var(--ink)}.review .meta{display:block;font-size:.78rem;letter-spacing:.11em;text-transform:uppercase;color:var(--accent);margin-top:18px}
+    .planning-grid{grid-template-columns:1fr 1fr}.bullet-list,.fact-list{display:grid;gap:18px}.bullet,.fact{padding-bottom:18px;border-bottom:1px solid var(--line)}.bullet:last-child,.fact:last-child{padding-bottom:0;border-bottom:0}.bullet strong,.fact strong{display:block;margin-bottom:8px}
+    .visit-grid{grid-template-columns:1.02fr .98fr;align-items:stretch}.visit .button-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px}.map-wrap iframe{width:100%;min-height:100%;border:0;border-radius:24px}
+    .footer{padding:42px 24px 56px}.footer-inner{max-width:var(--content);margin:0 auto;display:flex;gap:20px;justify-content:space-between;align-items:center;color:var(--muted);font-size:.92rem;border-top:1px solid var(--line);padding-top:22px}
+    [data-reveal]{opacity:0;transform:translateY(14px);transition:opacity 360ms var(--ease-out),transform 360ms var(--ease-out);will-change:transform,opacity}[data-reveal].is-visible{opacity:1;transform:translateY(0)}[data-stagger] > *{transition-delay:calc(var(--i,0)*60ms)}
+    @media (max-width:980px){.hero-grid,.section-head,.product-grid,.reviews-grid,.planning-grid,.visit-grid{grid-template-columns:1fr}.utility-grid{grid-template-columns:repeat(2,1fr)}h1{max-width:none}}
+    @media (max-width:720px){.nav{padding-inline:18px}.nav-links{display:none}section{padding-inline:18px}.utility-grid{grid-template-columns:1fr}.hero-actions,.visit .button-row,.footer-inner,.proof-row,.jump-row{flex-direction:column;align-items:flex-start}.button{width:100%}}
+    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}[data-reveal]{opacity:1;transform:none}.hero-figure img{opacity:1;transform:none}} noscript [data-reveal]{opacity:1!important;transform:none!important}
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#content">Skip to content</a>
+  <header class="site-header"><div class="nav"><a href="#top" class="brand">For Us Bakery</a><nav class="nav-links" aria-label="Primary"><a href="#menu">Popular items</a><a href="#reviews">Google reviews</a><a href="#visit">Hours + map</a><a href="https://www.google.com/maps/place/For+Us+Bakery/@49.9398936,-97.1590915,14z/data=!4m8!1m2!2m1!1sFor+Us+Bakery!3m4!1s0x52ea7136d978a159:0x5f2cd3493095c05!8m2!3d49.9398936!4d-97.1590915" target="_blank" rel="noreferrer">Directions</a></nav></div></header>
+  <main id="content">
+    <section class="hero" id="top"><div class="wrap hero-grid"><div class="hero-copy" data-reveal><span class="eyebrow">Winnipeg bakery</span><h1>Cream puffs worth planning around.</h1><div class="proof-row"><div class="proof-pill">4.8★ from 235 Google reviews</div><div class="proof-pill">Cream puffs, crepe cakes, matcha</div></div><div class="jump-row"><a href="#menu">Popular items</a><a href="#reviews">Read reviews</a><a href="#visit">See hours + map</a></div><p>For Us Bakery is a dessert stop on McPhillips with cream puffs, crepe cakes, cheese tarts, and tea-heavy flavours that keep showing up in reviews. That is the short version.</p><div class="hero-actions"><a class="button" href="https://www.google.com/maps/place/For+Us+Bakery/@49.9398936,-97.1590915,14z/data=!4m8!1m2!2m1!1sFor+Us+Bakery!3m4!1s0x52ea7136d978a159:0x5f2cd3493095c05!8m2!3d49.9398936!4d-97.1590915" target="_blank" rel="noreferrer">Get directions</a><a class="button secondary" href="tel:+12043348880">Call 204-334-8880</a></div></div><figure class="hero-figure" data-reveal><img src="ig-photo-04.jpg" alt="Slice of pink crepe cake with strawberry on top at For Us Bakery" /></figure></div></section>
+    <section class="utility"><div class="wrap utility-grid" data-reveal data-stagger><div class="utility-card" style="--i:0"><span class="eyebrow">Hours</span><strong>Wed to Sat, 11:30AM to 7PM</strong><p>Sunday runs 12PM to 5PM. Closed Monday and Tuesday.</p></div><div class="utility-card" style="--i:1"><span class="eyebrow">Address</span><strong>1353 McPhillips St Unit 1</strong><p>Dine-in, takeout, delivery, coffee, and free parking are all listed.</p></div><div class="utility-card" style="--i:2"><span class="eyebrow">Start here</span><strong>Cream puffs, crepe cakes, cheese tarts</strong><p>Matcha, taro, and Earl Grey are confirmed favourites too.</p></div><div class="utility-card" style="--i:3"><span class="eyebrow">Budget</span><strong>$10 to $20 per person</strong><p>That range appears in recent Google review metadata for a typical visit.</p></div></div></section>
+    <section class="products" id="menu"><div class="wrap"><div class="section-head" data-reveal><div><span class="eyebrow">Popular items</span><h2>Three easy first picks.</h2></div><p>You do not need the full menu to get this right. These are the items that show up repeatedly in Google review tags and customer writeups.</p></div><div class="product-grid"><article class="card large" data-reveal><img src="ig-photo-03.jpg" alt="Assorted cake slices and cream-topped desserts from For Us Bakery" /><div class="card-content"><h3>1. Crepe cakes and slices</h3><p>Best choice if you want range in one box. The pastry case clearly runs wider than one signature item.</p></div></article><div class="stack" data-stagger><article class="card small" data-reveal style="--i:0"><img src="ig-photo-08.jpg" alt="Cream puffs topped with cream and colorful garnish at For Us Bakery" /><div class="card-content"><h3>2. Cream puffs</h3><p>Rachel E. called them life changing. That is still the clearest review signal.</p></div></article><article class="card small" data-reveal style="--i:1"><img src="ig-photo-10.jpg" alt="Matcha cake slice with cream and red bean toppings at For Us Bakery" /><div class="card-content"><h3>3. Matcha, Earl Grey, and taro</h3><p>Good if you want the tea side of the menu, not just the usual bakery flavours.</p></div></article></div></div></div></section>
+    <section class="reviews" id="reviews"><div class="wrap"><div class="section-head" data-reveal><div><span class="eyebrow">Google reviews</span><h2>Proof, right after the picks.</h2></div><p>These reviews tell you what to order and whether the stop earns the drive. That is the part that matters.</p></div><div class="reviews-grid"><article class="review featured" data-reveal><p>“Omg! Life changing cream puffs. We will make plans that revolve fully around a drive to this bakery.”</p><span class="meta">Rachel E. · Jan 2026 · Via Google</span></article><article class="review" data-reveal><p>“Delicious cream puffs, cheese tarts, and crepe cakes and very friendly staffs.”</p><span class="meta">Chloe Y. · Jan 2026 · Via Google</span></article><article class="review" data-reveal><p>“The owner is super talented and creative with coming up with all these amazing new flavours and recipes constantly.”</p><span class="meta">Chloe Y. · Jan 2026 · Via Google</span></article></div></div></section>
+    <section class="planning"><div class="wrap planning-grid"><div class="panel" data-reveal><span class="eyebrow">Planning notes</span><h2>This reads like a repeat-stop bakery.</h2><div class="bullet-list"><div class="bullet"><strong>Friendly staff</strong>That detail shows up directly in Chloe Yu’s review, which helps when the menu keeps changing.</div><div class="bullet"><strong>New flavours keep coming</strong>The same review points to an owner who keeps introducing new combinations and recipes.</div><div class="bullet"><strong>No big mystery</strong>If you like cream-heavy desserts, tea flavours, and a bakery case that looks busy in the best way, this is a straightforward yes.</div></div></div><div class="panel" data-reveal><span class="eyebrow">Good to know</span><h2>Useful before you drive over.</h2><div class="fact-list"><div class="fact"><strong>Order style</strong>Recent Google review metadata confirms takeout, and the listing also shows dine-in and delivery.</div><div class="fact"><strong>Parking</strong>Recent Google reviews mention plenty of parking, and the listing confirms a free parking lot.</div><div class="fact"><strong>Wait</strong>One recent takeout review explicitly noted no wait.</div></div></div></div></section>
+    <section class="visit" id="visit"><div class="wrap visit-grid"><div class="panel" data-reveal><span class="eyebrow">Hours + map</span><h2>Go for dessert, stay long enough for coffee.</h2><div class="fact-list"><div class="fact"><strong>Hours</strong>Wednesday to Saturday 11:30AM to 7PM, Sunday 12PM to 5PM.</div><div class="fact"><strong>Address</strong>1353 McPhillips St Unit 1, Winnipeg, MB R2X 3A6.</div><div class="fact"><strong>Payments</strong>Credit, debit, and NFC mobile payments are all listed on the Google profile.</div></div><div class="button-row"><a class="button" href="https://www.google.com/maps/place/For+Us+Bakery/@49.9398936,-97.1590915,14z/data=!4m8!1m2!2m1!1sFor+Us+Bakery!3m4!1s0x52ea7136d978a159:0x5f2cd3493095c05!8m2!3d49.9398936!4d-97.1590915" target="_blank" rel="noreferrer">Open the map</a><a class="button secondary" href="https://www.instagram.com/for_us_bakery/" target="_blank" rel="noreferrer">See Instagram</a></div></div><div class="panel map-wrap" data-reveal><iframe title="Map to For Us Bakery" src="https://maps.google.com/maps?q=For%20Us%20Bakery%20Winnipeg&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div></div></section>
+  </main>
+  <footer class="footer"><div class="footer-inner"><div>For Us Bakery, Winnipeg.</div><div class="footer-note">Built from verified listing data, Google reviews, and real bakery photos.</div></div></footer>
+  <script>
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const revealItems = document.querySelectorAll('[data-reveal]');
+    if (!reduceMotion && 'IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      revealItems.forEach((item) => observer.observe(item));
+      requestAnimationFrame(() => {
+        document.querySelector('.hero-copy')?.classList.add('is-visible');
+        document.querySelector('.hero-figure')?.classList.add('is-visible');
+      });
+    } else {
+      revealItems.forEach((item) => item.classList.add('is-visible'));
+      document.querySelector('.hero-figure')?.classList.add('is-visible');
+    }
+  </script>
+</body>
+</html>

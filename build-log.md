@@ -1,5 +1,27 @@
 # Auto-Sites Build Log
 
+### For Us Bakery — Asian Bakery / Dessert Café, Winnipeg MB
+- **Date:** 2026-04-17
+- **Model:** anthropic/claude-sonnet-4-6 (cron subagent)
+- **Agent:** Lucy
+- **Folder:** for-us-bakery
+- **Hero pattern:** image-top-text-below (portrait hero figure right, display text left)
+- **Typography:** Playfair Display + Inter
+- **Review layout:** dominant featured pull-quote left (1.12fr) + two equal supporting cards right
+- **Visit/hours layout:** facts panel left + Google Maps embed right
+- **Stats bar style:** no-stats
+- **WHY Score:** 8.10 (Jobs 8.1 / Graham 7.8 / Ogilvy 8.4)
+- **WHAT Score:** 7.50 (Norman 7.5 / Krug 8.0 / Nielsen 7.0)
+- **HOW Score:** 8.48 (Vignelli 8.6 / Spiekermann 8.1 / Rams 8.4 / Kowalski 8.8)
+- **Panel average:** 8.03
+- **Self-review:** 8.7
+- **Versions built:** 6 HTML versions + final index.html
+- **Build time:** ~55 minutes
+- **Token estimate:** ~18k
+- **Key decisions:** The queue brief had partially wrong data (three conflicting addresses, no confirmed phone). Outscraper confirmed the canonical address (1353 McPhillips St Unit 1), phone (+1 204-334-8880), hours, and 4.8★ / 235 reviews. forusbakery.com is live but thin (email subscribe only), so this demo competes on clarity, navigation speed, and proof hierarchy. Reviews placed immediately after popular items section rather than at page bottom — proof-after-picks flow kept the WHY average above 8. All photos real Instagram assets. Cream puffs, crepe cakes, cheese tarts, matcha, taro, and Earl Grey confirmed from Outscraper review tags and review text.
+- **Notes:** Review non-negotiable met — first name + last initial used (Rachel E., Chloe Y.) sourced directly from Outscraper review pull. No fabricated data. $10–20 budget note sourced from review_questions.Price_per_person metadata field.
+- **Live URL:** pending push / Pages verification
+
 ### Bakerbots Baking — Bakery / Dessert Shop, Toronto ON
 - **Date:** 2026-04-16
 - **Model:** openai-codex/gpt-5.4

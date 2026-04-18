@@ -218,3 +218,5 @@
 <!-- Built 2026-04-16 → demos/bakerbots-baking/ → https://auto-sites.pages.dev/demos/bakerbots-baking/ (live verification pending push) -->
 
 <!-- Built 2026-04-17 → demos/for-us-bakery/ → https://auto-sites.pages.dev/demos/for-us-bakery/ (live verification pending push) -->
+
+<!-- Built 2026-04-18 → demos/johnnys-barber-shop/ → https://auto-sites.pages.dev/demos/johnnys-barber-shop/ (live verification pending push) -->

@@ -1,5 +1,27 @@
 # Auto-Sites Build Log
 
+### Johnny's Barber + Shop — Barbershop, Calgary AB
+- **Date:** 2026-04-18
+- **Model:** openai-codex/gpt-5.4
+- **Agent:** Lucy
+- **Folder:** johnnys-barber-shop
+- **Hero pattern:** split-image-right
+- **Typography:** Cormorant Garamond + Manrope
+- **Review layout:** no customer review cards, single editorial proof band + 3 barber evidence cards
+- **Visit/hours layout:** two-up location chooser with direct booking buttons
+- **Stats bar style:** no-stats
+- **WHY Score:** 7.00 (Jobs 7.5 / Graham 7.0 / Ogilvy 6.5)
+- **WHAT Score:** 7.50 (Norman 7.8 / Krug 7.2 / Nielsen 7.5)
+- **HOW Score:** 8.25 (Vignelli 8.4 / Spiekermann 8.1 / Rams 8.6 / Kowalski 7.9)
+- **Panel average:** 7.58
+- **Self-review:** 8.4
+- **Versions built:** 6 HTML versions + final index.html
+- **Build time:** ~45 minutes
+- **Token estimate:** ~18k
+- **Key decisions:** The queue brief said Johnny's was probably website-light, but the business now has a full live site with two downtown locations, pricing, barbers, and a drinks menu. The opportunity was not rescue positioning, it was simplification: lead with the 2-location choice, keep real service pricing visible, use real Instagram photos, and foreground the coffee-and-shop angle that makes the brand more memorable than a standard barbershop booking page.
+- **Notes:** No customer review cards were used because compliant first-name-plus-last-initial review attributions were not confidently available from primary sources in this pass. Build leans on verified site copy, staff bios, menu data, and Instagram assets instead.
+- **Live URL:** pending push / Pages verification
+
 ### For Us Bakery — Asian Bakery / Dessert Café, Winnipeg MB
 - **Date:** 2026-04-17
 - **Model:** anthropic/claude-sonnet-4-6 (cron subagent)

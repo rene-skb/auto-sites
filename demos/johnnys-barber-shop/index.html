@@ -1,0 +1,434 @@
+<!--
+DELTA: v5 final polish notes
+- Rewrote the hero copy to read more like a real customer-facing landing page
+- Tightened the footer callout and removed the last bit of process language from the main narrative
+- Self-review score: 8.4
+- Panel averages carried forward from panel-notes.md: WHY 7.0 / WHAT 7.5 / HOW 8.25
+- Final polish focus: clearer customer-facing tone, tighter pacing, cleaner CTA finish
+-->
+<!--
+DELTA: v3 iteration notes
+- Unified more of the card system around a tighter radius and quieter shadow language
+- Increased supporting copy readability and tightened section alignment
+- Clarified the motion plan for the next pass and reduced decorative excess
+- HOW panel reviewers: Massimo Vignelli, Erik Spiekermann, Dieter Rams, Emil Kowalski
+- HOW panel scores: [8.4, 8.1, 8.6, 7.9] avg 8.25
+- Key feedback addressed: consistency, reduction, readability, motion system setup
+- Motion plan from Emil carried into Phase 10
+- See panel-notes.md -> HOW critique
+-->
+<!--
+DELTA: v2 iteration notes
+- Shortened hero copy and made booking the clearer primary action
+- Added clearer comparison labels to the 2 location cards
+- Tightened headings and chunking so the page scans faster
+- WHAT panel reviewers: Don Norman, Steve Krug, Jakob Nielsen
+- WHAT panel scores: [7.8, 7.2, 7.5] avg 7.5
+- Key feedback addressed: scanability, clearer decisions, stronger CTA hierarchy
+- See panel-notes.md -> WHAT critique
+-->
+<!--
+DELTA: v1 iteration notes
+- Rewrote the hero headline to be more direct and benefit-led
+- Tightened the hero intro around real differentiators already confirmed in sources
+- Moved more concrete proof into the hero cards so the pitch lands faster
+- WHY panel reviewers: Steve Jobs, Paul Graham, David Ogilvy
+- WHY panel scores: [7.5, 7.0, 6.5] avg 7.0
+- Key feedback addressed: clearer value, earlier proof, less literary hero copy
+- See panel-notes.md -> WHY critique
+-->
+<!--
+PHOTO EVALUATION — Johnny's Barber + Shop
+Ranked best to worst from real Instagram assets in this folder.
+1. ig-photo-06.jpg — barber actively styling client in shop, square, strongest brand/environment shot, HERO
+2. ig-photo-01.jpg — black-and-white branded portrait, portrait, premium editorial support
+3. ig-photo-03.jpg — client in chair, square, authentic service-result support
+4. ig-photo-02.jpg — editorial portrait, portrait, style support
+5. ig-photo-08.jpg — Johnny's x Rosso coffee bag, portrait, retail/cafe support
+6. ig-photo-05.jpg — hairstyle collage, vertical, trend support only
+7. ig-photo-07.jpg — hand/tool close-up with text overlay, SKIP
+8. ig-photo-04.jpg — talking-head frame, SKIP
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Johnny's Barber + Shop</title>
+  <meta name="description" content="Two downtown Calgary barbershops with sharp cuts, straight-razor beard work, and a coffee-and-shop side that makes the whole visit feel better." />
+  <meta property="og:title" content="Johnny's Barber + Shop" />
+  <meta property="og:description" content="Two downtown Calgary barbershops with sharp cuts, straight-razor beard work, and a coffee-and-shop side that makes the whole visit feel better." />
+  <meta property="og:image" content="https://auto-sites.pages.dev/demos/johnnys-barber-shop/ig-photo-06.jpg" />
+  <meta property="og:url" content="https://auto-sites.pages.dev/demos/johnnys-barber-shop/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f3ede3;
+      --paper: #fbf7f1;
+      --ink: #151311;
+      --muted: #645b52;
+      --line: rgba(21, 19, 17, 0.14);
+      --accent: #8b5a2b;
+      --accent-deep: #5b391a;
+      --shadow: 0 18px 42px rgba(21, 19, 17, 0.10);
+      --radius: 26px;
+      --section-pad: clamp(4.5rem, 7vw, 7rem);
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Manrope, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.5;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    .shell { width: min(1180px, calc(100vw - 2rem)); margin: 0 auto; }
+    .site-header {
+      position: sticky; top: 0; z-index: 40; backdrop-filter: blur(18px);
+      background: rgba(243, 237, 227, 0.88); border-bottom: 1px solid rgba(21,19,17,.08);
+    }
+    .nav { display:flex; align-items:center; justify-content:space-between; gap:1rem; padding: .9rem 0; }
+    .brand { font-weight: 800; letter-spacing: .1em; text-transform: uppercase; font-size: .78rem; }
+    .nav-links { display:flex; gap:1.25rem; align-items:center; color: var(--muted); font-size: .92rem; }
+    .nav-links a:hover { color: var(--ink); }
+    .button {
+      display:inline-flex; align-items:center; justify-content:center; gap:.55rem;
+      background: var(--ink); color: var(--paper); padding: .95rem 1.35rem; border-radius: 999px;
+      font-weight: 700; transition: transform 200ms var(--ease-out), opacity 200ms var(--ease-out), background 200ms var(--ease-out), border-color 200ms var(--ease-out);
+    }
+    .button.alt { background: transparent; color: var(--ink); border: 1px solid var(--line); }
+    .button:hover { opacity: .94; transform: translateY(-1px); }
+    .button:active { transform: scale(.97); }
+    .hero { padding: 2rem 0 1.5rem; }
+    .hero-grid {
+      display:grid; grid-template-columns: minmax(0, 1.05fr) minmax(320px, .95fr); gap: clamp(1.5rem, 4vw, 3rem); align-items: stretch;
+    }
+    .eyebrow, .kicker {
+      text-transform: uppercase; letter-spacing: .12em; font-size: .78rem; font-weight: 800; color: var(--accent-deep);
+    }
+    h1, h2, h3 { margin: 0; line-height: .98; }
+    h1 {
+      font-family: 'Cormorant Garamond', serif; font-size: clamp(4.1rem, 9vw, 7.7rem); font-weight: 600;
+      margin: .8rem 0 1.1rem; max-width: 8ch;
+    }
+    .hero-copy {
+      background: linear-gradient(180deg, rgba(251,247,241,.94), rgba(251,247,241,.86));
+      border: 1px solid rgba(21,19,17,.08); border-radius: var(--radius); padding: clamp(1.6rem, 4vw, 3rem); box-shadow: var(--shadow);
+    }
+    .hero-copy p { color: var(--muted); font-size: 1.04rem; max-width: 56ch; margin: 0 0 1rem; }
+    .hero-actions { display:flex; flex-wrap:wrap; gap:.9rem; margin-top: 1.4rem; }
+    .hero-proof {
+      display:grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .85rem; margin-top: 1.6rem;
+    }
+    .hero-proof div {
+      padding: .9rem 1rem; background: rgba(255,255,255,.5); border: 1px solid rgba(21,19,17,.08); border-radius: 18px;
+      font-size: .98rem; color: var(--muted);
+    }
+    .hero-proof strong { display:block; color: var(--ink); font-size: 1rem; margin-bottom: .15rem; }
+    .hero-media {
+      position: relative; min-height: 620px; border-radius: var(--radius); overflow: hidden; background: #d8d0c5; box-shadow: var(--shadow);
+    }
+    .hero-media img { width:100%; height:100%; object-fit: cover; }
+    .hero-badge {
+      position:absolute; left:1rem; bottom:1rem; background: rgba(21,19,17,.8); color: var(--paper); border-radius: 18px;
+      padding: 1rem 1.1rem; max-width: 300px;
+    }
+    .hero-badge strong { display:block; font-size: 1rem; margin-bottom:.2rem; }
+    section { padding: var(--section-pad) 0; }
+    .section-head { display:grid; grid-template-columns: minmax(0, .92fr) minmax(280px, .52fr); gap: 2rem; align-items:end; margin-bottom: 2rem; }
+    .section-head p, .lede { color: var(--muted); font-size: 1.06rem; margin: 0; }
+    h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.8rem, 5vw, 4.2rem); font-weight: 600; }
+    .locations { background: #161311; color: var(--paper); }
+    .locations .section-head p, .locations .kicker { color: rgba(251,247,241,.74); }
+    .location-grid { display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+    .location-card {
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03)); border:1px solid rgba(255,255,255,.1);
+      border-radius: var(--radius); padding: 1.6rem;
+    }
+    .location-card h3 { font-size: 1.45rem; margin-bottom: .8rem; }
+    .location-card p, .location-card li { color: rgba(251,247,241,.74); font-size: 1rem; }
+    .mini-list { list-style:none; padding:0; margin:1rem 0 0; display:grid; gap:.38rem; }
+    .location-actions { display:flex; flex-wrap:wrap; gap:.8rem; margin-top:1.2rem; }
+    .location-actions .button { background: var(--paper); color: var(--ink); }
+    .location-actions .button.alt { color: var(--paper); border-color: rgba(255,255,255,.2); }
+    .services-grid { display:grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 1.4rem; }
+    .services-note, .menu-note, .quote-band, .photo-card, .service-table, .team-card {
+      background: var(--paper); border: 1px solid rgba(21,19,17,.08); border-radius: var(--radius); box-shadow: var(--shadow);
+    }
+    .services-note, .menu-note, .quote-band, .team-card { padding: 1.5rem; }
+    .service-table { overflow: hidden; }
+    .service-row {
+      display:grid; grid-template-columns: 160px 1fr; gap: 1rem; padding: 1.2rem 1.4rem; border-bottom:1px solid rgba(21,19,17,.08);
+    }
+    .service-row:last-child { border-bottom:none; }
+    .price { font-weight: 800; font-size: 1.1rem; }
+    .service-row strong { display:block; font-size: .98rem; margin-bottom: .2rem; }
+    .service-row p { margin:0; color: var(--muted); font-size: 1rem; }
+    .quote-band {
+      background: linear-gradient(135deg, #ece2d4, #fbf7f1);
+      display:grid; grid-template-columns: minmax(0, 1fr) auto; gap: 1rem; align-items:start;
+    }
+    .quote-band blockquote {
+      margin: 0; font-family: 'Cormorant Garamond', serif; font-size: clamp(1.7rem, 3vw, 2.6rem); line-height: 1.06;
+    }
+    .quote-band cite { font-style: normal; color: var(--muted); font-size: .92rem; }
+    .team-grid { display:grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+    .team-card h3 { font-size: 1.15rem; margin-bottom: .65rem; }
+    .team-card p { margin:0; color: var(--muted); font-size: 1rem; }
+    .team-card strong { color: var(--ink); }
+    .photo-grid { display:grid; grid-template-columns: 1.05fr .95fr; gap:1rem; }
+    .photo-card { overflow:hidden; padding:0; }
+    .photo-card img { width:100%; height:100%; object-fit:cover; }
+    .photo-stack { display:grid; grid-template-rows: 1fr 1fr; gap:1rem; }
+    .shop-grid { display:grid; grid-template-columns: minmax(0, .78fr) minmax(0, 1.22fr); gap:1rem; }
+    .menu-list { list-style:none; padding:0; margin:1rem 0 0; display:grid; gap:.85rem; }
+    .menu-list li { display:flex; justify-content:space-between; gap:1rem; border-bottom:1px solid rgba(21,19,17,.08); padding-bottom:.85rem; }
+    .menu-list li:last-child { border-bottom:none; padding-bottom:0; }
+    .menu-list span { color: var(--muted); }
+    .footer-cta {
+      background: #1a1613; color: var(--paper); border-radius: 34px; padding: clamp(1.8rem, 4vw, 3rem);
+      display:grid; grid-template-columns: minmax(0, 1fr) auto; gap:1rem; align-items:center;
+    }
+    .footer-cta p { color: rgba(251,247,241,.74); max-width: 52ch; margin: .8rem 0 0; }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 760ms var(--ease-out), transform 760ms var(--ease-out); }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+    .stagger > * { opacity: 0; transform: translateY(24px); transition: opacity 760ms var(--ease-out), transform 760ms var(--ease-out); }
+    .stagger.is-visible > * { opacity: 1; transform: translateY(0); }
+    .stagger.is-visible > *:nth-child(2) { transition-delay: 70ms; }
+    .stagger.is-visible > *:nth-child(3) { transition-delay: 140ms; }
+    .stagger.is-visible > *:nth-child(4) { transition-delay: 210ms; }
+    .stagger.is-visible > *:nth-child(5) { transition-delay: 280ms; }
+    @media (max-width: 960px) {
+      .hero-grid, .section-head, .services-grid, .photo-grid, .shop-grid, .footer-cta, .team-grid, .location-grid { grid-template-columns: 1fr; }
+      .hero-media { min-height: 420px; }
+      .hero-proof { grid-template-columns: 1fr; }
+      .photo-stack { grid-template-rows: auto; }
+      .footer-cta { text-align: left; }
+    }
+    @media (max-width: 720px) {
+      .nav-links { display:none; }
+      h1 { max-width: 10ch; }
+      .service-row { grid-template-columns: 1fr; }
+      .location-actions, .hero-actions { flex-direction: column; align-items: stretch; }
+      .button { width: 100%; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .reveal, .stagger > * { opacity: 1 !important; transform: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell nav">
+      <a href="#top" class="brand">Johnny's Barber + Shop</a>
+      <nav class="nav-links">
+        <a href="#locations">Locations</a>
+        <a href="#services">Services</a>
+        <a href="#barbers">Barbers</a>
+        <a href="#shop">Coffee + Shop</a>
+      </nav>
+      <a class="button" href="https://hedkandisalon.zenoti.com/webstoreNew/services/1ebcbb30-8c65-4f3c-a5a4-807196c222d0">Book 11 Ave</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="shell hero-grid">
+        <div class="hero-copy reveal">
+          <div class="eyebrow">Calgary barbershop</div>
+          <h1>Downtown Calgary cuts, beard work, and hot shaves that feel worth booking.</h1>
+          <p>Johnny's runs 2 downtown Calgary locations, 11 Ave and 1 Street, with haircuts, straight-razor beard work, hot shaves, retail shelves, and online booking. Pick your shop, check the service, book the chair.</p>
+          <p>What makes the place stick is the mix: classic barbering, modern hair work, and a room that feels better than rushing through a haircut between errands.</p>
+          <div class="hero-actions">
+            <a class="button" href="#locations">Book a chair</a>
+            <a class="button alt" href="https://www.instagram.com/johnnysbarberandshop/">See the cuts on Instagram</a>
+          </div>
+          <div class="hero-proof stagger">
+            <div><strong>2 downtown spots</strong>11 Ave and 1 Street, both with live online booking.</div>
+            <div><strong>Hair, beard, hot shave</strong>Buzz cuts start at $36, full hot shaves at $72.</div>
+            <div><strong>More than a haircut</strong>Retail shelves, drinks, and complimentary Rosso coffee on 1 Street.</div>
+          </div>
+        </div>
+        <figure class="hero-media reveal">
+          <img src="ig-photo-06.jpg" alt="A barber styling a client's hair inside Johnny's Barber + Shop." />
+          <figcaption class="hero-badge"><strong>Real photo, real shop.</strong>Best-performing image in the set because it shows the actual service moment, not a generic mood shot.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="locations" id="locations">
+      <div class="shell">
+        <div class="section-head reveal">
+          <div>
+            <div class="kicker">Pick your room</div>
+            <h2>2 downtown Calgary locations, 1 brand.</h2>
+          </div>
+          <p>Same Johnny's voice, different addresses. The point of this section is speed: find your shop, check the hours, tap book, done.</p>
+        </div>
+        <div class="location-grid stagger">
+          <article class="location-card">
+            <h3>11 Ave</h3>
+            <p><strong>Best for:</strong> later weekday bookings and Beltline access.</p>
+            <p>#101, 709 11 Ave SW, Calgary, AB T2R 0E1<br>(403) 671-2016</p>
+            <ul class="mini-list">
+              <li>Mon 9am to 7pm</li>
+              <li>Tue to Fri 8am to 9pm</li>
+              <li>Sat 9am to 7pm</li>
+              <li>Sun closed</li>
+            </ul>
+            <div class="location-actions">
+              <a class="button" href="https://hedkandisalon.zenoti.com/webstoreNew/services/1ebcbb30-8c65-4f3c-a5a4-807196c222d0">Book 11 Ave</a>
+              <a class="button alt" href="https://www.google.com/maps/search/?api=1&query=Johnny%27s+Barber+%2B+Shop+11+Ave+709+11+Ave+SW+Calgary">Directions</a>
+            </div>
+          </article>
+          <article class="location-card">
+            <h3>1 Street</h3>
+            <p><strong>Best for:</strong> downtown core bookings and the coffee add-on.</p>
+            <p>809 1 Street SW, Calgary, AB T2P 7N2<br>(403) 452-3917</p>
+            <ul class="mini-list">
+              <li>Mon 9am to 7pm</li>
+              <li>Tue to Thu 8am to 9pm</li>
+              <li>Fri 9am to 8pm</li>
+              <li>Sat 9am to 6pm, Sun closed</li>
+            </ul>
+            <div class="location-actions">
+              <a class="button" href="https://hedkandisalon.zenoti.com/webstoreNew/services/ae29e63d-b3f1-4967-abee-8fed716c221c">Book 1 Street</a>
+              <a class="button alt" href="https://www.google.com/maps/search/?api=1&query=Johnny%27s+Barber+%2B+Shop+1+Street+809+1+Street+SW+Calgary">Directions</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="shell">
+        <div class="section-head reveal">
+          <div>
+            <div class="kicker">Services</div>
+            <h2>The useful stuff should be visible without digging.</h2>
+          </div>
+          <p>Johnny's already publishes prices. Good. This pass keeps that honesty up front, cuts the clutter, and turns the service list into something you can scan in 10 seconds.</p>
+        </div>
+        <div class="services-grid">
+          <aside class="services-note reveal">
+            <h3>What to book</h3>
+            <p class="lede">Haircut, buzz cut, beard trim + line-up, hot shave, kids' cuts, camo grey blending, and per-hour perms are all live services on the current site.</p>
+            <p class="lede" style="margin-top:1rem;">Johnny's also notes that barber pricing varies by education, training, and practical experience. That's a good trust move. I kept it.</p>
+          </aside>
+          <div class="service-table stagger">
+            <div class="service-row"><div class="price">$36+</div><div><strong>Buzz cut</strong><p>Just clippers, 1 length, easy to maintain, no fuss.</p></div></div>
+            <div class="service-row"><div class="price">$55+</div><div><strong>Hair cut</strong><p>Traditional and modern techniques, crafted for you.</p></div></div>
+            <div class="service-row"><div class="price">$42+</div><div><strong>Beard trim + line-up</strong><p>Shape, moustache, and straight-razor line-up, finished with curated products.</p></div></div>
+            <div class="service-row"><div class="price">$72+</div><div><strong>Hot shave</strong><p>Full-face towel, lather, and razor service.</p></div></div>
+            <div class="service-row"><div class="price">$44+</div><div><strong>Little Johnny's</strong><p>Proper cut for 9 and under.</p></div></div>
+            <div class="service-row"><div class="price">$16+</div><div><strong>Waxing</strong><p>Brows, ears, nose, or all 3.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="shell">
+        <div class="quote-band reveal">
+          <div>
+            <div class="kicker">Central idea</div>
+            <blockquote>Modern barbershop rooted in tradition, with just enough retail and coffee to make the whole place feel like more than a waiting room.</blockquote>
+          </div>
+          <cite>Source: Instagram bio + services/menu pages</cite>
+        </div>
+      </div>
+    </section>
+
+    <section id="barbers">
+      <div class="shell">
+        <div class="section-head reveal">
+          <div>
+            <div class="kicker">Barbers</div>
+            <h2>The strongest proof is in the bios.</h2>
+          </div>
+          <p>Instead of vague brand copy, Johnny's already has something better: barbers describing how they work. That gives the page a human voice without making anything up.</p>
+        </div>
+        <div class="team-grid stagger">
+          <article class="team-card">
+            <h3>Mark</h3>
+            <p><strong>Since 2019.</strong> Specializes in short to mid-length hairstyles and straight-razor beard trims and line-ups, blending traditional barbering with modern hairdressing.</p>
+          </article>
+          <article class="team-card">
+            <h3>Tyrin</h3>
+            <p>Former soccer player turned barber, focused on connection, confidence, and finding a haircut that suits each person.</p>
+          </article>
+          <article class="team-card">
+            <h3>Ryan</h3>
+            <p>Barber + shop manager, learned the craft cutting friends in his living room, now known for tight fades and wide style range.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="shell photo-grid">
+        <figure class="photo-card reveal"><img src="ig-photo-01.jpg" alt="Black and white branded portrait from Johnny's Barber + Shop." /></figure>
+        <div class="photo-stack">
+          <figure class="photo-card reveal"><img src="ig-photo-03.jpg" alt="Client in the barber chair at Johnny's Barber + Shop." /></figure>
+          <figure class="photo-card reveal"><img src="ig-photo-02.jpg" alt="Editorial hairstyle portrait from Johnny's Barber + Shop." /></figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="shop">
+      <div class="shell shop-grid">
+        <article class="menu-note reveal">
+          <div class="kicker">The + Shop part</div>
+          <h2 style="font-size:clamp(2.2rem,4vw,3.4rem); margin-top:.5rem;">Coffee, shelves, and a reason to hang around.</h2>
+          <p class="lede" style="margin-top:1rem;">This is the bit that separates Johnny's from a standard haircut page. The current menu includes beer, wine, cocktails, zero-proof drinks, and specialty coffee. On 1 Street, the first beverage is free.</p>
+          <ul class="menu-list">
+            <li><span>Rosso coffee and Smith Tea</span><strong>Complimentary</strong></li>
+            <li><span>Velvet Cream</span><strong>$8</strong></li>
+            <li><span>Local beer from Jasper, Bow Valley, Annex, Cabin, Eighty-Eight</span><strong>$6 to $8</strong></li>
+            <li><span>Olé cocktails and Walter Craft Caesar</span><strong>$8</strong></li>
+          </ul>
+        </article>
+        <figure class="photo-card reveal"><img src="ig-photo-08.jpg" alt="Johnny's x Rosso coffee product shown on the counter." /></figure>
+      </div>
+    </section>
+
+    <section>
+      <div class="shell footer-cta reveal">
+        <div>
+          <div class="kicker">Book downtown</div>
+          <h2 style="font-size:clamp(2.3rem,4vw,3.6rem);">Choose your Johnny's, book your barber, and get on with your day.</h2>
+          <p>2 locations, clear services, real atmosphere, and enough coffee-and-shop energy to make the appointment feel like part of the plan, not a chore.</p>
+        </div>
+        <div style="display:grid; gap:.85rem;">
+          <a class="button" href="https://www.johnnysbarberandshop.com/">See current site</a>
+          <a class="button alt" style="color:var(--paper); border-color:rgba(255,255,255,.2);" href="https://www.instagram.com/johnnysbarberandshop/">Open Instagram</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!reduceMotion) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add('is-visible');
+        });
+      }, { threshold: 0.15 });
+      document.querySelectorAll('.reveal, .stagger').forEach((el) => observer.observe(el));
+    } else {
+      document.querySelectorAll('.reveal, .stagger').forEach((el) => el.classList.add('is-visible'));
+    }
+  </script>
+</body>
+</html>

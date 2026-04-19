@@ -132,20 +132,20 @@ nav {
   font-size: 12px; color: var(--mid); margin-top: 12px;
   letter-spacing: 0.02em;
 }
-.hero-label {
-  font-size: 13px; font-weight: 600;
-  letter-spacing: 0.08em; text-transform: uppercase;
-  color: var(--accent); margin-bottom: 24px;
-}
 .hero-headline {
   font-family: var(--serif); font-size: clamp(44px, 5.8vw, 76px);
   font-weight: 400; line-height: 1.08; letter-spacing: -0.02em;
   margin-bottom: 32px; max-width: 720px;
 }
-.hero-headline em { font-style: italic; }
+.hero-headline .hero-builder {
+  display: block;
+}
+.hero-headline .hero-builder-accent {
+  color: var(--accent);
+}
 .hero-body {
   font-size: 18px; line-height: 1.7; color: var(--mid);
-  max-width: 560px; margin-bottom: 40px;
+  max-width: 560px; margin-bottom: 32px;
 }
 .hero-body a {
   color: inherit;
@@ -514,8 +514,7 @@ footer span:last-child {
 <!-- HERO -->
 <header class="hero reveal">
   <div class="hero-text">
-    <p class="hero-label">Design Leader &middot; Builder</p>
-    <h1 class="hero-headline">24 products in<br>14 years.</h1>
+    <h1 class="hero-headline">Design Leader,<span class="hero-builder">to <span class="hero-builder-accent">Builder.</span></span></h1>
     <p class="hero-body">I've led design at <a href="https://strike.me/" target="_blank" rel="noreferrer">Strike</a>, <a href="https://www.koho.ca/" target="_blank" rel="noreferrer">KOHO</a>, <a href="https://www.fountain.fm/" target="_blank" rel="noreferrer">Fountain</a>, and <a href="https://aioz.network/" target="_blank" rel="noreferrer">AIOZ</a>. Now I'm building AI products end to end, from the first idea to the working thing.</p>
     <a href="#work" class="hero-cta">See the work</a>
   </div>
@@ -544,8 +543,8 @@ footer span:last-child {
           <p class="case-role">Principal Product Designer<br>2023 – 2025</p>
         </div>
         <div class="case-content">
-          <h3 class="case-headline">8 products across one ecosystem. The market cap went 100x.</h3>
-          <p class="case-body">AIOZ is a decentralized AI, storage, and streaming network. I led five designers across product design and helped build one design system that worked across all the products in both light and dark mode.</p>
+          <h3 class="case-headline">Unified an ecosystem of 8 products. The market cap went 100x.</h3>
+          <p class="case-body">AIOZ is a decentralized AI, storage, and streaming network. I led three designers across product design, designing and unifying eight distinct products. I also led the design system work across the full product ecosystem, with a semantic color system for both light and dark modes.</p>
           <div class="case-metrics">
             <span class="metric-pill">8 products</span>
             <span class="metric-pill">$13M &rarr; $1.38B</span>
@@ -568,7 +567,7 @@ footer span:last-child {
         </div>
         <div class="case-content">
           <h3 class="case-headline">Full product rebuild in under five months.</h3>
-          <p class="case-body">Fountain is a Bitcoin-powered podcast app. I led the design work across the rebuild, rebuilt the design system, and shipped the new experience in under five months.</p>
+          <p class="case-body">Fountain is a Bitcoin-powered podcast app. I led a junior designer and two CEOs through the redesign, rebuilt the design system, and shipped the new experience in under five months.</p>
           <div class="case-media">
             <div class="case-grid-4">
               <div class="case-img-wrap"><img src="assets/fountain1.png" alt="Fountain app redesign"></div>
@@ -588,7 +587,7 @@ footer span:last-child {
         </div>
         <div class="case-content">
           <h3 class="case-headline">Redesigned the app in 5 months and scaled it to 65 countries.</h3>
-          <p class="case-body">Strike is a Bitcoin payments app. I led the mobile app redesign. I also led design across onboarding, KYC, and support, and co-owned the iOS and Android design system.</p>
+          <p class="case-body">Strike is a Bitcoin payments app. When we rebranded, I led a team of 3 to 5 designers through the mobile app redesign. I also led design across onboarding, KYC, and support, and co-owned the iOS and Android design system.</p>
           <div class="case-metrics">
             <span class="metric-pill">450+ screens</span>
             <span class="metric-pill">80+ flows</span>
@@ -615,10 +614,10 @@ footer span:last-child {
         </div>
         <div class="case-content">
           <h3 class="case-headline">First hire. Built the product foundation from zero.</h3>
-          <p class="case-body">I was KOHO's first hire. I helped build the product from scratch, set the early design direction, and helped grow it to 100K+ users. Apple featured the app. KOHO is now valued above $800M.</p>
+          <p class="case-body">I was KOHO's first hire. I helped build the product from scratch, set the early design direction, and helped grow it to 100K+ users. Apple featured the app twice, once in New Apps We Love and again on the App Store front page. KOHO is now valued above $800M.</p>
           <div class="case-metrics">
             <span class="metric-pill">First hire</span>
-            <span class="metric-pill">Apple featured</span>
+            <span class="metric-pill">Featured twice by Apple</span>
             <span class="metric-pill">$800M+ valuation</span>
           </div>
           <div class="case-media">
@@ -659,7 +658,7 @@ footer span:last-child {
         <a class="naka-copy-link" href="https://auto-sites.pages.dev" target="_blank" rel="noreferrer">
           <h3 class="naka-title">Nakamoto Design Co.</h3>
           <div class="naka-body">
-            <p>110+ custom websites for local businesses across Canada, built by AI agents I designed and direct. The agents find businesses, research them, pull Instagram, write copy from real reviews, and produce polished sites. The system compounds — prompts, examples, and decisions get better with each build. Bakeries in Montr&eacute;al. Barbers in Victoria. Each site is live.</p>
+            <p>110+ custom websites for local businesses without websites across Canada, built by AI agents I designed and direct. The agents find businesses, research them, pull Instagram, write copy from real reviews, and produce polished sites. The system compounds — prompts, examples, and decisions get better with each build. Bakeries in Montr&eacute;al. Barbers in Victoria. Each site is live.</p>
           </div>
         </a>
         <div class="naka-previews">
@@ -731,7 +730,7 @@ footer span:last-child {
     </div>
     <div class="about-grid reveal">
       <div class="about-text">
-        <p>I studied microbiology before I studied design. That instinct is still in the work — go one layer deeper, understand what's actually happening before proposing a fix. Outside of product work, I host a <a href="https://www.mixcloud.com/dynamicquality/" target="_blank" rel="noreferrer">radio show</a> and make craft vinegar. Different mediums, same impulse: taste, experimentation, making things people actually want.</p>
+        <p>I studied microbiology before I studied design. That instinct is still in the work — go one layer deeper, understand what's actually happening before proposing a fix. Outside of product work, I host a <a href="https://www.mixcloud.com/dynamicquality/" target="_blank" rel="noreferrer">radio show</a> and make craft vinegar. Different mediums, same impulse: taste, experimentation, making things for the joy of it.</p>
         <p>I work best with teams building AI products that go beyond prompts and wrappers. Agent systems, AI-assisted workflows, trust and handoff design — the human layer on top of complex models.</p>
       </div>
       <div class="about-facts">

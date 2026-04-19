@@ -1,0 +1,487 @@
+<!--
+DELTA: v5 final polish notes
+- What changed from v4: tightened copy, checked all visible text against humanizer/voice rules, confirmed local asset paths and OG tags
+- Self-review score: 8.1
+- Panel averages carried forward from panel-notes.md: WHY 7.83 / WHAT 7.67 / HOW 7.50
+- Final polish focus: pastry-first page with strong appetite, quick visit info, and no filler sections
+-->
+<!--
+PHOTO RANKING / ASSIGNMENTS
+1. ig-photo-06.jpg — clean slice of layered chocolate cake, elegant composition, soft bright light, square, HERO / lead image
+2. ig-photo-01.jpg — jam-filled laminated pastry close-up, luscious and premium, soft natural light, square, GRID
+3. ig-photo-08.jpg — mille-feuille on glass stand, rich and slightly theatrical, warm diffused light, square, GRID
+4. ig-photo-07.jpg — savoury danishes with strong texture and repetition, warm natural light, square, GRID
+5. ig-photo-03.jpg — overhead fruit tart scene, lively and human, warm casual light, square, SUPPORTING GRID
+6. ig-photo-09.jpg — candid pastry handoff in shop, useful proof of the counter experience, portrait, SUPPORTING STORY
+7. ig-photo-04.jpg — tray shot with weaker styling, square, SKIP
+8. ig-photo-02.jpg — crumb macro too abstract for this page, square, SKIP
+9. ig-photo-05.jpg — boxed assortment feels crowded, square, SKIP
+10. ig-photo-10.jpg — text overlay breaks the premium feel, square, SKIP
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Barbershop Patisserie, Toronto</title>
+  <meta name="description" content="European-style pastry on College Street, built around puff pastry, lemon bichons, sausage rolls, cakes, and a bakery case that usually empties early." />
+  <meta property="og:title" content="Barbershop Patisserie" />
+  <meta property="og:description" content="European-style pastry on College Street, built around puff pastry, lemon bichons, sausage rolls, cakes, and a bakery case that usually empties early." />
+  <meta property="og:image" content="https://auto-sites.pages.dev/demos/barbershop-patisserie/ig-photo-06.jpg" />
+  <meta property="og:url" content="https://auto-sites.pages.dev/demos/barbershop-patisserie/" />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,600;6..96,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f7f1e8;
+      --paper: #fcf8f2;
+      --ink: #211616;
+      --muted: #6f5c58;
+      --line: rgba(33,22,22,.12);
+      --accent: #7e2331;
+      --gold: #b78649;
+      --section-pad: clamp(72px, 9vw, 124px);
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+      --shadow: 0 28px 90px rgba(33,22,22,.12);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; }
+    .wrap { width: min(1140px, calc(100vw - 40px)); margin: 0 auto; }
+    .site-header {
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: blur(18px);
+      background: rgba(247,241,232,.88);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav {
+      min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 20px;
+    }
+    .brand {
+      text-decoration: none; text-transform: uppercase; letter-spacing: .16em; font-size: .83rem; font-weight: 700;
+    }
+    .nav-links {
+      display: flex; align-items: center; gap: 22px;
+    }
+    .nav-links a {
+      text-decoration: none; color: var(--muted); font-size: 1rem; font-weight: 500;
+    }
+    .nav-links a:hover, .nav-links a:focus-visible { color: var(--ink); }
+    .nav-cta, .button {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      border-radius: 999px; text-decoration: none; font-weight: 600;
+      transition: transform 180ms var(--ease-out), background 180ms var(--ease-out), color 180ms var(--ease-out), border-color 180ms var(--ease-out);
+    }
+    .nav-cta {
+      padding: 12px 18px; background: var(--ink); color: #fff;
+    }
+    .nav-cta:hover, .nav-cta:focus-visible, .button:hover, .button:focus-visible { transform: translateY(-1px); }
+    .nav-cta:active, .button:active { transform: scale(0.97); }
+    .mobile-toggle { display: none; }
+
+    .hero {
+      padding: 34px 0 28px;
+    }
+    .hero-grid {
+      display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(320px, .72fr); gap: 28px; align-items: end;
+    }
+    .eyebrow {
+      display: inline-block; margin-bottom: 18px; color: var(--accent); text-transform: uppercase; letter-spacing: .16em; font-size: .78rem; font-weight: 700;
+    }
+    h1, h2, h3, blockquote { margin: 0; font-family: 'Bodoni Moda', serif; font-weight: 600; line-height: .96; }
+    h1 { font-size: clamp(4.25rem, 12vw, 9.6rem); letter-spacing: -.04em; max-width: 6.5ch; }
+    .hero-copy p {
+      max-width: 41rem; margin: 22px 0 0; font-size: clamp(1.06rem, 2vw, 1.24rem); color: var(--muted);
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 28px; }
+    .button.primary { padding: 15px 20px; background: var(--ink); color: #fff; }
+    .button.secondary { padding: 15px 20px; border: 1px solid var(--line); background: rgba(255,255,255,.56); color: var(--ink); }
+    .hero-card {
+      background: linear-gradient(180deg, rgba(255,255,255,.8), rgba(255,255,255,.44));
+      border: 1px solid var(--line); border-radius: 28px; overflow: hidden; box-shadow: var(--shadow);
+    }
+    .hero-card img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; }
+    .hero-note {
+      padding: 20px 22px 22px;
+    }
+    .hero-note strong { display: block; margin-bottom: 6px; font-size: .88rem; text-transform: uppercase; letter-spacing: .12em; color: var(--accent); }
+    .hero-note p { margin: 0; color: var(--muted); font-size: .98rem; }
+
+    .facts { padding: 0 0 10px; }
+    .facts-grid {
+      display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px;
+      border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 22px 0;
+    }
+    .fact-label { color: var(--muted); font-size: .8rem; text-transform: uppercase; letter-spacing: .13em; font-weight: 700; margin-bottom: 6px; }
+    .fact-value { font-size: 1rem; }
+
+    section { padding: var(--section-pad) 0; }
+    .section-kicker {
+      display: inline-block; margin-bottom: 16px; color: var(--accent); text-transform: uppercase; letter-spacing: .16em; font-size: .78rem; font-weight: 700;
+    }
+    .intro-grid {
+      display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(280px, .8fr); gap: 30px; align-items: end;
+    }
+    .intro-copy p, .story-card p, .visit-panel p, .quote-card p { margin: 0; color: var(--muted); font-size: 1.06rem; }
+    h2 { font-size: clamp(2.4rem, 5vw, 4.3rem); max-width: 10ch; }
+
+    .menu-grid {
+      display: grid; grid-template-columns: .95fr 1.05fr; gap: 24px; margin-top: 32px; align-items: stretch;
+    }
+    .menu-image img { width: 100%; height: 100%; min-height: 460px; object-fit: cover; border-radius: 28px; box-shadow: var(--shadow); }
+    .menu-copy {
+      background: var(--paper); border: 1px solid var(--line); border-radius: 28px; padding: 30px;
+      display: grid; gap: 18px; box-shadow: 0 22px 70px rgba(33,22,22,.08);
+    }
+    .menu-item { padding-top: 16px; border-top: 1px solid var(--line); }
+    .menu-item strong { display: block; margin-bottom: 4px; font-size: 1rem; }
+
+    .gallery-grid {
+      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; margin-top: 28px; align-items: end;
+    }
+    .gallery-grid figure { margin: 0; }
+    .gallery-grid img {
+      width: 100%; border-radius: 24px; box-shadow: var(--shadow); object-fit: cover;
+    }
+    .gallery-grid figure:nth-child(1) img,
+    .gallery-grid figure:nth-child(2) img { aspect-ratio: 1 / 1.18; }
+    .gallery-grid figure:nth-child(3) img { aspect-ratio: 1 / 1.42; }
+    .gallery-grid figcaption {
+      margin-top: 10px; color: var(--muted); font-size: .95rem;
+    }
+
+    .quote-section { background: #efe4da; border-top: 1px solid rgba(33,22,22,.08); border-bottom: 1px solid rgba(33,22,22,.08); }
+    .quote-stack {
+      display: grid; gap: 16px; margin-top: 26px;
+    }
+    .quote-card {
+      background: rgba(255,255,255,.64); border: 1px solid rgba(33,22,22,.1); border-radius: 24px; padding: 24px;
+    }
+    .quote-card blockquote { font-size: clamp(1.45rem, 3vw, 2.2rem); line-height: 1.08; max-width: 17ch; }
+    .quote-card p { margin-top: 14px; }
+    .quote-source {
+      margin-top: 14px; color: var(--accent); text-transform: uppercase; letter-spacing: .13em; font-size: .78rem; font-weight: 700;
+    }
+
+    .story-grid {
+      display: grid; grid-template-columns: minmax(0, .72fr) minmax(0, 1.28fr); gap: 24px; margin-top: 30px; align-items: stretch;
+    }
+    .story-grid img {
+      width: 100%; height: 100%; min-height: 360px; object-fit: cover; border-radius: 28px; box-shadow: var(--shadow);
+    }
+    .story-card {
+      background: #24191a; color: #f8f0e9; border-radius: 28px; padding: 34px;
+      display: grid; gap: 18px;
+    }
+    .story-card .section-kicker, .story-card p { color: rgba(248,240,233,.82); }
+    .story-card h2 { color: #fff; max-width: 12ch; }
+
+    .visit-panel {
+      background: var(--paper); border: 1px solid var(--line); border-radius: 28px; padding: 32px; margin-top: 28px; box-shadow: 0 18px 50px rgba(33,22,22,.06);
+    }
+    .visit-grid {
+      display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 24px;
+    }
+    .visit-item { padding-top: 14px; border-top: 1px solid var(--line); }
+    .visit-item strong { display: block; margin-bottom: 4px; }
+    .visit-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 26px; }
+
+    .footer {
+      padding: 36px 0 54px; border-top: 1px solid var(--line); color: var(--muted); font-size: .95rem;
+    }
+
+    [data-reveal] { opacity: 1; transform: none; transition: transform 720ms var(--ease-out), opacity 720ms var(--ease-out); }
+    .js [data-reveal] { opacity: 0; transform: translateY(24px); }
+    .js [data-reveal].is-visible { opacity: 1; transform: translateY(0); }
+    .hero-line { display: block; }
+    .js .hero-line { opacity: 0; transform: translateY(24px); transition: transform 760ms var(--ease-out), opacity 760ms var(--ease-out); }
+    .js .hero-line.is-visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 940px) {
+      .hero-grid, .intro-grid, .menu-grid, .story-grid, .visit-grid, .facts-grid, .gallery-grid { grid-template-columns: 1fr; }
+      .nav-links {
+        position: absolute; top: 76px; left: 20px; right: 20px; display: none; flex-direction: column; align-items: stretch; gap: 14px;
+        background: rgba(247,241,232,.98); border: 1px solid var(--line); border-radius: 22px; padding: 18px;
+      }
+      .nav-links.open { display: flex; }
+      .mobile-toggle {
+        display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px;
+        border-radius: 999px; border: 1px solid var(--line); background: rgba(255,255,255,.56); color: var(--ink);
+      }
+      .nav-cta { display: none; }
+      h1 { max-width: 7ch; }
+      .menu-image img, .story-grid img { min-height: 320px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .js [data-reveal], .js .hero-line { opacity: 1 !important; transform: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="brand" href="#top">Barbershop Patisserie</a>
+      <button class="mobile-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle menu">☰</button>
+      <nav id="nav-links" class="nav-links" aria-label="Primary">
+        <a href="#what-to-get">What to get</a>
+        <a href="#proof">What people order</a>
+        <a href="#visit">Visit</a>
+      </nav>
+      <a class="nav-cta" href="https://www.instagram.com/barbershoppatisserie/">See today's case</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow" data-reveal>European-style bakery, Little Italy</span>
+          <h1 aria-label="Puff pastry, sausage rolls, and cakes worth crossing town for.">
+            <span class="hero-line">Puff pastry,</span>
+            <span class="hero-line">sausage rolls,</span>
+            <span class="hero-line">and cakes</span>
+            <span class="hero-line">worth crossing</span>
+            <span class="hero-line">town for.</span>
+          </h1>
+          <p data-reveal>
+            Barbershop Patisserie is Jill Barber's College Street bakery for lemon bichons, mille-feuille, savoury pastry, cookies, and cakes. It's open daily, built for takeout, and the case usually looks picked over by late afternoon for a reason.
+          </p>
+          <div class="hero-actions" data-reveal>
+            <a class="button primary" href="https://www.google.com/maps/place/Barbershop+Patisserie/@43.6542174,-79.4234931,15z/data=!4m6!3m5!1s0x882b356ddf41fb77:0x2dc8a0e07fd9fb7d!8m2!3d43.6540387!4d-79.423465!16s%2Fg%2F11qp0l17d5?entry=tts&g_ep=EgoyMDI0MDYxOS4xKgBIAVAD">Get directions</a>
+            <a class="button secondary" href="tel:+14165196564">Call 416-519-6564</a>
+          </div>
+        </div>
+        <aside class="hero-card" data-reveal>
+          <img src="ig-photo-06.jpg" alt="A tall slice of layered chocolate cake from Barbershop Patisserie" />
+          <div class="hero-note">
+            <strong>Good first order</strong>
+            <p>Start with the cake, add something laminated, then grab one savoury pastry for the walk home. That seems to be the move.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="facts">
+      <div class="wrap facts-grid" data-reveal>
+        <div>
+          <div class="fact-label">Where</div>
+          <div class="fact-value">859 College St, Toronto</div>
+        </div>
+        <div>
+          <div class="fact-label">Hours</div>
+          <div class="fact-value">9 to 4 Sun to Tue, 9 to 5 Wed to Sat</div>
+        </div>
+        <div>
+          <div class="fact-label">Best known for</div>
+          <div class="fact-value">Lemon bichons, sausage rolls, mille-feuille, cakes</div>
+        </div>
+        <div>
+          <div class="fact-label">Follow</div>
+          <div class="fact-value"><a href="https://www.instagram.com/barbershoppatisserie/">@barbershoppatisserie</a></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="what-to-get">
+      <div class="wrap">
+        <div class="intro-grid" data-reveal>
+          <div>
+            <span class="section-kicker">What to get</span>
+            <h2>Sweet, savoury, and very hard to leave with just one box.</h2>
+          </div>
+          <div class="intro-copy">
+            <p>Reviews keep circling the same things: hand-rolled puff pastry, the lemon bichon, sausage rolls, chicken pot pie, chocolate cake, bostock, and butterscotch apple mille-feuille. That's a strong kind of repetition.</p>
+          </div>
+        </div>
+
+        <div class="menu-grid">
+          <figure class="menu-image" data-reveal>
+            <img src="ig-photo-01.jpg" alt="Jam-filled laminated pastry dusted with sugar and stacked with fresh raspberries" />
+          </figure>
+          <div class="menu-copy" data-reveal>
+            <div class="menu-item">
+              <strong>Lemon bichon</strong>
+              Tangy lemon curd inside caramelized, sugar-coated puff pastry. Angela A. called it her new favourite lemon treat.
+            </div>
+            <div class="menu-item">
+              <strong>Sausage rolls and savoury pastry</strong>
+              The savoury side gets real love here. Ken T. singled out the seasoning in the sausage roll, and multiple writeups call it a crowd favourite.
+            </div>
+            <div class="menu-item">
+              <strong>Mille-feuille and cake</strong>
+              Butterscotch apple mille-feuille has people ordering birthday cakes on purpose. The dark chocolate cake keeps showing up in reviews too.
+            </div>
+            <div class="menu-item">
+              <strong>Bostock, croissants, cookies</strong>
+              Stanley S. praised the bostock, the croissant structure, and the chocolate chip cookie in the same visit. That's a useful signpost.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="intro-grid" data-reveal>
+          <div>
+            <span class="section-kicker">From the case</span>
+            <h2>The name has swagger. The pastry backs it up.</h2>
+          </div>
+          <div class="intro-copy">
+            <p>Barber opened her own shop on a street she already walked every day. The result feels like a neighbourhood bakery with better instincts than the average bakery case.</p>
+          </div>
+        </div>
+        <div class="gallery-grid">
+          <figure data-reveal>
+            <img src="ig-photo-08.jpg" alt="A mille-feuille cake on a glass stand" />
+            <figcaption>Mille-feuille that looks dressed up without getting fussy.</figcaption>
+          </figure>
+          <figure data-reveal>
+            <img src="ig-photo-07.jpg" alt="Savory danishes with roasted filling and sesame seeds" />
+            <figcaption>The savoury pastry gets equal billing here, which is part of the point.</figcaption>
+          </figure>
+          <figure data-reveal>
+            <img src="ig-photo-03.jpg" alt="An overhead view of a fruit tart with sliced pears and nuts" />
+            <figcaption>Fruit, glaze, and butter doing exactly what they should.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="proof" class="quote-section">
+      <div class="wrap">
+        <span class="section-kicker" data-reveal>Proof</span>
+        <div class="intro-grid" data-reveal>
+          <div>
+            <h2>4.8 out of 5, with 272 reviews and a lot of repeat pastry names.</h2>
+          </div>
+          <div class="intro-copy">
+            <p>No filler quotes here. These are the actual things people remember after a visit: lemon bichons, sausage rolls, mille-feuille, and the fact that the staff clearly like what they're selling.</p>
+          </div>
+        </div>
+        <div class="quote-stack">
+          <article class="quote-card" data-reveal>
+            <blockquote>“This bichon au citron is going to blow your mind.”</blockquote>
+            <p>Angela A. wrote that after coming in just for the lemon bichon. She also said it was worth taking to go if you can't grab the bench outside.</p>
+            <div class="quote-source">Angela A. · Wanderlog</div>
+          </article>
+          <article class="quote-card" data-reveal>
+            <blockquote>“Hand rolled puff pastry is the signature, buttery, light and crispy.”</blockquote>
+            <p>Ken T. zeroed in on the core thing here, then backed it up with praise for the sausage roll and chicken pot pie.</p>
+            <div class="quote-source">Ken T. · Wanderlog</div>
+          </article>
+          <article class="quote-card" data-reveal>
+            <blockquote>“The butterscotch apple mille feuille is unbelievable.”</blockquote>
+            <p>Berta C. has been ordering birthday cake here for 3 years straight. That's stronger than any headline I could invent.</p>
+            <div class="quote-source">Berta C. · Wanderlog</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap story-grid">
+        <figure data-reveal>
+          <img src="ig-photo-09.jpg" alt="A customer holding two pastries inside Barbershop Patisserie" />
+        </figure>
+        <div class="story-card" data-reveal>
+          <span class="section-kicker">Why this place feels different</span>
+          <h2>“Everything that I make is something that I would eat.”</h2>
+          <p>That line came straight from Jill Barber when she opened the shop. It explains the page better than any brand deck could.</p>
+          <p>She'd already built a reputation in Toronto pastry kitchens before taking over this Little Italy space and opening her own spot. Streets of Toronto describes the shop as open until pastries are sold out, which feels about right for a bakery built around puff pastry instead of convenience.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="visit">
+      <div class="wrap">
+        <span class="section-kicker" data-reveal>Visit</span>
+        <div class="intro-grid" data-reveal>
+          <div>
+            <h2>Go in the morning if you want the full case.</h2>
+          </div>
+          <div class="intro-copy">
+            <p>The bakery sits on College Street in Little Italy. It's easy to find, built for takeaway, and close enough to make “I'll just grab one thing” a very optimistic plan.</p>
+          </div>
+        </div>
+        <div class="visit-panel" data-reveal>
+          <div class="visit-grid">
+            <div class="visit-item">
+              <strong>Address</strong>
+              859 College St, Toronto, ON M6H 1A1
+            </div>
+            <div class="visit-item">
+              <strong>Hours</strong>
+              Mon-Tue 9AM-4PM, Wed-Sat 9AM-5PM, Sun 9AM-4PM
+            </div>
+            <div class="visit-item">
+              <strong>Contact</strong>
+              416-519-6564 · barbershoppatisserie@gmail.com
+            </div>
+          </div>
+          <div class="visit-actions">
+            <a class="button primary" href="https://www.google.com/maps/place/Barbershop+Patisserie/@43.6542174,-79.4234931,15z/data=!4m6!3m5!1s0x882b356ddf41fb77:0x2dc8a0e07fd9fb7d!8m2!3d43.6540387!4d-79.423465!16s%2Fg%2F11qp0l17d5?entry=tts&g_ep=EgoyMDI0MDYxOS4xKgBIAVAD">Open Google Maps</a>
+            <a class="button secondary" href="tel:+14165196564">Call the bakery</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      Barbershop Patisserie, 859 College St, Toronto. This demo uses real business details, public reviews, and public Instagram photography.
+    </div>
+  </footer>
+
+  <script>
+    document.documentElement.classList.add('js');
+    const toggle = document.querySelector('.mobile-toggle');
+    const navLinks = document.querySelector('#nav-links');
+    if (toggle && navLinks) {
+      toggle.addEventListener('click', () => {
+        const open = navLinks.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    }
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!reduceMotion) {
+      const heroLines = document.querySelectorAll('.hero-line');
+      heroLines.forEach((line, index) => {
+        setTimeout(() => line.classList.add('is-visible'), 120 * index + 120);
+      });
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.16 });
+      document.querySelectorAll('[data-reveal]').forEach((el, index) => {
+        el.style.transitionDelay = `${Math.min(index * 55, 220)}ms`;
+        observer.observe(el);
+      });
+    } else {
+      document.querySelectorAll('.hero-line, [data-reveal]').forEach((el) => el.classList.add('is-visible'));
+    }
+  </script>
+</body>
+</html>

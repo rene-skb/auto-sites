@@ -1,5 +1,28 @@
 # Auto-Sites Build Log
 
+### Barbershop Patisserie — Patisserie / Bakery, Toronto ON
+- **Date:** 2026-04-19
+- **Model:** openai-codex/gpt-5.4
+- **Agent:** Lucy
+- **Folder:** barbershop-patisserie
+- **Hero pattern:** giant-display-type
+- **Typography:** Bodoni Moda + Plus Jakarta Sans
+- **Review layout:** single-column stacked review cards with one quote per row, same treatment throughout
+- **Visit/hours layout:** centered visit panel with three utility columns and direct action buttons, no map embed
+- **Stats bar style:** no-stats
+- **WHY Score:** 7.83 (Jobs 8.0 / Graham 7.5 / Ogilvy 8.0)
+- **WHAT Score:** 7.67 (Norman 7.5 / Krug 8.0 / Nielsen 7.5)
+- **HOW Score:** 7.50 (Vignelli 7.5 / Spiekermann 7.0 / Rams 8.0)
+- **Panel average:** 7.67
+- **Self-review:** 8.1
+- **Versions built:** 6 HTML versions + final index.html
+- **Build time:** ~55 minutes
+- **Token estimate:** ~16k
+- **Key decisions:** Earlier queue items were stale, so discovery moved to the first actually unbuilt entry. Leaned into the name's swagger with giant display type, then let real pastry photography and item-specific review proof do the selling instead of pretending this needed a big bakery backstory.
+- **Notes:** Verified the Instagram handle, phone, and review count during the build. Kept prices out because they were not confirmed from a primary source in this pass.
+- **Live URL:** pending push / Pages verification
+
+
 ### Johnny's Barber + Shop — Barbershop, Calgary AB
 - **Date:** 2026-04-18
 - **Model:** openai-codex/gpt-5.4

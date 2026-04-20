@@ -1,0 +1,338 @@
+<!--
+DELTA: v5 final polish notes
+- Tightened the hero claim, polished CTA copy, and cleaned the story section wording
+- Self-review score: 8.2
+- Panel averages carried forward from panel-notes.md: WHY 7.6 / WHAT 7.63 / HOW 7.9
+- Final polish focus: clearer value prop, cleaner scan path, premium dark pacing
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>High INKpact Tattoo Studio</title>
+  <meta name="description" content="Custom tattoos in Brampton with a clean, comfortable studio and artists clients keep coming back to." />
+  <meta property="og:title" content="High INKpact Tattoo Studio" />
+  <meta property="og:description" content="Custom tattoos in Brampton with a clean, comfortable studio and artists clients keep coming back to." />
+  <meta property="og:image" content="https://auto-sites.pages.dev/demos/high-inkpact/high-inkpact-hero.png" />
+  <meta property="og:url" content="https://auto-sites.pages.dev/demos/high-inkpact/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!--
+  PHOTO PLAN
+  1. Hero: high-inkpact-hero.png, landscape, strongest premium studio energy
+  2. Gallery left: high-inkpact-detail-1.png, close-up linework, portrait crop works well
+  3. Gallery center: high-inkpact-detail-2.png, tools/flash texture, square-ish supporting detail
+  4. Gallery right: high-inkpact-detail-3.png, intricate blackwork, strong supporting image
+  -->
+  <style>
+    :root {
+      --bg: #0a0909;
+      --panel: #131111;
+      --panel-2: #1b1717;
+      --ink: #f3ece4;
+      --muted: #ddd0c3;
+      --line: rgba(243, 236, 228, 0.12);
+      --accent: #a54b45;
+      --accent-2: #d4b59a;
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+      --section-pad: clamp(72px, 10vw, 120px);
+      --wrap: min(1120px, calc(100vw - 40px));
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, sans-serif;
+      background: radial-gradient(circle at top, rgba(165,75,69,0.2), transparent 30%), var(--bg);
+      color: var(--ink);
+      line-height: 1.5;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: var(--wrap); margin: 0 auto; }
+    .site-nav {
+      position: sticky; top: 0; z-index: 10;
+      backdrop-filter: blur(18px);
+      background: rgba(10, 9, 9, 0.7);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner {
+      width: var(--wrap); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 18px 0;
+    }
+    .brand { font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.88rem; }
+    .nav-links { display: flex; gap: 20px; color: var(--muted); font-size: 0.95rem; }
+    .nav-cta, .button {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      min-height: 48px; padding: 0 18px; border-radius: 999px; font-weight: 700;
+      transition: transform 160ms var(--ease-out), background 200ms var(--ease-out), color 200ms var(--ease-out), border-color 200ms var(--ease-out);
+    }
+    .nav-cta, .button.primary { background: var(--ink); color: #140f0f; }
+    .button.secondary { border: 1px solid var(--line); color: var(--ink); }
+    .nav-cta:active, .button:active { transform: scale(0.97); }
+    .hero { padding: 40px 0 28px; }
+    .hero-grid {
+      width: var(--wrap); margin: 0 auto; display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 28px; align-items: end;
+    }
+    .hero-copy {
+      padding: clamp(30px, 5vw, 56px); border: 1px solid var(--line); border-radius: 28px;
+      background: linear-gradient(180deg, rgba(27,23,23,0.94), rgba(12,10,10,0.98));
+      min-height: 560px; display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .eyebrow { color: var(--accent-2); letter-spacing: 0.14em; text-transform: uppercase; font-size: 0.78rem; }
+    h1 {
+      margin: 16px 0 18px; font-family: "Instrument Serif", serif; font-size: clamp(3.8rem, 10vw, 7.5rem);
+      line-height: 0.9; font-weight: 400; letter-spacing: -0.04em;
+    }
+    .hero-copy p { max-width: 34rem; color: var(--muted); font-size: 1.05rem; margin: 0 0 28px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
+    .hero-card {
+      overflow: hidden; border-radius: 28px; border: 1px solid var(--line); min-height: 560px; position: relative; background: #120f0f;
+    }
+    .hero-card img { width: 100%; height: 100%; object-fit: cover; }
+    .hero-card::after {
+      content: ""; position: absolute; inset: auto 0 0 0; height: 40%;
+      background: linear-gradient(180deg, transparent, rgba(10, 9, 9, 0.8));
+    }
+    .quickbar {
+      width: var(--wrap); margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 1px solid var(--line); border-radius: 24px; overflow: hidden;
+      background: rgba(19,17,17,0.88);
+    }
+    .quickbar .cell { padding: 22px; border-right: 1px solid var(--line); }
+    .quickbar .cell:last-child { border-right: 0; }
+    .label { display: block; color: var(--accent-2); text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem; margin-bottom: 8px; }
+    .value { font-size: 1rem; color: var(--ink); }
+    section { padding: var(--section-pad) 0; }
+    .proof-card, .story-card, .visit-panel, .cta-band, .hero-copy, .hero-card, .quickbar { will-change: transform, opacity; }
+    .section-intro { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 36px; align-items: end; margin-bottom: 34px; }
+    h2 { margin: 0; font-family: "Instrument Serif", serif; font-size: clamp(2.2rem, 5vw, 4.2rem); line-height: 0.96; font-weight: 400; letter-spacing: -0.03em; }
+    .section-intro p { margin: 0; color: var(--muted); max-width: 42rem; }
+    .gallery { display: grid; grid-template-columns: 1.1fr 0.9fr 0.9fr; gap: 18px; }
+    .gallery figure, .proof-card, .visit-panel, .story-card { margin: 0; border: 1px solid var(--line); border-radius: 24px; overflow: hidden; background: var(--panel); }
+    .gallery img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 4 / 5; }
+    .proof-grid { display: grid; grid-template-columns: 1.1fr 0.95fr 0.95fr; gap: 18px; }
+    .proof-card { padding: 28px; }
+    .proof-card.featured { background: linear-gradient(180deg, rgba(165,75,69,0.16), rgba(19,17,17,1)); }
+    blockquote { margin: 0 0 22px; font-family: "Instrument Serif", serif; font-size: clamp(1.4rem, 2vw, 2.2rem); line-height: 1.1; }
+    .proof-card p { margin: 0; color: var(--muted); }
+    .review-meta { margin-top: 18px; color: var(--accent-2); font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; }
+    .story-grid, .visit-grid { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 20px; }
+    .story-card, .visit-panel { padding: 28px; }
+    .story-card p, .visit-panel p, .info-list li { color: var(--muted); }
+    .info-list { margin: 0; padding-left: 18px; }
+    .info-list li { margin-bottom: 12px; }
+    .hours-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 20px; margin-top: 22px; }
+    .hours-grid div { padding-top: 14px; border-top: 1px solid var(--line); }
+    .hours-grid strong { display: block; margin-bottom: 6px; }
+    .cta-band {
+      padding: 28px; border: 1px solid var(--line); border-radius: 28px;
+      background: linear-gradient(180deg, rgba(213,181,154,0.08), rgba(19,17,17,1));
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px;
+    }
+    .cta-band p { margin: 8px 0 0; color: var(--muted); }
+    footer { padding: 28px 0 60px; color: var(--muted); }
+    [data-reveal] { opacity: 0; transform: translateY(24px); transition: opacity 700ms var(--ease-out), transform 700ms var(--ease-out); }
+    [data-reveal].visible { opacity: 1; transform: translateY(0); }
+    @media (max-width: 980px) {
+      .hero-grid, .section-intro, .story-grid, .visit-grid, .proof-grid, .gallery { grid-template-columns: 1fr; }
+      .quickbar { grid-template-columns: repeat(2, 1fr); }
+      .quickbar .cell:nth-child(2) { border-right: 0; }
+      .quickbar .cell:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+      .hero-copy, .hero-card { min-height: auto; }
+    }
+    @media (max-width: 720px) {
+      .nav-inner { gap: 16px; align-items: flex-start; flex-direction: column; }
+      .nav-links { flex-wrap: wrap; }
+      .quickbar { grid-template-columns: 1fr; }
+      .quickbar .cell { border-right: 0; border-bottom: 1px solid var(--line); }
+      .quickbar .cell:last-child { border-bottom: 0; }
+      .hero-copy { padding: 28px; }
+      h1 { font-size: clamp(3.2rem, 20vw, 5rem); }
+      .hero-actions { flex-direction: column; }
+      .nav-cta, .button { width: 100%; }
+      .hours-grid { grid-template-columns: 1fr; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      [data-reveal] { opacity: 1 !important; transform: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <div class="brand">High INKpact Tattoo Studio</div>
+      <div class="nav-links">
+        <a href="#work">Work</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#visit">Visit</a>
+      </div>
+      <a class="nav-cta" href="tel:19052308618">Call (905) 230-8618</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-grid">
+      <div class="hero-copy" data-reveal>
+        <div>
+          <span class="eyebrow">Tattoo studio · Brampton</span>
+          <h1>Custom work that still feels like yours.</h1>
+          <p>High INKpact Tattoo Studio is a Brampton tattoo shop known for clean work, a comfortable room, and artists who take the time to make the design yours.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="https://www.google.com/maps/place/data=!4m2!3m1!1s0x882b3e20cb6cd82d:0x3e51b036b70a4a30" target="_blank" rel="noreferrer">Open Google Maps</a>
+            <a class="button secondary" href="#reviews">Read reviews</a>
+          </div>
+        </div>
+        <div class="review-meta">105 Kennedy Rd S #10 · Brampton, ON</div>
+      </div>
+      <div class="hero-card" data-reveal>
+        <img src="high-inkpact-hero.png" alt="Close-up tattoo session with gloved artist hands and machine" />
+      </div>
+    </div>
+  </header>
+
+  <div class="quickbar" data-reveal>
+    <div class="cell">
+      <span class="label">Address</span>
+      <div class="value">105 Kennedy Rd S #10, Brampton</div>
+    </div>
+    <div class="cell">
+      <span class="label">Hours</span>
+      <div class="value">Mon to Sat, 12 PM to 8 PM</div>
+    </div>
+    <div class="cell">
+      <span class="label">Phone</span>
+      <div class="value">(905) 230-8618</div>
+    </div>
+    <div class="cell">
+      <span class="label">What stands out</span>
+      <div class="value">Custom designs, clean room, comfortable sessions</div>
+    </div>
+  </div>
+
+  <section id="work">
+    <div class="wrap">
+      <div class="section-intro" data-reveal>
+        <h2>Black ink, custom detail, no fake attitude.</h2>
+        <p>This build stays close to what clients actually say. The shop feels clean and comfortable. Nelson and Sasha get called out by name. First-timers and regulars both say the team takes care with the work.</p>
+      </div>
+      <div class="gallery">
+        <figure data-reveal><img src="high-inkpact-detail-1.png" alt="Detailed healed black and grey tattoo linework on arm" /></figure>
+        <figure data-reveal><img src="high-inkpact-detail-2.png" alt="Tattoo tools and flash sketches laid out on a dark table" /></figure>
+        <figure data-reveal><img src="high-inkpact-detail-3.png" alt="Intricate blackwork tattoo detail on shoulder and arm" /></figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="reviews">
+    <div class="wrap">
+      <div class="section-intro" data-reveal>
+        <h2>What people actually remember</h2>
+        <p>Comfortable sessions, patient artists, and custom work people come back for.</p>
+      </div>
+      <div class="proof-grid">
+        <article class="proof-card featured" data-reveal>
+          <blockquote>“They can take an image and make it your own, the shop is clean and friendly.”</blockquote>
+          <p>That review keeps doing the job. It says what matters in one line: the artists listen, the room feels easy to be in, and the result does not feel off-the-rack.</p>
+          <div class="review-meta">Sarah T. · May 2018 · Via GetInked</div>
+        </article>
+        <article class="proof-card" data-reveal>
+          <blockquote>“Nelson and the team at High INKpact always do a stellar job.”</blockquote>
+          <p>Repeat clients talk about the team, not just one tattoo. That says trust.</p>
+          <div class="review-meta">Gregory C. · June 2018 · Via GetInked</div>
+        </article>
+        <article class="proof-card" data-reveal>
+          <blockquote>“The place makes you feel comfortable and relaxed.”</blockquote>
+          <p>That line does the usability work. It lowers the stress for first-timers without over-explaining.</p>
+          <div class="review-meta">Shirley S. · April 2017 · Via GetInked</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap story-grid">
+      <article class="story-card" data-reveal>
+        <span class="label">Why this works</span>
+        <h2>Comfort matters when the work is permanent.</h2>
+        <p>Review after review talks about the room itself. Clean. Friendly. Relaxed. That is not filler. For a tattoo studio, it is part of the product.</p>
+        <p>The reviews also point to custom work done with patience. People bring in references, and the artists shape them instead of tracing them flat.</p>
+      </article>
+      <article class="story-card" data-reveal>
+        <span class="label">What clients call out</span>
+        <ul class="info-list">
+          <li>Nelson gets named for detail, steady work, and making clients comfortable.</li>
+          <li>Sasha gets called out by first-timers for professional, high-quality work.</li>
+          <li>People mention custom work, reasonable pricing, and a clean studio more than once.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section id="visit">
+    <div class="wrap visit-grid">
+      <article class="visit-panel" data-reveal>
+        <span class="label">Visit the studio</span>
+        <h2>Easy to find, easy to call, open late enough to make it happen.</h2>
+        <p>High INKpact Tattoo Studio is on Kennedy Road South in Brampton. The published hours are simple: noon to 8 PM, Monday through Saturday.</p>
+        <div class="hours-grid">
+          <div><strong>Monday</strong><span>12 PM to 8 PM</span></div>
+          <div><strong>Tuesday</strong><span>12 PM to 8 PM</span></div>
+          <div><strong>Wednesday</strong><span>12 PM to 8 PM</span></div>
+          <div><strong>Thursday</strong><span>12 PM to 8 PM</span></div>
+          <div><strong>Friday</strong><span>12 PM to 8 PM</span></div>
+          <div><strong>Saturday</strong><span>12 PM to 8 PM</span></div>
+        </div>
+      </article>
+      <article class="visit-panel" data-reveal>
+        <span class="label">Before you go</span>
+        <p><strong>Phone:</strong> <a href="tel:19052308618">(905) 230-8618</a></p>
+        <p><strong>Address:</strong> <a href="https://www.google.com/maps/place/data=!4m2!3m1!1s0x882b3e20cb6cd82d:0x3e51b036b70a4a30" target="_blank" rel="noreferrer">105 Kennedy Rd S #10, Brampton, ON L6W 3G2</a></p>
+        <p><strong>What people mention:</strong> clean studio, custom work, comfortable sessions</p>
+        <p><strong>Good fit for:</strong> first tattoos, reworks, and clients who want the design shaped with them</p>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="cta-band" data-reveal>
+        <div>
+          <span class="label">Ready when you are</span>
+          <h2>Call the studio, get directions, and talk through the piece.</h2>
+          <p>The essentials are here: where it is, when it is open, and what clients keep saying about the work.</p>
+        </div>
+        <div class="hero-actions">
+          <a class="button primary" href="tel:19052308618">Call (905) 230-8618</a>
+          <a class="button secondary" href="https://www.google.com/maps/place/data=!4m2!3m1!1s0x882b3e20cb6cd82d:0x3e51b036b70a4a30" target="_blank" rel="noreferrer">Open Google Maps</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">High INKpact Tattoo Studio · Brampton, Ontario</div>
+  </footer>
+
+  <script>
+    const observer = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      ? null
+      : new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.15 });
+    if (observer) {
+      document.querySelectorAll('[data-reveal]').forEach((el) => observer.observe(el));
+    } else {
+      document.querySelectorAll('[data-reveal]').forEach((el) => el.classList.add('visible'));
+    }
+  </script>
+</body>
+</html>

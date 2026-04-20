@@ -1,5 +1,27 @@
 # Auto-Sites Build Log
 
+### High INKpact Tattoo Studio — Tattoo Studio, Brampton ON
+- **Date:** 2026-04-20
+- **Model:** openai-codex/gpt-5.4
+- **Agent:** Lucy
+- **Folder:** high-inkpact
+- **Hero pattern:** dark-immersive
+- **Typography:** Instrument Serif + Inter
+- **Review layout:** one featured pull-quote card plus two supporting proof cards, all same visual treatment
+- **Visit/hours layout:** two-panel visit section with hours grid left and practical pre-visit checklist right, no map embed
+- **Stats bar style:** no-stats
+- **WHY Score:** 7.60 (Jobs 7.8 / Graham 7.4 / Ogilvy 7.6)
+- **WHAT Score:** 7.63 (Norman 7.8 / Krug 7.6 / Nielsen 7.5)
+- **HOW Score:** 7.90 (Vignelli 7.8 / Spiekermann 8.0 / Rams 7.7 / Kowalski 8.1)
+- **Panel average:** 7.71
+- **Self-review:** 8.2
+- **Versions built:** 6 HTML versions + final index.html
+- **Build time:** ~50 minutes
+- **Token estimate:** ~18k
+- **Key decisions:** The queue brief was partial, so discovery locked the address, phone, and noon-to-8 schedule from directory sources, then pulled named review proof from GetInked instead of guessing from weak aggregate data. No trustworthy reusable photo set surfaced in this pass, so the page used generated close-crop tattoo imagery and kept the copy strictly facts-first.
+- **Notes:** Instagram handle and exact Google rating were still not confidently verified, so they were left out. Final copy pass replaced awkward CTA phrasing with literal service-business actions and strengthened the right-side visit card into a real pre-visit block.
+- **Live URL:** pending push / Pages verification
+
 ### Barbershop Patisserie — Patisserie / Bakery, Toronto ON
 - **Date:** 2026-04-19
 - **Model:** openai-codex/gpt-5.4

@@ -219,6 +219,10 @@
 
 <!-- Built 2026-04-17 → demos/for-us-bakery/ → https://auto-sites.pages.dev/demos/for-us-bakery/ (live verification pending push) -->
 
+<!-- Built 2026-04-22 → demos/steel-and-needle/ → https://auto-sites.pages.dev/demos/steel-and-needle/ (live verification pending push) -->
+
 <!-- Built 2026-04-18 → demos/johnnys-barber-shop/ → https://auto-sites.pages.dev/demos/johnnys-barber-shop/ (live verification pending push) -->
 
 <!-- Built 2026-04-19 → demos/barbershop-patisserie/ → https://auto-sites.pages.dev/demos/barbershop-patisserie/ (live verification pending push) -->
+
+<!-- Built 2026-04-21 → demos/white-birch-bakery/ → https://auto-sites.pages.dev/demos/white-birch-bakery/ (live verification pending push; queue brief was stale and corrected during build) -->

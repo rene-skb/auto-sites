@@ -1,5 +1,50 @@
 # Auto-Sites Build Log
 
+### Steel & Needle — Tattoo & Piercing Studio, Calgary AB
+- **Date:** 2026-04-22
+- **Model:** openai-codex/gpt-5.4
+- **Agent:** Lucy
+- **Folder:** steel-and-needle
+- **Hero pattern:** editorial-spread
+- **Typography:** Prata + Inter
+- **Review layout:** founder-proof pull quote left with three evidence cards, no fake customer testimonials
+- **Visit/hours layout:** four-card utility band with verified channels and explicit unknowns
+- **Stats bar style:** no-stats
+- **WHY Score:** 7.80 (Jobs 8.0 / Graham 7.6 / Ogilvy 7.8)
+- **WHAT Score:** 7.90 (Norman 7.8 / Krug 8.0 / Nielsen 7.9)
+- **HOW Score:** 8.00 (Vignelli 8.0 / Spiekermann 8.2 / Rams 7.7 / Emil 8.1)
+- **Panel average:** 7.90
+- **Self-review:** 8.1
+- **Versions built:** 6 HTML versions + final index.html
+- **Build time:** ~50 minutes
+- **Token estimate:** ~16k
+- **Key decisions:** The queue brief said Steel & Needle had no site, but discovery found a live Square site and a confirmed Instagram handle. That changed the pitch completely: instead of a zero-web rescue page, the build became a cleaner premium layer over a real hybrid offering of tattoos, piercings, jewelry, tooth gems, and aftercare.
+- **Notes:** The live sources did not clearly expose phone, hours, or a trustworthy Google rating on this pass, so the page stayed honest and pointed visitors to the verified live channels instead of guessing. Real photo assets were pulled from the business’s live site HTML and reused locally.
+- **Live URL:** pending push / Pages verification
+
+### White Birch Bakery — Bakery, Winnipeg MB
+- **Date:** 2026-04-21
+- **Model:** openai-codex/gpt-5.4
+- **Agent:** Lucy
+- **Folder:** white-birch-bakery
+- **Hero pattern:** giant-display-type
+- **Typography:** Cormorant Garamond + Inter
+- **Review layout:** three same-treatment editorial proof cards, one larger featured quote plus two supporting cards
+- **Visit/hours layout:** two-panel visit section with hours grid left and verification notes right
+- **Stats bar style:** no-stats
+- **WHY Score:** 7.70 (Jobs 8.0 / Graham 7.5 / Ogilvy 7.6)
+- **WHAT Score:** 7.53 (Norman 7.7 / Krug 7.6 / Nielsen 7.3)
+- **HOW Score:** 7.65 (Vignelli 7.6 / Spiekermann 7.7 / Rams 7.5 / Emil 7.8 motion restraint)
+- **Panel average:** 7.63
+- **Self-review:** 7.9
+- **Versions built:** 6 HTML versions + final index.html
+- **Build time:** ~45 minutes
+- **Token estimate:** ~14k
+- **Key decisions:** The queue brief turned out to be stale. Discovery corrected the address from Osborne Street to 1108 Henderson Hwy Unit B, confirmed phone, hours, rating, and socials, and found that White Birch now has a live website. That shifted the build from a no-site rescue pitch to a clearer visit-first demo that competes on appetite, scan speed, and practical usefulness.
+- **Notes:** No real reusable photo set was confidently accessible in this pass, so the page stayed image-light and leaned on typography, structure, and a simple OG asset instead of pretending to show the bakery. Review quotes stayed source-safe and unattributed to named customers where first-name-plus-initial proof was not confidently available.
+- **Live URL:** pending push / Pages verification
+
+
 ### High INKpact Tattoo Studio — Tattoo Studio, Brampton ON
 - **Date:** 2026-04-20
 - **Model:** openai-codex/gpt-5.4
@@ -6082,4 +6127,3 @@ Real Victoria BC business. Website was literally just a street address (touristw
 - **Build time:** ~95 minutes + follow-up copy pass
 - **Token estimate:** ~36k + follow-up edits
 - **Key decisions:** Preserved the panelproof editorial structure while tightening the portfolio toward the LayerZero intro. Kept the split-image-right hero, expanded AIOZ/Strike image support, and published the current reviewed index as the canonical demo file.
-

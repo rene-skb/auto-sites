@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<!--
+Build brief
+- Business: Steel & Needle
+- City: Calgary, AB
+- Category: Tattoo & Piercing Studio
+- Brand research: sister-founded Mission studio, bright/playful/judgment-free language on live site, article-confirmed grand opening in April 2026
+- Photo ranking:
+  1. photo-1.jpg — strongest tattoo hero, landscape, premium craft shot, use as hero
+  2. photo-2.jpg — curated ear piercing close-up, luxury supporting image
+  3. photo-3.jpg — moody centered piercing detail, supporting editorial image
+  4. photo-6.jpg — second curated ear stack, supporting grid image
+  5. photo-7.jpeg — tattoo detail, supporting image
+  Skip: photo-4.jpg, photo-5.jpg, photo-8.jpeg, photo-9.jpeg, photo-10.jpeg
+- Chosen pattern: editorial-spread
+- Chosen type: Prata + Inter
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Steel & Needle, Calgary</title>
+  <meta name="description" content="Tattooing, piercings, tooth gems, jewelry, and aftercare in Calgary's Mission neighbourhood." />
+  <meta property="og:title" content="Steel & Needle" />
+  <meta property="og:description" content="Tattooing, piercings, tooth gems, jewelry, and aftercare in Calgary's Mission neighbourhood." />
+  <meta property="og:image" content="https://auto-sites.pages.dev/demos/steel-and-needle/photo-1.jpg" />
+  <meta property="og:url" content="https://auto-sites.pages.dev/demos/steel-and-needle/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Prata&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f0d0f;
+      --bg-soft: #171317;
+      --panel: #1f1820;
+      --bone: #f2e8df;
+      --muted: #c9b9ae;
+      --line: rgba(242,232,223,.14);
+      --oxblood: #a63f4b;
+      --rose: #e5b1ac;
+      --steel: #9ba0a8;
+      --max: 1180px;
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+      --s1: 8px; --s2: 16px; --s3: 24px; --s4: 32px; --s5: 48px; --s6: 64px; --s7: 96px; --s8: 128px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, sans-serif;
+      background: radial-gradient(circle at top, rgba(166,63,75,.18), transparent 32%), var(--bg);
+      color: var(--bone);
+      line-height: 1.75;
+    }
+    img { display:block; width:100%; height:auto; }
+    a { color: inherit; text-decoration: none; }
+    .page { overflow:hidden; }
+    .nav {
+      position: sticky; top:0; z-index:20;
+      backdrop-filter: blur(18px);
+      background: rgba(15,13,15,.72);
+      border-bottom:1px solid var(--line);
+    }
+    .nav-inner, .section-inner, .footer-inner { width:min(calc(100% - 40px), var(--max)); margin:0 auto; }
+    .nav-inner {
+      display:flex; align-items:center; justify-content:space-between; padding:18px 0;
+    }
+    .brand { display:flex; flex-direction:column; gap:4px; }
+    .brand-mark { letter-spacing:.24em; text-transform:uppercase; font-size:.78rem; color: var(--rose); }
+    .brand-sub { font-size:.92rem; color: var(--muted); }
+    .nav-links { display:flex; gap:22px; align-items:center; }
+    .nav-links a { font-size:.95rem; color: var(--muted); }
+    .btn {
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:14px 20px; border-radius:999px; font-weight:600; transition:transform .16s var(--ease-out), background .2s var(--ease-out), color .2s var(--ease-out), border-color .2s var(--ease-out);
+      border:1px solid transparent;
+    }
+    .btn:active { transform: scale(0.97); }
+    .btn-primary { background: var(--bone); color: #111; }
+    .btn-secondary { border-color: var(--line); color: var(--bone); background: rgba(255,255,255,.02); }
+    .hero { padding: var(--s7) 0 var(--s6); }
+    .hero-grid {
+      display:grid; grid-template-columns: 1.15fr .85fr; gap: var(--s5); align-items:end;
+    }
+    .eyebrow { color: var(--rose); text-transform:uppercase; letter-spacing:.22em; font-size:.75rem; margin-bottom:16px; }
+    h1, h2, h3 { font-family: Prata, serif; line-height:1.05; margin:0; font-weight:400; }
+    h1 { font-size: clamp(3rem, 8vw, 6.1rem); max-width: 10ch; }
+    .hero-copy p, .section-lead { max-width: 38rem; color: var(--muted); font-size: 1.05rem; }
+    .hero-actions { display:flex; gap:14px; flex-wrap:wrap; margin-top:26px; }
+    .hero-facts {
+      margin-top: 32px; display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 14px;
+    }
+    .fact { padding:16px 18px; border:1px solid var(--line); background: rgba(255,255,255,.025); border-radius:20px; min-height:100%; }
+    .fact-label { color: var(--steel); font-size:.76rem; text-transform:uppercase; letter-spacing:.16em; margin-bottom:8px; }
+    .fact strong { display:block; font-size:1rem; color: var(--bone); }
+    .hero-media { display:grid; gap:18px; }
+    .hero-card, .media-card, .proof-card, .info-card, .story-card {
+      border-radius: 28px; overflow:hidden; background: var(--panel); border:1px solid var(--line);
+    }
+    .hero-card img { aspect-ratio: 4 / 5; object-fit: cover; }
+    .hero-note { padding:18px 20px; color: var(--muted); font-size:.95rem; }
+    section { padding: var(--s6) 0; }
+    .section-head { display:grid; grid-template-columns: .8fr 1.2fr; gap: var(--s5); margin-bottom: var(--s5); }
+    .services { display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 18px; }
+    .service-card { padding: 22px; border-radius: 24px; background: linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.02)); border:1px solid var(--line); }
+    .service-card h3 { font-size: 1.35rem; margin-bottom: 10px; }
+    .service-card p { margin: 0; color: var(--muted); font-size: .97rem; }
+    .gallery { display:grid; grid-template-columns: 1.05fr .95fr; gap:18px; align-items:stretch; }
+    .gallery .stack { display:grid; gap:18px; }
+    .media-card img { height:100%; object-fit: cover; }
+    .media-card.tall img { aspect-ratio: 4 / 5; }
+    .media-card.short img { aspect-ratio: 16 / 10; }
+    .proof-grid { display:grid; grid-template-columns: 1.15fr .85fr; gap:18px; }
+    .proof-card { padding: 28px; }
+    .proof-card blockquote { margin:0 0 18px; font-family:Prata, serif; font-size: clamp(1.6rem, 3vw, 2.5rem); line-height:1.12; }
+    .proof-card p { margin:0; color: var(--muted); }
+    .proof-list { display:grid; gap:18px; }
+    .proof-item { padding:22px; border-radius:24px; border:1px solid var(--line); background: rgba(255,255,255,.025); }
+    .proof-item strong { display:block; margin-bottom:8px; color: var(--bone); }
+    .story-grid { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:18px; }
+    .story-card { padding:24px; }
+    .story-card p { margin:0; color: var(--muted); }
+    .visit-band { display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap:18px; }
+    .info-card { padding:24px; }
+    .info-card h3 { font-size:1.15rem; margin-bottom:10px; }
+    .info-card p, .info-card ul { margin:0; color: var(--muted); font-size:.96rem; }
+    .info-card ul { padding-left:18px; }
+    .cta-panel { margin-top: 26px; padding: 26px; border-radius: 28px; background: linear-gradient(135deg, rgba(166,63,75,.22), rgba(255,255,255,.04)); border:1px solid var(--line); display:flex; justify-content:space-between; align-items:center; gap:18px; }
+    .footer { padding: 28px 0 40px; border-top: 1px solid var(--line); }
+    .footer-inner { display:flex; justify-content:space-between; gap:24px; align-items:center; color: var(--muted); font-size:.92rem; }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .75s var(--ease-out), transform .75s var(--ease-out); }
+    .reveal.is-visible { opacity:1; transform: translateY(0); }
+    .stagger > * { opacity:0; transform: translateY(18px); transition: opacity .7s var(--ease-out), transform .7s var(--ease-out); }
+    .stagger.is-visible > * { opacity:1; transform: translateY(0); }
+    .stagger.is-visible > *:nth-child(1){transition-delay:.05s}.stagger.is-visible > *:nth-child(2){transition-delay:.12s}.stagger.is-visible > *:nth-child(3){transition-delay:.19s}.stagger.is-visible > *:nth-child(4){transition-delay:.26s}
+    .hero-title span { display:block; opacity:0; transform: translateY(18px); transition: opacity .8s var(--ease-out), transform .8s var(--ease-out); }
+    .hero-title.is-visible span { opacity:1; transform:translateY(0); }
+    .hero-title.is-visible span:nth-child(1){transition-delay:.05s}.hero-title.is-visible span:nth-child(2){transition-delay:.17s}.hero-title.is-visible span:nth-child(3){transition-delay:.29s}
+    @media (max-width: 960px) {
+      .hero-grid, .section-head, .gallery, .proof-grid, .visit-band, .services, .story-grid, .hero-facts, .footer-inner { grid-template-columns: 1fr; }
+      .nav-links { display:none; }
+      .cta-panel { flex-direction:column; align-items:flex-start; }
+      h1 { max-width: 100%; }
+    }
+    @media (max-width: 640px) {
+      .nav-inner, .section-inner, .footer-inner { width:min(calc(100% - 28px), var(--max)); }
+      .hero { padding-top: 72px; }
+      .btn { width:100%; }
+      .hero-actions { flex-direction:column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .reveal, .stagger > *, .hero-title span { opacity:1 !important; transform:none !important; }
+    }
+  </style>
+</head>
+<!--
+DELTA: v3 iteration notes
+- Increased editorial contrast, tightened proof section framing, and kept motion restrained to reveal + button feedback only
+- HOW panel reviewers: Massimo Vignelli, Erik Spiekermann, Dieter Rams, Emil Kowalski
+- HOW panel scores: [8.0, 8.2, 7.7, 8.1] avg 8.0
+- Motion plan from Emil carried into Phase 10
+- See panel-notes.md -> HOW critique
+-->
+<!--
+DELTA: v5 final polish notes
+- Tightened footer language, softened one meta phrase, and kept the CTA fully literal
+- Self-review score: 8.1
+- Panel averages carried forward from panel-notes.md: WHY 7.8 / WHAT 7.9 / HOW 8.0
+- Final polish focus: facts-first clarity with warmer premium framing
+-->
+<body>
+  <div class="page">
+    <nav class="nav">
+      <div class="nav-inner">
+        <div class="brand">
+          <span class="brand-mark">Steel &amp; Needle</span>
+          <span class="brand-sub">Tattooing, piercings, jewelry, and aftercare in Mission</span>
+        </div>
+        <div class="nav-links">
+          <a href="#services">Services</a>
+          <a href="#proof">Proof</a>
+          <a href="#visit">Visit</a>
+          <a class="btn btn-secondary" href="https://www.steelneedle.ca/" target="_blank" rel="noreferrer">Live site</a>
+        </div>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <div class="section-inner hero-grid">
+        <div class="hero-copy reveal">
+          <div class="eyebrow">Mission, Calgary</div>
+          <!--
+DELTA: v1 iteration notes
+- Tightened the hero promise and reframed the page around the hybrid studio offering instead of just attitude
+- WHY panel reviewers: Steve Jobs, Paul Graham, David Ogilvy
+- WHY panel scores: [8.0, 7.6, 7.8] avg 7.8
+- Key feedback addressed: stronger value proposition, less meta copy, clearer reason to care
+- See panel-notes.md -> WHY critique
+-->
+          <h1 class="hero-title"><span>Tattoos.</span><span>Piercings.</span><span>Zero shop cliché.</span></h1>
+          <p>Steel &amp; Needle brings tattoos, curated piercings, jewelry, tooth gems, and aftercare into one Mission studio. Show the work fast, make the room feel welcoming, and make booking obvious.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://www.steelneedle.ca/" target="_blank" rel="noreferrer">Book on the live site</a>
+            <a class="btn btn-secondary" href="https://www.instagram.com/steelneedleinc/" target="_blank" rel="noreferrer">View Instagram</a>
+          </div>
+          <!--
+DELTA: v2 iteration notes
+- Simplified CTA language, reduced internal-jargon phrasing, and sharpened the utility cards for faster scanning
+- WHAT panel reviewers: Don Norman, Steve Krug, Jakob Nielsen
+- WHAT panel scores: [7.8, 8.0, 7.9] avg 7.9
+- Key feedback addressed: scan speed, literal labels, reduced cognitive load
+- See panel-notes.md -> WHAT critique
+-->
+          <div class="hero-facts stagger">
+            <div class="fact"><div class="fact-label">Address</div><strong>2312 4 Street SW</strong><span>Mission, Calgary</span></div>
+            <div class="fact"><div class="fact-label">Verified services</div><strong>Tattoos, piercings, jewelry</strong><span>Plus tooth gems and aftercare guidance</span></div>
+            <div class="fact"><div class="fact-label">Online now</div><strong>Live site + Instagram</strong><span>Book on steelneedle.ca or browse the studio on @steelneedleinc</span></div>
+          </div>
+        </div>
+        <div class="hero-media reveal">
+          <figure class="hero-card"><img src="photo-1.jpg" alt="Detailed black and grey tattoo on an arm" /></figure>
+          <div class="hero-note">Lead with the work. Keep the path simple. Let the studio feel welcoming from the first scroll.</div>
+        </div>
+      </div>
+    </header>
+
+    <section id="services">
+      <div class="section-inner">
+        <div class="section-head reveal">
+          <div>
+            <div class="eyebrow">What they offer</div>
+            <h2>More than a flash wall and a booking button.</h2>
+          </div>
+          <p class="section-lead">The live site shows a broader studio than most people expect: tattoos, jewelry, bookings, and real aftercare information for both piercings and tattoos. That range is useful. It should just scan faster.</p>
+        </div>
+        <div class="services stagger">
+          <article class="service-card"><h3>Tattoos</h3><p>Custom tattoo work is part of the studio mix from day one, with real artist portfolio shots already live on the site.</p></article>
+          <article class="service-card"><h3>Piercings</h3><p>Piercing work sits at the center of the current brand, including curated ears and children’s piercings for ages six months and up.</p></article>
+          <article class="service-card"><h3>Jewelry + tooth gems</h3><p>The live site makes space for jewelry shopping and tooth gem services, which gives the studio a broader walk-in energy than a pure tattoo shop.</p></article>
+          <article class="service-card"><h3>Aftercare</h3><p>Healing guidance, irritation-vs-infection education, and common questions are already published. That trust-building material deserves a better frame.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-inner">
+        <div class="section-head reveal">
+          <div>
+            <div class="eyebrow">Visual direction</div>
+            <h2>Take the work seriously. Keep the room welcoming.</h2>
+          </div>
+          <p class="section-lead">The live brand already says bright, playful, and judgment-free. This direction keeps that warmth, but gives the work a calmer frame.</p>
+        </div>
+        <div class="gallery">
+          <figure class="media-card tall reveal"><img src="photo-2.jpg" alt="Curated ear piercing close-up with multiple earrings" /></figure>
+          <div class="stack">
+            <figure class="media-card short reveal"><img src="photo-3.jpg" alt="Close-up of a centered neck piercing" /></figure>
+            <figure class="media-card short reveal"><img src="photo-7.jpeg" alt="Tattoo detail on an upper arm" /></figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="proof">
+      <div class="section-inner">
+        <div class="section-head reveal">
+          <div>
+            <div class="eyebrow">Proof</div>
+            <h2>Real signals, straight from the sources.</h2>
+          </div>
+          <p class="section-lead">The clearest proof in this pass is founder coverage, the live service mix, and the studio’s own visual material.</p>
+        </div>
+        <div class="proof-grid">
+          <article class="proof-card reveal">
+            <blockquote>“Seeing her be able to open up a storefront and welcome walk-ins and have a street sign, it’s so exciting.”</blockquote>
+            <p>Kat Lee, via CityNews, on opening Steel &amp; Needle in Mission with Ella Pinkowski. That founder energy is the actual story here, not manufactured tattoo-shop attitude.</p>
+          </article>
+          <div class="proof-list stagger">
+            <article class="proof-item"><strong>Article-confirmed opening</strong><p>CityNews reported the studio’s April 2026 opening at 2312 4 Street SW and named both founders.</p></article>
+            <article class="proof-item"><strong>Live digital footprint</strong><p>The original queue note said no website. Discovery found a live Square site at steelneedle.ca and an active Instagram handle, @steelneedleinc.</p></article>
+            <article class="proof-item"><strong>Trust content already exists</strong><p>Piercing aftercare, tattoo aftercare, irritation-vs-infection guidance, and common questions are all live now. The design should amplify that trust, not bury it.</p></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-inner">
+        <div class="section-head reveal">
+          <div>
+            <div class="eyebrow">Story</div>
+            <h2>A new studio has a rare advantage.</h2>
+          </div>
+          <p class="section-lead">Most shops spend years trying to feel intentional. Steel &amp; Needle gets to define that feeling early: sister-founded, walk-in visible, and already publishing care information instead of hiding behind mystery.</p>
+        </div>
+        <div class="story-grid stagger">
+          <article class="story-card"><p><strong>Mission frontage matters.</strong><br/>The CityNews piece made the storefront and street sign part of the emotional payoff. Online, that translates into confidence and easy next steps.</p></article>
+          <article class="story-card"><p><strong>The category mix is the hook.</strong><br/>Tattooing, curated piercings, tooth gems, jewelry, and healing guidance all in one studio is broader than the usual one-note shop page.</p></article>
+          <article class="story-card"><p><strong>The tone should match the room.</strong><br/>The live site literally says bright, playful, and judgment-free. A premium version should still feel approachable, not icy or intimidating.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="visit">
+      <div class="section-inner">
+        <div class="section-head reveal">
+          <div>
+            <div class="eyebrow">Visit</div>
+            <h2>Give people the next click in under ten seconds.</h2>
+          </div>
+          <p class="section-lead">Phone and public hours were not clearly exposed in this pass, so the page points people to the channels that are already live instead of guessing.</p>
+        </div>
+        <div class="visit-band stagger">
+          <article class="info-card"><h3>Find it</h3><p>2312 4 Street SW<br/>Mission, Calgary, Alberta</p></article>
+          <article class="info-card"><h3>Book</h3><p>Use the live Square site to book or shop.<br/><a href="https://www.steelneedle.ca/" target="_blank" rel="noreferrer">steelneedle.ca</a></p></article>
+          <article class="info-card"><h3>See the work</h3><p>Instagram handle confirmed during discovery.<br/><a href="https://www.instagram.com/steelneedleinc/" target="_blank" rel="noreferrer">@steelneedleinc</a></p></article>
+          <article class="info-card"><h3>What to verify next</h3><ul><li>Phone number</li><li>Public hours</li><li>Review count and rating</li></ul></article>
+        </div>
+        <div class="cta-panel reveal">
+          <div>
+            <div class="eyebrow" style="margin-bottom:10px;">Next click</div>
+            <h2 style="font-size:clamp(2rem,4vw,3.2rem);">Book, browse the work, or start with aftercare.</h2>
+          </div>
+          <a class="btn btn-primary" href="https://www.steelneedle.ca/" target="_blank" rel="noreferrer">Open the live site</a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <div>Steel &amp; Needle concept page, built in the overnight queue.</div>
+        <div>Verified in this pass: live site, Instagram handle, Mission address.</div>
+      </div>
+    </footer>
+  </div>
+  <script>
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!reduceMotion) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add('is-visible');
+        });
+      }, { threshold: 0.15 });
+      document.querySelectorAll('.reveal, .stagger, .hero-title').forEach((el) => io.observe(el));
+    } else {
+      document.querySelectorAll('.reveal, .stagger, .hero-title').forEach((el) => el.classList.add('is-visible'));
+    }
+  </script>
+</body>
+</html>

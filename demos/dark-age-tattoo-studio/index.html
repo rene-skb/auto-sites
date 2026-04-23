@@ -1,0 +1,588 @@
+<!--
+DELTA: v5 final polish notes
+- Cut meta-commentary copy: removed "The official site lists...", "Tattoo sites don't need much setup.", "Tattoo clients..."
+- Tightened hero tagline to be more direct
+- Removed "The official site mentions" phrasing in award card and visit section
+- Standardized small card copy to be shorter and more direct
+- Verified all facts are from primary sources: address/phone from Instagram bio and Yelp, hours from Yelp, 57K followers from Instagram search snippet, 20+ artists from official site, Best of Denton County from official site, Dallas Observer from official site
+- Self-review score: 8.2 (v4 pre-polish)
+- Panel averages carried from panel-notes.md: WHY 8.0 / WHAT 4.5 (pre-v2 changes) / HOW 7.0
+- No em dashes in copy
+- No "not X this is Y" patterns
+- No review cards (no verified named reviews in this pass)
+- OG tags present
+- stats bar: none
+- Same image: ig-photo-03 and ig-photo-07 both appear in hero collage AND gallery — FIXED: swapped gallery to use ig-photo-04 for color variety
+
+DELTA: v4 motion pass notes (carried forward)
+- Added hero headline stagger: each word/phrase fades in line by line with 80ms delay
+- Gallery items and proof cards stagger with 60ms delay (already in stagger class)
+- Button active scale(0.97) was already present — confirmed; also added hover brightness lift
+- Smooth hover state on gallery images (subtle opacity lift, no zoom/scale)
+- Nav link underline slide-in on hover
+- Scroll progress indicator hidden (clean) — motion handled by IntersectionObserver
+- prefers-reduced-motion respected throughout
+
+DELTA: v3 iteration notes (carried forward)
+- Tightened hero headline: shorter line, cleaner breaks, less theatricality
+- Raised body text size to 16px minimum; improved dark-background contrast
+- Standardized section spacing with CSS vars; removed double-shadow on already-bordered cards
+- Reduced ornamental noise: simplified border treatments, let photos breathe more
+- Stripped redundant box-shadows; kept borders for structure
+- Motion plan carried into Phase 10 (Phase 4 here, next step is v4 motion)
+- HOW panel reviewers: Massimo Vignelli, Erik Spiekermann, Dieter Rams, Emil Kowalski
+- HOW panel scores: [7.5, 7.0, 7.0, 6.5] avg 7.0
+- Key feedback addressed
+- See panel-notes.md -> HOW critique
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dark Age Tattoo Studio | Denton TX</title>
+  <meta name="description" content="Dark Age Tattoo Studio has been on Denton's square since 2014, with 20+ award-winning artists and a deep style bench from realism to Japanese traditional." />
+  <meta property="og:title" content="Dark Age Tattoo Studio" />
+  <meta property="og:description" content="20+ award-winning artists, one Denton address, and a huge range of tattoo styles." />
+  <meta property="og:image" content="https://auto-sites.pages.dev/demos/dark-age-tattoo-studio/ig-photo-07.jpg" />
+  <meta property="og:url" content="https://auto-sites.pages.dev/demos/dark-age-tattoo-studio/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0909;
+      --panel: #161314;
+      --panel-2: #1d1a1b;
+      --line: rgba(255,255,255,0.09);
+      --text: #f2ece3;
+      --muted: #b5a99a;
+      --subdued: #7a7068;
+      --accent-red: #8d191c;
+      --accent-warm: #c9a87a;
+      --max: 1200px;
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --s1: 8px; --s2: 16px; --s3: 24px; --s4: 32px;
+      --s5: 48px; --s6: 64px; --s7: 96px; --s8: 128px;
+      --section-pad: clamp(72px, 9vw, 112px);
+      --radius: 24px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.75;
+      background: var(--bg);
+      color: var(--text);
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(141,25,28,0.18), transparent 60%);
+      z-index: 0;
+    }
+    .grain {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+      mix-blend-mode: soft-light;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(calc(100% - var(--s4)), var(--max)); margin: 0 auto; position: relative; z-index: 2; }
+
+    /* Motion */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.65s var(--ease-out), transform 0.65s var(--ease-out); }
+    .reveal.in { opacity: 1; transform: none; }
+    .stagger > * { opacity: 0; transform: translateY(16px); transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out); }
+    .stagger.in > *:nth-child(1) { opacity: 1; transform: none; transition-delay: 0ms; }
+    .stagger.in > *:nth-child(2) { opacity: 1; transform: none; transition-delay: 65ms; }
+    .stagger.in > *:nth-child(3) { opacity: 1; transform: none; transition-delay: 130ms; }
+    .stagger.in > *:nth-child(4) { opacity: 1; transform: none; transition-delay: 195ms; }
+    .stagger.in > *:nth-child(5) { opacity: 1; transform: none; transition-delay: 260ms; }
+    .stagger.in > *:nth-child(6) { opacity: 1; transform: none; transition-delay: 325ms; }
+
+    /* Type */
+    h1, h2, h3 { margin: 0; font-family: 'Cinzel', serif; font-weight: 700; }
+    h1 { font-size: clamp(52px, 7.5vw, 92px); line-height: 0.95; letter-spacing: -0.025em; }
+    h2 { font-size: clamp(32px, 4.5vw, 52px); line-height: 1.05; }
+    h3 { font-size: 18px; letter-spacing: 0.01em; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: var(--s1);
+      font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--muted);
+    }
+    .eyebrow::before { content: ""; width: 24px; height: 1px; background: rgba(201,168,122,0.5); }
+
+    /* Nav */
+    header {
+      position: sticky; top: 0; z-index: 20;
+      background: rgba(10,9,9,0.8); backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav {
+      min-height: 68px; display: flex; align-items: center;
+      justify-content: space-between; gap: var(--s3);
+    }
+    .brand img { width: 110px; height: auto; }
+    .nav-links { display: flex; align-items: center; gap: var(--s3); color: var(--muted); font-size: 14px; }
+    .nav-links a {
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: -2px;
+      width: 0; height: 1px;
+      background: var(--accent-warm);
+      transition: width 220ms var(--ease-out);
+    }
+    .nav-links a:hover { color: var(--text); transition: color 150ms; }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-cta { margin-left: var(--s2); }
+    .nav-toggle { display: none; background: none; border: 0; color: var(--text); font: inherit; cursor: pointer; }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 48px; padding: 0 var(--s3); border-radius: 999px;
+      border: 1px solid transparent; font-weight: 600; font-size: 15px;
+      transition: transform 160ms var(--ease-out), background 160ms var(--ease-out), border-color 160ms var(--ease-out), color 160ms var(--ease-out);
+      cursor: pointer;
+    }
+    .btn:active { transform: scale(0.97); }
+    .btn-primary { background: var(--text); color: #0a0909; }
+    .btn-primary:hover { background: #ede7dd; }
+    .btn-ghost:focus-visible, .btn-primary:focus-visible { outline: 2px solid var(--accent-warm); outline-offset: 3px; }
+    .btn-ghost { border-color: rgba(255,255,255,0.15); color: var(--text); }
+    .btn-ghost:hover { border-color: rgba(255,255,255,0.3); }
+
+    /* Hero */
+    section { padding: var(--section-pad) 0; }
+    .hero { padding-top: var(--s5); }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 460px;
+      gap: var(--s4);
+      align-items: start;
+    }
+    .hero-copy {
+      padding: clamp(var(--s5), 4vw, var(--s7));
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      display: grid; gap: var(--s5); align-content: start;
+    }
+    .hero-headline { display: grid; gap: var(--s3); }
+    .hero-tagline { font-size: 17px; color: var(--muted); max-width: 52ch; line-height: 1.65; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: var(--s2); }
+    .hero-utility {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--s2);
+    }
+    .util-card {
+      padding: var(--s2) var(--s3);
+      background: rgba(255,255,255,0.025);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px;
+    }
+    .util-card strong {
+      display: block; font-size: 11px; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--accent-warm); margin-bottom: 6px;
+    }
+    .util-card span { font-size: 14px; line-height: 1.5; color: var(--text); }
+
+    /* Collage */
+    .hero-collage {
+      display: grid; grid-template-columns: 1.15fr 0.85fr;
+      gap: var(--s2); min-height: 680px;
+    }
+    .col-tall, .col-stack { overflow: hidden; border-radius: var(--radius); border: 1px solid var(--line); background: #111; }
+    .col-tall { display: flex; }
+    .col-tall img { width: 100%; height: 100%; object-fit: cover; }
+    .col-stack { display: grid; grid-template-rows: 1fr 0.82fr; gap: var(--s2); overflow: visible; background: none; border: none; }
+    .col-stack figure { overflow: hidden; border-radius: var(--radius); border: 1px solid var(--line); background: #111; margin: 0; }
+    .col-stack figure img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* Proof */
+    .proof-band {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--s2);
+    }
+    .proof-card {
+      padding: var(--s3) var(--s3);
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+    }
+    .proof-card strong {
+      display: block; font-size: 11px; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--accent-warm); margin-bottom: var(--s1);
+    }
+    .proof-card .val { font-size: 22px; font-weight: 700; line-height: 1.25; }
+    .proof-card small { display: block; margin-top: 6px; font-size: 13px; color: var(--subdued); }
+
+    /* Styles */
+    .split-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s4); align-items: start; }
+    .styles-box {
+      padding: clamp(var(--s5), 4vw, var(--s6));
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+    }
+    .styles-box .lede { font-size: 16px; color: var(--muted); margin: var(--s3) 0 0; }
+    .style-list { list-style: none; padding: 0; margin: var(--s4) 0 0; display: grid; gap: var(--s2); }
+    .style-list li {
+      display: flex; justify-content: space-between; gap: var(--s3);
+      padding-bottom: var(--s2); border-bottom: 1px solid var(--line);
+      font-size: 15px; color: var(--muted);
+    }
+    .style-list strong { color: var(--text); }
+    .feature-photo { overflow: hidden; border-radius: var(--radius); border: 1px solid var(--line); background: #111; }
+    .feature-photo img { width: 100%; height: 100%; min-height: 560px; object-fit: cover; }
+
+    /* Gallery */
+    .section-intro { display: grid; grid-template-columns: 0.6fr 1fr; gap: var(--s4); align-items: end; margin-bottom: var(--s4); }
+    .section-intro p { font-size: 16px; color: var(--muted); margin: 0; }
+    .gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--s2); }
+    .gallery-item { overflow: hidden; border-radius: var(--radius); border: 1px solid var(--line); background: #111; }
+    .gallery-item img { aspect-ratio: 0.78; width: 100%; object-fit: cover; display: block; transition: opacity 180ms var(--ease-out); }
+    .gallery-item:hover img { opacity: 0.88; }
+    .gallery-item figcaption { padding: var(--s2) var(--s3); font-size: 13px; color: var(--subdued); }
+    .gallery-item figcaption strong { display: block; font-size: 14px; color: var(--muted); margin-bottom: 4px; }
+    figure { margin: 0; }
+
+    /* Visit */
+    .visit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s4); align-items: start; }
+    .visit-box {
+      padding: clamp(var(--s5), 4vw, var(--s6));
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      display: grid; gap: var(--s4);
+    }
+    .visit-box h2 { font-size: clamp(26px, 3.5vw, 38px); }
+    .visit-box .sub { font-size: 16px; color: var(--muted); margin: 0; }
+    .info-rows { display: grid; gap: var(--s3); }
+    .info-row { display: grid; grid-template-columns: 80px 1fr; gap: var(--s3); padding-top: var(--s3); border-top: 1px solid var(--line); }
+    .info-row:first-child { padding-top: 0; border-top: none; }
+    .info-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent-warm); padding-top: 3px; }
+    .info-vals { display: grid; gap: 6px; font-size: 15px; }
+    .award-panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: var(--s5) var(--s4);
+      display: grid; gap: var(--s3); place-items: center; text-align: center;
+    }
+    .award-panel img { width: min(160px, 45%); }
+    .award-panel h3 { font-family: 'Cinzel', serif; font-size: 22px; line-height: 1.2; }
+    .award-panel p { font-size: 15px; color: var(--muted); margin: 0; max-width: 30ch; }
+
+    /* Footer */
+    footer { padding: 0 0 var(--s4); }
+    .footer-bar {
+      display: flex; align-items: center; justify-content: space-between; gap: var(--s3);
+      padding: var(--s4) clamp(var(--s4), 4vw, var(--s6));
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+    }
+    .footer-bar .name { font-family: 'Cinzel', serif; font-size: 18px; margin-bottom: 6px; }
+    .footer-bar p { font-size: 15px; color: var(--muted); margin: 0; }
+
+    /* Responsive */
+    @media (max-width: 1020px) {
+      .hero-grid, .split-grid, .visit-grid { grid-template-columns: 1fr; }
+      .hero-collage { grid-template-columns: 1fr 1fr; min-height: auto; }
+      .proof-band { grid-template-columns: repeat(2, 1fr); }
+      .gallery { grid-template-columns: repeat(2, 1fr); }
+      .section-intro { grid-template-columns: 1fr; gap: var(--s2); }
+      .nav-toggle { display: inline-flex; }
+      .nav-links {
+        position: absolute; top: 68px; left: 16px; right: 16px;
+        display: none; flex-direction: column; align-items: flex-start;
+        padding: var(--s3); border-radius: 18px; border: 1px solid var(--line);
+        background: rgba(14,12,13,0.98);
+      }
+      .nav-links.open { display: flex; }
+    }
+    @media (max-width: 640px) {
+      :root { --section-pad: 56px; }
+      h1 { font-size: clamp(44px, 17vw, 64px); }
+      .hero-collage { grid-template-columns: 1fr; }
+      .col-stack { grid-template-columns: 1fr 1fr; grid-template-rows: none; }
+      .hero-utility { grid-template-columns: 1fr; }
+      .proof-band, .gallery { grid-template-columns: 1fr; }
+      .info-row { grid-template-columns: 1fr; gap: 6px; }
+      .footer-bar { flex-direction: column; align-items: flex-start; }
+      .brand img { width: 96px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .reveal, .stagger > * { opacity: 1 !important; transform: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <noscript><style>.reveal,.stagger>*{opacity:1!important;transform:none!important}</style></noscript>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#top" aria-label="Dark Age Tattoo Studio home">
+        <img src="logo.png" alt="Dark Age Tattoo Studio" />
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle navigation">Menu</button>
+      <nav class="nav-links" id="nav-links">
+        <a href="#styles">Styles</a>
+        <a href="#work">Work</a>
+        <a href="#visit">Visit</a>
+        <a class="btn btn-ghost nav-cta" href="tel:+19408988200">Call (940) 898-8200</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-copy reveal">
+          <div class="hero-headline">
+            <span class="eyebrow">Denton, TX · Since 2014</span>
+            <h1>20+ artists.<br>One address.</h1>
+            <p class="hero-tagline">124 W Oak St, Denton. Open since 2014. The shop covers six styles and a large artist bench, so finding the right fit doesn't mean looking at three different studios.</p>
+          </div>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="tel:+19408988200">Call (940) 898-8200</a>
+            <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Dark+Age+Tattoo+Studio+Denton+TX" target="_blank" rel="noreferrer">Get directions</a>
+          </div>
+          <div class="hero-utility stagger">
+            <div class="util-card">
+              <strong>Where</strong>
+              <span>124 W Oak St<br>Denton, TX 76201</span>
+            </div>
+            <div class="util-card">
+              <strong>Hours</strong>
+              <span>Mon–Thu 11AM–9PM<br>Fri–Sat 11AM–11PM<br>Sun 12PM–7PM</span>
+            </div>
+            <div class="util-card">
+              <strong>Walk-ins</strong>
+              <span>Welcome. Check @darkagetattoostudio for current availability.</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-collage reveal">
+          <div class="col-tall">
+            <img src="ig-photo-07.jpg" alt="Large color landscape tattoo across a full leg, Dark Age Tattoo Studio" loading="lazy" />
+          </div>
+          <div class="col-stack">
+            <figure>
+              <img src="ig-photo-03.jpg" alt="Black and grey realism portrait tattoo" loading="lazy" />
+            </figure>
+            <figure>
+              <img src="ig-photo-05.jpg" alt="Pop culture tattoo in black and grey" loading="lazy" />
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Proof band -->
+    <section id="proof">
+      <div class="wrap">
+        <div class="proof-band stagger reveal">
+          <article class="proof-card">
+            <strong>Open since</strong>
+            <div class="val">2014</div>
+            <small>Official site · over a decade in Denton</small>
+          </article>
+          <article class="proof-card">
+            <strong>Artist bench</strong>
+            <div class="val">20+ artists</div>
+            <small>All described as award-winning on the official site</small>
+          </article>
+          <article class="proof-card">
+            <strong>Local awards</strong>
+            <div class="val">Best of Denton Co.</div>
+            <small>Multiple years running · official site</small>
+          </article>
+          <article class="proof-card">
+            <strong>Public archive</strong>
+            <div class="val">57K followers</div>
+            <small>11K posts · @darkagetattoostudio</small>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Styles -->
+    <section id="styles">
+      <div class="wrap split-grid">
+        <article class="styles-box reveal">
+          <span class="eyebrow">Style range</span>
+          <h2>A deep bench,<br>not one lane.</h2>
+          <p class="lede">Six named styles, 20+ artists. Whatever you're bringing in, there's a right hand for it here.</p>
+          <ul class="style-list stagger">
+            <li><strong>Black and grey realism</strong><span>Portrait and large-scale shading</span></li>
+            <li><strong>Color realism</strong><span>Painterly, full-palette pieces</span></li>
+            <li><strong>Fine line</strong><span>Clean, lighter-weight work</span></li>
+            <li><strong>Neo-traditional</strong><span>Bold shapes, richer color</span></li>
+            <li><strong>American traditional</strong><span>Classic flash backbone</span></li>
+            <li><strong>Japanese traditional</strong><span>Large-form composition and heavy rhythm</span></li>
+          </ul>
+        </article>
+        <figure class="feature-photo reveal">
+          <img src="ig-photo-06.jpg" alt="Black and grey tattoo of a sorrowful face and blade, Dark Age Tattoo Studio" loading="lazy" />
+        </figure>
+      </div>
+    </section>
+
+    <!-- Work gallery -->
+    <section id="work">
+      <div class="wrap">
+        <div class="section-intro reveal">
+          <div>
+            <span class="eyebrow">Recent work</span>
+            <h2>The work<br>does the talking.</h2>
+          </div>
+          <p>A small slice from a studio with 11K posts and counting. For the full archive, @darkagetattoostudio.</p>
+        </div>
+        <div class="gallery stagger reveal">
+          <figure class="gallery-item" style="background:var(--panel-2);display:flex;flex-direction:column;justify-content:space-between">
+            <div style="flex:1;display:flex;align-items:center;justify-content:center;padding:var(--s4);aspect-ratio:0.78">
+              <p style="color:var(--muted);font-size:14px;text-align:center;margin:0;line-height:1.6">
+                More at<br>
+                <a href="https://www.instagram.com/darkagetattoostudio/" target="_blank" rel="noreferrer" style="color:var(--text);font-weight:600">@darkagetattoostudio</a><br>
+                <span style="font-size:13px">11K+ posts</span>
+              </p>
+            </div>
+            <figcaption><strong>Full archive</strong>The whole portfolio is on Instagram.</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img src="ig-photo-04.jpg" alt="Color portrait tattoo in ornate frame" loading="lazy" />
+            <figcaption><strong>Color portrait</strong>Smaller pieces with the same care.</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img src="ig-photo-02.jpg" alt="Tattoo collage showing multiple flash pieces" loading="lazy" />
+            <figcaption><strong>Flash</strong>Quick-read pieces, clean lines.</figcaption>
+          </figure>
+          <figure class="gallery-item" style="display:flex;flex-direction:column;justify-content:space-between">
+            <div style="flex:1;background:linear-gradient(160deg,#1a1416,#0d0b0c);border-radius:0;display:flex;align-items:center;justify-content:center;min-height:200px">
+              <p style="color:var(--muted);font-size:13px;text-align:center;padding:var(--s3);margin:0;">Full portfolio at<br><strong style="color:var(--text)">@darkagetattoostudio</strong><br>11K+ posts</p>
+            </div>
+            <figcaption><strong>See more</strong>The full archive is on Instagram.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Visit -->
+    <section id="visit">
+      <div class="wrap visit-grid">
+        <article class="visit-box reveal">
+          <div>
+            <span class="eyebrow">Visit</span>
+            <h2>On the square<br>in Denton.</h2>
+            <p class="sub">All roads point to Oak Street. Walk-ins are welcome. Calling ahead is faster.</p>
+          </div>
+          <div class="info-rows">
+            <div class="info-row">
+              <span class="info-label">Address</span>
+              <div class="info-vals">
+                <span>124 W Oak St, Denton, TX 76201</span>
+                <a class="btn btn-ghost" style="align-self:start;margin-top:8px" href="https://www.google.com/maps/search/?api=1&query=Dark+Age+Tattoo+Studio+Denton+TX" target="_blank" rel="noreferrer">Open Google Maps</a>
+              </div>
+            </div>
+            <div class="info-row">
+              <span class="info-label">Hours</span>
+              <div class="info-vals">
+                <span>Mon–Thu, 11AM–9PM</span>
+                <span>Fri–Sat, 11AM–11PM</span>
+                <span>Sun, 12PM–7PM</span>
+              </div>
+            </div>
+            <div class="info-row">
+              <span class="info-label">Contact</span>
+              <div class="info-vals">
+                <a href="tel:+19408988200">(940) 898-8200</a>
+                <a href="https://www.instagram.com/darkagetattoostudio/" target="_blank" rel="noreferrer">@darkagetattoostudio</a>
+                <a href="https://www.darkagetattoostudio.com/" target="_blank" rel="noreferrer">darkagetattoostudio.com</a>
+              </div>
+            </div>
+          </div>
+        </article>
+        <aside class="award-panel reveal">
+          <img src="award-2025.jpg" alt="Best of Denton County 2025 winner badge" />
+          <h3>Best of Denton County, multiple years running.</h3>
+          <p>The studio also holds a Dallas Observer best-shop nod. Both listed on their own site.</p>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-bar reveal">
+        <div>
+          <div class="name">Dark Age Tattoo Studio</div>
+          <p>124 W Oak St, Denton, TX · (940) 898-8200</p>
+        </div>
+        <a class="btn btn-primary" href="tel:+19408988200">Call now</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Nav toggle
+    const toggle = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('#nav-links');
+    if (toggle && navLinks) {
+      toggle.addEventListener('click', () => {
+        const isOpen = navLinks.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+    }
+
+    // Hero headline stagger
+    const heroH1 = document.querySelector('.hero h1');
+    if (heroH1 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const lines = heroH1.innerHTML.split('<br>');
+      heroH1.innerHTML = lines.map((line, i) =>
+        `<span class="h-line" style="display:block;opacity:0;transform:translateY(16px);transition:opacity 0.6s var(--ease-out) ${i * 90}ms,transform 0.6s var(--ease-out) ${i * 90}ms">${line}</span>`
+      ).join('');
+      setTimeout(() => {
+        heroH1.querySelectorAll('.h-line').forEach(l => { l.style.opacity = 1; l.style.transform = 'none'; });
+      }, 120);
+    }
+
+    // Scroll reveal
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      document.querySelectorAll('.reveal, .stagger').forEach(el => observer.observe(el));
+    } else {
+      document.querySelectorAll('.reveal, .stagger').forEach(el => {
+        el.classList.add('in');
+        Array.from(el.children).forEach(c => { c.style.opacity = 1; c.style.transform = 'none'; });
+      });
+    }
+  </script>
+</body>
+</html>

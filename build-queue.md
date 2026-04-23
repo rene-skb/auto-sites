@@ -226,3 +226,5 @@
 <!-- Built 2026-04-19 → demos/barbershop-patisserie/ → https://auto-sites.pages.dev/demos/barbershop-patisserie/ (live verification pending push) -->
 
 <!-- Built 2026-04-21 → demos/white-birch-bakery/ → https://auto-sites.pages.dev/demos/white-birch-bakery/ (live verification pending push; queue brief was stale and corrected during build) -->
+
+<!-- Built 2026-04-23 → demos/dark-age-tattoo-studio/ → https://auto-sites.pages.dev/demos/dark-age-tattoo-studio/ -->

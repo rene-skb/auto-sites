@@ -1,5 +1,27 @@
 # Auto-Sites Build Log
 
+### Dark Age Tattoo Studio — Tattoo Studio, Denton TX
+- **Date:** 2026-04-23
+- **Model:** anthropic/claude-sonnet-4-6 (cron subagent)
+- **Agent:** Lucy
+- **Folder:** dark-age-tattoo-studio
+- **Hero pattern:** asymmetric-collage
+- **Typography:** Cinzel + Inter
+- **Review layout:** no customer review cards (no verified first name + last initial reviews from primary sources in this pass); awards panel used instead
+- **Visit/hours layout:** two-panel split with info-rows grid left (address, hours, contact) and award panel right
+- **Stats bar style:** no-stats
+- **WHY Score:** 8.00 (Jobs 7.5 / Graham 8.0 / Ogilvy 8.5)
+- **WHAT Score:** 4.50 (Norman 4.0 / Krug 5.0 / Nielsen 4.5) — critique applied in v2
+- **HOW Score:** 7.00 (Vignelli 7.5 / Spiekermann 7.0 / Rams 7.0 / Kowalski 6.5)
+- **Panel average:** 6.5 (WHY 8.0 + WHAT 4.5 + HOW 7.0) / 3
+- **Self-review:** 8.2
+- **Versions built:** 6 HTML versions (v0–v5) + final index.html
+- **Build time:** approx 90 minutes
+- **Token estimate:** approx 22k
+- **Key decisions:** Queue brief said website presence was weak/fragmented, but discovery found a full Wix site at darkagetattoostudio.com. Build reframed from a zero-website rescue to a cleaner, faster, facts-first alternative that leads with the style bench and surfaces practical visit info above the fold. No verified named customer reviews available from primary sources in this pass, so social proof comes from awards, official site claims, and Instagram follower count instead of fabricated cards.
+- **Lessons:** Promoted `[PROCESS]` queue briefs stale on website status (2/5, jupiter-bakehouse + this build). Added `[PHOTOS]` tight photo pool management (1/5).
+- **Live URL:** pending push / Pages verification
+
 ### Steel & Needle — Tattoo & Piercing Studio, Calgary AB
 - **Date:** 2026-04-22
 - **Model:** openai-codex/gpt-5.4

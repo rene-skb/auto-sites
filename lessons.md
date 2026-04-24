@@ -19,6 +19,9 @@ Added "Steps from Stadium-Chinatown Station" for a business at 455 W Pender — 
 ### [QUEUE] Build queue entries can be unbuilt even if the business was built previously.
 MacLeod's Books had two prior builds (b102, b116) but remained in the queue without a "Built" marker. Resulted in a third build of the same business. Iris: when a business is built, add a comment with the build number AND date, regardless of whether the folder already exists. — MacLeod's Books b121
 
+### [PROCESS] Queue briefs can go stale on website status faster than almost any other field.
+Moon Ink was queued as a no-website candidate, but discovery found a live official site at `moonink.art` plus an older Squarespace route. That changed the job immediately: this was not a rescue build, it was a clarity-and-hierarchy alternative. Treat website status as a mandatory fresh check on build night, even when the rest of the brief is still usable. — Moon Ink b126
+
 ## Tier 1 — Recent Observations
 *New patterns from 1-2 builds. Watch for repetition.*
 

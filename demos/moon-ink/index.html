@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!--
+DELTA: v5 final polish notes
+- Tightened hero body copy and visit-section explanation
+- Kept proof section factual because no compliant named review quotes were verified in this pass
+- Verified OG tags, local image paths, and no non-clickable image hover effects
+- Self-review score: 8.0
+- Panel averages carried forward from panel-notes.md: WHY 7.5 / WHAT 7.33 / HOW 7.38
+- Final polish focus: cleaner scan, stronger hierarchy, less commentary
+-->
+<title>Moon Ink | Seattle Tattoo Studio</title>
+  <meta name="description" content="Seattle tattoo studio for realism, micro realism, illustrative, and color work. By appointment only at 221 1st Ave W, Suite 500." />
+  <meta property="og:title" content="Moon Ink" />
+  <meta property="og:description" content="Seattle tattoo studio for realism, micro realism, illustrative, and color work." />
+  <meta property="og:image" content="https://auto-sites.pages.dev/demos/moon-ink/ig-photo-03.jpg" />
+  <meta property="og:url" content="https://auto-sites.pages.dev/demos/moon-ink/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0e0d10;
+      --panel: #17161b;
+      --panel-2: #201f26;
+      --line: rgba(255,255,255,0.08);
+      --text: #f2ece5;
+      --muted: #c5b9ae;
+      --subtle: #aa9d92;
+      --accent: #c5c9da;
+      --accent-2: #8e92a8;
+      --max: 1180px;
+      --radius: 28px;
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --section-pad: clamp(72px, 9vw, 116px);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Work Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top, rgba(142,146,168,0.18), transparent 30%),
+        linear-gradient(180deg, #0e0d10 0%, #111015 100%);
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+      mix-blend-mode: soft-light;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    .shell { width: min(calc(100% - 32px), var(--max)); margin: 0 auto; position: relative; z-index: 1; }
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity 680ms var(--ease-out), transform 680ms var(--ease-out); }
+    .reveal.is-visible { opacity: 1; transform: none; }
+    .stagger > * { opacity: 0; transform: translateY(18px); transition: opacity 640ms var(--ease-out), transform 640ms var(--ease-out); }
+    .stagger.is-visible > *:nth-child(1) { opacity: 1; transform: none; transition-delay: 0ms; }
+    .stagger.is-visible > *:nth-child(2) { opacity: 1; transform: none; transition-delay: 70ms; }
+    .stagger.is-visible > *:nth-child(3) { opacity: 1; transform: none; transition-delay: 140ms; }
+    .stagger.is-visible > *:nth-child(4) { opacity: 1; transform: none; transition-delay: 210ms; }
+    .stagger.is-visible > *:nth-child(5) { opacity: 1; transform: none; transition-delay: 280ms; }
+    .stagger.is-visible > *:nth-child(6) { opacity: 1; transform: none; transition-delay: 350ms; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: rgba(197,201,218,0.5);
+    }
+    h1, h2, h3 { font-family: 'Instrument Serif', serif; font-weight: 400; margin: 0; }
+    h1 { font-size: clamp(3.5rem, 8vw, 6.6rem); line-height: 0.96; max-width: 10ch; }
+    h2 { font-size: clamp(2.4rem, 4.2vw, 4rem); line-height: 1; }
+    h3 { font-size: 1.55rem; line-height: 1.05; }
+    p { margin: 0; }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(14,13,16,0.78);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+    .brand {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+    .brand strong {
+      font-size: 1rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+    .brand span {
+      font-size: 0.8rem;
+      color: var(--subtle);
+      margin-top: 6px;
+    }
+    .nav-links { display: flex; gap: 24px; color: var(--muted); font-size: 0.95rem; }
+    .nav-links a { position: relative; }
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0;
+      height: 1px;
+      background: var(--text);
+      transition: width 200ms var(--ease-out);
+    }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-toggle { display: none; background: none; border: 0; color: var(--text); font: inherit; }
+    .button-row { display: flex; flex-wrap: wrap; gap: 12px; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 20px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: 0.96rem;
+      font-weight: 600;
+      transition: transform 160ms var(--ease-out), background 160ms var(--ease-out), border-color 160ms var(--ease-out), color 160ms var(--ease-out);
+    }
+    .button:active { transform: scale(0.97); }
+    .button.primary { background: var(--text); color: #111015; }
+    .button.primary:hover { background: #fff; }
+    .button.secondary { border-color: rgba(255,255,255,0.14); color: var(--text); }
+    .button.secondary:hover { border-color: rgba(255,255,255,0.3); }
+    section { padding: var(--section-pad) 0; }
+    .hero { padding-top: 36px; }
+    .hero-card {
+      border: 1px solid var(--line);
+      border-radius: 34px;
+      overflow: hidden;
+      background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.015));
+    }
+    .hero-image {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      background: #131219;
+    }
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .hero-image::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(17,16,21,0.08), rgba(17,16,21,0.32));
+    }
+    .hero-copy {
+      padding: clamp(28px, 5vw, 56px);
+      display: grid;
+      gap: 28px;
+    }
+    .hero-copy p {
+      max-width: 48rem;
+      font-size: 1.08rem;
+      color: var(--muted);
+    }
+    .info-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--line);
+    }
+    .info-strip div {
+      padding: 20px 24px;
+      border-right: 1px solid var(--line);
+      background: rgba(255,255,255,0.015);
+    }
+    .info-strip div:last-child { border-right: 0; }
+    .label {
+      display: block;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 0.72rem;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .value { font-size: 0.98rem; }
+    .section-head {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 28px;
+      align-items: end;
+      margin-bottom: 28px;
+    }
+    .section-head p { color: var(--muted); max-width: 42rem; }
+    .two-col {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 20px;
+      align-items: stretch;
+    }
+    .panel {
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px;
+    }
+    .style-list {
+      list-style: none;
+      padding: 0;
+      margin: 24px 0 0;
+      display: grid;
+      gap: 16px;
+    }
+    .style-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+    .style-list strong { color: var(--text); font-weight: 600; }
+    .detail-photo,
+    .detail-photo img,
+    .feature-photo,
+    .feature-photo img,
+    .gallery-card,
+    .gallery-card img {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .detail-photo,
+    .feature-photo,
+    .gallery-card {
+      overflow: hidden;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: #131219;
+    }
+    .detail-photo img,
+    .feature-photo img,
+    .gallery-card img { object-fit: cover; }
+    .detail-photo { min-height: 560px; }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    .gallery-card img { aspect-ratio: 0.78; }
+    .gallery-card figcaption {
+      padding: 16px 18px 18px;
+      color: var(--subtle);
+      font-size: 0.9rem;
+      border-top: 1px solid var(--line);
+      background: rgba(255,255,255,0.015);
+    }
+    .proof-layout {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+    .proof-quote {
+      padding: 34px;
+    }
+    .proof-quote blockquote {
+      margin: 18px 0;
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      line-height: 1.02;
+    }
+    .proof-quote p { color: var(--muted); }
+    .proof-cards {
+      display: grid;
+      gap: 18px;
+    }
+    .proof-card { min-height: 0; }
+    .proof-card p { color: var(--muted); }
+    .visit-layout {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+    .visit-rail {
+      display: grid;
+      gap: 18px;
+    }
+    .info-rows {
+      display: grid;
+      gap: 14px;
+      margin-top: 22px;
+    }
+    .info-row {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 14px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--line);
+    }
+    .info-row strong {
+      font-size: 0.76rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .info-row span { color: var(--muted); }
+    footer {
+      padding: 0 0 42px;
+      color: var(--subtle);
+      font-size: 0.92rem;
+    }
+    .footer-card {
+      border-top: 1px solid var(--line);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    @media (max-width: 980px) {
+      .section-head, .two-col, .proof-layout, .visit-layout { grid-template-columns: 1fr; }
+      .gallery { grid-template-columns: 1fr 1fr; }
+      .detail-photo { min-height: 420px; }
+      .info-strip { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 760px) {
+      .nav-links { display: none; }
+      .nav-toggle { display: inline-flex; }
+      .nav.open .nav-links {
+        display: flex;
+        position: absolute;
+        left: 16px;
+        right: 16px;
+        top: calc(100% + 10px);
+        padding: 18px;
+        flex-direction: column;
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        background: rgba(18,17,23,0.96);
+      }
+      .hero-image { aspect-ratio: 4 / 5; }
+      .info-strip { grid-template-columns: 1fr; }
+      .gallery { grid-template-columns: 1fr; }
+      .section-head { margin-bottom: 22px; }
+      .info-row { grid-template-columns: 1fr; gap: 6px; }
+      h1 { font-size: clamp(3rem, 16vw, 4.6rem); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; animation: none !important; }
+      .reveal, .stagger > * { opacity: 1 !important; transform: none !important; }
+    }
+  </style>
+  <!--
+  PHOTO RANKING
+  1. ig-photo-03.jpg — large dragon back piece, near-square landscape, strongest hero image, high drama and scale.
+  2. ig-photo-05.jpg — delicate floral linework, portrait, elegant and clean, ideal supporting image.
+  3. ig-photo-04.jpg — strawberry and sword color piece, square, bold and memorable, strong gallery anchor.
+  4. ig-photo-02.jpg — minimal framed blackwork piece, portrait, clean and quiet, good contrast against the louder work.
+  5. ig-photo-06.jpg — flash sheet, square, useful evidence of range but not for hero.
+  6. ig-photo-01.jpg — colorful abstract snake thigh piece, portrait, strong work but cluttered by overlays and surrounding tattoos.
+  7. ig-photo-07.jpg — ornamental cross forearm piece, portrait, good support image.
+  8. ig-photo-08.jpg — heavy oni-style arm piece, portrait, strong detail but cramped crop.
+
+  HERO CANDIDATE
+  - ig-photo-03.jpg
+
+  GRID / SUPPORTING IMAGES
+  - ig-photo-05.jpg, ig-photo-04.jpg, ig-photo-02.jpg, ig-photo-06.jpg, ig-photo-07.jpg
+
+  SKIP FOR HOMEPAGE
+  - ig-photo-01.jpg, ig-photo-08.jpg
+  -->
+</head>
+<body>
+  <header>
+    <div class="shell nav" id="nav">
+      <a class="brand" href="#top" aria-label="Moon Ink home">
+        <strong>Moon Ink</strong>
+        <span>Seattle tattoo studio</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
+      <nav class="nav-links" id="nav-links">
+        <a href="#styles">Styles</a>
+        <a href="#work">Work</a>
+        <a href="#proof">Proof</a>
+        <a href="#visit">Visit</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero shell">
+      <div class="hero-card reveal">
+        <div class="hero-image"><img src="ig-photo-03.jpg" alt="Large dragon tattoo across a client's back" /></div>
+        <div class="hero-copy">
+          <span class="eyebrow">Seattle, WA · By appointment only</span>
+          <div>
+            <h1>For people who want detail made permanent.</h1>
+          </div>
+          <p>Moon Ink is for people who care about detail. The studio works across realism, micro realism, illustrative, and color pieces, then plans each tattoo around the person wearing it.</p>
+          <div class="button-row">
+            <a class="button primary" href="https://www.moonink.art/booking">Book now</a>
+            <a class="button secondary" href="https://www.instagram.com/moonink.art/">See Instagram</a>
+          </div>
+        </div>
+        <div class="info-strip stagger">
+          <div>
+            <span class="label">Address</span>
+            <span class="value">221 1st Ave W, Suite 500, Seattle</span>
+          </div>
+          <div>
+            <span class="label">Booking</span>
+            <span class="value">By appointment only</span>
+          </div>
+          <div>
+            <span class="label">Style bench</span>
+            <span class="value">Realism, micro realism, illustrative, color</span>
+          </div>
+          <div>
+            <span class="label">Primary channel</span>
+            <span class="value">moonink.art + @moonink.art</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="styles">
+      <div class="shell">
+        <div class="section-head reveal">
+          <h2>A small studio with a wide range of hands.</h2>
+          <p>The live site already handles bookings. This version makes the studio easier to scan before a person opens the form.</p>
+        </div>
+        <div class="two-col">
+          <div class="panel reveal">
+            <span class="eyebrow">What they actually do</span>
+            <ul class="style-list">
+              <li><strong>Realism</strong><span>Detail-heavy black and grey work with depth and texture.</span></li>
+              <li><strong>Micro realism</strong><span>Small pieces that still need precision, legibility, and aging in mind.</span></li>
+              <li><strong>Illustrative</strong><span>Custom compositions that lean art-forward instead of flash-wall generic.</span></li>
+              <li><strong>Color</strong><span>Bright, graphic pieces when black and grey is not the point.</span></li>
+            </ul>
+          </div>
+          <figure class="detail-photo reveal">
+            <img src="ig-photo-05.jpg" alt="Delicate floral fine-line tattoo on a leg" />
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="work">
+      <div class="shell">
+        <div class="section-head reveal">
+          <h2>The range is the pitch.</h2>
+          <p>No long backstory needed. The page works best when it shows the studio can move from delicate floral linework to a full dragon back piece to graphic color work without losing control of detail.</p>
+        </div>
+        <div class="gallery stagger">
+          <figure class="gallery-card">
+            <img src="ig-photo-04.jpg" alt="Colorful strawberry and sword tattoo" />
+            <figcaption>Color work with a little swagger.</figcaption>
+          </figure>
+          <figure class="gallery-card">
+            <img src="ig-photo-02.jpg" alt="Minimal black tattoo inside an oval frame on a calf" />
+            <figcaption>Quiet blackwork still reads clearly.</figcaption>
+          </figure>
+          <figure class="gallery-card">
+            <img src="ig-photo-06.jpg" alt="Flash sheet with multiple black and blue tattoo designs" />
+            <figcaption>Flash and concept work without looking mass-produced.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="proof">
+      <div class="shell">
+        <div class="section-head reveal">
+          <h2>Proof, without fake testimonial cards.</h2>
+          <p>This pass did not surface compliant first-name-plus-last-initial review quotes from a primary source. The proof stays factual: the studio's own language, public channels, and the quality of the work.</p>
+        </div>
+        <div class="proof-layout">
+          <article class="panel proof-quote reveal">
+            <span class="eyebrow">Official site</span>
+            <blockquote>“Every design is planned specifically for you so it feels personal, intentional and high-quality.”</blockquote>
+            <p>That is the clearest value proposition on their live site, and it earns the lead. It explains why this studio exists better than any generic line about passion or craft.</p>
+          </article>
+          <div class="proof-cards stagger">
+            <article class="panel proof-card">
+              <span class="eyebrow">Booking flow</span>
+              <h3>3 clear steps.</h3>
+              <p>Send a request, talk with the artist, set the date. Short, understandable, and adult.</p>
+            </article>
+            <article class="panel proof-card">
+              <span class="eyebrow">Public signal</span>
+              <h3>13K Instagram followers.</h3>
+              <p>The Instagram profile already carries real weight. That matters for a studio where the work is the brand.</p>
+            </article>
+            <article class="panel proof-card">
+              <span class="eyebrow">Atmosphere</span>
+              <h3>Calm, cozy room.</h3>
+              <p>The official site says it plainly. The right audience will understand exactly what kind of appointment that promises.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="visit">
+      <div class="shell">
+        <div class="section-head reveal">
+          <h2>Enough visit info, right when you need it.</h2>
+          <p>Skip the decorative map. Keep the things a person actually needs before they book: where it is, how the studio works, and where to start.</p>
+        </div>
+        <div class="visit-layout">
+          <div class="visit-rail stagger">
+            <article class="panel">
+              <span class="eyebrow">Visit</span>
+              <div class="info-rows">
+                <div class="info-row"><strong>Address</strong><span>221 1st Ave W, Suite 500, Seattle, WA 98119</span></div>
+                <div class="info-row"><strong>Booking</strong><span>By appointment only</span></div>
+                <div class="info-row"><strong>Start here</strong><span>moonink.art/booking</span></div>
+                <div class="info-row"><strong>Instagram</strong><span>@moonink.art</span></div>
+              </div>
+            </article>
+            <article class="panel">
+              <span class="eyebrow">Why this version</span>
+              <p>The live site is functional. This demo leans harder into scan speed, hierarchy, and the range of the portfolio. It also cuts the booking-funnel feel and makes the work carry more of the page.</p>
+              <div class="button-row" style="margin-top:20px;">
+                <a class="button primary" href="https://www.moonink.art/booking">Request an appointment</a>
+                <a class="button secondary" href="https://www.moonink.art/">View official site</a>
+              </div>
+            </article>
+          </div>
+          <figure class="feature-photo reveal">
+            <img src="ig-photo-07.jpg" alt="Fine-line ornamental cross tattoo on a forearm" />
+          </figure>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-card">
+      <span>Moon Ink, Seattle WA.</span>
+      <span>Built as an editorial alternative to the live booking site.</span>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('nav');
+    const toggle = document.querySelector('.nav-toggle');
+    const links = document.querySelectorAll('#nav-links a');
+    toggle?.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', String(open));
+    });
+    links.forEach(link => link.addEventListener('click', () => {
+      nav.classList.remove('open');
+      toggle?.setAttribute('aria-expanded', 'false');
+    }));
+
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) entry.target.classList.add('is-visible');
+        });
+      }, { threshold: 0.16 });
+      document.querySelectorAll('.reveal, .stagger').forEach(el => io.observe(el));
+    } else {
+      document.querySelectorAll('.reveal, .stagger').forEach(el => el.classList.add('is-visible'));
+    }
+  </script>
+</body>
+</html>

@@ -1,5 +1,26 @@
 # Auto-Sites Build Log
 
+### Moon Ink — Tattoo Studio, Seattle WA
+- **Date:** 2026-04-24
+- **Model:** openai-codex/gpt-5.4
+- **Agent:** Lucy
+- **Folder:** moon-ink
+- **Hero pattern:** image-top-text-below
+- **Typography:** Instrument Serif + Work Sans
+- **Review layout:** no customer review cards; one editorial proof quote plus three factual proof cards
+- **Visit/hours layout:** practical left-side info rail with direct booking actions and a single supporting portfolio image on the right
+- **Stats bar style:** no-stats
+- **WHY Score:** 7.50 (Jobs 7.5 / Graham 7.0 / Ogilvy 8.0)
+- **WHAT Score:** 7.33 (Norman 7.5 / Krug 7.5 / Nielsen 7.0)
+- **HOW Score:** 7.38 (Vignelli 7.5 / Spiekermann 7.5 / Rams 7.0 / Emil 7.5)
+- **Panel average:** 7.40
+- **Self-review:** 8.0
+- **Versions built:** 6 HTML versions + final index.html
+- **Build time:** ~45 minutes
+- **Token estimate:** ~14k
+- **Key decisions:** The queue brief was stale on the biggest fact: Moon Ink already has a live official website. Discovery reframed the build from a no-site rescue into a cleaner editorial alternative that puts the work, the range, and the booking clarity ahead of generic funnel copy. No compliant named review quotes were verified in this pass, so the page stayed honest and used factual proof blocks instead of fabricated customer cards.
+- **Live URL:** pending push / Pages verification
+
 ### Dark Age Tattoo Studio — Tattoo Studio, Denton TX
 - **Date:** 2026-04-23
 - **Model:** anthropic/claude-sonnet-4-6 (cron subagent)

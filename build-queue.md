@@ -230,3 +230,5 @@
 <!-- Built 2026-04-23 → demos/dark-age-tattoo-studio/ → https://auto-sites.pages.dev/demos/dark-age-tattoo-studio/ -->
 
 <!-- Built 2026-04-24 → demos/moon-ink/ → https://auto-sites.pages.dev/demos/moon-ink/ -->
+
+<!-- Built 2026-04-25 → demos/ink-noir/ → https://auto-sites.pages.dev/demos/ink-noir/ (queue brief was stale on website status; live verification pending push) -->

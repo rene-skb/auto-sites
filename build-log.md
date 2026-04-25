@@ -1,5 +1,26 @@
 # Auto-Sites Build Log
 
+### Ink Noir — Tattoo Studio, Winnipeg MB
+- **Date:** 2026-04-25
+- **Model:** openai-codex/gpt-5.4
+- **Agent:** Lucy
+- **Folder:** ink-noir
+- **Hero pattern:** centered-minimal
+- **Typography:** Bodoni Moda + Space Grotesk
+- **Review layout:** four same-treatment factual proof cards, no customer review cards
+- **Visit/hours layout:** map-left split with stacked hours and utility panels on the right
+- **Stats bar style:** no-stats
+- **WHY Score:** 7.77 (Jobs 7.8 / Graham 7.4 / Ogilvy 8.1)
+- **WHAT Score:** 7.73 (Norman 7.7 / Krug 7.9 / Nielsen 7.6)
+- **HOW Score:** 7.75 (Vignelli 8.0 / Spiekermann 7.7 / Rams 7.5 / Emil 7.8)
+- **Panel average:** 7.75
+- **Self-review:** 8.3
+- **Versions built:** 6 HTML versions + final index.html
+- **Build time:** ~55 minutes
+- **Token estimate:** ~16k
+- **Key decisions:** The queue brief was stale on the biggest framing point. Ink Noir already has a live Wix site, so the demo shifted from a no-site rescue into a cleaner editorial alternative built around artist routing, style clarity, and visit-first utility. Real Instagram images were strong enough to carry the whole page, so no generated imagery or fabricated review cards were needed.
+- **Live URL:** pending push / Pages verification
+
 ### Moon Ink — Tattoo Studio, Seattle WA
 - **Date:** 2026-04-24
 - **Model:** openai-codex/gpt-5.4

@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!--
+DELTA: v5 final polish notes
+- Tightened the hero body copy and the visit intro
+- Kept proof factual, no fabricated customer review cards
+- Verified OG tags, local image paths, and no non-clickable image hover effects
+- Self-review score: 8.3
+- Panel averages carried forward from panel-notes.md: WHY 7.77 / WHAT 7.73 / HOW 7.75
+- Final polish focus: stronger scan, cleaner proof language, less commentary
+-->
+  <title>Ink Noir Tattoo Studio | Winnipeg Tattoo Studio</title>
+  <meta name="description" content="Winnipeg tattoo studio with artist routing, style-specific booking, and a black-heavy portfolio at 117 Fort St." />
+  <meta property="og:title" content="Ink Noir Tattoo Studio" />
+  <meta property="og:description" content="Winnipeg tattoo studio with artist routing, style-specific booking, and a black-heavy portfolio." />
+  <meta property="og:image" content="https://auto-sites.pages.dev/demos/ink-noir/ig-photo-09.jpg" />
+  <meta property="og:url" content="https://auto-sites.pages.dev/demos/ink-noir/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,600;6..96,700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #09090b;
+      --panel: #111114;
+      --panel-2: #17171c;
+      --panel-3: #1e1e25;
+      --line: rgba(255,255,255,0.09);
+      --text: #f4efe8;
+      --muted: #d0c5b8;
+      --soft: #b0a79c;
+      --accent: #d6c0a1;
+      --accent-2: #6f768f;
+      --max: 1180px;
+      --radius: 28px;
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+      --section-pad: clamp(72px, 9vw, 120px);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top, rgba(214,192,161,0.07), transparent 24%),
+        radial-gradient(circle at 80% 20%, rgba(111,118,143,0.12), transparent 28%),
+        linear-gradient(180deg, #09090b 0%, #0d0d11 48%, #111116 100%);
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.028;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+      mix-blend-mode: soft-light;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    p { margin: 0; }
+    .shell { width: min(calc(100% - 32px), var(--max)); margin: 0 auto; position: relative; z-index: 1; }
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity 680ms var(--ease-out), transform 680ms var(--ease-out); }
+    .reveal.is-visible { opacity: 1; transform: none; }
+    .stagger > * { opacity: 0; transform: translateY(18px); transition: opacity 640ms var(--ease-out), transform 640ms var(--ease-out); }
+    .stagger.is-visible > *:nth-child(1) { opacity: 1; transform: none; transition-delay: 0ms; }
+    .stagger.is-visible > *:nth-child(2) { opacity: 1; transform: none; transition-delay: 70ms; }
+    .stagger.is-visible > *:nth-child(3) { opacity: 1; transform: none; transition-delay: 140ms; }
+    .stagger.is-visible > *:nth-child(4) { opacity: 1; transform: none; transition-delay: 210ms; }
+    .stagger.is-visible > *:nth-child(5) { opacity: 1; transform: none; transition-delay: 280ms; }
+    .stagger.is-visible > *:nth-child(6) { opacity: 1; transform: none; transition-delay: 350ms; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: rgba(214,192,161,0.55);
+    }
+    h1, h2, h3 { margin: 0; font-family: 'Bodoni Moda', serif; font-weight: 600; }
+    h1 { font-size: clamp(3.5rem, 9.8vw, 7.6rem); line-height: 0.92; letter-spacing: -0.035em; text-wrap: balance; }
+    h2 { font-size: clamp(2.4rem, 4.6vw, 4.5rem); line-height: 0.94; letter-spacing: -0.02em; }
+    h3 { font-size: 1.4rem; line-height: 1.05; }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(9,9,11,0.82);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+    .brand {
+      display: grid;
+      gap: 6px;
+      line-height: 1;
+    }
+    .brand strong {
+      font-size: 1.08rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+    }
+    .brand span {
+      font-size: 0.8rem;
+      color: var(--soft);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .nav-links { display: flex; align-items: center; gap: 24px; color: var(--muted); font-size: 0.98rem; }
+    .nav-links a { position: relative; }
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0;
+      height: 1px;
+      background: var(--text);
+      transition: width 200ms var(--ease-out);
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-toggle { display: none; border: 0; background: none; color: var(--text); font: inherit; }
+    .button-row { display: flex; flex-wrap: wrap; gap: 12px; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 0 22px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: transform 160ms var(--ease-out), background 160ms var(--ease-out), border-color 160ms var(--ease-out), color 160ms var(--ease-out);
+    }
+    .button:active { transform: scale(0.97); }
+    .button.primary { background: var(--text); color: #0d0d11; box-shadow: 0 18px 36px rgba(0,0,0,0.18); }
+    .button.primary:hover { background: #ffffff; }
+    .button.secondary { border-color: rgba(255,255,255,0.14); color: var(--text); }
+    .button.secondary:hover { border-color: rgba(255,255,255,0.3); }
+    section { padding: var(--section-pad) 0; }
+    .hero {
+      min-height: calc(100vh - 74px);
+      display: grid;
+      align-items: center;
+      padding: 72px 0 56px;
+    }
+    .hero-wrap {
+      display: grid;
+      gap: 34px;
+      justify-items: center;
+      text-align: center;
+    }
+    .hero-copy {
+      display: grid;
+      gap: 28px;
+      max-width: 940px;
+    }
+    .hero-copy p {
+      max-width: 54rem;
+      margin: 0 auto;
+      font-size: 1.14rem;
+      color: var(--muted);
+      text-wrap: balance;
+    }
+    .hero-art {
+      width: min(100%, 1040px);
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+    .hero-tall,
+    .hero-stack figure,
+    .chapter-photo,
+    .chapter-photo img,
+    .gallery-card,
+    .gallery-card img,
+    .proof-card,
+    .artist-card,
+    .visit-panel,
+    .facts-card {
+      border-radius: 26px;
+    }
+    .hero-tall,
+    .hero-stack figure,
+    .chapter-photo,
+    .gallery-card,
+    .proof-card,
+    .artist-card,
+    .visit-panel,
+    .facts-card {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.018));
+    }
+    .hero-tall { min-height: 610px; }
+    .hero-tall img,
+    .chapter-photo img,
+    .gallery-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .hero-stack {
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      gap: 18px;
+      min-height: 610px;
+    }
+    .hero-stack figure { margin: 0; }
+    .hero-stack .text-tile {
+      padding: 30px;
+      display: grid;
+      align-content: end;
+      gap: 16px;
+      text-align: left;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)),
+        radial-gradient(circle at top left, rgba(214,192,161,0.1), transparent 38%);
+    }
+    .text-tile strong {
+      font-size: 0.8rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .text-tile p { color: var(--muted); font-size: 0.98rem; }
+    .quick-facts {
+      width: min(100%, 980px);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+    .facts-card {
+      padding: 18px 18px 20px;
+      text-align: left;
+    }
+    .facts-card strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--accent);
+    }
+    .facts-card span {
+      display: block;
+      font-size: 0.96rem;
+      color: var(--text);
+    }
+    .section-head {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 28px;
+      align-items: end;
+      margin-bottom: 30px;
+    }
+    .section-head p { color: var(--muted); max-width: 38rem; font-size: 1.02rem; }
+    .chapter {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      align-items: stretch;
+    }
+    .chapter-photo { min-height: 660px; }
+    .style-grid,
+    .proof-grid,
+    .artist-grid { display: grid; gap: 16px; }
+    .style-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .artist-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .style-card,
+    .artist-card,
+    .proof-card,
+    .visit-panel {
+      padding: 24px;
+    }
+    .style-card {
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.028), rgba(255,255,255,0.015));
+      display: grid;
+      gap: 12px;
+      min-height: 184px;
+    }
+    .style-card span,
+    .artist-card span,
+    .proof-card span,
+    .visit-panel span,
+    .micro-label {
+      display: inline-block;
+      font-size: 0.74rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .style-card p,
+    .artist-card p,
+    .proof-card p,
+    .visit-panel p { color: var(--muted); font-size: 1rem; }
+    .style-card ul,
+    .visit-list,
+    .hours-list { list-style: none; padding: 0; margin: 0; }
+    .style-card li,
+    .visit-list li,
+    .hours-list li {
+      padding-top: 10px;
+      margin-top: 10px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      color: var(--text);
+      font-size: 0.98rem;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr 0.85fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+    .gallery-card { min-height: 540px; position: relative; }
+    .gallery-card figcaption {
+      position: absolute;
+      left: 20px;
+      right: 20px;
+      bottom: 20px;
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: rgba(9,9,11,0.72);
+      border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(12px);
+    }
+    .gallery-card small {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--accent);
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    .gallery-card p { color: var(--text); font-size: 0.98rem; }
+    .proof-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .proof-card {
+      min-height: 205px;
+      display: grid;
+      align-content: start;
+      gap: 12px;
+    }
+    .proof-card strong {
+      font-size: 1.9rem;
+      line-height: 1;
+      font-family: 'Bodoni Moda', serif;
+      font-weight: 600;
+    }
+    .artist-card {
+      min-height: 200px;
+      display: grid;
+      gap: 10px;
+      align-content: start;
+    }
+    .visit-grid {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 20px;
+      align-items: stretch;
+    }
+    .visit-panel iframe {
+      width: 100%;
+      min-height: 100%;
+      height: 100%;
+      border: 0;
+      filter: grayscale(1) contrast(1.05);
+    }
+    .visit-stack { display: grid; gap: 20px; }
+    .hours-list li,
+    .visit-list li { display: flex; justify-content: space-between; gap: 18px; }
+    .hours-list strong,
+    .visit-list strong { font-size: 0.95rem; font-weight: 500; color: var(--text); }
+    .hours-list span,
+    .visit-list span { font-size: 0.95rem; color: var(--muted); letter-spacing: normal; text-transform: none; }
+    footer {
+      padding: 40px 0 52px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      color: var(--soft);
+      font-size: 0.9rem;
+    }
+    .footer-row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+    @media (max-width: 980px) {
+      .hero-art,
+      .chapter,
+      .gallery,
+      .visit-grid,
+      .section-head,
+      .proof-grid,
+      .artist-grid,
+      .quick-facts {
+        grid-template-columns: 1fr;
+      }
+      .hero-stack,
+      .hero-tall,
+      .chapter-photo,
+      .gallery-card { min-height: auto; }
+      .hero-tall { aspect-ratio: 4 / 5; }
+      .hero-stack figure { min-height: 290px; }
+      .chapter-photo { aspect-ratio: 4 / 5; }
+      .gallery-card { min-height: 420px; }
+      .proof-card,
+      .artist-card { min-height: auto; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        left: 16px;
+        right: 16px;
+        top: calc(100% + 10px);
+        padding: 18px;
+        border-radius: 20px;
+        border: 1px solid var(--line);
+        background: rgba(15,15,18,0.96);
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .nav-links.open { display: flex; }
+      .nav-toggle { display: inline-flex; }
+    }
+    @media (max-width: 720px) {
+      h1 { font-size: clamp(3.2rem, 17vw, 5.6rem); }
+      h2 { font-size: clamp(2.1rem, 10vw, 3.4rem); }
+      .hero { min-height: auto; }
+      .hero-wrap { gap: 26px; }
+      .style-grid { grid-template-columns: 1fr; }
+      .button-row { width: 100%; }
+      .button { width: 100%; }
+      .hours-list li,
+      .visit-list li { flex-direction: column; gap: 6px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .reveal, .stagger > * { opacity: 1 !important; transform: none !important; }
+    }
+  </style>
+
+</head>
+<body>
+  <header>
+    <div class="shell nav">
+      <a class="brand" href="#top" aria-label="Ink Noir home">
+        <strong>Ink Noir</strong>
+        <span>Tattoo Studio · Winnipeg</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
+      <nav class="nav-links" id="nav-links">
+        <a href="#styles">Styles</a>
+        <a href="#artists">Artists</a>
+        <a href="#proof">Proof</a>
+        <a href="#visit">Visit</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="shell hero-wrap">
+        <div class="hero-copy reveal">
+          <span class="eyebrow">Custom + flash tattoos in Winnipeg</span>
+          <h1>Walk in knowing which artist fits the piece.</h1>
+          <p>Ink Noir Tattoo Studio on Fort Street gives Winnipeg tattoo clients a better starting point than most studio sites do, style first, artist fit second. Black work, fine line, Japanese, realism, lettering, botanical, and more are mapped before the booking request starts, and uncertain ideas can be routed to the artist who suits the piece.</p>
+          <div class="button-row">
+            <a class="button primary" href="https://www.inknoirtattoo.com/booking" target="_blank" rel="noreferrer">Book through Ink Noir</a>
+            <a class="button secondary" href="https://www.google.com/maps/place/Ink+Noir+Tattoo+Studio/@49.8895281,-97.13649629999999,14z/data=!4m8!1m2!2m1!1sInk+Noir+Tattoo+Studio!3m4!1s0x52ea76cb181bc24f:0x378d3d5ceea847cf!8m2!3d49.8895281!4d-97.13649629999999" target="_blank" rel="noreferrer">Open the Fort Street pin</a>
+          </div>
+        </div>
+
+        <div class="hero-art stagger reveal">
+          <figure class="hero-tall"><img src="ig-photo-09.jpg" alt="Large blackwork torso tattoo from Ink Noir Tattoo Studio." /></figure>
+          <div class="hero-stack">
+            <figure><img src="ig-photo-05.jpg" alt="Black and white portrait of tattoo artist Niko at Ink Noir." /></figure>
+            <div class="text-tile">
+              <strong>What stands out here</strong>
+              <p>Blackwork, fine line, Japanese, botanical, realism, same-day availability when the schedule opens up, and a routing flow for people who know what they want but not who should do it.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="quick-facts stagger reveal">
+          <div class="facts-card"><strong>Address</strong><span>117 Fort St, Winnipeg</span></div>
+          <div class="facts-card"><strong>Hours</strong><span>Tue to Sat, 10AM to 5PM</span></div>
+          <div class="facts-card"><strong>Google</strong><span>4.8★ from 201 reviews</span></div>
+          <div class="facts-card"><strong>Booking</strong><span>Appointments required, walk-ins and same-day when they can fit the piece</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="styles">
+      <div class="shell">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">Start by style</span>
+            <h2>Start with the style, then choose the hand.</h2>
+          </div>
+          <p>That is the real advantage here. You do not need to know every artist first. You need to know what kind of tattoo you want, then which person should do it.</p>
+        </div>
+        <div class="chapter">
+          <figure class="chapter-photo reveal"><img src="ig-photo-04.jpg" alt="Fine line floral chest tattoo from Ink Noir." /></figure>
+          <div class="style-grid stagger reveal">
+            <article class="style-card">
+              <span>Black work</span>
+              <h3>Heavy contrast, clean negative space.</h3>
+              <p>Ink Noir already makes this easy to browse. The official style guide names Niko, Neet, and Yeva here, which tells you the studio thinks in fit, not just first-available.</p>
+              <ul>
+                <li>Best artist matches: Niko, Neet, Yeva</li>
+                <li>Best for: solid fills, graphic contrast, high-impact pieces</li>
+              </ul>
+            </article>
+            <article class="style-card">
+              <span>Fine line</span>
+              <h3>Precise, minimal, body-aware linework.</h3>
+              <p>The site routes fine line work to Johnny Noir and Osheen. That matters because thin work falls apart fast when the hand is wrong.</p>
+              <ul>
+                <li>Best artist matches: Johnny Noir, Osheen</li>
+                <li>Best for: smaller pieces, delicate detail, soft black and grey</li>
+              </ul>
+            </article>
+            <article class="style-card">
+              <span>Japanese + botanical</span>
+              <h3>Traditional structure, floral rhythm, bigger movement.</h3>
+              <p>Japanese work is listed with McKaila and Josh. Botanical spans Josh, Johnny, Kay, Osheen, Raven, Leo, and McKaila, which gives a lot more room to choose the hand and mood.</p>
+              <ul>
+                <li>Japanese: McKaila, Josh</li>
+                <li>Botanical: Josh, Johnny, Kay, Osheen, Raven, Leo, McKaila</li>
+              </ul>
+            </article>
+            <article class="style-card">
+              <span>Realism + lettering</span>
+              <h3>Different jobs, different artists.</h3>
+              <p>Leo handles realism on the style page. Lettering goes to Raven and Johnny Noir. That split is exactly why artist routing is useful here.</p>
+              <ul>
+                <li>Realism: Leo</li>
+                <li>Lettering: Raven, Johnny Noir</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="artists">
+      <div class="shell">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">Portfolio snapshots</span>
+            <h2>The portfolio already sells the mood.</h2>
+          </div>
+          <p>Real work, sharp contrast, black-heavy layouts, and a team that looks like one studio instead of 10 unrelated feeds stitched together.</p>
+        </div>
+        <div class="gallery stagger reveal">
+          <figure class="gallery-card">
+            <img src="ig-photo-03.jpg" alt="Dragon tattoo on the side of a client at Ink Noir." />
+            <figcaption><small>Dragon work</small><p>Large-scale linework with enough restraint to keep the body line readable.</p></figcaption>
+          </figure>
+          <figure class="gallery-card">
+            <img src="ig-photo-07.jpg" alt="Ink Noir business cards and branded print material." />
+            <figcaption><small>Brand detail</small><p>The studio identity already knows what it is, black-heavy, editorial, and tactile.</p></figcaption>
+          </figure>
+          <figure class="gallery-card">
+            <img src="ig-photo-10.jpg" alt="Group photo of the Ink Noir Tattoo Studio team." />
+            <figcaption><small>The bench</small><p>A deep roster matters when the tattoo idea is clear but the right artist still is not.</p></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="shell">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">How they route work</span>
+            <h2>The booking flow works because the routing is honest.</h2>
+          </div>
+          <p>If you know the style, you can narrow the artist fast. If you do not, Ink Noir says they will review the request and direct it. That keeps the match cleaner before anyone is under a needle.</p>
+        </div>
+        <div class="artist-grid stagger reveal">
+          <article class="artist-card">
+            <span>1 · Look for the fit</span>
+            <h3>Scroll styles before you scroll artists.</h3>
+            <p>The official site asks visitors to review the work first and choose the artist that fits the idea. That saves everyone a bad match.</p>
+          </article>
+          <article class="artist-card">
+            <span>2 · Submit the idea</span>
+            <h3>If you are unsure, they route it.</h3>
+            <p>Ink Noir says requests can be reviewed and directed to the artist best suited for the piece. Good tattoo shops do this quietly. Here they say it out loud.</p>
+          </article>
+          <article class="artist-card">
+            <span>3 · Move fast when it fits</span>
+            <h3>Same-day is possible, not promised.</h3>
+            <p>The walk-in page says they can often accommodate same-day appointments depending on the design complexity. Useful if your idea is ready and the opening is real.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="proof">
+      <div class="shell">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">Proof, not filler</span>
+            <h2>Enough proof, no theatre.</h2>
+          </div>
+          <p>The practical signals are strong: a high review count, real style coverage, active portfolio posting, and same-day openings when the schedule allows it.</p>
+        </div>
+        <div class="proof-grid stagger reveal">
+          <article class="proof-card">
+            <span>Google reviews</span>
+            <strong>4.8★</strong>
+            <p>201 reviews on the Google listing, with repeated tags around welcoming atmosphere, clean space, patient artists, and strong custom work.</p>
+          </article>
+          <article class="proof-card">
+            <span>Instagram presence</span>
+            <strong>14K</strong>
+            <p>The queue brief logged 14K followers and 198 posts. That matters less as vanity and more as a live portfolio with real range.</p>
+          </article>
+          <article class="proof-card">
+            <span>Booking reality</span>
+            <strong>Tue → Sat</strong>
+            <p>10AM to 5PM on working days, closed Sunday and Monday. Planning notes on Google also flag that appointments are required.</p>
+          </article>
+          <article class="proof-card">
+            <span>Style coverage</span>
+            <strong>10+</strong>
+            <p>Illustrative, neo traditional, botanical, black work, fine line, ornamental, traditional, Japanese, cybersigilism, realism, lettering, watercolor.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="visit">
+      <div class="shell">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">Visit the studio</span>
+            <h2>Everything needed for a real visit.</h2>
+          </div>
+          <p>Fort Street pin, phone number, live booking path, current portfolio, and working hours. That is what someone actually needs before they commit.</p>
+        </div>
+        <div class="visit-grid">
+          <div class="visit-panel reveal" style="padding:0; min-height: 540px;">
+            <iframe title="Ink Noir Tattoo Studio map" src="https://maps.google.com/maps?q=Ink%20Noir%20Tattoo%20Studio%20Winnipeg&output=embed"></iframe>
+          </div>
+          <div class="visit-stack stagger reveal">
+            <article class="visit-panel">
+              <span>Hours</span>
+              <ul class="hours-list">
+                <li><strong>Tuesday</strong><span>10AM to 5PM</span></li>
+                <li><strong>Wednesday</strong><span>10AM to 5PM</span></li>
+                <li><strong>Thursday</strong><span>10AM to 5PM</span></li>
+                <li><strong>Friday</strong><span>10AM to 5PM</span></li>
+                <li><strong>Saturday</strong><span>10AM to 5PM</span></li>
+                <li><strong>Sunday + Monday</strong><span>Closed</span></li>
+              </ul>
+            </article>
+            <article class="visit-panel">
+              <span>Useful links</span>
+              <ul class="visit-list">
+                <li><strong>Address</strong><span>117 Fort St, Winnipeg, MB R3C 1C6</span></li>
+                <li><strong>Phone</strong><span><a href="tel:+12042311711">+1 204 231 1711</a></span></li>
+                <li><strong>Official site</strong><span><a href="https://www.inknoirtattoo.com/" target="_blank" rel="noreferrer">inknoirtattoo.com</a></span></li>
+                <li><strong>Instagram</strong><span><a href="https://www.instagram.com/inknoir204/" target="_blank" rel="noreferrer">@inknoir204</a></span></li>
+              </ul>
+              <div class="button-row" style="margin-top:20px;">
+                <a class="button primary" href="https://www.inknoirtattoo.com/booking" target="_blank" rel="noreferrer">Start a booking request</a>
+                <a class="button secondary" href="https://www.instagram.com/inknoir204/" target="_blank" rel="noreferrer">See recent work on Instagram</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-row">
+      <span>Ink Noir Tattoo Studio · Winnipeg, Manitoba</span>
+      <span>Built from verified public sources and real studio imagery.</span>
+    </div>
+  </footer>
+
+  <script>
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinks = document.getElementById('nav-links');
+    if (navToggle && navLinks) {
+      navToggle.addEventListener('click', () => {
+        const open = navLinks.classList.toggle('open');
+        navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      }));
+    }
+
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.16 });
+      document.querySelectorAll('.reveal, .stagger').forEach(el => observer.observe(el));
+    } else {
+      document.querySelectorAll('.reveal, .stagger').forEach(el => el.classList.add('is-visible'));
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,842 @@
+<!--
+PHOTO EVAL
+Ranked best to worst for The Nest Tattoo brand fit:
+1. ig-photo-01.jpg — colorful mermaid tattoo, square, strongest hero candidate
+2. ig-photo-02.jpg — red-orange snail flash, square, bold and playful
+3. ig-photo-05.jpg — black-and-gray rabbit, square, strong range piece
+4. ig-photo-03.jpg — orange cat tattoo, square, playful support image
+5. ig-photo-06.jpg — darker skull/character piece, portrait, use only in grid if needed
+6. ig-photo-07.jpg — black-and-gray seahorse, portrait, support only
+7. ig-photo-08.jpg — floral event flyer, skip
+8. ig-photo-04.jpg — Friday the 13th promo flyer, skip
+Assignments:
+- Hero: ig-photo-01.jpg
+- Grid: ig-photo-02.jpg, ig-photo-05.jpg, ig-photo-03.jpg, ig-photo-06.jpg, ig-photo-07.jpg
+- Skip: ig-photo-04.jpg, ig-photo-08.jpg
+Brand brief:
+- Business: The Nest Tattoo
+- Category: Tattoo studio
+- Location: 2607 Congress St, San Diego, CA 92110, Old Town
+- Brand colors: bone, charcoal, warm clay, muted rust, faded blush pulled from site and tattoo palette
+- Vibe: calm, clean, slightly witchy, playful flash energy without biker-shop clichés
+- Differentiator: Old Town studio with walk-ins welcome, two distinct resident artists, and a quieter more respectful framing than typical tattoo shops
+- Typography direction: editorial serif + restrained grotesk, warm not gothic
+- Facts: site says Historic Old Town since 2019; artists are Taylor and Kenzie; hours Tue-Sat 12-9, Sun 1-6, Mon closed; phone 619-356-3516; email thenesttattoo@gmail.com; Instagram @thenesttattoo; BestProsInTown surfaces 4.9 rating and 14 Google review summaries
+--> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Nest Tattoo, Old Town San Diego</title>
+  <meta name="description" content="A calmer tattoo studio in Old Town San Diego, with walk-ins welcome, resident artists, and clean illustrative work that feels personal from the first conversation." />
+  <meta property="og:title" content="The Nest Tattoo" />
+  <meta property="og:description" content="A calmer tattoo studio in Old Town San Diego, with walk-ins welcome and artist-led work in a clean Old Town setting." />
+  <meta property="og:image" content="https://auto-sites.pages.dev/demos/the-nest-tattoo/ig-photo-01.jpg" />
+  <meta property="og:url" content="https://auto-sites.pages.dev/demos/the-nest-tattoo/" />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #120f0f;
+      --panel: #191515;
+      --panel-2: #211b1b;
+      --ink: #f7efe6;
+      --muted: rgba(247, 239, 230, 0.72);
+      --line: rgba(247, 239, 230, 0.14);
+      --accent: #c78767;
+      --accent-soft: #f0c9b4;
+      --shadow: 0 24px 60px rgba(0,0,0,0.28);
+      --radius: 28px;
+      --section-pad: clamp(72px, 10vw, 128px);
+      --content: 1180px;
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Manrope', sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(199,135,103,0.16), transparent 34%),
+        radial-gradient(circle at bottom right, rgba(240,201,180,0.08), transparent 28%),
+        var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    .shell { width: min(calc(100% - 32px), var(--content)); margin: 0 auto; }
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(16px);
+      background: rgba(18,15,15,0.72);
+      border-bottom: 1px solid rgba(247,239,230,0.08);
+    }
+    .nav {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 800;
+    }
+    .brand-mark {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid rgba(247,239,230,0.2);
+      display: grid;
+      place-items: center;
+      color: var(--accent-soft);
+      font-family: 'Fraunces', serif;
+      font-size: 18px;
+      background: rgba(255,255,255,0.03);
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .nav-links a:hover,
+    .nav-links a:focus-visible { color: var(--ink); }
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .menu-toggle {
+      display: none;
+      appearance: none;
+      border: 1px solid rgba(247,239,230,0.18);
+      background: rgba(255,255,255,0.03);
+      color: var(--ink);
+      width: 48px;
+      height: 48px;
+      border-radius: 999px;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    .button,
+    .ghost-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 52px;
+      padding: 0 22px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: transform 180ms var(--ease-out), background-color 180ms var(--ease-out), border-color 180ms var(--ease-out), color 180ms var(--ease-out);
+    }
+    .button {
+      background: var(--accent);
+      color: #160f0c;
+      box-shadow: 0 12px 28px rgba(199,135,103,0.24);
+    }
+    .ghost-button {
+      border: 1px solid rgba(247,239,230,0.2);
+      color: var(--ink);
+      background: rgba(255,255,255,0.03);
+    }
+    .button:hover, .button:focus-visible,
+    .ghost-button:hover, .ghost-button:focus-visible { transform: translateY(-2px); }
+    .button:active, .ghost-button:active { transform: scale(0.97); }
+
+    .hero {
+      padding: 42px 0 var(--section-pad);
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.95fr);
+      gap: clamp(24px, 4vw, 48px);
+      align-items: stretch;
+    }
+    .hero-copy,
+    .hero-figure {
+      min-height: clamp(560px, 72vh, 760px);
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      box-shadow: var(--shadow);
+    }
+    .hero-copy {
+      padding: clamp(32px, 4vw, 52px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+    .hero-copy::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(240,201,180,0.12), transparent 34%);
+      pointer-events: none;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--accent-soft);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 32px;
+      height: 1px;
+      background: currentColor;
+      opacity: 0.8;
+    }
+    h1, h2, h3, h4, p { margin: 0; }
+    h1 {
+      max-width: 11ch;
+      font-family: 'Fraunces', serif;
+      font-size: clamp(56px, 7.8vw, 108px);
+      line-height: 0.95;
+      font-weight: 400;
+      letter-spacing: -0.05em;
+      margin-top: 18px;
+    }
+    .hero-body {
+      max-width: 36rem;
+      display: grid;
+      gap: 18px;
+    }
+    .hero-body p {
+      color: var(--muted);
+      font-size: clamp(18px, 2vw, 20px);
+      max-width: 31rem;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 8px;
+    }
+    .utility-note {
+      margin-top: 18px;
+      font-size: 14px;
+      color: rgba(247,239,230,0.62);
+    }
+    .hero-facts {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 32px;
+    }
+    .fact {
+      border-top: 1px solid var(--line);
+      padding-top: 14px;
+      display: grid;
+      gap: 6px;
+    }
+    .fact-label {
+      color: rgba(247,239,230,0.56);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 800;
+    }
+    .fact strong {
+      font-size: 15px;
+      line-height: 1.45;
+    }
+    .hero-figure img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    section { padding: 0 0 var(--section-pad); }
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 0.8fr) minmax(280px, 0.6fr);
+      gap: 24px;
+      margin-bottom: 28px;
+      align-items: end;
+    }
+    .section-kicker {
+      color: var(--accent-soft);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-weight: 800;
+      margin-bottom: 14px;
+      display: inline-block;
+    }
+    h2 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(34px, 4vw, 56px);
+      line-height: 1;
+      letter-spacing: -0.04em;
+      font-weight: 400;
+    }
+    .section-head p,
+    .chapter-copy p,
+    .artist-copy p,
+    .visit-card p,
+    .proof-card p,
+    .detail-card p,
+    .footer-note,
+    .map-copy p {
+      color: var(--muted);
+      font-size: 16px;
+    }
+    .proof-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .proof-card,
+    .detail-card,
+    .artist-copy,
+    .visit-card,
+    .map-copy {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 24px;
+    }
+    .proof-card strong,
+    .detail-card strong,
+    .visit-card strong,
+    .map-copy strong {
+      display: block;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 10px;
+      color: var(--accent-soft);
+    }
+    .proof-card h3,
+    .detail-card h3,
+    .artist-copy h3,
+    .visit-card h3,
+    .map-copy h3 {
+      font-size: 24px;
+      line-height: 1.1;
+      margin-bottom: 10px;
+    }
+
+    .artists-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: 18px;
+    }
+    .artists-stack {
+      display: grid;
+      gap: 18px;
+    }
+    .artist-card {
+      display: grid;
+      grid-template-columns: minmax(130px, 170px) minmax(0, 1fr);
+      gap: 18px;
+      align-items: stretch;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      overflow: hidden;
+    }
+    .artist-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      min-height: 220px;
+    }
+    .artist-copy {
+      padding: 22px 22px 24px 0;
+      background: transparent;
+      border: 0;
+    }
+    .artist-copy .micro {
+      color: var(--accent-soft);
+      font-size: 12px;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      font-weight: 800;
+      margin-bottom: 12px;
+      display: inline-block;
+    }
+    .artist-copy p + p { margin-top: 12px; }
+    .artist-link {
+      margin-top: 16px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+    .gallery-lead,
+    .gallery-stack img,
+    .gallery-lead img {
+      border-radius: 24px;
+    }
+    .gallery-lead {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      min-height: 100%;
+    }
+    .gallery-lead img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      aspect-ratio: 1 / 1;
+    }
+    .gallery-stack {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .gallery-stack img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      aspect-ratio: 1 / 1;
+      border: 1px solid var(--line);
+      background: var(--panel);
+    }
+
+    .details-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .details-list,
+    .hours-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 12px;
+    }
+    .details-list li,
+    .hours-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      border-bottom: 1px solid rgba(247,239,230,0.1);
+      padding-bottom: 10px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+    .details-list li:last-child,
+    .hours-list li:last-child { border-bottom: 0; padding-bottom: 0; }
+    .details-list span:last-child,
+    .hours-list span:last-child { color: var(--ink); text-align: right; }
+
+    .visit-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 0.64fr) minmax(0, 0.36fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+    .map-copy {
+      display: grid;
+      gap: 22px;
+    }
+    .map-frame {
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      min-height: 380px;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 380px;
+      border: 0;
+      display: block;
+      filter: grayscale(1) saturate(0.2) contrast(1.05);
+    }
+    .visit-stack {
+      display: grid;
+      gap: 18px;
+    }
+    .visit-card ul { margin-top: 14px; }
+    .visit-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .footer {
+      padding: 0 0 48px;
+    }
+    .footer-box {
+      border-top: 1px solid var(--line);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: flex-start;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .footer-box nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 700ms var(--ease-out), transform 700ms var(--ease-out);
+    }
+    [data-reveal].is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .hero-title-line {
+      opacity: 0;
+      transform: translateY(20px);
+      display: block;
+    }
+    .hero-title-line.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 700ms var(--ease-out), transform 700ms var(--ease-out);
+    }
+
+    @media (max-width: 1100px) {
+      .hero-grid,
+      .section-head,
+      .artists-grid,
+      .gallery-grid,
+      .visit-layout { grid-template-columns: 1fr; }
+      .hero-copy, .hero-figure { min-height: auto; }
+      .hero-figure img { aspect-ratio: 1 / 1; }
+      .details-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 820px) {
+      .nav-links,
+      .header-actions .ghost-button,
+      .header-actions .button { display: none; }
+      .menu-toggle { display: inline-flex; }
+      .site-header.is-open .nav-panel { display: grid; }
+      .nav-panel {
+        display: none;
+        gap: 12px;
+        padding: 0 0 20px;
+      }
+      .nav-panel a, .nav-panel .button {
+        width: 100%;
+      }
+      .hero-facts,
+      .proof-grid,
+      .details-grid { grid-template-columns: 1fr; }
+      .artist-card { grid-template-columns: 1fr; }
+      .artist-copy { padding: 0 22px 24px; }
+      .gallery-stack { grid-template-columns: 1fr 1fr; }
+      .footer-box { flex-direction: column; }
+    }
+    @media (max-width: 560px) {
+      .shell { width: min(calc(100% - 20px), var(--content)); }
+      .hero { padding-top: 24px; }
+      .hero-copy { padding: 24px; }
+      .gallery-stack { grid-template-columns: 1fr; }
+      .button, .ghost-button { width: 100%; }
+      .hero-actions, .visit-actions { display: grid; }
+      .map-frame, iframe { min-height: 300px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      [data-reveal], .hero-title-line { opacity: 1 !important; transform: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="top">
+    <div class="shell">
+      <div class="nav">
+        <a class="brand" href="#top" aria-label="The Nest Tattoo home">
+          <span class="brand-mark">N</span>
+          <span>The Nest Tattoo</span>
+        </a>
+        <nav class="nav-links" aria-label="Primary">
+          <a href="#artists">Artists</a>
+          <a href="#gallery">Work</a>
+          <a href="#visit">Visit</a>
+        </nav>
+        <div class="header-actions">
+          <a class="button" href="https://thenesttattoo.com/book-now" target="_blank" rel="noreferrer">Book now</a>
+          <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileNav" aria-label="Open menu">☰</button>
+        </div>
+      </div>
+      <div class="nav-panel" id="mobileNav">
+        <a class="ghost-button" href="#artists">Artists</a>
+        <a class="ghost-button" href="#gallery">Work</a>
+        <a class="ghost-button" href="#visit">Visit</a>
+        <a class="button" href="https://thenesttattoo.com/book-now" target="_blank" rel="noreferrer">Book now</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero shell">
+      <div class="hero-grid">
+        <div class="hero-copy" data-reveal>
+          <div>
+            <span class="eyebrow">Old Town, San Diego</span>
+            <h1 aria-label="Old Town tattoos without the shop-floor chaos">
+              <span class="hero-title-line">Old Town</span>
+              <span class="hero-title-line">tattoos, without</span>
+              <span class="hero-title-line">the shop-floor chaos.</span>
+            </h1>
+          </div>
+          <div class="hero-body">
+            <p>See the artists clearly, know the room will feel calm, and choose between a walk-in flash stop or a more direct custom conversation without sorting through the usual shop noise first.</p>
+            <div class="hero-actions">
+              <a class="button" href="https://thenesttattoo.com/book-now" target="_blank" rel="noreferrer">Book now</a>
+              <a class="ghost-button" href="https://maps.google.com/?q=The+Nest+Tattoo+2607+Congress+St+San+Diego+CA+92110" target="_blank" rel="noreferrer">Directions</a>
+            </div>
+            <p class="utility-note">Walk-ins welcome. Tuesday through Saturday 12 to 9, Sunday 1 to 6.</p>
+            <div class="hero-facts">
+              <div class="fact">
+                <span class="fact-label">Since</span>
+                <strong>Historic Old Town since 2019.</strong>
+              </div>
+              <div class="fact">
+                <span class="fact-label">Artists</span>
+                <strong>Two distinct resident styles, so the right artist is easier to pick fast.</strong>
+              </div>
+              <div class="fact">
+                <span class="fact-label">Proof</span>
+                <strong>4.9 rating surfaced by BestProsInTown, plus walk-ins welcome.</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+        <figure class="hero-figure" data-reveal>
+          <img src="ig-photo-01.jpg" alt="Colorful mermaid tattoo from The Nest Tattoo" />
+        </figure>
+      </div>
+    </section>
+
+    <section class="shell">
+      <div class="details-grid" style="margin-bottom: 18px;">
+        <article class="detail-card" data-reveal>
+          <strong>Walk-ins</strong>
+          <h3>Welcome</h3>
+          <p>Best for flash pieces and spontaneous stops.</p>
+        </article>
+        <article class="detail-card" data-reveal>
+          <strong>Hours</strong>
+          <h3>Tue to Sat 12 to 9</h3>
+          <p>Sunday 1 to 6. Monday closed.</p>
+        </article>
+        <article class="detail-card" data-reveal>
+          <strong>Address</strong>
+          <h3>2607 Congress St</h3>
+          <p>Old Town, across from State Historic Park lot B.</p>
+        </article>
+        <article class="detail-card" data-reveal>
+          <strong>Contact</strong>
+          <h3>(619) 356-3516</h3>
+          <p>@thenesttattoo and thenesttattoo@gmail.com</p>
+        </article>
+      </div>
+      <div class="proof-grid">
+        <article class="proof-card" data-reveal>
+          <strong>Why people come here</strong>
+          <h3>Walk in for flash. Stay because the room feels right.</h3>
+          <p>The studio talks about safety and respect. Third-party summaries keep landing on clean, friendly, and comfortable. That tone is part of the product here.</p>
+        </article>
+        <article class="proof-card" data-reveal>
+          <strong>What’s different</strong>
+          <h3>Two artists, clearly separated lanes</h3>
+          <p>Taylor and Kenzie are not blurred into one studio voice. One lane leans illustrative. One leans bold American Traditional. That saves time before anyone sends a message.</p>
+        </article>
+        <article class="proof-card" data-reveal>
+          <strong>Old Town logic</strong>
+          <h3>Good tattoo pages should also help you leave the house.</h3>
+          <p>Congress Street placement, parking guidance, hours, and booking links matter because tattoo decisions are often practical before they become emotional.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="shell" id="artists">
+      <div class="section-head" data-reveal>
+        <div>
+          <span class="section-kicker">Artists</span>
+          <h2>Pick the hand, not just the studio.</h2>
+        </div>
+        <p>The strongest thing on The Nest’s current site is the artist clarity. This version keeps that, then makes the choice easier to scan in under a minute.</p>
+      </div>
+      <div class="artists-grid">
+        <div class="artist-card" data-reveal>
+          <img src="ig-photo-02.jpg" alt="Bright snail tattoo in red and orange tones" />
+          <div class="artist-copy">
+            <span class="micro">Taylor</span>
+            <h3>Illustrative detail, black-and-grey, and vivid color.</h3>
+            <p>The studio describes Taylor’s work as detail-focused, cleanly executed, and built around illustrative storytelling. That lane shows up best in pieces with strong shape, readable character, and color that still feels controlled.</p>
+            <a class="artist-link" href="https://instagram.com/taylorthetattooist" target="_blank" rel="noreferrer">See Taylor’s work ↗</a>
+          </div>
+        </div>
+        <div class="artists-stack">
+          <div class="artist-card" data-reveal>
+            <img src="ig-photo-05.jpg" alt="Black and gray rabbit tattoo from The Nest Tattoo" />
+            <div class="artist-copy">
+              <span class="micro">Kenzie</span>
+              <h3>Bold linework and American Traditional energy.</h3>
+              <p>Kenzie’s own description is tighter and more specific than most shop bios. Strong linework. Bold color. A fun take on American Traditional. Good. That already tells you who this is for.</p>
+              <a class="artist-link" href="https://instagram.com/kenzie.lara.tattoos" target="_blank" rel="noreferrer">See Kenzie’s work ↗</a>
+            </div>
+          </div>
+          <div class="detail-card" data-reveal>
+            <strong>Booking note</strong>
+            <h3>Walk-ins are welcome, bigger pieces should still start with the artist.</h3>
+            <p>The point is not to funnel everyone through the same path. Flash and spontaneous appointments should feel easy. Custom work should feel direct.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="shell" id="gallery">
+      <div class="section-head" data-reveal>
+        <div>
+          <span class="section-kicker">Selected work</span>
+          <h2>Playful when it should be, precise when it matters.</h2>
+        </div>
+        <p>The photo set is strongest when it stays close to the work itself. No fake interiors, no mood-board filler, just real pieces that show range.</p>
+      </div>
+      <div class="gallery-grid">
+        <figure class="gallery-lead" data-reveal>
+          <img src="ig-photo-03.jpg" alt="Orange cat tattoo from The Nest Tattoo" />
+        </figure>
+        <div class="gallery-stack">
+          <img data-reveal src="ig-photo-02.jpg" alt="Snail tattoo in orange and red" />
+          <img data-reveal src="ig-photo-05.jpg" alt="Black and gray rabbit tattoo" />
+          <img data-reveal src="ig-photo-06.jpg" alt="Black and gray tattoo with bold graphic text" />
+          <img data-reveal src="ig-photo-07.jpg" alt="Black and gray seahorse tattoo" />
+        </div>
+      </div>
+    </section>
+
+    <section class="shell" id="visit">
+      <div class="visit-layout">
+        <div class="map-copy" data-reveal>
+          <div>
+            <span class="section-kicker">Visit The Nest</span>
+            <h2>Right across from Old Town State Historic Park.</h2>
+          </div>
+          <p>The current site has the right facts, but they are spread around. This version keeps the orientation details in one clean place because getting there is part of the decision.</p>
+          <div class="map-frame">
+            <iframe title="Map to The Nest Tattoo" src="https://maps.google.com/maps?q=The%20Nest%20Tattoo%202607%20Congress%20St%20San%20Diego%20CA%2092110&z=15&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+        <div class="visit-stack">
+          <article class="visit-card" data-reveal>
+            <strong>Address</strong>
+            <h3>2607 Congress St<br>San Diego, CA 92110</h3>
+            <p>Across the street from Old Town State Historic Park lot B, between Mason and Twiggs.</p>
+            <div class="visit-actions">
+              <a class="button" href="https://maps.google.com/?q=The+Nest+Tattoo+2607+Congress+St+San+Diego+CA+92110" target="_blank" rel="noreferrer">Directions</a>
+            </div>
+          </article>
+          <article class="visit-card" data-reveal>
+            <strong>Reach out</strong>
+            <h3>Call, email, or message before you make the drive.</h3>
+            <p>Book for larger pieces. DM for fresh work. Call if you are deciding right now.</p>
+            <div class="visit-actions">
+              <a class="ghost-button" href="tel:16193563516">Call the shop</a>
+              <a class="ghost-button" href="mailto:thenesttattoo@gmail.com">Email the shop</a>
+              <a class="ghost-button" href="https://www.instagram.com/thenesttattoo" target="_blank" rel="noreferrer">Open Instagram</a>
+            </div>
+          </article>
+          <article class="visit-card" data-reveal>
+            <strong>Good to know</strong>
+            <h3>Cards are fine. Parking is the only thing to think about.</h3>
+            <p>The studio notes that free parking fills up quickly on weekends. There is more free parking at the Department of Transportation lot at Taylor and Congress.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer shell">
+    <div class="footer-box">
+      <div>
+        <p>The Nest Tattoo, Old Town San Diego.</p>
+        <p class="footer-note">This demo reframes the existing shop info into a faster, clearer, more editorial single page built around artist choice, utility, and real work.</p>
+      </div>
+      <nav aria-label="Footer">
+        <a href="https://thenesttattoo.com/" target="_blank" rel="noreferrer">Current site</a>
+        <a href="https://www.instagram.com/thenesttattoo" target="_blank" rel="noreferrer">Instagram</a>
+        <a href="https://www.facebook.com/thenesttattoo" target="_blank" rel="noreferrer">Facebook</a>
+        <a href="https://www.yelp.com/biz/the-nest-tattoo-san-diego-2" target="_blank" rel="noreferrer">Yelp</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const siteHeader = document.querySelector('.site-header');
+    menuToggle?.addEventListener('click', () => {
+      const next = menuToggle.getAttribute('aria-expanded') !== 'true';
+      menuToggle.setAttribute('aria-expanded', String(next));
+      siteHeader.classList.toggle('is-open', next);
+    });
+
+    const revealItems = [...document.querySelectorAll('[data-reveal]')];
+    const titleLines = [...document.querySelectorAll('.hero-title-line')];
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!reduceMotion) {
+      titleLines.forEach((line, index) => {
+        setTimeout(() => line.classList.add('is-visible'), 120 + index * 90);
+      });
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.16 });
+      revealItems.forEach((item, index) => {
+        item.style.transitionDelay = `${Math.min(index * 45, 180)}ms`;
+        observer.observe(item);
+      });
+    } else {
+      titleLines.forEach((line) => line.classList.add('is-visible'));
+      revealItems.forEach((item) => item.classList.add('is-visible'));
+    }
+  </script>
+</body>
+</html>

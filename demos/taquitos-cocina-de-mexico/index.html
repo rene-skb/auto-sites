@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<!--
+DELTA: v5 final polish notes
+- Tightened the hero, simplified explanatory copy, and clarified the fallback ordering path
+- Self-review score: 8.1
+- Panel averages carried forward from panel-notes.md: WHY 7.73 / WHAT 7.53 / HOW 7.60
+- Final polish focus: keep the page honest, appetizing, and easy to act on despite the rough source-photo set
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Taquitos Cocina de México</title>
+  <meta name="description" content="Authentic Mexican food in Bedford, from burritos and birria tacos to tres leches and horchata.">
+  <meta property="og:title" content="Taquitos Cocina de México">
+  <meta property="og:description" content="Authentic Mexican food in Bedford, from burritos and birria tacos to tres leches and horchata.">
+  <meta property="og:image" content="https://auto-sites.pages.dev/demos/taquitos-cocina-de-mexico/ig-photo-08.jpg">
+  <meta property="og:url" content="https://auto-sites.pages.dev/demos/taquitos-cocina-de-mexico/">
+  <meta name="twitter:card" content="summary_large_image">
+  <style>
+    :root {
+      --bg: #f6ead8;
+      --paper: #fff9f1;
+      --text: #23140f;
+      --muted: #6e5548;
+      --accent: #c73f22;
+      --accent-dark: #992e17;
+      --green: #214f3b;
+      --line: rgba(35, 20, 15, 0.12);
+      --shadow: 0 18px 50px rgba(35, 20, 15, 0.1);
+      --section-pad: clamp(72px, 10vw, 120px);
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+    .page {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at top left, rgba(199, 63, 34, 0.16), transparent 34%),
+        radial-gradient(circle at bottom right, rgba(33, 79, 59, 0.1), transparent 32%),
+        var(--bg);
+    }
+    .grain {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.04;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    }
+    .container { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+    .site-header {
+      padding: 18px 0;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background: rgba(246, 234, 216, 0.84);
+      border-bottom: 1px solid rgba(35, 20, 15, 0.06);
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand {
+      font-family: 'Abril Fatface', Georgia, serif;
+      font-size: 1.3rem;
+      letter-spacing: 0.03em;
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      font-size: 0.95rem;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+    }
+    .nav-cta,
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 48px;
+      padding: 0 20px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: transform 180ms var(--ease-out), background 180ms var(--ease-out), color 180ms var(--ease-out), border-color 180ms var(--ease-out);
+    }
+    .nav-cta,
+    .button.primary {
+      background: var(--text);
+      color: #fff;
+      box-shadow: var(--shadow);
+    }
+    .button.secondary {
+      border: 1px solid var(--line);
+      color: var(--text);
+      background: rgba(255,255,255,0.55);
+    }
+    .nav-cta:hover,
+    .button.primary:hover { background: var(--accent-dark); }
+    .button.secondary:hover { border-color: rgba(35,20,15,0.28); background: rgba(255,255,255,0.8); }
+    .nav-cta:active,
+    .button:active { transform: scale(0.97); }
+    .hero {
+      padding: 56px 0 48px;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+      gap: 36px;
+      align-items: end;
+    }
+    .eyebrow {
+      display: inline-flex;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(199, 63, 34, 0.2);
+      color: var(--accent-dark);
+      background: rgba(255, 249, 241, 0.7);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    h1 {
+      margin: 18px 0 18px;
+      font-family: 'Abril Fatface', Georgia, serif;
+      font-size: clamp(4rem, 10vw, 8rem);
+      line-height: 0.92;
+      letter-spacing: 0.01em;
+      max-width: 8ch;
+    }
+    .hero-copy p,
+    .section-copy p,
+    .proof-card p,
+    .menu-copy p,
+    .review-card p,
+    .story-card p,
+    .visit-panel p,
+    .footer p {
+      margin: 0;
+      font-size: 1.05rem;
+      color: var(--muted);
+    }
+    .hero-copy p + p,
+    .section-copy p + p,
+    .story-card p + p,
+    .visit-panel p + p { margin-top: 14px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 28px; }
+    .hero-card {
+      padding: 28px;
+      border-radius: 28px;
+      background: linear-gradient(160deg, rgba(255,249,241,0.96), rgba(235, 216, 188, 0.96));
+      border: 1px solid rgba(35, 20, 15, 0.08);
+      box-shadow: var(--shadow);
+    }
+    .hero-card .line {
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(35, 20, 15, 0.12);
+    }
+    .hero-card .line:last-child { border-bottom: 0; padding-bottom: 0; }
+    .hero-card .label,
+    .visit-panel .label,
+    .review-card .meta,
+    .menu-item .meta {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent-dark);
+    }
+    .hero-card strong,
+    .visit-panel strong,
+    .menu-item strong {
+      font-size: 1.05rem;
+    }
+    section { padding: 0 0 var(--section-pad); }
+    .section-head {
+      display: grid;
+      grid-template-columns: 1fr minmax(280px, 380px);
+      gap: 24px;
+      align-items: end;
+      margin-bottom: 28px;
+    }
+    h2 {
+      margin: 0;
+      font-family: 'Abril Fatface', Georgia, serif;
+      font-size: clamp(2.3rem, 5vw, 4rem);
+      line-height: 1;
+    }
+    .proof-grid,
+    .review-grid,
+    .menu-grid,
+    .story-grid,
+    .visit-grid,
+    .gallery-grid {
+      display: grid;
+      gap: 20px;
+    }
+    .proof-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .proof-card,
+    .review-card,
+    .visit-panel,
+    .story-card,
+    .menu-item {
+      padding: 24px;
+      border-radius: 24px;
+      background: rgba(255, 249, 241, 0.82);
+      border: 1px solid rgba(35, 20, 15, 0.08);
+    }
+    .proof-card strong { display: block; margin-bottom: 10px; font-size: 1.1rem; }
+    .gallery-grid {
+      grid-template-columns: 1.15fr 0.85fr 0.85fr;
+      align-items: stretch;
+    }
+    figure {
+      margin: 0;
+      overflow: hidden;
+      border-radius: 28px;
+      background: #ead8bf;
+      border: 1px solid rgba(35,20,15,0.08);
+      box-shadow: var(--shadow);
+    }
+    figure img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    figure figcaption {
+      padding: 14px 16px 16px;
+      font-size: 0.92rem;
+      color: var(--muted);
+      background: rgba(255,249,241,0.96);
+    }
+    .menu-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .menu-item strong { display: block; margin-bottom: 10px; }
+    .review-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .review-card p { margin-bottom: 18px; }
+    .review-card .meta { color: var(--green); }
+    .story-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .story-card { background: linear-gradient(180deg, rgba(255,249,241,0.95), rgba(240,226,205,0.95)); }
+    .visit-grid { grid-template-columns: 1.1fr 0.9fr; }
+    .visit-panel { background: #1f4033; color: #f7efe1; }
+    .visit-panel p,
+    .visit-panel strong,
+    .visit-panel a { color: #f7efe1; }
+    .visit-panel .label { color: #f7c27d; }
+    .visit-panel a { text-decoration: none; border-bottom: 1px solid rgba(247,239,225,0.35); }
+    .footer {
+      padding: 0 0 48px;
+    }
+    .footer-card {
+      padding: 28px;
+      border-radius: 24px;
+      background: rgba(255,249,241,0.86);
+      border: 1px solid rgba(35,20,15,0.08);
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
+    }
+    .reveal { opacity: 1; transform: none; }
+    @media (max-width: 980px) {
+      .hero-grid,
+      .section-head,
+      .gallery-grid,
+      .visit-grid,
+      .story-grid,
+      .proof-grid,
+      .review-grid,
+      .menu-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      h1 { max-width: 100%; }
+    }
+    @media (max-width: 720px) {
+      .container { width: min(100% - 28px, 1120px); }
+      .site-header { position: static; }
+      .hero { padding-top: 28px; }
+      .footer-card { flex-direction: column; align-items: flex-start; }
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      .reveal {
+        opacity: 0;
+        transform: translateY(24px);
+        transition: opacity 700ms var(--ease-out), transform 700ms var(--ease-out);
+      }
+      .reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .stagger > * {
+        transition-delay: calc(var(--i, 0) * 70ms);
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+    }
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+<!--
+PHOTO RANKING
+1. ig-photo-08.jpg — warm portrait inside the restaurant, strongest human hospitality cue, vertical, grid
+2. ig-photo-01.jpg — festive taco and margarita spread, landscape, strong appetite even though it is promo-led, grid
+3. ig-photo-03.jpg — colorful kitchen sign and décor, square, great for behind-the-scenes texture, grid
+4. ig-photo-07.jpg — tres leches in hand, vertical, useful dessert support, grid
+5. ig-photo-02.jpg — live event performance, vertical, community proof, backup only
+6. ig-photo-06.jpg — dessert promo graphic, square, polished but seasonal, backup only
+7. ig-photo-04.jpg — karaoke event flyer, square, too text-heavy for the homepage
+8. ig-photo-05.jpg — takeout bag, weak visual interest, skip
+ASSIGNMENTS
+- Hero: no photo hero, giant-display-type pattern fits the strongest available asset mix better than forcing promo art wide
+- Gallery/cards: ig-photo-01.jpg, ig-photo-08.jpg, ig-photo-03.jpg
+- Skip on page: ig-photo-04.jpg, ig-photo-05.jpg
+-->
+  <div class="page">
+    <div class="grain"></div>
+    <header class="site-header">
+      <div class="container nav">
+        <a class="brand" href="#top">Taquitos Cocina de México</a>
+        <nav class="nav-links" aria-label="Primary">
+          <a href="#proof">Why go</a>
+          <a href="#food">What to order</a>
+          <a href="#reviews">Reviews</a>
+          <a href="#visit">Visit</a>
+        </nav>
+        <a class="nav-cta" href="tel:+19028320570">Call 902-832-0570</a>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="hero-copy reveal">
+            <span class="eyebrow">Bedford, Nova Scotia</span>
+            <h1>Bedford finally has the real thing.</h1>
+            <p>Taquitos Cocina de México serves burritos, birria, taquitos, churros, horchata, and tres leches at 12 Ella Lane in Bedford. People from California and Los Angeles keep saying it tastes like home, which is about as useful a review as this category gets.</p>
+            <div class="hero-actions">
+              <a class="button primary" href="https://www.ubereats.com/ca/store/taquitos-cocina-de-mexico/oTAoN0ooX_mgsWXroY3YXw">Order online</a>
+              <a class="button secondary" href="https://www.instagram.com/taquitos.restaurant/">See the food on Instagram</a>
+            </div>
+          </div>
+          <aside class="hero-card reveal">
+            <div class="line">
+              <span class="label">Hours</span>
+              <strong>Sun 11AM-6PM</strong><br>
+              <strong>Mon-Sat 11AM-9PM</strong>
+            </div>
+            <div class="line">
+              <span class="label">Address</span>
+              <strong>12 Ella Lane, Unit 104<br>Bedford, NS B4B 2M8</strong>
+            </div>
+            <div class="line">
+              <span class="label">Good to know</span>
+              <strong>Opened in December 2023, then fought through a brutal 2025 cost crunch by asking the community for help in public.</strong>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="proof">
+        <div class="container">
+          <div class="section-head reveal">
+            <div>
+              <h2>Why people keep showing up</h2>
+            </div>
+            <div class="section-copy">
+              <p>It already has a real menu, a real following, and enough word of mouth to make “best tacos in Halifax” show up in public reviews. The website just hasn’t caught up yet.</p>
+            </div>
+          </div>
+          <div class="proof-grid reveal stagger">
+            <article class="proof-card" style="--i:0">
+              <strong>4.6 on Uber Eats, with 250+ ratings</strong>
+              <p>Enough order volume to trust the signal, not just the first-week friends-and-family bump.</p>
+            </article>
+            <article class="proof-card" style="--i:1">
+              <strong>Burritos, taquitos, birria, churros, and tres leches all show up in the live menu</strong>
+              <p>This is not a one-hit taco counter. The range is wide without feeling generic.</p>
+            </article>
+            <article class="proof-card" style="--i:2">
+              <strong>The room has become a gathering place too</strong>
+              <p>Instagram shows karaoke nights, live performances, desserts, and regulars, not just a silent pickup shelf.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="gallery">
+        <div class="container">
+          <div class="section-head reveal">
+            <div>
+              <h2>Food first, then the room around it</h2>
+            </div>
+            <div class="section-copy">
+              <p>The photo set is messy in the honest way small restaurants usually are: promo graphics, dessert drops, kitchen shots, events, people. That still tells the truth better than fake polish.</p>
+            </div>
+          </div>
+          <div class="gallery-grid reveal stagger">
+            <figure style="--i:0">
+              <img src="ig-photo-01.jpg" alt="Tacos, margaritas, and a Cinco de Mayo spread from Taquitos Cocina de México.">
+              <figcaption>Tacos and margaritas, loud colors, zero ambiguity about what kind of night this place wants to give you.</figcaption>
+            </figure>
+            <figure style="--i:1">
+              <img src="ig-photo-08.jpg" alt="Two guests inside Taquitos Cocina de México with menu wall and hanging peppers behind them.">
+              <figcaption>People actually inside the restaurant, which matters more here than some overstyled branding system.</figcaption>
+            </figure>
+            <figure style="--i:2">
+              <img src="ig-photo-03.jpg" alt="Decorated kitchen area and bilingual hiring sign inside Taquitos Cocina de México.">
+              <figcaption>The room has personality, bilingual signage, and enough warmth to feel lived in.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section id="food">
+        <div class="container">
+          <div class="section-head reveal">
+            <div>
+              <h2>What to order</h2>
+            </div>
+            <div class="section-copy">
+              <p>The delivery menu gives us the cleanest view of what people actually buy. Start with the dishes that keep getting pulled to the top, then work outward.</p>
+            </div>
+          </div>
+          <div class="menu-grid reveal stagger">
+            <article class="menu-item" style="--i:0">
+              <span class="meta">Most liked</span>
+              <strong>Burritos</strong>
+              <p>Your choice of pastor, tinga, cochinita, chorizo, fish, carne asada, or suadero in a 12-inch flour tortilla with rice, beans, lettuce, sour cream, mozza, and hot salsa.</p>
+            </article>
+            <article class="menu-item" style="--i:1">
+              <span class="meta">Most liked</span>
+              <strong>Los Nachos</strong>
+              <p>A shareable plate you can add tinga, carne asada, suadero, cochinita, or chorizo to, which is exactly the kind of practical ordering move a neighborhood spot needs.</p>
+            </article>
+            <article class="menu-item" style="--i:2">
+              <span class="meta">Order this too</span>
+              <strong>Taquitos + Shrimp Tostadas</strong>
+              <p>The taquitos are three crispy tacos with chicken, lettuce, sour cream, and cheese. The shrimp tostadas add pickled onion, radish, cabbage, cilantro, and habanero dressing.</p>
+            </article>
+            <article class="menu-item" style="--i:3">
+              <span class="meta">Do not skip dessert</span>
+              <strong>Churros, tres leches, horchata</strong>
+              <p>The churros and pastel de tres leches are both live menu staples, and one Uber Eats reviewer called the tres leches “incredible.” Wash it down with horchata or jamaica.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="reviews">
+        <div class="container">
+          <div class="section-head reveal">
+            <div>
+              <h2>What people say after they eat here</h2>
+            </div>
+            <div class="section-copy">
+              <p>Same treatment, real names, direct attributions. No anonymous vibes, no made-up testimonial theater.</p>
+            </div>
+          </div>
+          <div class="review-grid reveal stagger">
+            <article class="review-card" style="--i:0">
+              <p>“Moved up here from L.A. and very pleased to have something that tastes like home. Flavourful without giving ring o‘ fire the morning after. Love it!”</p>
+              <span class="meta">Cynthia M. · 2024-05-11 · Via Uber Eats</span>
+            </article>
+            <article class="review-card" style="--i:1">
+              <p>“Delicious &amp; most authentic Mexican restaurant I’ve ever had here. The Deluxe Tres Leches Cake was incredible.”</p>
+              <span class="meta">Lorie Ann S. · 2024-06-02 · Via Uber Eats</span>
+            </article>
+            <article class="review-card" style="--i:2">
+              <p>“Being a California boy, it’s great to have some Mexican food in HFX!”</p>
+              <span class="meta">John M. · 2024-03-08 · Via Uber Eats</span>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="story">
+        <div class="container">
+          <div class="section-head reveal">
+            <div>
+              <h2>This place has some fight in it</h2>
+            </div>
+            <div class="section-copy">
+              <p>CityNews Halifax reported that owner Daniela Alonso opened Taquitos in December 2023, then spent early 2026 asking the public for help after rising food costs pushed the business to the edge. The surge of community support after that post is part of the brand now, whether they asked for it or not.</p>
+            </div>
+          </div>
+          <div class="story-grid reveal stagger">
+            <article class="story-card" style="--i:0">
+              <span class="label">What changed</span>
+              <p>After the January social post blew up, Alonso said, “It’s been amazing. We have to adjust now to hopefully the new normal that we have more customers.”</p>
+            </article>
+            <article class="story-card" style="--i:1">
+              <span class="label">What the site should do</span>
+              <p>Turn that attention into orders, visits, and repeat customers instead of dropping people onto a dead-end ordering setup page.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="visit">
+        <div class="container">
+          <div class="section-head reveal">
+            <div>
+              <h2>Go hungry. Bring friends.</h2>
+            </div>
+            <div class="section-copy">
+              <p>The essentials should be painfully easy to find. If you need the rest of the menu, the live ordering page is still the fastest source of truth.</p>
+            </div>
+          </div>
+          <div class="visit-grid reveal stagger">
+            <article class="visit-panel" style="--i:0">
+              <span class="label">Visit</span>
+              <p><strong>12 Ella Lane, Unit 104<br>Bedford, NS B4B 2M8</strong></p>
+              <p><strong>Call:</strong> <a href="tel:+19028320570">902-832-0570</a></p>
+              <p><strong>Instagram:</strong> <a href="https://www.instagram.com/taquitos.restaurant/">@taquitos.restaurant</a></p>
+              <p><strong>Directions:</strong> <a href="https://www.google.com/maps/search/?api=1&query=Taquitos+Cocina+de+M%C3%A9xico+12+Ella+Lane+Bedford+NS">Open the business in Google Maps</a></p>
+            </article>
+            <article class="visit-panel" style="--i:1">
+              <span class="label">Order now</span>
+              <p><strong>Uber Eats:</strong> <a href="https://www.ubereats.com/ca/store/taquitos-cocina-de-mexico/oTAoN0ooX_mgsWXroY3YXw">See the live menu</a></p>
+              <p><strong>House note:</strong> Their branded domain currently resolves to a not-ready ordering setup page, so use Uber Eats or Instagram instead.</p>
+              <p><strong>Hours shown on the ordering page:</strong> Sun 11AM-6PM, Mon-Sat 11AM-9PM.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-card reveal">
+        <div>
+          <strong>Taquitos Cocina de México</strong>
+          <p>Authentic Mexican food in Bedford, with a lot more character than its current website suggests.</p>
+        </div>
+        <a class="button primary" href="https://www.ubereats.com/ca/store/taquitos-cocina-de-mexico/oTAoN0ooX_mgsWXroY3YXw">Order dinner</a>
+      </div>
+    </footer>
+  </div>
+  <script>
+    const items = document.querySelectorAll('.reveal');
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      items.forEach((item) => observer.observe(item));
+    } else {
+      items.forEach((item) => item.classList.add('is-visible'));
+    }
+  </script>
+</body>
+</html>

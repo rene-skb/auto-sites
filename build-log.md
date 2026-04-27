@@ -1,5 +1,49 @@
 # Auto-Sites Build Log
 
+### Taquitos Cocina de México — Mexican Restaurant, Bedford / Halifax NS
+- **Date:** 2026-04-27
+- **Model:** openai-codex/gpt-5.4
+- **Agent:** Lucy
+- **Folder:** taquitos-cocina-de-mexico
+- **Hero pattern:** giant-display-type
+- **Typography:** Abril Fatface + Inter
+- **Review layout:** three equal review cards with the same warm paper treatment and direct Uber Eats attributions
+- **Visit/hours layout:** dark two-panel utility block with address, ordering links, and current fallback guidance
+- **Stats bar style:** no-stats
+- **WHY Score:** 7.73 (Jobs 7.8 / Graham 7.4 / Ogilvy 8.0)
+- **WHAT Score:** 7.53 (Norman 7.6 / Krug 7.8 / Nielsen 7.2)
+- **HOW Score:** 7.60 (Vignelli 7.4 / Spiekermann 7.7 / Rams 7.5 / Kowalski 7.8)
+- **Panel average:** 7.62
+- **Self-review:** 8.1
+- **Versions built:** 6 HTML versions + final index.html
+- **Build time:** ~55 minutes
+- **Token estimate:** ~15k
+- **Key decisions:** The queue was stale above this entry, so the real overnight work started with cleanup and then moved to the first unbuilt brief. Discovery found the domain was worse than expected: not just a thin site, but a generic unfinished ordering setup page. The build leaned on giant type, real social assets, Uber Eats menu proof, and CityNews context instead of pretending the photo pool was cleaner than it is.
+- **Notes:** Instagram handle verified as `@taquitos.restaurant`. Queue brief’s website diagnosis was directionally right but understated. Google Maps business-pin URL was not confidently surfaced in this pass, so the directions CTA uses a business-name query instead of a plain address link.
+- **Live URL:** pending push / Pages verification
+
+### The Nest Tattoo — Tattoo Studio, San Diego CA
+- **Date:** 2026-04-26
+- **Model:** openai-codex/gpt-5.4
+- **Agent:** Lucy
+- **Folder:** the-nest-tattoo
+- **Hero pattern:** split-image-right
+- **Typography:** Fraunces + Manrope
+- **Review layout:** no customer review cards; three same-treatment proof cards plus artist-led evidence blocks
+- **Visit/hours layout:** compact utility strip under hero, then map-left visit split with stacked contact cards
+- **Stats bar style:** no-stats
+- **WHY Score:** 7.00 (Jobs 7.0 / Graham 6.5 / Ogilvy 7.5)
+- **WHAT Score:** 7.53 (Norman 7.4 / Krug 7.7 / Nielsen 7.5)
+- **HOW Score:** 7.75 (Vignelli 7.7 / Spiekermann 7.8 / Rams 7.5 / Kowalski 8.0)
+- **Panel average:** 7.43
+- **Self-review:** 8.8
+- **Versions built:** 6 HTML versions + final index.html
+- **Build time:** ~60 minutes
+- **Token estimate:** ~17k
+- **Key decisions:** The queue brief was stale on the biggest fact. The Nest Tattoo already has a live GoDaddy site, confirmed Instagram, and clearer utility data than expected, so the opportunity was not a no-site rescue. The build reframed it as a cleaner editorial alternative centered on artist choice, walk-in logic, and Old Town visit utility. Real Instagram tattoo photos were strong enough to carry the page, and no customer review cards were used because compliant first-name-plus-last-initial review attributions were not available from sources surfaced in this pass.
+- **Notes:** Verified address, phone, hours, email, artist bios, and parking note from the official site. BestProsInTown surfaced the 4.9 rating and 14-review-summary proof, but named reviewer data was too thin for compliant customer cards, so proof stayed factual.
+- **Live URL:** https://auto-sites.pages.dev/demos/the-nest-tattoo/ (live verification pending cache)
+
 ### Ink Noir — Tattoo Studio, Winnipeg MB
 - **Date:** 2026-04-25
 - **Model:** openai-codex/gpt-5.4

@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<!--
+DELTA: v5 final polish notes
+- Tightened hero support copy, clarified the rescue angle, and kept the visit block practical
+- Self-review score: 8.2
+- Panel averages carried forward from panel-notes.md: WHY 7.77 / WHAT 7.77 / HOW 7.88
+- Final polish focus: make the page feel calm, factual, and seasonally useful
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Halifax Perennials</title>
+  <meta name="description" content="Reserve roses, shrubs, clematis, blueberries, and more online, then pick up in Halifax once your plants arrive.">
+  <meta property="og:title" content="Halifax Perennials">
+  <meta property="og:description" content="Reserve roses, shrubs, clematis, blueberries, and more online, then pick up in Halifax once your plants arrive.">
+  <meta property="og:image" content="https://auto-sites.pages.dev/demos/halifax-perennials/magnolia.png">
+  <meta property="og:url" content="https://auto-sites.pages.dev/demos/halifax-perennials/">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f4f0e8;
+      --paper: #fbf8f2;
+      --sage: #dfe5d7;
+      --moss: #35543b;
+      --moss-deep: #203525;
+      --leaf: #6e8b65;
+      --text: #1e241d;
+      --muted: #586357;
+      --line: rgba(30, 36, 29, 0.12);
+      --shadow: 0 24px 60px rgba(31, 39, 29, 0.1);
+      --section-pad: clamp(72px, 9vw, 120px);
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Instrument Sans', system-ui, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+    body.menu-open { overflow: hidden; }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; }
+    .page {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top left, rgba(110, 139, 101, 0.18), transparent 28%),
+        radial-gradient(circle at 85% 10%, rgba(223, 229, 215, 0.85), transparent 26%),
+        linear-gradient(180deg, #eef2e8 0%, var(--bg) 38%, #f7f4ee 100%);
+      overflow: hidden;
+    }
+    .grain {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    }
+    .container { width: min(1160px, calc(100% - 40px)); margin: 0 auto; }
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(16px);
+      background: rgba(244, 240, 232, 0.86);
+      border-bottom: 1px solid rgba(30, 36, 29, 0.08);
+    }
+    .nav {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand {
+      text-decoration: none;
+      color: var(--moss-deep);
+    }
+    .brand-mark {
+      display: block;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.8rem;
+      line-height: 0.95;
+      letter-spacing: 0.02em;
+    }
+    .brand-sub {
+      display: block;
+      margin-top: 4px;
+      font-size: 0.8rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      font-size: 0.95rem;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+    }
+    .button,
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 48px;
+      padding: 0 20px;
+      border-radius: 999px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 180ms var(--ease-out), background 180ms var(--ease-out), color 180ms var(--ease-out), border-color 180ms var(--ease-out), box-shadow 180ms var(--ease-out);
+    }
+    .nav-cta,
+    .button.primary {
+      background: var(--moss-deep);
+      color: #f8f5ef;
+      box-shadow: var(--shadow);
+    }
+    .button.secondary {
+      background: rgba(251, 248, 242, 0.72);
+      color: var(--moss-deep);
+      border: 1px solid var(--line);
+    }
+    .nav-cta:hover,
+    .button.primary:hover { background: var(--moss); }
+    .button.secondary:hover { border-color: rgba(30,36,29,0.24); background: rgba(251,248,242,0.94); }
+    .button:active,
+    .nav-cta:active { transform: scale(0.97); }
+    .menu-button {
+      display: none;
+      width: 48px;
+      height: 48px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(251,248,242,0.72);
+      color: var(--moss-deep);
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    .menu-button span,
+    .menu-button::before,
+    .menu-button::after {
+      content: '';
+      display: block;
+      width: 18px;
+      height: 2px;
+      background: currentColor;
+      border-radius: 999px;
+      transition: transform 180ms var(--ease-out), opacity 180ms var(--ease-out);
+    }
+    .menu-button span { margin: 4px 0; }
+    .menu-button[aria-expanded="true"]::before { transform: translateY(6px) rotate(45deg); }
+    .menu-button[aria-expanded="true"] span { opacity: 0; }
+    .menu-button[aria-expanded="true"]::after { transform: translateY(-6px) rotate(-45deg); }
+    .hero { padding: 48px 0 28px; }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(340px, 1.05fr);
+      gap: 34px;
+      align-items: center;
+    }
+    .eyebrow,
+    .section-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 34px;
+      padding: 0 14px;
+      border-radius: 999px;
+      background: rgba(251, 248, 242, 0.72);
+      border: 1px solid rgba(53, 84, 59, 0.14);
+      color: var(--moss);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.76rem;
+      font-weight: 700;
+    }
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      color: var(--moss-deep);
+      line-height: 0.96;
+      font-weight: 600;
+    }
+    h1 {
+      margin-top: 20px;
+      font-size: clamp(4rem, 9vw, 7.2rem);
+      max-width: 8ch;
+      letter-spacing: -0.03em;
+    }
+    .hero-copy p,
+    .section-copy p,
+    .card p,
+    .visit-note p,
+    .footer p,
+    .seasonal-card p { 
+      margin: 0;
+      font-size: 1.04rem;
+      color: var(--muted);
+    }
+    .hero-copy p + p,
+    .section-copy p + p,
+    .visit-note p + p,
+    .seasonal-card p + p { margin-top: 14px; }
+    .hero-copy {
+      max-width: 33rem;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 28px;
+    }
+    .hero-note {
+      margin-top: 18px;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+    .hero-visual {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 170px;
+      gap: 18px;
+      align-items: stretch;
+    }
+    figure {
+      margin: 0;
+      border-radius: 28px;
+      overflow: hidden;
+      background: #dde6d8;
+      border: 1px solid rgba(30,36,29,0.08);
+      box-shadow: var(--shadow);
+    }
+    .hero-main-photo img,
+    .gallery-card img,
+    .seasonal-photo img,
+    .proof-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .hero-main-photo { min-height: 560px; }
+    .hero-side-stack {
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      gap: 18px;
+    }
+    .side-card {
+      padding: 22px 20px;
+      border-radius: 24px;
+      background: rgba(251, 248, 242, 0.86);
+      border: 1px solid rgba(30,36,29,0.08);
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 14px;
+    }
+    .label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-weight: 800;
+      color: var(--leaf);
+    }
+    .side-card strong,
+    .detail-card strong,
+    .seasonal-card strong,
+    .visit-card strong,
+    .proof-card strong {
+      display: block;
+      font-size: 1.08rem;
+      color: var(--moss-deep);
+      margin-bottom: 10px;
+    }
+    .quick-strip {
+      padding: 0 0 var(--section-pad);
+    }
+    .quick-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .detail-card,
+    .proof-card,
+    .visit-card,
+    .seasonal-card {
+      padding: 24px;
+      border-radius: 24px;
+      background: rgba(251, 248, 242, 0.82);
+      border: 1px solid rgba(30,36,29,0.08);
+      box-shadow: var(--shadow);
+    }
+    section { padding: 0 0 var(--section-pad); }
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(260px, 380px);
+      gap: 24px;
+      align-items: end;
+      margin-bottom: 28px;
+    }
+    h2 {
+      font-size: clamp(2.8rem, 6vw, 4.7rem);
+      letter-spacing: -0.03em;
+    }
+    .proof-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 22px;
+      align-items: stretch;
+    }
+    .proof-quote {
+      padding: 34px;
+      border-radius: 30px;
+      background: linear-gradient(145deg, rgba(223,229,215,0.9), rgba(251,248,242,0.95));
+      border: 1px solid rgba(53,84,59,0.12);
+      box-shadow: var(--shadow);
+      display: grid;
+      gap: 20px;
+      align-content: start;
+    }
+    .proof-quote p {
+      margin: 0;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.02;
+      color: var(--moss-deep);
+    }
+    .proof-quote .meta {
+      font-size: 0.88rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 700;
+    }
+    .proof-stack {
+      display: grid;
+      gap: 18px;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+      gap: 22px;
+      align-items: stretch;
+    }
+    .gallery-tall {
+      min-height: 560px;
+    }
+    .gallery-side {
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      gap: 22px;
+    }
+    .gallery-card figcaption,
+    .hero-main-photo figcaption,
+    .seasonal-photo figcaption,
+    .proof-photo figcaption {
+      padding: 14px 16px 16px;
+      background: rgba(251, 248, 242, 0.94);
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+    .seasonal-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+      gap: 22px;
+      align-items: start;
+    }
+    .seasonal-photo {
+      min-height: 520px;
+    }
+    .seasonal-stack {
+      display: grid;
+      gap: 18px;
+    }
+    .visit-section {
+      padding-bottom: calc(var(--section-pad) - 10px);
+    }
+    .visit-shell {
+      border-radius: 32px;
+      background: linear-gradient(155deg, rgba(32,53,37,0.96), rgba(53,84,59,0.92));
+      color: #eff5ea;
+      padding: clamp(28px, 4vw, 44px);
+      box-shadow: 0 30px 70px rgba(32,53,37,0.22);
+    }
+    .visit-shell h2,
+    .visit-shell h3,
+    .visit-shell strong,
+    .visit-shell .label,
+    .visit-shell .section-kicker { color: #eff5ea; }
+    .visit-shell .section-copy p,
+    .visit-shell .visit-card p,
+    .visit-shell .visit-note p { color: rgba(239,245,234,0.8); }
+    .visit-shell .section-kicker {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.16);
+    }
+    .visit-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: 22px;
+      align-items: start;
+      margin-top: 28px;
+    }
+    .visit-stack {
+      display: grid;
+      gap: 18px;
+    }
+    .visit-card {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.12);
+      box-shadow: none;
+    }
+    .visit-note {
+      padding: 22px 24px;
+      border-radius: 24px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .visit-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 18px;
+    }
+    .visit-shell .button.primary {
+      background: #eff5ea;
+      color: var(--moss-deep);
+      box-shadow: none;
+    }
+    .visit-shell .button.primary:hover { background: #ffffff; }
+    .visit-shell .button.secondary {
+      background: rgba(255,255,255,0.08);
+      color: #eff5ea;
+      border-color: rgba(255,255,255,0.18);
+    }
+    .visit-shell .button.secondary:hover { background: rgba(255,255,255,0.14); }
+    .proof-photo {
+      min-height: 100%;
+    }
+    .footer {
+      padding: 0 0 48px;
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
+      padding-top: 20px;
+      border-top: 1px solid rgba(30,36,29,0.1);
+    }
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 700ms var(--ease-out), transform 700ms var(--ease-out);
+      will-change: transform, opacity;
+    }
+    [data-reveal].is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    [data-stagger] > * {
+      transition-delay: calc(var(--stagger-index, 0) * 70ms);
+    }
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+    @media (max-width: 1024px) {
+      .hero-grid,
+      .proof-layout,
+      .gallery-grid,
+      .seasonal-layout,
+      .visit-grid,
+      .section-head {
+        grid-template-columns: 1fr;
+      }
+      .hero-visual {
+        grid-template-columns: 1fr;
+      }
+      .hero-side-stack,
+      .gallery-side {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-rows: none;
+      }
+      .quick-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .proof-photo,
+      .seasonal-photo,
+      .gallery-tall,
+      .hero-main-photo { min-height: 420px; }
+    }
+    @media (max-width: 760px) {
+      .container { width: min(100% - 24px, 1160px); }
+      .nav { min-height: 72px; }
+      .menu-button { display: inline-flex; }
+      .nav-links {
+        position: fixed;
+        inset: 72px 12px auto 12px;
+        background: rgba(251,248,242,0.98);
+        border: 1px solid rgba(30,36,29,0.08);
+        border-radius: 24px;
+        box-shadow: var(--shadow);
+        padding: 18px;
+        display: grid;
+        gap: 12px;
+        transform: translateY(-12px);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 180ms var(--ease-out), transform 180ms var(--ease-out);
+      }
+      .nav-links.is-open {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+      }
+      .nav-links .nav-cta { width: 100%; }
+      .hero { padding-top: 28px; }
+      h1 { font-size: clamp(3rem, 16vw, 5rem); }
+      .quick-grid,
+      .hero-side-stack,
+      .gallery-side { grid-template-columns: 1fr; }
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+      [data-reveal] { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="grain"></div>
+    <header class="site-header">
+      <div class="container nav">
+        <a class="brand" href="#top">
+          <span class="brand-mark">Halifax<br>Perennials</span>
+          <span class="brand-sub">Reserve now, pick up in Halifax</span>
+        </a>
+        <button class="menu-button" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle menu"><span></span></button>
+        <nav id="nav-links" class="nav-links" aria-label="Primary">
+          <a href="#why">Why go here</a>
+          <a href="#plants">What to watch for</a>
+          <a href="#visit">Pickup details</a>
+          <a class="nav-cta" href="https://halifaxperennials.ca/" target="_blank" rel="noreferrer">Browse the catalogue</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="hero-copy" data-reveal>
+            <span class="eyebrow">Halifax, NS · pickup + Canada-wide mail order</span>
+            <h1>Reserve spring plants before the good ones disappear.</h1>
+            <p>Halifax Perennials sells roses, peonies, shrubs, clematis, blueberries, and more through a live online catalogue, then tells you when your plants are actually ready for pickup.</p>
+            <p>The current site has the inventory and the facts. This concept gives them a calmer front door.</p>
+            <div class="hero-actions">
+              <a class="button primary" href="https://halifaxperennials.ca/" target="_blank" rel="noreferrer">Browse the 2026 catalogue</a>
+              <a class="button secondary" href="https://www.facebook.com/halifaxperennials/" target="_blank" rel="noreferrer">Check current pickup hours</a>
+            </div>
+            <p class="hero-note">Pickup runs from 28 Withrod Dr. Open hours shift week to week, usually across 2 to 3 evenings, and Saturdays stay off the table.</p>
+          </div>
+          <div class="hero-visual" data-reveal>
+            <figure class="hero-main-photo">
+              <img src="magnolia.png" alt="White magnolia bloom against soft green foliage.">
+              <figcaption>One of the strengths here is range. The catalogue spans roses, shrubs, fruiting plants, and seasonal favourites instead of one narrow lane.</figcaption>
+            </figure>
+            <div class="hero-side-stack" data-stagger>
+              <div class="side-card" style="--stagger-index:0">
+                <div>
+                  <span class="label">What makes it useful</span>
+                  <strong>Reserve first, pick up later</strong>
+                  <p>Spring orders can be claimed online, then collected once stock arrives in late April and early May.</p>
+                </div>
+              </div>
+              <div class="side-card" style="--stagger-index:1">
+                <div>
+                  <span class="label">What feels underplayed</span>
+                  <strong>Canada-grown depth</strong>
+                  <p>Facebook notes say about 97% of the plants on the site are grown in Canada. That's a real differentiator and it barely shows up in the current experience.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="quick-strip">
+        <div class="container quick-grid" data-stagger>
+          <div class="detail-card" data-reveal style="--stagger-index:0">
+            <span class="label">Pickup</span>
+            <strong>28 Withrod Dr, Halifax</strong>
+            <p>Private-home pickup point, with open hours posted on Facebook once the spring season gets moving.</p>
+          </div>
+          <div class="detail-card" data-reveal style="--stagger-index:1">
+            <span class="label">Contact</span>
+            <strong>902-412-8673</strong>
+            <p>Call, email, or message through Facebook if the listed pickup windows miss your week.</p>
+          </div>
+          <div class="detail-card" data-reveal style="--stagger-index:2">
+            <span class="label">Selection</span>
+            <strong>Roses, peonies, shrubs, vines, fruit</strong>
+            <p>The live catalogue spans ornamental staples and edible plants instead of a tiny seasonal assortment.</p>
+          </div>
+          <div class="detail-card" data-reveal style="--stagger-index:3">
+            <span class="label">Signal</span>
+            <strong>7,218 Facebook likes</strong>
+            <p>The social footprint is stronger than the site suggests, with regular updates and active spring inventory posts.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="why">
+        <div class="container">
+          <div class="section-head" data-reveal>
+            <div>
+              <span class="section-kicker">Why this works</span>
+              <h2>A nursery page should calm you down, not make you decode it.</h2>
+            </div>
+            <div class="section-copy">
+              <p>The opportunity here isn't a new brand. It's a cleaner frame around what already exists: a big catalogue, specific pickup guidance, and a customer base that already pays attention.</p>
+            </div>
+          </div>
+          <div class="proof-layout">
+            <div class="proof-quote" data-reveal>
+              <p>"It’s a from-home hobby, so usually there are 2-3 evenings a week available for pickups."</p>
+              <span class="meta">Official pickup note · Halifax Perennials contact page</span>
+              <div class="section-copy">
+                <p>That's the kind of detail worth leaning into. It's human, practical, and honest. A good rescue build makes that feel intentional instead of buried.</p>
+              </div>
+            </div>
+            <div class="proof-stack" data-stagger>
+              <div class="proof-card" data-reveal style="--stagger-index:0">
+                <span class="label">Real breadth</span>
+                <strong>Mail order in Canada, pickup in Halifax</strong>
+                <p>The site metadata already says it clearly: this isn't just a neighbourhood pickup list. It's a wider plant catalogue with local pickup as the practical finish.</p>
+              </div>
+              <div class="proof-card" data-reveal style="--stagger-index:1">
+                <span class="label">Real audience</span>
+                <strong>274 people talking about it on Facebook</strong>
+                <p>There is enough attention here to justify a page that feels deliberate, current, and easier to trust at a glance.</p>
+              </div>
+              <div class="proof-card" data-reveal style="--stagger-index:2">
+                <span class="label">Real timing</span>
+                <strong>Arrival windows are part of the value</strong>
+                <p>Potted plants land from roughly 18 to 20 suppliers between late April and May 6 to 10, then pickup emails follow. That sequence matters, and the site should explain it fast.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="plants">
+        <div class="container">
+          <div class="section-head" data-reveal>
+            <div>
+              <span class="section-kicker">What to watch for</span>
+              <h2>The inventory is the pitch.</h2>
+            </div>
+            <div class="section-copy">
+              <p>When a plant business already has the depth, the page doesn't need a big story section. It needs appetite, clarity, and a clean path to the catalogue.</p>
+            </div>
+          </div>
+          <div class="gallery-grid">
+            <figure class="gallery-card gallery-tall" data-reveal>
+              <img src="rose.png" alt="Close-up of a blush rose with rain droplets.">
+              <figcaption>Roses are a major lane here, from climbers and shrub roses to David Austin varieties and rose trees.</figcaption>
+            </figure>
+            <div class="gallery-side" data-stagger>
+              <figure class="gallery-card" data-reveal style="--stagger-index:0">
+                <img src="peonies.png" alt="Rows of potted pink peonies in bloom.">
+                <figcaption>Peonies and other spring bloomers give the site a natural visual language it barely uses right now.</figcaption>
+              </figure>
+              <figure class="gallery-card" data-reveal style="--stagger-index:1">
+                <img src="clematis.png" alt="Wide view of clematis vines and spring perennials in a nursery display.">
+                <figcaption>Clematis, vines, and other seasonal growers help the page feel abundant before a visitor ever opens the filter menu.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container seasonal-layout">
+          <figure class="seasonal-photo" data-reveal>
+            <img src="blueberry.png" alt="Rows of potted shrubs and fruiting plants in a nursery aisle.">
+            <figcaption>Fruit and edible plants are a real part of the catalogue, including blueberry, currants, kiwi vine, grapes, raspberry, strawberry, and more.</figcaption>
+          </figure>
+          <div class="seasonal-stack" data-stagger>
+            <div class="section-copy" data-reveal style="--stagger-index:0">
+              <span class="section-kicker">Seasonal system</span>
+              <h2>Built around the way plant buying actually happens.</h2>
+              <p>People don't need a local nursery page to sound poetic. They need to know what kinds of plants are here, when pickup opens, and where to look for the freshest updates.</p>
+            </div>
+            <div class="seasonal-card" data-reveal style="--stagger-index:1">
+              <span class="label">Current strongest categories</span>
+              <strong>Roses, fruiting plants, shrubs and trees, clematis and vines</strong>
+              <p>Those category groups are right on the live site. A calmer homepage can turn them into clear entry points instead of a giant filter wall.</p>
+            </div>
+            <div class="seasonal-card" data-reveal style="--stagger-index:2">
+              <span class="label">Best live update channel</span>
+              <strong>Facebook does the day-to-day work</strong>
+              <p>Pickup hours, sale notes, and newly added plants already flow through Facebook. The redesign should treat that as part of the product, not an afterthought.</p>
+            </div>
+            <div class="seasonal-card" data-reveal style="--stagger-index:3">
+              <span class="label">Why the rescue angle fits</span>
+              <strong>The business looks more established than the interface feels</strong>
+              <p>A nursery with wholesale mention, national shipping, and an active social audience deserves a page that feels calmer, clearer, and more trustworthy than the current one.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="visit" class="visit-section">
+        <div class="container visit-shell" data-reveal>
+          <div class="section-head">
+            <div>
+              <span class="section-kicker">Pickup details</span>
+              <h2>If I were rebuilding this live, this is the part I'd make impossible to miss.</h2>
+            </div>
+            <div class="section-copy">
+              <p>Address, current hours, phone number, and the reserve-now workflow should all sit within one screen. That's the job.</p>
+            </div>
+          </div>
+          <div class="visit-grid">
+            <div class="visit-stack" data-stagger>
+              <div class="visit-card" data-reveal style="--stagger-index:0">
+                <span class="label">Pickup address</span>
+                <strong>28 Withrod Dr, Halifax, NS</strong>
+                <p>Private-home pickup point. Open hours are posted on Facebook during the season, and no appointment is needed during those listed windows.</p>
+              </div>
+              <div class="visit-card" data-reveal style="--stagger-index:1">
+                <span class="label">Direct contact</span>
+                <strong>halifaxperennials@gmail.com · 902-412-8673</strong>
+                <p>If the posted times don't fit, the official contact page explicitly says customers can request a different pickup day or time.</p>
+              </div>
+              <div class="visit-card" data-reveal style="--stagger-index:2">
+                <span class="label">Seasonal note</span>
+                <strong>No Saturday pickups</strong>
+                <p>That detail belongs near the call and catalogue action so nobody places an order with the wrong expectation.</p>
+              </div>
+            </div>
+            <div class="visit-note" data-reveal>
+              <h3>Recommended front-door actions</h3>
+              <p>Lead with the catalogue. Put current pickup hours one tap away. Keep the phone number visible. Make the business feel as organized as the inventory already is.</p>
+              <div class="visit-actions">
+                <a class="button primary" href="https://halifaxperennials.ca/" target="_blank" rel="noreferrer">Browse the catalogue</a>
+                <a class="button secondary" href="https://www.facebook.com/halifaxperennials/" target="_blank" rel="noreferrer">See Facebook updates</a>
+                <a class="button secondary" href="tel:19024128673">Call 902-412-8673</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <p>Concept rescue build for Halifax Perennials. Based on the live catalogue, contact page, and public Facebook signals from April 2026.</p>
+        <p><a href="https://halifaxperennials.ca/" target="_blank" rel="noreferrer">halifaxperennials.ca</a></p>
+      </div>
+    </footer>
+  </div>
+
+  <noscript>
+    <style>
+      [data-reveal] { opacity: 1 !important; transform: none !important; }
+    </style>
+  </noscript>
+
+  <script>
+    const menuButton = document.querySelector('.menu-button');
+    const navLinks = document.getElementById('nav-links');
+    if (menuButton && navLinks) {
+      menuButton.addEventListener('click', () => {
+        const open = menuButton.getAttribute('aria-expanded') === 'true';
+        menuButton.setAttribute('aria-expanded', String(!open));
+        navLinks.classList.toggle('is-open');
+        document.body.classList.toggle('menu-open', !open);
+      });
+      navLinks.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+          menuButton.setAttribute('aria-expanded', 'false');
+          navLinks.classList.remove('is-open');
+          document.body.classList.remove('menu-open');
+        });
+      });
+    }
+
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.14 });
+
+      document.querySelectorAll('[data-reveal]').forEach((node, index) => {
+        node.style.setProperty('--stagger-index', index % 6);
+        observer.observe(node);
+      });
+    } else {
+      document.querySelectorAll('[data-reveal]').forEach((node) => node.classList.add('is-visible'));
+    }
+  </script>
+</body>
+</html>

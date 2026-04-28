@@ -17,3 +17,5 @@
 <!-- Stale built entries above removed 2026-04-27 after verifying local demos/build-log coverage for Zoé Dessert et Thé, Vintage Glory, Kavod Thrift, MacLeod's Books, Oliver Grooming, RSTUDIOS, Lynnwood Barber, Juhee's Closet, URL Coffee, VilleVelo, Hannya Seattle, Moonlight Tattoo, Tough Tiger, Bahar, Jupiter, Bakerbots, For Us Bakery, Steel & Needle, Johnny's Barber + Shop, Barbershop Patisserie, White Birch Bakery, Dark Age, Moon Ink, Ink Noir, and The Nest Tattoo. -->
 
 <!-- Built 2026-04-27 → demos/taquitos-cocina-de-mexico/ → https://auto-sites.pages.dev/demos/taquitos-cocina-de-mexico/ -->
+
+<!-- Built 2026-04-28 → demos/halifax-perennials/ → https://auto-sites.pages.dev/demos/halifax-perennials/ -->

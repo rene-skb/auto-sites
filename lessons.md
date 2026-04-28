@@ -25,6 +25,9 @@ Moon Ink was queued as a no-website candidate, but discovery found a live offici
 ## Tier 1 — Recent Observations
 *New patterns from 1-2 builds. Watch for repetition.*
 
+### [COPY] For seasonal inventory businesses, the live update channel is part of the product.
+Halifax Perennials already uses Facebook for the changing part of the business: pickup windows, newly added stock, sale notes. The homepage should stop pretending one static page can hold all of that. Better move: make the catalogue the primary action and treat the live social channel as a first-class supporting utility link. — Halifax Perennials b130
+
 ### [HERO] food-forward hero with real food photo beats portraits/owner shots for restaurants.
 Brief specifically asked for food-forward hero. hero-jerk-chicken.png (golden hour, steam, jerk chicken) scored Jobs 8.5 — the food IS the conviction. When real food photography exists and is landscape, it should be the hero. Don't default to owner portraits. — Stir It Up Lucy 2 b111
 

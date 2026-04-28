@@ -1,5 +1,27 @@
 # Auto-Sites Build Log
 
+### Halifax Perennials — Garden centre / nursery, Halifax NS
+- **Date:** 2026-04-28
+- **Model:** openai-codex/gpt-5.4
+- **Agent:** Lucy
+- **Folder:** halifax-perennials
+- **Hero pattern:** editorial-spread
+- **Typography:** Cormorant Garamond + Instrument Sans
+- **Review layout:** one large editorial proof quote with three same-treatment factual proof cards, no customer review cards
+- **Visit/hours layout:** dark utility shell with a three-card pickup stack and a single action note panel
+- **Stats bar style:** no-stats
+- **WHY Score:** 7.77 (Jobs 7.8 / Graham 7.5 / Ogilvy 8.0)
+- **WHAT Score:** 7.77 (Norman 7.7 / Krug 8.0 / Nielsen 7.6)
+- **HOW Score:** 7.88 (Vignelli 7.8 / Spiekermann 7.9 / Rams 7.7 / Emil 8.1)
+- **Panel average:** 7.81
+- **Self-review:** 8.2
+- **Versions built:** 6 HTML versions + final index.html
+- **Build time:** ~65 minutes
+- **Token estimate:** ~16k
+- **Key decisions:** The live site turned out to be less "no web presence" and more "big catalogue with weak framing," so the build shifted from invention to cleanup. The page leans on the actual reserve-now, pickup-later flow, active Facebook update channel, and category breadth instead of pretending this business needs a dreamy origin story.
+- **Notes:** No confident Google rating or business-listing URL surfaced in this pass, so the page keeps the address as text and routes visitors to the catalogue, Facebook updates, and phone contact instead of a generic map link.
+- **Live URL:** https://auto-sites.pages.dev/demos/halifax-perennials/ (push succeeded, route still serving the portfolio landing page at verification time)
+
 ### Taquitos Cocina de México — Mexican Restaurant, Bedford / Halifax NS
 - **Date:** 2026-04-27
 - **Model:** openai-codex/gpt-5.4

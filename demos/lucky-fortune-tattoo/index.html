@@ -1,0 +1,585 @@
+<!--
+DELTA: v5 final polish notes
+- Brightened footer/support copy slightly, preserved the utility-first structure, and kept the image-first rhythm intact
+- Self-review score: 8.1
+- Panel averages carried forward from panel-notes.md: WHY 7.63 / WHAT 7.67 / HOW 7.68
+- Final polish focus: cleaner readability and a sharper walk-in tattoo-shop voice
+-->
+<!--
+PHOTO EVAL
+Ranked best to worst for Lucky Fortune Tattoo brand fit:
+1. ig-photo-01.jpg — bold traditional tiger with flames and yin-yang orb, tight centered composition, bright flash energy, near-square. Best hero image.
+2. ig-photo-02.jpg — large traditional dragon sleeve with skull and rose, strong vertical flow, clean indoor lighting, portrait. Best supporting image.
+3. ig-photo-04.jpg — snake, skull, bird, and floral traditional piece, lively color and strong outlines, portrait. Best grid/supporting image.
+4. ig-photo-06.jpg — bold yellow traditional piece with banner text, high saturation and personality, square. Best supporting image.
+5. ig-photo-05.jpg — supporting tattoo detail, usable but weaker than top four.
+6. ig-photo-03.jpg — quieter black-and-grey foot piece, solid but less aligned with the classic flash direction.
+7. ig-photo-07.jpg — darker blackwork piece, shows range but shifts away from the walk-in traditional vibe.
+8. ig-photo-08.jpg — heavy dark blackwork, best skipped for this page direction.
+
+CREATIVE DIRECTION
+- Steve Jobs: Make it feel like the kind of shop you notice from the sidewalk and remember by the time you hit the next block. Walk-ins and conviction first.
+- Paul Graham: Keep the copy literal. Address, phone, walk-ins, and the work itself do the selling.
+- David Ogilvy: The headline should be specific and street-level, not mythic. Pandora beats poetry.
+
+BUILD NOTES
+- Hero pattern: image-top-text-below
+- Typography: Cinzel + Inter
+- Review strategy: no customer review cards because compliant named reviewer pulls were not verified in this pass. Use factual proof blocks instead.
+- Visit layout: dark utility shell with three practical columns and one direct action note.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lucky Fortune Tattoo, Victoria BC</title>
+  <meta name="description" content="Walk-ins welcome at Lucky Fortune Tattoo on Pandora in Victoria. Classic flash energy, phone-first questions, and bold traditional work." />
+  <meta property="og:title" content="Lucky Fortune Tattoo" />
+  <meta property="og:description" content="Walk-ins welcome at 536 Pandora Ave in Victoria, with bold traditional work and a direct phone-first shop flow." />
+  <meta property="og:image" content="https://auto-sites.pages.dev/demos/lucky-fortune-tattoo/ig-photo-01.jpg" />
+  <meta property="og:url" content="https://auto-sites.pages.dev/demos/lucky-fortune-tattoo/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #120d0d;
+      --bg-soft: #1b1514;
+      --panel: #211817;
+      --ink: #f5eadf;
+      --muted: #d2c0af;
+      --line: rgba(245, 234, 223, 0.16);
+      --accent: #cb4a2a;
+      --accent-soft: #f0b073;
+      --shadow: 0 30px 80px rgba(0, 0, 0, 0.28);
+      --max: 1180px;
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+      --section-pad: clamp(4.5rem, 8vw, 7rem);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+    }
+    img { display: block; width: 100%; height: auto; }
+    a { color: inherit; }
+    .skip-link {
+      position: absolute;
+      left: 1rem;
+      top: -3rem;
+      background: var(--ink);
+      color: var(--bg);
+      padding: 0.75rem 1rem;
+      z-index: 100;
+    }
+    .skip-link:focus { top: 1rem; }
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(16px);
+      background: rgba(18, 13, 13, 0.76);
+      border-bottom: 1px solid rgba(245, 234, 223, 0.08);
+    }
+    .nav {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .brand {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      text-decoration: none;
+    }
+    .brand-mark {
+      font-family: Cinzel, serif;
+      font-size: 0.95rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent-soft);
+    }
+    .brand-copy {
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 2.9rem;
+      padding: 0.85rem 1.2rem;
+      border-radius: 999px;
+      border: 1px solid rgba(240, 176, 115, 0.34);
+      background: var(--ink);
+      color: var(--bg);
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 160ms var(--ease-out), box-shadow 160ms var(--ease-out);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+    }
+    .nav-cta:active,
+    .button:active { transform: scale(0.97); }
+    main { overflow: clip; }
+    .hero-image-wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 1rem 1.25rem 0;
+    }
+    .hero-image {
+      aspect-ratio: 1.15 / 1;
+      border-radius: 2rem;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      position: relative;
+      background: #201412;
+    }
+    .hero-image img { height: 100%; object-fit: cover; object-position: center 20%; }
+    .hero-image::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(18,13,13,0) 0%, rgba(18,13,13,0.18) 100%);
+      pointer-events: none;
+    }
+    .hero-copy {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 2rem 1.25rem var(--section-pad);
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.95fr);
+      gap: 2rem;
+      align-items: end;
+    }
+    .eyebrow,
+    .section-kicker {
+      font-size: 0.82rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent-soft);
+    }
+    h1, h2, h3 {
+      margin: 0;
+      font-family: Cinzel, serif;
+      line-height: 1.04;
+      font-weight: 600;
+    }
+    h1 {
+      font-size: clamp(3.2rem, 9vw, 6.3rem);
+      margin-top: 0.9rem;
+      max-width: 11ch;
+    }
+    .hero-copy p,
+    .lede,
+    .story-copy p,
+    .utility-note p,
+    .proof-card p,
+    .visit-card p,
+    .cta-copy p,
+    .footer-copy {
+      max-width: 60ch;
+      margin: 0;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+    .hero-actions,
+    .cta-actions {
+      display: flex;
+      gap: 0.9rem;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 3rem;
+      padding: 0.95rem 1.3rem;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: transform 160ms var(--ease-out), background 160ms var(--ease-out), border-color 160ms var(--ease-out);
+    }
+    .button-primary {
+      background: var(--ink);
+      color: var(--bg);
+    }
+    .button-secondary {
+      border: 1px solid rgba(245, 234, 223, 0.18);
+      color: var(--ink);
+      background: rgba(245, 234, 223, 0.02);
+    }
+    .hero-facts {
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(245,234,223,0.04), rgba(245,234,223,0.02));
+      border-radius: 1.5rem;
+      padding: 1.4rem;
+    }
+    .hero-facts ul {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0 0;
+      display: grid;
+      gap: 0.8rem;
+    }
+    .hero-facts li {
+      padding-top: 0.8rem;
+      border-top: 1px solid rgba(245,234,223,0.1);
+    }
+    .hero-facts li:first-child { border-top: 0; padding-top: 0; }
+    section { padding: 0 1.25rem var(--section-pad); }
+    .section-shell { max-width: var(--max); margin: 0 auto; }
+    .proof-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .proof-card,
+    .visit-card {
+      border: 1px solid var(--line);
+      border-radius: 1.45rem;
+      padding: 1.35rem;
+      background: rgba(245, 234, 223, 0.03);
+    }
+    .proof-card strong,
+    .visit-card strong,
+    .story-copy strong,
+    .utility-note strong { color: var(--ink); }
+    .gallery-shell {
+      background: radial-gradient(circle at top left, rgba(203,74,42,0.18), transparent 38%), var(--bg-soft);
+      border-top: 1px solid rgba(245,234,223,0.08);
+      border-bottom: 1px solid rgba(245,234,223,0.08);
+      padding-top: var(--section-pad);
+      padding-bottom: var(--section-pad);
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+      gap: 1rem;
+      margin-top: 2rem;
+      align-items: start;
+    }
+    .gallery-stack {
+      display: grid;
+      gap: 1rem;
+    }
+    figure {
+      margin: 0;
+      overflow: hidden;
+      border-radius: 1.6rem;
+      background: #2a1d1b;
+      box-shadow: var(--shadow);
+    }
+    figure img { height: 100%; object-fit: cover; }
+    .gallery-lead { aspect-ratio: 1 / 1.05; }
+    .gallery-support-a { aspect-ratio: 5 / 6; }
+    .gallery-support-b { aspect-ratio: 1 / 1; }
+    figcaption {
+      padding-top: 0.8rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .story-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+      gap: 2rem;
+      align-items: center;
+      margin-top: 2rem;
+    }
+    .story-copy { display: grid; gap: 1rem; }
+    .utility-shell {
+      background: #171111;
+      border-radius: 2rem;
+      padding: clamp(1.4rem, 3vw, 2rem);
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(280px, 0.7fr);
+      gap: 1.25rem;
+      margin-top: 2rem;
+    }
+    .visit-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+    .utility-note {
+      border: 1px solid rgba(240,176,115,0.16);
+      border-radius: 1.4rem;
+      background: rgba(240,176,115,0.05);
+      padding: 1.35rem;
+      align-self: stretch;
+    }
+    .visit-card .label {
+      display: block;
+      font-size: 0.82rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent-soft);
+      margin-bottom: 0.6rem;
+    }
+    .cta-box {
+      border: 1px solid var(--line);
+      border-radius: 2rem;
+      background: linear-gradient(180deg, rgba(245,234,223,0.04), rgba(245,234,223,0.01));
+      padding: clamp(1.6rem, 4vw, 2.6rem);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 1rem;
+      align-items: end;
+    }
+    footer {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 1.25rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      color: rgba(245,234,223,0.72);
+      font-size: 0.92rem;
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 700ms var(--ease-out), transform 700ms var(--ease-out);
+      will-change: transform, opacity;
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    @media (max-width: 960px) {
+      .hero-copy,
+      .gallery-grid,
+      .story-grid,
+      .utility-shell,
+      .cta-box {
+        grid-template-columns: 1fr;
+      }
+      .proof-grid,
+      .visit-grid { grid-template-columns: 1fr; }
+      h1 { max-width: 9ch; }
+    }
+    @media (max-width: 720px) {
+      .nav { align-items: flex-start; }
+      .nav-links { width: 100%; }
+      .hero-image-wrap { padding-top: 0.75rem; }
+      .hero-image { aspect-ratio: 1 / 1.08; border-radius: 1.35rem; }
+      .hero-copy { padding-top: 1.4rem; }
+      .button, .nav-cta { width: 100%; }
+      .hero-actions, .cta-actions { display: grid; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#content">Skip to content</a>
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary">
+      <a class="brand" href="#top">
+        <span class="brand-mark">Lucky Fortune</span>
+        <span class="brand-copy">Tattoo · Victoria BC</span>
+      </a>
+      <div class="nav-links">
+        <a href="#work">The work</a>
+        <a href="#visit">Visit</a>
+        <a href="#contact">Call the shop</a>
+        <a class="nav-cta" href="tel:+17782655825">Call 778 265 5825</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="content">
+    <div class="hero-image-wrap reveal" id="top">
+      <div class="hero-image">
+        <img src="./ig-photo-01.jpg" alt="Traditional tiger tattoo with red flames and a yin-yang orb." />
+      </div>
+    </div>
+
+    <section>
+      <div class="hero-copy section-shell">
+        <div class="reveal">
+          <div class="eyebrow">536 Pandora Ave · Victoria BC</div>
+          <h1>Walk-ins welcome on Pandora.</h1>
+          <p class="lede" style="margin-top:1rem;">Lucky Fortune Tattoo keeps the shop logic simple. Call the number, come into the shop, and pick from a wall of bold traditional work that already knows how to hold a room.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="tel:+17782655825">Call 778 265 5825</a>
+            <a class="button button-secondary" href="https://www.instagram.com/luckyfortunetattoo/">See Instagram</a>
+          </div>
+        </div>
+        <aside class="hero-facts reveal" aria-label="Shop facts">
+          <div class="section-kicker">Good to know</div>
+          <ul>
+            <li><strong>Phone-first questions.</strong><br />The shop bio says not to DM. Call, or come into the shop if you need something answered.</li>
+            <li><strong>Traditional energy, not generic filler.</strong><br />The current feed is full of tigers, dragons, snakes, skulls, and hard-lined color work.</li>
+            <li><strong>Built for someone already in town.</strong><br />Pandora address, direct phone number, and walk-in language matter more here than a long backstory.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-shell">
+        <div class="section-kicker reveal">Proof without filler</div>
+        <h2 class="reveal" style="font-size:clamp(2.2rem,5vw,3.8rem); margin-top:0.7rem; max-width:12ch;">The opportunity is clarity, not reinvention.</h2>
+        <div class="proof-grid">
+          <article class="proof-card reveal">
+            <strong>Dead site, live shop.</strong>
+            <p style="margin-top:0.7rem;">The listed domain now resolves to a stopped-site page, while the real shop activity is happening on Instagram and in the street-level business listings.</p>
+          </article>
+          <article class="proof-card reveal">
+            <strong>Walk-ins are already the pitch.</strong>
+            <p style="margin-top:0.7rem;">The Instagram bio leads with the address, phone number, and <strong>WALK-INS WELCOME</strong>. That should be above the fold, not buried.</p>
+          </article>
+          <article class="proof-card reveal">
+            <strong>People already talk about the team and the atmosphere.</strong>
+            <p style="margin-top:0.7rem;">GetInked’s review summary calls out the welcoming vibe, custom work, and specific artists, which is stronger proof than any vague brand story.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery-shell" id="work">
+      <div class="section-shell">
+        <div class="section-kicker reveal">Selected from the feed</div>
+        <h2 class="reveal" style="font-size:clamp(2.2rem,5vw,4rem); margin-top:0.7rem; max-width:11ch;">Classic flash, loud enough to sell itself.</h2>
+        <div class="gallery-grid">
+          <div class="reveal">
+            <figure class="gallery-lead">
+              <img src="./ig-photo-01.jpg" alt="Traditional tiger tattoo with flames and yin-yang detail." />
+            </figure>
+            <figcaption>Tiger, flames, yin-yang. One frame, zero confusion about what kind of shop this is.</figcaption>
+          </div>
+          <div class="gallery-stack">
+            <div class="reveal">
+              <figure class="gallery-support-a">
+                <img src="./ig-photo-02.jpg" alt="Traditional dragon tattoo wrapping down an upper arm with skull and rose details." />
+              </figure>
+              <figcaption>Large-scale traditional work that still reads clean from a few steps back.</figcaption>
+            </div>
+            <div class="reveal">
+              <figure class="gallery-support-b">
+                <img src="./ig-photo-04.jpg" alt="Traditional snake and skull tattoo with bird and floral accents." />
+              </figure>
+              <figcaption>Snake, skull, bird, flower. The feed already has enough range without trying to fake variety.</figcaption>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-shell story-grid">
+        <div class="reveal">
+          <figure>
+            <img src="./ig-photo-06.jpg" alt="Bright traditional tattoo design with bold yellow tones and banner lettering." />
+          </figure>
+        </div>
+        <div class="story-copy reveal">
+          <div class="section-kicker">How the page should frame the shop</div>
+          <h2 style="font-size:clamp(2.1rem,4vw,3.6rem); max-width:10ch;">Phone first. Questions second. Needles after that.</h2>
+          <p>The current live signals are direct. The bio says <strong>please do not DM</strong>. The business listings keep repeating the same practical details. That tells you exactly what kind of site Lucky Fortune actually needs.</p>
+          <p>Less moodboarding, more utility. Show the work. Put the phone number where people can hit it. Make the walk-in message obvious. Let the shop sound like a shop.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="visit">
+      <div class="section-shell">
+        <div class="section-kicker reveal">Visit the shop</div>
+        <div class="utility-shell reveal">
+          <div>
+            <div class="visit-grid">
+              <article class="visit-card">
+                <span class="label">Address</span>
+                <p><strong>536 Pandora Ave</strong><br />Victoria, BC</p>
+              </article>
+              <article class="visit-card">
+                <span class="label">Hours</span>
+                <p><strong>Tue to Sun</strong><br />12:00 PM to 6:00 PM<br />Closed Monday</p>
+              </article>
+              <article class="visit-card">
+                <span class="label">Questions</span>
+                <p><strong>778 265 5825</strong><br />Call, or come into the shop.<br />No DM-first flow.</p>
+              </article>
+            </div>
+          </div>
+          <aside class="utility-note">
+            <strong>Why this matters</strong>
+            <p style="margin-top:0.7rem;">For a walk-in tattoo shop, the biggest conversion move is reducing hesitation. You should know where it is, when the door is open, and how to ask a real person a real question in under ten seconds.</p>
+            <div class="hero-actions" style="margin-top:1.2rem;">
+              <a class="button button-secondary" href="https://www.google.com/maps/search/?api=1&query=Lucky+Fortune+Tattoo+Victoria+BC">Open in Google Maps</a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="section-shell">
+        <div class="cta-box reveal">
+          <div class="cta-copy">
+            <div class="section-kicker">Direct action</div>
+            <h2 style="font-size:clamp(2rem,4.5vw,3.5rem); margin-top:0.7rem; max-width:10ch;">Call the shop, then go get tattooed.</h2>
+            <p style="margin-top:0.9rem;">This demo does not invent a softer funnel than the business actually wants. It just gives the shop a cleaner front door than a dead homepage.</p>
+          </div>
+          <div class="cta-actions">
+            <a class="button button-primary" href="tel:+17782655825">Call 778 265 5825</a>
+            <a class="button button-secondary" href="https://www.instagram.com/luckyfortunetattoo/">Instagram</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-copy">Lucky Fortune Tattoo · Victoria BC · Demo rebuild concept</div>
+    <div class="footer-copy">Built from public business listing details, Instagram bio, public shop photos, and the GetInked summary.</div>
+  </footer>
+
+  <script>
+    const observer = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      ? null
+      : new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) entry.target.classList.add('is-visible');
+          });
+        }, { threshold: 0.16 });
+
+    document.querySelectorAll('.reveal').forEach((el, index) => {
+      el.style.transitionDelay = `${Math.min(index * 45, 220)}ms`;
+      if (!observer) {
+        el.classList.add('is-visible');
+      } else {
+        observer.observe(el);
+      }
+    });
+  </script>
+</body>
+</html>

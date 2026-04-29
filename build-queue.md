@@ -19,3 +19,4 @@
 <!-- Built 2026-04-27 → demos/taquitos-cocina-de-mexico/ → https://auto-sites.pages.dev/demos/taquitos-cocina-de-mexico/ -->
 
 <!-- Built 2026-04-28 → demos/halifax-perennials/ → https://auto-sites.pages.dev/demos/halifax-perennials/ -->
+

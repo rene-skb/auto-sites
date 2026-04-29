@@ -1,5 +1,27 @@
 # Auto-Sites Build Log
 
+### Lucky Fortune Tattoo — Tattoo studio, Victoria BC
+- **Date:** 2026-04-29
+- **Model:** openai-codex/gpt-5.4
+- **Agent:** Lucy
+- **Folder:** lucky-fortune-tattoo
+- **Hero pattern:** image-top-text-below
+- **Typography:** Cinzel + Inter
+- **Review layout:** no customer review cards, three same-treatment factual proof cards instead
+- **Visit/hours layout:** dark utility shell with three practical visit cards and one action note panel
+- **Stats bar style:** no-stats
+- **WHY Score:** 7.63 (Jobs 7.6 / Graham 7.4 / Ogilvy 7.9)
+- **WHAT Score:** 7.67 (Norman 7.7 / Krug 8.0 / Nielsen 7.3)
+- **HOW Score:** 7.68 (Vignelli 7.5 / Spiekermann 7.8 / Rams 7.4 / Emil 8.0)
+- **Panel average:** 7.66
+- **Self-review:** 8.1
+- **Versions built:** 6 HTML versions + final index.html
+- **Build time:** ~45 minutes
+- **Token estimate:** ~14k
+- **Key decisions:** Discovery found the biggest problem fast: the official domain is effectively dead, but the shop itself is still active through Instagram and local listings. The build leans into that mismatch without making it the headline, keeping the first screen focused on walk-ins, phone-first contact, and the actual traditional flash energy visible in the live photo pool.
+- **Notes:** A canonical Google Maps business-pin URL and compliant named customer-review pulls were not confidently surfaced in this pass, so the page uses a Google Maps business-name query and factual proof cards instead of pretending the source material was cleaner than it is.
+- **Live URL:** pending push / Pages verification
+
 ### Halifax Perennials — Garden centre / nursery, Halifax NS
 - **Date:** 2026-04-28
 - **Model:** openai-codex/gpt-5.4

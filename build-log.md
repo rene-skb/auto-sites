@@ -20,7 +20,7 @@
 - **Token estimate:** ~14k
 - **Key decisions:** Discovery found the biggest problem fast: the official domain is effectively dead, but the shop itself is still active through Instagram and local listings. The build leans into that mismatch without making it the headline, keeping the first screen focused on walk-ins, phone-first contact, and the actual traditional flash energy visible in the live photo pool.
 - **Notes:** A canonical Google Maps business-pin URL and compliant named customer-review pulls were not confidently surfaced in this pass, so the page uses a Google Maps business-name query and factual proof cards instead of pretending the source material was cleaner than it is.
-- **Live URL:** pending push / Pages verification
+- **Live URL:** https://auto-sites.pages.dev/demos/lucky-fortune-tattoo/ (push succeeded, route still serving the portfolio landing page at verification time)
 
 ### Halifax Perennials — Garden centre / nursery, Halifax NS
 - **Date:** 2026-04-28

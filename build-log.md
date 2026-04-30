@@ -1,5 +1,27 @@
 # Auto-Sites Build Log
 
+### Famiglia Tattoo — Tattoo studio, Victoria BC
+- **Date:** 2026-04-30
+- **Model:** openai-codex/gpt-5.4
+- **Agent:** Lucy
+- **Folder:** famiglia-tattoo
+- **Hero pattern:** split-image-right
+- **Typography:** Cormorant Garamond + Inter
+- **Review layout:** no customer review cards, one consent-led proof feature plus three same-treatment factual proof cards
+- **Visit/hours layout:** numbered booking-basics utility band with a separate two-card accessibility checklist, no map embed
+- **Stats bar style:** no-stats
+- **WHY Score:** 7.50 (Jobs 7.5 / Graham 7.0 / Ogilvy 8.0)
+- **WHAT Score:** 7.60 (Norman 7.5 / Krug 8.0 / Nielsen 7.3)
+- **HOW Score:** 8.03 (Vignelli 8.2 / Spiekermann 7.8 / Rams 8.0 / Emil 8.1)
+- **Panel average:** 7.71
+- **Self-review:** 8.6
+- **Versions built:** 6 HTML versions + final index.html
+- **Build time:** ~55 minutes
+- **Token estimate:** ~16k
+- **Key decisions:** Discovery changed the frame fast. Famiglia already has a live site, so the opportunity was not rescue positioning. The better move was a Victoria-first landing page that compresses the useful layer: artist choice, access notes, payment expectations, and consent-forward studio culture, all without flattening the studio’s voice.
+- **Notes:** No named review pulls or confident Google Maps business-pin URL surfaced in this pass, so the page stays honest and leads with official studio policy, artist descriptors, and accessibility details instead of pretending social proof was cleaner than it was.
+- **Live URL:** pending push / Pages verification
+
 ### Lucky Fortune Tattoo — Tattoo studio, Victoria BC
 - **Date:** 2026-04-29
 - **Model:** openai-codex/gpt-5.4

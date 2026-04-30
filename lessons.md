@@ -25,6 +25,9 @@ Moon Ink was queued as a no-website candidate, but discovery found a live offici
 ## Tier 1 — Recent Observations
 *New patterns from 1-2 builds. Watch for repetition.*
 
+### [POSITIONING] A business can already have a website and still need a tighter local landing page.
+Famiglia Tattoo was not a no-site rescue. Discovery found a live multi-city site with strong values language but weak Victoria-first utility. The right move was not to compete on existence. It was to compress the local layer: artist choice, access notes, payment expectations, and consent policies on one page. When an official site sprawls across locations or missions, the opportunity is often clarity, not replacement. — Famiglia Tattoo b131
+
 ### [COPY] For seasonal inventory businesses, the live update channel is part of the product.
 Halifax Perennials already uses Facebook for the changing part of the business: pickup windows, newly added stock, sale notes. The homepage should stop pretending one static page can hold all of that. Better move: make the catalogue the primary action and treat the live social channel as a first-class supporting utility link. — Halifax Perennials b130
 

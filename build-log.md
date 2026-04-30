@@ -20,7 +20,7 @@
 - **Token estimate:** ~16k
 - **Key decisions:** Discovery changed the frame fast. Famiglia already has a live site, so the opportunity was not rescue positioning. The better move was a Victoria-first landing page that compresses the useful layer: artist choice, access notes, payment expectations, and consent-forward studio culture, all without flattening the studio’s voice.
 - **Notes:** No named review pulls or confident Google Maps business-pin URL surfaced in this pass, so the page stays honest and leads with official studio policy, artist descriptors, and accessibility details instead of pretending social proof was cleaner than it was.
-- **Live URL:** pending push / Pages verification
+- **Live URL:** https://auto-sites.pages.dev/demos/famiglia-tattoo/ (push succeeded, route still serving the portfolio landing page at verification time)
 
 ### Lucky Fortune Tattoo — Tattoo studio, Victoria BC
 - **Date:** 2026-04-29

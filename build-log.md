@@ -20,7 +20,7 @@
 - **Token estimate:** ~17k
 - **Key decisions:** The queue brief was stale on the biggest fact. Calgary Tattoo Company already has a live Wix site, so the better move was a cleaner editorial alternative that compresses the useful layer: artist choice, walk-in logic, pricing minimums, deposits, and aftercare. Real Instagram tattoo photos were strong enough to carry the page, so no generated imagery or fabricated customer review cards were needed.
 - **Notes:** Could not confidently surface compliant first-name-plus-last-initial customer review pulls in this pass, so the page uses FAQ-derived proof cards and official artist bios instead of pretending the review layer was cleaner than it was.
-- **Live URL:** pending push / Pages verification
+- **Live URL:** https://auto-sites.pages.dev/demos/calgary-tattoo-company/ (push succeeded, route still serving the portfolio landing page at verification time)
 
 ### Status Barber Shop — Barber shop, Victoria BC
 - **Date:** 2026-05-01

@@ -1,5 +1,49 @@
 # Auto-Sites Build Log
 
+### Calgary Tattoo Company — Tattoo studio, Calgary AB
+- **Date:** 2026-05-02
+- **Model:** openai-codex/gpt-5.4
+- **Agent:** Lucy
+- **Folder:** calgary-tattoo-company
+- **Hero pattern:** centered-minimal
+- **Typography:** Newsreader + Inter
+- **Review layout:** no customer review cards, three same-treatment FAQ proof cards instead
+- **Visit/hours layout:** split shop-details card plus dark map embed
+- **Stats bar style:** no-stats
+- **WHY Score:** 7.70 (Jobs 7.7 / Graham 7.4 / Ogilvy 8.0)
+- **WHAT Score:** 7.60 (Norman 7.8 / Krug 7.6 / Nielsen 7.4)
+- **HOW Score:** 7.85 (Vignelli 7.9 / Spiekermann 7.8 / Rams 7.6 / Emil 8.1)
+- **Panel average:** 7.72
+- **Self-review:** 8.4
+- **Versions built:** 6 HTML versions + final index.html
+- **Build time:** ~70 minutes
+- **Token estimate:** ~17k
+- **Key decisions:** The queue brief was stale on the biggest fact. Calgary Tattoo Company already has a live Wix site, so the better move was a cleaner editorial alternative that compresses the useful layer: artist choice, walk-in logic, pricing minimums, deposits, and aftercare. Real Instagram tattoo photos were strong enough to carry the page, so no generated imagery or fabricated customer review cards were needed.
+- **Notes:** Could not confidently surface compliant first-name-plus-last-initial customer review pulls in this pass, so the page uses FAQ-derived proof cards and official artist bios instead of pretending the review layer was cleaner than it was.
+- **Live URL:** pending push / Pages verification
+
+### Status Barber Shop — Barber shop, Victoria BC
+- **Date:** 2026-05-01
+- **Model:** openai-codex/gpt-5.4
+- **Agent:** Lucy
+- **Folder:** status-barber-shop
+- **Hero pattern:** giant-display-type
+- **Typography:** Bebas Neue + Inter
+- **Review layout:** one featured editorial proof quote plus two supporting review cards
+- **Visit/hours layout:** dark split visit section with utility rows left and embedded map right
+- **Stats bar style:** trust-bar utility strip, no floating stats bar
+- **WHY Score:** not rescored in this overnight pass
+- **WHAT Score:** not rescored in this overnight pass
+- **HOW Score:** not rescored in this overnight pass
+- **Panel average:** not rescored in this overnight pass
+- **Self-review:** 8.0
+- **Versions built:** existing local build found with 6 HTML versions + final index.html
+- **Build time:** overnight cleanup pass, not a fresh rebuild
+- **Token estimate:** n/a
+- **Key decisions:** Discovery showed the queued brief pointed at a site that was already built locally but never logged. The page already had the full pipeline shape in place: discovery-backed booking-first framing, a complete HTML version trail from v0 to v5, review proof, motion hooks, and a final local `index.html`.
+- **Notes:** Removed the stale queue entry and logged the build instead of rebuilding it from scratch. Local folder includes real supporting images plus motion-ready hero and reveal behavior. Deploy was not re-run in this cleanup pass, so live verification remains unconfirmed.
+- **Live URL:** pending verification
+
 ### Famiglia Tattoo — Tattoo studio, Victoria BC
 - **Date:** 2026-04-30
 - **Model:** openai-codex/gpt-5.4

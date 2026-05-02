@@ -1,0 +1,432 @@
+<!--
+DELTA: v5 final polish notes
+- Refined line breaks in the hero, tightened artist card copy, and clarified the FAQ-derived detail cards.
+- Self-review score: 8.4
+- Panel averages carried forward from panel-notes.md: WHY 7.7 / WHAT 7.6 / HOW 7.85
+- Final polish focus: practical trust, darker editorial atmosphere, cleaner path to phone or artist email.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calgary Tattoo Company</title>
+  <meta name="description" content="Walk in for black and grey, portraits, colour realism, traditional tattooing, and piercings at Calgary Tattoo Company on Fisher Street SE." />
+  <meta property="og:title" content="Calgary Tattoo Company" />
+  <meta property="og:description" content="Walk in for black and grey, portraits, colour realism, traditional tattooing, and piercings at Calgary Tattoo Company on Fisher Street SE." />
+  <meta property="og:image" content="https://auto-sites.pages.dev/demos/calgary-tattoo-company/ig-photo-04.jpg" />
+  <meta property="og:url" content="https://auto-sites.pages.dev/demos/calgary-tattoo-company/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0e0a0a;
+      --panel: #181111;
+      --panel-2: #231717;
+      --paper: #f1e7da;
+      --ink: #f7efe6;
+      --muted: rgba(247, 239, 230, 0.8);
+      --line: rgba(247, 239, 230, 0.12);
+      --accent: #b73a34;
+      --accent-2: #d8ab7a;
+      --shadow: 0 24px 80px rgba(0,0,0,0.28);
+      --radius: 28px;
+      --radius-sm: 18px;
+      --max: 1180px;
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+      --section-pad: clamp(72px, 10vw, 124px);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top, rgba(183, 58, 52, 0.16), transparent 30%),
+        linear-gradient(180deg, #120d0d 0%, #0e0a0a 100%);
+      color: var(--ink);
+      font-family: Inter, sans-serif;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    img { display: block; width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(calc(100% - 32px), var(--max)); margin: 0 auto; }
+    .site-header {
+      position: sticky; top: 0; z-index: 20;
+      backdrop-filter: blur(18px);
+      background: rgba(14, 10, 10, 0.72);
+      border-bottom: 1px solid rgba(247,239,230,0.08);
+    }
+    .site-header .wrap {
+      display: flex; align-items: center; justify-content: space-between; gap: 20px;
+      padding: 16px 0;
+    }
+    .brand {
+      font-size: 0.92rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600;
+    }
+    .nav-toggle {
+      display: none; border: 1px solid var(--line); background: transparent; color: var(--ink);
+      border-radius: 999px; padding: 10px 14px; font: inherit;
+    }
+    nav { display: flex; gap: 22px; align-items: center; }
+    nav a { color: var(--muted); font-size: 0.95rem; }
+    nav a:hover { color: var(--ink); }
+    .header-cta {
+      padding: 12px 18px; border-radius: 999px; background: var(--ink); color: #120d0d; font-weight: 700;
+      transition: transform 160ms var(--ease-out), box-shadow 160ms var(--ease-out);
+    }
+    .header-cta:hover { transform: translateY(-1px); box-shadow: 0 12px 30px rgba(247,239,230,0.16); }
+    .header-cta:active, .button:active, .text-link:active { transform: scale(0.97); }
+
+    .hero { padding: 42px 0 var(--section-pad); }
+    .hero-shell {
+      border: 1px solid var(--line);
+      border-radius: 36px;
+      padding: clamp(28px, 4vw, 40px);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0)),
+        linear-gradient(135deg, rgba(183,58,52,0.1), rgba(35,23,23,0.6));
+      box-shadow: var(--shadow);
+    }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      color: var(--accent-2); text-transform: uppercase; letter-spacing: 0.14em; font-size: 0.78rem; font-weight: 600;
+    }
+    .eyebrow::before {
+      content: ""; width: 28px; height: 1px; background: currentColor; opacity: 0.7;
+    }
+    .hero-grid {
+      margin-top: 24px;
+      display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.9fr); gap: clamp(28px, 4vw, 48px); align-items: end;
+    }
+    h1, h2 {
+      font-family: Newsreader, serif; font-weight: 400; letter-spacing: -0.03em; line-height: 0.95; margin: 0;
+    }
+    h1 { font-size: clamp(3.8rem, 10vw, 8.6rem); max-width: 9ch; }
+    h2 { font-size: clamp(2.3rem, 5vw, 4.5rem); }
+    .hero-copy p, .lede, .card p, .detail p, .visit-card p, .footer-note {
+      font-size: 1rem; color: var(--muted); margin: 0;
+    }
+    .hero-copy p { max-width: 48ch; margin-top: 26px; font-size: 1.08rem; }
+    .cta-row { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 28px; }
+    .button, .text-link {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      min-height: 52px; padding: 0 20px; border-radius: 999px; font-weight: 700;
+      transition: transform 160ms var(--ease-out), background 160ms var(--ease-out), color 160ms var(--ease-out), border-color 160ms var(--ease-out);
+    }
+    .button.primary { background: var(--accent); color: white; }
+    .button.secondary, .text-link { border: 1px solid var(--line); color: var(--ink); }
+    .button.primary:hover { transform: translateY(-1px); background: #c4443d; }
+    .button.secondary:hover, .text-link:hover { transform: translateY(-1px); border-color: rgba(247,239,230,0.25); }
+    .hero-art {
+      position: relative; padding: 20px; border-radius: 28px; background: rgba(255,255,255,0.03); border: 1px solid var(--line);
+    }
+    .hero-art img {
+      border-radius: 22px; aspect-ratio: 4 / 5; object-fit: cover; box-shadow: 0 24px 60px rgba(0,0,0,0.35);
+    }
+    .hero-note {
+      position: absolute; left: 14px; right: 14px; bottom: 14px;
+      padding: 14px 16px; border-radius: 18px; background: linear-gradient(180deg, rgba(14,10,10,0.22), rgba(14,10,10,0.84));
+      border: 1px solid rgba(247,239,230,0.12); font-size: 0.96rem; color: var(--paper);
+    }
+
+    section { padding: var(--section-pad) 0; }
+    .section-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(260px, 420px); gap: 28px; align-items: end; margin-bottom: 38px; }
+
+    .artist-grid, .detail-grid, .gallery-grid, .proof-grid { display: grid; gap: 18px; }
+    .artist-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .artist-card, .detail, .visit-card, .proof-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
+      border: 1px solid var(--line); border-radius: var(--radius); padding: 28px;
+    }
+    .artist-card .kicker, .detail .kicker, .visit-card .kicker, .proof-card .kicker {
+      color: var(--accent-2); text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem; font-weight: 700; margin-bottom: 12px;
+    }
+    .artist-card h3, .detail h3, .visit-card h3, .proof-card h3 {
+      margin: 0 0 10px; font-size: 1.4rem; line-height: 1.1; font-weight: 600;
+    }
+    .artist-meta { margin-top: 18px; display: flex; justify-content: space-between; gap: 12px; color: var(--paper); font-size: 0.9rem; }
+
+    .gallery-grid {
+      grid-template-columns: 1.15fr 0.85fr 0.9fr;
+      grid-auto-rows: 220px;
+    }
+    .gallery-grid figure { margin: 0; overflow: hidden; border-radius: 24px; background: var(--panel); }
+    .gallery-grid img { height: 100%; object-fit: cover; }
+    .gallery-grid figure:nth-child(1) { grid-row: span 2; }
+    .gallery-grid figure:nth-child(4) { grid-column: span 2; }
+    .gallery-caption { display: flex; justify-content: space-between; gap: 16px; color: var(--muted); font-size: 0.92rem; margin-top: 18px; }
+
+    .proof-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .proof-card p strong { color: var(--paper); }
+
+    .detail-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+    .visit-shell {
+      display: grid; grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr); gap: 18px;
+    }
+    .visit-card ul {
+      list-style: none; padding: 0; margin: 18px 0 0; display: grid; gap: 14px;
+      color: var(--ink);
+    }
+    .visit-card li { padding-top: 14px; border-top: 1px solid rgba(247,239,230,0.08); }
+    .visit-map {
+      border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); min-height: 520px;
+      background: var(--panel);
+    }
+    .visit-map iframe { width: 100%; height: 100%; border: 0; filter: invert(0.92) hue-rotate(180deg) brightness(0.88) saturate(0.7); }
+    .footer { padding: 52px 0 72px; border-top: 1px solid rgba(247,239,230,0.08); }
+    .footer-row { display: flex; justify-content: space-between; gap: 20px; align-items: center; }
+
+    .reveal { opacity: 0; transform: translateY(24px); transition: transform 700ms var(--ease-out), opacity 700ms var(--ease-out); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .stagger-1 { transition-delay: 60ms; } .stagger-2 { transition-delay: 120ms; } .stagger-3 { transition-delay: 180ms; } .stagger-4 { transition-delay: 240ms; }
+
+    @media (max-width: 1024px) {
+      .hero-grid, .section-head, .visit-shell { grid-template-columns: 1fr; }
+      .artist-grid, .proof-grid, .detail-grid, .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-grid figure:nth-child(1), .gallery-grid figure:nth-child(4) { grid-column: auto; grid-row: auto; }
+      .visit-map { min-height: 420px; }
+    }
+    @media (max-width: 760px) {
+      .nav-toggle { display: inline-flex; }
+      nav {
+        position: absolute; top: calc(100% + 8px); right: 16px; left: 16px; display: none; flex-direction: column; align-items: stretch;
+        background: rgba(20, 13, 13, 0.96); border: 1px solid var(--line); border-radius: 22px; padding: 16px;
+      }
+      nav.open { display: flex; }
+      .header-cta { display: none; }
+      h1 { font-size: clamp(3rem, 18vw, 5rem); }
+      section { padding: 72px 0; }
+      .artist-grid, .proof-grid, .detail-grid, .gallery-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-auto-rows: 260px; }
+      .gallery-grid figure:nth-child(1) { grid-row: auto; }
+      .footer-row { flex-direction: column; align-items: flex-start; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .reveal { opacity: 1 !important; transform: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="#top">Calgary Tattoo Company</a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav">Menu</button>
+      <nav id="nav">
+        <a href="#artists">Artists</a>
+        <a href="#work">Work</a>
+        <a href="#before-you-book">Before you book</a>
+        <a href="#visit">Visit</a>
+      </nav>
+      <a class="header-cta" href="tel:+14034746660">Call (403) 474-6660</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero-shell reveal visible">
+        <span class="eyebrow">Fisher Street SE · Open 7 days</span>
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <h1>Walk in for black and grey, portraits, colour realism, and traditional tattooing.</h1>
+            <p>Calgary Tattoo Company has been open since 2012, stays open seven days a week, and keeps a roster built around different strengths so you can match the idea in your head to the artist who actually wants to do it well.</p>
+            <div class="cta-row">
+              <a class="button primary" href="tel:+14034746660">Call the shop</a>
+              <a class="button secondary" href="#artists">Pick an artist</a>
+            </div>
+          </div>
+          <div class="hero-art">
+            <img src="ig-photo-04.jpg" alt="Deer skull tattoo with antlers." />
+            <div class="hero-note">Walk-ins are welcome on a first come, first served basis. If they cannot fit you in that day, they book you in.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="artists">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">Artists</span>
+            <h2>Pick the lane that fits the tattoo.</h2>
+          </div>
+          <p class="lede">The shop’s own site leads with range. Moose handles black and grey, portraits, and custom work. Kenzi leans horror, anime, colour, and illustration. Keith brings colour, black and grey, and a traditional edge through his flash.</p>
+        </div>
+        <div class="artist-grid">
+          <article class="artist-card reveal stagger-1">
+            <div class="kicker">Founder</div>
+            <h3>Moose</h3>
+            <p>Nearly two decades in, originally from Saskatchewan, and the owner behind Calgary Tattoo Company. Officially listed specialties: black and grey, portraits, and custom tattoos.</p>
+            <div class="artist-meta"><span>$200/hr</span><a class="text-link" href="mailto:moose_tats@hotmail.com?subject=Tattoo%20Inquiry">Email Moose</a></div>
+          </article>
+          <article class="artist-card reveal stagger-2">
+            <div class="kicker">Colour + illustrative</div>
+            <h3>Kenzi</h3>
+            <p>In-house horror and anime nerd. The artist page says she focuses on colour and illustrative pieces, especially when the idea gets a little weirder and a lot more fun.</p>
+            <div class="artist-meta"><span>$150/hr</span><a class="text-link" href="mailto:kenzi.inkz@gmail.com?subject=Tattoo%20Inquiry">Email Kenzi</a></div>
+          </article>
+          <article class="artist-card reveal stagger-3">
+            <div class="kicker">Traditional flair</div>
+            <h3>Keith</h3>
+            <p>Official bio: excellent colour and black and grey, with a traditional flair visible in all his flash. Good fit if you want the piece to read clean and stay bold.</p>
+            <div class="artist-meta"><span>$150/hr</span><a class="text-link" href="mailto:thescorpionkidtattoo@gmail.com?subject=Tattoo%20Inquiry">Email Keith</a></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="work">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">Recent work</span>
+            <h2>Mostly black and grey in the strongest pulls, with room for colour when that is the point.</h2>
+          </div>
+          <p class="lede">The current Instagram feed reads dark, clean, and detail-first. The clearest pieces are animal skulls, portrait-led black and grey, traditional shapes, and a few brighter illustrative hits when the brief calls for it.</p>
+        </div>
+        <div class="gallery-grid reveal">
+          <figure><img src="ig-photo-04.jpg" alt="Deer skull tattoo with antlers." /></figure>
+          <figure><img src="ig-photo-03.jpg" alt="Shield and cross tattoo on leg." /></figure>
+          <figure><img src="ig-photo-02.jpg" alt="Red panda forearm tattoo." /></figure>
+          <figure><img src="ig-photo-01.jpg" alt="Large black and grey fantasy leg tattoo." /></figure>
+          <figure><img src="ig-photo-05.jpg" alt="Doberman portrait tattoo with barbed wire." /></figure>
+          <figure><img src="ig-photo-06.jpg" alt="Bird skull tattoo." /></figure>
+        </div>
+        <div class="gallery-caption">
+          <span>Every image here comes from the studio’s live Instagram feed.</span>
+          <a class="text-link" href="https://www.instagram.com/calgarytattoocompany/" target="_blank" rel="noreferrer">See more on Instagram</a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">What the shop says</span>
+            <h2>Built for people who want the practical stuff answered before they sit down.</h2>
+          </div>
+          <p class="lede">The official FAQ is unusually useful. Instead of vague studio talk, it tells you exactly how walk-ins work, what the minimums are, how deposits behave, and what to do after the appointment.</p>
+        </div>
+        <div class="proof-grid">
+          <article class="proof-card reveal stagger-1">
+            <div class="kicker">Walk-ins</div>
+            <h3>First come, first served.</h3>
+            <p>Walk-ins are welcome. If the team cannot get you in that day, they will book you an appointment instead.</p>
+          </article>
+          <article class="proof-card reveal stagger-2">
+            <div class="kicker">Pricing</div>
+            <h3>Minimums are explicit.</h3>
+            <p><strong>$120 plus tax</strong> for 15 minutes or less with one needle, <strong>$150 plus tax</strong> for 15 to 45 minutes, then each artist’s hourly rate plus a <strong>$40 shop fee</strong> beyond that.</p>
+          </article>
+          <article class="proof-card reveal stagger-3">
+            <div class="kicker">Piercings</div>
+            <h3>Regular piercings start at $42.</h3>
+            <p>The home page lists piercings at <strong>$42</strong>, and the FAQ says they handle most regular nose, ear, lip, and belly button piercings, but not dermals.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="before-you-book">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">Before you book</span>
+            <h2>Sleep, eat, show up clean, and know how deposits work.</h2>
+          </div>
+          <p class="lede">A lot of tattoo sites force you to hunt for this stuff. Here, the FAQ does the heavy lifting, so the page should too.</p>
+        </div>
+        <div class="detail-grid">
+          <article class="detail reveal stagger-1">
+            <div class="kicker">Prep</div>
+            <h3>Come fed and rested.</h3>
+            <p>The shop recommends a good night’s sleep, a solid meal, a shower, and lotioning the area for a week or two before the appointment, but not on the day of.</p>
+          </article>
+          <article class="detail reveal stagger-2">
+            <div class="kicker">Deposits</div>
+            <h3>Cash deposits hold the slot.</h3>
+            <p>Deposits are $100 for one to three hours and $300 for four hours and up, per day. Three days’ notice keeps the reschedule open. Less than that counts as a cancellation.</p>
+          </article>
+          <article class="detail reveal stagger-3">
+            <div class="kicker">Aftercare</div>
+            <h3>Traditional heal or second skin, both spelled out.</h3>
+            <p>The FAQ gives both paths directly: wash gently with cool water and unscented soap for a traditional heal, or leave second skin on for four to five days unless it leaks or irritates.</p>
+          </article>
+          <article class="detail reveal stagger-4">
+            <div class="kicker">Safety</div>
+            <h3>Single-use gear, Cavicide wipe-downs, and HEPA filtration.</h3>
+            <p>The studio says all components besides wash bottles and tattoo machines are single-use and pre-sterilized, with each station cleaned after every tattoo.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="visit">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">Visit</span>
+            <h2>Seven days a week on Fisher Street SE.</h2>
+          </div>
+          <p class="lede">If you already know you want the shop, the next step is easy: call, walk in, or email the artist that matches the style you want.</p>
+        </div>
+        <div class="visit-shell">
+          <article class="visit-card reveal stagger-1">
+            <div class="kicker">Shop details</div>
+            <h3>Calgary Tattoo Company</h3>
+            <p>7144 Fisher St. SE, Calgary, AB T2H 0W5</p>
+            <ul>
+              <li><strong>Phone</strong><br><a class="text-link" href="tel:+14034746660">(403) 474-6660</a></li>
+              <li><strong>Hours</strong><br>Open 7 days a week, 11:00 AM to 7:00 PM</li>
+              <li><strong>Booking</strong><br>Walk in, call first, or email the artist directly from the official contact page.</li>
+              <li><strong>Extras</strong><br>Gift certificates available. FAQ and socials are both live.</li>
+              <li><strong>Links</strong><br><a class="text-link" href="https://www.calgarytattoocompany.com/frequently-asked-questions-faqs" target="_blank" rel="noreferrer">Read the FAQ</a> <a class="text-link" href="https://www.instagram.com/calgarytattoocompany/" target="_blank" rel="noreferrer">Instagram</a></li>
+            </ul>
+          </article>
+          <div class="visit-map reveal stagger-2">
+            <iframe title="Map to Calgary Tattoo Company" src="https://maps.google.com/maps?q=ChIJGZl4oVZlcVMR2eBKguj32LQ&output=embed"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="wrap footer-row">
+      <p class="footer-note">Calgary Tattoo Company · 7144 Fisher St. SE · Calgary, AB · Open daily 11 to 7</p>
+      <a class="button secondary" href="tel:+14034746660">Call (403) 474-6660</a>
+    </div>
+  </footer>
+  <script>
+    const toggle = document.querySelector('.nav-toggle');
+    const nav = document.querySelector('nav');
+    if (toggle && nav) {
+      toggle.addEventListener('click', () => {
+        const open = nav.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+        nav.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }));
+    }
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+      }, { threshold: 0.15 });
+      document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+    } else {
+      document.querySelectorAll('.reveal').forEach((el) => el.classList.add('visible'));
+    }
+  </script>
+</body>
+</html>

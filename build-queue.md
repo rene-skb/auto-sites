@@ -6,7 +6,6 @@
 
 ## Queue
 
-
 <!-- Built 2026-04-03 → demos/mr-sako-barber/ → https://auto-sites.pages.dev/demos/mr-sako-barber/ -->
 
 <!-- Zoé Dessert et Thé moved to Built -- 2026-03-28 -->

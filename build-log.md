@@ -1,5 +1,27 @@
 # Auto-Sites Build Log
 
+### Wild Rose Tattoo Company — Tattoo studio, Calgary AB
+- **Date:** 2026-05-03
+- **Model:** openai-codex/gpt-5.4
+- **Agent:** Lucy
+- **Folder:** wild-rose-tattoo-company
+- **Hero pattern:** asymmetric-collage
+- **Typography:** Prata + Space Grotesk
+- **Review layout:** one media pull quote plus three same-treatment factual proof cards
+- **Visit/hours layout:** light utility rail with stacked detail cards and a separate map panel
+- **Stats bar style:** no-stats
+- **WHY Score:** 7.37 (Jobs 7.4 / Graham 7.8 / Ogilvy 6.9)
+- **WHAT Score:** 7.00 (Norman 7.5 / Krug 6.5 / Nielsen 7.0)
+- **HOW Score:** 7.18 (Vignelli 6.8 / Spiekermann 7.4 / Rams 6.5 / Emil 8.0)
+- **Panel average:** 7.18
+- **Self-review:** 8.3
+- **Versions built:** 6 HTML versions + final index.html
+- **Build time:** ~55 minutes
+- **Token estimate:** ~18k
+- **Key decisions:** Discovery stayed mostly true to the queue brief. No strong official site surfaced, but the business had enough public signals through Facebook, a linked artist Instagram, local listings, and Daily Hive coverage to build a facts-first studio page instead of a generic tattoo template. The page leans on real portfolio images, the named roster, and Adrien Roque’s own words about rustic, timeless tattooing.
+- **Notes:** Named first-name-plus-last-initial customer review pulls were not surfaced cleanly from primary sources in this pass, so the proof layer stays factual instead of pretending the review data was cleaner than it was.
+- **Live URL:** pending push / Pages verification
+
 ### Calgary Tattoo Company — Tattoo studio, Calgary AB
 - **Date:** 2026-05-02
 - **Model:** openai-codex/gpt-5.4

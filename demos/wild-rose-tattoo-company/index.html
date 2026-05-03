@@ -1,0 +1,614 @@
+<!--
+DELTA: v5 final polish notes
+- Smoothed a few copy lines, clarified the proof heading, and kept the utility path simple and direct
+- Self-review score: 8.3
+- Panel averages carried forward from panel-notes.md: WHY 7.37 / WHAT 7.0 / HOW 7.18
+- Final polish focus: cleaner language and steadier editorial pacing
+-->
+<!--
+PHOTO EVAL
+Ranked best to worst for Wild Rose Tattoo Company brand fit:
+1. ig-photo-01.jpg — black-and-grey cowgirl pin-up, strong editorial mood, portrait. Best lead image.
+2. ig-photo-04.jpg — twin horse-head tattoos, clean composition, portrait. Best secondary lead image.
+3. ig-photo-03.jpg — cowboy traditional piece, readable and on-brand, portrait. Best supporting image.
+4. ig-photo-05.jpg — black-and-grey peacock, elegant range piece, portrait.
+5. ig-photo-02.jpg — cactus and skull traditional piece, supporting only.
+6. ig-photo-07.jpg — eagle head traditional piece, bold but cropped tight.
+7. ig-photo-06.jpg — dual-thigh tattoos, useful range but less premium.
+8. ig-photo-08.jpg — shoulder butterfly piece, more visual noise than the others.
+
+Assignments
+- Hero collage: ig-photo-01.jpg, ig-photo-04.jpg, ig-photo-03.jpg
+- Supporting gallery: ig-photo-05.jpg, ig-photo-02.jpg, ig-photo-07.jpg
+- Skip: ig-photo-06.jpg, ig-photo-08.jpg
+
+CREATIVE DIRECTION
+- Steve Jobs: Make the page feel private, exacting, and timeless. The work should sell the studio before the copy does.
+- Paul Graham: Keep it literal. Private studio, downtown address, artist roster, hours, phone, and one real outside quote are enough.
+- David Ogilvy: Lead with the kind of tattoo work someone comes here for, not with mythology. The headline should sound like a recommendation, not a campaign.
+
+BUILD NOTES
+- Hero pattern: asymmetric-collage
+- Typography: Prata + Space Grotesk
+- Review layout: one media pull quote with three same-treatment proof cards
+- Visit layout: light utility rail with separate map card and booking notes
+- Stats bar style: no-stats
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wild Rose Tattoo Company, Calgary AB</title>
+  <meta name="description" content="Private tattoo studio in downtown Calgary with artist-led booking, classic single-needle and traditional work, and a Tuesday to Saturday studio rhythm." />
+  <meta property="og:title" content="Wild Rose Tattoo Company" />
+  <meta property="og:description" content="Private tattoo studio in Calgary's Historic Grain Exchange building, with Nick Luit, Adrien Rouque, Garth Philpott, Joel Mijker, and guests." />
+  <meta property="og:image" content="https://auto-sites.pages.dev/demos/wild-rose-tattoo-company/ig-photo-01.jpg" />
+  <meta property="og:url" content="https://auto-sites.pages.dev/demos/wild-rose-tattoo-company/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Prata&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f5efe7;
+      --bg-soft: #ece2d6;
+      --panel: #fffaf4;
+      --ink: #16110f;
+      --muted: #5c5048;
+      --line: rgba(22, 17, 15, 0.12);
+      --accent: #7f2d1f;
+      --accent-soft: #b7704b;
+      --shadow: 0 16px 36px rgba(18, 12, 10, 0.08);
+      --max: 1180px;
+      --section-pad: clamp(4.5rem, 8vw, 7rem);
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Space Grotesk", sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+    }
+    img { display: block; width: 100%; height: auto; }
+    a { color: inherit; }
+    .skip-link {
+      position: absolute;
+      left: 1rem;
+      top: -3rem;
+      padding: 0.75rem 1rem;
+      background: var(--ink);
+      color: var(--bg);
+      z-index: 50;
+    }
+    .skip-link:focus { top: 1rem; }
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background: rgba(245, 239, 231, 0.84);
+      border-bottom: 1px solid rgba(22, 17, 15, 0.08);
+    }
+    .nav {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .brand {
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+    .brand-mark,
+    .eyebrow,
+    .section-kicker {
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.76rem;
+      color: var(--accent);
+    }
+    .brand-copy {
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1rem;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .nav-cta,
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 3rem;
+      border-radius: 999px;
+      padding: 0.9rem 1.25rem;
+      text-decoration: none;
+      font-weight: 700;
+      transition: transform 160ms var(--ease-out), background 160ms var(--ease-out), border-color 160ms var(--ease-out), box-shadow 160ms var(--ease-out);
+    }
+    .nav-cta,
+    .button-primary {
+      background: var(--ink);
+      color: var(--bg);
+      box-shadow: var(--shadow);
+    }
+    .button-secondary {
+      border: 1px solid var(--line);
+      color: var(--ink);
+      background: rgba(255,255,255,0.35);
+    }
+    .nav-cta:hover,
+    .button:hover { transform: translateY(-1px); }
+    .nav-cta:active,
+    .button:active { transform: scale(0.97); }
+    h1, h2, h3 {
+      font-family: Prata, serif;
+      font-weight: 400;
+      line-height: 1.05;
+      margin: 0;
+    }
+    h1 {
+      font-size: clamp(3rem, 7.2vw, 5.4rem);
+      max-width: 10ch;
+      margin-top: 1rem;
+    }
+    h2 { font-size: clamp(2rem, 4.3vw, 3.5rem); }
+    h3 { font-size: 1.35rem; }
+    p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.02rem;
+    }
+    main { overflow: clip; }
+    section { padding: 0 1.25rem var(--section-pad); }
+    .section-shell { max-width: var(--max); margin: 0 auto; }
+    .hero {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 2rem 1.25rem var(--section-pad);
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(340px, 0.9fr);
+      gap: 2rem;
+      align-items: start;
+    }
+    .hero-collage {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(170px, 0.75fr);
+      gap: 1rem;
+      min-height: 100%;
+    }
+    .hero-lead,
+    .hero-stack img,
+    .gallery-grid img,
+    .story-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 1.75rem;
+      box-shadow: var(--shadow);
+      background: var(--bg-soft);
+    }
+    .hero-lead {
+      min-height: 39rem;
+      object-position: center top;
+    }
+    .hero-stack {
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      gap: 1rem;
+    }
+    .hero-stack img:first-child { object-position: center 24%; }
+    .hero-copy {
+      display: grid;
+      gap: 1.5rem;
+      align-content: start;
+      padding-top: 1.2rem;
+    }
+    .hero-copy p { max-width: 48ch; }
+    .hero-actions,
+    .cta-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+    }
+    .quick-strip {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .quick-card,
+    .proof-card,
+    .artist-card,
+    .visit-card,
+    .cta-box {
+      border: 1px solid var(--line);
+      border-radius: 1rem;
+      background: rgba(255,255,255,0.34);
+      padding: 1.4rem;
+    }
+    .quick-card span,
+    .label {
+      display: block;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 0.73rem;
+      color: var(--accent);
+      margin-bottom: 0.45rem;
+    }
+    .quick-card strong,
+    .proof-card strong,
+    .visit-card strong { font-size: 1rem; }
+    .section-head {
+      display: grid;
+      gap: 0.8rem;
+      max-width: 50rem;
+      margin-bottom: 2rem;
+    }
+    .proof-wrap {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+      gap: 1rem;
+      align-items: stretch;
+    }
+    .proof-quote {
+      border-radius: 1.2rem;
+      background: #1e1411;
+      color: #f5efe7;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      display: grid;
+      align-content: space-between;
+      min-height: 100%;
+    }
+    .proof-quote p,
+    .proof-quote cite { color: rgba(245, 239, 231, 0.82); }
+    .proof-quote blockquote {
+      margin: 0;
+      font-family: Prata, serif;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      line-height: 1.2;
+    }
+    .proof-grid,
+    .artist-grid,
+    .gallery-grid,
+    .visit-grid {
+      display: grid;
+      gap: 1rem;
+    }
+    .proof-grid,
+    .artist-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .story {
+      display: grid;
+      grid-template-columns: minmax(280px, 0.8fr) minmax(0, 1.1fr);
+      gap: 1.5rem;
+      align-items: stretch;
+    }
+    .story-photo img {
+      min-height: 100%;
+      object-position: center 28%;
+    }
+    .story-copy {
+      border: 1px solid var(--line);
+      border-radius: 1.2rem;
+      background: rgba(255,255,255,0.34);
+      padding: 2rem;
+      display: grid;
+      gap: 1rem;
+    }
+    .story-copy blockquote {
+      margin: 0;
+      padding: 1.2rem 0 0;
+      border-top: 1px solid var(--line);
+      font-family: Prata, serif;
+      font-size: 1.3rem;
+      line-height: 1.35;
+      color: var(--ink);
+    }
+    .gallery-grid {
+      grid-template-columns: 1.05fr 0.95fr 0.95fr;
+      align-items: end;
+    }
+    .gallery-grid img:nth-child(1) { min-height: 32rem; object-position: center 24%; }
+    .gallery-grid img:nth-child(2),
+    .gallery-grid img:nth-child(3) { min-height: 24rem; }
+    .visit-grid {
+      grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+      align-items: stretch;
+    }
+    .visit-stack {
+      display: grid;
+      gap: 1rem;
+    }
+    .map-card {
+      border-radius: 1.2rem;
+      overflow: hidden;
+      min-height: 100%;
+      box-shadow: var(--shadow);
+      background: #ddd1c6;
+    }
+    .map-card iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 32rem;
+      border: 0;
+    }
+    .cta-box {
+      display: grid;
+      gap: 1rem;
+      align-items: start;
+    }
+    footer {
+      padding: 0 1.25rem 2.5rem;
+    }
+    .footer-shell {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding-top: 1.2rem;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 700ms var(--ease-out), transform 700ms var(--ease-out);
+      will-change: transform, opacity;
+    }
+    .hero-collage img,
+    .gallery-grid img {
+      transition: transform 700ms var(--ease-out), opacity 700ms var(--ease-out);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    @media (max-width: 980px) {
+      .hero,
+      .proof-wrap,
+      .story,
+      .visit-grid {
+        grid-template-columns: 1fr;
+      }
+      .quick-strip,
+      .proof-grid,
+      .artist-grid,
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .hero-lead { min-height: 28rem; }
+      .gallery-grid img:nth-child(1),
+      .gallery-grid img:nth-child(2),
+      .gallery-grid img:nth-child(3) { min-height: 20rem; }
+    }
+    @media (max-width: 720px) {
+      .nav { align-items: flex-start; flex-direction: column; }
+      .nav-links { width: 100%; }
+      .nav-cta { width: 100%; }
+      .hero-collage,
+      .quick-strip,
+      .proof-grid,
+      .artist-grid,
+      .gallery-grid { grid-template-columns: 1fr; }
+      .hero-stack { grid-template-rows: auto; }
+      .hero-lead,
+      .hero-stack img,
+      .gallery-grid img:nth-child(1),
+      .gallery-grid img:nth-child(2),
+      .gallery-grid img:nth-child(3),
+      .map-card iframe { min-height: 18rem; }
+      h1 { font-size: clamp(2.8rem, 15vw, 4.2rem); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .nav-cta,
+      .button,
+      .hero-collage img,
+      .gallery-grid img { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#content">Skip to content</a>
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary">
+      <a class="brand" href="#top">
+        <span class="brand-mark">Wild Rose Tattoo Company</span>
+        <span class="brand-copy">Private studio, downtown Calgary</span>
+      </a>
+      <div class="nav-links">
+        <a href="#proof">Why this studio</a>
+        <a href="#artists">Artists</a>
+        <a href="#visit">Visit</a>
+        <a class="nav-cta" href="tel:+14034547673">Call (403) 454-7673</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="content">
+    <section class="hero" id="top">
+      <div class="hero-collage reveal">
+        <img class="hero-lead" src="ig-photo-01.jpg" alt="Black and grey cowgirl tattoo on a calf." />
+        <div class="hero-stack">
+          <img src="ig-photo-04.jpg" alt="Two black and red horse head tattoos on a thigh." />
+          <img src="ig-photo-03.jpg" alt="Traditional cowboy tattoo with pistol and smoke." />
+        </div>
+      </div>
+      <div class="hero-copy reveal">
+        <div>
+          <span class="eyebrow">Tattoo studio · Calgary AB</span>
+          <h1>Classic tattoo work in a private downtown studio.</h1>
+        </div>
+        <p>Wild Rose Tattoo Company keeps the useful part upfront: real artists, direct booking, and a Calgary studio inside the Historic Grain Exchange building. The work ranges from traditional flash energy to finer single-needle detail, without turning the page into a sales pitch.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="tel:+14034547673">Call (403) 454-7673</a>
+        </div>
+        <div class="quick-strip">
+          <div class="quick-card">
+            <span>Studio summary</span>
+            <strong>Private studio in Suite 212, 815 1st Street SW</strong>
+            <p>Tuesday to Saturday, 11:00 AM to 6:00 PM. Artists: Nick, Adrien, Garth, Joel, and guests.</p>
+          </div>
+          <div class="quick-card">
+            <span>Booking</span>
+            <strong>Phone-first contact with public email and artist links</strong>
+            <p>Call (403) 454-7673. Public email surfaced as nickluit@hotmail.com. Facebook shows 100% recommend with eight public recommendations in this pass.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="proof">
+      <div class="section-shell">
+        <div class="section-head reveal">
+          <span class="section-kicker">Why this studio</span>
+          <h2>The useful part should be as clear as the work.</h2>
+          <p>This is a private studio, so the useful questions matter more than filler. Who works here, what kind of tattoos they do, where the studio is, and how to reach them. The proof already exists in the work and the reputation around it.</p>
+        </div>
+        <div class="proof-wrap">
+          <article class="proof-quote reveal">
+            <blockquote>“I like tattoos that look like tattoos. Rustic and timeless.”</blockquote>
+            <div>
+              <cite>Adrien Roque, quoted by Daily Hive in 2020</cite>
+              <p>That line does more work than a paragraph of invented brand copy. It sets the tone for the page fast.</p>
+            </div>
+          </article>
+          <div class="proof-grid">
+            <article class="proof-card reveal">
+              <span class="label">Roster</span>
+              <strong>Professional tattooing by Nick Luit, Adrien Rouque, Garth Philpott, Joel Mijker, and guests.</strong>
+              <p>That artist list comes straight from the studio’s Facebook page.</p>
+            </article>
+            <article class="proof-card reveal">
+              <span class="label">Location</span>
+              <strong>Private studio in the Historic Grain Exchange building.</strong>
+              <p>The studio leans into a downtown upstairs address instead of storefront foot traffic.</p>
+            </article>
+            <article class="proof-card reveal">
+              <span class="label">Social proof</span>
+              <strong>100% recommend on Facebook, with eight public recommendations surfaced in this pass.</strong>
+              <p>Named first-name-plus-initial review pulls were not clean enough to turn into customer cards, so the page stays factual.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="artists">
+      <div class="section-shell story">
+        <figure class="story-photo reveal">
+          <img src="ig-photo-05.jpg" alt="Black and grey peacock tattoo on a thigh." />
+        </figure>
+        <article class="story-copy reveal">
+          <span class="section-kicker">Artists and approach</span>
+          <h2>A studio roster, not a generic tattoo funnel.</h2>
+          <p>Wild Rose Tattoo Company presents itself through the artists first. Nick Luit is the clearest linked contact surfaced in this pass, and the studio also names Adrien Rouque, Garth Philpott, Joel Mijker, and guest artists.</p>
+          <p>Daily Hive singled out Adrien’s work for staying classic, mostly black, delicate, and intricate. That makes the studio’s sweet spot pretty clear even before you pick up the phone.</p>
+          <blockquote>Traditional work, finer single-needle detail, and a private booking rhythm all sit inside the same downtown room.</blockquote>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-shell">
+        <div class="section-head reveal">
+          <span class="section-kicker">Selected work</span>
+          <h2>Classic subjects, cleaner framing.</h2>
+          <p>The best photos in this set are direct. Western pin-up, horse heads, cactus and skull, eagle. The studio does not need invented atmosphere when the portfolio already has one.</p>
+        </div>
+        <div class="gallery-grid">
+          <img class="reveal" src="ig-photo-02.jpg" alt="Traditional cactus and skull tattoo on a lower leg." />
+          <img class="reveal" src="ig-photo-07.jpg" alt="Traditional eagle head tattoo with leaves and flower." />
+          <img class="reveal" src="ig-photo-04.jpg" alt="Two black and red horse head tattoos on a thigh." />
+        </div>
+      </div>
+    </section>
+
+    <section id="visit">
+      <div class="section-shell">
+        <div class="section-head reveal">
+          <span class="section-kicker">Visit and contact</span>
+          <h2>Useful details, all in one place.</h2>
+          <p>Private studio means this part matters. The phone number is public, the address is public, and the hours surfaced consistently in this pass run Tuesday through Saturday, 11 to 6.</p>
+        </div>
+        <div class="visit-grid">
+          <div class="visit-stack">
+            <article class="visit-card reveal">
+              <span class="label">Address</span>
+              <strong>Suite 212, 815 1st Street SW, Calgary AB</strong>
+              <p>Inside the Historic Grain Exchange building downtown.</p>
+            </article>
+            <article class="visit-card reveal">
+              <span class="label">Hours</span>
+              <strong>Tuesday to Saturday, 11:00 AM to 6:00 PM</strong>
+              <p>Sunday and Monday hours were not surfaced in the sources used here, so they are left unstated.</p>
+            </article>
+            <article class="cta-box reveal">
+              <span class="label">Reach the studio</span>
+              <strong>Call (403) 454-7673</strong>
+              <p>Email surfaced publicly as <a href="mailto:nickluit@hotmail.com">nickluit@hotmail.com</a>. The clearest linked Instagram surfaced in this pass was <a href="https://www.instagram.com/nickluit/">@nickluit</a>.</p>
+              <div class="cta-actions">
+                <a class="button button-primary" href="tel:+14034547673">Call now</a>
+                <a class="button button-secondary" href="https://www.google.com/maps/search/?api=1&query=Wild+Rose+Tattoo+Company+815+1st+Street+SW+Suite+212+Calgary+AB" target="_blank" rel="noreferrer">Open the studio map</a>
+              </div>
+            </article>
+          </div>
+          <figure class="map-card reveal">
+            <iframe title="Map to Wild Rose Tattoo Company" src="https://maps.google.com/maps?q=Wild%20Rose%20Tattoo%20Company%20815%201st%20Street%20SW%20Suite%20212%20Calgary%20AB&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </figure>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-shell">
+      <p>Wild Rose Tattoo Company, Calgary AB.</p>
+      <p>Built from public Facebook, Daily Hive, and local listing data surfaced in this pass.</p>
+    </div>
+  </footer>
+
+  <script>
+    const observer = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      ? null
+      : new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.14 });
+
+    if (observer) {
+      document.querySelectorAll('.reveal').forEach((el, index) => {
+        el.style.transitionDelay = `${Math.min(index * 60, 300)}ms`;
+        observer.observe(el);
+      });
+    } else {
+      document.querySelectorAll('.reveal').forEach((el) => el.classList.add('visible'));
+    }
+  </script>
+</body>
+</html>

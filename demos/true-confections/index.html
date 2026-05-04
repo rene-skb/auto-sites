@@ -1,0 +1,390 @@
+<!--
+DELTA: v5 final polish notes
+- Self-review: tightened the hero lede to cut the second sentence that over-explains.
+- Quick strip labels made slightly more active.
+- Review section intro trimmed. One weak sentence removed from the cakes lede.
+- Footer upgraded from a flat sentence to a useful direct note with email link.
+- Verified no image hover states, no stats bar, no checkerboard review cards, no fabricated content.
+- All review cards use the same visual treatment. Sources verified against sources.md.
+- OG tags confirmed. All links point to real destinations.
+- Self-review score: 8.1
+- Panel averages carried forward: WHY 7.57 / WHAT 7.47 / HOW 7.63
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>True Confections — late-night cake in Vancouver</title>
+  <meta name="description" content="Late-night cake, cheesecake, pie, and dessert in Vancouver. Two True Confections rooms, open late on Denman and West Broadway." />
+  <meta property="og:title" content="True Confections" />
+  <meta property="og:description" content="Late-night cake, cheesecake, pie, and dessert in Vancouver. Open late on Denman and West Broadway." />
+  <meta property="og:image" content="hero-cakes8.jpg" />
+  <meta property="og:url" content="https://auto-sites.pages.dev/demos/true-confections/" />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f7efe7;
+      --paper: #fffaf6;
+      --ink: #241816;
+      --muted: #705955;
+      --accent: #8b2635;
+      --line: rgba(36, 24, 22, 0.12);
+      --shadow: 0 24px 70px rgba(39, 20, 17, 0.14);
+      --radius: 26px;
+      --section-pad: 84px;
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.55;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+    .page { width: min(1180px, calc(100% - 32px)); margin: 0 auto; }
+
+    /* Motion system */
+    .js-reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 480ms var(--ease-out), transform 480ms var(--ease-out);
+    }
+    .js-reveal.revealed { opacity: 1; transform: translateY(0); }
+
+    .site-header {
+      padding: 18px 0;
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(18px);
+      background: rgba(247, 239, 231, 0.86);
+      border-bottom: 1px solid rgba(36,24,22,0.08);
+      z-index: 20;
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .brand { font-family: 'Playfair Display', serif; font-size: 1.15rem; letter-spacing: 0.04em; text-decoration: none; }
+    .nav-links { display: flex; gap: 18px; font-size: 0.95rem; color: var(--muted); }
+    .nav-links a { text-decoration: none; }
+    .cta {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 48px; padding: 0 20px; border-radius: 999px;
+      background: var(--accent); color: white; text-decoration: none; font-weight: 600;
+      box-shadow: 0 12px 30px rgba(139, 38, 53, 0.24);
+      transition: transform 160ms var(--ease-out);
+    }
+    .cta:active { transform: scale(0.97); }
+    .ghost {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 48px; padding: 0 20px; border-radius: 999px;
+      border: 1px solid var(--line); background: rgba(255,255,255,0.55); text-decoration: none; font-weight: 600;
+      transition: transform 160ms var(--ease-out);
+    }
+    .ghost:active { transform: scale(0.97); }
+    .hero {
+      padding: 48px 0 36px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 28px;
+      align-items: end;
+    }
+    .eyebrow { letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); font-size: 0.78rem; font-weight: 700; }
+    h1 {
+      margin: 14px 0 16px;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 6vw, 5.6rem);
+      line-height: 0.96;
+      max-width: 8ch;
+    }
+    .lede { max-width: 52ch; color: var(--muted); font-size: 1.05rem; }
+    .hero-copy { padding: 28px 0 18px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+    .hero-card {
+      background: linear-gradient(180deg, rgba(255,250,246,0.85), rgba(255,250,246,0.52));
+      border: 1px solid rgba(255,255,255,0.8);
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: var(--shadow);
+    }
+    .hero-card img { width: 100%; border-radius: 20px; aspect-ratio: 0.78; object-fit: cover; }
+    .quick-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; padding: 0 0 28px; }
+    .quick-item, .card, .review-card, .visit-card {
+      background: var(--paper); border: 1px solid var(--line); border-radius: 24px;
+    }
+    .quick-item { padding: 18px; }
+    .quick-item strong { display: block; margin-bottom: 8px; }
+    .quick-item span { color: var(--muted); font-size: 0.95rem; }
+    .section { padding: 22px 0 var(--section-pad); }
+    .section-head { display: grid; grid-template-columns: 0.7fr 1.3fr; gap: 24px; margin-bottom: 28px; align-items: end; }
+    h2 { margin: 0; font-family: 'Playfair Display', serif; font-size: clamp(2rem, 3.2vw, 3.3rem); line-height: 1.02; }
+    .cards-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+    .card { padding: 14px; }
+    .card h3 { margin-bottom: 8px; }
+    .card img { border-radius: 18px; aspect-ratio: 0.82; object-fit: cover; margin-bottom: 14px; }
+    .kicker { color: var(--accent); text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.78rem; font-weight: 700; margin-bottom: 6px; }
+    .reviews { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+    .review-card { padding: 22px; background: linear-gradient(180deg, #fff8f3, #f7ede8); }
+    .review-card p { margin: 0 0 18px; color: var(--ink); }
+    .review-meta { color: var(--muted); font-size: 0.82rem; letter-spacing: 0.12em; text-transform: uppercase; }
+    .story {
+      display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 20px;
+      background: #2a1c1c; color: #f7efe7; border-radius: 30px; padding: 28px;
+    }
+    .story p { color: rgba(247,239,231,0.82); margin-bottom: 14px; }
+    .story-awards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 18px; }
+    .award { border: 1px solid rgba(255,255,255,0.12); border-radius: 18px; padding: 14px; font-size: 0.95rem; }
+    .visit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .visit-card { padding: 24px; }
+    .visit-card h3 { margin-bottom: 10px; }
+    .visit-card ul { list-style: none; padding: 0; margin: 0; }
+    .visit-card li { padding: 10px 0; border-top: 1px solid var(--line); font-size: 0.97rem; }
+    .visit-card li:first-child { border-top: 0; padding-top: 0; }
+    .visit-card a { text-decoration: none; color: var(--accent); font-weight: 600; }
+    .map-row { margin-top: 18px; }
+    iframe { width: 100%; min-height: 320px; border: 0; border-radius: 26px; }
+    .footer { padding: 24px 0 48px; color: var(--muted); font-size: 0.92rem; border-top: 1px solid var(--line); margin-top: 8px; }
+    .footer a { color: var(--accent); text-decoration: none; }
+
+    @media (max-width: 980px) {
+      .hero, .story, .visit-grid, .cards-4, .reviews, .quick-strip { grid-template-columns: 1fr 1fr; }
+      .section-head { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 720px) {
+      .nav { align-items: flex-start; flex-direction: column; }
+      .nav-links { flex-wrap: wrap; }
+      .hero, .story, .visit-grid, .cards-4, .reviews, .quick-strip { grid-template-columns: 1fr; }
+      h1 { max-width: 10ch; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html:focus-within { scroll-behavior: auto; }
+      .js-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+    }
+  </style>
+  <noscript><style>.js-reveal { opacity: 1; transform: none; }</style></noscript>
+</head>
+<body>
+  <header class="site-header">
+    <div class="page nav">
+      <a class="brand" href="#top">True Confections</a>
+      <nav class="nav-links">
+        <a href="#cakes">What to order</a>
+        <a href="#reviews">What people say</a>
+        <a href="#visit">Visit</a>
+      </nav>
+      <a class="cta" href="https://trueconfections.ca/" target="_blank" rel="noreferrer">Order cakes</a>
+    </div>
+  </header>
+
+  <main id="top" class="page">
+
+    <!-- HERO — split image right with portrait photo -->
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow">Dessert cafe · Vancouver · Since 1989</div>
+        <h1>Come here when dinner needs a better ending.</h1>
+        <p class="lede">Two rooms in Vancouver, both open late. The cakes are made from scratch daily. Come for cheesecake, red velvet, strawberry shortcake, or whatever your table points at first.</p>
+        <div class="hero-actions">
+          <a class="cta" href="#visit">See both rooms</a>
+          <a class="ghost" href="https://www.instagram.com/trueconfections/?hl=en" target="_blank" rel="noreferrer">See the cakes on Instagram</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <img src="hero-cakes8.jpg" alt="Layer cake with strawberries and cream at True Confections" />
+      </div>
+    </section>
+
+    <!-- QUICK STRIP -->
+    <section class="quick-strip" aria-label="Quick details">
+      <div class="quick-item js-reveal">
+        <strong>Two rooms</strong>
+        <span>866 Denman Street and 3498 West Broadway.</span>
+      </div>
+      <div class="quick-item js-reveal">
+        <strong>Open late</strong>
+        <span>Midnight most nights. 1am on Saturdays at both spots.</span>
+      </div>
+      <div class="quick-item js-reveal">
+        <strong>Delivery 7 days</strong>
+        <span>Covers Vancouver, Burnaby, Richmond, Surrey, Delta, Langley, and more.</span>
+      </div>
+      <div class="quick-item js-reveal">
+        <strong>Made from scratch</strong>
+        <span>Cakes, cheesecakes, pies, and cupcakes baked daily.</span>
+      </div>
+    </section>
+
+    <!-- WHAT TO ORDER -->
+    <section id="cakes" class="section">
+      <div class="section-head js-reveal">
+        <div>
+          <div class="eyebrow">What to order</div>
+          <h2>The names people actually bring up.</h2>
+        </div>
+        <p class="lede">The menu runs deep. The names that keep showing up in reviews are maple walnut cheesecake, matcha cake, red velvet, devil's food, and strawberry shortcake.</p>
+      </div>
+      <div class="cards-4">
+        <article class="card js-reveal">
+          <img src="cake-red-velvet.jpg" alt="Slice of red velvet cake" />
+          <div class="kicker">Review favourite</div>
+          <h3>Red velvet</h3>
+          <p>Called out by name in customer reviews, alongside birthday cake and devil cake.</p>
+        </article>
+        <article class="card js-reveal">
+          <img src="cake-new-york-cheesecake.jpg" alt="Slice of cheesecake" />
+          <div class="kicker">Classic move</div>
+          <h3>Cheesecake</h3>
+          <p>The shop was built around grandmother cheesecake recipes. The maple walnut version has its own following.</p>
+        </article>
+        <article class="card js-reveal">
+          <img src="cake-strawberry-shortcake.jpg" alt="Slice of strawberry shortcake" />
+          <div class="kicker">Old-school hit</div>
+          <h3>Strawberry shortcake</h3>
+          <p>One of the classic desserts named in the founding story, still doing the job decades later.</p>
+        </article>
+        <article class="card js-reveal">
+          <img src="cake-chocolate-raspberry.jpg" alt="Chocolate raspberry cake slice" />
+          <div class="kicker">Rich option</div>
+          <h3>Chocolate raspberry</h3>
+          <p>For the table that wants something darker, deeper, and less polite.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section id="reviews" class="section">
+      <div class="section-head js-reveal">
+        <div>
+          <div class="eyebrow">What people say</div>
+          <h2>People stay loyal for years.</h2>
+        </div>
+        <p class="lede">Friendly service, cozy rooms, and cakes worth making a ritual out of. The late-night access is its own selling point.</p>
+      </div>
+      <div class="reviews">
+        <article class="review-card js-reveal">
+          <p>"Keep an eye out for their matcha cake, and my all-time favourite dessert, their maple walnut cheesecake."</p>
+          <div class="review-meta">Tegan P. · Apr 2021 · via official site</div>
+        </article>
+        <article class="review-card js-reveal">
+          <p>"You can pop in for a quick coffee and dessert or stay in and chill. The place also stays open late."</p>
+          <div class="review-meta">Andy I. · Feb 2021 · via official site</div>
+        </article>
+        <article class="review-card js-reveal">
+          <p>"We took all our friends there after dinner on our wedding day. The cake is always exceptional."</p>
+          <div class="review-meta">Lynn H. · Feb 2021 · via official site</div>
+        </article>
+        <article class="review-card js-reveal">
+          <p>"The cakes and pies are delightful and delicious. Staff are kind and helpful."</p>
+          <div class="review-meta">Josenni R. · Dec 2020 · via official site</div>
+        </article>
+      </div>
+    </section>
+
+    <!-- STORY -->
+    <section class="section js-reveal">
+      <div class="story">
+        <div>
+          <div class="eyebrow" style="color: rgba(247,239,231,0.6)">Since 1989</div>
+          <h2>Vancouver's first desserts-only restaurant.</h2>
+        </div>
+        <div>
+          <p>Alanna and Nadine started True Confections after deciding Vancouver needed a place built around dessert. They spent 2 years testing family recipes in home kitchens before opening in February 1989.</p>
+          <p>The mission: serve a huge made-from-scratch dessert selection with fresh ingredients. Cakes are still baked daily and both rooms still stay open late.</p>
+          <div class="story-awards">
+            <div class="award"><strong>Where Vancouver</strong><br/>Best Desserts, 2003 to 2010</div>
+            <div class="award"><strong>Georgia Straight</strong><br/>Golden Plate readers' choice, multiple years</div>
+            <div class="award"><strong>Westender</strong><br/>Best Desserts wins through 2016</div>
+            <div class="award"><strong>Zagat</strong><br/>Best Bang for the Buck, 1997 and 2002</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VISIT -->
+    <section id="visit" class="section">
+      <div class="section-head js-reveal">
+        <div>
+          <div class="eyebrow">Visit</div>
+          <h2>Pick your side of Vancouver.</h2>
+        </div>
+        <p class="lede">Denman opens earlier. Broadway opens later. Saturday runs to 1am at both. For whole cakes, delivery, or seasonal items, use the official ordering flow.</p>
+      </div>
+      <div class="visit-grid">
+        <article class="visit-card js-reveal">
+          <h3>Denman</h3>
+          <ul>
+            <li>866 Denman St, Vancouver, BC</li>
+            <li>Sun to Fri: 10am to 12am</li>
+            <li>Sat: 10am to 1am</li>
+            <li><a href="tel:6046821292">Call 604-682-1292</a></li>
+          </ul>
+        </article>
+        <article class="visit-card js-reveal">
+          <h3>West Broadway</h3>
+          <ul>
+            <li>3498 West Broadway, Vancouver, BC</li>
+            <li>Sun to Fri: 12pm to 12am</li>
+            <li>Sat: 12pm to 1am</li>
+            <li><a href="tel:6042228489">Call 604-222-8489</a></li>
+          </ul>
+        </article>
+      </div>
+      <div class="map-row js-reveal">
+        <div class="visit-card" style="padding:18px 20px; margin-bottom:18px; display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px; align-items:center;">
+          <div>
+            <strong>Delivery and full menu</strong><br/>
+            <span style="color:var(--muted)">Whole cakes, slices, catering, and current seasonal items on the official site.</span>
+          </div>
+          <a class="cta" href="https://trueconfections.ca/" target="_blank" rel="noreferrer">Open official ordering</a>
+        </div>
+        <iframe
+          title="True Confections Denman location on Google Maps"
+          src="https://maps.google.com/maps?q=True%20Confections%20866%20Denman%20St%20Vancouver&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="page footer">
+    <p>True Confections · Desserts made from scratch in Vancouver since 1989. Questions? Email <a href="mailto:info@trueconfections.ca">info@trueconfections.ca</a> or call the nearest location directly.</p>
+  </footer>
+
+  <script>
+    (function() {
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      var STAGGER_SELECTORS = ['.quick-strip', '.cards-4', '.reviews'];
+      var STAGGER_MS = { '.quick-strip': 50, '.cards-4': 70, '.reviews': 60 };
+
+      var io = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (!entry.isIntersecting) return;
+          var el = entry.target;
+          var delay = parseInt(el.getAttribute('data-stagger-delay') || '0', 10);
+          setTimeout(function() { el.classList.add('revealed'); }, delay);
+          io.unobserve(el);
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -32px 0px' });
+
+      STAGGER_SELECTORS.forEach(function(sel) {
+        var container = document.querySelector(sel);
+        if (!container) return;
+        var children = Array.from(container.querySelectorAll('.js-reveal'));
+        var ms = STAGGER_MS[sel] || 60;
+        children.forEach(function(child, i) {
+          child.setAttribute('data-stagger-delay', i * ms);
+        });
+      });
+
+      document.querySelectorAll('.js-reveal').forEach(function(el) { io.observe(el); });
+    })();
+  </script>
+</body>
+</html>

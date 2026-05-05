@@ -20,7 +20,7 @@
 - **Token estimate:** ~18k
 - **Key decisions:** Discovery changed the pitch immediately. Darling Cake Co. already has a live site, so the better move was a cleaner editorial alternative that keeps the luxury wedding tone but brings the operational layer closer to the top: starting price, booking window, pickup model, and delivery scope. Real site photography was strong enough to carry the whole page, and no customer review cards were used because the surfaced testimonial block did not expose compliant first-name-plus-last-initial attributions.
 - **Notes:** Pickup and delivery details were sourced from the official site and custom cakes page. No standalone Google Maps business-pin link was surfaced confidently in this pass because the business routes pickup through Island Chef Kitchens instead of a public storefront listing.
-- **Live URL:** pending push / Pages verification
+- **Live URL:** https://auto-sites.pages.dev/demos/darling-cake-co/ (push succeeded, route still serving the portfolio landing page at verification time)
 
 ### True Confections — Dessert cafe, Vancouver BC
 - **Date:** 2026-05-04

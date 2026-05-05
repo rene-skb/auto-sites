@@ -8,6 +8,9 @@
 
 <!-- Built 2026-04-03 → demos/mr-sako-barber/ → https://auto-sites.pages.dev/demos/mr-sako-barber/ -->
 
+<!-- Built 2026-05-04 → demos/true-confections/ → https://auto-sites.pages.dev/demos/true-confections/ -->
+
+
 <!-- Zoé Dessert et Thé moved to Built -- 2026-03-28 -->
 
 <!-- Built 2026-04-06 → demos/sad-entertainment/ → https://auto-sites.pages.dev/demos/sad-entertainment/ -->
@@ -19,6 +22,4 @@
 
 <!-- Built 2026-04-28 → demos/halifax-perennials/ → https://auto-sites.pages.dev/demos/halifax-perennials/ -->
 
-
-
-
+<!-- Built 2026-05-05 → demos/darling-cake-co/ → pending push / Pages verification -->

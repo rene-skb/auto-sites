@@ -1,5 +1,50 @@
 # Auto-Sites Build Log
 
+### Darling Cake Co. — Custom cake studio, Victoria BC
+- **Date:** 2026-05-05
+- **Model:** openai-codex/gpt-5.4
+- **Agent:** Lucy
+- **Folder:** darling-cake-co
+- **Hero pattern:** image-top-text-below
+- **Typography:** Cormorant Garamond + Manrope
+- **Review layout:** no customer review cards, three same-treatment factual proof cards instead
+- **Visit/hours layout:** dark centered pickup-and-delivery band with three utility columns
+- **Stats bar style:** no-stats
+- **WHY Score:** 7.33 (Jobs 7.5 / Graham 7.0 / Ogilvy 7.5)
+- **WHAT Score:** 7.50 (Norman 8.0 / Krug 7.0 / Nielsen 7.5)
+- **HOW Score:** 8.00 (Vignelli 8.0 / Spiekermann 7.5 / Rams 8.0 / Emil 8.5)
+- **Panel average:** 7.61
+- **Self-review:** 8.8
+- **Versions built:** 6 HTML versions + final index.html
+- **Build time:** ~75 minutes
+- **Token estimate:** ~18k
+- **Key decisions:** Discovery changed the pitch immediately. Darling Cake Co. already has a live site, so the better move was a cleaner editorial alternative that keeps the luxury wedding tone but brings the operational layer closer to the top: starting price, booking window, pickup model, and delivery scope. Real site photography was strong enough to carry the whole page, and no customer review cards were used because the surfaced testimonial block did not expose compliant first-name-plus-last-initial attributions.
+- **Notes:** Pickup and delivery details were sourced from the official site and custom cakes page. No standalone Google Maps business-pin link was surfaced confidently in this pass because the business routes pickup through Island Chef Kitchens instead of a public storefront listing.
+- **Live URL:** pending push / Pages verification
+
+### True Confections — Dessert cafe, Vancouver BC
+- **Date:** 2026-05-04
+- **Model:** anthropic/claude-sonnet-4-6
+- **Agent:** Lucy
+- **Folder:** true-confections
+- **Hero pattern:** split-image-right (portrait photo in right card against hero copy)
+- **Typography:** Playfair Display + Inter
+- **Review layout:** four same-treatment review cards with warm cream-to-blush gradient, all identical visual treatment
+- **Visit/hours layout:** two equal visit cards (Denman / West Broadway) with a utility delivery banner above the map embed
+- **Stats bar style:** no-stats
+- **WHY Score:** 7.57 (Jobs 7.6 / Graham 7.2 / Ogilvy 7.9)
+- **WHAT Score:** 7.47 (Norman 7.8 / Krug 7.5 / Nielsen 7.1)
+- **HOW Score:** 7.63 (Vignelli 7.7 / Spiekermann 7.6 / Rams 7.3 / Emil 7.9)
+- **Panel average:** 7.56
+- **Self-review:** 8.1
+- **Versions built:** 6 HTML versions + final index.html
+- **Build time:** ~70 minutes
+- **Token estimate:** ~16k
+- **Key decisions:** True Confections has a live site, so the build framed the demo around the genuine differentiator: desserts-only, open late, two rooms. The hero leads with an occasion-first conviction line rather than the origin story. All photo assets pulled directly from the official site. Review copy sourced from the official site's fan review carousel, full attribution in sources.md. No invented stats, no fabricated details.
+- **Notes:** Maple walnut cheesecake and matcha cake surface specifically from Tegan P.'s review and are called out in the cheesecake card. No Google Maps business-pin URL was confidently extracted, so the map embed uses a business-name query.
+- **Live URL:** https://auto-sites.pages.dev/demos/true-confections/ (push succeeded, Pages route pending cache propagation)
+
+
 ### Wild Rose Tattoo Company — Tattoo studio, Calgary AB
 - **Date:** 2026-05-03
 - **Model:** openai-codex/gpt-5.4

@@ -20,7 +20,7 @@
 - **Token estimate:** ~17k
 - **Key decisions:** Flourist already has a real site, so the opportunity was not rescue framing. The stronger move was an editorial alternative that gets to the useful layer faster: in-house milling, bakery hours, class details, and the weirdly persuasive storage truth that the flour belongs in the fridge.
 - **Notes:** Used official Flourist product photography pulled from the Shopify CDN. No Google Maps business-pin URL was surfaced confidently from official materials in this pass, so the page skips a directions link instead of falling back to a generic map query.
-- **Live URL:** pending push / Pages verification
+- **Live URL:** https://auto-sites.pages.dev/demos/flourist/ (push succeeded, route still serving the portfolio landing page at verification time)
 
 ### Darling Cake Co. — Custom cake studio, Victoria BC
 - **Date:** 2026-05-05

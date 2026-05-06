@@ -1,5 +1,27 @@
 # Auto-Sites Build Log
 
+### Flourist — Mill + bakery, Vancouver BC
+- **Date:** 2026-05-06
+- **Model:** openai-codex/gpt-5.4
+- **Agent:** Lucy
+- **Folder:** flourist
+- **Hero pattern:** editorial-spread
+- **Typography:** Newsreader + Instrument Sans
+- **Review layout:** one oversized feature testimonial with two stacked same-treatment supporting review cards
+- **Visit/hours layout:** dark three-card utility block with address, hours, and service notes
+- **Stats bar style:** no-stats
+- **WHY Score:** 8.13 (Jobs 8.2 / Graham 7.8 / Ogilvy 8.4)
+- **WHAT Score:** 7.93 (Norman 8.0 / Krug 7.7 / Nielsen 8.1)
+- **HOW Score:** 8.08 (Vignelli 8.1 / Spiekermann 8.0 / Rams 7.8 / Emil 8.4)
+- **Panel average:** 8.05
+- **Self-review:** 8.7
+- **Versions built:** 6 HTML versions + final index.html
+- **Build time:** ~70 minutes
+- **Token estimate:** ~17k
+- **Key decisions:** Flourist already has a real site, so the opportunity was not rescue framing. The stronger move was an editorial alternative that gets to the useful layer faster: in-house milling, bakery hours, class details, and the weirdly persuasive storage truth that the flour belongs in the fridge.
+- **Notes:** Used official Flourist product photography pulled from the Shopify CDN. No Google Maps business-pin URL was surfaced confidently from official materials in this pass, so the page skips a directions link instead of falling back to a generic map query.
+- **Live URL:** pending push / Pages verification
+
 ### Darling Cake Co. — Custom cake studio, Victoria BC
 - **Date:** 2026-05-05
 - **Model:** openai-codex/gpt-5.4

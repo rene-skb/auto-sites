@@ -23,3 +23,4 @@
 <!-- Built 2026-04-28 → demos/halifax-perennials/ → https://auto-sites.pages.dev/demos/halifax-perennials/ -->
 
 <!-- Built 2026-05-05 → demos/darling-cake-co/ → pending push / Pages verification -->
+

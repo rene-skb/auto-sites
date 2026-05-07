@@ -6434,3 +6434,18 @@ Real Victoria BC business. Website was literally just a street address (touristw
 - **Build time:** ~95 minutes + follow-up copy pass
 - **Token estimate:** ~36k + follow-up edits
 - **Key decisions:** Preserved the panelproof editorial structure while tightening the portfolio toward the LayerZero intro. Kept the split-image-right hero, expanded AIOZ/Strike image support, and published the current reviewed index as the canonical demo file.
+
+### Stir It Up — Caribbean soul food, Victoria, BC
+- **Date:** 2026-05-06
+- **Model:** openai-codex/gpt-5.4 (subagent)
+- **Hero pattern:** split editorial hero with human/street photo
+- **Typography:** Newsreader + Inter
+- **Review layout:** large review-count proof block with supporting notes
+- **Visit/hours layout:** practical visit panel with map CTA
+- **Stats bar style:** no-stats
+- **Score:** 7.7 / 7.7 / 6.7 → 7.4
+- **Self-review:** 7.8
+- **Versions built:** 6
+- **Build time:** ~45 minutes active work
+- **Token estimate:** ~20k
+- **Key decisions:** Leaned hard into the hidden-alley premise and stripped back the UI so the page felt like a local find, not a restaurant template. Used only existing workspace Stir It Up assets and kept copy grounded in confirmed dishes, location, hours, and review volume.

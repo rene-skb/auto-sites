@@ -1,3 +1,26 @@
+
+### Stir It Up — Caribbean Soul Food, Victoria BC
+- **Date:** 2026-05-06
+- **Model:** openai-codex/gpt-5.4 (subagent)
+- **Agent:** Lucy
+- **Folder:** stir-it-up-codex-retry
+- **Hero pattern:** editorial-spread ✅
+- **Typography:** Newsreader + Instrument Sans ✅
+- **Review layout:** oversized aggregate score card + plain-language proof block + Google CTA ✅
+- **Visit/hours layout:** access strip near hero + dark visit chapter with business-listing CTA and full-width map ✅
+- **Stats bar style:** no-stats ✅
+- **WHY Score:** 7.77 (Jobs 7.8 / PG 7.4 / Ogilvy 8.1)
+- **WHAT Score:** 7.53 (Norman 7.6 / Krug 7.8 / Nielsen 7.2)
+- **HOW Score:** 7.43 (Vignelli 7.5 / Spiekermann 7.6 / Rams 7.2)
+- **Panel average:** 7.58
+- **Self-review:** 7.8
+- **Versions built:** 6 (v0 through v5 + index.html)
+- **Build time:** ~95 minutes
+- **Token estimate:** ~45k
+- **Key decisions:** Built a fresh Codex-only editorial-spread direction using real Stir It Up assets and a food-first headline. Kept the alley location as practical character, used aggregate review proof only, and pushed the business-listing CTA higher to make the page faster to use.
+- **Notes:** Real photo set only. No named review quotes because they were not verified in the local source set for this run. Screenshot tool reviewed successfully after reload recovery.
+- **Live URL:** https://auto-sites.pages.dev/demos/stir-it-up-codex-retry/
+
 # Auto-Sites Build Log
 
 ### Flourist — Mill + bakery, Vancouver BC

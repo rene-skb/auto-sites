@@ -1,48 +1,46 @@
-# Sources — Stir It Up Codex Retry
+## Copy Sources — Stir It Up
 
-## Core facts
-- "Stir It Up" → existing Stir It Up materials in workspace
-- "Caribbean soul food" → existing Stir It Up materials in workspace, including prior sources files and structured example
-- "Victoria, BC" → existing Stir It Up materials in workspace
-- "760A Yates Street, Victoria, BC" → prior Stir It Up sources files and structured example
-- "Tuesday to Saturday, 11am to 7pm" → prior Stir It Up sources files and structured example
-- "778-432-0133" → prior Stir It Up sources files and structured example
-- "4.5 stars" / "188 reviews" → prior Stir It Up sources files and build log
-- Instagram handle `@stiritup.yyj` → prior Stir It Up sources files
-- Google Maps business listing link with CID `9538700895898696702` → prior Stir It Up sources files
+### Hero
+- "Caribbean soul food · Victoria, BC" → existing Stir It Up build-log business summary / prior sources in workspace
+- "Jerk chicken. Curry goat. Roti. Worth finding." → confirmed menu items from existing Stir It Up source set + alley-location framing from prior Stir It Up build context
+- "Stir It Up is at 760A Yates, down the alley between Yates and Johnson. Open Tuesday through Saturday, 11am to 7pm." → existing Stir It Up build-log business summary / prior sources in workspace
+- "Verified prices were not available in the local source set, so they are not shown here." → non-negotiables pricing rule + local source limitation for this run
+- "Saturday oxtail is the one to plan around." → existing Stir It Up build-log business summary / prior sources in workspace
 
-## Food items used on page
-- "Jerk chicken" → prior Stir It Up sources files and build materials
-- "Curry goat" → prior Stir It Up sources files and build materials
-- "Roti wraps" → prior Stir It Up sources files and build materials
-- "Jamaican patties" → prior Stir It Up sources files and build materials
-- "Saturday oxtail" → prior Stir It Up sources files and build materials
+### What to order
+- Jerk chicken / curry goat / roti wraps / patties / rice and peas / Saturday oxtail → existing Stir It Up build-log business summary / prior sources in workspace
+- "For the current day-by-day details, check Instagram or call the shop." → source-safe instruction based on confirmed phone + Instagram, used because rotating details were incomplete offline
+- "Current specials" copy → source-safe instruction only; no factual claims beyond Instagram/phone guidance
 
-## Photo sources
-- `ig-photo-owner.jpg` → existing Stir It Up asset in workspace
-- `ig-photo-04.jpg` → existing Stir It Up asset in workspace
-- `ig-photo-11.jpg` → existing Stir It Up asset in workspace
-- `ig-photo-14.jpg` → existing Stir It Up asset in workspace
-- `ig-photo-15.jpg` → existing Stir It Up asset in workspace
-- `ig-photo-16.jpg` → existing Stir It Up asset in workspace
-- `signage.jpg` → existing Stir It Up asset in workspace
+### The spot
+- "760A Yates St, between Yates and Johnson" → existing Stir It Up build context in workspace
+- "The St. Lucian roots already documented in the workspace explain the menu..." → existing Stir It Up build-log/source material referencing St. Lucian roots
+- "Google Maps pin, word of mouth, and that Stir It Up sign" → Google listing confirmed; sign visible in ig-photo-owner.jpg / ig-photo-11.jpg; word-of-mouth framing is editorial but grounded in hidden-alley repeat-visit context
+- "Instagram for what's coming out of the kitchen that day" → confirmed Instagram handle @stiritup.yyj
 
-## Distilled editorial copy
-These lines are distilled from verified facts plus direct visual observation of the existing assets. They avoid unverified owner biography, backstory, prices, and named review quotes.
+### Reviews
+- "4.5" / "Google rating" / "Based on 188 reviews" / "188 people found the alley and left a rating." → existing Stir It Up build-log business summary / prior sources in workspace
+- No named review quotes used → not verified in local source set for this run
 
-- "Down the alley. Straight to the good stuff." → built from verified alley location + food-forward positioning from existing Stir It Up build context
-- "The entrance is tucked off Yates." → based on prior Stir It Up sources describing the alley location
-- "The food is not subtle about making itself known." → editorial line grounded in the food photography set
-- "Come hungry, then start here." → editorial CTA based on visible portion-forward food imagery
-- "Small footprint. Loud colors. Straight-up lunch energy." → visual observation from `ig-photo-11.jpg`, `signage.jpg`, and food photos
-- "Already busy without a real site." → based on existing review count + prior build context that Stir It Up lacks a standalone website
-- "Instagram gives the food the color and appetite the listing cannot." → factual comparison between existing assets and listing info in prior sources
+### Visit
+- Address → existing Stir It Up build-log business summary / prior sources in workspace
+- Hours → existing Stir It Up build-log business summary / prior sources in workspace
+- Phone → existing Stir It Up build-log business summary / prior sources in workspace
+- Instagram handle → existing Stir It Up build-log business summary / prior sources in workspace
+- Google Maps business listing link (`https://maps.google.com/?cid=9538700895898696702`) → prior Stir It Up local sources/history already in workspace
 
-## Explicitly not used
-- Owner name or biography
-- Bob Marley / song-origin claim for the business name
+### Photos
+- `ig-photo-owner.jpg` → existing Stir It Up demo asset from @stiritup.yyj
+- `ig-photo-14.jpg` → existing Stir It Up demo asset from @stiritup.yyj
+- `ig-photo-04.jpg` → existing Stir It Up demo asset from @stiritup.yyj
+- `ig-photo-15.jpg` → existing Stir It Up demo asset from @stiritup.yyj
+- `ig-photo-11.jpg` → existing Stir It Up demo asset from @stiritup.yyj
+- `ig-photo-06.jpg` → existing Stir It Up demo asset from @stiritup.yyj
+
+### NOT USED (cut for lack of source)
+- Owner name
+- Bob Marley / song-origin story for the business name
 - Cash-only claim
-- Prices
-- Named review quotes or reviewer initials
-- Solo-operator claim
-- Claims about ingredients being made in-house or sourced fresh daily unless directly verified
+- Any solo-operator claim
+- Menu prices
+- Named review quotes with reviewer names

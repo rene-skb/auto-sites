@@ -6493,4 +6493,4 @@ Real Victoria BC business. Website was literally just a street address (touristw
 - **Token estimate:** ~32k
 - **Key decisions:** Framed the site around the practical recurring-service benefit: getting the weekend back. Used only official site photography, kept the CTA phone-first, and cut internal/source-discipline copy out of the visible page.
 - **Notes:** Official site images were generic but usable; mower-action hero carried more trust than the manicured lawn hero. No license/rating/review-count claims were used because they were not verified from primary sources.
-- **Live URL:** https://auto-sites.pages.dev/demos/glendale-lawn-pros/ (push / Pages verification pending at log-write time)
+- **Live URL:** https://auto-sites.pages.dev/demos/glendale-lawn-pros/ (pushed to GitHub; Pages route still serving portfolio landing page at verification time)

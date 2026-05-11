@@ -6472,3 +6472,25 @@ Real Victoria BC business. Website was literally just a street address (touristw
 - **Build time:** ~45 minutes active work
 - **Token estimate:** ~20k
 - **Key decisions:** Leaned hard into the hidden-alley premise and stripped back the UI so the page felt like a local find, not a restaurant template. Used only existing workspace Stir It Up assets and kept copy grounded in confirmed dishes, location, hours, and review volume.
+
+### Glendale Lawn Pros — Lawn care and landscaping, Glendale CA
+- **Date:** 2026-05-11
+- **Model:** openai-codex/gpt-5.5 (Lucy cron)
+- **Agent:** Lucy
+- **Folder:** glendale-lawn-pros
+- **Hero pattern:** dark-immersive
+- **Typography:** Barlow Condensed + Work Sans
+- **Review layout:** three same-treatment quote cards with first-name/last-initial review attributions
+- **Visit/hours layout:** dark contact chapter with phone/hours/service-area facts and a quote-request prompt panel
+- **Stats bar style:** no-stats
+- **WHY Score:** 7.97 (Jobs 8.0 / Graham 7.8 / Ogilvy 8.1)
+- **WHAT Score:** 7.97 (Norman 8.1 / Krug 8.0 / Nielsen 7.8)
+- **HOW Score:** 8.00 (Vignelli 7.9 / Spiekermann 8.1 / Rams 7.8 / Emil 8.2)
+- **Panel average:** 7.98
+- **Self-review:** 8.2
+- **Versions built:** 6 HTML versions + final index.html
+- **Build time:** ~70 minutes
+- **Token estimate:** ~32k
+- **Key decisions:** Framed the site around the practical recurring-service benefit: getting the weekend back. Used only official site photography, kept the CTA phone-first, and cut internal/source-discipline copy out of the visible page.
+- **Notes:** Official site images were generic but usable; mower-action hero carried more trust than the manicured lawn hero. No license/rating/review-count claims were used because they were not verified from primary sources.
+- **Live URL:** https://auto-sites.pages.dev/demos/glendale-lawn-pros/ (push / Pages verification pending at log-write time)

@@ -1,0 +1,101 @@
+<!--
+DELTA: v5 final polish notes
+- Final pass kept the mower-action hero, phone-forward CTA, same-treatment reviews, and local-service facts.
+- Self-review score: 8.2
+- Panel averages carried forward from panel-notes.md: WHY 7.97 / WHAT 7.97 / HOW 8.00
+- Final polish focus: conversion clarity, source-traceable copy, and avoiding fake trust claims.
+-->
+<!--
+DELTA: v1 iteration notes
+- Tightened hero whitespace and swapped the hero image from manicured-lawn beauty shot to mower action.
+- Made phone CTA dominant and replaced internal demo wording with customer-facing copy.
+- WHY panel reviewers: Steve Jobs, Paul Graham, David Ogilvy
+- WHY panel scores: [8.0, 7.8, 8.1] avg 7.97
+- Key feedback addressed: benefit-first headline, clearer call action, less placeholder trust copy.
+- See panel-notes.md -> WHY critique
+-->
+<!--
+BRAND RESEARCH + PHOTO PLAN
+Business: Glendale Lawn Pros, family owned and operated lawn care / landscaping service in Glendale, CA.
+Sources: official site homepage, services, about, contact, ThreeBestRated snippet, YourGreenPal archived profile.
+Brand colors: turf green from official logo/photos, warm cream, deep soil black. Avoid cold contractor blue.
+Vibe: practical, residential, weekend-saving, no-nonsense. The useful promise is recurring yard care without giving up Saturday.
+Typography direction: big condensed contractor headline + readable sans body. Landscape service should feel sturdy, not boutique.
+Photo ranking:
+1. glendale-lawn-pros-aeration-1_orig.jpg: manicured striped lawn, bright, premium, wide. Hero.
+2. glendale-lawn-pros-mowing-and-edging-1_orig.jpg: mower action, dynamic, wide. Services.
+3. glendale-lawn-pros-shrub-and-hedge-trimming-2_orig.jpg: tidy hedges/walkway, residential proof, wide. Services/CTA.
+4. glendale-lawn-pros-shrub-and-hedge-trimming-1_orig.jpg: close hedge work, clear action detail. Services.
+5. glendale-lawn-pros-aeration-2_orig.jpg: turf texture, lush but generic. Texture strip.
+6. glendale-lawn-pros-lawn-clean-up-and-hauling-1_orig.jpg: leaves, seasonal cleanup. Services.
+7. glendale-lawn-pros-fertilization-1_orig.jpg: wheelbarrow/garden work, useful but cluttered. Services.
+8. glendale-lawn-pros-weed-removal-and-control-1_orig.jpg: weed cleanup, service detail. Card.
+9. glendale-lawn-pros-weed-removal-and-control-2_orig.jpg: pretty meadow, least aligned to polished lawn care. Skip.
+CREATIVE DIRECTION PANEL
+Steve Jobs: Lead with time reclaimed, not “full range of services.” Make the page feel like Saturday morning handed back.
+Paul Graham: Cut the existing site’s long paragraphs down to facts: what they do, where, call number, recurring schedule.
+David Ogilvy: Best headline is specific and plain: “Saturday belongs to you.” It sells the benefit without pretending the lawn is spiritual.
+-->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Glendale Lawn Pros | Lawn care and mowing in Glendale, CA</title>
+  <meta name="description" content="Professional lawn mowing, edging, weed control, aeration, fertilization, cleanup, and landscaping services in Glendale, CA.">
+  <meta property="og:title" content="Glendale Lawn Pros">
+  <meta property="og:description" content="Lawn mowing, edging, cleanup, and yard care for Glendale homes.">
+  <meta property="og:image" content="https://auto-sites.pages.dev/demos/glendale-lawn-pros/glendale-lawn-pros-aeration-1_orig.jpg">
+  <meta property="og:url" content="https://auto-sites.pages.dev/demos/glendale-lawn-pros/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--soil:#14170f;--green:#476b2b;--leaf:#799a45;--cream:#f4f0df;--mist:#e7ecd7;--white:#fffdf5;--muted:rgba(20,23,15,.68);--line:rgba(20,23,15,.16);--ease-out:cubic-bezier(.23,1,.32,1);--ease-in-out:cubic-bezier(.77,0,.175,1);--section:clamp(72px,10vw,128px);}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:var(--soil);font-family:"Work Sans",system-ui,sans-serif;font-size:16px;line-height:1.55}img{display:block;max-width:100%;height:auto}a{color:inherit} .wrap{width:min(1160px,calc(100% - 40px));margin:0 auto}.eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.16em;font-weight:700;color:var(--green)}
+    header{position:sticky;top:0;z-index:10;background:rgba(244,240,223,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}.nav{height:72px;display:flex;align-items:center;justify-content:space-between}.brand{font-family:"Barlow Condensed";font-size:24px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;text-decoration:none}.links{display:flex;align-items:center;gap:28px;font-size:14px;font-weight:600}.links a{text-decoration:none}.call{background:var(--green);color:var(--white);padding:12px 18px;border-radius:999px;text-decoration:none;transition:transform 160ms var(--ease-out),background 160ms var(--ease-out)}.call:hover{background:#385723}.call:active{transform:scale(.97)}.menu{display:none;background:none;border:0;font:inherit;font-weight:700;text-transform:uppercase;letter-spacing:.1em}
+    .hero{min-height:calc(92vh - 72px);display:grid;grid-template-columns:minmax(0,1fr) minmax(420px,52vw);background:var(--soil);color:var(--white)}.hero-copy{padding:clamp(48px,7vw,96px) clamp(24px,6vw,76px);display:flex;flex-direction:column;justify-content:space-between;gap:38px}.hero h1{font-family:"Barlow Condensed";font-size:clamp(74px,10.6vw,156px);line-height:.82;text-transform:uppercase;letter-spacing:-.045em;margin:12px 0 18px;max-width:780px}.hero p{font-size:clamp(18px,2vw,22px);max-width:560px;color:rgba(255,253,245,.78)}.hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}.primary,.secondary{display:inline-flex;align-items:center;justify-content:center;min-height:52px;border-radius:999px;padding:0 24px;font-weight:700;text-decoration:none;transition:transform 160ms var(--ease-out),background 160ms var(--ease-out),color 160ms var(--ease-out)}.primary{background:var(--leaf);color:var(--soil)}.secondary{border:1px solid rgba(255,253,245,.28);color:var(--white)}.primary:active,.secondary:active{transform:scale(.97)}.hero-photo{position:relative;min-height:560px}.hero-photo img{width:100%;height:100%;object-fit:cover}.hero-photo:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,23,15,.55),transparent 38%)}.quick{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,253,245,.18);border:1px solid rgba(255,253,245,.18)}.quick div{padding:18px;background:rgba(255,253,245,.06)}.quick b{display:block;font-family:"Barlow Condensed";font-size:22px;text-transform:uppercase}.quick span{font-size:13px;color:rgba(255,253,245,.68)}
+    section{padding:var(--section) 0}.split{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(48px,7vw,88px);align-items:start}.display{font-family:"Barlow Condensed";font-size:clamp(48px,7vw,92px);line-height:.88;text-transform:uppercase;letter-spacing:-.035em;margin:14px 0 0}.lead{font-size:clamp(18px,2vw,22px);color:var(--muted);max-width:680px}.service-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:42px}.service{background:var(--white);border-radius:26px;overflow:hidden}.service img{width:100%;height:190px;object-fit:cover}.service div{padding:22px}.service h3{font-family:"Barlow Condensed";font-size:28px;text-transform:uppercase;line-height:.95;margin:0 0 10px}.service p{margin:0;color:var(--muted);font-size:15px}
+    .process{background:var(--mist)}.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);margin-top:44px}.step{background:var(--mist);padding:30px}.num{font-family:"Barlow Condensed";font-size:22px;color:var(--green);font-weight:700}.step h3{font-size:19px;margin:18px 0 10px}.step p{margin:0;color:var(--muted)}
+    .proof{background:var(--green);color:var(--white)}.proof .eyebrow{color:#d8e8a6}.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:42px}.review{background:rgba(255,253,245,.1);border:1px solid rgba(255,253,245,.18);border-radius:28px;padding:28px}.review p{font-family:Georgia,serif;font-size:22px;line-height:1.35;margin:0 0 24px}.review cite{font-style:normal;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,253,245,.66)}
+    .visit{background:var(--soil);color:var(--white)}.visit-card{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,253,245,.18);border:1px solid rgba(255,253,245,.18);border-radius:34px;overflow:hidden;margin-top:42px}.visit-card>div{background:rgba(255,253,245,.06);padding:36px}.visit h3{font-family:"Barlow Condensed";font-size:40px;text-transform:uppercase;margin:0 0 18px}.facts{display:grid;gap:16px}.fact{border-top:1px solid rgba(255,253,245,.18);padding-top:16px}.fact b{display:block;text-transform:uppercase;letter-spacing:.12em;font-size:12px;color:#d8e8a6}.fact span{display:block;margin-top:4px;color:rgba(255,253,245,.78)}.form-shell{background:var(--white);color:var(--soil);border-radius:24px;padding:28px}.fake-field{border-bottom:1px solid var(--line);padding:17px 0;color:rgba(20,23,15,.52)}.form-shell .primary{margin-top:24px;background:var(--green);color:var(--white);width:100%}
+    footer{padding:32px 0;background:var(--soil);color:rgba(255,253,245,.62);border-top:1px solid rgba(255,253,245,.12)}footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}footer a{color:var(--white)}
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity 700ms var(--ease-out),transform 700ms var(--ease-out)}.reveal.is-visible{opacity:1;transform:none}@media (prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important;animation:none!important}.reveal{opacity:1;transform:none}}
+    @media (max-width:1100px){.service-grid,.steps{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:900px){.links{display:none}.menu{display:block}.hero{grid-template-columns:1fr}.hero-photo{min-height:360px;order:-1}.hero-photo:after{background:linear-gradient(0deg,rgba(20,23,15,.55),transparent 45%)}.quick,.service-grid,.steps,.reviews,.visit-card,.split{grid-template-columns:1fr}.hero-copy{padding:38px 24px 56px}.service img{height:220px}}
+  </style>
+</head>
+<body>
+<header>
+  <nav class="nav wrap" aria-label="Primary navigation">
+    <a class="brand" href="#top">Glendale Lawn Pros</a>
+    <div class="links"><a href="#services">Services</a><a href="#process">How it works</a><a href="#reviews">Reviews</a><a href="#contact">Contact</a><a class="call" href="tel:8184234133">Call 818-423-4133</a></div>
+    <button class="menu" aria-label="Open menu">Menu</button>
+  </nav>
+</header>
+<main id="top">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-copy">
+      <div class="reveal"><div class="eyebrow">Lawn care in Glendale, CA</div><h1 id="hero-title">Saturday belongs to you.</h1><p>Book mowing, edging, weed control, aeration, fertilization, cleanup, and yard care around Glendale. Call once, set the rhythm, get the weekend back.</p><div class="hero-actions"><a class="primary" href="tel:8184234133">Call 818-423-4133</a><a class="secondary" href="#services">See services</a></div></div>
+      <div class="quick reveal" aria-label="Quick facts"><div><b>Free quote</b><span>Call 818-423-4133</span></div><div><b>Family owned</b><span>Local lawn crew</span></div><div><b>Set a schedule</b><span>Scheduling by preference</span></div></div>
+    </div>
+    <div class="hero-photo"><img src="glendale-lawn-pros-mowing-and-edging-1_orig.jpg" alt="A lawn mower cutting through green grass"></div>
+  </section>
+  <section class="wrap split reveal"><div><div class="eyebrow">What they do</div><h2 class="display">Regular care for a yard that keeps growing.</h2></div><div><p class="lead">Lawn work never stays done. Glendale Lawn Pros turns mowing, weeds, hedges, leaves, and tired soil into a regular plan instead of another Saturday chore.</p><p class="lead">Choose recurring mowing, add seasonal cleanup, or ask for help with the whole yard.</p></div></section>
+  <section id="services" class="wrap reveal"><div class="eyebrow">Services</div><h2 class="display">Mow. Edge. Trim. Clean up.</h2><div class="service-grid">
+    <article class="service"><img src="glendale-lawn-pros-aeration-1_orig.jpg" alt="A freshly mowed striped green lawn"><div><h3>Mowing & edging</h3><p>Recurring lawn mowing with edging, clippings handled, and schedules by preference.</p></div></article>
+    <article class="service"><img src="glendale-lawn-pros-shrub-and-hedge-trimming-1_orig.jpg" alt="Hands trimming a green hedge"><div><h3>Shrub & hedge trimming</h3><p>Shape hedges, shrubs, bushes, and overgrown yard edges before they take over.</p></div></article>
+    <article class="service"><img src="glendale-lawn-pros-aeration-2_orig.jpg" alt="Close-up rows of green grass"><div><h3>Aeration & fertilization</h3><p>Soil plugs, nutrients, irrigation help, mulching, and sod installation when needed.</p></div></article>
+    <article class="service"><img src="glendale-lawn-pros-lawn-clean-up-and-hauling-1_orig.jpg" alt="Fallen leaves covering grass"><div><h3>Cleanup & hauling</h3><p>Leaf removal, yard cleanup, weed control, and hauling after the messy work.</p></div></article>
+  </div></section>
+  <section id="process" class="process"><div class="wrap reveal"><div class="eyebrow">How it works</div><h2 class="display">Call once. Set the rhythm.</h2><div class="steps"><article class="step"><div class="num">01</div><h3>Call</h3><p>Ask for a free quote at 818-423-4133.</p></article><article class="step"><div class="num">02</div><h3>Pick the work</h3><p>Mowing only, seasonal cleanup, or a wider lawn care plan.</p></article><article class="step"><div class="num">03</div><h3>Set the rhythm</h3><p>Regular mowing schedules can be set by preference.</p></article><article class="step"><div class="num">04</div><h3>Get weekends back</h3><p>The point is simple: less yard work on your calendar.</p></article></div></div></section>
+  <section id="reviews" class="proof"><div class="wrap reveal"><div class="eyebrow">Customer words</div><h2 class="display">Short reviews. Clear signal.</h2><div class="reviews"><blockquote class="review"><p>“They always do a terrific job.”</p><cite>William C. · Review</cite></blockquote><blockquote class="review"><p>“Looking after our lawn and yard is easy.”</p><cite>Jake O. · Review</cite></blockquote><blockquote class="review"><p>“Our lawn has simply never looked better.”</p><cite>Kristie W. · Review</cite></blockquote></div></div></section>
+  <section id="contact" class="visit"><div class="wrap reveal"><div class="eyebrow">Contact</div><h2 class="display">Call before the grass gets tall.</h2><div class="visit-card"><div><h3>Glendale Lawn Pros</h3><div class="facts"><div class="fact"><b>Phone</b><span><a href="tel:8184234133">818-423-4133</a></span></div><div class="fact"><b>Hours</b><span>Mon-Fri 8am-6pm · Sat 9am-4pm · Sun closed</span></div><div class="fact"><b>Service area</b><span>Glendale, CA and surrounding San Fernando Valley cities</span></div><div class="fact"><b>Map</b><span><a href="https://goo.gl/maps/NBzWzhL4bEjaEKEv6">Open the Glendale listing</a></span></div></div></div><div><div class="form-shell"><h3>What to ask about</h3><div class="fake-field">Recurring mowing</div><div class="fake-field">Seasonal cleanup</div><div class="fake-field">Aeration, fertilization, or sod</div><a class="primary" href="tel:8184234133">Call 818-423-4133</a></div></div></div></div></section>
+</main>
+<footer><div class="wrap"><span>Lawn care and landscaping in Glendale, CA.</span><span><a href="http://www.glendalelawnpros.com/">Current site</a> · <a href="tel:8184234133">818-423-4133</a></span></div></footer>
+<script>
+const els=[...document.querySelectorAll('.reveal')];
+if('IntersectionObserver'in window){const io=new IntersectionObserver(entries=>{entries.forEach((entry,i)=>{if(entry.isIntersecting){setTimeout(()=>entry.target.classList.add('is-visible'),i*70);io.unobserve(entry.target)}})},{threshold:.14});els.forEach(el=>io.observe(el));}else{els.forEach(el=>el.classList.add('is-visible'))}
+</script>
+</body>
+</html>

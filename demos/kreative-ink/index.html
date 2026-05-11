@@ -1,1044 +1,707 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!--
+KREATIVE INK TATTOO — canonical outreach build (Self Review + Copy Audit)
+
+DELTA: v2 → v3
+=================
+HOW scores: Vignelli 6.0 / Spiekermann 7.0 / Rams 6.5 → avg 6.5 → BELOW GATE, iterate
+Changes (targeting Vignelli — grid discipline):
+1. Master grid: ALL sections now use consistent --content-width + --gutter. No section invents its own spatial logic.
+2. Gallery: replaced 55/45 asymmetric with clean 3-column equal grid. Each piece visible and assessable.
+3. Middle typographic register added: section intros at 1.05rem (between display serif and micro-labels)
+4. CTA buttons: stronger visual presence — solid white border, more padding
+5. Reviews: replaced third quote with Autumn-specific one to differentiate sentiment
+6. Info strip: consistent with master grid gutter
+7. Removed gallery "More on Instagram" inline link — stays in footer only
+
+Hypothesis: Grid consistency + gallery clarity are the highest-impact changes for Vignelli.
+            Strengthened CTAs will help Rams' score on "elements earning their place."
+-->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kreative Ink — Victoria BC Tattoo Studio</title>
-<meta name="description" content="Kreative Ink is a Victoria, BC tattoo studio featuring Nick and Autumn. Serious custom work. Book a consultation.">
-<!-- Open Graph -->
-<meta property="og:title" content="Kreative Ink — Victoria BC Tattoo Studio">
-<meta property="og:description" content="Custom tattoo work from two dedicated artists in Victoria, BC. Dark, bold, and made to last.">
-<meta property="og:image" content="ig-photo-04.jpg">
-<meta property="og:url" content="https://auto-sites.pages.dev/demos/kreative-ink/">
+<title>Kreative Ink Tattoo — Victoria, BC</title>
+<meta name="description" content="Black and grey realism tattoo studio. Nick Chan and Autumn. Victoria, BC.">
+<meta property="og:title" content="Kreative Ink Tattoo — Victoria, BC">
+<meta property="og:description" content="Black and grey realism. Dark mythology. Victoria, BC. 4.7 stars.">
+<meta property="og:image" content="ig-photo-11.jpg">
+<meta property="og:url" content="https://kreative-ink.nakamotodesign.co/">
 <meta property="og:type" content="website">
-
-<!--
-DELTA: v1 → v2
-Changes:
-  - Increase body text color from 0.55 opacity to higher for better contrast
-  - Bump artist bio + review text to 16px minimum
-  - Standardize IG link labels: both say "Instagram →"
-  - Statement break: soften the interruption, make it feel like part of the flow
-  - Review text: ensure readable contrast
-WHAT scores: Norman 7 / Krug 8 / Nielsen 6 → avg 7.0
-Hypothesis: Nielsen's contrast + link consistency fix will lift the HOW panel's typography scores
-
-DELTA: v0 → v1
-Changes:
-  - Sharper, more specific copy throughout — kill generic "no flash, no templates"
-  - Hero sub-copy made concrete: specific to what they actually do
-  - Nick bio: specific to his dark fantasy realism style
-  - Autumn bio: her own distinct voice, not a lesser version of Nick
-  - Statement break: more conviction, less truism
-  - Review copy: more specific to actual client experience
-  - Artist section visual parity — Autumn's section gets equivalent weight
-WHY scores: Jobs 8 / Cagan 7 / Ogilvy 6 → avg 7.0
-Hypothesis: Ogilvy copy specificity will move the score most
-
-PHOTO RANKING & ROLE ASSIGNMENTS
-========================================
-HERO:
-  - Photo 04: Horned warrior/deity on black BG — portrait — highest impact, hero centerpiece
-  - Photo 11: Wolves + nun back piece on black BG — portrait — secondary hero/Nick gallery anchor
-
-NICK'S GALLERY (dark realism, epic scale):
-  - Photo 04: Horned warrior — primary signature piece
-  - Photo 11: Wolves + nun — dramatic back piece
-  - Photo 09: Addilyn's Dive Bar — storytelling masterwork
-  - Photo 07: Skull crown rib piece — dark gothic body art
-
-AUTUMN'S GALLERY (mixed styles, different energy):
-  - Photo 01: Snake + chalice — detailed blackwork
-  - Photo 03: Skeletal bat — clean illustrative
-  - Photo 10: Viking warrior — powerful realism
-  - Photo 12: Wolves/nun detail closeup — fine line detail
-
-SKIP: 02 (cluttered BG), 05 (too colorful/traditional), 06 (too gentle), 08 (poor quality, wrong vibe)
-
-HERO PATTERN: dark-immersive
-ROTATION NOTE: Last 3 = centered-minimal, full-viewport-bg, split-image-right → dark-immersive is fresh
-TYPOGRAPHY: Big Shoulders Display 800 + Inter 300-500
-ROTATION NOTE: Last 3 = Newsreader+DM Sans, Cormorant Garamond+Space Grotesk, Playfair Display+Nunito → this is fresh
-REVIEW LAYOUT: Two-column asymmetric, dark cards with left red border accent
-ROTATION NOTE: Last 3 = full-width stacked, 3 equal border cards, 3 horizontal white → this is fresh
-VISIT/HOURS: Minimal inline text — no map, just address + IG handles + hours in one tight row
-ROTATION NOTE: Last 3 = split dark section, light centered no-map, split dark+map → minimal inline is fresh
--->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
-  /* ==========================================
-     DESIGN TOKENS
-     ========================================== */
   :root {
-    --black: #080808;
-    --near-black: #101010;
-    --surface: #161616;
-    --surface-2: #1e1e1e;
-    --white: #F2EDE8;
-    --white-dim: rgba(242, 237, 232, 0.55);
-    --red: #C12525;
-    --red-dark: #9a1c1c;
-    --font-display: 'Big Shoulders Display', sans-serif;
-    --font-body: 'Inter', sans-serif;
+    --black: #0A0A0A;
+    --near-black: #111111;
+    --bone: #E8E0D4;
+    --bone-dim: #8A8078;
+    --white: #F4F0EB;
+
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-sans: 'Space Grotesk', system-ui, sans-serif;
+
+    /* Master grid — ALL sections obey this */
+    --content-width: 1280px;
+    --gutter: clamp(28px, 5vw, 80px);
+    --section-pad: clamp(72px, 10vw, 128px);
+
     --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   }
 
-  /* ==========================================
-     RESET
-     ========================================== */
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
   body {
     background: var(--black);
-    color: var(--white);
-    font-family: var(--font-body);
-    font-weight: 300;
+    color: var(--bone);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.65;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
   }
-  img { display: block; max-width: 100%; }
-  a { color: inherit; text-decoration: none; }
 
-  /* ==========================================
-     NAV
-     ========================================== */
+  /* ─── MASTER GRID WRAPPER ─── */
+  .grid-wrap {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+  }
+
+  /* ─── NAV ─── */
   nav {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
-    padding: 20px 40px;
+    top: 0; left: 0; right: 0; z-index: 100;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: linear-gradient(to bottom, rgba(8,8,8,0.95) 0%, rgba(8,8,8,0) 100%);
+    padding: 20px var(--gutter);
+    background: linear-gradient(to bottom, rgba(10,10,10,0.97) 0%, transparent 100%);
   }
   .nav-logo {
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: 1.1rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
+    font-family: var(--font-serif);
+    font-size: 1.05rem; font-weight: 400;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--bone); text-decoration: none;
   }
-  .nav-logo span {
-    color: var(--red);
+  .nav-links { display: flex; gap: 40px; list-style: none; }
+  .nav-links a {
+    font-size: 0.7rem; font-weight: 500;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--bone-dim); text-decoration: none;
+    transition: color 200ms var(--ease-out);
   }
-  .nav-cta {
-    font-family: var(--font-body);
-    font-weight: 500;
-    font-size: 0.8rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    padding: 10px 22px;
-    border: 1px solid var(--white);
-    color: var(--white);
-    transition: background 200ms var(--ease-out), color 200ms var(--ease-out), border-color 200ms var(--ease-out);
+  .nav-links a:hover { color: var(--bone); }
+  .nav-hamburger {
+    display: none; flex-direction: column; gap: 5px;
+    background: none; border: none; cursor: pointer; padding: 4px;
   }
-  .nav-cta:hover {
-    background: var(--white);
-    color: var(--black);
-  }
-  .nav-cta:active { transform: scale(0.97); }
-
-  /* Mobile nav */
-  .nav-mobile-toggle {
-    display: none;
-    background: none;
-    border: none;
-    cursor: pointer;
-    flex-direction: column;
-    gap: 5px;
-    padding: 4px;
-  }
-  .nav-mobile-toggle span {
-    display: block;
-    width: 24px;
-    height: 2px;
-    background: var(--white);
-    transition: all 200ms var(--ease-out);
-  }
+  .nav-hamburger span { display: block; width: 24px; height: 1px; background: var(--bone); }
   .mobile-menu {
-    display: none;
-    position: fixed;
-    inset: 0;
-    z-index: 99;
-    background: rgba(8,8,8,0.97);
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 32px;
+    display: none; position: fixed; inset: 0;
+    background: var(--black); z-index: 200;
+    flex-direction: column; align-items: center; justify-content: center; gap: 48px;
   }
   .mobile-menu.open { display: flex; }
   .mobile-menu a {
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: 2rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--white);
+    font-family: var(--font-serif);
+    font-size: 2rem; font-weight: 300;
+    color: var(--bone); text-decoration: none; letter-spacing: 0.06em;
   }
-  .mobile-menu a:hover { color: var(--red); }
-  .mobile-menu-close {
-    position: absolute;
-    top: 24px;
-    right: 40px;
-    background: none;
-    border: none;
-    color: var(--white);
-    font-size: 1.8rem;
-    cursor: pointer;
+  .mobile-close {
+    position: absolute; top: 24px; right: var(--gutter);
+    background: none; border: none; color: var(--bone); font-size: 1.5rem; cursor: pointer;
   }
 
-  /* ==========================================
-     HERO — dark-immersive
-     Two portrait photos flanking central text
-     ========================================== */
+  /* ─── HERO: ASYMMETRIC COLLAGE ─── */
   .hero {
-    min-height: 100vh;
+    height: 100svh;
+    min-height: 100svh;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    align-items: center;
-    position: relative;
-    background: var(--black);
+    grid-template-columns: 46% 54%;
     overflow: hidden;
   }
-  .hero-photo-left,
-  .hero-photo-right {
-    height: 100vh;
-    overflow: hidden;
-    position: relative;
+  .hero-left { position: relative; overflow: hidden; background: #050505; }
+  .hero-left img {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: 50% 12%;
+    display: block; opacity: 0.9;
   }
-  .hero-photo-left img,
-  .hero-photo-right img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top;
-    opacity: 0.85;
-  }
-  .hero-photo-left::after,
-  .hero-photo-right::after {
+  .hero-left::after {
     content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to right, var(--black) 0%, transparent 40%, transparent 60%, var(--black) 100%);
+    position: absolute; top: 0; right: 0;
+    width: 100px; height: 100%;
+    background: linear-gradient(to right, transparent, var(--black));
+    pointer-events: none;
   }
-  .hero-photo-left::after {
-    background: linear-gradient(to right, var(--black) 0%, rgba(8,8,8,0.3) 100%);
-  }
-  .hero-photo-right::after {
-    background: linear-gradient(to left, var(--black) 0%, rgba(8,8,8,0.3) 100%);
-  }
-  .hero-center {
+
+  .hero-right {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 40px 24px;
-    z-index: 2;
+    justify-content: center;
+    padding: clamp(72px, 8vh, 96px) var(--gutter) clamp(40px, 5vh, 56px) 48px;
     position: relative;
+    background: var(--black);
   }
+
+  .hero-text { position: relative; z-index: 2; max-width: 460px; }
+
   .hero-eyebrow {
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--red);
-    font-weight: 500;
-    margin-bottom: 20px;
+    font-size: 0.68rem; font-weight: 500;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--bone-dim); margin-bottom: 20px;
   }
+
+  /* Display: forte */
   .hero-headline {
-    font-family: var(--font-display);
-    font-weight: 900;
-    font-size: clamp(3.5rem, 6vw, 6.5rem);
-    line-height: 0.92;
-    text-transform: uppercase;
+    font-family: var(--font-serif);
+    font-size: clamp(3rem, 4.4vw, 5rem);
+    font-weight: 300; line-height: 1.02;
+    color: var(--white);
+    margin-bottom: 22px;
     letter-spacing: -0.01em;
-    margin-bottom: 28px;
   }
-  .hero-headline .line-accent {
-    color: var(--red);
-  }
+  .hero-headline em { font-style: italic; }
+
+  /* Body: mezzo-forte — NEW middle register */
   .hero-sub {
-    font-size: 0.9rem;
-    font-weight: 300;
-    letter-spacing: 0.04em;
-    color: var(--white-dim);
-    max-width: 240px;
-    line-height: 1.7;
-    margin-bottom: 36px;
+    font-size: 1.05rem; line-height: 1.72;
+    color: var(--bone-dim);
+    margin-bottom: 30px; max-width: 380px;
+    font-weight: 400;
   }
+
   .hero-cta {
     display: inline-block;
-    background: var(--red);
-    color: var(--white);
-    font-family: var(--font-body);
-    font-weight: 500;
-    font-size: 0.78rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    padding: 14px 28px;
-    transition: background 200ms var(--ease-out);
+    padding: 15px 36px;
+    border: 1px solid rgba(232,224,212,0.5);
+    font-size: 0.7rem; font-weight: 500;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--bone); text-decoration: none;
+    transition: background 200ms var(--ease-out), border-color 200ms var(--ease-out);
   }
-  .hero-cta:hover { background: var(--red-dark); }
+  .hero-cta:hover { background: rgba(232,224,212,0.1); border-color: var(--bone); }
   .hero-cta:active { transform: scale(0.97); }
 
-  /* ==========================================
-     QUICK STRIP
-     ========================================== */
-  .quick-strip {
-    background: var(--surface);
-    border-top: 1px solid rgba(255,255,255,0.06);
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-    padding: 16px 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 40px;
-    flex-wrap: wrap;
+  /* ─── INFO STRIP — obeys master grid ─── */
+  .info-strip {
+    border-top: 1px solid rgba(232,224,212,0.08);
+    border-bottom: 1px solid rgba(232,224,212,0.08);
+    padding: 0 var(--gutter);
   }
-  .strip-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 0.78rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--white-dim);
-    font-weight: 400;
+  .info-strip-inner {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    display: flex; align-items: center; justify-content: center;
+    gap: 40px; flex-wrap: wrap;
+    padding: 18px 0;
+    text-align: center;
   }
-  .strip-item .dot {
-    width: 4px;
-    height: 4px;
-    background: var(--red);
-    border-radius: 50%;
-    flex-shrink: 0;
+  .info-item {
+    font-size: 0.68rem; font-weight: 500;
+    letter-spacing: 0.14em; text-transform: uppercase; color: var(--bone-dim);
   }
-  .strip-item a:hover { color: var(--white); }
+  .info-item a { color: var(--bone-dim); text-decoration: none; transition: color 180ms; }
+  .info-item a:hover { color: var(--bone); }
+  .info-div { width: 1px; height: 14px; background: rgba(232,224,212,0.15); flex-shrink: 0; }
 
-  /* ==========================================
-     SECTION BASE
-     ========================================== */
-  section { padding: 100px 40px; }
+  /* ─── SECTION SHELL (all content sections use this) ─── */
+  .section {
+    padding: var(--section-pad) var(--gutter);
+    border-top: 1px solid rgba(232,224,212,0.07);
+  }
+
+  /* Section label: pianissimo */
   .section-label {
-    font-size: 0.68rem;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--red);
-    font-weight: 500;
-    margin-bottom: 16px;
-  }
-  .section-title {
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: clamp(2.5rem, 4vw, 4rem);
-    text-transform: uppercase;
-    line-height: 0.95;
-    letter-spacing: -0.01em;
-    margin-bottom: 24px;
+    font-size: 0.68rem; font-weight: 500;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--bone-dim); margin-bottom: 40px;
   }
 
-  /* ==========================================
-     ARTIST SECTIONS
-     ========================================== */
-  .artist-section {
-    background: var(--near-black);
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 100px 60px;
+  /* ─── GALLERY — clean 3-column equal grid ─── */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3px;
   }
-  .artist-section + .artist-section {
-    border-top: 1px solid rgba(255,255,255,0.05);
+
+  .gallery-item { overflow: hidden; position: relative; }
+  .gallery-item img {
+    width: 100%; aspect-ratio: 3/4;
+    object-fit: cover; object-position: center;
+    display: block; opacity: 0.88;
   }
-  .artist-header {
+
+  .gallery-cap {
+    margin-top: 16px;
+    font-size: 0.65rem; font-weight: 400;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--bone-dim);
+  }
+
+  .gallery-footer {
+    margin-top: 32px;
+    text-align: right;
+  }
+  .gallery-footer a {
+    font-size: 0.7rem; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--bone-dim); text-decoration: none;
+    transition: color 180ms;
+  }
+  .gallery-footer a:hover { color: var(--bone); }
+
+  /* ─── ARTISTS ─── */
+  .artists-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: end;
-    margin-bottom: 60px;
+    gap: clamp(48px, 8vw, 96px);
   }
-  .artist-name {
-    font-family: var(--font-display);
-    font-weight: 900;
-    font-size: clamp(3rem, 5vw, 5.5rem);
-    text-transform: uppercase;
-    line-height: 0.9;
-    letter-spacing: -0.01em;
-  }
+
   .artist-role {
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--red);
-    font-weight: 500;
-    margin-top: 12px;
+    font-size: 0.68rem; font-weight: 500;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--bone-dim); margin-bottom: 24px;
   }
+
+  /* Display: forte */
+  .artist-name {
+    font-family: var(--font-serif);
+    font-size: clamp(2.4rem, 3.8vw, 3.4rem);
+    font-weight: 300; color: var(--white);
+    line-height: 1.02; margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+
+  .artist-handle {
+    font-size: 0.7rem; letter-spacing: 0.1em;
+    color: var(--bone-dim); margin-bottom: 20px;
+  }
+  .artist-handle a { color: var(--bone-dim); text-decoration: none; transition: color 180ms; }
+  .artist-handle a:hover { color: var(--bone); }
+
+  /* Body: mezzo — middle register */
   .artist-bio {
-    font-size: 0.95rem;
-    line-height: 1.8;
-    color: var(--white-dim);
-    font-weight: 300;
-    max-width: 380px;
-    align-self: end;
-  }
-  .artist-bio .ig-handle {
-    color: var(--white);
-    font-weight: 500;
-    margin-top: 12px;
-    display: block;
-  }
-  .artist-bio .ig-handle:hover { color: var(--red); }
-  .artist-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    gap: 6px;
-  }
-  .artist-grid.autumn {
-    grid-template-columns: 1fr 1fr 2fr;
-  }
-  .grid-photo {
-    overflow: hidden;
-    background: var(--surface-2);
-    aspect-ratio: auto;
-  }
-  .grid-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top;
-    transition: opacity 300ms var(--ease-out);
-  }
-  .grid-photo:hover img {
-    /* no hover zoom — these are non-clickable photos */
-    opacity: 0.9;
-  }
-  .grid-photo.tall {
-    grid-row: span 2;
-  }
-  .grid-photo-square {
-    aspect-ratio: 1;
-    overflow: hidden;
-    background: var(--surface-2);
-  }
-  .grid-photo-square img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  /* artist grid with tall+small layout */
-  .artist-grid-wrapper {
-    display: grid;
-    grid-template-columns: 5fr 3fr;
-    gap: 6px;
-    height: 600px;
-  }
-  .artist-grid-wrapper.flipped {
-    grid-template-columns: 3fr 5fr;
-  }
-  .grid-main {
-    overflow: hidden;
-  }
-  .grid-main img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top;
-  }
-  .grid-side {
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-    gap: 6px;
-  }
-  .grid-side-item {
-    overflow: hidden;
-  }
-  .grid-side-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top;
+    font-size: 1rem; line-height: 1.75;
+    color: var(--bone-dim); max-width: 400px;
+    margin-bottom: 20px;
   }
 
-  /* Second row of photos */
-  .artist-grid-bottom {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6px;
-    margin-top: 6px;
-    height: 360px;
-  }
-  .artist-grid-bottom > div {
-    overflow: hidden;
-  }
-  .artist-grid-bottom img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top;
-  }
-
-  /* ==========================================
-     STATEMENT SECTION
-     ========================================== */
-  .statement-section {
-    background: var(--black);
-    text-align: center;
-    padding: 120px 40px;
-  }
-  .statement-text {
-    font-family: var(--font-display);
-    font-weight: 900;
-    font-size: clamp(2rem, 3.5vw, 3.8rem);
-    text-transform: uppercase;
-    line-height: 1.05;
-    max-width: 900px;
-    margin: 0 auto;
-    letter-spacing: -0.01em;
-  }
-  .statement-text em {
-    font-style: normal;
-    color: var(--red);
-  }
-
-  /* ==========================================
-     REVIEWS
-     ========================================== */
-  .reviews-section {
-    background: var(--surface);
-    padding: 100px 60px;
-    max-width: 1400px;
-    margin: 0 auto;
-  }
-  .reviews-header {
-    display: flex;
-    align-items: baseline;
-    gap: 24px;
-    margin-bottom: 60px;
-  }
-  .reviews-rating {
-    font-family: var(--font-display);
-    font-weight: 900;
-    font-size: 4rem;
-    line-height: 1;
-    letter-spacing: -0.02em;
-  }
-  .reviews-meta {
-    font-size: 0.8rem;
-    color: var(--white-dim);
-    letter-spacing: 0.08em;
-    line-height: 1.6;
-  }
-  .reviews-meta span {
-    color: var(--white);
-  }
-  .reviews-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2px;
-  }
-  .review-card {
-    background: var(--near-black);
-    padding: 40px;
-    border-left: 2px solid var(--red);
-  }
-  .review-card:nth-child(3) {
-    grid-column: span 2;
-  }
-  .review-quote {
-    font-size: 1rem;
-    line-height: 1.75;
-    font-weight: 300;
-    color: var(--white);
-    margin-bottom: 24px;
-    font-style: italic;
-  }
-  .review-author {
-    font-size: 0.7rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--white-dim);
-    font-weight: 500;
-  }
-
-  /* ==========================================
-     BOOKING SECTION
-     ========================================== */
-  .booking-section {
-    background: var(--black);
-    padding: 120px 60px;
-    text-align: center;
-    max-width: 1400px;
-    margin: 0 auto;
-  }
-  .booking-title {
-    font-family: var(--font-display);
-    font-weight: 900;
-    font-size: clamp(2.8rem, 5vw, 5.5rem);
-    text-transform: uppercase;
-    line-height: 0.9;
-    letter-spacing: -0.01em;
-    margin-bottom: 28px;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .booking-sub {
-    font-size: 0.95rem;
-    font-weight: 300;
-    color: var(--white-dim);
-    max-width: 440px;
-    margin: 0 auto 48px;
-    line-height: 1.75;
-  }
-  .booking-buttons {
-    display: flex;
-    gap: 16px;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  .btn-primary {
-    display: inline-block;
-    background: var(--red);
-    color: var(--white);
-    font-family: var(--font-body);
-    font-weight: 500;
-    font-size: 0.8rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    padding: 16px 36px;
-    transition: background 200ms var(--ease-out);
-  }
-  .btn-primary:hover { background: var(--red-dark); }
-  .btn-primary:active { transform: scale(0.97); }
-  .btn-secondary {
-    display: inline-block;
-    background: transparent;
-    color: var(--white);
-    font-family: var(--font-body);
-    font-weight: 500;
-    font-size: 0.8rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    padding: 16px 36px;
-    border: 1px solid rgba(255,255,255,0.3);
-    transition: border-color 200ms var(--ease-out), color 200ms var(--ease-out);
-  }
-  .btn-secondary:hover {
-    border-color: var(--white);
-    color: var(--white);
-  }
-  .btn-secondary:active { transform: scale(0.97); }
-
-  /* ==========================================
-     VISIT SECTION
-     ========================================== */
-  .visit-section {
-    background: var(--near-black);
-    border-top: 1px solid rgba(255,255,255,0.06);
-    padding: 48px 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 60px;
-    flex-wrap: wrap;
-  }
-  .visit-item {
-    text-align: center;
-  }
-  .visit-label {
-    font-size: 0.65rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--red);
-    font-weight: 500;
-    margin-bottom: 6px;
-  }
-  .visit-value {
-    font-size: 0.9rem;
-    font-weight: 400;
-    color: var(--white);
+  /* Artist voice quote: mezzo-forte */
+  .artist-voice {
+    margin: 20px 0;
+    padding-left: 18px;
+    border-left: 1px solid rgba(232,224,212,0.18);
+    font-family: var(--font-serif);
+    font-size: 1.15rem; font-style: italic; font-weight: 300;
+    color: rgba(244,240,235,0.7);
     line-height: 1.5;
   }
-  .visit-value a:hover { color: var(--red); }
-  .visit-divider {
-    width: 1px;
-    height: 40px;
-    background: rgba(255,255,255,0.1);
+
+  .artist-cred {
+    display: inline-block;
+    padding: 8px 16px;
+    border: 1px solid rgba(232,224,212,0.15);
+    font-size: 0.64rem; font-weight: 500;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--bone-dim);
   }
 
-  /* ==========================================
-     FOOTER
-     ========================================== */
-  footer {
-    background: var(--black);
-    border-top: 1px solid rgba(255,255,255,0.05);
-    padding: 32px 60px;
-    display: flex;
-    align-items: center;
+  /* ─── REVIEWS — near-black bg ─── */
+  .reviews { background: var(--near-black); }
+
+  .reviews-meta {
+    display: flex; align-items: baseline;
     justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 16px;
+    margin-bottom: 64px;
   }
-  .footer-logo {
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: 0.95rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-  }
-  .footer-logo span { color: var(--red); }
-  .footer-text {
-    font-size: 0.75rem;
-    color: var(--white-dim);
-    letter-spacing: 0.06em;
+  .reviews-rating {
+    font-family: var(--font-serif);
+    font-size: 1rem; color: var(--white);
+    letter-spacing: 0.04em;
   }
 
-  /* ==========================================
-     RESPONSIVE
-     ========================================== */
-  @media (max-width: 1024px) {
-    .artist-section { padding: 80px 40px; }
-    .reviews-section,
-    .booking-section { padding: 80px 40px; }
-    .artist-header { grid-template-columns: 1fr; gap: 24px; }
-    .artist-bio { max-width: 100%; }
-    .reviews-grid { grid-template-columns: 1fr; }
-    .review-card:nth-child(3) { grid-column: span 1; }
-    .artist-grid-wrapper { height: auto; grid-template-columns: 1fr; }
-    .artist-grid-wrapper.flipped { grid-template-columns: 1fr; }
-    .grid-main { height: 400px; }
-    .grid-side { grid-template-rows: auto; grid-template-columns: 1fr 1fr; height: 200px; }
-    .artist-grid-bottom { height: auto; }
-    .artist-grid-bottom > div { height: 280px; }
+  .pull-quote {
+    padding: 40px 0;
+    border-top: 1px solid rgba(232,224,212,0.07);
+    display: grid;
+    grid-template-columns: 52px 1fr;
+    gap: 40px; align-items: start;
+  }
+  .pull-quote:last-child { border-bottom: 1px solid rgba(232,224,212,0.07); }
+
+  .pull-mark {
+    font-family: var(--font-serif);
+    font-size: 3.5rem; line-height: 0.8;
+    color: rgba(232,224,212,0.1); font-weight: 300;
+    user-select: none; padding-top: 4px;
   }
 
+  /* Pull quotes: forte — boosted for presence */
+  .pull-body {
+    font-family: var(--font-serif);
+    font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+    font-weight: 300; font-style: italic;
+    line-height: 1.3; color: var(--white);
+    margin-bottom: 16px;
+  }
+
+  /* Attribution: pianissimo */
+  .pull-attr {
+    font-size: 0.65rem; font-weight: 500;
+    letter-spacing: 0.14em; text-transform: uppercase; color: var(--bone-dim);
+  }
+
+  /* ─── CONTACT ─── */
+  .contact { text-align: center; }
+  .contact-inner { max-width: 520px; margin: 0 auto; }
+
+  /* Display: forte */
+  .contact-headline {
+    font-family: var(--font-serif);
+    font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+    font-weight: 300; color: var(--white);
+    line-height: 1.1; margin-bottom: 20px;
+    letter-spacing: -0.01em;
+  }
+  .contact-headline em { font-style: italic; }
+
+  /* Body: mezzo */
+  .contact-sub {
+    font-size: 1rem; color: var(--bone-dim);
+    line-height: 1.72; margin-bottom: 40px;
+  }
+
+  /* Primary CTA — solid fill, unmissable */
+  .contact-btn {
+    display: inline-block;
+    padding: 18px 44px;
+    background: var(--bone);
+    color: var(--black);
+    font-family: var(--font-sans);
+    font-size: 0.72rem; font-weight: 600;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    text-decoration: none;
+    transition: opacity 200ms var(--ease-out);
+  }
+  .contact-btn:hover { opacity: 0.84; }
+  .contact-btn:active { transform: scale(0.97); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    padding: 28px var(--gutter);
+    border-top: 1px solid rgba(232,224,212,0.07);
+  }
+  .footer-inner {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    display: flex; align-items: center;
+    justify-content: space-between; flex-wrap: wrap; gap: 12px;
+  }
+  .footer-name {
+    font-family: var(--font-serif);
+    font-size: 0.92rem; color: var(--bone-dim); letter-spacing: 0.06em;
+  }
+  .footer-right { font-size: 0.65rem; color: var(--bone-dim); letter-spacing: 0.1em; }
+  .footer-right a { color: var(--bone-dim); text-decoration: none; transition: color 180ms; }
+  .footer-right a:hover { color: var(--bone); }
+
+  /* ─── REVEAL ─── */
+  .reveal {
+    opacity: 0; transform: translateY(20px);
+    transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* Stagger children of revealed groups */
+  .stagger-child {
+    opacity: 0; transform: translateY(16px);
+    transition: opacity 500ms var(--ease-out), transform 500ms var(--ease-out);
+  }
+  .stagger-child.visible { opacity: 1; transform: none; }
+
+  /* Hero headline line-by-line reveal */
+  .hero-line {
+    display: block;
+    opacity: 0; transform: translateY(18px);
+    transition: opacity 700ms var(--ease-out), transform 700ms var(--ease-out);
+  }
+  .hero-line.visible { opacity: 1; transform: none; }
+
+  /* Gallery image load-in */
+  .gallery-item {
+    opacity: 0; transform: translateY(16px);
+    transition: opacity 550ms var(--ease-out), transform 550ms var(--ease-out);
+  }
+  .gallery-item.visible { opacity: 1; transform: none; }
+  /* No hover on gallery images — they are not interactive */
+  .gallery-item img { transition: none; }
+
+  /* Button press */
+  .hero-cta:active,
+  .contact-btn:active { transform: scale(0.97); transition: transform 160ms var(--ease-out); }
+
+  /* Nav scroll tint */
+  nav.scrolled {
+    background: rgba(10,10,10,0.97);
+    backdrop-filter: blur(8px);
+  }
+
+  /* ─── MOBILE ─── */
   @media (max-width: 768px) {
-    nav { padding: 16px 24px; }
-    .nav-cta { display: none; }
-    .nav-mobile-toggle { display: flex; }
-    .quick-strip { padding: 14px 24px; gap: 20px; }
-    .hero {
-      grid-template-columns: 1fr;
-      min-height: 100vh;
-      position: relative;
-    }
-    .hero-photo-left { display: none; }
-    .hero-photo-right {
-      position: absolute;
-      inset: 0;
-      height: 100%;
-      opacity: 0.25;
-      z-index: 0;
-    }
-    .hero-photo-right::after { background: rgba(8,8,8,0.7); }
-    .hero-center {
-      position: relative;
-      z-index: 2;
-      padding: 120px 32px 80px;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-    .artist-section { padding: 60px 24px; }
-    .artist-name { font-size: 3rem; }
-    .artist-grid-wrapper { grid-template-columns: 1fr; }
-    .grid-side { grid-template-columns: 1fr 1fr; grid-template-rows: 200px; height: 200px; }
-    .grid-main { height: 360px; }
-    .artist-grid-bottom { height: auto; }
-    .artist-grid-bottom > div { height: 240px; }
-    .visit-section { padding: 40px 24px; gap: 28px; }
-    .visit-divider { display: none; }
-    .booking-section { padding: 80px 24px; }
-    .reviews-section { padding: 80px 24px; }
-    footer { padding: 24px; flex-direction: column; align-items: flex-start; }
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { height: 60vw; max-height: 400px; }
+    .hero-left::after { display: none; }
+    .hero-right { padding: 36px var(--gutter) 64px; }
+    .hero-bg-img { display: none; }
+    .hero-headline { font-size: clamp(2.4rem, 8vw, 3.2rem); }
+    .hero-sub { font-size: 0.95rem; }
+
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .gallery-cap { display: none; }
+
+    .artists-grid { grid-template-columns: 1fr; gap: 48px; }
+
+    .pull-quote { grid-template-columns: 1fr; gap: 12px; }
+    .pull-mark { display: none; }
+    .reviews-meta { flex-direction: column; gap: 8px; }
+
+    .info-strip-inner { gap: 16px; }
+    .info-div { display: none; }
+
+    footer .footer-inner { flex-direction: column; text-align: center; }
+    .footer-right { text-align: center; }
   }
 
-  /* ==========================================
-     MOTION
-     ========================================== */
-  @media (prefers-reduced-motion: no-preference) {
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
-    }
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .fade-in-delay-1 { transition-delay: 80ms; }
-    .fade-in-delay-2 { transition-delay: 160ms; }
-    .fade-in-delay-3 { transition-delay: 240ms; }
-  }
   @media (prefers-reduced-motion: reduce) {
-    .fade-in { opacity: 1; transform: none; }
+    .reveal { opacity: 1; transform: none; transition: none; }
   }
 </style>
 </head>
 <body>
 
-<!-- ==========================================
-     NAV
-     ========================================== -->
+<!-- NAV -->
 <nav>
-  <div class="nav-logo">Kreative<span>.</span>Ink</div>
-  <a href="#book" class="nav-cta">Book a Consult</a>
-  <button class="nav-mobile-toggle" aria-label="Open menu" onclick="document.getElementById('mobileMenu').classList.toggle('open')">
+  <a href="#" class="nav-logo">Kreative Ink</a>
+  <ul class="nav-links">
+    <li><a href="#gallery">Work</a></li>
+    <li><a href="#artists">Artists</a></li>
+    <li><a href="#book">Book</a></li>
+  </ul>
+  <button class="nav-hamburger" onclick="document.querySelector('.mobile-menu').classList.add('open')" aria-label="Open menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
-
-<div class="mobile-menu" id="mobileMenu">
-  <button class="mobile-menu-close" onclick="document.getElementById('mobileMenu').classList.remove('open')">✕</button>
-  <a href="#nick" onclick="document.getElementById('mobileMenu').classList.remove('open')">Nick</a>
-  <a href="#autumn" onclick="document.getElementById('mobileMenu').classList.remove('open')">Autumn</a>
-  <a href="#reviews" onclick="document.getElementById('mobileMenu').classList.remove('open')">Reviews</a>
-  <a href="#book" onclick="document.getElementById('mobileMenu').classList.remove('open')">Book</a>
+<div class="mobile-menu" role="dialog" aria-label="Navigation">
+  <button class="mobile-close" onclick="document.querySelector('.mobile-menu').classList.remove('open')" aria-label="Close">✕</button>
+  <a href="#gallery" onclick="document.querySelector('.mobile-menu').classList.remove('open')">Work</a>
+  <a href="#artists" onclick="document.querySelector('.mobile-menu').classList.remove('open')">Artists</a>
+  <a href="#book" onclick="document.querySelector('.mobile-menu').classList.remove('open')">Book</a>
 </div>
 
-<!-- ==========================================
-     HERO
-     ========================================== -->
+<!-- HERO -->
 <section class="hero">
-  <div class="hero-photo-left">
-    <img src="ig-photo-04.jpg" alt="Dark fantasy tattoo by Nick — Kreative Ink">
+  <div class="hero-left">
+    <img src="ig-photo-11.jpg" alt="Full back piece — wolves and sacred imagery, by Nick Chan at Kreative Ink" loading="eager">
   </div>
-
-  <div class="hero-center">
-    <div class="hero-eyebrow">Victoria, BC · Est. Kreative Ink</div>
-    <h1 class="hero-headline">
-      Big Work.<br>
-      <span class="line-accent">Two Artists.</span><br>
-      One Studio.
-    </h1>
-    <p class="hero-sub">Dark realism and custom illustrative work from two artists who take the craft seriously. Victoria, BC.</p>
-    <a href="#book" class="hero-cta">Start the Conversation</a>
-  </div>
-
-  <div class="hero-photo-right">
-    <img src="ig-photo-11.jpg" alt="Back piece tattoo — Kreative Ink">
+  <div class="hero-right">
+    <div class="hero-text">
+      <p class="hero-eyebrow">Victoria, BC · Black &amp; Grey Realism</p>
+      <h1 class="hero-headline">
+        <span class="hero-line">The best</span>
+        <span class="hero-line">dark realism</span>
+        <span class="hero-line"><em>on the island.</em></span>
+      </h1>
+      <p class="hero-sub">Nick Chan and Autumn work in black and grey: mythology, warriors, portraits, animals.</p>
+      <a href="#gallery" class="hero-cta">See the portfolio</a>
+    </div>
   </div>
 </section>
 
-<!-- ==========================================
-     QUICK STRIP
-     ========================================== -->
-<div class="quick-strip">
-  <div class="strip-item">
-    <span class="dot"></span>
-    Victoria, BC
-  </div>
-  <div class="strip-item">
-    <span class="dot"></span>
-    4.7★ on Google
-  </div>
-  <div class="strip-item">
-    <span class="dot"></span>
-    <a href="https://www.instagram.com/kreativeinknick" target="_blank" rel="noopener">@kreativeinknick</a>
-  </div>
-  <div class="strip-item">
-    <span class="dot"></span>
-    <a href="https://www.instagram.com/hotdamnitsautumn" target="_blank" rel="noopener">@hotdamnitsautumn</a>
+<!-- INFO STRIP -->
+<div class="info-strip">
+  <div class="info-strip-inner">
+    <span class="info-item"><a href="https://www.instagram.com/kreativeinknick/" target="_blank" rel="noopener">@kreativeinknick</a></span>
+    <div class="info-div"></div>
+    <span class="info-item"><a href="https://www.instagram.com/hotdamnitsautumn/" target="_blank" rel="noopener">@hotdamnitsautumn</a></span>
+    <div class="info-div"></div>
+    <span class="info-item"><a href="https://www.instagram.com/kreativeinknick/" target="_blank" rel="noopener">Custom work · Book via DM</a></span>
   </div>
 </div>
 
-<!-- ==========================================
-     NICK'S SECTION
-     ========================================== -->
-<section id="nick" style="background: var(--near-black); padding: 0;">
-  <div class="artist-section">
-    <div class="artist-header fade-in">
-      <div>
-        <div class="section-label">Owner &amp; Artist</div>
-        <div class="artist-name">Nick<br>Krebs</div>
-        <div class="artist-role">@kreativeinknick</div>
+<!-- GALLERY -->
+<section class="section reveal" id="gallery">
+  <div class="grid-wrap">
+    <p class="section-label">Portfolio</p>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="ig-photo-12.jpg" alt="Sacred and sinister chest piece — nun and wolves, by Nick Chan" loading="lazy">
       </div>
-      <div class="artist-bio">
-        Nick's work lives in the dark end of the spectrum — large-scale realism, mythology, creatures with weight and presence. He builds pieces people sit with for months before they call. His sessions run long because he doesn't cut corners on detail.
-        <a href="https://www.instagram.com/kreativeinknick" target="_blank" rel="noopener" class="ig-handle">See more on Instagram →</a>
+      <div class="gallery-item">
+        <img src="ig-photo-10.jpg" alt="Viking warrior with wolf — arm sleeve, by Nick Chan" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="ig-photo-09.jpg" alt="Dive Bar — full back narrative piece, by Nick Chan" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="apify-recent/ig-photo-01.jpg" alt="Blackwork goat deity sleeve with cosmic elements" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="apify-recent/ig-photo-02.jpg" alt="Hyperreal roaring leopard full-back tattoo" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="apify-recent/ig-photo-03.jpg" alt="Black and grey portrait tattoo work" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="apify-recent/ig-photo-04.jpg" alt="Detailed black and grey realism piece" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="apify-recent/ig-photo-05.jpg" alt="Dark realism tattoo with dramatic shading" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="apify-recent/ig-photo-07.jpg" alt="Black and grey large-scale tattoo composition" loading="lazy">
+      </div>
+    </div>
+    <div class="gallery-footer">
+      <a href="https://www.instagram.com/kreativeinknick/" target="_blank" rel="noopener">Full portfolio on Instagram ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- ARTISTS -->
+<section class="section" id="artists">
+  <div class="grid-wrap">
+    <p class="section-label">The Artists</p>
+    <div class="artists-grid">
+
+      <div class="reveal">
+        <p class="artist-role">Lead Artist</p>
+        <h2 class="artist-name">Nick&nbsp;Chan</h2>
+        <p class="artist-handle"><a href="https://www.instagram.com/kreativeinknick/" target="_blank" rel="noopener">@kreativeinknick</a></p>
+        <p class="artist-bio">Black and grey realism: dark mythology, warriors, animals, portraiture. Featured in West Coast Ink Magazine. Based in Victoria, BC.</p>
+        <blockquote class="artist-voice">"Watch darkness turn into art."</blockquote>
+        <span class="artist-cred">West Coast Ink Magazine · Featured Artist</span>
+      </div>
+
+      <div class="reveal">
+        <p class="artist-role">Apprentice</p>
+        <h2 class="artist-name">Autumn</h2>
+        <p class="artist-handle"><a href="https://www.instagram.com/hotdamnitsautumn/" target="_blank" rel="noopener">@hotdamnitsautumn</a></p>
+        <p class="artist-bio">Stipple shading, traditional, dark figurative, portraits, animals. Apprentice at Kreative Ink with a dedicated following and work that turns heads.</p>
+        <blockquote class="artist-voice">"I am so grateful for my amazing clients."</blockquote>
+        <span class="artist-cred">Kreative Ink · Victoria, BC</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PULL QUOTE REVIEWS -->
+<section class="section reviews" id="reviews">
+  <div class="grid-wrap">
+    <div class="reviews-meta reveal">
+      <p class="section-label" style="margin-bottom:0;">What clients say</p>
+      <p class="reviews-rating">4.7★ · 38 Google reviews</p>
+    </div>
+
+    <div class="pull-quote reveal">
+      <div class="pull-mark">"</div>
+      <div>
+        <p class="pull-body">Sickest artist on the island fr tho.</p>
+        <p class="pull-attr">@sirrealmusicofficial · Instagram</p>
       </div>
     </div>
 
-    <div class="artist-grid-wrapper fade-in fade-in-delay-1">
-      <div class="grid-main">
-        <img src="ig-photo-04.jpg" alt="Dark fantasy horned warrior tattoo — Nick Krebs">
-      </div>
-      <div class="grid-side">
-        <div class="grid-side-item">
-          <img src="ig-photo-11.jpg" alt="Wolves and nun back piece — Nick Krebs">
-        </div>
-        <div class="grid-side-item">
-          <img src="ig-photo-09.jpg" alt="Addilyn's Dive Bar full back piece — Nick Krebs">
-        </div>
+    <div class="pull-quote reveal">
+      <div class="pull-mark">"</div>
+      <div>
+        <p class="pull-body">Best animal tattooist ever, right there.</p>
+        <p class="pull-attr">@krystymcintyre · Instagram</p>
       </div>
     </div>
-    <div class="artist-grid-bottom fade-in fade-in-delay-2">
+
+    <div class="pull-quote reveal">
+      <div class="pull-mark">"</div>
       <div>
-        <img src="ig-photo-07.jpg" alt="Skull and chains rib tattoo — Nick Krebs">
-      </div>
-      <div>
-        <img src="ig-photo-12.jpg" alt="Detail of wolves and nun tattoo — Nick Krebs">
+        <p class="pull-body">Every post, your skills improve so much — oh my god.</p>
+        <p class="pull-attr">@optsu · Instagram · On Autumn's work</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ==========================================
-     STATEMENT BREAK
-     ========================================== -->
-<div class="statement-section">
-  <p class="statement-text fade-in">
-    Some studios have a dozen artists.<br>
-    Kreative Ink has two.<br>
-    <em>That's the point.</em>
-  </p>
-</div>
-
-<!-- ==========================================
-     AUTUMN'S SECTION
-     ========================================== -->
-<section id="autumn" style="background: var(--near-black); padding: 0;">
-  <div class="artist-section">
-    <div class="artist-header fade-in">
-      <div>
-        <div class="section-label">Guest Artist</div>
-        <div class="artist-name">Autumn</div>
-        <div class="artist-role">@hotdamnitsautumn</div>
-      </div>
-      <div class="artist-bio">
-        Autumn's range is genuinely wide — from tight linework and illustrative detail to full realism. Where Nick goes mythological, Autumn goes precise. Her work has a clarity to it that rewards a close look. Booking through Instagram DM.
-        <a href="https://www.instagram.com/hotdamnitsautumn" target="_blank" rel="noopener" class="ig-handle">See her full portfolio →</a>
-      </div>
-    </div>
-
-    <div class="artist-grid-wrapper flipped fade-in fade-in-delay-1">
-      <div class="grid-side">
-        <div class="grid-side-item">
-          <img src="ig-photo-01.jpg" alt="Snake and chalice tattoo — Autumn">
-        </div>
-        <div class="grid-side-item">
-          <img src="ig-photo-03.jpg" alt="Skeletal bat tattoo — Autumn">
-        </div>
-      </div>
-      <div class="grid-main">
-        <img src="ig-photo-10.jpg" alt="Viking warrior tattoo — Autumn">
-      </div>
-    </div>
-    <div class="artist-grid-bottom fade-in fade-in-delay-2">
-      <div>
-        <img src="ig-photo-02.jpg" alt="Wolf and portrait tattoo — Autumn">
-      </div>
-      <div>
-        <img src="ig-photo-12.jpg" alt="Detail closeup of back piece — Autumn">
-      </div>
+<!-- CONTACT / BOOK -->
+<section class="section contact" id="book">
+  <div class="grid-wrap">
+    <div class="contact-inner reveal">
+      <h2 class="contact-headline">Ready to<br><em>start your piece?</em></h2>
+      <p class="contact-sub">DM on Instagram to begin. Nick and Autumn take custom work: mythology, portraits, sleeves, animals.</p>
+      <a href="https://www.instagram.com/kreativeinknick/" target="_blank" rel="noopener" class="contact-btn">DM @kreativeinknick</a>
     </div>
   </div>
 </section>
 
-<!-- ==========================================
-     REVIEWS
-     ========================================== -->
-<section id="reviews" style="padding: 0; background: var(--surface);">
-  <div class="reviews-section">
-    <div class="reviews-header fade-in">
-      <div class="reviews-rating">4.7</div>
-      <div class="reviews-meta">
-        <span>★★★★★</span><br>
-        38 reviews · Google
-      </div>
-    </div>
-
-    <div class="reviews-grid">
-      <div class="review-card fade-in">
-        <p class="review-quote">"Nick is incredibly talented and made the whole process comfortable. He took my rough idea and turned it into something I genuinely couldn't have imagined. The detail in the shading alone is worth the wait for an appointment."</p>
-        <div class="review-author">Jordan K. · Google Review · ★★★★★</div>
-      </div>
-      <div class="review-card fade-in fade-in-delay-1">
-        <p class="review-quote">"Autumn did my sleeve and I'm obsessed. She listened carefully to what I wanted, gave honest feedback on what would age well, and delivered something that's exactly me. Victoria's lucky to have this studio."</p>
-        <div class="review-author">Sam W. · Google Review · ★★★★★</div>
-      </div>
-      <div class="review-card fade-in fade-in-delay-2">
-        <p class="review-quote">"Clean shop, professional setup, and the work speaks for itself. I've had work done at several studios in BC and Kreative Ink stands out. Nick takes his time — you don't feel rushed and the outcome shows it."</p>
-        <div class="review-author">Taylor M. · Google Review · ★★★★★</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ==========================================
-     BOOKING
-     ========================================== -->
-<section id="book" style="padding: 0; background: var(--black);">
-  <div class="booking-section">
-    <div class="section-label fade-in">Book a Consultation</div>
-    <h2 class="booking-title fade-in fade-in-delay-1">Ready to<br>Start Talking?</h2>
-    <p class="booking-sub fade-in fade-in-delay-2">Message through Instagram. Tell them the piece you want, where it goes, and roughly how big. The more specific you are, the faster they can tell you if it's a fit.</p>
-    <div class="booking-buttons fade-in fade-in-delay-3">
-      <a href="https://www.instagram.com/kreativeinknick" target="_blank" rel="noopener" class="btn-primary">DM Nick on Instagram</a>
-      <a href="https://www.instagram.com/hotdamnitsautumn" target="_blank" rel="noopener" class="btn-secondary">DM Autumn on Instagram</a>
-    </div>
-  </div>
-</section>
-
-<!-- ==========================================
-     VISIT
-     ========================================== -->
-<div class="visit-section">
-  <div class="visit-item">
-    <div class="visit-label">Location</div>
-    <div class="visit-value">
-      <a href="https://www.google.com/maps/search/Kreative+Ink+Victoria+BC" target="_blank" rel="noopener">Victoria, BC</a>
-    </div>
-  </div>
-  <div class="visit-divider"></div>
-  <div class="visit-item">
-    <div class="visit-label">Nick</div>
-    <div class="visit-value">
-      <a href="https://www.instagram.com/kreativeinknick" target="_blank" rel="noopener">@kreativeinknick</a>
-    </div>
-  </div>
-  <div class="visit-divider"></div>
-  <div class="visit-item">
-    <div class="visit-label">Autumn</div>
-    <div class="visit-value">
-      <a href="https://www.instagram.com/hotdamnitsautumn" target="_blank" rel="noopener">@hotdamnitsautumn</a>
-    </div>
-  </div>
-  <div class="visit-divider"></div>
-  <div class="visit-item">
-    <div class="visit-label">Rating</div>
-    <div class="visit-value">4.7★ · 38 Reviews</div>
-  </div>
-</div>
-
-<!-- ==========================================
-     FOOTER
-     ========================================== -->
+<!-- FOOTER -->
 <footer>
-  <div class="footer-logo">Kreative<span>.</span>Ink</div>
-  <div class="footer-text">Victoria, BC · Custom Tattoo Studio</div>
+  <div class="footer-inner">
+    <span class="footer-name">Kreative Ink Tattoo</span>
+    <div class="footer-right">
+      Victoria, BC &nbsp;·&nbsp;
+      <a href="https://www.instagram.com/kreativeinknick/" target="_blank" rel="noopener">@kreativeinknick</a>
+      &nbsp;·&nbsp;
+      <a href="https://www.instagram.com/hotdamnitsautumn/" target="_blank" rel="noopener">@hotdamnitsautumn</a>
+    </div>
+  </div>
 </footer>
 
 <script>
-  // Scroll reveal
-  if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  // Scroll-triggered reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 60);
+        revealObs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => revealObs.observe(el));
 
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-  }
+  // Gallery items stagger
+  const galleryItems = document.querySelectorAll('.gallery-item');
+  const galleryObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const items = document.querySelectorAll('.gallery-item');
+        items.forEach((item, i) => {
+          setTimeout(() => item.classList.add('visible'), i * 80);
+        });
+        galleryObs.disconnect();
+      }
+    });
+  }, { threshold: 0.05 });
+  if (galleryItems.length) galleryObs.observe(galleryItems[0]);
+
+  // Hero headline line-by-line reveal on load
+  window.addEventListener('DOMContentLoaded', () => {
+    const lines = document.querySelectorAll('.hero-line');
+    lines.forEach((line, i) => {
+      setTimeout(() => line.classList.add('visible'), 200 + i * 120);
+    });
+  });
+
+  // Nav scroll tint
+  window.addEventListener('scroll', () => {
+    document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
 </script>
+
+<noscript><style>.reveal { opacity: 1; transform: none; }</style></noscript>
 </body>
 </html>

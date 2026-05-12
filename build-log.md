@@ -6494,3 +6494,25 @@ Real Victoria BC business. Website was literally just a street address (touristw
 - **Key decisions:** Framed the site around the practical recurring-service benefit: getting the weekend back. Used only official site photography, kept the CTA phone-first, and cut internal/source-discipline copy out of the visible page.
 - **Notes:** Official site images were generic but usable; mower-action hero carried more trust than the manicured lawn hero. No license/rating/review-count claims were used because they were not verified from primary sources.
 - **Live URL:** https://auto-sites.pages.dev/demos/glendale-lawn-pros/ (pushed to GitHub; Pages route still serving portfolio landing page at verification time)
+
+### Universal Landscaping — Landscaping / lawn care / sprinkler repair, Pasadena CA
+- **Date:** 2026-05-12
+- **Model:** openai-codex/gpt-5.5 (Lucy cron)
+- **Agent:** Lucy
+- **Folder:** universal-landscaping
+- **Hero pattern:** asymmetric-collage
+- **Typography:** Fraunces + DM Sans
+- **Review layout:** dark proof chapter with one large attributed Google quote plus same-treatment supporting HomeAdvisor review cards
+- **Visit/hours layout:** two-column dark contact chapter with phone-first estimate panel and service-area proof graphic
+- **Stats bar style:** no-stats
+- **WHY Score:** 7.8 (Steve Jobs 7.8 / Paul Graham 8.0 / David Ogilvy 7.6)
+- **WHAT Score:** 7.97 (Don Norman 8.0 / Steve Krug 8.1 / Jakob Nielsen 7.8)
+- **HOW Score:** 8.08 (Massimo Vignelli 8.0 / Erik Spiekermann 8.2 / Dieter Rams 8.0 / Emil Kowalski 8.1)
+- **Panel average:** 7.95
+- **Self-review:** 8.3
+- **Versions built:** 6 HTML versions + final index.html
+- **Build time:** ~65 minutes
+- **Token estimate:** ~40k
+- **Key decisions:** Framed the site around a review-backed service promise: “A yard crew that cleans up after itself.” Used imperfect real project/truck/service-area assets for trust, with generated images only as supporting service cues where official photography was thin.
+- **GPT 5.5 comparison:** Better than prior GPT 5.4/Sonnet runs at keeping the frontend system coherent while moving quickly, and noticeably better at catching/source-fixing public copy issues after visual QA. Still needed explicit screenshot critique to remove meta/source language and reduce decorative editorial choices.
+- **Live URL:** https://auto-sites.pages.dev/demos/universal-landscaping/

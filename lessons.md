@@ -25,6 +25,12 @@ Moon Ink was queued as a no-website candidate, but discovery found a live offici
 ## Tier 1 — Recent Observations
 *New patterns from 1-2 builds. Watch for repetition.*
 
+### [QA] Source-discipline notes can leak into public copy during facts-first builds.
+Universal Landscaping v0/v1 included lines like “The old site lists…” and a footer note about facts being sourced. Those are useful for `sources.md`, not visible page copy. Final QA must scan for meta/process language, especially after source-heavy service-business research. — Universal Landscaping 2026-05-12
+
+### [ASSETS] For home-service businesses, imperfect real project photos beat polished generated lawn glamour.
+Universal Landscaping had inconsistent official assets, but the real xeriscape, tree-worker, truck, and service-area graphic made the page feel locally accountable. Generated support images helped fill gaps, but the hero/trust moments needed real proof. Use generated images for texture/service cues only when real project coverage is thin. — Universal Landscaping 2026-05-12
+
 ### [POSITIONING] A business can already have a website and still need a tighter local landing page.
 Famiglia Tattoo was not a no-site rescue. Discovery found a live multi-city site with strong values language but weak Victoria-first utility. The right move was not to compete on existence. It was to compress the local layer: artist choice, access notes, payment expectations, and consent policies on one page. When an official site sprawls across locations or missions, the opportunity is often clarity, not replacement. — Famiglia Tattoo b131
 

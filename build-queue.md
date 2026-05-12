@@ -27,17 +27,7 @@
 
 <!-- Built 2026-05-11 → demos/glendale-lawn-pros/ → https://auto-sites.pages.dev/demos/glendale-lawn-pros/ -->
 
-## Universal Landscaping
-
-- **Business:** Universal Landscaping
-- **Category:** Landscaping, lawn care, sprinkler repair, garden maintenance
-- **Location:** Pasadena, CA
-- **Website:** https://universallandscapingca.com/
-- **Contact signals:** Site/search snippets list phone (626) 590-9400 and email; site has request/contact navigation and service pages.
-- **Why this is a good candidate:** Local home-services business with a very thin, template-like site and sparse content. Likely upside from stronger mobile-first design, service-area pages, real project gallery, reviews/testimonials, bilingual Spanish/English trust signals, local SEO, and a clearer quote/request flow.
-- **Observed services:** Lawn care, lawn/garden sprinkler system repair, commercial and residential landscaping; third-party snippets also mention tree service, yard clean-up, power washing, and garden care.
-- **Source/date added:** Iris nightly research, 2026-05-07; recovered to canonical queue 2026-05-10.
-- **Status:** New lead — not contacted.
+<!-- Built 2026-05-12 → demos/universal-landscaping/ → https://auto-sites.pages.dev/demos/universal-landscaping/ -->
 
 ## Certified Service
 
@@ -73,4 +63,16 @@
 - **Why this is a good candidate:** Established local tree and landscape contractor with high-intent residential/commercial services and strong proof points, but the site is text-heavy and dated. Likely upside from a modern mobile-first redesign, clearer emergency/tree-removal CTAs, before-after gallery, service-area SEO pages, license/ISA trust modules, review highlights, and a faster quote request flow.
 - **Observed services:** Tree trimming, tree removal, pruning, stump grinding, lawn/irrigation, drought-tolerant landscaping, hardscapes, lot clearing, commercial tree services.
 - **Source/date added:** Iris nightly research, 2026-05-11.
+- **Status:** New lead — not contacted.
+
+## Ed’s Landscaping
+
+- **Business:** Ed’s Landscaping
+- **Category:** Landscaping, hardscaping, irrigation, concrete, landscape design
+- **Location:** Glendale, CA
+- **Website:** https://www.eds-landscaping.com/
+- **Contact signals:** Site lists phone (818) 248-6776 and (626) 793-5296, free-estimate language, 45+ years experience, and service areas including Glendale, Altadena, Burbank, Eagle Rock, La Cañada-Flintridge, Pasadena, San Marino, South Pasadena, Arcadia, West Hollywood, and nearby communities.
+- **Why this is a good candidate:** Local home-services business with high-value landscaping/hardscaping/irrigation/concrete intent and a content-heavy template site. Likely upside from a modern mobile-first redesign, clearer quote CTAs, project gallery, before/after proof, service-area SEO pages, and stronger trust modules around longevity/local expertise.
+- **Observed services:** Landscaping, landscape design, hardscaping, patios/decks, concrete, driveways, pavers, sidewalks, sprinklers, irrigation systems, residential and commercial outdoor-space work.
+- **Source/date added:** Iris nightly research, 2026-05-12.
 - **Status:** New lead — not contacted.

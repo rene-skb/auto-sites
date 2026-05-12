@@ -27,7 +27,7 @@
 
 <!-- Built 2026-05-11 → demos/glendale-lawn-pros/ → https://auto-sites.pages.dev/demos/glendale-lawn-pros/ -->
 
-<!-- Built 2026-05-12 → demos/universal-landscaping/ → https://auto-sites.pages.dev/demos/universal-landscaping/ -->
+<!-- Built 2026-05-12 → demos/universal-landscaping/ → pending Pages verification -->
 
 ## Certified Service
 

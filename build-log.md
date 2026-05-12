@@ -6515,4 +6515,4 @@ Real Victoria BC business. Website was literally just a street address (touristw
 - **Token estimate:** ~40k
 - **Key decisions:** Framed the site around a review-backed service promise: “A yard crew that cleans up after itself.” Used imperfect real project/truck/service-area assets for trust, with generated images only as supporting service cues where official photography was thin.
 - **GPT 5.5 comparison:** Better than prior GPT 5.4/Sonnet runs at keeping the frontend system coherent while moving quickly, and noticeably better at catching/source-fixing public copy issues after visual QA. Still needed explicit screenshot critique to remove meta/source language and reduce decorative editorial choices.
-- **Live URL:** https://auto-sites.pages.dev/demos/universal-landscaping/
+- **Live URL:** https://auto-sites.pages.dev/demos/universal-landscaping/ (pushed to GitHub; Pages route still serving portfolio landing page at verification time)

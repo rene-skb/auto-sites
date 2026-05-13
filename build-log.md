@@ -6516,3 +6516,25 @@ Real Victoria BC business. Website was literally just a street address (touristw
 - **Key decisions:** Framed the site around a review-backed service promise: “A yard crew that cleans up after itself.” Used imperfect real project/truck/service-area assets for trust, with generated images only as supporting service cues where official photography was thin.
 - **GPT 5.5 comparison:** Better than prior GPT 5.4/Sonnet runs at keeping the frontend system coherent while moving quickly, and noticeably better at catching/source-fixing public copy issues after visual QA. Still needed explicit screenshot critique to remove meta/source language and reduce decorative editorial choices.
 - **Live URL:** https://auto-sites.pages.dev/demos/universal-landscaping/ (pushed to GitHub; Pages route still serving portfolio landing page at verification time)
+
+### Certified Service — HVAC repair / replacement / maintenance, Burbank CA
+- **Date:** 2026-05-13
+- **Model:** openai-codex/gpt-5.5 (Lucy cron)
+- **Agent:** Lucy
+- **Folder:** certified-service
+- **Hero pattern:** asymmetric equipment collage
+- **Typography:** Fraunces + DM Sans
+- **Review layout:** no review cards; credential/trust proof cards only because reliable first-name/last-initial review quotes were not extracted
+- **Visit/hours layout:** two-column dark contact chapter with phone, contact form, Google Maps business listing, address, and service-area list
+- **Stats bar style:** no-stats
+- **WHY Score:** 8.0 (Steve Jobs / Paul Graham / David Ogilvy)
+- **WHAT Score:** 8.1 (Don Norman / Steve Krug / Jakob Nielsen)
+- **HOW Score:** 8.0 (Massimo Vignelli / Erik Spiekermann / Dieter Rams / Emil Kowalski)
+- **Panel average:** 8.03
+- **Self-review:** 8.2
+- **Versions built:** final index.html + sources.md + panel-notes.md + desktop/mobile screenshots
+- **Build time:** ~75 minutes
+- **Token estimate:** ~35k
+- **Key decisions:** Treated the opportunity as clarity/compression, not a no-site rescue. Led with the strongest sourced differentiator: “service techs are not paid on commission,” translated into the hero promise “Comfort fixed without the sales pressure.” Used generated equipment/detail images only, avoiding fake storefronts, interiors, branded vans, or invented testimonials. Kept all public copy customer-facing after QA caught source/meta language.
+- **GPT 5.5 comparison:** Materially stronger than GPT 5.4/Mini-style runs for source discipline, CSS cohesion, and post-QA cleanup. Frontend taste is good and controlled, though still not magic: it required explicit non-negotiables and visual QA to remove meta copy and avoid fake-interior risk. Recommendation: keep using GPT 5.5 for Lucy builds, especially with screenshot/vision review in the loop.
+- **Live URL:** https://auto-sites.pages.dev/demos/certified-service/ (pushed to GitHub and verified live on Cloudflare Pages)

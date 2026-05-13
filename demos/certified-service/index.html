@@ -1,0 +1,177 @@
+<!doctype html>
+<!--
+Lucy overnight build — Certified Service, Burbank CA
+Model: openai-codex/gpt-5.5
+Pipeline notes:
+- Discovery: official site, contact page, about page, AC repair/install, maintenance, heat pump, commercial, Carrier dealer listing, search snippets.
+- Design direction: service-dispatch clarity, not generic contractor brochure. Blue-collar but premium: navy/cream/copper, large direct type, useful proof cards, phone-first conversion.
+- Asset discipline: generated HVAC equipment/details only; no fake storefronts, interiors, or branded vehicles. Real official photography was not extractable from the homepage fetch.
+- Review discipline: no invented testimonials; proof is sourced as qualifications/operating claims instead.
+- Panel scores: WHY 8.0 / WHAT 8.1 / HOW 8.0. Final self-review: 8.2.
+- Motion: scroll reveal + button feedback only; no hover zoom on non-clickable images; reduced-motion supported.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Certified Service | Burbank HVAC repair, replacement, maintenance</title>
+  <meta name="description" content="Burbank HVAC repair, replacement, maintenance, heat pump, indoor air quality, and light commercial service from a family-owned Carrier Factory Authorized Dealer.">
+  <meta property="og:title" content="Certified Service">
+  <meta property="og:description" content="Burbank HVAC repair, replacement, maintenance, heat pump, indoor air quality, and light commercial service.">
+  <meta property="og:image" content="https://auto-sites.pages.dev/demos/certified-service/ac-condenser.png">
+  <meta property="og:url" content="https://auto-sites.pages.dev/demos/certified-service/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,800&display=swap" rel="stylesheet">
+  <style>
+    :root{--navy:#0b2035;--navy-2:#143453;--cream:#f4efe4;--paper:#fffaf0;--copper:#c56d3d;--blue:#6fa8bf;--ink:#17202a;--muted:#66727e;--line:rgba(23,32,42,.14);--white-line:rgba(255,250,240,.18);--section:clamp(58px,7vw,104px);--ease:cubic-bezier(.23,1,.32,1)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:var(--ink);font-family:'DM Sans',system-ui,-apple-system,sans-serif;font-size:17px;line-height:1.55}img{display:block;max-width:100%}a{color:inherit;text-decoration:none}.wrap{width:min(1180px,calc(100% - 40px));margin:auto}.eyebrow{font-size:12px;letter-spacing:.15em;text-transform:uppercase;font-weight:900;color:var(--copper)}
+    header{position:sticky;top:0;z-index:20;background:rgba(244,239,228,.88);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}.nav{height:74px;display:flex;justify-content:space-between;align-items:center}.brand{display:flex;align-items:center;gap:12px;font-weight:900}.mark{width:38px;height:38px;border-radius:12px;background:var(--navy);color:var(--paper);display:grid;place-items:center;font-family:'Fraunces';font-weight:800}.links{display:flex;gap:24px;align-items:center;font-size:14px;font-weight:800}.menu{display:none;border:0;background:transparent;font-size:28px;color:var(--navy)}.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;background:var(--copper);color:#fff;padding:13px 20px;font-weight:900;transition:transform 160ms var(--ease),background 160ms var(--ease)}.btn:hover{background:#aa5c33}.btn:active{transform:scale(.97)}.btn.light{background:var(--paper);color:var(--navy)}.btn.outline{background:transparent;color:var(--navy);border:1px solid var(--line)}
+    .hero{padding:52px 0 var(--section);background:radial-gradient(circle at 74% 12%,rgba(111,168,191,.32),transparent 32%),linear-gradient(180deg,#f8f1e4 0%,#eadcc6 100%)}.hero-grid{display:grid;grid-template-columns:1fr .95fr;gap:48px;align-items:center}.hero h1{font-family:'Fraunces',serif;font-size:clamp(52px,7.8vw,104px);line-height:.93;letter-spacing:-.055em;margin:16px 0 24px;max-width:9.8ch}.hero p{font-size:clamp(19px,2.1vw,24px);max-width:650px;color:#2c3742;margin:0 0 30px}.cta-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}.hero-note{font-size:14px;color:#56616c;font-weight:800}.photo-grid{display:grid;grid-template-columns:1fr .68fr;grid-template-rows:230px 230px;gap:16px}.photo{border-radius:30px;overflow:hidden;background:#ddd;box-shadow:0 24px 70px rgba(11,32,53,.18)}.photo img{width:100%;height:100%;object-fit:cover}.photo.main{grid-row:span 2}.quick{margin-top:28px;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;border:1px solid var(--line);background:var(--line);border-radius:24px;overflow:hidden}.quick div{background:rgba(255,250,240,.7);padding:18px}.quick b{display:block;color:var(--navy);font-size:14px}.quick span{font-size:14px;color:#5d6873}
+    section{padding:var(--section) 0}.section-head{display:grid;grid-template-columns:.85fr 1.15fr;gap:42px;align-items:end;margin-bottom:42px}.section-head h2{font-family:'Fraunces';font-size:clamp(36px,4.7vw,68px);line-height:.94;letter-spacing:-.05em;margin:10px 0 0}.section-head p{margin:0;color:#4f5b66;font-size:19px}.services{background:var(--paper)}.service-grid{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:30px;overflow:hidden}.service-card{background:#fffdf8;border-right:1px solid var(--line);padding:28px;min-height:272px;display:flex;flex-direction:column;justify-content:space-between;transition:transform 180ms var(--ease),box-shadow 180ms var(--ease)}.service-card:last-child{border-right:0}.service-card:hover{transform:translateY(-3px);box-shadow:0 16px 34px rgba(11,32,53,.08)}.service-card h3{font-family:'Fraunces';font-size:29px;line-height:1;margin:0}.service-card p{font-size:16px;color:#5c6872;margin:16px 0 0}.num{font-size:12px;font-weight:900;letter-spacing:.14em;color:var(--copper)}
+    .proof{background:var(--navy);color:var(--paper)}.proof .section-head p{color:#c9d4dc}.proof .eyebrow{color:#f0a46d}.proof-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px}.statement,.proof-card{background:rgba(255,250,240,.075);border:1px solid var(--white-line);border-radius:28px;padding:30px}.statement h3{font-family:'Fraunces';font-size:clamp(38px,5vw,70px);line-height:1;letter-spacing:-.05em;margin:12px 0 0}.statement p{color:#d7e0e7;max-width:620px}.proof-stack{display:grid;gap:18px}.proof-card b{display:block;color:#fff;font-size:18px;margin-bottom:8px}.proof-card p{margin:0;color:#d7e0e7}.proof-meta{margin-top:22px;font-size:12px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:#f0a46d}
+    .equipment{background:#e6dac7}.equip-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}.equip-card{background:var(--paper);border:1px solid var(--line);border-radius:30px;overflow:hidden}.equip-card img{height:260px;width:100%;object-fit:cover}.equip-card div{padding:24px}.equip-card h3{font-family:'Fraunces';font-size:28px;margin:0 0 8px}.equip-card p{margin:0;color:#5d6873;font-size:16px}
+    .maintenance{background:var(--paper)}.split{display:grid;grid-template-columns:.95fr 1.05fr;gap:28px;align-items:stretch}.panel{border-radius:34px;padding:34px;background:#fffdf8;border:1px solid var(--line)}.panel.dark{background:linear-gradient(135deg,var(--navy),#07131f);color:var(--paper);border:0}.panel h2{font-family:'Fraunces';font-size:clamp(40px,5vw,70px);line-height:.95;letter-spacing:-.05em;margin:12px 0 22px}.panel p{color:#57636e}.panel.dark p{color:#d1dce3}.check-list{display:grid;gap:1px;background:var(--line);border-radius:22px;overflow:hidden;margin-top:24px}.check-list div{background:var(--paper);padding:16px;font-weight:800;display:flex;gap:12px}.check-list span{color:var(--copper)}
+    .contact{background:#111923;color:var(--paper)}.contact-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:28px;align-items:stretch}.contact-card{background:var(--paper);color:var(--ink);border-radius:34px;padding:34px}.contact-card h2{font-family:'Fraunces';font-size:clamp(42px,5vw,72px);line-height:.94;letter-spacing:-.05em;margin:12px 0 24px}.info-list{display:grid;gap:1px;background:var(--line);border-radius:22px;overflow:hidden;margin-top:22px}.info-list a,.info-list div{display:flex;justify-content:space-between;gap:20px;background:#fffaf0;padding:16px;font-weight:900}.info-list span{color:#65717c;font-weight:500}.map-panel{border-radius:34px;padding:34px;background:linear-gradient(135deg,#173a5d,#09131f);display:flex;flex-direction:column;justify-content:space-between;min-height:470px}.map-panel p{max-width:570px;color:#cedae2}.area-list{columns:2;list-style:none;margin:24px 0 0;padding:0;color:#d6e0e7;font-weight:700;font-size:15px}.footer{padding:30px 0;background:#080d12;color:#aab5bd;font-size:14px}.footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity 700ms var(--ease),transform 700ms var(--ease)}.reveal.in{opacity:1;transform:none}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}.btn,.service-card{transition:none}.service-card:hover{transform:none;box-shadow:none}}
+    @media(max-width:940px){.links{display:none}.menu{display:block}.links.open{position:absolute;left:20px;right:20px;top:82px;display:grid;gap:10px;background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:18px}.hero-grid,.section-head,.proof-grid,.split,.contact-grid{grid-template-columns:1fr}.photo-grid{grid-template-rows:190px 190px}.quick,.service-grid,.equip-grid{grid-template-columns:1fr}.service-card{border-right:0;border-bottom:1px solid var(--line);min-height:auto}.equip-card img{height:220px}.area-list{columns:1}.footer .wrap{display:grid}.info-list a,.info-list div{display:grid}}
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top"><span class="mark">CS</span><span>Certified Service</span></a>
+    <button class="menu" aria-label="Open menu">☰</button>
+    <nav class="links">
+      <a href="#services">Services</a><a href="#proof">Trust</a><a href="#maintenance">Maintenance</a><a href="#contact">Contact</a><a class="btn" href="tel:+18188432301">Call (818) 843-2301</a>
+    </nav>
+  </div>
+</header>
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="reveal">
+        <span class="eyebrow">Burbank heating + air conditioning</span>
+        <h1>Comfort fixed without the sales pressure.</h1>
+        <p>AC repair, replacement, maintenance, heat pump service, indoor air quality, and light commercial HVAC from a family-owned Burbank company.</p>
+        <div class="cta-row"><a class="btn" href="tel:+18188432301">Call (818) 843-2301</a><a class="btn outline" href="#services">See services</a><span class="hero-note">Free replacement estimates</span></div>
+        <div class="quick">
+          <div><b>Over 40 years</b><span>Family-owned Burbank HVAC service</span></div>
+          <div><b>NATE certified</b><span>Factory-trained technicians</span></div>
+          <div><b>No commission</b><span>Service techs are not paid on commission</span></div>
+        </div>
+      </div>
+      <div class="photo-grid reveal">
+        <figure class="photo main"><img src="ac-condenser.png" alt="Close-up of a clean residential air conditioning condenser fan"></figure>
+        <figure class="photo"><img src="service-gauges.png" alt="HVAC service gauges connected to refrigerant lines"></figure>
+        <figure class="photo"><img src="filter-duct.png" alt="Clean HVAC filter and ductwork detail"></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="services" id="services">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div><span class="eyebrow">What they handle</span><h2>One call for the equipment that keeps the building usable.</h2></div>
+        <p>Call for the problem you have now, or book a maintenance path before the next heat wave. Repair, replacement, maintenance, and commercial service stay easy to find.</p>
+      </div>
+      <div class="service-grid reveal">
+        <article class="service-card"><span class="num">01</span><div><h3>AC repair</h3><p>Fast air conditioning repair for Burbank homes and commercial buildings, including emergency AC service when the system fails at the worst time.</p></div></article>
+        <article class="service-card"><span class="num">02</span><div><h3>Replacement</h3><p>Free estimates on air conditioning replacements, Carrier equipment, system recommendations, and installation support.</p></div></article>
+        <article class="service-card"><span class="num">03</span><div><h3>Maintenance</h3><p>Periodic maintenance agreements with two performance tune-ups per year, priority service, and 10% off replacement parts.</p></div></article>
+        <article class="service-card"><span class="num">04</span><div><h3>Commercial HVAC</h3><p>Light commercial and industrial applications: rooftop units, split systems, ductless, VAV, temp controls, exhaust and supply fans.</p></div></article>
+      </div>
+      <div class="cta-row reveal" style="margin-top:30px"><a class="btn" href="tel:+18188432301">Call for service</a><span class="hero-note">AC · heating · heat pumps · indoor air quality · ductwork</span></div>
+    </div>
+  </section>
+
+  <section class="proof" id="proof">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div><span class="eyebrow">Why trust them</span><h2>Credentials beat contractor poetry.</h2></div>
+        <p>The strongest proof is operational: family-owned, licensed, bonded, insured, Carrier-authorized, and not built around commissioned techs.</p>
+      </div>
+      <div class="proof-grid reveal">
+        <article class="statement">
+          <span class="eyebrow">Core promise</span>
+          <h3>Repair the system. Explain the options. Don’t upsell the panic.</h3>
+          <p>Their employees are not paid on commission. For an emergency HVAC decision, that is the line that matters.</p>
+          <div class="proof-meta">No commission service techs</div>
+        </article>
+        <div class="proof-stack">
+          <article class="proof-card"><b>State of California licensed</b><p>C-10 & C-20, License Number 421428, bonded and insured.</p><div class="proof-meta">Licensed · bonded · insured</div></article>
+          <article class="proof-card"><b>Carrier Factory Authorized Dealer</b><p>Certified Service specializes in Carrier installation, repair, and maintenance.</p><div class="proof-meta">Carrier installation · repair · maintenance</div></article>
+          <article class="proof-card"><b>Factory-trained + NATE certified</b><p>Technicians are trained regularly and carry NATE certification.</p><div class="proof-meta">Technician qualification</div></article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="equipment">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div><span class="eyebrow">Service situations</span><h2>Built around the calls people actually make.</h2></div>
+        <p>Residential cooling, indoor comfort, and light commercial uptime each need a different promise. The page keeps those paths visible without making visitors read a service encyclopedia.</p>
+      </div>
+      <div class="equip-grid reveal">
+        <article class="equip-card"><img src="air-handler.png" alt="Open HVAC air-handler service panel with organized wiring and tools nearby"><div><h3>Something broke</h3><p>AC repair, heating repair, heat pump troubleshooting, refrigerant leak detection, thermostat repair, and fan motor issues.</p></div></article>
+        <article class="equip-card"><img src="refrigerant-lines.png" alt="HVAC copper refrigerant lines and service valves in warm outdoor light"><div><h3>The house feels wrong</h3><p>Indoor air quality testing, humidity balance, dust and odor reduction, filters, duct cleaning, and comfort checks.</p></div></article>
+        <article class="equip-card"><img src="commercial-rooftop.png" alt="Light commercial rooftop HVAC equipment at golden hour"><div><h3>The building needs uptime</h3><p>Rooftop units, split systems, make-up air units, clean rooms, garage exhaust, VAV systems, and temp controls.</p></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="maintenance" id="maintenance">
+    <div class="wrap split">
+      <article class="panel reveal">
+        <span class="eyebrow">Maintenance agreements</span>
+        <h2>Two tune-ups a year is easier than a July emergency.</h2>
+        <p>Regular check-ups help keep equipment efficient, catch loose or burnt wires and refrigerant leaks early, and protect the system before weather is at its worst.</p>
+        <div class="check-list">
+          <div><span>✓</span> Two performance tune-ups per year</div>
+          <div><span>✓</span> Priority customer service</div>
+          <div><span>✓</span> 10% off replacement parts</div>
+          <div><span>✓</span> 30-day labor warranty language</div>
+        </div>
+      </article>
+      <article class="panel dark reveal">
+        <span class="eyebrow">Replacement estimates</span>
+        <h2>When repair stops making sense, get the quote cleanly.</h2>
+        <p>Certified Service offers free estimates on replacement equipment and installs Carrier systems. Call, describe the system, and schedule the evaluation.</p>
+        <div class="cta-row"><a class="btn light" href="tel:+18188432301">Call for replacement estimate</a><a class="btn" href="https://certifiedac.net/contact-us/">Contact form</a></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap contact-grid">
+      <article class="contact-card reveal">
+        <span class="eyebrow">Book service</span>
+        <h2>Call the Burbank office.</h2>
+        <a class="btn" href="tel:+18188432301">Call (818) 843-2301</a>
+        <div class="info-list">
+          <a href="tel:+18188432301"><span>Phone</span>(818) 843-2301</a>
+          <a href="https://certifiedac.net/contact-us/"><span>Contact form</span>Schedule online</a>
+          <a href="https://www.google.com/maps?cid=16282493687579923472"><span>Google Maps</span>Open business listing</a>
+          <div><span>Address</span>309 W Verdugo Ave, Burbank, CA</div>
+        </div>
+      </article>
+      <aside class="map-panel reveal">
+        <div>
+          <span class="eyebrow">Service area</span>
+          <h2 style="font-family:Fraunces;font-size:clamp(38px,4.4vw,62px);line-height:.96;letter-spacing:-.05em;margin:14px 0 0">Burbank plus the valley cities around it.</h2>
+          <p>Service areas listed across the region include Valley Village, Van Nuys, Sun Valley, Encino, Tarzana, Northridge, Universal City, Valencia, and more.</p>
+          <ul class="area-list"><li>Burbank</li><li>Valley Village</li><li>Van Nuys</li><li>Sun Valley</li><li>Encino</li><li>Tarzana</li><li>Northridge</li><li>Universal City</li><li>Canoga Park</li><li>Valencia</li></ul>
+        </div>
+        <div class="cta-row" style="margin-top:26px"><a class="btn light" href="tel:+18188432301">Call Certified Service</a><span class="hero-note" style="color:#cbd7df">AC, heating, heat pumps, commercial HVAC</span></div>
+      </aside>
+    </div>
+  </section>
+</main>
+<footer class="footer"><div class="wrap"><span>© Certified Service.</span><span>Burbank HVAC repair, replacement, maintenance, and light commercial service.</span></div></footer>
+<script>
+const menu=document.querySelector('.menu'),links=document.querySelector('.links');menu?.addEventListener('click',()=>links.classList.toggle('open'));
+const els=[...document.querySelectorAll('.reveal')];if(!('IntersectionObserver'in window)){els.forEach(e=>e.classList.add('in'))}else{const io=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('in');io.unobserve(entry.target)}}),{threshold:.14});els.forEach((el,i)=>{el.style.transitionDelay=(i%3)*70+'ms';io.observe(el)})}
+</script>
+</body>
+</html>

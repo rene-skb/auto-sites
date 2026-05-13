@@ -29,17 +29,7 @@
 
 <!-- Built 2026-05-12 → demos/universal-landscaping/ → pending Pages verification -->
 
-## Certified Service
-
-- **Business:** Certified Service
-- **Category:** HVAC, heating, air conditioning, light commercial HVAC
-- **Location:** Burbank, CA
-- **Website:** https://certifiedac.net/
-- **Contact signals:** Search snippet says “Contact us today”; site copy urges customers to call/contact for HVAC service, though the extracted homepage did not expose a phone number.
-- **Why this is a good candidate:** Family-owned local HVAC company with a long operating history, many service-area/service pages, and conversion-heavy emergency/service intent. The site is serviceable but content-heavy and generic; likely upside from clearer quote/booking CTAs, stronger review/trust modules, emergency HVAC landing pages, service-area SEO cleanup, and a faster modern mobile-first redesign.
-- **Observed services:** AC repair, AC installation, AC maintenance, furnace installation, furnace maintenance, heat pump service, system replacements, property management HVAC, light commercial HVAC, free install estimates.
-- **Source/date added:** Iris nightly research, 2026-05-09; recovered to canonical queue 2026-05-10.
-- **Status:** New lead — not contacted.
+<!-- Built 2026-05-13 → demos/certified-service/ → https://auto-sites.pages.dev/demos/certified-service/ -->
 
 ## California Electrical Services
 
@@ -75,4 +65,16 @@
 - **Why this is a good candidate:** Local home-services business with high-value landscaping/hardscaping/irrigation/concrete intent and a content-heavy template site. Likely upside from a modern mobile-first redesign, clearer quote CTAs, project gallery, before/after proof, service-area SEO pages, and stronger trust modules around longevity/local expertise.
 - **Observed services:** Landscaping, landscape design, hardscaping, patios/decks, concrete, driveways, pavers, sidewalks, sprinklers, irrigation systems, residential and commercial outdoor-space work.
 - **Source/date added:** Iris nightly research, 2026-05-12.
+- **Status:** New lead — not contacted.
+
+## F & M Plumbing
+
+- **Business:** F & M Plumbing
+- **Category:** Plumbing, drain cleaning, leak detection, water heaters, emergency plumbing
+- **Location:** Pasadena, CA
+- **Website:** https://www.fandmplumbing.com/
+- **Contact signals:** Site lists 24/7 emergency plumbing, phone (626) 296-1060, Pasadena/San Gabriel Valley service area, “since 1985,” AWWA/licensed/insured copy, Google rating language, and third-party review links. Search snippets also expose address 1493 Lincoln Ave, Pasadena, CA 91103 and email mike@servicemasterbyhci.com.
+- **Why this is a good candidate:** Established family-owned local plumbing contractor with urgent, high-intent residential/commercial services and strong longevity/trust signals, but the homepage has dated/template artifacts (“Add your custom HTML here,” generic testimonial headings, awkward copy). Likely upside from a modern mobile-first redesign, emergency-service CTAs, quote/call flows, service-area SEO, clearer review/license proof, and cleaned-up content architecture.
+- **Observed services:** Tankless water heaters, drain cleaning, garbage disposals, sewer line cleaning, leak detection, gas leak detection/resolution, copper repiping, water extraction/drying, mold remediation, furnace repair, video inspection, commercial and residential plumbing.
+- **Source/date added:** Iris nightly research, 2026-05-13.
 - **Status:** New lead — not contacted.

@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deep Cuts Vinyl — Austin's Record Shop Since 2009</title>
+<meta name="description" content="New & used vinyl, local pressings, in-store performances, and a community of crate diggers in East Austin.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* === RESET & BASE === */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+  color: #1a1a1a;
+  background: #FAF7F2;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* === CUSTOM PROPERTIES === */
+:root {
+  --cream: #FAF7F2;
+  --warm-black: #1a1a1a;
+  --warm-dark: #2a2520;
+  --terracotta: #C4653A;
+  --olive: #5C6B4F;
+  --gold: #C9A84C;
+  --muted: #8A8074;
+  --light-warm: #F0EBE3;
+  --content-width: 1120px;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+/* === TYPOGRAPHY === */
+h1, h2, h3 { font-family: 'Instrument Serif', serif; font-weight: 400; line-height: 1.15; }
+h1 { font-size: clamp(3rem, 7vw, 5.5rem); letter-spacing: -0.02em; }
+h2 { font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -0.01em; }
+h3 { font-size: 1.5rem; }
+
+/* === LAYOUT === */
+.container { max-width: var(--content-width); margin: 0 auto; padding: 0 24px; }
+section { padding: 96px 0; }
+
+/* === NAV === */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(250, 247, 242, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(26, 26, 26, 0.06);
+}
+.nav-inner {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-logo {
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.4rem;
+  color: var(--warm-black);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a {
+  text-decoration: none;
+  color: var(--muted);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  transition: color 200ms var(--ease-out);
+}
+.nav-links a:hover { color: var(--warm-black); }
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--warm-black);
+  transition: transform 300ms var(--ease-out), opacity 200ms;
+}
+.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+/* Mobile nav */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 72px; left: 0; right: 0; bottom: 0;
+  background: var(--cream);
+  z-index: 99;
+  padding: 48px 24px;
+}
+.mobile-menu.active { display: flex; flex-direction: column; gap: 24px; }
+.mobile-menu a {
+  font-family: 'Instrument Serif', serif;
+  font-size: 2rem;
+  color: var(--warm-black);
+  text-decoration: none;
+}
+
+/* === HERO === */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 72px;
+  background: var(--warm-dark);
+  color: var(--cream);
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E"),
+    radial-gradient(ellipse at 30% 40%, rgba(196, 101, 58, 0.15) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 60%, rgba(92, 107, 79, 0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, rgba(201, 168, 76, 0.08) 0%, transparent 40%);
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.hero-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: rgba(201, 168, 76, 0.12);
+  padding: 8px 16px;
+  border-radius: 4px;
+  margin-bottom: 32px;
+}
+.hero h1 { margin-bottom: 24px; max-width: 700px; }
+.hero h1 em {
+  font-style: italic;
+  color: var(--terracotta);
+}
+.hero-sub {
+  font-size: 1.125rem;
+  color: rgba(250, 247, 242, 0.7);
+  max-width: 520px;
+  margin-bottom: 40px;
+  line-height: 1.7;
+}
+.hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+
+/* === BUTTONS === */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 32px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: transform 160ms var(--ease-out), box-shadow 200ms var(--ease-out);
+}
+.btn:active { transform: scale(0.97); }
+.btn-primary {
+  background: var(--terracotta);
+  color: white;
+}
+.btn-primary:hover { box-shadow: 0 4px 20px rgba(196, 101, 58, 0.3); }
+.btn-secondary {
+  background: transparent;
+  color: var(--cream);
+  border: 1px solid rgba(250, 247, 242, 0.3);
+}
+.btn-secondary:hover { border-color: rgba(250, 247, 242, 0.6); }
+
+/* === TRUST BAR === */
+.trust-bar {
+  background: var(--light-warm);
+  padding: 32px 0;
+  border-bottom: 1px solid rgba(26, 26, 26, 0.06);
+}
+.trust-bar-inner {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+.trust-item {
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.trust-item strong {
+  display: block;
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.5rem;
+  color: var(--warm-black);
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+/* === SECTIONS === */
+.section-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-bottom: 16px;
+}
+.section-heading { margin-bottom: 20px; }
+.section-sub {
+  color: var(--muted);
+  font-size: 1.05rem;
+  max-width: 560px;
+  margin-bottom: 56px;
+  line-height: 1.7;
+}
+
+/* === GENRES / WHAT WE CARRY === */
+.genres-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+}
+.genre-card {
+  background: white;
+  border-radius: 8px;
+  padding: 32px 28px;
+  transition: transform 300ms var(--ease-out), box-shadow 300ms var(--ease-out);
+}
+.genre-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+}
+.genre-icon {
+  width: 48px;
+  height: 48px;
+  background: var(--light-warm);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+  color: var(--terracotta);
+}
+.genre-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 8px;
+}
+.genre-card p {
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.genre-featured {
+  background: var(--warm-dark);
+  color: var(--cream);
+  border: 1px solid rgba(201, 168, 76, 0.2);
+}
+.genre-featured .genre-icon {
+  background: rgba(201, 168, 76, 0.15);
+  color: var(--gold);
+}
+.genre-featured p { color: rgba(250, 247, 242, 0.65); }
+.genre-featured:hover {
+  box-shadow: 0 8px 32px rgba(201, 168, 76, 0.1);
+}
+.genre-badge {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: rgba(201, 168, 76, 0.12);
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+/* === HOW IT WORKS === */
+.how-it-works {
+  background: var(--warm-dark);
+  color: var(--cream);
+  position: relative;
+}
+.how-it-works::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.hiw-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+.hiw-step {
+  padding: 36px 32px;
+  border: 1px solid rgba(250, 247, 242, 0.08);
+  border-radius: 8px;
+  transition: border-color 300ms var(--ease-out);
+}
+.hiw-step:hover { border-color: rgba(201, 168, 76, 0.3); }
+.hiw-number {
+  font-family: 'Instrument Serif', serif;
+  font-size: 2.5rem;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 16px;
+  line-height: 1;
+}
+.hiw-step h3 { margin-bottom: 12px; font-size: 1.2rem; }
+.hiw-step p { color: rgba(250, 247, 242, 0.65); font-size: 0.9rem; line-height: 1.7; margin-bottom: 16px; }
+.hiw-meta {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+@media (max-width: 768px) {
+  .hiw-grid { grid-template-columns: 1fr; }
+}
+
+/* === EVENTS === */
+.events-section { background: var(--cream); }
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+.event-card {
+  background: white;
+  border-radius: 8px;
+  padding: 32px;
+  border-left: 3px solid var(--terracotta);
+  transition: transform 300ms var(--ease-out), box-shadow 300ms var(--ease-out);
+}
+.event-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.06);
+}
+.event-date {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-bottom: 12px;
+}
+.event-card h3 { margin-bottom: 8px; font-size: 1.2rem; }
+.event-card p { color: var(--muted); font-size: 0.9rem; }
+.event-free {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--olive);
+  background: rgba(92, 107, 79, 0.1);
+  padding: 4px 10px;
+  border-radius: 4px;
+  margin-top: 12px;
+}
+
+/* === REVIEWS === */
+.reviews-section { background: var(--light-warm); }
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+.review-card {
+  background: white;
+  border-radius: 8px;
+  padding: 32px;
+  transition: transform 300ms var(--ease-out), box-shadow 300ms var(--ease-out);
+}
+.review-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.06);
+}
+.review-card:nth-child(2) {
+  border-left: 3px solid var(--gold);
+}
+.review-card:nth-child(odd) {
+  background: white;
+}
+.review-card:nth-child(even) {
+  background: #FFFDF9;
+}
+.review-stars {
+  color: var(--gold);
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+}
+.review-text {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--warm-black);
+  margin-bottom: 16px;
+  font-style: italic;
+}
+.review-author {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* === ABOUT === */
+.about-section { background: var(--cream); }
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+.about-image {
+  aspect-ratio: 4/5;
+  border-radius: 8px;
+  background:
+    radial-gradient(circle at 25% 25%, rgba(201, 168, 76, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 75% 40%, rgba(196, 101, 58, 0.18) 0%, transparent 45%),
+    radial-gradient(circle at 50% 85%, rgba(92, 107, 79, 0.12) 0%, transparent 40%),
+    linear-gradient(160deg, #2a2520 0%, #1a1612 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.about-image::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  opacity: 0.5;
+}
+.about-image-text {
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.5rem;
+  color: rgba(250, 247, 242, 0.2);
+  text-align: center;
+  padding: 24px;
+  position: relative;
+  z-index: 1;
+  letter-spacing: 0.06em;
+}
+.about-content h2 { margin-bottom: 24px; }
+.about-content p {
+  color: var(--muted);
+  margin-bottom: 16px;
+  line-height: 1.8;
+}
+.about-content p:first-of-type { color: var(--warm-black); font-size: 1.05rem; }
+
+/* === VISIT === */
+.visit-section {
+  background: var(--warm-dark);
+  color: var(--cream);
+}
+.visit-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+}
+.visit-info h2 { margin-bottom: 32px; }
+.visit-detail { margin-bottom: 28px; }
+.visit-detail-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+.visit-detail p {
+  color: rgba(250, 247, 242, 0.75);
+  line-height: 1.7;
+}
+.visit-detail a {
+  color: var(--cream);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(250, 247, 242, 0.3);
+  transition: border-color 200ms;
+}
+.visit-detail a:hover { border-color: var(--cream); }
+.visit-map {
+  border-radius: 8px;
+  overflow: hidden;
+  min-height: 360px;
+}
+.visit-map iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 360px;
+  border: 0;
+  filter: grayscale(0.3) contrast(1.05);
+}
+
+/* === FINAL CTA === */
+.final-cta {
+  background: var(--light-warm);
+  text-align: center;
+  padding: 80px 0;
+}
+.final-cta h2 { margin-bottom: 16px; }
+.final-cta p {
+  color: var(--muted);
+  margin-bottom: 32px;
+  font-size: 1.05rem;
+}
+.btn-dark {
+  background: var(--warm-dark);
+  color: var(--cream);
+}
+.btn-dark:hover { box-shadow: 0 4px 20px rgba(42, 37, 32, 0.3); }
+
+/* === FOOTER === */
+footer {
+  background: var(--warm-dark);
+  color: rgba(250, 247, 242, 0.5);
+  padding: 48px 0;
+  font-size: 0.85rem;
+  border-top: 1px solid rgba(250, 247, 242, 0.08);
+}
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.footer-logo {
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.1rem;
+  color: var(--cream);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.footer-links { display: flex; gap: 24px; list-style: none; }
+.footer-links a {
+  color: rgba(250, 247, 242, 0.5);
+  text-decoration: none;
+  transition: color 200ms;
+}
+.footer-links a:hover { color: var(--cream); }
+
+/* === HERO SCROLL INDICATOR === */
+.hero-scroll {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+.scroll-dot {
+  animation: scrollBounce 2s ease-in-out infinite;
+}
+@keyframes scrollBounce {
+  0%, 100% { cy: 10; }
+  50% { cy: 22; }
+}
+
+/* === ANIMATIONS === */
+.fade-in {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  section { padding: 64px 0; }
+  .about-grid, .visit-grid { grid-template-columns: 1fr; gap: 40px; }
+  .about-image { max-height: 300px; }
+  .trust-bar-inner { gap: 32px; }
+  .hero-ctas { flex-direction: column; }
+  .hero-ctas .btn { text-align: center; justify-content: center; }
+  .genres-grid { grid-template-columns: 1fr 1fr; }
+  .events-grid, .reviews-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+  .genres-grid { grid-template-columns: 1fr; }
+  .trust-bar-inner { flex-direction: column; gap: 20px; }
+}
+
+/* === REDUCED MOTION === */
+@media (prefers-reduced-motion: reduce) {
+  .fade-in { opacity: 1; transform: none; transition: none; }
+  html { scroll-behavior: auto; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Deep Cuts Vinyl</a>
+    <ul class="nav-links">
+      <li><a href="#collection">Collection</a></li>
+      <li><a href="#events">Events</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#visit">Visit</a></li>
+    </ul>
+    <button class="hamburger" aria-label="Toggle menu" onclick="this.classList.toggle('active'); document.querySelector('.mobile-menu').classList.toggle('active');">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu">
+  <a href="#collection" onclick="document.querySelector('.hamburger').classList.remove('active'); this.parentElement.classList.remove('active');">Collection</a>
+  <a href="#events" onclick="document.querySelector('.hamburger').classList.remove('active'); this.parentElement.classList.remove('active');">Events</a>
+  <a href="#about" onclick="document.querySelector('.hamburger').classList.remove('active'); this.parentElement.classList.remove('active');">About</a>
+  <a href="#visit" onclick="document.querySelector('.hamburger').classList.remove('active'); this.parentElement.classList.remove('active');">Visit</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <span class="hero-badge">Open 7 Days &middot; East Austin</span>
+    <h1>Dig deeper. <em>Sound better.</em></h1>
+    <p class="hero-sub">New and used vinyl, local pressings, and live in-store sets. A home for crate diggers and curious ears since 2009.</p>
+    <div class="hero-ctas">
+      <a href="https://maps.google.com/?q=1807+E+6th+Street+Austin+TX+78702" class="btn btn-primary" target="_blank" rel="noopener">Get Directions</a>
+      <a href="tel:+15124568901" class="btn btn-secondary">Call the Shop</a>
+    </div>
+    <div class="hero-scroll">
+      <svg width="20" height="32" viewBox="0 0 20 32" fill="none" stroke="rgba(250,247,242,0.3)" stroke-width="1.5">
+        <rect x="1" y="1" width="18" height="30" rx="9"/>
+        <circle cx="10" cy="10" r="2" fill="rgba(250,247,242,0.4)" class="scroll-dot"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-bar-inner">
+    <div class="trust-item"><strong>15+</strong> Years in East Austin</div>
+    <div class="trust-item"><strong>30k+</strong> Records In Stock</div>
+    <div class="trust-item"><strong>4.8</strong> Stars on Google</div>
+    <div class="trust-item"><strong>200+</strong> In-Store Shows</div>
+  </div>
+</div>
+
+<!-- COLLECTION -->
+<section id="collection" class="fade-in">
+  <div class="container">
+    <span class="section-label">What We Carry</span>
+    <h2 class="section-heading">Every genre has a story</h2>
+    <p class="section-sub">From rare psych-rock pressings to brand new hip-hop, we stock what we love and what Austin needs.</p>
+    <div class="genres-grid">
+      <div class="genre-card">
+        <div class="genre-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/></svg>
+        </div>
+        <h3>Rock &amp; Psych</h3>
+        <p>Classic, garage, psychedelic, shoegaze. Deep cuts from every era, heavy on the Texas stuff.</p>
+      </div>
+      <div class="genre-card">
+        <div class="genre-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+        </div>
+        <h3>Soul, Funk &amp; Jazz</h3>
+        <p>Blue Note reissues, rare 45s, modern jazz. If it grooves, we probably have it.</p>
+      </div>
+      <div class="genre-card">
+        <div class="genre-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><line x1="6" y1="12" x2="6" y2="12"/><line x1="10" y1="10" x2="10" y2="14"/><line x1="14" y1="8" x2="14" y2="16"/><line x1="18" y1="11" x2="18" y2="13"/></svg>
+        </div>
+        <h3>Hip-Hop &amp; Electronic</h3>
+        <p>New releases, indie pressings, DJ-friendly 12"s, and a growing ambient section.</p>
+      </div>
+      <div class="genre-card">
+        <div class="genre-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M5.5 7.5L12 3l6.5 4.5"/><path d="M5.5 12L12 8l6.5 4"/><path d="M5.5 16.5L12 13l6.5 3.5"/></svg>
+        </div>
+        <h3>Country, Folk &amp; Tex-Mex</h3>
+        <p>Outlaw country, singer-songwriters, border music. We lean into our Texas roots.</p>
+      </div>
+      <div class="genre-card">
+        <div class="genre-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12s1.5-4 4-4 4 4 4 4-1.5 4-4 4-4-4-4-4"/></svg>
+        </div>
+        <h3>World &amp; Experimental</h3>
+        <p>Afrobeat, cumbia, krautrock, noise. For the adventurous listener.</p>
+      </div>
+      <div class="genre-card genre-featured">
+        <div class="genre-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <h3>Local Pressings</h3>
+        <p>Austin bands, local labels, limited runs. Supporting the scene that supports us.</p>
+        <span class="genre-badge">Staff Favorite</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-it-works fade-in">
+  <div class="container">
+    <div class="hiw-header" style="text-align: center; margin-bottom: 56px;">
+      <span class="section-label">Buy &middot; Sell &middot; Trade</span>
+      <h2>Not a warehouse. Not a boutique. A <em style="color: var(--gold); font-style: italic;">record shop.</em></h2>
+      <p style="color: rgba(250, 247, 242, 0.65); max-width: 520px; margin: 20px auto 0; font-size: 1.05rem; line-height: 1.7;">We'll spend 20 minutes helping you find the right record, or leave you alone to dig. No judgment, no gatekeeping.</p>
+    </div>
+    <div class="hiw-grid">
+      <div class="hiw-step">
+        <span class="hiw-number">01</span>
+        <h3>Browse &amp; Dig</h3>
+        <p>30,000+ records organized by genre. Flip through the bins, check the staff picks wall, or ask us for a recommendation.</p>
+        <span class="hiw-meta">New LPs from $18 &middot; Used from $5</span>
+      </div>
+      <div class="hiw-step">
+        <span class="hiw-number">02</span>
+        <h3>Sell Your Collection</h3>
+        <p>Bring your records in, we'll make you an offer on the spot. Fair prices, no lowballing. Large collections get house calls.</p>
+        <span class="hiw-meta">Walk-in or call ahead</span>
+      </div>
+      <div class="hiw-step">
+        <span class="hiw-number">03</span>
+        <h3>Trade &amp; Consign</h3>
+        <p>Don't want cash? Trade for store credit at a better rate. Got rare stuff? We do consignment too.</p>
+        <span class="hiw-meta">Store credit = 30% more value</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EVENTS -->
+<section id="events" class="events-section fade-in">
+  <div class="container">
+    <span class="section-label">Happenings</span>
+    <h2 class="section-heading">More than a shop</h2>
+    <p class="section-sub">Live sets, listening parties, and community events. The shop is always doing something.</p>
+    <div class="events-grid">
+      <div class="event-card">
+        <span class="event-date">Every Saturday</span>
+        <h3>Crate Digger Saturdays</h3>
+        <p>Fresh stock hits the bins every Saturday morning. Coffee's on, doors open at 10.</p>
+        <span class="event-free">Free</span>
+      </div>
+      <div class="event-card">
+        <span class="event-date">First Friday Monthly</span>
+        <h3>First Friday In-Stores</h3>
+        <p>Local bands play an acoustic set in the shop. Past acts include Khruangbin, Black Pumas, and Grupo Fantasma.</p>
+        <span class="event-free">Free &middot; All Ages</span>
+      </div>
+      <div class="event-card">
+        <span class="event-date">Quarterly</span>
+        <h3>Vinyl Swap Meet</h3>
+        <p>Bring your doubles, find someone else's treasure. We set up tables in the parking lot and let Austin trade.</p>
+        <span class="event-free">Free to Attend</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews-section fade-in">
+  <div class="container">
+    <span class="section-label">What People Say</span>
+    <h2 class="section-heading">From the community</h2>
+    <p class="section-sub">Real reviews from crate diggers, casual browsers, and everyone in between.</p>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">"Best record shop in Austin, hands down. The staff actually listens to what you're into and pulls stuff you've never heard of. Left with four records I didn't know I needed."</p>
+        <span class="review-author">Marcus T. &mdash; Google Review</span>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">"The vibe in here is unreal. Great selection of soul and funk, fair prices, and they always have something spinning on the house system that makes you want to stay."</p>
+        <span class="review-author">Elena R. &mdash; Yelp</span>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">"Been coming here since they opened. The local pressings section is what sets them apart. They actually care about the Austin music scene, not just selling records."</p>
+        <span class="review-author">Jake W. &mdash; Google Review</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="about-section fade-in">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-image">
+        <span class="about-image-text">Deep Cuts Vinyl<br>Est. 2009</span>
+      </div>
+      <div class="about-content">
+        <span class="section-label">Our Story</span>
+        <h2>Started with a collection<br>that outgrew the apartment</h2>
+        <p>Deep Cuts Vinyl was founded in 2009 by Ray and Sofia Muñoz, two music heads who realized their East Austin apartment couldn't hold one more crate. So they rented a storefront on East 6th, filled it with records, and opened the doors.</p>
+        <p>Sixteen years later, the collection has grown to over 30,000 records. The storefront got bigger. The couple got married in the shop (between the jazz and soul sections, naturally). And the regulars became family.</p>
+        <p>We buy collections, trade with other shops across Texas, and press limited runs with local labels. Every record in the store has been hand-picked. If it's in the bin, someone here believes in it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section id="visit" class="visit-section fade-in">
+  <div class="container">
+    <div class="visit-grid">
+      <div class="visit-info">
+        <span class="section-label" style="color: var(--gold);">Visit Us</span>
+        <h2>Come dig.</h2>
+        <div class="visit-detail">
+          <div class="visit-detail-label">Address</div>
+          <p>1807 E 6th Street<br>Austin, TX 78702</p>
+        </div>
+        <div class="visit-detail">
+          <div class="visit-detail-label">Hours</div>
+          <p>Monday &ndash; Saturday: 10am &ndash; 8pm<br>Sunday: 11am &ndash; 6pm</p>
+        </div>
+        <div class="visit-detail">
+          <div class="visit-detail-label">Phone</div>
+          <p><a href="tel:+15124568901">(512) 456-8901</a></p>
+        </div>
+        <div class="visit-detail">
+          <div class="visit-detail-label">Follow Along</div>
+          <p>
+            <a href="https://instagram.com/deepcutsvinyl" target="_blank" rel="noopener">Instagram</a> &middot;
+            <a href="https://facebook.com/deepcutsvinyl" target="_blank" rel="noopener">Facebook</a>
+          </p>
+        </div>
+      </div>
+      <div class="visit-map">
+        <iframe src="https://maps.google.com/maps?q=1807+E+6th+Street+Austin+TX+78702&output=embed" loading="lazy" title="Deep Cuts Vinyl location" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta fade-in">
+  <div class="container">
+    <h2>Your next favorite record is waiting.</h2>
+    <p>Open 7 days a week in East Austin.</p>
+    <a href="tel:+15124568901" class="btn btn-dark">Call the Shop</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <span class="footer-logo">Deep Cuts Vinyl</span>
+        <p style="margin-top: 8px; font-size: 0.8rem;">1807 E 6th Street, Austin, TX 78702</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="#collection">Collection</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#visit">Visit</a></li>
+      </ul>
+      <div class="footer-col" style="text-align: right;">
+        <p style="margin-bottom: 4px;"><a href="https://instagram.com/deepcutsvinyl" target="_blank" rel="noopener" style="color: rgba(250,247,242,0.5); text-decoration: none;">Instagram</a> &middot; <a href="https://facebook.com/deepcutsvinyl" target="_blank" rel="noopener" style="color: rgba(250,247,242,0.5); text-decoration: none;">Facebook</a></p>
+        <span>&copy; 2025 Deep Cuts Vinyl</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- SCROLL ANIMATIONS -->
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+<noscript><style>.fade-in { opacity: 1; transform: none; }</style></noscript>
+
+</body>
+</html>

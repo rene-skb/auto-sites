@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mexican House of Spice — Victoria's Latin American Grocery</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --cream: #FAF5EE;
+  --terracotta: #C4572A;
+  --warm-black: #1A1410;
+  --warm-brown: #8B6F4E;
+  --gold: #D4A843;
+  --sage: #6B7F5E;
+  --alt-bg: #F0EBE3;
+  --section-pad: 96px;
+  --content-width: 1080px;
+  --ls-tight: 0.04em;
+  --ls-mid: 0.08em;
+  --ls-wide: 0.14em;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  background: var(--cream);
+  color: var(--warm-black);
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Noise texture */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* VISIBLE BY DEFAULT */
+.fade-in { opacity: 1; transform: none; }
+body.js-ready .fade-in {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+}
+body.js-ready .fade-in.visible {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .fade-in { transition: none !important; opacity: 1 !important; transform: none !important; }
+}
+
+a { color: inherit; }
+
+img { display: block; width: 100%; height: auto; }
+
+.content { max-width: var(--content-width); margin: 0 auto; padding: 0 24px; }
+
+/* ─── NAV ─── */
+nav {
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(26,20,16,0.08);
+}
+nav .content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav-brand {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: var(--ls-tight);
+  color: var(--warm-black);
+  text-decoration: none;
+}
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a {
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-mid);
+  text-transform: uppercase;
+  color: var(--warm-brown);
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--terracotta); }
+
+/* Mobile hamburger */
+.hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+.hamburger span {
+  display: block; width: 24px; height: 2px; background: var(--warm-black);
+  margin: 5px 0; transition: all 0.3s var(--ease-out);
+}
+
+/* ─── HERO ─── */
+.hero {
+  padding: 80px 0 64px;
+}
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+.hero-content {
+  border-left: 3px solid var(--terracotta);
+  padding-left: 32px;
+}
+.hero-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-bottom: 20px;
+}
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin-bottom: 12px;
+}
+.hero-subtitle {
+  font-size: 1.125rem;
+  color: var(--warm-brown);
+  margin-bottom: 32px;
+  max-width: 440px;
+}
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--terracotta);
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  letter-spacing: var(--ls-tight);
+  padding: 14px 28px;
+  border-radius: 4px;
+  transition: transform 0.16s var(--ease-out), background 0.2s;
+}
+.hero-cta:active { transform: scale(0.97); }
+.hero-cta:hover { background: #B34D24; }
+
+.hero-image {
+  border-radius: 4px;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+}
+.hero-image img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ─── TRUST BAR ─── */
+.trust-bar {
+  background: var(--warm-black);
+  color: var(--cream);
+  padding: 20px 0;
+}
+.trust-bar .content {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+.trust-stat {
+  text-align: center;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-tight);
+  text-transform: uppercase;
+}
+.trust-stat strong {
+  color: var(--gold);
+  font-weight: 600;
+  letter-spacing: var(--ls-tight);
+}
+
+/* ─── PHOTO STRIP ─── */
+.photo-strip {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 4px;
+}
+.photo-strip-tall { grid-row: span 2; }
+.photo-strip img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.photo-strip-small { display: grid; grid-template-rows: 1fr 1fr; gap: 4px; }
+
+/* ─── ABOUT ─── */
+.about {
+  padding: var(--section-pad) 0;
+}
+.about-inner {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 64px;
+  align-items: start;
+}
+.about-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-bottom: 16px;
+}
+.about h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+.about p {
+  color: var(--warm-brown);
+  margin-bottom: 16px;
+}
+.about-quote {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.25rem;
+  line-height: 1.5;
+  color: var(--warm-black);
+  border-left: 3px solid var(--terracotta);
+  padding-left: 24px;
+  margin-top: 32px;
+}
+.about-quote cite {
+  display: block;
+  font-family: 'Space Grotesk', sans-serif;
+  font-style: normal;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-mid);
+  text-transform: uppercase;
+  color: var(--warm-brown);
+  margin-top: 12px;
+}
+
+/* ─── FIND SECTION (what you'll find) ─── */
+.find {
+  background: var(--alt-bg);
+  padding: var(--section-pad) 0;
+}
+.find-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-bottom: 16px;
+}
+.find h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin-bottom: 40px;
+}
+.find-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+.find-card {
+  padding: 32px;
+  background: var(--cream);
+  border-radius: 4px;
+}
+.find-card-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: rgba(196,87,42,0.25);
+  margin-bottom: 12px;
+}
+.find-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.find-card p {
+  font-size: 0.9375rem;
+  color: var(--warm-brown);
+  line-height: 1.65;
+}
+
+/* ─── NAME SECTION ─── */
+.name-section {
+  background: var(--cream);
+  padding: 120px 0;
+}
+.name-inner {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 64px;
+  align-items: start;
+}
+.name-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-bottom: 16px;
+}
+.name-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+.name-section p {
+  color: var(--warm-brown);
+  margin-bottom: 16px;
+}
+
+/* ─── COMMUNITY ─── */
+.community {
+  background: var(--warm-black);
+  color: var(--cream);
+  padding: var(--section-pad) 0;
+  text-align: center;
+}
+.community-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+.community blockquote {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  line-height: 1.5;
+  max-width: 720px;
+  margin: 0 auto 16px;
+}
+.community cite {
+  font-family: 'Space Grotesk', sans-serif;
+  font-style: normal;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-mid);
+  text-transform: uppercase;
+  color: var(--warm-brown);
+}
+
+/* ─── REVIEWS ─── */
+.reviews {
+  padding: var(--section-pad) 0;
+}
+.reviews-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-bottom: 16px;
+}
+.reviews h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin-bottom: 48px;
+}
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.review-card {
+  padding: 32px;
+  border-radius: 4px;
+}
+.review-card:nth-child(1) { background: var(--alt-bg); }
+.review-card:nth-child(2) { background: var(--warm-black); color: var(--cream); transform: translateY(-8px); }
+.review-card:nth-child(3) { background: var(--alt-bg); }
+.review-stars {
+  font-size: 0.875rem;
+  color: var(--gold);
+  margin-bottom: 16px;
+  letter-spacing: 2px;
+}
+.review-card:nth-child(2) .review-stars { color: var(--gold); }
+.review-text {
+  font-size: 1rem;
+  line-height: 1.65;
+  margin-bottom: 16px;
+}
+.review-author {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-mid);
+  text-transform: uppercase;
+  color: var(--warm-brown);
+}
+.review-card:nth-child(2) .review-author { color: rgba(250,245,238,0.6); }
+
+/* ─── EXTERIOR PHOTO ─── */
+.exterior-img {
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+  display: block;
+}
+
+/* ─── VISIT ─── */
+.visit {
+  background: var(--alt-bg);
+  padding: var(--section-pad) 0;
+}
+.visit-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+.visit-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-bottom: 16px;
+}
+.visit h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin-bottom: 32px;
+}
+.visit-detail {
+  margin-bottom: 24px;
+}
+.visit-detail-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  color: var(--warm-brown);
+  margin-bottom: 8px;
+}
+.visit-detail p, .visit-detail a {
+  font-size: 1rem;
+  text-decoration: none;
+}
+.hours-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.hours-table td {
+  padding: 6px 0;
+  font-size: 0.9375rem;
+}
+.hours-table td:last-child { text-align: right; }
+.hours-different { color: var(--terracotta); }
+.visit-map {
+  border-radius: 4px;
+  overflow: hidden;
+  height: 100%;
+  min-height: 360px;
+}
+.visit-map iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  min-height: 360px;
+}
+
+/* ─── CTA BAND ─── */
+.cta-band {
+  background: var(--terracotta);
+  color: white;
+  padding: 48px 0;
+  text-align: center;
+}
+.cta-band h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+.cta-band-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: white;
+  color: var(--terracotta);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  letter-spacing: var(--ls-tight);
+  padding: 14px 28px;
+  border-radius: 4px;
+  transition: transform 0.16s var(--ease-out);
+}
+.cta-band-btn:active { transform: scale(0.97); }
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--warm-black);
+  color: rgba(250,245,238,0.6);
+  padding: 48px 0 32px;
+}
+footer .content {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  flex-wrap: wrap;
+  gap: 32px;
+}
+.footer-brand {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: var(--ls-tight);
+  color: var(--cream);
+  margin-bottom: 8px;
+}
+.footer-tagline {
+  font-size: 0.9375rem;
+  max-width: 300px;
+}
+.footer-links { display: flex; gap: 24px; }
+.footer-links a {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-mid);
+  text-transform: uppercase;
+  text-decoration: none;
+  color: rgba(250,245,238,0.6);
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--cream); }
+.footer-copy {
+  width: 100%;
+  text-align: center;
+  font-size: 0.75rem;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(250,245,238,0.1);
+}
+
+/* ─── MOBILE ─── */
+@media (max-width: 768px) {
+  :root { --section-pad: 64px; }
+  .nav-links { display: none; }
+  .hamburger { display: block; }
+  nav.open .nav-links {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--cream);
+    padding: 24px;
+    gap: 16px;
+    border-bottom: 1px solid rgba(26,20,16,0.08);
+    z-index: 100;
+  }
+  nav { position: relative; }
+  .hero-inner { grid-template-columns: 1fr; gap: 32px; }
+  .hero { padding: 48px 0 32px; }
+  .about-inner { grid-template-columns: 1fr; gap: 32px; }
+  .find-grid { grid-template-columns: 1fr; }
+  .reviews-grid { grid-template-columns: 1fr; }
+  .name-inner { grid-template-columns: 1fr; gap: 24px; }
+  .name-section { padding: 80px 0; }
+  .visit-inner { grid-template-columns: 1fr; }
+  .photo-strip { grid-template-columns: 1fr; }
+  .photo-strip-tall { grid-row: span 1; }
+  .photo-strip-small { grid-template-rows: auto; grid-template-columns: 1fr 1fr; }
+  .trust-bar .content { gap: 24px; }
+  footer .content { flex-direction: column; align-items: center; text-align: center; }
+  .footer-tagline { max-width: none; }
+}
+
+/* noscript fallback */
+noscript .fade-in { opacity: 1 !important; transform: none !important; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="content">
+    <a href="#" class="nav-brand">Mexican House of Spice</a>
+    <button class="hamburger" aria-label="Menu" onclick="this.closest('nav').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#find">What We Carry</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#visit">Visit</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="content">
+    <div class="hero-inner">
+      <div class="fade-in hero-content">
+        <p class="hero-label">Victoria's Latin American Grocery Since 2011</p>
+        <h1>We Didn't Have the Food We Grew Up With</h1>
+        <p class="hero-subtitle">So Maritza Sanchez opened a store. Now families drive from Tofino to stock up on what they can't find anywhere else on the island.</p>
+        <a href="https://maps.google.com/?q=1412+Douglas+St+Victoria+BC" class="hero-cta" target="_blank" rel="noopener">Get Directions →</a>
+      </div>
+      <div class="hero-image fade-in">
+        <img src="chilies.png" alt="Dried Mexican chili peppers in vibrant reds and oranges" loading="eager">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="content">
+    <div class="trust-stat"><strong>4.6★</strong> — 200+ Reviews</div>
+    <div class="trust-stat"><strong>14+ Years</strong> — Serving Victoria</div>
+    <div class="trust-stat"><strong>Open 6 Days</strong> — Monday to Saturday</div>
+    <div class="trust-stat"><strong>Island-Wide</strong> — Families from Tofino to Victoria</div>
+  </div>
+</div>
+
+<!-- PHOTO STRIP -->
+<section class="photo-strip">
+  <div class="photo-strip-tall">
+    <img src="spices.png" alt="Traditional Mexican spices in bowls" loading="lazy">
+  </div>
+  <div class="photo-strip-small">
+    <img src="pinatas.png" alt="Handmade piñatas hanging from the ceiling" loading="lazy">
+    <img src="storefront.png" alt="Mexican House of Spice storefront" loading="lazy">
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="content">
+    <div class="about-inner fade-in">
+      <div>
+        <p class="about-label">Our Story</p>
+        <h2>From Chiapas to Douglas Street</h2>
+      </div>
+      <div>
+        <p>When Maritza Sanchez moved to Victoria 37 years ago, there were maybe four Latin American families in the entire city. Finding the ingredients to cook the food she grew up with meant a trip to Vancouver or Toronto.</p>
+        <p>In 2011, Maritza and her family opened Mexican House of Spice on Douglas Street. Her mother — who's from the southern Mexican province of Chiapas — still works in the store.</p>
+        <p>Today, families drive in from across Vancouver Island, some coming all the way from Tofino, just to stock up on the foods they can't find anywhere else.</p>
+        <blockquote class="about-quote">
+          "Immigrants: that's our focus. We try to do the lower market price so people can afford a little bit more."
+          <cite>Maritza Sanchez, Owner</cite>
+        </blockquote>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT YOU'LL FIND -->
+<section class="find" id="find">
+  <div class="content">
+    <div class="fade-in">
+      <p class="find-label">What We Carry</p>
+      <h2>More Than Just Mexico</h2>
+    </div>
+    <div class="find-grid fade-in">
+      <div class="find-card">
+        <div class="find-card-num">01</div>
+        <h3>Spices & Dried Chillies</h3>
+        <p>The best selection of dried chillies in the city. Ancho, guajillo, chipotle, pasilla — plus cumin, Mexican oregano, and seasonings you won't find at the supermarket.</p>
+      </div>
+      <div class="find-card">
+        <div class="find-card-num">02</div>
+        <h3>Fresh & Frozen Staples</h3>
+        <p>Masa, fresh tortillas, queso fresco, panela cheese, frozen tamales, and plantains. The building blocks of home cooking from Mexico to Colombia.</p>
+      </div>
+      <div class="find-card">
+        <div class="find-card-num">03</div>
+        <h3>Sauces, Snacks & Drinks</h3>
+        <p>Walls of hot sauce. De la Rosa peanut chocolates. Imported soft drinks from Colombia to Argentina. Spicy snacks from every corner of Latin America.</p>
+      </div>
+      <div class="find-card">
+        <div class="find-card-num">04</div>
+        <h3>Beyond Mexico</h3>
+        <p>African and Jamaican ingredients. Community-baked conchas. Seasonal specialties like King's bread for Epiphany. Piñatas and Indigenous art — this is a cultural hub.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NAME MEANING -->
+<section class="name-section">
+  <div class="content fade-in">
+    <div class="name-inner">
+      <div>
+        <p class="name-label">The Name</p>
+        <h2>It Says Mexico.<br>It Means Everywhere.</h2>
+      </div>
+      <div>
+        <p>The store is named for Maritza's mother, who's from Chiapas, Mexico. But the shelves tell a bigger story — Colombia, Guatemala, Argentina, Jamaica, Nigeria. Every shelf is someone's home.</p>
+        <p>Fresh baked goods come from immigrant bakers in the community. The piñatas overhead are handmade by local families. The Indigenous art in the back is displayed for sale. This isn't a grocery store. It's what happens when a family decides their city needs something it doesn't have yet.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMUNITY QUOTE -->
+<section class="community">
+  <div class="content fade-in">
+    <p class="community-label">More Than a Store</p>
+    <blockquote>
+      "People still come here because there are things here that those grocery stores still don't have."
+    </blockquote>
+    <cite>Maritza Sanchez — Capital Daily</cite>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="content">
+    <div class="fade-in">
+      <p class="reviews-label">What People Say</p>
+      <h2>From the Community</h2>
+    </div>
+    <div class="reviews-grid fade-in">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Great selection of fine Mexican foods. Great selection of dried chilies, probably the best in the city. Lots of hot sauces too! The people who work there are super friendly and always willing to help."</p>
+        <p class="review-author">Derrek L. — via Google</p>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Some items are pricey, but we are happy to support our Latin community. They are trying their best to bring us delicious Mexican products. Love their panela cheese and their conchas!"</p>
+        <p class="review-author">Nana — via Google</p>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"This store has pretty much any Mexican product you could want and the staff are beyond amazing, they're so friendly! Love this place and definitely recommend!"</p>
+        <p class="review-author">Aliah B. — via Google</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXTERIOR PHOTO -->
+<section class="exterior-photo">
+  <img src="storefront.png" alt="Mexican House of Spice storefront on Douglas Street" loading="lazy" class="exterior-img">
+</section>
+
+<!-- VISIT -->
+<section class="visit" id="visit">
+  <div class="content">
+    <div class="visit-inner fade-in">
+      <div>
+        <p class="visit-label">Find Us</p>
+        <h2>Come Say Hello</h2>
+        <div class="visit-detail">
+          <p class="visit-detail-label">Address</p>
+          <p>1412 A Douglas Street<br>Victoria, BC V8T 4L1</p>
+        </div>
+        <div class="visit-detail">
+          <p class="visit-detail-label">Phone</p>
+          <a href="tel:+12503886602">250-388-6602</a>
+        </div>
+        <div class="visit-detail">
+          <p class="visit-detail-label">Hours</p>
+          <table class="hours-table">
+            <tr><td>Monday</td><td>10:00 AM – 6:00 PM</td></tr>
+            <tr><td>Tuesday</td><td>10:00 AM – 6:00 PM</td></tr>
+            <tr><td>Wednesday</td><td>10:00 AM – 6:00 PM</td></tr>
+            <tr><td>Thursday</td><td>10:00 AM – 6:00 PM</td></tr>
+            <tr><td>Friday</td><td>10:00 AM – 6:00 PM</td></tr>
+            <tr><td>Saturday</td><td>10:00 AM – 6:00 PM</td></tr>
+            <tr><td>Sunday</td><td class="hours-different">12:00 PM – 6:00 PM</td></tr>
+          </table>
+        </div>
+        <div class="visit-detail">
+          <p class="visit-detail-label">Connect</p>
+          <a href="https://www.facebook.com/p/Mexican-House-of-Spice-100063825661810/" target="_blank" rel="noopener">Facebook →</a>
+        </div>
+      </div>
+      <div class="visit-map">
+        <iframe src="https://maps.google.com/maps?q=1412+Douglas+St+Victoria+BC&output=embed" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <div class="content fade-in">
+    <h2>Looking for something specific? Just ask.</h2>
+    <a href="tel:+12503886602" class="cta-band-btn">Call the Store: 250-388-6602</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="content">
+    <div>
+      <p class="footer-brand">Mexican House of Spice</p>
+      <p class="footer-tagline">The best quality foods from Latin America, Africa, and Jamaica. Serving Victoria since 2011.</p>
+    </div>
+    <div class="footer-links">
+      <a href="#about">About</a>
+      <a href="#find">What We Carry</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#visit">Visit</a>
+    </div>
+    <p class="footer-copy">© 2026 Mexican House of Spice. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+document.body.classList.add('js-ready');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+<noscript><style>.fade-in { opacity: 1 !important; transform: none !important; }</style></noscript>
+
+</body>
+</html>

@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Don Williams Lawnmower Clinic — Small Engine Repair, Victoria BC</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F5F0E8;
+    --dark: #1A1A18;
+    --olive: #4A5A3C;
+    --olive-light: #6B7F5A;
+    --warm-gray: #8B8578;
+    --gold: #C4A55A;
+    --section-pad: 96px;
+    --section-pad-mobile: 64px;
+    --content-width: 1080px;
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+    --ls-nav: 0.04em;
+    --ls-label: 0.08em;
+    --ls-micro: 0.06em;
+    --lh-body: 1.65;
+    --noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--cream);
+    color: var(--dark);
+    line-height: var(--lh-body);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(245, 240, 232, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .nav-brand {
+    font-family: 'Instrument Serif', serif;
+    font-size: 18px;
+    letter-spacing: var(--ls-nav);
+    color: var(--dark);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: var(--ls-label);
+    text-transform: uppercase;
+    color: var(--warm-gray);
+    text-decoration: none;
+    transition: color 200ms var(--ease-out);
+  }
+
+  .nav-links a:hover { color: var(--dark); }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+
+  .hamburger span {
+    width: 22px;
+    height: 2px;
+    background: var(--dark);
+    transition: transform 300ms var(--ease-out), opacity 200ms;
+  }
+
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--cream);
+    z-index: 99;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .mobile-menu.open { display: flex; }
+
+  .mobile-menu a {
+    font-family: 'Instrument Serif', serif;
+    font-size: 32px;
+    color: var(--dark);
+    text-decoration: none;
+  }
+
+  /* OPENING — Type-driven, no hero image */
+  .opening {
+    padding: 180px 40px var(--section-pad);
+    max-width: var(--content-width);
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  .opening-label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: var(--ls-label);
+    text-transform: uppercase;
+    color: var(--olive);
+    margin-bottom: 24px;
+  }
+
+  .opening h1 {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(48px, 7vw, 88px);
+    line-height: 1.05;
+    font-weight: 400;
+    color: var(--dark);
+    margin-bottom: 32px;
+  }
+
+  .opening h1 em {
+    font-style: italic;
+    color: var(--olive);
+  }
+
+  .opening-sub {
+    font-size: 17px;
+    color: var(--warm-gray);
+    max-width: 520px;
+    line-height: var(--lh-body);
+  }
+
+  /* ENTRANCE ANIMATION */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 600ms var(--ease-out) forwards;
+  }
+
+  .fade-up:nth-child(2) { animation-delay: 100ms; }
+  .fade-up:nth-child(3) { animation-delay: 200ms; }
+  .fade-up:nth-child(4) { animation-delay: 300ms; }
+
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* TRUST BAR */
+  .trust-bar {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 0 40px 80px;
+    display: flex;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+
+  .trust-item {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+
+  .trust-number {
+    font-family: 'Instrument Serif', serif;
+    font-size: 32px;
+    color: var(--olive);
+  }
+
+  .trust-label {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: var(--ls-micro);
+    text-transform: uppercase;
+    color: var(--warm-gray);
+  }
+
+  /* DIVIDER */
+  .divider {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  .divider hr {
+    border: none;
+    height: 1px;
+    background: rgba(26, 26, 24, 0.1);
+  }
+
+  /* CRAFT SECTION — Split layout */
+  .craft {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: var(--section-pad) 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .craft-text h2 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 24px;
+  }
+
+  .craft-text p {
+    font-size: 16px;
+    color: var(--warm-gray);
+    line-height: var(--lh-body);
+    margin-bottom: 16px;
+  }
+
+  .craft-image {
+    width: 100%;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+
+  /* SERVICES — Dark section */
+  .services {
+    background: var(--dark);
+    position: relative;
+    padding: var(--section-pad) 40px;
+  }
+
+  .services::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: var(--noise);
+    background-repeat: repeat;
+    background-size: 256px;
+    pointer-events: none;
+  }
+
+  .services-inner {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .services-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 64px;
+  }
+
+  .services h2 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 36px;
+    font-weight: 400;
+    color: var(--cream);
+  }
+
+  .services-note {
+    font-size: 13px;
+    color: var(--warm-gray);
+    letter-spacing: var(--ls-micro);
+  }
+
+  .services-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: rgba(245, 240, 232, 0.08);
+  }
+
+  .services-image {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-top: 8px;
+  }
+
+  .service-card {
+    background: var(--dark);
+    padding: 32px 24px;
+  }
+
+  .service-number {
+    font-family: 'Instrument Serif', serif;
+    font-size: 18px;
+    color: var(--gold);
+    opacity: 0.35;
+    margin-bottom: 12px;
+    display: block;
+    letter-spacing: var(--ls-micro);
+  }
+
+  .service-card h3 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--cream);
+    margin-bottom: 12px;
+  }
+
+  .service-card p {
+    font-size: 14px;
+    color: var(--warm-gray);
+    line-height: var(--lh-body);
+  }
+
+  .services-cta-wrap {
+    text-align: center;
+    margin-top: 48px;
+  }
+
+  .services-cta {
+    display: inline-block;
+    padding: 14px 32px;
+    background: transparent;
+    color: var(--cream);
+    border: 1px solid rgba(245, 240, 232, 0.3);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: var(--ls-nav);
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background 200ms var(--ease-out), transform 160ms var(--ease-out);
+  }
+
+  .services-cta:hover {
+    background: rgba(245, 240, 232, 0.1);
+  }
+
+  .services-cta:active { transform: scale(0.97); }
+
+  /* PHOTO STRIP */
+  .photo-strip {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+
+  .photo-strip img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* REVIEWS */
+  .reviews {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: var(--section-pad) 40px;
+  }
+
+  .reviews-header {
+    margin-bottom: 48px;
+  }
+
+  .reviews h2 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 36px;
+    font-weight: 400;
+    margin-bottom: 8px;
+  }
+
+  .reviews-sub {
+    font-size: 14px;
+    color: var(--warm-gray);
+  }
+
+  .review-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+
+  .review-card {
+    padding: 32px;
+    border-radius: 4px;
+  }
+
+  .review-card:nth-child(odd) {
+    background: rgba(74, 90, 60, 0.06);
+  }
+
+  .review-card:nth-child(even) {
+    background: rgba(196, 165, 90, 0.08);
+  }
+
+  .review-stars {
+    color: var(--gold);
+    font-size: 14px;
+    margin-bottom: 16px;
+    letter-spacing: var(--ls-label);
+  }
+
+  .review-text {
+    font-size: 15px;
+    color: var(--dark);
+    line-height: var(--lh-body);
+    margin-bottom: 16px;
+    font-style: italic;
+  }
+
+  .review-author {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: var(--ls-label);
+    text-transform: uppercase;
+    color: var(--warm-gray);
+  }
+
+  /* QUOTE SECTION */
+  .quote-section {
+    background: var(--olive);
+    position: relative;
+    padding: 80px 40px;
+    text-align: center;
+  }
+
+  .quote-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: var(--noise);
+    background-repeat: repeat;
+    background-size: 256px;
+    pointer-events: none;
+  }
+
+  .quote-text {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(24px, 3.5vw, 36px);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--cream);
+    max-width: 680px;
+    margin: 0 auto;
+    line-height: 1.4;
+    position: relative;
+  }
+
+  /* EXTERIOR PHOTO */
+  .exterior-photo {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  .exterior-photo img {
+    width: 100%;
+    aspect-ratio: 21/9;
+    object-fit: cover;
+    border-radius: 4px;
+    display: block;
+  }
+
+  /* LOCATION */
+  .location {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: var(--section-pad) 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .location h2 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 36px;
+    font-weight: 400;
+    margin-bottom: 32px;
+  }
+
+  .location-detail {
+    margin-bottom: 24px;
+  }
+
+  .location-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: var(--ls-label);
+    text-transform: uppercase;
+    color: var(--warm-gray);
+    margin-bottom: 6px;
+  }
+
+  .location-value {
+    font-size: 16px;
+    color: var(--dark);
+    line-height: var(--lh-body);
+  }
+
+  .location-value a {
+    color: var(--olive);
+    text-decoration: none;
+  }
+
+  .location-value a:hover {
+    text-decoration: underline;
+  }
+
+  .location-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 16px;
+    padding: 14px 28px;
+    background: var(--olive);
+    color: var(--cream);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: var(--ls-nav);
+    text-decoration: none;
+    border-radius: 4px;
+    transition: transform 160ms var(--ease-out), background 200ms var(--ease-out);
+  }
+
+  .location-cta:active { transform: scale(0.97); }
+  .location-cta:hover { background: var(--olive-light); }
+
+  .location-map {
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .location-map iframe {
+    width: 100%;
+    height: 360px;
+    border: none;
+    display: block;
+    filter: grayscale(30%) contrast(1.05);
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid rgba(26, 26, 24, 0.1);
+    padding: 40px;
+    max-width: var(--content-width);
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-brand {
+    font-family: 'Instrument Serif', serif;
+    font-size: 18px;
+    letter-spacing: var(--ls-nav);
+    color: var(--dark);
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+  }
+
+  .footer-links a {
+    font-size: 13px;
+    color: var(--warm-gray);
+    text-decoration: none;
+    letter-spacing: var(--ls-micro);
+    transition: color 200ms var(--ease-out);
+  }
+
+  .footer-links a:hover { color: var(--dark); }
+
+  .footer-copy {
+    font-size: 12px;
+    color: var(--warm-gray);
+  }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+
+    .opening {
+      padding: 140px 24px var(--section-pad-mobile);
+    }
+
+    .trust-bar {
+      padding: 0 24px 48px;
+      gap: 32px;
+    }
+
+    .divider { padding: 0 24px; }
+
+    .craft {
+      grid-template-columns: 1fr;
+      padding: var(--section-pad-mobile) 24px;
+      gap: 40px;
+    }
+
+    .craft-image { order: -1; aspect-ratio: 3/2; }
+
+    .services { padding: var(--section-pad-mobile) 24px; }
+
+    .services-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .services-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .services-image {
+      aspect-ratio: 16/9;
+      order: -1;
+    }
+
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .photo-strip {
+      grid-template-columns: 1fr;
+    }
+
+    .reviews { padding: var(--section-pad-mobile) 24px; }
+
+    .review-cards {
+      grid-template-columns: 1fr;
+    }
+
+    .quote-section { padding: 64px 24px; }
+
+    .exterior-photo { padding: 0 24px; }
+    .exterior-photo img { aspect-ratio: 16/9; }
+
+    .location {
+      grid-template-columns: 1fr;
+      padding: var(--section-pad-mobile) 24px;
+      gap: 40px;
+    }
+
+    footer {
+      flex-direction: column;
+      gap: 16px;
+      padding: 32px 24px;
+      text-align: center;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">Don Williams Lawnmower Clinic</div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#location">Location</a></li>
+    <li><a href="tel:2507210284">Call Now</a></li>
+  </ul>
+  <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu">
+  <a href="#services" onclick="this.parentElement.classList.remove('open')">Services</a>
+  <a href="#reviews" onclick="this.parentElement.classList.remove('open')">Reviews</a>
+  <a href="#location" onclick="this.parentElement.classList.remove('open')">Location</a>
+  <a href="tel:2507210284" onclick="this.parentElement.classList.remove('open')">Call Now</a>
+</div>
+
+<!-- OPENING — Type-driven, no hero image -->
+<section class="opening">
+  <p class="opening-label fade-up">Small Engine Repair · Victoria, BC</p>
+  <h1 class="fade-up">Half the price.<br><em>Twice the care.</em></h1>
+  <p class="opening-sub fade-up">Don Williams fixes what other shops can't — or won't — from his workshop on Glanford Avenue. Lawnmowers, chainsaws, trimmers, and anything with a motor you use in your yard.</p>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item">
+    <span class="trust-number">5.0</span>
+    <span class="trust-label">Star Rating</span>
+  </div>
+  <div class="trust-item">
+    <span class="trust-number">20+</span>
+    <span class="trust-label">Years Experience</span>
+  </div>
+  <div class="trust-item">
+    <span class="trust-number">½</span>
+    <span class="trust-label">Competitor Pricing</span>
+  </div>
+</div>
+
+<div class="divider"><hr></div>
+
+<!-- CRAFT — The story -->
+<section class="craft">
+  <div class="craft-text">
+    <h2>The guy on Glanford everyone knows about</h2>
+    <p>Across from the Bird Liquor store, in a modest workshop on Glanford Avenue, Don Williams has built a reputation that ad budgets can't buy. Word of mouth. Repeat customers. The kind of trust that comes from doing honest work at honest prices.</p>
+    <p>Blade sharpening to total rebuilds. If it has a motor and you use it in your yard, Don fixes it — usually faster and for a fraction of what the big shops charge.</p>
+  </div>
+  <img src="tools.jpg" alt="Organized vintage tools on a wooden workbench" class="craft-image">
+</section>
+
+<!-- SERVICES — Dark section -->
+<section class="services" id="services">
+  <div class="services-inner">
+    <div class="services-header">
+      <h2>What Don Fixes</h2>
+      <span class="services-note">If it has a motor, bring it in</span>
+    </div>
+    <div class="services-layout">
+      <div>
+        <div class="services-grid">
+          <div class="service-card">
+            <span class="service-number">01</span>
+            <h3>Lawnmowers</h3>
+            <p>Gas and electric. Won't-start diagnostics, blade sharpening, carburetor cleaning, full engine rebuilds.</p>
+          </div>
+          <div class="service-card">
+            <span class="service-number">02</span>
+            <h3>Chainsaws</h3>
+            <p>Chain sharpening, bar maintenance, fuel system repairs, complete engine overhauls.</p>
+          </div>
+          <div class="service-card">
+            <span class="service-number">03</span>
+            <h3>Trimmers & Edgers</h3>
+            <p>Line replacements, engine tune-ups, ignition repairs. Gas and electric models.</p>
+          </div>
+          <div class="service-card">
+            <span class="service-number">04</span>
+            <h3>Tune-Ups</h3>
+            <p>Seasonal maintenance, oil changes, spark plugs, air filters. Get ready for spring.</p>
+          </div>
+          <div class="service-card">
+            <span class="service-number">05</span>
+            <h3>Leaf Blowers</h3>
+            <p>Carburetor cleaning, impeller repair, fuel line replacement. Handheld and backpack.</p>
+          </div>
+          <div class="service-card">
+            <span class="service-number">06</span>
+            <h3>Blade Sharpening</h3>
+            <p>Professional sharpening for mower blades, hedge trimmers, and chainsaw chains.</p>
+          </div>
+        </div>
+        <div class="services-cta-wrap">
+          <a href="tel:2507210284" class="services-cta">Call for a quote — 250-721-0284</a>
+        </div>
+      </div>
+      <img src="hands-detail.jpg" alt="Skilled hands adjusting a small engine" class="services-image">
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO STRIP -->
+<div class="photo-strip">
+  <img src="blade-detail.jpg" alt="Freshly sharpened lawnmower blade catching warm light">
+  <img src="mower.jpg" alt="Restored lawnmower on fresh green grass">
+</div>
+
+<!-- PROMISE -->
+<section class="quote-section">
+  <p class="quote-text">Other shops charge you to look at it, then charge you again to fix it. Don tells you what's wrong, tells you what it costs, and gets it done. That's it.</p>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="reviews-header">
+    <h2>What People Say</h2>
+    <p class="reviews-sub">5.0 stars on Yellow Pages · Every review is real</p>
+  </div>
+  <div class="review-cards">
+    <div class="review-card">
+      <div class="review-stars">★ ★ ★ ★ ★</div>
+      <p class="review-text">"Attention to detail like none other, the best service you'll ever get on your power equipment. Don's quotes are literally half the price of his competitors in Greater Victoria. Blade sharpening to total rebuilds."</p>
+      <span class="review-author">Yellow Pages Review · May 2025</span>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★ ★ ★ ★ ★</div>
+      <p class="review-text">"He knows what he is doing and charges very reasonable rates. I had taken my Husqvarna to a young mechanic twice — each time it died after 15 minutes. Don fixed it within 10 minutes after trying two simple things."</p>
+      <span class="review-author">Neil · May 2024</span>
+    </div>
+  </div>
+</section>
+
+<!-- EXTERIOR -->
+<div class="exterior-photo">
+  <img src="exterior.jpg" alt="Don Williams workshop on Glanford Avenue">
+</div>
+
+<!-- LOCATION -->
+<section class="location" id="location">
+  <div class="location-info">
+    <h2>Find Don</h2>
+    <div class="location-detail">
+      <p class="location-label">Address</p>
+      <p class="location-value">4270 Glanford Avenue<br>Victoria, BC V8Z 4B8</p>
+    </div>
+    <div class="location-detail">
+      <p class="location-label">Landmark</p>
+      <p class="location-value">Across from the Bird Liquor Store on Glanford</p>
+    </div>
+    <div class="location-detail">
+      <p class="location-label">Phone</p>
+      <p class="location-value"><a href="tel:2507210284">250-721-0284</a></p>
+    </div>
+    <div class="location-detail">
+      <p class="location-label">Social</p>
+      <p class="location-value"><a href="https://www.facebook.com/p/Don-Williams-Lawnmower-Clinic-100042793164312/" target="_blank" rel="noopener">Facebook</a></p>
+    </div>
+    <a href="tel:2507210284" class="location-cta">
+      Call Don — 250-721-0284
+    </a>
+  </div>
+  <div class="location-map">
+    <iframe src="https://maps.google.com/maps?q=4270+Glanford+Ave+Victoria+BC&output=embed" allowfullscreen loading="lazy"></iframe>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-brand">Don Williams Lawnmower Clinic</span>
+  <div class="footer-links">
+    <a href="tel:2507210284">250-721-0284</a>
+    <a href="https://www.facebook.com/p/Don-Williams-Lawnmower-Clinic-100042793164312/" target="_blank" rel="noopener">Facebook</a>
+  </div>
+  <span class="footer-copy">&copy; 2026 Don Williams Lawnmower Clinic</span>
+</footer>
+
+</body>
+</html>

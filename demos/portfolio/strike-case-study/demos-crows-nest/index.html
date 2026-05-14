@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crows Nest Tattoo Atelier — Victoria, BC</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --black: #0D0D0D;
+  --charcoal: #1A1A1A;
+  --warm-gray: #2A2825;
+  --cream: #F5F0E8;
+  --amber: #C4943A;
+  --amber-dim: #A07A2E;
+  --text-primary: #F5F0E8;
+  --text-secondary: #A8A29E;
+  --text-muted: #78716C;
+
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+
+  --ls-nav: 0.12em;
+  --ls-label: 0.08em;
+  --ls-micro: 0.04em;
+
+  --section-padding: 96px;
+  --content-width: 1120px;
+}
+
+html { background: var(--black); }
+
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  color: var(--text-primary);
+  background: var(--black);
+  line-height: 1.65;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Noise texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+a { color: var(--amber); text-decoration: none; }
+a:hover { color: var(--cream); }
+
+img { display: block; width: 100%; height: auto; }
+
+.content-wrap {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ========== NAV ========== */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 20px 0;
+  background: rgba(13, 13, 13, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(245, 240, 232, 0.06);
+}
+
+nav .content-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-brand {
+  font-family: 'Instrument Serif', serif;
+  font-size: 20px;
+  color: var(--cream);
+  letter-spacing: var(--ls-micro);
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: var(--ls-nav);
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  transition: color 200ms var(--ease-out);
+}
+
+.nav-links a:hover { color: var(--cream); }
+
+.nav-hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.nav-hamburger span {
+  display: block;
+  width: 24px;
+  height: 1.5px;
+  background: var(--cream);
+  margin: 5px 0;
+  transition: all 300ms var(--ease-out);
+}
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--black);
+  z-index: 99;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+}
+
+.mobile-menu.active { display: flex; }
+
+.mobile-menu a {
+  font-family: 'Instrument Serif', serif;
+  font-size: 32px;
+  color: var(--cream);
+}
+
+/* ========== HERO — SPLIT LAYOUT ========== */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-top: 80px;
+}
+
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 64px 48px 64px 0;
+  margin-left: auto;
+  max-width: 560px;
+}
+
+.hero-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: var(--ls-nav);
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 24px;
+}
+
+.hero h1 {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(48px, 5vw, 72px);
+  font-weight: 400;
+  line-height: 1.05;
+  color: var(--cream);
+  margin-bottom: 24px;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--amber);
+}
+
+.hero-body {
+  font-size: 16px;
+  color: var(--text-secondary);
+  max-width: 420px;
+  margin-bottom: 40px;
+}
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 32px;
+  background: var(--amber);
+  color: var(--black);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: transform 160ms var(--ease-out), background 200ms var(--ease-out);
+  align-self: flex-start;
+}
+
+.hero-cta:hover { background: var(--cream); color: var(--black); }
+.hero-cta:active { transform: scale(0.97); }
+
+.hero-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* ========== TRUST BAR ========== */
+.trust-bar {
+  background: var(--charcoal);
+  border-top: 1px solid rgba(245, 240, 232, 0.06);
+  border-bottom: 1px solid rgba(245, 240, 232, 0.06);
+  padding: 24px 0;
+}
+
+.trust-bar .content-wrap {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+}
+
+.trust-item {
+  text-align: center;
+}
+
+.trust-value {
+  font-family: 'Instrument Serif', serif;
+  font-size: 24px;
+  color: var(--amber);
+}
+
+.trust-label {
+  font-size: 11px;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* ========== ARTISTS — STAGGERED GRID ========== */
+.artists {
+  padding: var(--section-padding) 0;
+  background: var(--black);
+}
+
+.section-header {
+  margin-bottom: 64px;
+}
+
+.section-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: var(--ls-nav);
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(32px, 3.5vw, 48px);
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--cream);
+}
+
+.artists-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.artist-card {
+  background: var(--charcoal);
+  padding: 32px;
+  position: relative;
+}
+
+/* Equal weight — no staggering */
+
+.artist-name {
+  font-family: 'Instrument Serif', serif;
+  font-size: 28px;
+  color: var(--cream);
+  margin-bottom: 8px;
+}
+
+.artist-specialty {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 16px;
+}
+
+.artist-desc {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+.artist-link {
+  display: inline-block;
+  margin-top: 16px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--amber);
+  transition: color 200ms var(--ease-out);
+}
+
+.artist-link:hover { color: var(--cream); }
+
+/* ========== PROCESS — HOW IT WORKS ========== */
+.process {
+  padding: var(--section-padding) 0;
+  background: var(--warm-gray);
+}
+
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  margin-top: 64px;
+}
+
+.step {
+  position: relative;
+}
+
+.step-number {
+  font-family: 'Instrument Serif', serif;
+  font-size: 18px;
+  color: var(--amber);
+  opacity: 0.35;
+  line-height: 1;
+  margin-bottom: 16px;
+  letter-spacing: var(--ls-micro);
+}
+
+.step-title {
+  font-family: 'Instrument Serif', serif;
+  font-size: 20px;
+  color: var(--cream);
+  margin-bottom: 8px;
+}
+
+.step-desc {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+/* ========== PHOTO STRIP ========== */
+.photo-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+
+.photo-strip img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+}
+
+/* ========== BRAND QUOTE ========== */
+.brand-quote {
+  padding: 120px 0;
+  background: var(--charcoal);
+}
+
+.brand-quote .quote-block {
+  max-width: 640px;
+  margin: 0 auto;
+  border-left: 2px solid var(--amber);
+  padding-left: 32px;
+}
+
+.brand-quote blockquote {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(22px, 2.8vw, 32px);
+  font-style: italic;
+  color: var(--cream);
+  line-height: 1.5;
+}
+
+.brand-quote cite {
+  display: block;
+  margin-top: 24px;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-size: 12px;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* ========== REVIEWS ========== */
+.reviews {
+  padding: var(--section-padding) 0;
+  background: var(--black);
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  margin-top: 48px;
+}
+
+.review-card {
+  padding: 32px;
+  border: 1px solid rgba(245, 240, 232, 0.08);
+}
+
+.review-card:nth-child(even) {
+  background: var(--charcoal);
+  border-color: transparent;
+}
+
+.review-stars {
+  color: var(--amber);
+  font-size: 14px;
+  letter-spacing: var(--ls-nav);
+  margin-bottom: 16px;
+}
+
+.review-text {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-bottom: 16px;
+  font-style: italic;
+}
+
+.review-author {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* ========== SERVICES + PIERCING ========== */
+.services {
+  padding: var(--section-padding) 0;
+  background: var(--warm-gray);
+}
+
+.services-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  margin-top: 48px;
+}
+
+.service-column h3 {
+  font-family: 'Instrument Serif', serif;
+  font-size: 24px;
+  color: var(--cream);
+  margin-bottom: 24px;
+}
+
+.service-list {
+  list-style: none;
+}
+
+.service-list li {
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(245, 240, 232, 0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.service-name {
+  font-size: 15px;
+  color: var(--text-primary);
+}
+
+.service-meta {
+  font-size: 11px;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* ========== VISIT ========== */
+.visit {
+  padding: var(--section-padding) 0;
+  background: var(--black);
+}
+
+.visit-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  margin-top: 48px;
+}
+
+.visit-info h3 {
+  font-family: 'Instrument Serif', serif;
+  font-size: 24px;
+  color: var(--cream);
+  margin-bottom: 24px;
+}
+
+.visit-detail {
+  margin-bottom: 24px;
+}
+
+.visit-detail-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 6px;
+}
+
+.visit-detail-value {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+.visit-map {
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  border: none;
+  filter: grayscale(0.8) brightness(0.7);
+}
+
+.visit-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 32px;
+  background: var(--amber);
+  color: var(--black);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: transform 160ms var(--ease-out), background 200ms var(--ease-out);
+  margin-top: 8px;
+}
+
+.visit-cta:hover { background: var(--cream); color: var(--black); }
+.visit-cta:active { transform: scale(0.97); }
+
+/* ========== FOOTER ========== */
+footer {
+  padding: 48px 0;
+  background: var(--charcoal);
+  border-top: 1px solid rgba(245, 240, 232, 0.06);
+}
+
+footer .content-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-brand {
+  font-family: 'Instrument Serif', serif;
+  font-size: 20px;
+  color: var(--cream);
+  letter-spacing: var(--ls-micro);
+}
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+}
+
+.footer-links a {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--text-muted);
+  transition: color 200ms var(--ease-out);
+}
+
+.footer-links a:hover { color: var(--cream); }
+
+.footer-copy {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* ========== ENTRANCE ANIMATION ========== */
+.fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 600ms var(--ease-out) forwards;
+}
+
+.fade-up-1 { animation-delay: 100ms; }
+.fade-up-2 { animation-delay: 250ms; }
+.fade-up-3 { animation-delay: 400ms; }
+.fade-up-4 { animation-delay: 550ms; }
+
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ========== MOBILE ========== */
+@media (max-width: 768px) {
+  :root {
+    --section-padding: 64px;
+  }
+
+  .nav-links { display: none; }
+  .nav-hamburger { display: block; }
+
+  .hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .hero-text {
+    padding: 48px 24px;
+    max-width: 100%;
+    margin: 0;
+    order: 2;
+  }
+
+  .hero-image {
+    order: 1;
+    height: 50vh;
+  }
+
+  .hero h1 { font-size: 36px; }
+
+  .trust-bar .content-wrap {
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  .trust-item { flex: 1 1 40%; }
+
+  .artists-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* stagger removed globally */
+
+  .process-steps {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .photo-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .photo-strip img {
+    height: 240px;
+  }
+
+  .reviews-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .services-layout {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .visit-layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  footer .content-wrap {
+    flex-direction: column;
+    gap: 24px;
+    text-align: center;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="content-wrap">
+    <div class="nav-brand">Crows Nest</div>
+    <ul class="nav-links">
+      <li><a href="#artists">Artists</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#visit">Visit</a></li>
+    </ul>
+    <button class="nav-hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('active')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu">
+  <a href="#artists" onclick="this.parentElement.classList.remove('active')">Artists</a>
+  <a href="#process" onclick="this.parentElement.classList.remove('active')">Process</a>
+  <a href="#services" onclick="this.parentElement.classList.remove('active')">Services</a>
+  <a href="#reviews" onclick="this.parentElement.classList.remove('active')">Reviews</a>
+  <a href="#visit" onclick="this.parentElement.classList.remove('active')">Visit</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text content-wrap">
+    <span class="hero-label fade-up fade-up-1">Tattoo Atelier — Downtown Victoria</span>
+    <h1 class="fade-up fade-up-2">Your story,<br><em>permanently</em><br>told.</h1>
+    <p class="hero-body fade-up fade-up-3">A collective of artists creating custom tattoos and piercings in a warm, LGBTQ+-friendly space on Douglas Street. Walk-ins welcome.</p>
+    <a href="tel:+12505905379" class="hero-cta fade-up fade-up-4">Call to Book</a>
+  </div>
+  <div class="hero-image">
+    <img src="tattoo-crane.png" alt="Detailed crane tattoo by Crows Nest artist">
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="content-wrap">
+    <div class="trust-item">
+      <div class="trust-value">5.0</div>
+      <div class="trust-label">Google Rating</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-value">10+</div>
+      <div class="trust-label">Years Experience</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-value">Open 7 Days</div>
+      <div class="trust-label">Walk-ins Welcome</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-value">3 Artists</div>
+      <div class="trust-label">+ Piercing Studio</div>
+    </div>
+  </div>
+</div>
+
+<!-- ARTISTS -->
+<section id="artists" class="artists">
+  <div class="content-wrap">
+    <div class="section-header">
+      <div class="section-label">The Collective</div>
+      <h2 class="section-title">Three artists.<br>Every style.</h2>
+    </div>
+    <div class="artists-grid">
+      <div class="artist-card">
+        <div class="artist-name">Morti</div>
+        <div class="artist-specialty">Patchwork &middot; Flash &middot; Illustrative</div>
+        <p class="artist-desc">Intricate patchwork sleeves and stunning flash. From crane pieces to bold illustrative work, Morti's detail work is the kind you stop strangers to ask about.</p>
+        <a href="https://www.instagram.com/crowsnest_ink/" target="_blank" rel="noopener" class="artist-link">See her work →</a>
+      </div>
+      <div class="artist-card">
+        <div class="artist-name">Katie</div>
+        <div class="artist-specialty">Fine Line &middot; Memorial &middot; Custom</div>
+        <p class="artist-desc">Crisp, clean, precise. Katie turns deeply personal stories into permanent art — memorial pieces that carry meaning in every single line.</p>
+        <a href="https://www.instagram.com/crowsnest_ink/" target="_blank" rel="noopener" class="artist-link">See her work →</a>
+      </div>
+      <div class="artist-card">
+        <div class="artist-name">Shannon</div>
+        <div class="artist-specialty">Freehand &middot; Diverse &middot; Creative</div>
+        <p class="artist-desc">The freehand artist. Shannon doesn't just execute your idea — he riffs on it, bringing spontaneous energy and originality you didn't know you wanted.</p>
+        <a href="https://www.instagram.com/crowsnest_ink/" target="_blank" rel="noopener" class="artist-link">See his work →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process" class="process">
+  <div class="content-wrap">
+    <div class="section-header">
+      <div class="section-label">How It Works</div>
+      <h2 class="section-title">From idea to ink.</h2>
+    </div>
+    <div class="process-steps">
+      <div class="step">
+        <div class="step-number">01</div>
+        <div class="step-title">Consultation</div>
+        <p class="step-desc">Walk in or call ahead. Share your vision, placement, and size. We'll match you with the right artist for your style.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">02</div>
+        <div class="step-title">Design</div>
+        <p class="step-desc">Your artist creates a custom design based on your ideas. Revisions happen until it feels exactly right.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">03</div>
+        <div class="step-title">Session</div>
+        <p class="step-desc">Relax in a clean, comfortable space. Your artist works with care and precision in a fully sanitary environment.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">04</div>
+        <div class="step-title">Aftercare</div>
+        <p class="step-desc">Leave with thorough aftercare instructions and confidence in the healing process. We're here for follow-up questions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO STRIP -->
+<div class="photo-strip">
+  <img src="tattoo-equipment.png" alt="Professional tattoo equipment at Crows Nest">
+  <img src="exterior.png" alt="Crows Nest Tattoo Atelier storefront on Douglas Street">
+  <img src="sketch-detail.png" alt="Custom tattoo design sketch in progress">
+</div>
+
+<!-- THE NAME -->
+<section class="brand-quote">
+  <div class="content-wrap">
+    <div class="quote-block">
+      <div class="section-label" style="margin-bottom: 24px;">The Name</div>
+      <blockquote>The crow's nest is the highest point on a ship — the place with the clearest view. We named the studio for that vantage: a space where artists see your vision clearly and craft it with precision.</blockquote>
+      <cite>1672 Douglas Street — Heart of Downtown Victoria</cite>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews" class="reviews">
+  <div class="content-wrap">
+    <div class="section-header">
+      <div class="section-label">What People Say</div>
+      <h2 class="section-title">Trusted by Victoria.</h2>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"The patchwork sleeve Morti is creating is everything I've wanted. Incredible attention to detail and the studio is always clean with great vibes."</p>
+        <div class="review-author">Returning Client — Tattoo</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Katie's linework is crisp and precise. She brought my memorial piece to life exactly as I imagined. Couldn't recommend her enough."</p>
+        <div class="review-author">Custom Client — Memorial Piece</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Ocean patiently guided my daughter through her first piercing, boosting her confidence and making it a memorable experience. So professional."</p>
+        <div class="review-author">Sally — Visitor from Washington State</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"First tattoo here and I was nervous, but the staff immediately put me at ease. Clean, warm, welcoming space with amazing talent."</p>
+        <div class="review-author">First-time Client — Walk-in</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="services">
+  <div class="content-wrap">
+    <div class="section-header">
+      <div class="section-label">What We Offer</div>
+      <h2 class="section-title">Tattoo & piercing.</h2>
+    </div>
+    <div class="services-layout">
+      <div class="service-column">
+        <h3>Tattoo</h3>
+        <ul class="service-list">
+          <li>
+            <span class="service-name">Custom Tattoo</span>
+            <span class="service-meta">Consultation</span>
+          </li>
+          <li>
+            <span class="service-name">Walk-in Flash</span>
+            <span class="service-meta">Same Day</span>
+          </li>
+          <li>
+            <span class="service-name">Cover-up & Rework</span>
+            <span class="service-meta">Consultation</span>
+          </li>
+          <li>
+            <span class="service-name">Patchwork Sleeve</span>
+            <span class="service-meta">Multi-session</span>
+          </li>
+        </ul>
+      </div>
+      <div class="service-column">
+        <h3>Piercing by Neptune</h3>
+        <ul class="service-list">
+          <li>
+            <span class="service-name">Ear Piercing</span>
+            <span class="service-meta">All Placements</span>
+          </li>
+          <li>
+            <span class="service-name">Nose Piercing</span>
+            <span class="service-meta">Nostril &middot; Septum</span>
+          </li>
+          <li>
+            <span class="service-name">Body Piercing</span>
+            <span class="service-meta">Various Placements</span>
+          </li>
+          <li>
+            <span class="service-name">Jewelry Consultation</span>
+            <span class="service-meta">Walk-in Welcome</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section id="visit" class="visit">
+  <div class="content-wrap">
+    <div class="section-header">
+      <div class="section-label">Find Us</div>
+      <h2 class="section-title">Come say hello.</h2>
+    </div>
+    <div class="visit-layout">
+      <div class="visit-info">
+        <h3>Location</h3>
+        <div class="visit-detail">
+          <div class="visit-detail-label">Address</div>
+          <div class="visit-detail-value">1672 Douglas Street<br>Victoria, BC V8W 2G6</div>
+        </div>
+        <div class="visit-detail">
+          <div class="visit-detail-label">Hours</div>
+          <div class="visit-detail-value">Open 7 Days a Week<br>10:00 AM – 5:30 PM</div>
+        </div>
+        <div class="visit-detail">
+          <div class="visit-detail-label">Phone</div>
+          <div class="visit-detail-value"><a href="tel:+12505905379">250-590-5379</a></div>
+        </div>
+        <div class="visit-detail">
+          <div class="visit-detail-label">Follow</div>
+          <div class="visit-detail-value"><a href="https://www.instagram.com/crowsnest_ink/" target="_blank" rel="noopener">@crowsnest_ink</a></div>
+        </div>
+        <a href="tel:+12505905379" class="visit-cta">Call to Book →</a>
+      </div>
+      <div>
+        <iframe class="visit-map" src="https://maps.google.com/maps?q=1672+Douglas+St+Victoria+BC&output=embed" loading="lazy" title="Crows Nest Tattoo Atelier location"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="content-wrap">
+    <div class="footer-brand">Crows Nest</div>
+    <ul class="footer-links">
+      <li><a href="https://www.instagram.com/crowsnest_ink/" target="_blank" rel="noopener">Instagram</a></li>
+      <li><a href="https://www.facebook.com/p/Crows-Nest-Tattoo-Atelier-100075711768829/" target="_blank" rel="noopener">Facebook</a></li>
+      <li><a href="tel:+12505905379">250-590-5379</a></li>
+    </ul>
+    <div class="footer-copy">© 2026 Crows Nest Tattoo Atelier. Victoria, BC.</div>
+  </div>
+</footer>
+
+</body>
+</html>

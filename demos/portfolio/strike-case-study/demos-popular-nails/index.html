@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Popular Nails By Bella — Victoria, BC</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #FDF6F0;
+  --rose: #C8788C;
+  --rose-dark: #A45A6E;
+  --blush: #F2D9E0;
+  --gold: #C9A86C;
+  --dark: #2A1F23;
+  --dark-warm: #3D2F33;
+  --text: #4A3B3F;
+  --text-light: #7A6B6F;
+  --white: #FFFAF7;
+
+  --font-serif: 'Instrument Serif', Georgia, serif;
+  --font-sans: 'Inter', -apple-system, sans-serif;
+
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+
+  --ls-nav: 0.04em;
+  --ls-label: 0.08em;
+  --ls-micro: 0.06em;
+
+  --section-pad: 96px;
+  --section-pad-mobile: 64px;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-sans);
+  color: var(--text);
+  background: var(--cream);
+  line-height: 1.65;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Noise texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+img { max-width: 100%; display: block; }
+
+a { color: inherit; text-decoration: none; }
+
+/* ============ NAV ============ */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(253, 246, 240, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(200, 120, 140, 0.12);
+}
+
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-brand {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  color: var(--dark);
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: var(--ls-nav);
+  text-transform: uppercase;
+  color: var(--text-light);
+  transition: color 200ms var(--ease-out);
+}
+
+.nav-links a:hover { color: var(--rose); }
+
+.nav-cta {
+  background: var(--rose);
+  color: var(--white) !important;
+  padding: 8px 20px;
+  border-radius: 4px;
+  transition: transform 160ms var(--ease-out), background 200ms var(--ease-out);
+}
+
+.nav-cta:hover { background: var(--rose-dark); }
+.nav-cta:active { transform: scale(0.97); }
+
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--dark);
+  margin: 5px 0;
+  transition: transform 300ms var(--ease-out), opacity 200ms;
+}
+
+/* ============ HERO — SPLIT LAYOUT ============ */
+.hero {
+  padding: 160px 32px 96px;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+  min-height: 85vh;
+}
+
+.hero-text {
+  opacity: 0;
+  transform: translateY(24px);
+  animation: fadeUp 600ms var(--ease-out) 200ms forwards;
+}
+
+.hero-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--rose);
+  margin-bottom: 16px;
+}
+
+.hero h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(40px, 5vw, 64px);
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--dark);
+  margin-bottom: 24px;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--rose);
+}
+
+.hero-body {
+  font-size: 17px;
+  color: var(--text-light);
+  max-width: 440px;
+  margin-bottom: 32px;
+}
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--rose);
+  color: var(--white);
+  padding: 14px 32px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: var(--ls-nav);
+  border-radius: 4px;
+  transition: background 200ms var(--ease-out), transform 160ms var(--ease-out);
+}
+
+.hero-cta:hover { background: var(--rose-dark); }
+.hero-cta:active { transform: scale(0.97); }
+
+.hero-image {
+  position: relative;
+  opacity: 0;
+  transform: translateY(24px);
+  animation: fadeUp 600ms var(--ease-out) 400ms forwards;
+}
+
+.hero-image img {
+  border-radius: 8px;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  width: 100%;
+}
+
+/* removed decorative border — too template-ish */
+
+/* ============ TRUST BAR ============ */
+.trust-bar {
+  background: var(--dark);
+  padding: 24px 32px;
+}
+
+.trust-bar-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  gap: 64px;
+  flex-wrap: wrap;
+}
+
+.trust-stat {
+  text-align: center;
+  color: var(--cream);
+}
+
+.trust-stat .number {
+  font-family: var(--font-serif);
+  font-size: 28px;
+  color: var(--gold);
+  display: block;
+}
+
+.trust-stat .label {
+  font-size: 12px;
+  letter-spacing: var(--ls-micro);
+  text-transform: uppercase;
+  color: rgba(253, 246, 240, 0.6);
+  margin-top: 4px;
+}
+
+/* ============ PHILOSOPHY QUOTE ============ */
+.philosophy {
+  padding: var(--section-pad) 32px;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.philosophy blockquote {
+  font-family: var(--font-serif);
+  font-size: clamp(22px, 2.8vw, 34px);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.45;
+  color: var(--dark);
+}
+
+.philosophy cite {
+  display: block;
+  margin-top: 20px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-style: normal;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--rose);
+}
+
+/* ============ SERVICES — STAGGERED EDITORIAL ============ */
+.services {
+  padding: 0 32px 96px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.services-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.section-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--rose);
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-family: var(--font-serif);
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 400;
+  color: var(--dark);
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.service-card {
+  background: var(--white);
+  border-radius: 8px;
+  padding: 32px 28px;
+  position: relative;
+  transition: none;
+}
+
+.service-card:nth-child(2) {
+  background: var(--dark);
+  color: var(--cream);
+}
+
+.service-card:nth-child(2) .service-name { color: var(--cream); }
+.service-card:nth-child(2) .service-desc { color: rgba(253, 246, 240, 0.7); }
+.service-card:nth-child(2) .service-price { color: var(--gold); }
+.service-card:nth-child(2) .service-badge { background: var(--gold); color: var(--dark); }
+
+.service-icon {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  color: var(--rose);
+  opacity: 0.35;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.service-icon--featured {
+  color: var(--gold);
+  opacity: 0.5;
+}
+
+.service-name {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  color: var(--dark);
+  margin-bottom: 8px;
+}
+
+.service-desc {
+  font-size: 14px;
+  color: var(--text-light);
+  margin-bottom: 16px;
+  line-height: 1.65;
+}
+
+.service-price {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: var(--ls-micro);
+  color: var(--rose);
+}
+
+.service-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: var(--rose);
+  color: var(--white);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 3px;
+}
+
+/* ============ GALLERY BLEED ============ */
+.gallery-bleed {
+  padding: 0 32px;
+  max-width: 1200px;
+  margin: 0 auto 96px;
+}
+
+.gallery-bleed-inner {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 16px;
+  height: 480px;
+}
+
+.gallery-large img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.gallery-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.gallery-stack img {
+  width: 100%;
+  height: calc(50% - 8px);
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* ============ TEAM — HORIZONTAL SCROLL FEEL ============ */
+.team {
+  padding: var(--section-pad) 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.team-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 48px;
+}
+
+.team-intro {
+  font-size: 15px;
+  color: var(--text-light);
+  max-width: 400px;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.team-member {
+  padding: 28px;
+  background: var(--cream);
+  border-radius: 8px;
+}
+
+.team-name {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  color: var(--dark);
+  margin-bottom: 4px;
+}
+
+.team-role {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--rose);
+  margin-bottom: 12px;
+}
+
+.team-bio {
+  font-size: 14px;
+  color: var(--text-light);
+  line-height: 1.65;
+}
+
+/* ============ EXPERIENCE ============ */
+.experience {
+  padding: var(--section-pad) 32px;
+  background: var(--white);
+}
+
+.experience-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.experience-photo img {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.experience-content .section-title {
+  margin-bottom: 32px;
+}
+
+.experience-perks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.perk {
+  padding: 0;
+}
+
+.perk-title {
+  font-family: var(--font-serif);
+  font-size: 17px;
+  color: var(--dark);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.perk p {
+  font-size: 14px;
+  color: var(--text-light);
+  line-height: 1.65;
+}
+
+/* ============ REVIEWS ============ */
+.reviews {
+  padding: var(--section-pad) 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.reviews-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.reviews-title {
+  margin-bottom: 8px;
+}
+
+.reviews-subtitle {
+  font-size: 15px;
+  color: var(--text-light);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.review-card {
+  padding: 32px;
+  border-radius: 8px;
+}
+
+.review-card:nth-child(odd) { background: var(--white); }
+.review-card:nth-child(even) { background: var(--blush); }
+
+.review-stars {
+  color: var(--gold);
+  font-size: 14px;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+
+.review-text {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--text);
+  margin-bottom: 16px;
+  font-style: italic;
+}
+
+.review-author {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--dark);
+}
+
+.review-source {
+  font-size: 11px;
+  letter-spacing: var(--ls-micro);
+  text-transform: uppercase;
+  color: var(--text-light);
+}
+
+/* ============ SPECIALS BAND ============ */
+.specials {
+  padding: 64px 32px;
+  background: var(--blush);
+  text-align: center;
+}
+
+.specials-inner {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.specials .section-label { color: var(--rose-dark); }
+
+.specials h3 {
+  font-family: var(--font-serif);
+  font-size: clamp(24px, 3vw, 32px);
+  color: var(--dark);
+  margin-bottom: 16px;
+}
+
+.specials p {
+  font-size: 15px;
+  color: var(--text-light);
+  margin-bottom: 24px;
+}
+
+.specials-prices {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.special-item {
+  text-align: center;
+}
+
+.special-item .price {
+  font-family: var(--font-serif);
+  font-size: 28px;
+  color: var(--rose-dark);
+}
+
+.special-item .service-name {
+  font-size: 12px;
+  letter-spacing: var(--ls-micro);
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-top: 4px;
+  font-family: var(--font-sans);
+}
+
+/* ============ LOCATION ============ */
+.location {
+  padding: var(--section-pad) 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.location-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.location-info h3 {
+  font-family: var(--font-serif);
+  font-size: 32px;
+  color: var(--dark);
+  margin-bottom: 24px;
+}
+
+.location-detail {
+  margin-bottom: 20px;
+}
+
+.location-detail .detail-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--rose);
+  margin-bottom: 4px;
+}
+
+.location-detail p {
+  font-size: 15px;
+  color: var(--text);
+}
+
+.location-detail a {
+  color: var(--rose);
+  border-bottom: 1px solid transparent;
+  transition: border-color 200ms;
+}
+
+.location-detail a:hover { border-bottom-color: var(--rose); }
+
+.location-map {
+  border-radius: 8px;
+  overflow: hidden;
+  height: 400px;
+}
+
+.location-map iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* ============ ACCENT EM ============ */
+.accent-em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--rose);
+}
+
+/* ============ CTA BAND ============ */
+.cta-band {
+  padding: 80px 32px;
+  background: var(--dark);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-band::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(200, 120, 140, 0.15), transparent 70%);
+  pointer-events: none;
+}
+
+.cta-band h2 {
+  font-family: var(--font-serif);
+  font-size: clamp(28px, 4vw, 44px);
+  color: var(--cream);
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.cta-band p {
+  color: rgba(253, 246, 240, 0.6);
+  font-size: 16px;
+  margin-bottom: 32px;
+  position: relative;
+}
+
+.cta-band .hero-cta {
+  position: relative;
+}
+
+/* ============ FOOTER ============ */
+footer {
+  padding: 48px 32px 32px;
+  background: var(--dark-warm);
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.footer-brand {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  color: var(--cream);
+}
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+}
+
+.footer-links a {
+  font-size: 13px;
+  color: rgba(253, 246, 240, 0.5);
+  letter-spacing: var(--ls-nav);
+  text-transform: uppercase;
+  transition: color 200ms;
+}
+
+.footer-links a:hover { color: var(--cream); }
+
+.footer-legal {
+  width: 100%;
+  text-align: center;
+  font-size: 12px;
+  color: rgba(253, 246, 240, 0.3);
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(253, 246, 240, 0.08);
+}
+
+/* ============ ANIMATIONS ============ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============ MOBILE ============ */
+@media (max-width: 768px) {
+  :root { --section-pad: var(--section-pad-mobile); }
+
+  .nav-links { display: none; }
+  .hamburger { display: block; }
+
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--cream);
+    padding: 24px 32px;
+    gap: 16px;
+    border-bottom: 1px solid rgba(200, 120, 140, 0.12);
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    padding: 120px 24px 64px;
+    min-height: auto;
+  }
+
+  .hero-image { order: -1; }
+
+  .trust-bar-inner { gap: 32px; }
+
+  .services-grid { grid-template-columns: 1fr; }
+
+  .gallery-bleed-inner { grid-template-columns: 1fr; height: auto; }
+  .gallery-large img { height: 300px; }
+  .gallery-stack { flex-direction: row; }
+  .gallery-stack img { height: 200px; width: 50%; }
+
+  .team-grid { grid-template-columns: 1fr; }
+
+  .reviews-grid { grid-template-columns: 1fr; }
+
+  .specials-prices { gap: 24px; }
+
+  .experience-inner { grid-template-columns: 1fr; }
+  .experience-photo img { height: 300px; }
+  .experience-perks { grid-template-columns: 1fr; }
+
+  .location-grid { grid-template-columns: 1fr; }
+  .location-map { height: 300px; }
+
+  .footer-inner { flex-direction: column; text-align: center; }
+  .footer-links { flex-wrap: wrap; justify-content: center; }
+}
+
+@media (max-width: 480px) {
+  .process-steps { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">Popular Nails By Bella</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#team">Artists</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#visit">Visit</a></li>
+      <li><a href="tel:+17782657758" class="nav-cta">Call to Book</a></li>
+    </ul>
+    <button class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <p class="hero-label">Downtown Victoria, BC</p>
+    <h1>Your nails, <em>our art</em></h1>
+    <p class="hero-body">Hand-painted designs, meticulous gel work, and the kind of attention to detail that turns every set into a statement. Walk out feeling like the best version of yourself.</p>
+    <a href="tel:+17782657758" class="hero-cta">Call to Book &rarr;</a>
+  </div>
+  <div class="hero-image">
+    <img src="nails-hero.png" alt="Beautifully manicured hands with intricate nail art" loading="eager">
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-bar-inner">
+    <div class="trust-stat">
+      <span class="number">4.9 ★</span>
+      <span class="label">Google Rating</span>
+    </div>
+    <div class="trust-stat">
+      <span class="number">750+</span>
+      <span class="label">Reviews</span>
+    </div>
+    <div class="trust-stat">
+      <span class="number">7 Days</span>
+      <span class="label">Open Weekly</span>
+    </div>
+    <div class="trust-stat">
+      <span class="number">6+</span>
+      <span class="label">Nail Artists</span>
+    </div>
+  </div>
+</div>
+
+<!-- PHILOSOPHY -->
+<section class="philosophy">
+  <blockquote>"We don't rush. We listen. We hand you a coffee, turn up the massage chair, and make you feel like you're the only appointment that matters."</blockquote>
+  <cite>The Bella difference</cite>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-header">
+    <p class="section-label">What We Do</p>
+    <h2 class="section-title">Services & Pricing</h2>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <span class="service-icon">01</span>
+      <h3 class="service-name">Gel Manicure</h3>
+      <p class="service-desc">Classic gel polish application with meticulous cuticle care. Chip-free shine that lasts up to three weeks.</p>
+      <p class="service-price">From $50</p>
+    </div>
+    <div class="service-card">
+      <span class="service-badge">Most Popular</span>
+      <span class="service-icon service-icon--featured">02</span>
+      <h3 class="service-name">Custom Nail Art</h3>
+      <p class="service-desc">Hand-painted designs, rhinestones, shimmer, and gold accents. Tell us your vision — we'll make it happen.</p>
+      <p class="service-price">Full set from $120</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">03</span>
+      <h3 class="service-name">Spa Pedicure</h3>
+      <p class="service-desc">Hot towel treatment, paraffin wax, extended massage, and your choice of polish. Pure relaxation for tired feet.</p>
+      <p class="service-price">From $68</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">04</span>
+      <h3 class="service-name">Acrylic Full Set</h3>
+      <p class="service-desc">Sculpted acrylic extensions with durable finish. Available in any shape — coffin, almond, stiletto, square.</p>
+      <p class="service-price">From $65</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">05</span>
+      <h3 class="service-name">Gel-X Extensions</h3>
+      <p class="service-desc">Lightweight pre-shaped tips with gel overlay. Natural look with the length you want — gentle on your natural nails.</p>
+      <p class="service-price">From $75</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">06</span>
+      <h3 class="service-name">Dip Powder</h3>
+      <p class="service-desc">Long-lasting colour with a natural finish. Lighter than acrylic, stronger than gel. The best of both worlds.</p>
+      <p class="service-price">From $55</p>
+    </div>
+  </div>
+</section>
+
+<!-- FULL BLEED GALLERY -->
+<div class="gallery-bleed">
+  <div class="gallery-bleed-inner">
+    <div class="gallery-large">
+      <img src="nails-detail.png" alt="Elegant nail set with shimmer and gold accents" loading="lazy">
+    </div>
+    <div class="gallery-stack">
+      <img src="products.png" alt="Nail polish collection in rose and gold tones" loading="lazy">
+      <img src="tools.png" alt="Professional nail art tools and supplies" loading="lazy">
+    </div>
+  </div>
+</div>
+
+<!-- TEAM -->
+<section class="team" id="team">
+  <div class="team-header">
+    <div>
+      <p class="section-label">Meet the Artists</p>
+      <h2 class="section-title">Our Team</h2>
+    </div>
+    <p class="team-intro">A team of skilled artists — each with their own specialty. Here are a few of the people behind your perfect nails.</p>
+  </div>
+  <div class="team-grid">
+    <div class="team-member">
+      <h3 class="team-name">Bella</h3>
+      <p class="team-role">Owner & Lead Artist</p>
+      <p class="team-bio">The heart of the salon. Bella has over 10 years in the industry and treats every client like family — right down to the complimentary coffee and massage chair.</p>
+    </div>
+    <div class="team-member">
+      <h3 class="team-name">Vivian</h3>
+      <p class="team-role">Senior Nail Technician</p>
+      <p class="team-bio">Known for her intuitive approach — she'll ask the right questions and suggest designs you didn't know you needed. Wedding nails are her specialty.</p>
+    </div>
+    <div class="team-member">
+      <h3 class="team-name">Natalie</h3>
+      <p class="team-role">Nail Artist</p>
+      <p class="team-bio">Precision, gentle touch, and modern style. Natalie creates clean, elegant sets that look effortlessly polished. Detail is her language.</p>
+    </div>
+  </div>
+</section>
+
+<!-- THE EXPERIENCE -->
+<section class="experience">
+  <div class="experience-inner">
+    <div class="experience-photo">
+      <img src="exterior.png" alt="Popular Nails By Bella on Douglas Street" loading="lazy">
+    </div>
+    <div class="experience-content">
+      <p class="section-label">More Than Nails</p>
+      <h2 class="section-title">The Little Things</h2>
+      <div class="experience-perks">
+        <div class="perk">
+          <span class="perk-title">Massage Chairs</span>
+          <p>Settle in and relax while your artist works. Every station has one.</p>
+        </div>
+        <div class="perk">
+          <span class="perk-title">Coffee, Tea & Snacks</span>
+          <p>Complimentary drinks and treats — because pampering starts the moment you walk in.</p>
+        </div>
+        <div class="perk">
+          <span class="perk-title">Birthday Celebrations</span>
+          <p>We make special occasions extra special. Tell us when you're celebrating.</p>
+        </div>
+        <div class="perk">
+          <span class="perk-title">Walk-Ins Welcome</span>
+          <p>No appointment? No problem. We'll fit you in whenever we can.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="reviews-header">
+    <p class="section-label">Victoria's Favourite Nail Salon</p>
+    <h2 class="section-title reviews-title">750+ five-star reviews</h2>
+    <p class="reviews-subtitle">There's a reason clients keep coming back — and telling their friends.</p>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <p class="review-stars">★★★★★</p>
+      <p class="review-text">"Vivian asked me a few questions then made some excellent suggestions. I was amazed at her skill. I absolutely loved the final product — friends and family were constantly grabbing my hands."</p>
+      <p class="review-author">Verified client</p>
+      <p class="review-source">Via Google</p>
+    </div>
+    <div class="review-card">
+      <p class="review-stars">★★★★★</p>
+      <p class="review-text">"Found my new nail salon in Victoria. Incredibly friendly, great service. The gel pedicure colour came out perfect, price is spot on, and the massage was FANTASTIC."</p>
+      <p class="review-author">Verified client</p>
+      <p class="review-source">Via Google</p>
+    </div>
+    <div class="review-card">
+      <p class="review-stars">★★★★★</p>
+      <p class="review-text">"Nora was incredibly detail-oriented and so patient with me. She genuinely cares about nail health. I came in with nails destroyed by another salon, and I left with nails that are actually healing."</p>
+      <p class="review-author">Verified client</p>
+      <p class="review-source">Via Google</p>
+    </div>
+    <div class="review-card">
+      <p class="review-stars">★★★★★</p>
+      <p class="review-text">"Bella did such a lovely job with my gel-x nails! Very patient and just a lovely human overall. The space was clean and tidy. Can't wait to go back!"</p>
+      <p class="review-author">Verified client</p>
+      <p class="review-source">Via Google</p>
+    </div>
+  </div>
+</section>
+
+<!-- SPECIALS -->
+<section class="specials">
+  <div class="specials-inner">
+    <p class="section-label">Signature Packages</p>
+    <h3>Treat Yourself</h3>
+    <p>Our most-loved combinations — everything you need in one appointment.</p>
+    <div class="specials-prices">
+      <div class="special-item">
+        <p class="price">$50</p>
+        <p class="service-name">Gel Mani + Removal</p>
+      </div>
+      <div class="special-item">
+        <p class="price">$68</p>
+        <p class="service-name">Spa Pedi + Gel + Wax</p>
+      </div>
+      <div class="special-item">
+        <p class="price">$100</p>
+        <p class="service-name">Mani & Pedi Combo</p>
+      </div>
+    </div>
+    <a href="tel:+17782657758" class="hero-cta">Call to Book &rarr;</a>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section class="location" id="visit">
+  <div class="location-grid">
+    <div class="location-info">
+      <h3>Come Visit Us</h3>
+      <div class="location-detail">
+        <p class="detail-label">Address</p>
+        <p>1605 Douglas Street<br>Victoria, BC V8W 2G5</p>
+      </div>
+      <div class="location-detail">
+        <p class="detail-label">Hours</p>
+        <p>Monday — Saturday: 11am — 7pm<br>Sunday: 11am — 5pm</p>
+      </div>
+      <div class="location-detail">
+        <p class="detail-label">Phone</p>
+        <p><a href="tel:+17782657758">(778) 265-7758</a></p>
+      </div>
+      <div class="location-detail">
+        <p class="detail-label">Follow Us</p>
+        <p><a href="https://www.instagram.com/bella_nailsalon.vic/" target="_blank" rel="noopener">@bella_nailsalon.vic on Instagram</a></p>
+      </div>
+    </div>
+    <div class="location-map">
+      <iframe src="https://maps.google.com/maps?q=1605+Douglas+St+Victoria+BC&output=embed" allowfullscreen loading="lazy" title="Map to Popular Nails By Bella"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <h2>Ready for your <em class="accent-em">best nails</em> yet?</h2>
+  <p>Call us, DM on Instagram, or just walk in — we'd love to meet you.</p>
+  <a href="tel:+17782657758" class="hero-cta">Call (778) 265-7758 &rarr;</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <span class="footer-brand">Popular Nails By Bella</span>
+    <div class="footer-links">
+      <a href="#services">Services</a>
+      <a href="#team">Artists</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#visit">Visit</a>
+      <a href="https://www.instagram.com/bella_nailsalon.vic/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.facebook.com/p/Popular-Nails-By-Bella-100095532549579/" target="_blank" rel="noopener">Facebook</a>
+    </div>
+    <p class="footer-legal">&copy; 2026 Popular Nails By Bella. 1605 Douglas Street, Victoria, BC.</p>
+  </div>
+</footer>
+
+</body>
+</html>

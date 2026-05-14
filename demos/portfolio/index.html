@@ -19,7 +19,7 @@ DELTA: v5 final polish notes
 <meta property="og:title" content="Scott Bell | Product Designer for Complex Systems">
 <meta property="og:description" content="Design leadership and hands-on execution for dense, high-stakes products.">
 <meta property="og:image" content="assets/strike1.png">
-<meta property="og:url" content="https://auto-sites.pages.dev/demos/portfolio/">
+<meta property="og:url" content="https://portfolio.nakamotodesign.co/">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%232D7A5F'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -419,25 +419,24 @@ nav {
 .case-link::before {
   content: '+';
   display: inline-block;
-  width: 12px;
+  width: 16px;
   text-align: center;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  font-size: 13px;
-  font-weight: 600;
+  font-size: 17px;
+  font-weight: 700;
   line-height: 1;
-  color: currentColor;
-  opacity: 0.58;
+  color: #B94A45;
+  opacity: 0.94;
   flex-shrink: 0;
-  transform-origin: center;
-  animation: case-link-loader 900ms linear infinite;
+  transform-origin: 50% 52%;
+  animation: case-link-spin 2.4s linear infinite;
 }
-@keyframes case-link-loader {
-  0% { transform: rotate(0deg); }
-  50% { transform: rotate(45deg); }
-  100% { transform: rotate(90deg); }
+@keyframes case-link-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
-.case-link:hover { opacity: 0.7; }
-.case-link:hover::before { opacity: 0.82; }
+.case-link:hover { opacity: 0.78; }
+.case-link:hover::before { color: #D45B54; opacity: 1; }
 
 /* INLINE CTA */
 .inline-cta {
@@ -794,7 +793,7 @@ footer span:last-child {
               <div class="case-img-wrap"><img src="assets/strike4.png" alt="Strike receive flow"></div>
             </div>
           </div>
-          <a class="case-link" href="https://www.scottkbell.com/strike-case-study">View case study &rarr;</a>
+          <a class="case-link" href="/strike-case-study/">View case study &rarr;</a>
         </div>
       </article>
 

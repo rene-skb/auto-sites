@@ -31,18 +31,6 @@
 
 <!-- Built 2026-05-13 → demos/certified-service/ → https://auto-sites.pages.dev/demos/certified-service/ -->
 
-## California Electrical Services
-
-- **Business:** California Electrical Services
-- **Category:** Industrial electrical engineering, electrical contracting, systems integration
-- **Location:** Glendale, CA
-- **Website:** https://www.california-electrical.com/
-- **Contact signals:** Contact page/search snippets list 5924 San Fernando Road, Glendale, CA 91202; Yelp/third-party snippets list phone (818) 241-1800; site has a contact page and licensing signal (LICENSE# 474810).
-- **Why this is a good candidate:** Established local/regional electrical contractor with a thin, older static website, limited conversion polish, and high-value B2B/industrial project intent. Likely upside from a modern mobile-first redesign, clearer sector-specific service pages, project/case-study pages, stronger trust/licensing/safety proof, and a direct quote/contact flow.
-- **Observed services:** Electrical contracting, electrical engineering, fabrication, installation, monitoring, automation, system integration, power distribution, electrical controls, maintenance.
-- **Source/date added:** Iris nightly research, 2026-05-10; recovered to canonical queue 2026-05-10.
-- **Status:** New lead — not contacted.
-
 ## JR's Tree Service and Landscape
 
 - **Business:** JR's Tree Service and Landscape
@@ -77,4 +65,16 @@
 - **Why this is a good candidate:** Established family-owned local plumbing contractor with urgent, high-intent residential/commercial services and strong longevity/trust signals, but the homepage has dated/template artifacts (“Add your custom HTML here,” generic testimonial headings, awkward copy). Likely upside from a modern mobile-first redesign, emergency-service CTAs, quote/call flows, service-area SEO, clearer review/license proof, and cleaned-up content architecture.
 - **Observed services:** Tankless water heaters, drain cleaning, garbage disposals, sewer line cleaning, leak detection, gas leak detection/resolution, copper repiping, water extraction/drying, mold remediation, furnace repair, video inspection, commercial and residential plumbing.
 - **Source/date added:** Iris nightly research, 2026-05-13.
+- **Status:** New lead — not contacted.
+
+## Family Tree Service
+
+- **Business:** Family Tree Service
+- **Category:** Tree service, tree care, landscaping, hillside clearing, sprinkler systems
+- **Location:** Pasadena, CA
+- **Website:** https://www.familytreeserviceca.com/
+- **Contact signals:** Site advertises free estimates, senior discounts, family-owned/operated, 20+ years experience, fully licensed/bonded/insured, and links to CSLB license #1042332. Contact page has Hibu/Yext placeholder artifacts, suggesting a template-managed site with stale implementation details.
+- **Why this is a good candidate:** Established local tree-care contractor with high-intent services and strong trust signals, but the site feels generic/template-built and the contact page exposes placeholder content. Likely upside from a modern mobile-first redesign, clearer emergency/tree-removal and free-estimate CTAs, before/after project gallery, service-area SEO pages, license/insurance trust modules, and cleaned-up contact/quote flow.
+- **Observed services:** Tree trimming, stump grinding, tree removal, hillside clearing, ornamental pruning, landscaping projects, sprinkler systems, storm cleanups, residential and business tree care.
+- **Source/date added:** Iris nightly research, 2026-05-14.
 - **Status:** New lead — not contacted.

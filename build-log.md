@@ -6538,3 +6538,26 @@ Real Victoria BC business. Website was literally just a street address (touristw
 - **Key decisions:** Treated the opportunity as clarity/compression, not a no-site rescue. Led with the strongest sourced differentiator: “service techs are not paid on commission,” translated into the hero promise “Comfort fixed without the sales pressure.” Used generated equipment/detail images only, avoiding fake storefronts, interiors, branded vans, or invented testimonials. Kept all public copy customer-facing after QA caught source/meta language.
 - **GPT 5.5 comparison:** Materially stronger than GPT 5.4/Mini-style runs for source discipline, CSS cohesion, and post-QA cleanup. Frontend taste is good and controlled, though still not magic: it required explicit non-negotiables and visual QA to remove meta copy and avoid fake-interior risk. Recommendation: keep using GPT 5.5 for Lucy builds, especially with screenshot/vision review in the loop.
 - **Live URL:** https://auto-sites.pages.dev/demos/certified-service/ (pushed to GitHub and verified live on Cloudflare Pages)
+
+### California Electrical Services - Industrial electrical engineering / contracting, Glendale CA
+- **Date:** 2026-05-14
+- **Model:** openai-codex/gpt-5.5 (Lucy cron)
+- **Agent:** Lucy
+- **Folder:** california-electrical-services
+- **Hero pattern:** full-viewport-bg
+- **Typography:** Archivo + Inter + IBM Plex Mono
+- **Review layout:** no customer review cards; project-scope proof rows and same-treatment capability proof cards because compliant review quotes were not verified
+- **Visit/hours layout:** dark contact chapter with quote-first card, phone/email/address, and official Google Maps business-pin embed
+- **Stats bar style:** no-stats
+- **WHY Score:** 8.03 (Steve Jobs 8.2 / Paul Graham 7.8 / David Ogilvy 8.1)
+- **WHAT Score:** 8.00 (Don Norman 8.0 / Steve Krug 8.5 / Jakob Nielsen 7.5)
+- **HOW Score:** 8.00 (Massimo Vignelli 8.0 / Erik Spiekermann 8.5 / Dieter Rams 7.5 / Emil Kowalski 8.0)
+- **Panel average:** 8.01
+- **Self-review:** 8.2
+- **Versions built:** 6 HTML versions + final index.html
+- **Build time:** ~75 minutes
+- **Token estimate:** ~42k
+- **Key decisions:** Treated CES as a technically serious industrial B2B site, not a generic electrician page. Led with uptime, license, region, and named project scope, then used official CES photography and project metrics instead of fabricated testimonials or stock imagery.
+- **GPT 5.5 comparison:** Materially better than the older GPT 5.4/Sonnet median for frontend execution on this kind of dense B2B page: stronger CSS system cohesion, better information architecture, fewer debugging stalls, and faster screenshot-driven iteration. It still leaked internal "demo/source" framing into v0, so mandatory visual QA remains non-negotiable. Recommendation: keep using GPT 5.5 for Lucy builds, especially when paired with named panel notes and screenshot review.
+- **Lessons:** Promoted `[COPY] Source-discipline rationale can leak into visible copy` from 3/5 to 4/5 after v0 contained "the demo compresses" / "this version pulls" language.
+- **Live URL:** https://auto-sites.pages.dev/demos/california-electrical-services/ (pushed to GitHub; Pages route still serving portfolio landing page at verification time)

@@ -646,11 +646,12 @@ footer span:last-child {
     padding: 20px; gap: 16px;
   }
   .hamburger { display: block; }
-  .hero { grid-template-columns: 1fr; padding: 100px 20px 60px; min-height: auto; gap: 32px; }
-  .hero-text { order: 2; }
-  .hero-visual { order: 1; margin-left: 0; }
-  .hero-orb-stage { min-height: 400px; aspect-ratio: 1; }
-  .hero-orb { width: clamp(360px, 108%, 520px); }
+  .hero { grid-template-columns: 1fr; padding: 96px 20px 52px; min-height: auto; gap: 24px; overflow: hidden; }
+  .hero-text { order: 1; }
+  .hero-visual { order: 2; width: min(88vw, 360px); margin: 2px auto 0; }
+  .hero-orb-stage { width: 100%; min-height: 0; aspect-ratio: 1; }
+  .hero-orb { width: 100%; max-width: 360px; }
+  .hero-visual-meta { display: none; }
   .hero-headline { color: var(--ink); mix-blend-mode: normal; }
   .hero-headline .hero-builder-accent { color: var(--accent); }
   .orb-word { display: none; }

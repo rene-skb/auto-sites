@@ -31,17 +31,7 @@
 
 <!-- Built 2026-05-13 → demos/certified-service/ → https://auto-sites.pages.dev/demos/certified-service/ -->
 
-## JR's Tree Service and Landscape
-
-- **Business:** JR's Tree Service and Landscape
-- **Category:** Tree service, arborist, landscaping, lawn/irrigation, lot clearing
-- **Location:** Pasadena, CA
-- **Website:** https://www.jrstreeserviceandlandscape.com/
-- **Contact signals:** Site lists phone (626) 523-9362, working hours, Pasadena/San Marino/Sierra Madre/Arcadia/Altadena service area, licensed/bonded/insured copy, and ISA arborist certification signal.
-- **Why this is a good candidate:** Established local tree and landscape contractor with high-intent residential/commercial services and strong proof points, but the site is text-heavy and dated. Likely upside from a modern mobile-first redesign, clearer emergency/tree-removal CTAs, before-after gallery, service-area SEO pages, license/ISA trust modules, review highlights, and a faster quote request flow.
-- **Observed services:** Tree trimming, tree removal, pruning, stump grinding, lawn/irrigation, drought-tolerant landscaping, hardscapes, lot clearing, commercial tree services.
-- **Source/date added:** Iris nightly research, 2026-05-11.
-- **Status:** New lead — not contacted.
+<!-- Built 2026-05-15 → demos/jrs-tree-service-landscape/ → https://auto-sites.pages.dev/demos/jrs-tree-service-landscape/ -->
 
 ## Ed’s Landscaping
 
@@ -76,5 +66,17 @@
 - **Contact signals:** Site advertises free estimates, senior discounts, family-owned/operated, 20+ years experience, fully licensed/bonded/insured, and links to CSLB license #1042332. Contact page has Hibu/Yext placeholder artifacts, suggesting a template-managed site with stale implementation details.
 - **Why this is a good candidate:** Established local tree-care contractor with high-intent services and strong trust signals, but the site feels generic/template-built and the contact page exposes placeholder content. Likely upside from a modern mobile-first redesign, clearer emergency/tree-removal and free-estimate CTAs, before/after project gallery, service-area SEO pages, license/insurance trust modules, and cleaned-up contact/quote flow.
 - **Observed services:** Tree trimming, stump grinding, tree removal, hillside clearing, ornamental pruning, landscaping projects, sprinkler systems, storm cleanups, residential and business tree care.
+- **Source/date added:** Iris nightly research, 2026-05-14.
+- **Status:** New lead — not contacted.
+
+## Lord Tile
+
+- **Business:** Lord Tile
+- **Category:** Tile installation, tile repair, kitchen/bath renovation, backsplash/shower/marble/subway tile
+- **Location:** Pasadena, CA
+- **Website:** https://lordtile.com/tile-installation-pasadena-ca/
+- **Contact signals:** Site lists phone (626) 639-8453, email david@lordtile.com, Pasadena/neighbouring-cities service area, free consultation/estimate language, 30+ years experience, family-owned language, online review link, and C-54 Tile Contractor CSLB License #983081.
+- **Why this is a good candidate:** High-value home-remodeling niche with strong trust signals and visible contact paths, but the page reads like SEO-template copy and could convert better with a modern mobile-first redesign, clearer consultation/quote CTAs, before/after gallery, stronger license/review proof, service-area SEO pages, and cleaner kitchen/bath/tile-service architecture.
+- **Observed services:** Tile installation, tile repairs, kitchen renovation, bathroom renovation, backsplash installation, shower installation, subway tile, marble tile, residential and commercial tiling.
 - **Source/date added:** Iris nightly research, 2026-05-14.
 - **Status:** New lead — not contacted.

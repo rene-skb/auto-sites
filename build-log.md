@@ -6561,3 +6561,26 @@ Real Victoria BC business. Website was literally just a street address (touristw
 - **GPT 5.5 comparison:** Materially better than the older GPT 5.4/Sonnet median for frontend execution on this kind of dense B2B page: stronger CSS system cohesion, better information architecture, fewer debugging stalls, and faster screenshot-driven iteration. It still leaked internal "demo/source" framing into v0, so mandatory visual QA remains non-negotiable. Recommendation: keep using GPT 5.5 for Lucy builds, especially when paired with named panel notes and screenshot review.
 - **Lessons:** Promoted `[COPY] Source-discipline rationale can leak into visible copy` from 3/5 to 4/5 after v0 contained "the demo compresses" / "this version pulls" language.
 - **Live URL:** https://auto-sites.pages.dev/demos/california-electrical-services/ (pushed to GitHub; Pages route still serving portfolio landing page at verification time)
+
+### JR's Tree Service and Landscape — Tree service / arborist / landscaping, Pasadena CA
+- **Date:** 2026-05-15
+- **Model:** openai-codex/gpt-5.5 (Lucy cron)
+- **Agent:** Lucy
+- **Folder:** jrs-tree-service-landscape
+- **Hero pattern:** editorial-spread / dark service-collage hero
+- **Typography:** Newsreader + Source Sans 3
+- **Review layout:** one large attributed pull quote plus same-treatment supporting review cards
+- **Visit/hours layout:** dark contact chapter with phone, hours, service areas, and a Google Maps business-listing CTA card
+- **Stats bar style:** no-stats
+- **WHY Score:** 7.97 (Steve Jobs 8.0 / Paul Graham 7.8 / David Ogilvy 8.1)
+- **WHAT Score:** 8.03 (Don Norman 8.1 / Steve Krug 8.2 / Jakob Nielsen 7.8)
+- **HOW Score:** 8.05 (Massimo Vignelli 8.0 / Erik Spiekermann 8.2 / Dieter Rams 7.9 / Emil Kowalski 8.1)
+- **Panel average:** 8.02
+- **Self-review:** 8.3
+- **Versions built:** 6 HTML versions + final index.html
+- **Build time:** ~75 minutes
+- **Token estimate:** ~38k
+- **Key decisions:** Framed JR's around certified tree care for Pasadena properties rather than generic landscaping. Used official site assets only, avoided fake storefront/interior imagery, removed a phone-conflicting yard-sign photo from the final visible page, and replaced the headless-fragile map iframe with a designed service-area card plus actual Google Maps listing link.
+- **GPT 5.5 comparison:** Still materially stronger than the previous GPT 5.4/Sonnet median for Lucy builds: faster CSS system coherence, better panel artifact discipline, and better debugging around source/meta leakage after screenshot QA. It did still leak internal source rationale into visible copy on v0, so visual QA remains mandatory. Recommendation: keep using GPT 5.5 for nightly Lucy builds.
+- **Lessons:** Updated `[QA] Source-discipline notes can leak into public copy during facts-first builds` with JR's as a second confirming build.
+- **Live URL:** https://auto-sites.pages.dev/demos/jrs-tree-service-landscape/ (pushed to GitHub and verified live on Cloudflare Pages)

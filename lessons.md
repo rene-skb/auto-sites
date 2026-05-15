@@ -26,7 +26,7 @@ Moon Ink was queued as a no-website candidate, but discovery found a live offici
 *New patterns from 1-2 builds. Watch for repetition.*
 
 ### [QA] Source-discipline notes can leak into public copy during facts-first builds.
-Universal Landscaping v0/v1 included lines like “The old site lists…” and a footer note about facts being sourced. Those are useful for `sources.md`, not visible page copy. Final QA must scan for meta/process language, especially after source-heavy service-business research. — Universal Landscaping 2026-05-12
+Universal Landscaping v0/v1 included lines like “The old site lists…” and a footer note about facts being sourced. JR's Tree Service repeated the pattern with phrases like “JR's copy is strongest” and “services JR's lists,” which read like builder notes instead of customer-facing copy. Those are useful for `sources.md`, not visible page copy. Final QA must scan for meta/process language, especially after source-heavy service-business research. — Universal Landscaping 2026-05-12; JR's Tree Service and Landscape 2026-05-15 (2 builds)
 
 ### [ASSETS] For home-service businesses, imperfect real project photos beat polished generated lawn glamour.
 Universal Landscaping had inconsistent official assets, but the real xeriscape, tree-worker, truck, and service-area graphic made the page feel locally accountable. Generated support images helped fill gaps, but the hero/trust moments needed real proof. Use generated images for texture/service cues only when real project coverage is thin. — Universal Landscaping 2026-05-12

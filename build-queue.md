@@ -33,17 +33,7 @@
 
 <!-- Built 2026-05-15 → demos/jrs-tree-service-landscape/ → https://auto-sites.pages.dev/demos/jrs-tree-service-landscape/ -->
 
-## Ed’s Landscaping
-
-- **Business:** Ed’s Landscaping
-- **Category:** Landscaping, hardscaping, irrigation, concrete, landscape design
-- **Location:** Glendale, CA
-- **Website:** https://www.eds-landscaping.com/
-- **Contact signals:** Site lists phone (818) 248-6776 and (626) 793-5296, free-estimate language, 45+ years experience, and service areas including Glendale, Altadena, Burbank, Eagle Rock, La Cañada-Flintridge, Pasadena, San Marino, South Pasadena, Arcadia, West Hollywood, and nearby communities.
-- **Why this is a good candidate:** Local home-services business with high-value landscaping/hardscaping/irrigation/concrete intent and a content-heavy template site. Likely upside from a modern mobile-first redesign, clearer quote CTAs, project gallery, before/after proof, service-area SEO pages, and stronger trust modules around longevity/local expertise.
-- **Observed services:** Landscaping, landscape design, hardscaping, patios/decks, concrete, driveways, pavers, sidewalks, sprinklers, irrigation systems, residential and commercial outdoor-space work.
-- **Source/date added:** Iris nightly research, 2026-05-12.
-- **Status:** New lead — not contacted.
+<!-- Built 2026-05-16 → demos/eds-landscaping/ → pending Pages verification -->
 
 ## F & M Plumbing
 
@@ -79,4 +69,16 @@
 - **Why this is a good candidate:** High-value home-remodeling niche with strong trust signals and visible contact paths, but the page reads like SEO-template copy and could convert better with a modern mobile-first redesign, clearer consultation/quote CTAs, before/after gallery, stronger license/review proof, service-area SEO pages, and cleaner kitchen/bath/tile-service architecture.
 - **Observed services:** Tile installation, tile repairs, kitchen renovation, bathroom renovation, backsplash installation, shower installation, subway tile, marble tile, residential and commercial tiling.
 - **Source/date added:** Iris nightly research, 2026-05-14.
+- **Status:** New lead — not contacted.
+
+## PowerRoute Electric & Plumbing
+
+- **Business:** PowerRoute Electric & Plumbing
+- **Category:** Electrician, electrical repair, panel upgrades, EV chargers, lighting, emergency electrical service
+- **Location:** Pasadena, CA / Glendale, CA / Altadena, CA
+- **Website:** https://powerrouteelectric.com/
+- **Contact signals:** Site advertises fast/free quotes, 24/7 availability, phone (818) 200-6572 from search result, licensed/bonded/insured language, 2-year labor warranty, “since 2014,” and service coverage across Pasadena, Glendale, Altadena, and nearby Los Angeles County communities.
+- **Why this is a good candidate:** High-intent local home-services niche with emergency and upgrade work, strong trust hooks, and visible quote intent, but the homepage reads like generic AI/SEO service copy with repeated sections and thin service detail. Likely upside from a sharper mobile-first redesign, emergency-call/quote CTAs, concrete service pages, reviews/license proof, service-area SEO, and a more credible project/process narrative.
+- **Observed services:** Electrical panel upgrades, emergency electrical repair, lighting installation, EV chargers, residential/commercial electrical work, electrical safety troubleshooting, and related plumbing positioning.
+- **Source/date added:** Iris nightly research, 2026-05-16.
 - **Status:** New lead — not contacted.

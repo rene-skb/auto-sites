@@ -6584,3 +6584,26 @@ Real Victoria BC business. Website was literally just a street address (touristw
 - **GPT 5.5 comparison:** Still materially stronger than the previous GPT 5.4/Sonnet median for Lucy builds: faster CSS system coherence, better panel artifact discipline, and better debugging around source/meta leakage after screenshot QA. It did still leak internal source rationale into visible copy on v0, so visual QA remains mandatory. Recommendation: keep using GPT 5.5 for nightly Lucy builds.
 - **Lessons:** Updated `[QA] Source-discipline notes can leak into public copy during facts-first builds` with JR's as a second confirming build.
 - **Live URL:** https://auto-sites.pages.dev/demos/jrs-tree-service-landscape/ (pushed to GitHub and verified live on Cloudflare Pages)
+
+### Ed’s Landscaping — Landscaping / hardscaping / concrete / irrigation, Glendale CA
+- **Date:** 2026-05-16
+- **Model:** openai-codex/gpt-5.5 (Lucy cron)
+- **Agent:** Lucy
+- **Folder:** eds-landscaping
+- **Hero pattern:** split-image-right
+- **Typography:** Libre Baskerville + Manrope
+- **Review layout:** dark proof chapter with four same-treatment attributed review cards
+- **Visit/hours layout:** phone-first hero contact strip plus dark contact chapter with phone numbers, Google Maps business-listing CTA, service-area chips, and free-estimate card
+- **Stats bar style:** no-stats
+- **WHY Score:** 7.97 (Steve Jobs 8.0 / Paul Graham 7.8 / David Ogilvy 8.1)
+- **WHAT Score:** 7.97 (Don Norman 8.0 / Steve Krug 8.1 / Jakob Nielsen 7.8)
+- **HOW Score:** 8.05 (Massimo Vignelli 8.0 / Erik Spiekermann 8.2 / Dieter Rams 7.9 / Emil Kowalski 8.1)
+- **Panel average:** 8.00
+- **Self-review:** 8.4
+- **Versions built:** 6 HTML versions + final index.html
+- **Build time:** ~80 minutes
+- **Token estimate:** ~42k
+- **Key decisions:** Framed Ed’s around practical outdoor usefulness rather than generic curb-appeal language: design, build, water, concrete, and maintenance in one crew. Used official site project assets only, kept the phone/free-estimate flow prominent, and avoided review-count/rating claims because the clean source set was stronger on named testimonials than aggregate proof.
+- **GPT 5.5 comparison:** Materially better than the previous GPT 5.4/Sonnet median for frontend/design execution. It held a coherent visual system, handled dense local-service information cleanly, and debugged screenshot/QA issues quickly. The weakness is familiar: GPT 5.5 still let internal source/demo language leak into v0, so screenshot QA and source-language grep remain mandatory. Recommendation: keep using GPT 5.5 for Lucy builds.
+- **Lessons:** Promoted `[QA] Source-discipline notes can leak into public copy during facts-first builds` to Tier 2 after Ed’s repeated the visible footer/source-meta pattern.
+- **Live URL:** https://auto-sites.pages.dev/demos/eds-landscaping/ (pushed to GitHub; Pages route still serving the portfolio landing page at verification time)

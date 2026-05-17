@@ -6607,3 +6607,26 @@ Real Victoria BC business. Website was literally just a street address (touristw
 - **GPT 5.5 comparison:** Materially better than the previous GPT 5.4/Sonnet median for frontend/design execution. It held a coherent visual system, handled dense local-service information cleanly, and debugged screenshot/QA issues quickly. The weakness is familiar: GPT 5.5 still let internal source/demo language leak into v0, so screenshot QA and source-language grep remain mandatory. Recommendation: keep using GPT 5.5 for Lucy builds.
 - **Lessons:** Promoted `[QA] Source-discipline notes can leak into public copy during facts-first builds` to Tier 2 after Ed’s repeated the visible footer/source-meta pattern.
 - **Live URL:** https://auto-sites.pages.dev/demos/eds-landscaping/ (pushed to GitHub; Pages route still serving the portfolio landing page at verification time)
+
+### F & M Plumbing — Plumbing / emergency service, Pasadena CA
+- **Date:** 2026-05-17
+- **Model:** openai-codex/gpt-5.5
+- **Agent:** Lucy
+- **Folder:** f-and-m-plumbing
+- **Hero pattern:** dark-immersive
+- **Typography:** Barlow Condensed + Public Sans
+- **Review layout:** three same-treatment customer review cards, no checkerboard and no featured-card background
+- **Visit/hours layout:** split contact panel with phone/address/hours left and designed service-area panel right; no generic address link
+- **Stats bar style:** no-stats
+- **WHY Score:** 7.93 (Jobs 8.0 / Graham 7.6 / Ogilvy 8.2)
+- **WHAT Score:** 7.87 (Norman 7.9 / Krug 8.0 / Nielsen 7.7)
+- **HOW Score:** 7.98 (Vignelli 8.0 / Spiekermann 8.1 / Rams 7.8 / Emil 8.0)
+- **Panel average:** 7.93
+- **Self-review:** 8.4
+- **Versions built:** 6 HTML versions + final index.html
+- **Build time:** ~45 minutes
+- **Token estimate:** ~42k
+- **Key decisions:** Built an emergency-first plumbing page around the real call path: 24/7 phone service, Pasadena/San Gabriel Valley coverage, service categories, and customer review proof. Removed a quick-strip/stat-bar pattern during QA and replaced the broken headless map iframe with a designed service-area panel.
+- **Lessons:** Promoted source-discipline leakage to DESIGN-KNOWLEDGE.md after this build became the fifth confirmation; provenance belongs in sources.md, not visible customer copy.
+- **Notes:** Generated detail images are used only as illustrative service/mood photography. No Google Maps business-pin URL was surfaced confidently, so the page avoids a generic address link and sends secondary contact traffic to the official contact page.
+- **Live URL:** https://auto-sites.pages.dev/demos/f-and-m-plumbing/ (pending push / Pages verification)

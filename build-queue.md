@@ -35,17 +35,7 @@
 
 <!-- Built 2026-05-16 → demos/eds-landscaping/ → pending Pages verification -->
 
-## F & M Plumbing
-
-- **Business:** F & M Plumbing
-- **Category:** Plumbing, drain cleaning, leak detection, water heaters, emergency plumbing
-- **Location:** Pasadena, CA
-- **Website:** https://www.fandmplumbing.com/
-- **Contact signals:** Site lists 24/7 emergency plumbing, phone (626) 296-1060, Pasadena/San Gabriel Valley service area, “since 1985,” AWWA/licensed/insured copy, Google rating language, and third-party review links. Search snippets also expose address 1493 Lincoln Ave, Pasadena, CA 91103 and email mike@servicemasterbyhci.com.
-- **Why this is a good candidate:** Established family-owned local plumbing contractor with urgent, high-intent residential/commercial services and strong longevity/trust signals, but the homepage has dated/template artifacts (“Add your custom HTML here,” generic testimonial headings, awkward copy). Likely upside from a modern mobile-first redesign, emergency-service CTAs, quote/call flows, service-area SEO, clearer review/license proof, and cleaned-up content architecture.
-- **Observed services:** Tankless water heaters, drain cleaning, garbage disposals, sewer line cleaning, leak detection, gas leak detection/resolution, copper repiping, water extraction/drying, mold remediation, furnace repair, video inspection, commercial and residential plumbing.
-- **Source/date added:** Iris nightly research, 2026-05-13.
-- **Status:** New lead — not contacted.
+<!-- Built 2026-05-17 → demos/f-and-m-plumbing/ → pending Pages verification -->
 
 ## Family Tree Service
 
@@ -80,5 +70,17 @@
 - **Contact signals:** Site advertises fast/free quotes, 24/7 availability, phone (818) 200-6572 from search result, licensed/bonded/insured language, 2-year labor warranty, “since 2014,” and service coverage across Pasadena, Glendale, Altadena, and nearby Los Angeles County communities.
 - **Why this is a good candidate:** High-intent local home-services niche with emergency and upgrade work, strong trust hooks, and visible quote intent, but the homepage reads like generic AI/SEO service copy with repeated sections and thin service detail. Likely upside from a sharper mobile-first redesign, emergency-call/quote CTAs, concrete service pages, reviews/license proof, service-area SEO, and a more credible project/process narrative.
 - **Observed services:** Electrical panel upgrades, emergency electrical repair, lighting installation, EV chargers, residential/commercial electrical work, electrical safety troubleshooting, and related plumbing positioning.
+- **Source/date added:** Iris nightly research, 2026-05-16.
+- **Status:** New lead — not contacted.
+
+## Leo’s Flooring
+
+- **Business:** Leo’s Flooring
+- **Category:** Hardwood flooring installation/refinishing, laminate, LVP, carpet installation, floor repair
+- **Location:** Los Angeles, CA / Pasadena, CA service area
+- **Website:** https://leosflooring.net/
+- **Contact signals:** Site promotes free in-home consultation, 20+ years experience, licensed/insured/bonded language, CSLB license #1083662, residential/commercial flooring, and Pasadena service-area copy for historic-home wood floor work.
+- **Why this is a good candidate:** High-intent home-services niche with strong trust signals and visible consultation intent, but the homepage copy is generic/AI-ish and the information architecture is service-link heavy. Likely upside from a sharper mobile-first redesign, quote/consultation CTAs, stronger before/after gallery, trust/license/review modules, and cleaner Pasadena/LA service-area SEO.
+- **Observed services:** Hardwood floor installation, dustless sanding/refinishing, laminate flooring, luxury vinyl plank installation, carpet installation, floor repair, residential and commercial flooring.
 - **Source/date added:** Iris nightly research, 2026-05-16.
 - **Status:** New lead — not contacted.

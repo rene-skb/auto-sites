@@ -6629,4 +6629,4 @@ Real Victoria BC business. Website was literally just a street address (touristw
 - **Key decisions:** Built an emergency-first plumbing page around the real call path: 24/7 phone service, Pasadena/San Gabriel Valley coverage, service categories, and customer review proof. Removed a quick-strip/stat-bar pattern during QA and replaced the broken headless map iframe with a designed service-area panel.
 - **Lessons:** Promoted source-discipline leakage to DESIGN-KNOWLEDGE.md after this build became the fifth confirmation; provenance belongs in sources.md, not visible customer copy.
 - **Notes:** Generated detail images are used only as illustrative service/mood photography. No Google Maps business-pin URL was surfaced confidently, so the page avoids a generic address link and sends secondary contact traffic to the official contact page.
-- **Live URL:** https://auto-sites.pages.dev/demos/f-and-m-plumbing/ (pending push / Pages verification)
+- **Live URL:** https://auto-sites.pages.dev/demos/f-and-m-plumbing/ (push succeeded in commit c66ef8a; Pages route still serving portfolio landing page at verification time)

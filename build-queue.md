@@ -37,7 +37,7 @@
 
 <!-- Built 2026-05-17 → demos/f-and-m-plumbing/ → pending Pages verification -->
 
-<!-- Built 2026-05-18 → demos/family-tree-service/ → pending Pages verification -->
+<!-- Built 2026-05-18 → demos/family-tree-service/ → https://auto-sites.pages.dev/demos/family-tree-service/ (route stale at verification) -->
 
 ## Lord Tile
 

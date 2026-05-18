@@ -1,0 +1,163 @@
+<!--
+DELTA: v3 iteration notes
+- Refined type rhythm, proof ledger, and image sequence for more deliberate craft.
+- HOW panel reviewers: Massimo Vignelli, Erik Spiekermann, Dieter Rams, Emil Kowalski
+- HOW panel scores: [8.0, 8.1, 7.9, 8.0] avg 8.00
+- Key feedback addressed: no stats strip, consistent card treatment, motion limited to reveal and button feedback.
+- Motion plan from Emil carried into Phase 10.
+- See panel-notes.md -> HOW critique
+-->
+<!--
+PHASE 1 BRAND RESEARCH + PHOTO RANKING
+Business: Family Tree Service, Pasadena CA.
+Sources: business website, contact page search snippet, queue brief, CSLB license link.
+Brand colors: forest green from logo and website, bark brown, warm paper.
+Vibe: practical, licensed local tree crew. The strongest angle is not a poetic origin story. It is fast trust for risky work near homes: trimming, removal, storm cleanup, hillside clearing, landscaping, sprinklers.
+Typography direction: Source Serif 4 for grounded editorial confidence + Spline Sans for utility.
+Differentiator: family-owned/operated, 20+ years, free estimates, senior discounts, licensed/bonded/insured with CSLB #1042332.
+Photo ranking:
+1. assets/cleanup.png: generated illustrative cleanup image, landscape, strongest calm finished-yard mood, best hero/support.
+2. assets/removal.png: generated illustrative close-up chainsaw/log, square-ish, strong service/action card.
+3. assets/pruning.png: generated illustrative pruning detail, square-ish, best for care/pruning card.
+4. assets/S1-1920w.jpg: official/current-site stock-like chainsaw photo, relevant but generic, backup only.
+5. assets/S4-1920w.jpg: official/current-site stock-like tree work photo, relevant backup.
+6. H1-H6: small current-site service thumbnails, too low-res for hero; use only as source reference if needed.
+CREATIVE DIRECTION
+Jobs: Make it feel like controlled risk. Mature trees, steep lots, storm damage. Calm authority beats decorative nature tropes.
+Graham: Say what they do and why a homeowner should trust them. Cut everything that sounds like a brochure.
+Ogilvy: Headline should sell the practical relief: dangerous branches handled by licensed people.
+ROTATION CHECK
+Last 3 builds used editorial/dark service collage, split-image-right, dark-immersive. This build uses centered-minimal with an oversized service-board image below the fold, Source Serif 4 + Spline Sans, proof ledger instead of review cards, and a quote-request chapter instead of map/contact split.
+-->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Family Tree Service | Pasadena tree care</title>
+  <meta name="description" content="Tree trimming, removal, stump grinding, storm cleanup, hillside clearing, landscaping, and sprinkler work in Pasadena and nearby communities.">
+  <meta property="og:title" content="Family Tree Service">
+  <meta property="og:description" content="Licensed Pasadena tree care with free estimates, senior discounts, and 20+ years of local service.">
+  <meta property="og:image" content="assets/cleanup.png">
+  <meta property="og:url" content="https://auto-sites.pages.dev/demos/family-tree-service/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Spline+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --green:#17372b;--green-2:#214836;--moss:#6f7f4d;--paper:#f3eddf;--paper-2:#e7ddca;--ink:#1b211b;--muted:#667060;--brown:#7b4f32;--white:#fffaf0;
+      --s1:8px;--s2:16px;--s3:24px;--s4:32px;--s5:48px;--s6:64px;--s7:96px;--s8:128px;
+      --ease-out:cubic-bezier(.23,1,.32,1);--ease-in-out:cubic-bezier(.77,0,.175,1);
+    }
+
+    *{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Spline Sans",system-ui,sans-serif;line-height:1.65}
+img{max-width:100%;display:block}
+a{color:inherit}
+p{margin:0}
+button,a{touch-action:manipulation}
+.wrap{width:min(1120px,calc(100% - 40px));margin-inline:auto}
+.nav{position:sticky;top:0;z-index:20;background:rgba(243,237,223,.86);backdrop-filter:blur(18px);border-bottom:1px solid rgba(27,33,27,.12)}
+.nav-inner{height:72px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-weight:700;letter-spacing:-.02em}
+.brand-mark{width:34px;height:34px;border-radius:50%;background:var(--green);display:grid;place-items:center;color:var(--paper);font-family:"Source Serif 4",serif;font-weight:700}
+.nav-links{display:flex;align-items:center;gap:26px;font-size:14px;font-weight:600}
+.nav-links a{text-decoration:none;color:rgba(27,33,27,.74)}
+.nav-links a:hover{color:var(--ink)}
+.nav-cta{background:var(--green);color:var(--white)!important;padding:10px 16px;border-radius:999px}
+.menu-toggle{display:none;border:0;background:transparent;font:inherit;font-weight:700}
+.hero{padding:var(--s8) 0 var(--s6);text-align:center;position:relative;overflow:hidden}
+.eyebrow{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--brown);font-weight:700;margin-bottom:var(--s3)}
+h1,h2,h3{font-family:"Source Serif 4",Georgia,serif;line-height:.95;margin:0;letter-spacing:-.055em}
+h1{font-size:clamp(64px,11vw,148px);max-width:980px;margin-inline:auto}
+.hero-copy{font-size:clamp(18px,2vw,23px);max-width:720px;margin:var(--s4) auto 0;color:#374036;line-height:1.55}
+.actions{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:var(--s4)}
+.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:14px 22px;text-decoration:none;font-weight:700;transition:transform 160ms var(--ease-out),background 200ms var(--ease-out),color 200ms var(--ease-out)}
+.btn:active{transform:scale(.97)}
+.btn-primary{background:var(--green);color:var(--white)}
+.btn-secondary{border:1px solid rgba(27,33,27,.25);color:var(--ink);background:rgba(255,250,240,.35)}
+.hero-board{margin-top:var(--s7);border-radius:34px;background:var(--green);padding:12px;box-shadow:0 28px 80px rgba(23,55,43,.22)}
+.hero-board img{width:100%;height:clamp(360px,54vw,620px);object-fit:cover;border-radius:24px}
+.proof-line{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(255,250,240,.18);color:var(--paper);text-align:left}
+.proof-line div{padding:22px;border-right:1px solid rgba(255,250,240,.14)}
+.proof-line div:last-child{border-right:0}
+.proof-line strong{display:block;font-size:13px;text-transform:uppercase;letter-spacing:.12em;color:#d9c6a2}
+.proof-line span{display:block;margin-top:6px;font-size:15px;color:rgba(255,250,240,.82)}
+section{padding:var(--s8) 0}
+.chapter{display:grid;grid-template-columns:.9fr 1.1fr;gap:var(--s7);align-items:start}
+.section-kicker{font-size:12px;text-transform:uppercase;letter-spacing:.15em;color:var(--brown);font-weight:800;margin-bottom:18px}
+h2{font-size:clamp(44px,6vw,82px)}
+.lead{font-size:20px;color:#3d4639;margin-top:24px;max-width:560px}
+.service-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.service-card{background:var(--white);border:1px solid rgba(27,33,27,.12);border-radius:24px;padding:28px;min-height:220px}
+.service-card h3{font-size:32px;letter-spacing:-.04em;margin-bottom:14px}
+.service-card p{color:#596254}
+.service-card .num{display:block;font-size:12px;letter-spacing:.16em;color:var(--brown);font-weight:800;margin-bottom:var(--s4)}
+.green{background:var(--green);color:var(--paper)}
+.green .section-kicker{color:#cdb889}
+.green h2{color:var(--white)}
+.green .lead{color:rgba(255,250,240,.78)}
+.work-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;margin-top:var(--s6)}
+.work-card{background:rgba(255,250,240,.08);border:1px solid rgba(255,250,240,.15);border-radius:26px;overflow:hidden}
+.work-card img{height:260px;width:100%;object-fit:cover}
+.work-card div{padding:24px}
+.work-card h3{font-size:28px;color:var(--white);margin-bottom:10px}
+.work-card p{color:rgba(255,250,240,.72)}
+.ledger{background:var(--white);border:1px solid rgba(27,33,27,.12);border-radius:30px;overflow:hidden}
+.ledger-row{display:grid;grid-template-columns:190px 1fr;gap:24px;padding:28px;border-bottom:1px solid rgba(27,33,27,.1)}
+.ledger-row:last-child{border-bottom:0}
+.ledger-row strong{font-family:"Source Serif 4",serif;font-size:28px;line-height:1;color:var(--green)}
+.ledger-row span{color:#4d574a}
+.contact-card{background:var(--green);color:var(--paper);border-radius:34px;padding:var(--s6);display:grid;grid-template-columns:1.1fr .9fr;gap:var(--s6);align-items:center}
+.contact-card h2{color:var(--white)}
+.contact-card .lead{color:rgba(255,250,240,.82)}
+.contact-list{display:grid;gap:14px}
+.contact-list a,.contact-list div{background:rgba(255,250,240,.08);border:1px solid rgba(255,250,240,.14);border-radius:18px;padding:18px;text-decoration:none}
+.contact-list small{display:block;text-transform:uppercase;letter-spacing:.14em;color:#cdb889;font-weight:800;margin-bottom:4px}
+.footer{padding:42px 0;border-top:1px solid rgba(27,33,27,.12);font-size:14px;color:#667060}
+.footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.reveal{opacity:1;transform:none}
+.js .reveal{opacity:0;transform:translateY(24px);transition:opacity 700ms var(--ease-out),transform 700ms var(--ease-out)}
+.js .reveal.in{opacity:1;transform:none}
+.js .stagger>*{transition-delay:calc(var(--i,0) * 70ms)}
+@media (max-width:860px){.menu-toggle{display:block}
+.nav-links{position:absolute;left:20px;right:20px;top:72px;display:none;flex-direction:column;align-items:stretch;background:var(--paper);border:1px solid rgba(27,33,27,.12);border-radius:20px;padding:18px;box-shadow:0 20px 60px rgba(27,33,27,.18)}
+.nav.open .nav-links{display:flex}
+.chapter,.contact-card{grid-template-columns:1fr}
+.proof-line,.work-row,.service-grid{grid-template-columns:1fr}
+.proof-line div{border-right:0;border-bottom:1px solid rgba(255,250,240,.14)}
+section{padding:80px 0}
+.hero{padding-top:90px}
+.ledger-row{grid-template-columns:1fr;gap:8px}
+.hero-board img{height:360px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}
+*,*::before,*::after{transition:none!important;animation:none!important}
+.js .reveal{opacity:1;transform:none}
+}
+
+  </style>
+</head>
+<body>
+<script>document.documentElement.classList.add('js');</script>
+<nav class="nav" id="nav"><div class="wrap nav-inner"><a class="brand" href="#top"><span class="brand-mark">F</span><span>Family Tree Service</span></a><button class="menu-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button><div class="nav-links" id="nav-links"><a href="#services">Services</a><a href="#proof">Trust</a><a href="#contact" class="nav-cta">Call (626) 602-4448</a></div></div></nav>
+<main id="top">
+  <header class="hero wrap">
+    <div class="eyebrow reveal">Pasadena tree care · Free estimates</div>
+    <h1 class="reveal">Dangerous branches handled calmly.</h1>
+    <p class="hero-copy reveal">Tree trimming, removal, stump grinding, storm cleanup, hillside clearing, landscaping, and sprinkler work for Pasadena properties.</p>
+    <div class="actions reveal"><a class="btn btn-primary" href="tel:+16266024448">Call (626) 602-4448</a><a class="btn btn-secondary" href="https://www.familytreeserviceca.com/contact">Request an estimate</a></div>
+    <div class="hero-board reveal"><img src="assets/cleanup.png" alt="Cleaned yard with cut branches after tree work"><div class="proof-line"><div><strong>20+ years</strong><span>Family-owned and operated</span></div><div><strong>Licensed</strong><span>CSLB #1042332</span></div><div><strong>Insured</strong><span>Bonded and insured</span></div><div><strong>Discounts</strong><span>Senior discounts available</span></div></div></div>
+  </header>
+  <section id="services"><div class="wrap chapter"><div class="reveal"><div class="section-kicker">What they handle</div><h2>One crew for trees, slopes, cleanup, and water.</h2><p class="lead">The job might be a crown thinning, a stump that needs to go, or a hillside that has gotten away from you. The estimate starts with the actual property, not a package.</p></div><div class="service-grid stagger"><article class="service-card reveal" style="--i:0"><span class="num">01</span><h3>Tree trimming</h3><p>Overhanging branches, crown thinning, and pruning that keeps the tree’s natural shape.</p></article><article class="service-card reveal" style="--i:1"><span class="num">02</span><h3>Tree removal</h3><p>Dangerous or unwanted trees removed with cleanup after the job.</p></article><article class="service-card reveal" style="--i:2"><span class="num">03</span><h3>Stump grinding</h3><p>Stumps ground down with the right equipment so the yard can be used again.</p></article><article class="service-card reveal" style="--i:3"><span class="num">04</span><h3>Storm cleanup</h3><p>Emergency cleanup when wind, rain, or fallen limbs create a mess that can’t wait.</p></article></div></div></section>
+  <section class="green"><div class="wrap"><div class="chapter"><div class="reveal"><div class="section-kicker">Tree work with landscape context</div><h2>The tree is only part of the yard.</h2><p class="lead">Family Tree Service also lists hillside clearing, ornamental pruning, landscaping projects, retaining walls, and sprinkler systems. Useful when the tree problem is tied to slope, drainage, or a larger yard reset.</p></div><div class="ledger reveal" id="proof"><div class="ledger-row"><strong>Free estimates</strong><span>Free estimates are listed across the service pages, so homeowners know the first call is low pressure.</span></div><div class="ledger-row"><strong>Senior discounts</strong><span>Senior discounts are available for older homeowners.</span></div><div class="ledger-row"><strong>CSLB #1042332</strong><span>The license number is listed with the California State License Board.</span></div></div></div><div class="work-row stagger"><article class="work-card reveal" style="--i:0"><img src="assets/pruning.png" alt="Gloved hand inspecting a pruned branch"><div><h3>Trim with shape in mind</h3><p>Overgrown branches get cut back without flattening the tree into a hedge.</p></div></article><article class="work-card reveal" style="--i:1"><img src="assets/removal.png" alt="Chainsaw cutting a fallen log"><div><h3>Remove what’s unsafe</h3><p>Tree removal and storm cleanup are framed around safety first, then cleanup.</p></div></article><article class="work-card reveal" style="--i:2"><img src="assets/S1-1920w.jpg" alt="Chainsaw cutting a log from the current Family Tree Service site"><div><h3>Clear the yard after</h3><p>The site promises removal work and cleanup after the job, which is the part homeowners remember.</p></div></article></div></div></section>
+  <section id="contact"><div class="wrap contact-card reveal"><div><div class="section-kicker">Start here</div><h2>Ask for a free estimate.</h2><p class="lead">Call the Pasadena number or use the current estimate form. If the job is urgent, the phone is the fastest path.</p></div><div class="contact-list"><a href="tel:+16266024448"><small>Phone</small>(626) 602-4448</a><a href="https://www.familytreeserviceca.com/contact"><small>Estimate form</small>familytreeserviceca.com/contact</a><div><small>Service area</small>Pasadena and surrounding areas</div><div><small>License</small>CSLB #1042332</div></div></div></section>
+</main>
+<footer class="footer"><div class="wrap"><span>Family Tree Service</span><span>Tree care · Pasadena, CA · Licensed, bonded, insured</span></div></footer>
+<script>
+const nav=document.querySelector('#nav');const toggle=document.querySelector('.menu-toggle');toggle?.addEventListener('click',()=>{const open=nav.classList.toggle('open');toggle.setAttribute('aria-expanded',String(open));});
+const items=[...document.querySelectorAll('.reveal')];const io=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('in');io.unobserve(entry.target);}})},{threshold:.14});items.forEach(item=>io.observe(item));
+</script>
+</body>
+</html>

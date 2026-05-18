@@ -37,17 +37,7 @@
 
 <!-- Built 2026-05-17 → demos/f-and-m-plumbing/ → pending Pages verification -->
 
-## Family Tree Service
-
-- **Business:** Family Tree Service
-- **Category:** Tree service, tree care, landscaping, hillside clearing, sprinkler systems
-- **Location:** Pasadena, CA
-- **Website:** https://www.familytreeserviceca.com/
-- **Contact signals:** Site advertises free estimates, senior discounts, family-owned/operated, 20+ years experience, fully licensed/bonded/insured, and links to CSLB license #1042332. Contact page has Hibu/Yext placeholder artifacts, suggesting a template-managed site with stale implementation details.
-- **Why this is a good candidate:** Established local tree-care contractor with high-intent services and strong trust signals, but the site feels generic/template-built and the contact page exposes placeholder content. Likely upside from a modern mobile-first redesign, clearer emergency/tree-removal and free-estimate CTAs, before/after project gallery, service-area SEO pages, license/insurance trust modules, and cleaned-up contact/quote flow.
-- **Observed services:** Tree trimming, stump grinding, tree removal, hillside clearing, ornamental pruning, landscaping projects, sprinkler systems, storm cleanups, residential and business tree care.
-- **Source/date added:** Iris nightly research, 2026-05-14.
-- **Status:** New lead — not contacted.
+<!-- Built 2026-05-18 → demos/family-tree-service/ → pending Pages verification -->
 
 ## Lord Tile
 
@@ -83,4 +73,16 @@
 - **Why this is a good candidate:** High-intent home-services niche with strong trust signals and visible consultation intent, but the homepage copy is generic/AI-ish and the information architecture is service-link heavy. Likely upside from a sharper mobile-first redesign, quote/consultation CTAs, stronger before/after gallery, trust/license/review modules, and cleaner Pasadena/LA service-area SEO.
 - **Observed services:** Hardwood floor installation, dustless sanding/refinishing, laminate flooring, luxury vinyl plank installation, carpet installation, floor repair, residential and commercial flooring.
 - **Source/date added:** Iris nightly research, 2026-05-16.
+- **Status:** New lead — not contacted.
+
+## Joseph & Sons Tile
+
+- **Business:** Joseph & Sons Tile
+- **Category:** Tile installation, tile flooring, backsplash/fireplace/wall tile, residential tile contracting
+- **Location:** Los Angeles, CA
+- **Website:** https://josephandsonstile.com/
+- **Contact signals:** Site advertises a free consultation, 60+ years as LA tile contractors, family-business/father-to-son language from search result, access to local tile suppliers, and high-intent residential remodeling services.
+- **Why this is a good candidate:** Long-running local trade business in a high-value home-improvement niche, but the website reads like a thin SEO/article-style page rather than a trust-building contractor site. Likely upside from a modern mobile-first redesign with clear quote/contact CTAs, before/after gallery, service pages for bathrooms/kitchens/backsplashes/floors, supplier/material guidance, reviews, and stronger proof of licensing/insurance if available.
+- **Observed services:** Tile installation, tile floor installation, walls, fireplaces, backsplashes, ceramic, travertine, slate, porcelain, wood-look tile, granite, marble, stone/pebble, quartzite, and onyx tile.
+- **Source/date added:** Iris nightly research, 2026-05-18.
 - **Status:** New lead — not contacted.

@@ -6630,3 +6630,26 @@ Real Victoria BC business. Website was literally just a street address (touristw
 - **Lessons:** Promoted source-discipline leakage to DESIGN-KNOWLEDGE.md after this build became the fifth confirmation; provenance belongs in sources.md, not visible customer copy.
 - **Notes:** Generated detail images are used only as illustrative service/mood photography. No Google Maps business-pin URL was surfaced confidently, so the page avoids a generic address link and sends secondary contact traffic to the official contact page.
 - **Live URL:** https://auto-sites.pages.dev/demos/f-and-m-plumbing/ (push succeeded in commit c66ef8a; Pages route still serving portfolio landing page at verification time)
+
+### Family Tree Service — Tree care / landscaping, Pasadena CA
+- **Date:** 2026-05-18
+- **Model:** openai-codex/gpt-5.5
+- **Agent:** Lucy
+- **Folder:** family-tree-service
+- **Hero pattern:** centered-minimal with oversized image board
+- **Typography:** Source Serif 4 + Spline Sans
+- **Review layout:** no review cards; proof ledger with same-treatment operating facts because compliant named reviews were not verified
+- **Visit/hours layout:** quote-request contact chapter with phone, estimate form, service area, and license; no generic address/map link
+- **Stats bar style:** no-stats
+- **WHY Score:** 7.93 (Steve Jobs 8.0 / Paul Graham 7.7 / David Ogilvy 8.1)
+- **WHAT Score:** 7.97 (Don Norman 8.0 / Steve Krug 8.1 / Jakob Nielsen 7.8)
+- **HOW Score:** 8.00 (Massimo Vignelli 8.0 / Erik Spiekermann 8.1 / Dieter Rams 7.9 / Emil Kowalski 8.0)
+- **Panel average:** 7.97
+- **Self-review:** 8.4
+- **Versions built:** 6 HTML versions + final index.html
+- **Build time:** ~35 minutes
+- **Token estimate:** ~34k
+- **Key decisions:** Built around controlled-risk tree work rather than a generic landscaping template: licensed Pasadena service, free estimates, senior discounts, storm cleanup, hillside work, and a literal phone-first estimate path. Skipped review cards because no compliant named reviews were verified, avoided generic maps, and kept generated imagery illustrative rather than pretending to show the real business.
+- **GPT 5.5 comparison:** Still materially better than the previous GPT 5.4/Sonnet median for frontend/design execution. It produced a coherent visual system quickly, made stronger layout decisions around sparse source material, and debugged screenshot QA issues cleanly. Weakness remains source-language leakage in early visible copy, which screenshot review caught and fixed. Recommendation: keep using GPT 5.5 for Lucy builds with mandatory visual QA.
+- **Lessons:** Promoted `[REVIEWS] If source review data lacks compliant names, skip/fallback instead of faking cards` to 2/5 with Family Tree Service.
+- **Live URL:** https://auto-sites.pages.dev/demos/family-tree-service/ (pending push / Pages verification)

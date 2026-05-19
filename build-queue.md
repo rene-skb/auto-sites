@@ -39,7 +39,7 @@
 
 <!-- Built 2026-05-18 → demos/family-tree-service/ → https://auto-sites.pages.dev/demos/family-tree-service/ (route stale at verification) -->
 
-<!-- Built 2026-05-19 → demos/lord-tile/ → https://auto-sites.pages.dev/demos/lord-tile/ (route verification pending) -->
+<!-- Built 2026-05-19 → demos/lord-tile/ → https://auto-sites.pages.dev/demos/lord-tile/ (route stale at verification) -->
 
 ## PowerRoute Electric & Plumbing
 

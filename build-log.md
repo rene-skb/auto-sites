@@ -43,7 +43,7 @@
 - **Token estimate:** ~24k
 - **Key decisions:** Treated Lord Tile as a trust-and-craft contractor page, not a generic remodeling template. The page leads with Dave, C-54 license #983081, established 1997, Pasadena service, official portfolio images, and specific review proof around shower repair and bathroom work.
 - **Notes:** Used official Lord Tile website imagery only. No prices invented, no aggregate review count used, no Google Maps link added because a canonical business-pin URL was not confidently found. Added one Tier 1 lesson to `skills/auto-site-builder/lessons.md`.
-- **Live URL:** https://auto-sites.pages.dev/demos/lord-tile/ (pending push / Pages verification)
+- **Live URL:** https://auto-sites.pages.dev/demos/lord-tile/ (push succeeded, route still serving the portfolio landing page at verification time)
 
 ### Flourist — Mill + bakery, Vancouver BC
 - **Date:** 2026-05-06

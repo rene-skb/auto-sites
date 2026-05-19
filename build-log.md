@@ -23,6 +23,28 @@
 
 # Auto-Sites Build Log
 
+### Lord Tile — Tile contractor, Pasadena CA
+- **Date:** 2026-05-19
+- **Model:** openai-codex/gpt-5.5
+- **Agent:** Lucy
+- **Folder:** lord-tile
+- **Hero pattern:** split-image-right
+- **Typography:** Newsreader + Instrument Sans
+- **Review layout:** three same-treatment review cards with short extracted quote leads
+- **Visit/hours layout:** final two-card consultation/contact block, no map because no confident Google Maps business-pin URL surfaced
+- **Stats bar style:** no-stats
+- **WHY Score:** 8.00 (Jobs 8.0 / Graham 7.8 / Ogilvy 8.2)
+- **WHAT Score:** 7.97 (Norman 8.1 / Krug 8.0 / Nielsen 7.8)
+- **HOW Score:** 8.10 (Vignelli 8.1 / Spiekermann 8.0 / Rams 8.0 / Emil 8.3)
+- **Panel average:** 8.02
+- **Self-review:** 8.6
+- **Versions built:** 6 HTML versions + final index.html
+- **Build time:** ~65 minutes
+- **Token estimate:** ~24k
+- **Key decisions:** Treated Lord Tile as a trust-and-craft contractor page, not a generic remodeling template. The page leads with Dave, C-54 license #983081, established 1997, Pasadena service, official portfolio images, and specific review proof around shower repair and bathroom work.
+- **Notes:** Used official Lord Tile website imagery only. No prices invented, no aggregate review count used, no Google Maps link added because a canonical business-pin URL was not confidently found. Added one Tier 1 lesson to `skills/auto-site-builder/lessons.md`.
+- **Live URL:** https://auto-sites.pages.dev/demos/lord-tile/ (pending push / Pages verification)
+
 ### Flourist — Mill + bakery, Vancouver BC
 - **Date:** 2026-05-06
 - **Model:** openai-codex/gpt-5.4

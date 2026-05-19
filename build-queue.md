@@ -39,17 +39,7 @@
 
 <!-- Built 2026-05-18 → demos/family-tree-service/ → https://auto-sites.pages.dev/demos/family-tree-service/ (route stale at verification) -->
 
-## Lord Tile
-
-- **Business:** Lord Tile
-- **Category:** Tile installation, tile repair, kitchen/bath renovation, backsplash/shower/marble/subway tile
-- **Location:** Pasadena, CA
-- **Website:** https://lordtile.com/tile-installation-pasadena-ca/
-- **Contact signals:** Site lists phone (626) 639-8453, email david@lordtile.com, Pasadena/neighbouring-cities service area, free consultation/estimate language, 30+ years experience, family-owned language, online review link, and C-54 Tile Contractor CSLB License #983081.
-- **Why this is a good candidate:** High-value home-remodeling niche with strong trust signals and visible contact paths, but the page reads like SEO-template copy and could convert better with a modern mobile-first redesign, clearer consultation/quote CTAs, before/after gallery, stronger license/review proof, service-area SEO pages, and cleaner kitchen/bath/tile-service architecture.
-- **Observed services:** Tile installation, tile repairs, kitchen renovation, bathroom renovation, backsplash installation, shower installation, subway tile, marble tile, residential and commercial tiling.
-- **Source/date added:** Iris nightly research, 2026-05-14.
-- **Status:** New lead — not contacted.
+<!-- Built 2026-05-19 → demos/lord-tile/ → https://auto-sites.pages.dev/demos/lord-tile/ (route verification pending) -->
 
 ## PowerRoute Electric & Plumbing
 
@@ -85,4 +75,16 @@
 - **Why this is a good candidate:** Long-running local trade business in a high-value home-improvement niche, but the website reads like a thin SEO/article-style page rather than a trust-building contractor site. Likely upside from a modern mobile-first redesign with clear quote/contact CTAs, before/after gallery, service pages for bathrooms/kitchens/backsplashes/floors, supplier/material guidance, reviews, and stronger proof of licensing/insurance if available.
 - **Observed services:** Tile installation, tile floor installation, walls, fireplaces, backsplashes, ceramic, travertine, slate, porcelain, wood-look tile, granite, marble, stone/pebble, quartzite, and onyx tile.
 - **Source/date added:** Iris nightly research, 2026-05-18.
+- **Status:** New lead — not contacted.
+
+## RototillerGuy Landscaping
+
+- **Business:** RototillerGuy Landscaping
+- **Category:** Landscaping, lawn installation, sprinkler installation/repair, rototilling, lawn renovation
+- **Location:** Los Angeles County, CA / Pasadena service area
+- **Website:** https://rototillerguy.com/
+- **Contact signals:** Site promotes free bids, 25+ years of service, 800+ customer/review trust language, Los Angeles/Pasadena service coverage, and high-intent lawn/sprinkler installation and repair services.
+- **Why this is a good candidate:** High-value local home-services niche with strong trust proof and clear quote intent, but the site is long, text-heavy, and visually dated/SEO-ish. Likely upside from a cleaner mobile-first redesign, tighter quote CTAs, before/after gallery, service cards for lawn/sprinklers/rototilling, review proof, and a Pasadena/LA service-area structure that feels credible instead of keyword-stuffed.
+- **Observed services:** Lawn installation, landscaping installation, sprinkler installation and repair, rototilling, organic compost/soil prep, flower beds, vegetable gardens, lawn renovation, and general landscaping.
+- **Source/date added:** Iris nightly research, 2026-05-19.
 - **Status:** New lead — not contacted.

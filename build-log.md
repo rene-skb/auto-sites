@@ -132,7 +132,7 @@
 - **Token estimate:** ~18k
 - **Key decisions:** Discovery stayed mostly true to the queue brief. No strong official site surfaced, but the business had enough public signals through Facebook, a linked artist Instagram, local listings, and Daily Hive coverage to build a facts-first studio page instead of a generic tattoo template. The page leans on real portfolio images, the named roster, and Adrien Roque’s own words about rustic, timeless tattooing.
 - **Notes:** Named first-name-plus-last-initial customer review pulls were not surfaced cleanly from primary sources in this pass, so the proof layer stays factual instead of pretending the review data was cleaner than it was.
-- **Live URL:** pending push / Pages verification
+- **Live URL:** pushed to GitHub in commit f789537; Pages route stale at verification
 
 ### Calgary Tattoo Company — Tattoo studio, Calgary AB
 - **Date:** 2026-05-02
@@ -264,7 +264,7 @@
 - **Token estimate:** ~15k
 - **Key decisions:** The queue was stale above this entry, so the real overnight work started with cleanup and then moved to the first unbuilt brief. Discovery found the domain was worse than expected: not just a thin site, but a generic unfinished ordering setup page. The build leaned on giant type, real social assets, Uber Eats menu proof, and CityNews context instead of pretending the photo pool was cleaner than it is.
 - **Notes:** Instagram handle verified as `@taquitos.restaurant`. Queue brief’s website diagnosis was directionally right but understated. Google Maps business-pin URL was not confidently surfaced in this pass, so the directions CTA uses a business-name query instead of a plain address link.
-- **Live URL:** pending push / Pages verification
+- **Live URL:** pushed to GitHub in commit f789537; Pages route stale at verification
 
 ### The Nest Tattoo — Tattoo Studio, San Diego CA
 - **Date:** 2026-04-26
@@ -307,7 +307,7 @@
 - **Build time:** ~55 minutes
 - **Token estimate:** ~16k
 - **Key decisions:** The queue brief was stale on the biggest framing point. Ink Noir already has a live Wix site, so the demo shifted from a no-site rescue into a cleaner editorial alternative built around artist routing, style clarity, and visit-first utility. Real Instagram images were strong enough to carry the whole page, so no generated imagery or fabricated review cards were needed.
-- **Live URL:** pending push / Pages verification
+- **Live URL:** pushed to GitHub in commit f789537; Pages route stale at verification
 
 ### Moon Ink — Tattoo Studio, Seattle WA
 - **Date:** 2026-04-24
@@ -328,7 +328,7 @@
 - **Build time:** ~45 minutes
 - **Token estimate:** ~14k
 - **Key decisions:** The queue brief was stale on the biggest fact: Moon Ink already has a live official website. Discovery reframed the build from a no-site rescue into a cleaner editorial alternative that puts the work, the range, and the booking clarity ahead of generic funnel copy. No compliant named review quotes were verified in this pass, so the page stayed honest and used factual proof blocks instead of fabricated customer cards.
-- **Live URL:** pending push / Pages verification
+- **Live URL:** pushed to GitHub in commit f789537; Pages route stale at verification
 
 ### Dark Age Tattoo Studio — Tattoo Studio, Denton TX
 - **Date:** 2026-04-23
@@ -350,7 +350,7 @@
 - **Token estimate:** approx 22k
 - **Key decisions:** Queue brief said website presence was weak/fragmented, but discovery found a full Wix site at darkagetattoostudio.com. Build reframed from a zero-website rescue to a cleaner, faster, facts-first alternative that leads with the style bench and surfaces practical visit info above the fold. No verified named customer reviews available from primary sources in this pass, so social proof comes from awards, official site claims, and Instagram follower count instead of fabricated cards.
 - **Lessons:** Promoted `[PROCESS]` queue briefs stale on website status (2/5, jupiter-bakehouse + this build). Added `[PHOTOS]` tight photo pool management (1/5).
-- **Live URL:** pending push / Pages verification
+- **Live URL:** pushed to GitHub in commit f789537; Pages route stale at verification
 
 ### Steel & Needle — Tattoo & Piercing Studio, Calgary AB
 - **Date:** 2026-04-22
@@ -372,7 +372,7 @@
 - **Token estimate:** ~16k
 - **Key decisions:** The queue brief said Steel & Needle had no site, but discovery found a live Square site and a confirmed Instagram handle. That changed the pitch completely: instead of a zero-web rescue page, the build became a cleaner premium layer over a real hybrid offering of tattoos, piercings, jewelry, tooth gems, and aftercare.
 - **Notes:** The live sources did not clearly expose phone, hours, or a trustworthy Google rating on this pass, so the page stayed honest and pointed visitors to the verified live channels instead of guessing. Real photo assets were pulled from the business’s live site HTML and reused locally.
-- **Live URL:** pending push / Pages verification
+- **Live URL:** pushed to GitHub in commit f789537; Pages route stale at verification
 
 ### White Birch Bakery — Bakery, Winnipeg MB
 - **Date:** 2026-04-21
@@ -394,7 +394,7 @@
 - **Token estimate:** ~14k
 - **Key decisions:** The queue brief turned out to be stale. Discovery corrected the address from Osborne Street to 1108 Henderson Hwy Unit B, confirmed phone, hours, rating, and socials, and found that White Birch now has a live website. That shifted the build from a no-site rescue pitch to a clearer visit-first demo that competes on appetite, scan speed, and practical usefulness.
 - **Notes:** No real reusable photo set was confidently accessible in this pass, so the page stayed image-light and leaned on typography, structure, and a simple OG asset instead of pretending to show the bakery. Review quotes stayed source-safe and unattributed to named customers where first-name-plus-initial proof was not confidently available.
-- **Live URL:** pending push / Pages verification
+- **Live URL:** pushed to GitHub in commit f789537; Pages route stale at verification
 
 
 ### High INKpact Tattoo Studio — Tattoo Studio, Brampton ON
@@ -417,7 +417,7 @@
 - **Token estimate:** ~18k
 - **Key decisions:** The queue brief was partial, so discovery locked the address, phone, and noon-to-8 schedule from directory sources, then pulled named review proof from GetInked instead of guessing from weak aggregate data. No trustworthy reusable photo set surfaced in this pass, so the page used generated close-crop tattoo imagery and kept the copy strictly facts-first.
 - **Notes:** Instagram handle and exact Google rating were still not confidently verified, so they were left out. Final copy pass replaced awkward CTA phrasing with literal service-business actions and strengthened the right-side visit card into a real pre-visit block.
-- **Live URL:** pending push / Pages verification
+- **Live URL:** pushed to GitHub in commit f789537; Pages route stale at verification
 
 ### Barbershop Patisserie — Patisserie / Bakery, Toronto ON
 - **Date:** 2026-04-19
@@ -439,7 +439,7 @@
 - **Token estimate:** ~16k
 - **Key decisions:** Earlier queue items were stale, so discovery moved to the first actually unbuilt entry. Leaned into the name's swagger with giant display type, then let real pastry photography and item-specific review proof do the selling instead of pretending this needed a big bakery backstory.
 - **Notes:** Verified the Instagram handle, phone, and review count during the build. Kept prices out because they were not confirmed from a primary source in this pass.
-- **Live URL:** pending push / Pages verification
+- **Live URL:** pushed to GitHub in commit f789537; Pages route stale at verification
 
 
 ### Johnny's Barber + Shop — Barbershop, Calgary AB
@@ -462,7 +462,7 @@
 - **Token estimate:** ~18k
 - **Key decisions:** The queue brief said Johnny's was probably website-light, but the business now has a full live site with two downtown locations, pricing, barbers, and a drinks menu. The opportunity was not rescue positioning, it was simplification: lead with the 2-location choice, keep real service pricing visible, use real Instagram photos, and foreground the coffee-and-shop angle that makes the brand more memorable than a standard barbershop booking page.
 - **Notes:** No customer review cards were used because compliant first-name-plus-last-initial review attributions were not confidently available from primary sources in this pass. Build leans on verified site copy, staff bios, menu data, and Instagram assets instead.
-- **Live URL:** pending push / Pages verification
+- **Live URL:** pushed to GitHub in commit f789537; Pages route stale at verification
 
 ### For Us Bakery — Asian Bakery / Dessert Café, Winnipeg MB
 - **Date:** 2026-04-17
@@ -484,7 +484,7 @@
 - **Token estimate:** ~18k
 - **Key decisions:** The queue brief had partially wrong data (three conflicting addresses, no confirmed phone). Outscraper confirmed the canonical address (1353 McPhillips St Unit 1), phone (+1 204-334-8880), hours, and 4.8★ / 235 reviews. forusbakery.com is live but thin (email subscribe only), so this demo competes on clarity, navigation speed, and proof hierarchy. Reviews placed immediately after popular items section rather than at page bottom — proof-after-picks flow kept the WHY average above 8. All photos real Instagram assets. Cream puffs, crepe cakes, cheese tarts, matcha, taro, and Earl Grey confirmed from Outscraper review tags and review text.
 - **Notes:** Review non-negotiable met — first name + last initial used (Rachel E., Chloe Y.) sourced directly from Outscraper review pull. No fabricated data. $10–20 budget note sourced from review_questions.Price_per_person metadata field.
-- **Live URL:** pending push / Pages verification
+- **Live URL:** pushed to GitHub in commit f789537; Pages route stale at verification
 
 ### Bakerbots Baking — Bakery / Dessert Shop, Toronto ON
 - **Date:** 2026-04-16
@@ -506,7 +506,7 @@
 - **Token estimate:** ~18k
 - **Key decisions:** Started from the top queue entry, then discovered Bakerbots now has a live but fragmented web presence instead of no site at all. Built the demo around consolidation and appetite, using real Instagram dessert photos, one short acknowledgement of the scattered current site, and editorial proof blocks instead of fake customer review cards because compliant reviewer initials were not verified in this pass.
 - **Notes:** Queue brief drifted on the basics. Verified the live domain, Instagram handle, phone, Bloor address, and late-day hours during the build. The original queue address and likely handle were wrong. Google rating and review count were left out because they were not confidently confirmed from a primary source.
-- **Live URL:** pending push / Pages verification
+- **Live URL:** pushed to GitHub in commit f789537; Pages route stale at verification
 
 ### Jupiter Bakehouse — Bakery / Sourdough + French Pastry, Toronto ON
 - **Date:** 2026-04-15
@@ -528,7 +528,7 @@
 - **Token estimate:** ~18k
 - **Key decisions:** Built from the first real unbuilt queue item, then discovered Jupiter now has a live website and adjusted the page around clarity and stronger food-first framing instead of pretending they were still fully offline. Used real Instagram photos, kept the page to two main food moments plus one team image, and avoided fake review cards because primary-source reviewer names were not verified in this pass.
 - **Notes:** Queue brief said no website, but `jupiterbakehouse.com` is live as of this build. Instagram handle, phone, address, and Wednesday-Sunday schedule were verified from public sources. Exact daily opening hours and Google rating/review count stayed out of visible copy because they were not confidently verified from a primary source.
-- **Live URL:** pending push / Pages verification
+- **Live URL:** pushed to GitHub in commit f789537; Pages route stale at verification
 
 ### Bahar Bakery & Cafe — Persian Bakery / Café, Vancouver BC
 - **Date:** 2026-04-14
@@ -550,7 +550,7 @@
 - **Token estimate:** ~20k
 - **Key decisions:** Built from the first real unbuilt queue entry, then discovered the business now has a live site and adjusted the demo to compete on clarity instead of pretending they were still website-less. Used real Instagram photos, kept the page to two photo moments, and avoided fake review cards because direct reviewer initials were not fully available.
 - **Notes:** Queue brief said no website, but `baharbakery.ca` is live as of this build. Phone remained unverified because the site source exposed suspicious numbers. Sunday hours conflict between older editorial coverage and newer queue research, so the page flags that caveat instead of guessing.
-- **Live URL:** pending push / Pages verification
+- **Live URL:** pushed to GitHub in commit f789537; Pages route stale at verification
 
 ### Tough Tiger Barbershop — Barbershop, Winnipeg MB
 - **Date:** 2026-04-13
@@ -571,7 +571,7 @@
 - **Build time:** ~55 minutes
 - **Token estimate:** ~18k
 - **Key decisions:** Switched from the stale top-of-queue entries to the first real unbuilt business, then built directly from Tough Tiger's live Booksy data instead of the rough queue note. Used real Booksy photos, kept the page to two major photo moments, and avoided fake review cards because the source reviews did not expose compliant last initials.
-- **Live URL:** pending push / Pages verification
+- **Live URL:** pushed to GitHub in commit f789537; Pages route stale at verification
 
 ### Moonlight Tattoo — Tattoo Studio, Seattle WA
 - **Date:** 2026-04-12
@@ -593,7 +593,7 @@
 - **Token estimate:** ~18k
 - **Key decisions:** Leaned into Moonlight's actual booking model instead of forcing a generic tattoo-studio pitch. Used real public studio photos from the existing site, led with artist-led scheduling, and kept the tone calm instead of performatively edgy.
 - **Notes:** Belly Fruit Tattoo was also removed from the queue as a stale entry because `demos/belly-fruit-tattoo/` already existed locally. Google rating/review count still unverified in this pass, so they were omitted from visible copy.
-- **Live URL:** pending push / Pages verification
+- **Live URL:** pushed to GitHub in commit f789537; Pages route stale at verification
 
 
 ### Overnight Queue Cleanup — Abdou BarberShop, Montréal QC
@@ -627,7 +627,7 @@
 - **Token estimate:** ~22k
 - **Key decisions:** Cut the page down hard after v0. Reduced the oversized pitchy hero, removed most card-like containers, and rewrote copy toward plain guide language. Kept the owner/storefront portrait as the proof-first hero image, then used food and signage shots as the only other photo moments. Google proof stayed aggregate only, with no fabricated quotes.
 - **Notes:** Final leak check passed for banned visible phrases. Real workspace photos only. Hours, phone, rating, and map link sourced from existing Stir It Up workspace materials and prior source files.
-- **Live URL:** pending push / Pages verification
+- **Live URL:** pushed to GitHub in commit f789537; Pages route stale at verification
 
 ---
 
@@ -6697,4 +6697,4 @@ Real Victoria BC business. Website was literally just a street address (touristw
 - **Key decisions:** Built PowerRoute as a phone-first emergency and upgrade page, not a generic electrician SEO page. Used electrical panel and EV-charger detail imagery, skipped review cards because clean reviewer names were not verified, and kept the proof around 24/7 service, licensing language, since-2014 history, free quotes, and 2-year labor warranty.
 - **GPT 5.5 comparison:** GPT 5.5 remains materially better than the earlier GPT 5.4/Sonnet median for Lucy frontend execution: faster coherent CSS systems, stronger responsive structure, fewer layout/debug stalls, and better recovery after screenshot QA. It still wrote a few internal strategy/source phrases into visible copy, so visual QA and source-language grep stay mandatory. Recommendation: keep using GPT 5.5 for Lucy builds.
 - **Lessons:** Added `(1/5) [CTA] Mixed urgent/planned home-service pages need two clear action modes` to `skills/auto-site-builder/lessons.md`.
-- **Live URL:** https://auto-sites.pages.dev/demos/powerroute-electric-plumbing/ (pending push / Pages verification)
+- **Live URL:** https://auto-sites.pages.dev/demos/powerroute-electric-plumbing/ (pushed to GitHub in commit f789537; Pages route still serving the portfolio landing page at verification time)

@@ -22,7 +22,7 @@
 
 <!-- Built 2026-04-28 → demos/halifax-perennials/ → https://auto-sites.pages.dev/demos/halifax-perennials/ -->
 
-<!-- Built 2026-05-05 → demos/darling-cake-co/ → pending push / Pages verification -->
+<!-- Built 2026-05-05 → demos/darling-cake-co/ → pushed to GitHub in commit f789537; Pages route stale at verification -->
 
 
 <!-- Built 2026-05-11 → demos/glendale-lawn-pros/ → https://auto-sites.pages.dev/demos/glendale-lawn-pros/ -->
@@ -41,7 +41,7 @@
 
 <!-- Built 2026-05-19 → demos/lord-tile/ → https://auto-sites.pages.dev/demos/lord-tile/ (route stale at verification) -->
 
-<!-- Built 2026-05-20 → demos/powerroute-electric-plumbing/ → https://auto-sites.pages.dev/demos/powerroute-electric-plumbing/ (pending push / Pages verification) -->
+<!-- Built 2026-05-20 → demos/powerroute-electric-plumbing/ → https://auto-sites.pages.dev/demos/powerroute-electric-plumbing/ (pushed to GitHub in commit f789537; Pages route still serving the portfolio landing page at verification time) -->
 
 ## Leo’s Flooring
 

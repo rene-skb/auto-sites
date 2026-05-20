@@ -41,17 +41,7 @@
 
 <!-- Built 2026-05-19 → demos/lord-tile/ → https://auto-sites.pages.dev/demos/lord-tile/ (route stale at verification) -->
 
-## PowerRoute Electric & Plumbing
-
-- **Business:** PowerRoute Electric & Plumbing
-- **Category:** Electrician, electrical repair, panel upgrades, EV chargers, lighting, emergency electrical service
-- **Location:** Pasadena, CA / Glendale, CA / Altadena, CA
-- **Website:** https://powerrouteelectric.com/
-- **Contact signals:** Site advertises fast/free quotes, 24/7 availability, phone (818) 200-6572 from search result, licensed/bonded/insured language, 2-year labor warranty, “since 2014,” and service coverage across Pasadena, Glendale, Altadena, and nearby Los Angeles County communities.
-- **Why this is a good candidate:** High-intent local home-services niche with emergency and upgrade work, strong trust hooks, and visible quote intent, but the homepage reads like generic AI/SEO service copy with repeated sections and thin service detail. Likely upside from a sharper mobile-first redesign, emergency-call/quote CTAs, concrete service pages, reviews/license proof, service-area SEO, and a more credible project/process narrative.
-- **Observed services:** Electrical panel upgrades, emergency electrical repair, lighting installation, EV chargers, residential/commercial electrical work, electrical safety troubleshooting, and related plumbing positioning.
-- **Source/date added:** Iris nightly research, 2026-05-16.
-- **Status:** New lead — not contacted.
+<!-- Built 2026-05-20 → demos/powerroute-electric-plumbing/ → https://auto-sites.pages.dev/demos/powerroute-electric-plumbing/ (pending push / Pages verification) -->
 
 ## Leo’s Flooring
 
@@ -87,4 +77,16 @@
 - **Why this is a good candidate:** High-value local home-services niche with strong trust proof and clear quote intent, but the site is long, text-heavy, and visually dated/SEO-ish. Likely upside from a cleaner mobile-first redesign, tighter quote CTAs, before/after gallery, service cards for lawn/sprinklers/rototilling, review proof, and a Pasadena/LA service-area structure that feels credible instead of keyword-stuffed.
 - **Observed services:** Lawn installation, landscaping installation, sprinkler installation and repair, rototilling, organic compost/soil prep, flower beds, vegetable gardens, lawn renovation, and general landscaping.
 - **Source/date added:** Iris nightly research, 2026-05-19.
+- **Status:** New lead — not contacted.
+
+## Payless Kitchen Cabinets
+
+- **Business:** Payless Kitchen Cabinets
+- **Category:** Kitchen remodeling, cabinet installation/refacing, countertops, backsplash installation, full kitchen remodels
+- **Location:** Pasadena, CA / Los Angeles County service area
+- **Website:** https://paylesskitchencabinets.com/areas-we-serve/pasadena/
+- **Contact signals:** Pasadena landing page advertises Monday-Saturday free consultations, detailed written estimates, licensed/insured professionals, transparent pricing, installation discount language, and phone (866)-482-0919 from search result.
+- **Why this is a good candidate:** High-ticket local remodeling niche with strong commercial intent and useful trust/pricing signals, but the page is SEO-heavy and promotion-heavy rather than tastefully trust-building. Likely upside from a cleaner mobile-first redesign, stronger project gallery/before-after proof, clearer consultation CTA, license/review proof, cabinet/countertop package cards, and less keyword-stuffed Pasadena service-area copy.
+- **Observed services:** Cabinet refacing, new cabinet installation, countertop replacement, full kitchen remodeling, backsplash installation, layout redesign, lighting, and project management.
+- **Source/date added:** Iris nightly research, 2026-05-20.
 - **Status:** New lead — not contacted.

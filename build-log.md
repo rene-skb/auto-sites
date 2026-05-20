@@ -6675,3 +6675,26 @@ Real Victoria BC business. Website was literally just a street address (touristw
 - **GPT 5.5 comparison:** Still materially better than the previous GPT 5.4/Sonnet median for frontend/design execution. It produced a coherent visual system quickly, made stronger layout decisions around sparse source material, and debugged screenshot QA issues cleanly. Weakness remains source-language leakage in early visible copy, which screenshot review caught and fixed. Recommendation: keep using GPT 5.5 for Lucy builds with mandatory visual QA.
 - **Lessons:** Promoted `[REVIEWS] If source review data lacks compliant names, skip/fallback instead of faking cards` to 2/5 with Family Tree Service.
 - **Live URL:** https://auto-sites.pages.dev/demos/family-tree-service/ (pushed to GitHub in commit 7ae513f; Pages route still serving portfolio landing page at verification time)
+
+### PowerRoute Electric & Plumbing — Electrician / emergency electrical service, Pasadena CA
+- **Date:** 2026-05-20
+- **Model:** openai-codex/gpt-5.5 (Lucy cron)
+- **Agent:** Lucy
+- **Folder:** powerroute-electric-plumbing
+- **Hero pattern:** asymmetric-collage
+- **Typography:** Space Grotesk + IBM Plex Sans
+- **Review layout:** no review cards; same-treatment proof cards because compliant reviewer names were not verified
+- **Visit/hours layout:** quote-first contact command center with service area, 24/7 availability, warranty, phone, and official contact-page link
+- **Stats bar style:** no-stats
+- **WHY Score:** 8.03 (Steve Jobs 8.1 / Paul Graham 7.8 / David Ogilvy 8.2)
+- **WHAT Score:** 7.97 (Don Norman 8.0 / Steve Krug 8.1 / Jakob Nielsen 7.8)
+- **HOW Score:** 8.05 (Massimo Vignelli 8.0 / Erik Spiekermann 8.2 / Dieter Rams 7.9 / Emil Kowalski 8.1)
+- **Panel average:** 8.02
+- **Self-review:** 8.4
+- **Versions built:** 6 HTML versions + final index.html
+- **Build time:** ~70 minutes
+- **Token estimate:** ~39k
+- **Key decisions:** Built PowerRoute as a phone-first emergency and upgrade page, not a generic electrician SEO page. Used electrical panel and EV-charger detail imagery, skipped review cards because clean reviewer names were not verified, and kept the proof around 24/7 service, licensing language, since-2014 history, free quotes, and 2-year labor warranty.
+- **GPT 5.5 comparison:** GPT 5.5 remains materially better than the earlier GPT 5.4/Sonnet median for Lucy frontend execution: faster coherent CSS systems, stronger responsive structure, fewer layout/debug stalls, and better recovery after screenshot QA. It still wrote a few internal strategy/source phrases into visible copy, so visual QA and source-language grep stay mandatory. Recommendation: keep using GPT 5.5 for Lucy builds.
+- **Lessons:** Added `(1/5) [CTA] Mixed urgent/planned home-service pages need two clear action modes` to `skills/auto-site-builder/lessons.md`.
+- **Live URL:** https://auto-sites.pages.dev/demos/powerroute-electric-plumbing/ (pending push / Pages verification)

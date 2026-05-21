@@ -6698,3 +6698,25 @@ Real Victoria BC business. Website was literally just a street address (touristw
 - **GPT 5.5 comparison:** GPT 5.5 remains materially better than the earlier GPT 5.4/Sonnet median for Lucy frontend execution: faster coherent CSS systems, stronger responsive structure, fewer layout/debug stalls, and better recovery after screenshot QA. It still wrote a few internal strategy/source phrases into visible copy, so visual QA and source-language grep stay mandatory. Recommendation: keep using GPT 5.5 for Lucy builds.
 - **Lessons:** Added `(1/5) [CTA] Mixed urgent/planned home-service pages need two clear action modes` to `skills/auto-site-builder/lessons.md`.
 - **Live URL:** https://auto-sites.pages.dev/demos/powerroute-electric-plumbing/ (pushed to GitHub in commit f789537; Pages route still serving the portfolio landing page at verification time)
+
+### Leo’s Flooring — Flooring contractor, Los Angeles CA
+- **Date:** 2026-05-21
+- **Model:** openai-codex/gpt-5.5
+- **Agent:** Lucy
+- **Folder:** leos-flooring
+- **Hero pattern:** dark-immersive
+- **Typography:** Archivo + Libre Baskerville
+- **Review layout:** no customer review cards; same-treatment factual proof cards because compliant named review pulls were not confidently surfaced
+- **Visit/hours layout:** final two-card estimate/service-notes block with phone and consultation CTAs, no map because no confident Google Maps business-pin URL surfaced
+- **Stats bar style:** no-stats
+- **WHY Score:** 7.97 (Jobs 8.0 / Graham 7.8 / Ogilvy 8.1)
+- **WHAT Score:** 8.07 (Norman 8.1 / Krug 8.2 / Nielsen 7.9)
+- **HOW Score:** 8.13 (Vignelli 8.1 / Spiekermann 8.0 / Rams 8.0 / Emil 8.4)
+- **Panel average:** 8.06
+- **Self-review:** 8.5
+- **Versions built:** 6 HTML versions + final index.html
+- **Build time:** ~70 minutes
+- **Token estimate:** ~24k
+- **Key decisions:** Treated Leo’s Flooring as a material-trust contractor page: dark wood-grain hero, official project photography, license/free-consultation proof, and clear service paths. Skipped review cards and map links rather than fabricating compliant reviewer attributions or a named business-pin URL.
+- **Notes:** Used official WordPress media assets only. Added one Tier 1 lesson to `skills/auto-site-builder/lessons.md`. Desktop and mobile screenshots passed visual review after fixing the gallery grid.
+- **Live URL:** https://auto-sites.pages.dev/demos/leos-flooring/ (pending push/verification)

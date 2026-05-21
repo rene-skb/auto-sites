@@ -43,17 +43,7 @@
 
 <!-- Built 2026-05-20 → demos/powerroute-electric-plumbing/ → https://auto-sites.pages.dev/demos/powerroute-electric-plumbing/ (pushed to GitHub in commit f789537; Pages route still serving the portfolio landing page at verification time) -->
 
-## Leo’s Flooring
-
-- **Business:** Leo’s Flooring
-- **Category:** Hardwood flooring installation/refinishing, laminate, LVP, carpet installation, floor repair
-- **Location:** Los Angeles, CA / Pasadena, CA service area
-- **Website:** https://leosflooring.net/
-- **Contact signals:** Site promotes free in-home consultation, 20+ years experience, licensed/insured/bonded language, CSLB license #1083662, residential/commercial flooring, and Pasadena service-area copy for historic-home wood floor work.
-- **Why this is a good candidate:** High-intent home-services niche with strong trust signals and visible consultation intent, but the homepage copy is generic/AI-ish and the information architecture is service-link heavy. Likely upside from a sharper mobile-first redesign, quote/consultation CTAs, stronger before/after gallery, trust/license/review modules, and cleaner Pasadena/LA service-area SEO.
-- **Observed services:** Hardwood floor installation, dustless sanding/refinishing, laminate flooring, luxury vinyl plank installation, carpet installation, floor repair, residential and commercial flooring.
-- **Source/date added:** Iris nightly research, 2026-05-16.
-- **Status:** New lead — not contacted.
+<!-- Built 2026-05-21 → demos/leos-flooring/ → https://auto-sites.pages.dev/demos/leos-flooring/ (pending Pages verification) -->
 
 ## Joseph & Sons Tile
 
@@ -89,4 +79,16 @@
 - **Why this is a good candidate:** High-ticket local remodeling niche with strong commercial intent and useful trust/pricing signals, but the page is SEO-heavy and promotion-heavy rather than tastefully trust-building. Likely upside from a cleaner mobile-first redesign, stronger project gallery/before-after proof, clearer consultation CTA, license/review proof, cabinet/countertop package cards, and less keyword-stuffed Pasadena service-area copy.
 - **Observed services:** Cabinet refacing, new cabinet installation, countertop replacement, full kitchen remodeling, backsplash installation, layout redesign, lighting, and project management.
 - **Source/date added:** Iris nightly research, 2026-05-20.
+- **Status:** New lead — not contacted.
+
+## Pasadena Remodeler
+
+- **Business:** Pasadena Remodeler / Handyman Connection of Pasadena
+- **Category:** Licensed remodeling contractor, handyman services, general contracting, bathroom/kitchen/home remodeling
+- **Location:** Pasadena, CA / Los Angeles County service area
+- **Website:** https://www.pasadenaremodeler.com/
+- **Contact signals:** Site says licensed and insured, trusted by Pasadena since 1998, free estimate CTA, guaranteed jobs, and service coverage across Pasadena, Altadena, San Marino, South Pasadena, Glendale, Burbank, Arcadia, and nearby LA communities.
+- **Why this is a good candidate:** Strong local trust signals and high-ticket remodeling intent, but the site feels thin, generic, and old-fashioned for a premium contractor. Likely upside from a sharper mobile-first redesign with clear estimate CTAs, project-gallery proof, license/insurance/review modules, service cards for kitchens/bathrooms/handyman/remodeling, and cleaner Pasadena-area SEO that feels less templated.
+- **Observed services:** Remodeling contracting, handyman services, general contractor work, bathroom upgrades/remodeling, home maintenance, and broader residential/commercial remodeling services.
+- **Source/date added:** Iris nightly research, 2026-05-21.
 - **Status:** New lead — not contacted.

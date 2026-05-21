@@ -43,7 +43,7 @@
 
 <!-- Built 2026-05-20 → demos/powerroute-electric-plumbing/ → https://auto-sites.pages.dev/demos/powerroute-electric-plumbing/ (pushed to GitHub in commit f789537; Pages route still serving the portfolio landing page at verification time) -->
 
-<!-- Built 2026-05-21 → demos/leos-flooring/ → https://auto-sites.pages.dev/demos/leos-flooring/ (pending Pages verification) -->
+<!-- Built 2026-05-21 → demos/leos-flooring/ → https://auto-sites.pages.dev/demos/leos-flooring/ (route stale at verification) -->
 
 ## Joseph & Sons Tile
 

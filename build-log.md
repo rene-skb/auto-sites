@@ -6719,4 +6719,4 @@ Real Victoria BC business. Website was literally just a street address (touristw
 - **Token estimate:** ~24k
 - **Key decisions:** Treated Leo’s Flooring as a material-trust contractor page: dark wood-grain hero, official project photography, license/free-consultation proof, and clear service paths. Skipped review cards and map links rather than fabricating compliant reviewer attributions or a named business-pin URL.
 - **Notes:** Used official WordPress media assets only. Added one Tier 1 lesson to `skills/auto-site-builder/lessons.md`. Desktop and mobile screenshots passed visual review after fixing the gallery grid.
-- **Live URL:** https://auto-sites.pages.dev/demos/leos-flooring/ (pending push/verification)
+- **Live URL:** https://auto-sites.pages.dev/demos/leos-flooring/ (push succeeded in commit 7150d63; Pages route still serving the portfolio landing page at verification time)

@@ -43,7 +43,7 @@
 - **Token estimate:** ~27k
 - **Key decisions:** Treated Joseph & Sons as an experience-and-material-guidance contractor page rather than a generic remodeling template. The page leads with LA/Orange County tile installation, 60+ years of experience, free consultation, material choice, and an estimate-readiness flow based on the official checklist.
 - **Notes:** Used official Joseph & Sons website/Squarespace imagery only. No prices, license/insurance claims, named reviews, city-level service list, or generic Google Maps link were invented. Added one Tier 1 lesson to `skills/auto-site-builder/lessons.md`.
-- **Live URL:** https://auto-sites.pages.dev/demos/joseph-and-sons-tile/ (push/live verification pending at log-write time)
+- **Live URL:** https://auto-sites.pages.dev/demos/joseph-and-sons-tile/ (pushed to GitHub in commit 48cf460; Pages route still serving the portfolio landing page at verification time)
 
 
 ### Lord Tile — Tile contractor, Pasadena CA

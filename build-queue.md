@@ -45,18 +45,6 @@
 
 <!-- Built 2026-05-21 → demos/leos-flooring/ → https://auto-sites.pages.dev/demos/leos-flooring/ (route stale at verification) -->
 
-## Joseph & Sons Tile
-
-- **Business:** Joseph & Sons Tile
-- **Category:** Tile installation, tile flooring, backsplash/fireplace/wall tile, residential tile contracting
-- **Location:** Los Angeles, CA
-- **Website:** https://josephandsonstile.com/
-- **Contact signals:** Site advertises a free consultation, 60+ years as LA tile contractors, family-business/father-to-son language from search result, access to local tile suppliers, and high-intent residential remodeling services.
-- **Why this is a good candidate:** Long-running local trade business in a high-value home-improvement niche, but the website reads like a thin SEO/article-style page rather than a trust-building contractor site. Likely upside from a modern mobile-first redesign with clear quote/contact CTAs, before/after gallery, service pages for bathrooms/kitchens/backsplashes/floors, supplier/material guidance, reviews, and stronger proof of licensing/insurance if available.
-- **Observed services:** Tile installation, tile floor installation, walls, fireplaces, backsplashes, ceramic, travertine, slate, porcelain, wood-look tile, granite, marble, stone/pebble, quartzite, and onyx tile.
-- **Source/date added:** Iris nightly research, 2026-05-18.
-- **Status:** New lead — not contacted.
-
 ## RototillerGuy Landscaping
 
 - **Business:** RototillerGuy Landscaping
@@ -91,4 +79,16 @@
 - **Why this is a good candidate:** Strong local trust signals and high-ticket remodeling intent, but the site feels thin, generic, and old-fashioned for a premium contractor. Likely upside from a sharper mobile-first redesign with clear estimate CTAs, project-gallery proof, license/insurance/review modules, service cards for kitchens/bathrooms/handyman/remodeling, and cleaner Pasadena-area SEO that feels less templated.
 - **Observed services:** Remodeling contracting, handyman services, general contractor work, bathroom upgrades/remodeling, home maintenance, and broader residential/commercial remodeling services.
 - **Source/date added:** Iris nightly research, 2026-05-21.
+- **Status:** New lead — not contacted.
+
+## Branover Contractors Inc
+
+- **Business:** Branover Contractors Inc
+- **Category:** Licensed electrical contractor, residential/commercial/industrial electrical service, panel upgrades, EV charger installation
+- **Location:** Los Angeles, CA / San Fernando Valley, Orange County, Ventura County service area
+- **Website:** https://www.branovercontractors.com/
+- **Contact signals:** Site advertises family-owned and operated since 1985, licensed electrician, free estimates, LADWP/SCE/LADBS familiarity, inspection/code-compliance work, and phone (323) 467-6661.
+- **Why this is a good candidate:** High-value local trade business with strong longevity and trust proof, but the site copy/design is typo-prone, repetitive, and dated. Likely upside from a sharper mobile-first electrician redesign with urgent quote CTAs, service cards for panels/EV/code compliance/troubleshooting, license/inspection proof, service-area structure, review modules, and cleaner “since 1985” credibility.
+- **Observed services:** Electrical service panel upgrades, EV charger installation, property-management electrical work, troubleshooting, code compliance/notice-to-comply fixes, smoke/CO detector work, residential, commercial, and industrial electrical service.
+- **Source/date added:** Iris nightly research, 2026-05-21 22:00 PT.
 - **Status:** New lead — not contacted.

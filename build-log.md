@@ -23,6 +23,29 @@
 
 # Auto-Sites Build Log
 
+### Joseph & Sons Tile - Tile contractor, Los Angeles CA
+- **Date:** 2026-05-22
+- **Model:** openai-codex/gpt-5.5
+- **Agent:** Lucy
+- **Folder:** joseph-and-sons-tile
+- **Hero pattern:** dark-immersive
+- **Typography:** Fraunces + DM Sans
+- **Review layout:** no customer review cards; one large factual proof card plus two same-treatment proof cards because compliant first-name + last-initial review quotes were not verified
+- **Visit/hours layout:** hero quick-info strip plus final dark contact card with phone, address, service area, and availability; no generic Google Maps link
+- **Stats bar style:** no-stats
+- **WHY Score:** 8.07 (Jobs 8.1 / Graham 7.9 / Ogilvy 8.2)
+- **WHAT Score:** 7.93 (Norman 8.0 / Krug 7.8 / Nielsen 8.0)
+- **HOW Score:** 8.08 (Vignelli 8.1 / Spiekermann 8.0 / Rams 8.0 / Emil 8.2)
+- **Panel average:** 8.03
+- **Self-review:** 8.5
+- **Versions built:** 6 HTML versions + final index.html
+- **Build time:** ~75 minutes
+- **Token estimate:** ~27k
+- **Key decisions:** Treated Joseph & Sons as an experience-and-material-guidance contractor page rather than a generic remodeling template. The page leads with LA/Orange County tile installation, 60+ years of experience, free consultation, material choice, and an estimate-readiness flow based on the official checklist.
+- **Notes:** Used official Joseph & Sons website/Squarespace imagery only. No prices, license/insurance claims, named reviews, city-level service list, or generic Google Maps link were invented. Added one Tier 1 lesson to `skills/auto-site-builder/lessons.md`.
+- **Live URL:** https://auto-sites.pages.dev/demos/joseph-and-sons-tile/ (push/live verification pending at log-write time)
+
+
 ### Lord Tile — Tile contractor, Pasadena CA
 - **Date:** 2026-05-19
 - **Model:** openai-codex/gpt-5.5

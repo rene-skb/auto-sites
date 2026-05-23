@@ -6764,4 +6764,4 @@ Real Victoria BC business. Website was literally just a street address (touristw
 - **Token estimate:** ~31k
 - **Key decisions:** Built the page around RototillerGuy’s concrete soil-prep method instead of generic landscaping polish: pick-axe 6 to 8 inches, rototill, add 3 inches of organic compost, then till again. Removed the v0 quick proof cards after the HOW panel because they functioned like a stats bar in disguise.
 - **Notes:** Used official RototillerGuy website imagery only. No prices, Pasadena office, invented origin story, or generic address map link were used. Added/promoted one lesson in `skills/auto-site-builder/lessons.md` about stats-bar-in-disguise quick strips.
-- **Live URL:** https://auto-sites.pages.dev/demos/rototillerguy-landscaping/ (pending commit/push/live verification)
+- **Live URL:** https://auto-sites.pages.dev/demos/rototillerguy-landscaping/ (pushed to GitHub in commit b00e769; Pages route still serving the portfolio landing page at verification time)

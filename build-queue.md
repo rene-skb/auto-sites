@@ -45,7 +45,7 @@
 
 <!-- Built 2026-05-21 → demos/leos-flooring/ → https://auto-sites.pages.dev/demos/leos-flooring/ (route stale at verification) -->
 
-<!-- Built 2026-05-23 → demos/rototillerguy-landscaping/ → https://auto-sites.pages.dev/demos/rototillerguy-landscaping/ (pending push/live verification) -->
+<!-- Built 2026-05-23 → demos/rototillerguy-landscaping/ → https://auto-sites.pages.dev/demos/rototillerguy-landscaping/ (route stale at verification) -->
 
 ## Payless Kitchen Cabinets
 

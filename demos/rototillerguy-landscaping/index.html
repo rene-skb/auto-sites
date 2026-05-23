@@ -1,0 +1,163 @@
+<!--
+DELTA: v5 final polish notes
+- Standardized the primary CTA phrase to “Get a free bid.”
+- Added keyboard focus-visible states for links and buttons.
+- Self-review score: 8.4
+- Panel averages carried forward from panel-notes.md: WHY 7.97 / WHAT 7.83 / HOW 8.00
+- Final polish focus: factual clarity, restrained motion, mobile-safe stacking, and no visible source/provenance copy.
+-->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RototillerGuy Landscaping | Lawn, sod, sprinklers, and soil prep in Los Angeles County</title>
+  <meta name="description" content="Licensed Los Angeles County landscaping contractor for lawn installation, sod, sprinklers, rototilling, and soil preparation.">
+  <meta property="og:title" content="RototillerGuy Landscaping">
+  <meta property="og:description" content="Start with better soil, then install the lawn right.">
+  <meta property="og:image" content="https://auto-sites.pages.dev/demos/rototillerguy-landscaping/sod-after.jpg">
+  <meta property="og:url" content="https://auto-sites.pages.dev/demos/rototillerguy-landscaping/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--soil:#2d2118;--soil-2:#4d3523;--green:#4d7b32;--green-2:#173b26;--cream:#f7f0e2;--paper:#fffaf0;--muted:#796b5d;--line:rgba(45,33,24,.16);--shadow:0 24px 70px rgba(45,33,24,.18);--section:clamp(58px,7.5vw,104px);--ease-out:cubic-bezier(.23,1,.32,1);--ease-in-out:cubic-bezier(.77,0,.175,1)}
+    
+    *{box-sizing:border-box}
+     html{scroll-behavior:smooth}
+     body{margin:0;background:var(--cream);color:var(--soil);font-family:'Source Sans 3',system-ui,sans-serif;font-size:18px;line-height:1.5}
+     img{max-width:100%;display:block}
+     a{color:inherit}
+     .wrap{width:min(1160px,calc(100% - 40px));margin-inline:auto}
+    .nav{position:sticky;top:0;z-index:20;background:rgba(247,240,226,.92);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+    .nav-inner{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:900;color:var(--soil)}
+    .brandmark{font-family:'Barlow Condensed',sans-serif;font-size:28px;letter-spacing:-.03em;text-transform:uppercase}
+    .branddot{width:13px;height:13px;border-radius:99px;background:var(--green);box-shadow:0 0 0 6px rgba(77,123,50,.12)}
+    .links{display:flex;gap:28px;align-items:center;font-size:15px;text-transform:uppercase;letter-spacing:.1em;font-weight:700}
+    .links a{text-decoration:none;transition:color 160ms var(--ease-out)}
+    .links a:hover{color:var(--green)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px;border-radius:999px;background:var(--green);color:#fff;text-decoration:none;font-weight:800;letter-spacing:.02em;transition:transform 160ms var(--ease-out),background 160ms var(--ease-out),box-shadow 160ms var(--ease-out)}
+    .btn:hover{background:#3e6728;box-shadow:0 14px 32px rgba(77,123,50,.25)}
+    a:focus-visible,button:focus-visible{outline:3px solid #9abe77;outline-offset:4px}
+    .phone:focus-visible{outline:3px solid #9abe77;outline-offset:4px}
+    .btn:active{transform:scale(.97)}
+    .btn.secondary{background:transparent;color:var(--soil);border:1px solid var(--line)}
+    .btn.secondary:hover{background:rgba(45,33,24,.05);box-shadow:none}
+    .dark .btn.secondary,.contact-card .btn.secondary{color:var(--paper);border-color:rgba(255,255,255,.35)}
+    .dark .btn.secondary:hover,.contact-card .btn.secondary:hover{background:rgba(255,255,255,.09)}
+    .menu{display:none;background:none;border:0;font:inherit;font-weight:800;color:var(--soil)}
+    
+    .hero{padding:58px 0 var(--section);overflow:hidden}
+    .hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:48px;align-items:center}
+    .eyebrow{font-size:14px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin:0 0 18px}
+    .hero h1{font-family:'Barlow Condensed',sans-serif;font-size:clamp(70px,10.6vw,138px);line-height:.86;letter-spacing:-.055em;text-transform:uppercase;margin:0 0 24px}
+    .service-line{display:inline-flex;flex-wrap:wrap;gap:8px;margin:0 0 18px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;font-size:14px;color:var(--green-2)}
+    .service-line span{background:rgba(77,123,50,.11);border:1px solid rgba(77,123,50,.18);border-radius:999px;padding:7px 10px}
+    .lead{font-size:clamp(21px,2.4vw,29px);line-height:1.2;max-width:720px;margin:0 0 28px;color:#49382a}
+    .hero-copy{max-width:760px}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+    .collage{display:grid;grid-template-columns:.42fr 1fr;gap:16px;align-items:center}
+    .photo{border-radius:28px;overflow:hidden;border:1px solid rgba(45,33,24,.18);box-shadow:var(--shadow);background:#ddd}
+    .photo img{width:100%;height:100%;object-fit:cover}
+    .photo.tall{height:640px}
+    .photo.stack{height:260px}
+    .badge{align-self:start;background:var(--soil);color:var(--paper);border-radius:28px;padding:24px;box-shadow:var(--shadow);grid-column:1;grid-row:1}
+    .badge strong{font-family:'Barlow Condensed';font-size:42px;display:block;line-height:.9;text-transform:uppercase}
+    .badge span{display:block;color:#d8c9b4;margin-top:12px;font-size:16px}
+    .section{padding:var(--section) 0;border-top:1px solid var(--line)}
+    .split{display:grid;grid-template-columns:.8fr 1.2fr;gap:54px;align-items:start}
+    .kicker{font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:900;color:var(--green);margin:0 0 14px}
+    .section h2{font-family:'Barlow Condensed';font-size:clamp(46px,7vw,92px);line-height:.9;letter-spacing:-.04em;text-transform:uppercase;margin:0}
+    .section p{color:#5a493a;margin:0}
+    .copy-stack{display:grid;gap:18px;max-width:650px}
+    .process{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:44px}
+    .step{background:var(--paper);border:1px solid var(--line);border-radius:28px;padding:24px;min-height:220px}
+    .num{font-family:'Barlow Condensed';font-size:22px;color:var(--green);font-weight:800}
+    .step h3{font-size:24px;line-height:1.05;margin:44px 0 12px}
+    .service h3{font-family:'Barlow Condensed';font-size:32px;line-height:.98;text-transform:uppercase;margin:0 0 12px}
+    .before-after{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:44px}
+    .ba-card{position:relative;border-radius:32px;overflow:hidden;min-height:540px;border:1px solid rgba(255,255,255,.2);box-shadow:var(--shadow);background:#111}
+    .ba-card img{width:100%;height:100%;object-fit:cover}
+    .label{position:absolute;left:20px;top:20px;background:rgba(247,240,226,.92);border-radius:999px;padding:8px 14px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;font-size:12px}
+    .caption{position:absolute;left:20px;right:20px;bottom:20px;background:rgba(247,240,226,.9);color:var(--soil);border-radius:18px;padding:14px 16px;font-weight:800}
+    .dark{background:var(--soil);color:var(--paper)}
+    .dark p,.dark .muted{color:#d3c4ae}
+    .dark .kicker{color:#9abe77}
+    .services{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:44px}
+    .service{background:#35271d;border:1px solid rgba(255,255,255,.1);border-radius:30px;overflow:hidden}
+    .service img{height:190px;width:100%;object-fit:cover}
+    .service div{padding:24px}
+    .tag{display:inline-flex;margin-bottom:16px;border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:5px 10px;font-size:12px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:#cbe5a7}
+    .service p{font-size:16px}
+    .reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:44px}
+    .review{background:var(--paper);border:1px solid var(--line);border-radius:30px;padding:28px}
+    .stars{font-size:13px;letter-spacing:.18em;color:var(--green);font-weight:900;margin-bottom:18px}
+    .quote{font-size:20px;line-height:1.35;color:#3b2a1d}
+    .who{margin-top:24px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:var(--green);font-size:13px}
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:44px}
+    .contact-card{background:var(--green-2);color:var(--paper);border-radius:34px;padding:34px;border:1px solid rgba(255,255,255,.1)}
+    .phone-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px}
+    .phone{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:18px;text-decoration:none;transition:transform 180ms var(--ease-out),background 180ms var(--ease-out),border-color 180ms var(--ease-out)}
+    .phone:hover{transform:translateY(-2px);background:rgba(255,255,255,.11);border-color:rgba(255,255,255,.24)}
+    .phone:active{transform:scale(.98)}
+    .phone b{display:block}
+    .phone span{color:#d6e2cd}
+    .footer{padding:42px 0;background:#211810;color:#d7c9b8}
+    .footer .wrap{display:flex;justify-content:space-between;gap:24px;align-items:center}
+    .footer .logo{color:var(--paper)}
+    .reveal{opacity:1;transform:none}
+    .js .reveal{opacity:0;transform:translateY(24px);transition:opacity 650ms var(--ease-out),transform 650ms var(--ease-out)}
+    .js .reveal.in{opacity:1;transform:none}
+    .js .hero-copy.reveal{transition-delay:80ms}
+    .js .collage.reveal{transition-delay:180ms}
+    .process .reveal:nth-child(2),.services .reveal:nth-child(2),.reviews .reveal:nth-child(2){transition-delay:70ms}
+    .process .reveal:nth-child(3),.services .reveal:nth-child(3),.reviews .reveal:nth-child(3){transition-delay:140ms}
+    .process .reveal:nth-child(4){transition-delay:210ms}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}
+    .btn,.links a,.phone{transition:none}
+    .js .reveal{opacity:1;transform:none;transition:none}
+    }
+    
+    @media(max-width:900px){.links{display:none}
+    .menu{display:block}
+    .hero-grid,.split,.contact-grid{grid-template-columns:1fr}
+    .collage{grid-template-columns:1fr}
+    .badge{grid-column:auto;grid-row:auto}
+    .photo.tall{height:440px}
+    .process,.services,.reviews{grid-template-columns:1fr}
+    .before-after{grid-template-columns:1fr}
+    .ba-card{min-height:430px}
+    .phone-grid{grid-template-columns:1fr}
+    .footer .wrap{display:grid}
+    .logo img{width:180px}
+    }
+    
+  </style>
+</head>
+<body>
+  <nav class="nav"><div class="wrap nav-inner"><a class="logo" href="#top" aria-label="RototillerGuy home"><span class="branddot" aria-hidden="true"></span><span class="brandmark">RototillerGuy</span></a><div class="links"><a href="#process">Process</a><a href="#services">Services</a><a href="#reviews">Reviews</a><a href="#contact">Contact</a><a class="btn" href="https://rototillerguy.com/contacts/">Get a free bid</a></div><button class="menu" aria-label="Open menu">Menu</button></div></nav>
+  <main id="top">
+    <section class="hero"><div class="wrap hero-grid"><div class="hero-copy reveal"><p class="eyebrow">Licensed CA contractor #974733 · Los Angeles County</p><h1>Start with the soil.</h1><div class="service-line"><span>Lawn installation</span><span>Sod</span><span>Sprinklers</span><span>Rototilling</span><span>Los Angeles County</span></div><p class="lead">RototillerGuy builds lawns from the root zone up: pick-axe, rototill, compost, then till again.</p><div class="hero-actions"><a class="btn" href="https://rototillerguy.com/contacts/">Get a free bid</a><a class="btn secondary" href="tel:+18182094967">Call 818-209-4967</a></div></div><div class="collage reveal"><div class="badge"><strong>6–8 inches</strong><span>Soil is opened up before the rototiller goes through.</span></div><div class="photo tall"><img src="sod-after.jpg" alt="Fresh sod lawn after installation"></div></div></div></section>
+    <section class="section" id="process"><div class="wrap"><div class="split reveal"><div><p class="kicker">The method</p><h2>Depth before grass.</h2></div><div class="copy-stack"><p>Most lawn pages talk about a green finish. RototillerGuy talks about the layer underneath it.</p><p>The company says its crew pick-axes 6 to 8 inches deep, rototills, spreads a 3 inch layer of organic compost, then rototills again so the compost reaches the root zone.</p></div></div><div class="process"><article class="step reveal"><span class="num">01</span><h3>Open the soil</h3><p>Pick-axe first, then rototill to loosen the top 6 to 8 inches.</p></article><article class="step reveal"><span class="num">02</span><h3>Feed the roots</h3><p>Spread organic compost where grass, beds, and vegetables can use it.</p></article><article class="step reveal"><span class="num">03</span><h3>Blend it in</h3><p>Till again so the soil amendment is mixed through the root zone.</p></article><article class="step reveal"><span class="num">04</span><h3>Install clean</h3><p>Lay sod, repair sprinklers, and help the new lawn survive.</p></article></div><div class="before-after"><figure class="ba-card reveal"><img src="sod-before.webp" alt="Soil preparation before lawn installation"><figcaption class="label">Before</figcaption><p class="caption">Soil opened and prepared before the lawn goes in.</p></figure><figure class="ba-card reveal"><img src="sod-after.jpg" alt="Completed sod lawn after installation"><figcaption class="label">After</figcaption><p class="caption">Finished sod with irrigation markers still in place.</p></figure></div></div></section>
+    <section class="section dark" id="services"><div class="wrap"><div class="split reveal"><div><p class="kicker">Services</p><h2>Lawn work, irrigation, and soil prep.</h2></div><p>The useful stuff is grouped by what homeowners usually need: a new lawn, working water, or better soil before planting.</p></div><div class="services"><article class="service reveal"><img src="sod-installation.jpg" alt="Hands installing sod"><div><span class="tag">New sod</span><h3>Sod and lawn installation</h3><p>New lawn installation, grass sod installation, lawn renovation, and prep for fresh growth.</p></div></article><article class="service reveal"><img src="irrigation-sprinkler.jpg" alt="Sprinkler watering grass"><div><span class="tag">Watering</span><h3>Sprinklers and repair</h3><p>Sprinkler installation, repairs, heads, valves, irrigation upgrades, and watering questions.</p></div></article><article class="service reveal"><img src="soil-prep.png" alt="Rototiller machine working soil"><div><span class="tag">Root zone</span><h3>Rototilling and compost</h3><p>Rototilling, soil preparation, compost delivery, flower beds, and vegetable gardens.</p></div></article></div></div></section>
+    <section class="section" id="reviews"><div class="wrap"><div class="split reveal"><div><p class="kicker">Customer proof</p><h2>People call Mike when the lawn is going wrong.</h2></div><p>RototillerGuy’s site points to hundreds of reviews across Google, Yelp, and other directories. The comments below are short excerpts from reviews published on the company site.</p></div><div class="reviews"><article class="review reveal"><p class="stars">★★★★★</p><p class="quote">“He calmly talks me through everything I need to do right over the phone.”</p><p class="who">Mary Ann M. · via Google</p></article><article class="review reveal"><p class="stars">★★★★★</p><p class="quote">“He started telling me what I needed to do to repair the sprinkler on my own.”</p><p class="who">James C. · via Google</p></article><article class="review reveal"><p class="stars">★★★★★</p><p class="quote">“His bid was a good deal lower than the other two I had obtained.”</p><p class="who">Scott S. · via Yelp</p></article></div></div></section>
+    <section class="section dark" id="contact"><div class="wrap"><div class="split reveal"><div><p class="kicker">Get a bid</p><h2>Send the yard. Get the plan.</h2></div><p>Use the estimate form or call the nearest listed number. The company says it is available every day from 07:00 to 19:00.</p></div><div class="contact-grid"><div class="contact-card reveal"><h3>Project estimate</h3><p class="muted">Lawn installation, sprinkler repair, rototilling, compost, waterlines, and planting beds across Los Angeles County.</p><div class="hero-actions"><a class="btn" href="https://rototillerguy.com/contacts/">Get a free bid</a><a class="btn secondary" href="https://maps.app.goo.gl/KKRAii3AKLPyVmYX6">Open Maps listing</a></div></div><div class="contact-card reveal"><h3>Phone lines</h3><div class="phone-grid"><a class="phone" href="tel:+18182094967"><b>North Hollywood</b><span>818-209-4967</span></a><a class="phone" href="tel:+12139240590"><b>Los Angeles</b><span>213-924-0590</span></a><a class="phone" href="tel:+13232178886"><b>Santa Monica</b><span>323-217-8886</span></a><a class="phone" href="tel:+15627946339"><b>Long Beach</b><span>562-794-6339</span></a></div></div></div></div></section>
+  </main>
+  <footer class="footer"><div class="wrap"><div class="logo"><span class="branddot" aria-hidden="true"></span><span class="brandmark">RototillerGuy</span></div><p>Licensed landscaping, lawn installation, sprinklers, rototilling, and soil preparation across Los Angeles County.</p></div></footer>
+
+  <script>
+    document.documentElement.classList.add('js');
+    const revealItems = document.querySelectorAll('.reveal');
+    const reveal = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          reveal.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.14, rootMargin: '0px 0px -40px 0px' });
+    revealItems.forEach((item) => reveal.observe(item));
+  </script>
+</body>
+</html>

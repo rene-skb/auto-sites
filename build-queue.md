@@ -45,17 +45,7 @@
 
 <!-- Built 2026-05-21 → demos/leos-flooring/ → https://auto-sites.pages.dev/demos/leos-flooring/ (route stale at verification) -->
 
-## RototillerGuy Landscaping
-
-- **Business:** RototillerGuy Landscaping
-- **Category:** Landscaping, lawn installation, sprinkler installation/repair, rototilling, lawn renovation
-- **Location:** Los Angeles County, CA / Pasadena service area
-- **Website:** https://rototillerguy.com/
-- **Contact signals:** Site promotes free bids, 25+ years of service, 800+ customer/review trust language, Los Angeles/Pasadena service coverage, and high-intent lawn/sprinkler installation and repair services.
-- **Why this is a good candidate:** High-value local home-services niche with strong trust proof and clear quote intent, but the site is long, text-heavy, and visually dated/SEO-ish. Likely upside from a cleaner mobile-first redesign, tighter quote CTAs, before/after gallery, service cards for lawn/sprinklers/rototilling, review proof, and a Pasadena/LA service-area structure that feels credible instead of keyword-stuffed.
-- **Observed services:** Lawn installation, landscaping installation, sprinkler installation and repair, rototilling, organic compost/soil prep, flower beds, vegetable gardens, lawn renovation, and general landscaping.
-- **Source/date added:** Iris nightly research, 2026-05-19.
-- **Status:** New lead — not contacted.
+<!-- Built 2026-05-23 → demos/rototillerguy-landscaping/ → https://auto-sites.pages.dev/demos/rototillerguy-landscaping/ (pending push/live verification) -->
 
 ## Payless Kitchen Cabinets
 

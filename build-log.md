@@ -6743,3 +6743,25 @@ Real Victoria BC business. Website was literally just a street address (touristw
 - **Key decisions:** Treated Leo’s Flooring as a material-trust contractor page: dark wood-grain hero, official project photography, license/free-consultation proof, and clear service paths. Skipped review cards and map links rather than fabricating compliant reviewer attributions or a named business-pin URL.
 - **Notes:** Used official WordPress media assets only. Added one Tier 1 lesson to `skills/auto-site-builder/lessons.md`. Desktop and mobile screenshots passed visual review after fixing the gallery grid.
 - **Live URL:** https://auto-sites.pages.dev/demos/leos-flooring/ (push succeeded in commit 7150d63; Pages route still serving the portfolio landing page at verification time)
+
+### RototillerGuy Landscaping — Landscaping, lawn installation, sprinklers, and soil preparation, Los Angeles County CA
+- **Date:** 2026-05-23
+- **Model:** openai-codex/gpt-5.5
+- **Agent:** Lucy
+- **Folder:** rototillerguy-landscaping
+- **Hero pattern:** asymmetric-collage
+- **Typography:** Barlow Condensed + Source Sans 3
+- **Review layout:** three same-treatment 5-star field-note cards with compliant first-name + last-initial attributions from reviews embedded on the official site
+- **Visit/hours layout:** dark two-card contact command panel with one free-bid card, one phone-line grid, and the official Google Maps business-listing link
+- **Stats bar style:** no-stats
+- **WHY Score:** 7.97 (Jobs 8.0 / Graham 7.8 / Ogilvy 8.1)
+- **WHAT Score:** 7.83 (Norman 8.0 / Krug 7.7 / Nielsen 7.8)
+- **HOW Score:** 8.00 (Vignelli 8.0 / Spiekermann 7.9 / Rams 8.1 / Emil 8.0)
+- **Panel average:** 7.93
+- **Self-review:** 8.4
+- **Versions built:** 6 HTML versions + final index.html
+- **Build time:** ~80 minutes
+- **Token estimate:** ~31k
+- **Key decisions:** Built the page around RototillerGuy’s concrete soil-prep method instead of generic landscaping polish: pick-axe 6 to 8 inches, rototill, add 3 inches of organic compost, then till again. Removed the v0 quick proof cards after the HOW panel because they functioned like a stats bar in disguise.
+- **Notes:** Used official RototillerGuy website imagery only. No prices, Pasadena office, invented origin story, or generic address map link were used. Added/promoted one lesson in `skills/auto-site-builder/lessons.md` about stats-bar-in-disguise quick strips.
+- **Live URL:** https://auto-sites.pages.dev/demos/rototillerguy-landscaping/ (pending commit/push/live verification)

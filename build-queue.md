@@ -47,17 +47,7 @@
 
 <!-- Built 2026-05-23 → demos/rototillerguy-landscaping/ → https://auto-sites.pages.dev/demos/rototillerguy-landscaping/ (route stale at verification) -->
 
-## Payless Kitchen Cabinets
-
-- **Business:** Payless Kitchen Cabinets
-- **Category:** Kitchen remodeling, cabinet installation/refacing, countertops, backsplash installation, full kitchen remodels
-- **Location:** Pasadena, CA / Los Angeles County service area
-- **Website:** https://paylesskitchencabinets.com/areas-we-serve/pasadena/
-- **Contact signals:** Pasadena landing page advertises Monday-Saturday free consultations, detailed written estimates, licensed/insured professionals, transparent pricing, installation discount language, and phone (866)-482-0919 from search result.
-- **Why this is a good candidate:** High-ticket local remodeling niche with strong commercial intent and useful trust/pricing signals, but the page is SEO-heavy and promotion-heavy rather than tastefully trust-building. Likely upside from a cleaner mobile-first redesign, stronger project gallery/before-after proof, clearer consultation CTA, license/review proof, cabinet/countertop package cards, and less keyword-stuffed Pasadena service-area copy.
-- **Observed services:** Cabinet refacing, new cabinet installation, countertop replacement, full kitchen remodeling, backsplash installation, layout redesign, lighting, and project management.
-- **Source/date added:** Iris nightly research, 2026-05-20.
-- **Status:** New lead — not contacted.
+<!-- Built 2026-05-24 → demos/payless-kitchen-cabinets/ → https://auto-sites.pages.dev/demos/payless-kitchen-cabinets/ (pending Pages verification) -->
 
 ## Pasadena Remodeler
 
@@ -81,4 +71,28 @@
 - **Why this is a good candidate:** High-value local trade business with strong longevity and trust proof, but the site copy/design is typo-prone, repetitive, and dated. Likely upside from a sharper mobile-first electrician redesign with urgent quote CTAs, service cards for panels/EV/code compliance/troubleshooting, license/inspection proof, service-area structure, review modules, and cleaner “since 1985” credibility.
 - **Observed services:** Electrical service panel upgrades, EV charger installation, property-management electrical work, troubleshooting, code compliance/notice-to-comply fixes, smoke/CO detector work, residential, commercial, and industrial electrical service.
 - **Source/date added:** Iris nightly research, 2026-05-21 22:00 PT.
+- **Status:** New lead — not contacted.
+
+## Hillside Expert Electrical
+
+- **Business:** Hillside Expert Electrical
+- **Category:** Licensed electrician, residential/commercial electrical service, general construction/electrical rebuilds, lighting, panels, rewiring
+- **Location:** Pasadena, Altadena, Alhambra, Arcadia & surrounding Los Angeles County areas
+- **Website:** https://www.hillsideexpertelectrical.com/
+- **Contact signals:** Site advertises licensed/bonded/insured electrical work, a free quote CTA, Pasadena/Altadena/local service coverage, popular services like outlets/GFCIs, fixtures, wiring/rewiring, panel upgrades, new construction wiring, and post-wildfire rebuilding support; phone shown as 818.896.5400.
+- **Why this is a good candidate:** High-intent local electrical/construction niche with urgent rebuild and quote intent, but the site is text-heavy, repetitive, and visually generic. Likely upside from a cleaner mobile-first redesign with emergency/rebuild CTAs, service cards for panels/rewiring/lighting/generators, license/insurance proof, fire-rebuild trust modules, project-gallery proof, and clearer Pasadena/Altadena service-area structure.
+- **Observed services:** Outlet and GFCI installation, light fixture installation/repair, wiring/rewiring, electrical panel upgrades/replacements, new construction wiring, home/business additions, commercial wiring/lighting, backup generators, post-wildfire electrical and rebuilding solutions.
+- **Source/date added:** Iris nightly research, 2026-05-22 22:00 PT.
+- **Status:** New lead — not contacted.
+
+## RRRoofing Group
+
+- **Business:** RRRoofing Group
+- **Category:** Roofing contractor, roof repair/replacement, exterior service, emergency roof leak repair
+- **Location:** Altadena / Sierra Madre / San Gabriel Valley, CA; broader California & Arizona coverage claimed
+- **Website:** https://www.rrroofinggroup.com/
+- **Contact signals:** Site advertises 50+ years of experience, 1,000+ roofs completed, 24/7 emergency line, free estimates, phone (626) 975-9961, CA Contractor License 692187, bonded/workers comp/general liability, no-subcontracting claim, written estimates, and local Altadena team language.
+- **Why this is a good candidate:** High-ticket local roofing niche with strong trust/compliance signals, but the current site feels dense and repetitive, with awkward spacing/copy and room for a cleaner mobile-first estimate funnel. Likely upside from clearer emergency-vs-replacement CTAs, proof modules, service-area pages, photo-backed inspection process, license/insurance/review blocks, and calmer premium positioning.
+- **Observed services:** Roof leak repair, roof restoration, full roof replacement, roof inspections, residential/commercial roofing, emergency roofing, exterior service, written photo reports, and service across California/Arizona.
+- **Source/date added:** Iris nightly research, 2026-05-23.
 - **Status:** New lead — not contacted.

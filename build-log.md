@@ -23,6 +23,31 @@
 
 # Auto-Sites Build Log
 
+### Payless Kitchen Cabinets — Kitchen remodeling and cabinet installation, Pasadena CA
+- **Date:** 2026-05-24
+- **Model:** openai-codex/gpt-5.5
+- **Agent:** Lucy
+- **Folder:** payless-kitchen-cabinets
+- **Hero pattern:** image-top-text-below
+- **Typography:** Lora + Manrope
+- **Review layout:** no customer review cards; same-treatment factual proof rows and a compact project/team proof gallery because compliant named review quotes were not verified
+- **Visit/hours layout:** final consultation desk with phone CTA, Monday-Saturday consultation note, service area, and “what to have ready” guidance; no map because no confirmed Google Maps business-pin URL surfaced
+- **Stats bar style:** no-stats
+- **WHY Score:** 7.97 (Jobs 8.0 / Graham 7.8 / Ogilvy 8.1)
+- **WHAT Score:** 8.00 (Norman 8.1 / Krug 8.0 / Nielsen 7.9)
+- **HOW Score:** 8.13 (Vignelli 8.0 / Spiekermann 8.1 / Rams 8.2 / Emil 8.2)
+- **Panel average:** 8.03
+- **Self-review:** 8.6
+- **Versions built:** 6 HTML versions + final index.html
+- **Build time:** ~40 minutes
+- **Token estimate:** ~34k
+- **Key decisions:** Built Payless as an estimate-clarity kitchen-remodeling page instead of a discount-heavy SEO landing page. The page leads with public Pasadena price ranges, written estimates, licensed/insured proof, and official project/team imagery while avoiding fabricated review quotes.
+- **Notes:** Used official Payless Kitchen Cabinets website/WordPress media assets only. No generic map link, invented review quotes, invented license number, or unsourced project claims were used. Added one Tier 1 lesson to `skills/auto-site-builder/lessons.md` about labeling contractor price ranges by scope. Desktop and mobile screenshots passed QA after removing internal source-language and fixing the gallery baseline.
+- **GPT 5.5 comparison:** GPT 5.5 was materially strong for frontend execution: it produced a coherent type/color system quickly, handled responsive CSS cleanly, and recovered well from screenshot-based QA. Its main weakness was still copy/source hygiene: it leaked internal redesign/source framing into visible copy until the visual review caught it. Recommendation: keep using GPT 5.5 for Lucy builds, with mandatory screenshot QA and a grep/reading pass for source-language artifacts.
+- **Lessons:** Added `(1/5) [COPY] Public price ranges on contractor pages need scope labels` to `skills/auto-site-builder/lessons.md`.
+- **Live URL:** https://auto-sites.pages.dev/demos/payless-kitchen-cabinets/ (push pending)
+
+
 ### Joseph & Sons Tile - Tile contractor, Los Angeles CA
 - **Date:** 2026-05-22
 - **Model:** openai-codex/gpt-5.5

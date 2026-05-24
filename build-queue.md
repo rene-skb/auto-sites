@@ -47,7 +47,7 @@
 
 <!-- Built 2026-05-23 → demos/rototillerguy-landscaping/ → https://auto-sites.pages.dev/demos/rototillerguy-landscaping/ (route stale at verification) -->
 
-<!-- Built 2026-05-24 → demos/payless-kitchen-cabinets/ → https://auto-sites.pages.dev/demos/payless-kitchen-cabinets/ (pending Pages verification) -->
+<!-- Built 2026-05-24 → demos/payless-kitchen-cabinets/ → https://auto-sites.pages.dev/demos/payless-kitchen-cabinets/ (route stale at verification) -->
 
 ## Pasadena Remodeler
 

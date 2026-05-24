@@ -45,7 +45,7 @@
 - **Notes:** Used official Payless Kitchen Cabinets website/WordPress media assets only. No generic map link, invented review quotes, invented license number, or unsourced project claims were used. Added one Tier 1 lesson to `skills/auto-site-builder/lessons.md` about labeling contractor price ranges by scope. Desktop and mobile screenshots passed QA after removing internal source-language and fixing the gallery baseline.
 - **GPT 5.5 comparison:** GPT 5.5 was materially strong for frontend execution: it produced a coherent type/color system quickly, handled responsive CSS cleanly, and recovered well from screenshot-based QA. Its main weakness was still copy/source hygiene: it leaked internal redesign/source framing into visible copy until the visual review caught it. Recommendation: keep using GPT 5.5 for Lucy builds, with mandatory screenshot QA and a grep/reading pass for source-language artifacts.
 - **Lessons:** Added `(1/5) [COPY] Public price ranges on contractor pages need scope labels` to `skills/auto-site-builder/lessons.md`.
-- **Live URL:** https://auto-sites.pages.dev/demos/payless-kitchen-cabinets/ (push pending)
+- **Live URL:** https://auto-sites.pages.dev/demos/payless-kitchen-cabinets/ (pushed to GitHub in commit 62216cb; Pages route still serving the portfolio landing page at verification time)
 
 
 ### Joseph & Sons Tile - Tile contractor, Los Angeles CA

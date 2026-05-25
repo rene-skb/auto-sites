@@ -46,7 +46,7 @@
 - **Notes:** Desktop and mobile screenshots passed QA after removing internal strategy/source language from customer-facing copy. Added one Tier 1 lesson to `skills/auto-site-builder/lessons.md` about contractor license claims.
 - **GPT 5.5 comparison:** GPT 5.5 stayed materially strong on frontend execution: it produced a coherent asymmetric hero, restrained type system, responsive CSS, and clean motion quickly. The weakness was judgment around customer-facing copy versus audit/process language and legal/compliance-sensitive contractor claims; screenshot/vision review caught those before deploy. Recommendation: keep using GPT 5.5 for Lucy builds, but preserve mandatory visual QA plus a compliance/source-language grep for trades pages.
 - **Lessons:** Added `(1/5) [COPY] Contractor pages should avoid visible “licensed” claims unless the license number is verified and shown` to `skills/auto-site-builder/lessons.md`.
-- **Live URL:** https://auto-sites.pages.dev/demos/pasadena-remodeler/ (push status below)
+- **Live URL:** https://auto-sites.pages.dev/demos/pasadena-remodeler/ (pushed to GitHub in commit 14d4ce2; Pages route still serving the portfolio landing page at verification time)
 
 ### Payless Kitchen Cabinets — Kitchen remodeling and cabinet installation, Pasadena CA
 - **Date:** 2026-05-24

@@ -49,7 +49,7 @@
 
 <!-- Built 2026-05-24 → demos/payless-kitchen-cabinets/ → https://auto-sites.pages.dev/demos/payless-kitchen-cabinets/ (route stale at verification) -->
 
-<!-- Built 2026-05-25 → demos/pasadena-remodeler/ → https://auto-sites.pages.dev/demos/pasadena-remodeler/ (verification pending) -->
+<!-- Built 2026-05-25 → demos/pasadena-remodeler/ → https://auto-sites.pages.dev/demos/pasadena-remodeler/ (route stale at verification) -->
 
 ## Branover Contractors Inc
 

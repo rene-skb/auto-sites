@@ -49,17 +49,7 @@
 
 <!-- Built 2026-05-24 → demos/payless-kitchen-cabinets/ → https://auto-sites.pages.dev/demos/payless-kitchen-cabinets/ (route stale at verification) -->
 
-## Pasadena Remodeler
-
-- **Business:** Pasadena Remodeler / Handyman Connection of Pasadena
-- **Category:** Licensed remodeling contractor, handyman services, general contracting, bathroom/kitchen/home remodeling
-- **Location:** Pasadena, CA / Los Angeles County service area
-- **Website:** https://www.pasadenaremodeler.com/
-- **Contact signals:** Site says licensed and insured, trusted by Pasadena since 1998, free estimate CTA, guaranteed jobs, and service coverage across Pasadena, Altadena, San Marino, South Pasadena, Glendale, Burbank, Arcadia, and nearby LA communities.
-- **Why this is a good candidate:** Strong local trust signals and high-ticket remodeling intent, but the site feels thin, generic, and old-fashioned for a premium contractor. Likely upside from a sharper mobile-first redesign with clear estimate CTAs, project-gallery proof, license/insurance/review modules, service cards for kitchens/bathrooms/handyman/remodeling, and cleaner Pasadena-area SEO that feels less templated.
-- **Observed services:** Remodeling contracting, handyman services, general contractor work, bathroom upgrades/remodeling, home maintenance, and broader residential/commercial remodeling services.
-- **Source/date added:** Iris nightly research, 2026-05-21.
-- **Status:** New lead — not contacted.
+<!-- Built 2026-05-25 → demos/pasadena-remodeler/ → https://auto-sites.pages.dev/demos/pasadena-remodeler/ (verification pending) -->
 
 ## Branover Contractors Inc
 

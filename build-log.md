@@ -23,6 +23,31 @@
 
 # Auto-Sites Build Log
 
+
+### Pasadena Remodeler — Remodeling contractor and handyman services, Pasadena CA
+- **Date:** 2026-05-25
+- **Model:** openai-codex/gpt-5.5
+- **Agent:** Lucy
+- **Folder:** pasadena-remodeler
+- **Hero pattern:** asymmetric-collage
+- **Typography:** IBM Plex Serif + Archivo
+- **Review layout:** three same-treatment attributed review cards with short quote excerpts, no featured/checkerboard treatment
+- **Visit/hours layout:** early dark service-area/address strip plus final two-column estimate/contact card with phone, address, hours note, and preparation guidance
+- **Stats bar style:** no-stats
+- **WHY Score:** 7.97 (Jobs 8.0 / Graham 7.8 / Ogilvy 8.1)
+- **WHAT Score:** 8.07 (Norman 8.2 / Krug 8.1 / Nielsen 7.9)
+- **HOW Score:** 8.13 (Vignelli 8.1 / Spiekermann 8.0 / Rams 8.2 / Emil 8.2)
+- **Panel average:** 8.06
+- **Self-review:** 8.5
+- **Versions built:** 6 HTML versions + final index.html
+- **Build time:** ~75 minutes
+- **Token estimate:** ~42k
+- **Key decisions:** Built Pasadena Remodeler around estimate preparedness and accountable local remodeling help instead of a generic contractor brochure. Used only official site imagery and trimmed visible compliance-sensitive claims when the license number, guarantee terms, and current insurance documentation were not independently surfaced.
+- **Notes:** Desktop and mobile screenshots passed QA after removing internal strategy/source language from customer-facing copy. Added one Tier 1 lesson to `skills/auto-site-builder/lessons.md` about contractor license claims.
+- **GPT 5.5 comparison:** GPT 5.5 stayed materially strong on frontend execution: it produced a coherent asymmetric hero, restrained type system, responsive CSS, and clean motion quickly. The weakness was judgment around customer-facing copy versus audit/process language and legal/compliance-sensitive contractor claims; screenshot/vision review caught those before deploy. Recommendation: keep using GPT 5.5 for Lucy builds, but preserve mandatory visual QA plus a compliance/source-language grep for trades pages.
+- **Lessons:** Added `(1/5) [COPY] Contractor pages should avoid visible “licensed” claims unless the license number is verified and shown` to `skills/auto-site-builder/lessons.md`.
+- **Live URL:** https://auto-sites.pages.dev/demos/pasadena-remodeler/ (push status below)
+
 ### Payless Kitchen Cabinets — Kitchen remodeling and cabinet installation, Pasadena CA
 - **Date:** 2026-05-24
 - **Model:** openai-codex/gpt-5.5

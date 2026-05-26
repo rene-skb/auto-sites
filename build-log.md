@@ -24,6 +24,30 @@
 # Auto-Sites Build Log
 
 
+### Branover Contractors Inc — Electrical contractor, Los Angeles CA
+- **Date:** 2026-05-26
+- **Model:** openai-codex/gpt-5.5
+- **Agent:** Lucy
+- **Folder:** branover-contractors
+- **Hero pattern:** editorial-spread
+- **Typography:** Source Serif 4 + Space Grotesk
+- **Review layout:** dark dominant pullquote plus same-treatment attributed review cards
+- **Visit/hours layout:** early quick logistics strip plus final blue contact/estimate console; no map link because a canonical Google business listing URL was not confidently verified
+- **Stats bar style:** no-stats
+- **WHY Score:** 8.07 (Jobs 8.1 / Graham 7.9 / Ogilvy 8.2)
+- **WHAT Score:** 8.10 (Norman 8.2 / Krug 8.1 / Nielsen 8.0)
+- **HOW Score:** 8.20 (Vignelli 8.2 / Spiekermann 8.1 / Rams 8.2 / Emil 8.3)
+- **Panel average:** 8.12
+- **Self-review:** 8.6
+- **Versions built:** 6 HTML versions + final index.html
+- **Build time:** ~70 minutes
+- **Token estimate:** ~44k
+- **Key decisions:** Built Branover around inspection-readiness and practical estimate prep instead of a generic “best electrician” pitch. Used verified C-10 license #484143, official testimonials, official logo/site imagery, and generated close-up service photography only as non-representational support.
+- **Notes:** Desktop and mobile screenshots passed QA after replacing a soft official hero crop, fixing contact label spacing, and removing customer-facing meta copy. Promoted the contractor-license lesson to Tier 2 in `skills/auto-site-builder/lessons.md`.
+- **GPT 5.5 comparison:** GPT 5.5 again showed materially better frontend discipline than the older 5.4/Sonnet baseline: the grid, responsive CSS, motion scaffolding, and visual iteration were fast and coherent. It still needed visual QA to catch blurry hero imagery and a small meta-copy leak, but debugging was quick and localized. Recommendation: keep using GPT 5.5 for Lucy builds, with the same screenshot/mobile/source-language checks.
+- **Lessons:** Promoted `(2/5) [COPY] Contractor pages should avoid visible “licensed” claims unless the license number is verified and shown` with Branover as the second confirming build.
+- **Live URL:** https://auto-sites.pages.dev/demos/branover-contractors/ (pending push/live verification at log-write time)
+
 ### Pasadena Remodeler — Remodeling contractor and handyman services, Pasadena CA
 - **Date:** 2026-05-25
 - **Model:** openai-codex/gpt-5.5

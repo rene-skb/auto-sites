@@ -51,17 +51,7 @@
 
 <!-- Built 2026-05-25 → demos/pasadena-remodeler/ → https://auto-sites.pages.dev/demos/pasadena-remodeler/ (route stale at verification) -->
 
-## Branover Contractors Inc
-
-- **Business:** Branover Contractors Inc
-- **Category:** Licensed electrical contractor, residential/commercial/industrial electrical service, panel upgrades, EV charger installation
-- **Location:** Los Angeles, CA / San Fernando Valley, Orange County, Ventura County service area
-- **Website:** https://www.branovercontractors.com/
-- **Contact signals:** Site advertises family-owned and operated since 1985, licensed electrician, free estimates, LADWP/SCE/LADBS familiarity, inspection/code-compliance work, and phone (323) 467-6661.
-- **Why this is a good candidate:** High-value local trade business with strong longevity and trust proof, but the site copy/design is typo-prone, repetitive, and dated. Likely upside from a sharper mobile-first electrician redesign with urgent quote CTAs, service cards for panels/EV/code compliance/troubleshooting, license/inspection proof, service-area structure, review modules, and cleaner “since 1985” credibility.
-- **Observed services:** Electrical service panel upgrades, EV charger installation, property-management electrical work, troubleshooting, code compliance/notice-to-comply fixes, smoke/CO detector work, residential, commercial, and industrial electrical service.
-- **Source/date added:** Iris nightly research, 2026-05-21 22:00 PT.
-- **Status:** New lead — not contacted.
+<!-- Built 2026-05-26 → demos/branover-contractors/ → https://auto-sites.pages.dev/demos/branover-contractors/ (route verification pending) -->
 
 ## Hillside Expert Electrical
 
@@ -85,4 +75,28 @@
 - **Why this is a good candidate:** High-ticket local roofing niche with strong trust/compliance signals, but the current site feels dense and repetitive, with awkward spacing/copy and room for a cleaner mobile-first estimate funnel. Likely upside from clearer emergency-vs-replacement CTAs, proof modules, service-area pages, photo-backed inspection process, license/insurance/review blocks, and calmer premium positioning.
 - **Observed services:** Roof leak repair, roof restoration, full roof replacement, roof inspections, residential/commercial roofing, emergency roofing, exterior service, written photo reports, and service across California/Arizona.
 - **Source/date added:** Iris nightly research, 2026-05-23.
+- **Status:** New lead — not contacted.
+
+## Joseph & Sons Tile
+
+- **Business:** Joseph & Sons Tile
+- **Category:** Tile installation contractor, flooring, backsplash, bathroom/kitchen tile, stone and ceramic tile
+- **Location:** Los Angeles, CA / greater LA service area
+- **Website:** https://josephandsonstile.com/
+- **Contact signals:** Site advertises 60+ years as LA tile contractors, free consultations, family/business lineage language, local supplier knowledge, and services across ceramic, travertine, slate, porcelain, wood-look, granite, marble, stone/pebble, quartzite, and onyx tile.
+- **Why this is a good candidate:** High-intent local trade niche with premium-project upside, but the current site is copy-heavy, sparse, and visually dated for a craft trade. Likely upside from a sharper mobile-first redesign with project gallery proof, material/service cards, bathroom/kitchen/flooring landing sections, stronger free-consultation CTAs, review/license/trust modules, and cleaner LA-area SEO.
+- **Observed services:** Tile flooring, walls, fireplaces, backsplash, ceramic tile, travertine, slate, porcelain, wood-look tile, granite, marble, stone and pebble, quartzite, and onyx tile consultation/installation.
+- **Source/date added:** Iris nightly research, 2026-05-24 22:00 PT.
+- **Status:** New lead — not contacted.
+
+## Cardea Concrete
+
+- **Business:** Cardea Concrete
+- **Category:** Concrete contractor, polished concrete, decorative concrete coatings, garage floor coatings, traffic coating, stamped concrete
+- **Location:** Los Angeles, CA
+- **Website:** https://www.cardeaconcrete.com/
+- **Contact signals:** Site advertises free quotes/free estimates, family-owned local business, licensed and insured, address at 4242 South Victoria Avenue, Los Angeles, phone (213) 755-4108, and email contact@cardeaconcrete.com.
+- **Why this is a good candidate:** High-value concrete/flooring trade with residential, commercial, and industrial project upside, but the current Duda-style site is generic, copy-heavy, and visually uneven. Likely upside from a sharper mobile-first redesign with quote-first CTAs, service cards for polished/stamped/decorative/garage coatings, gallery/testimonial proof, license/insurance trust modules, service-area SEO, and clearer residential vs commercial paths.
+- **Observed services:** Stamped concrete, polyurethane traffic coating, shot blasting and concrete surface preparation, polished concrete, decorative concrete coating, concrete sealer, concrete garage floor coating, metallic epoxy floor coatings, concrete stairs, driveways, patios, residential/commercial/industrial concrete floors.
+- **Source/date added:** Iris nightly research, 2026-05-25 22:00 PT.
 - **Status:** New lead — not contacted.

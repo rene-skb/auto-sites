@@ -46,7 +46,7 @@
 - **Notes:** Desktop and mobile screenshots passed QA after replacing a soft official hero crop, fixing contact label spacing, and removing customer-facing meta copy. Promoted the contractor-license lesson to Tier 2 in `skills/auto-site-builder/lessons.md`.
 - **GPT 5.5 comparison:** GPT 5.5 again showed materially better frontend discipline than the older 5.4/Sonnet baseline: the grid, responsive CSS, motion scaffolding, and visual iteration were fast and coherent. It still needed visual QA to catch blurry hero imagery and a small meta-copy leak, but debugging was quick and localized. Recommendation: keep using GPT 5.5 for Lucy builds, with the same screenshot/mobile/source-language checks.
 - **Lessons:** Promoted `(2/5) [COPY] Contractor pages should avoid visible “licensed” claims unless the license number is verified and shown` with Branover as the second confirming build.
-- **Live URL:** https://auto-sites.pages.dev/demos/branover-contractors/ (pending push/live verification at log-write time)
+- **Live URL:** https://auto-sites.pages.dev/demos/branover-contractors/ (pushed to GitHub in commit c11ef50; Pages route still serving the portfolio landing page at verification time)
 
 ### Pasadena Remodeler — Remodeling contractor and handyman services, Pasadena CA
 - **Date:** 2026-05-25

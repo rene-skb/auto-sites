@@ -51,7 +51,7 @@
 
 <!-- Built 2026-05-25 → demos/pasadena-remodeler/ → https://auto-sites.pages.dev/demos/pasadena-remodeler/ (route stale at verification) -->
 
-<!-- Built 2026-05-26 → demos/branover-contractors/ → https://auto-sites.pages.dev/demos/branover-contractors/ (route verification pending) -->
+<!-- Built 2026-05-26 → demos/branover-contractors/ → https://auto-sites.pages.dev/demos/branover-contractors/ (route stale at verification) -->
 
 ## Hillside Expert Electrical
 

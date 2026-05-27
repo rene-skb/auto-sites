@@ -53,17 +53,7 @@
 
 <!-- Built 2026-05-26 → demos/branover-contractors/ → https://auto-sites.pages.dev/demos/branover-contractors/ (route stale at verification) -->
 
-## Hillside Expert Electrical
-
-- **Business:** Hillside Expert Electrical
-- **Category:** Licensed electrician, residential/commercial electrical service, general construction/electrical rebuilds, lighting, panels, rewiring
-- **Location:** Pasadena, Altadena, Alhambra, Arcadia & surrounding Los Angeles County areas
-- **Website:** https://www.hillsideexpertelectrical.com/
-- **Contact signals:** Site advertises licensed/bonded/insured electrical work, a free quote CTA, Pasadena/Altadena/local service coverage, popular services like outlets/GFCIs, fixtures, wiring/rewiring, panel upgrades, new construction wiring, and post-wildfire rebuilding support; phone shown as 818.896.5400.
-- **Why this is a good candidate:** High-intent local electrical/construction niche with urgent rebuild and quote intent, but the site is text-heavy, repetitive, and visually generic. Likely upside from a cleaner mobile-first redesign with emergency/rebuild CTAs, service cards for panels/rewiring/lighting/generators, license/insurance proof, fire-rebuild trust modules, project-gallery proof, and clearer Pasadena/Altadena service-area structure.
-- **Observed services:** Outlet and GFCI installation, light fixture installation/repair, wiring/rewiring, electrical panel upgrades/replacements, new construction wiring, home/business additions, commercial wiring/lighting, backup generators, post-wildfire electrical and rebuilding solutions.
-- **Source/date added:** Iris nightly research, 2026-05-22 22:00 PT.
-- **Status:** New lead — not contacted.
+<!-- Built 2026-05-27 → demos/hillside-expert-electrical/ → https://auto-sites.pages.dev/demos/hillside-expert-electrical/ -->
 
 ## RRRoofing Group
 
@@ -99,4 +89,16 @@
 - **Why this is a good candidate:** High-value concrete/flooring trade with residential, commercial, and industrial project upside, but the current Duda-style site is generic, copy-heavy, and visually uneven. Likely upside from a sharper mobile-first redesign with quote-first CTAs, service cards for polished/stamped/decorative/garage coatings, gallery/testimonial proof, license/insurance trust modules, service-area SEO, and clearer residential vs commercial paths.
 - **Observed services:** Stamped concrete, polyurethane traffic coating, shot blasting and concrete surface preparation, polished concrete, decorative concrete coating, concrete sealer, concrete garage floor coating, metallic epoxy floor coatings, concrete stairs, driveways, patios, residential/commercial/industrial concrete floors.
 - **Source/date added:** Iris nightly research, 2026-05-25 22:00 PT.
+- **Status:** New lead — not contacted.
+
+## Carpet Time Inc
+
+- **Business:** Carpet Time Inc
+- **Category:** Flooring contractor, carpet, hardwood, laminate, vinyl, tile-style residential/commercial flooring
+- **Location:** Riverside, CA / Inland Empire and surrounding Southern California service area
+- **Website:** https://www.carpettime.com/about
+- **Contact signals:** Search/source snippets describe the company as family owned and operated since 1989, offering free in-home estimates, a showroom, residential and commercial flooring, and long-tenured professional installers. The fetched site content was sparse/template-heavy, which itself suggests a weak web presence.
+- **Why this is a good candidate:** High-intent home-services niche with meaningful project value and trust/history signals, but the website appears thin, generic, and poorly surfaced in readable content. Likely upside from a mobile-first estimate funnel, material-selection paths for carpet/hardwood/laminate/vinyl, before/after gallery proof, showroom/free-estimate CTAs, financing/promotions if available, and stronger Riverside/Inland Empire service-area SEO.
+- **Observed services:** Carpet sales/installation, residential flooring, commercial flooring, showroom consultations, free in-home estimates; likely additional hardwood/laminate/vinyl/flooring categories based on local flooring positioning.
+- **Source/date added:** Iris nightly research, 2026-05-26 22:00 PT.
 - **Status:** New lead — not contacted.

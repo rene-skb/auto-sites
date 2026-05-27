@@ -23,6 +23,30 @@
 
 # Auto-Sites Build Log
 
+### Hillside Expert Electrical — Licensed electrician and electrical contractor, Pasadena CA
+- **Date:** 2026-05-27
+- **Model:** openai-codex/gpt-5.5
+- **Agent:** Lucy
+- **Folder:** hillside-expert-electrical
+- **Hero pattern:** split-image-right
+- **Typography:** Sora + IBM Plex Sans
+- **Review layout:** no customer review cards; permit-file proof ledger with license, BuildZoom project evidence, and builder plan-upload path because compliant named reviews were not verified
+- **Visit/hours layout:** final bid desk/contact card with phone, quote path, plan upload, license, and BuildZoom-listed address; no map link because a canonical named Google Maps business listing URL was not confidently verified
+- **Stats bar style:** no-stats
+- **WHY Score:** 8.00 (Jobs 8.1 / Graham 7.9 / Ogilvy 8.0)
+- **WHAT Score:** 8.07 (Norman 8.2 / Krug 8.1 / Nielsen 7.9)
+- **HOW Score:** 8.20 (Vignelli 8.2 / Spiekermann 8.1 / Rams 8.3 / Emil 8.2)
+- **Panel average:** 8.09
+- **Self-review:** 8.6
+- **Versions built:** 6 HTML versions + final index.html
+- **Build time:** ~80 minutes
+- **Token estimate:** ~46k
+- **Key decisions:** Built Hillside around inspection-readiness and clear electrical scope instead of generic “top electrician” SEO. The page separates homeowner calls, builder plan uploads, and fire-rebuild support while keeping license #1052290 visible wherever “licensed” appears.
+- **Notes:** Used official-site imagery/assets plus BuildZoom and official contact-page proof. No prices, named reviews, generic map link, emergency response promise, owner story, or unverified crew-size claims were invented. Final screenshot QA passed after removing site-referential copy and tightening the hero card.
+- **GPT 5.5 comparison:** GPT 5.5 remained materially better than the older GPT 5.4/Sonnet runs at frontend/design execution: it held a coherent grid, a specific trust-led concept, cleaner responsive CSS, and fast screenshot-driven revisions. Weaknesses were still copy provenance leakage and first-pass category ambiguity around electrical vs. rebuild/general construction. Recommendation: keep using GPT 5.5 for Lucy builds, with mandatory screenshot QA and source-language greps.
+- **Lessons:** Promoted `(3/5) [COPY] Contractor pages should avoid visible “licensed” claims unless the license number is verified and shown` with Hillside as the third confirming build.
+- **Live URL:** https://auto-sites.pages.dev/demos/hillside-expert-electrical/ (pending push/live verification)
+
 
 ### Branover Contractors Inc — Electrical contractor, Los Angeles CA
 - **Date:** 2026-05-26

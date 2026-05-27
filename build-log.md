@@ -45,7 +45,7 @@
 - **Notes:** Used official-site imagery/assets plus BuildZoom and official contact-page proof. No prices, named reviews, generic map link, emergency response promise, owner story, or unverified crew-size claims were invented. Final screenshot QA passed after removing site-referential copy and tightening the hero card.
 - **GPT 5.5 comparison:** GPT 5.5 remained materially better than the older GPT 5.4/Sonnet runs at frontend/design execution: it held a coherent grid, a specific trust-led concept, cleaner responsive CSS, and fast screenshot-driven revisions. Weaknesses were still copy provenance leakage and first-pass category ambiguity around electrical vs. rebuild/general construction. Recommendation: keep using GPT 5.5 for Lucy builds, with mandatory screenshot QA and source-language greps.
 - **Lessons:** Promoted `(3/5) [COPY] Contractor pages should avoid visible “licensed” claims unless the license number is verified and shown` with Hillside as the third confirming build.
-- **Live URL:** https://auto-sites.pages.dev/demos/hillside-expert-electrical/ (pending push/live verification)
+- **Live URL:** https://auto-sites.pages.dev/demos/hillside-expert-electrical/ (pushed to GitHub in commit be6b9e2; Pages route still serving the portfolio landing page at verification time)
 
 
 ### Branover Contractors Inc — Electrical contractor, Los Angeles CA

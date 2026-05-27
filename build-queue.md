@@ -53,7 +53,7 @@
 
 <!-- Built 2026-05-26 → demos/branover-contractors/ → https://auto-sites.pages.dev/demos/branover-contractors/ (route stale at verification) -->
 
-<!-- Built 2026-05-27 → demos/hillside-expert-electrical/ → https://auto-sites.pages.dev/demos/hillside-expert-electrical/ -->
+<!-- Built 2026-05-27 → demos/hillside-expert-electrical/ → https://auto-sites.pages.dev/demos/hillside-expert-electrical/ (route stale at verification) -->
 
 ## RRRoofing Group
 

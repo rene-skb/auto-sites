@@ -21,7 +21,7 @@
 - **Notes:** Used official RRRoofing site imagery/assets only. No prices, customer reviews, generic Google Maps link, Arizona license detail, or unsourced origin/crew-size claims were invented. Desktop and mobile screenshot QA passed after removing source-language leakage, killing a stats-card-in-disguise, fixing hero-card contrast, and removing duplicate image use.
 - **GPT 5.5 comparison:** GPT 5.5 stayed materially better than the older GPT 5.4/Sonnet baseline for frontend/design execution: it produced a distinctive dark-immersive trade-site direction quickly, handled responsive CSS cleanly, and debugged visual issues from screenshot QA in tight loops. Weaknesses remained familiar: first pass leaked audit/source language, over-used proof metrics in a way that resembled a stats bar, and needed explicit review to avoid licensing/coverage ambiguity. Recommendation: keep using GPT 5.5 for Lucy builds, but preserve mandatory screenshot QA, source-language grep, mobile screenshot, and trade-compliance checks.
 - **Lessons:** Promoted `(4/5) [COPY] Contractor pages should avoid visible “licensed” claims unless the license number is verified and shown` with RRRoofing as the fourth confirming build.
-- **Live URL:** https://auto-sites.pages.dev/demos/rrroofing-group/ (pending push/live verification)
+- **Live URL:** https://auto-sites.pages.dev/demos/rrroofing-group/ (pushed to GitHub in commit 8fd6be0; Pages route still serving the portfolio landing page at verification time)
 
 ### Stir It Up — Caribbean Soul Food, Victoria BC
 - **Date:** 2026-05-06

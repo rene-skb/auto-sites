@@ -55,18 +55,6 @@
 
 <!-- Built 2026-05-27 → demos/hillside-expert-electrical/ → https://auto-sites.pages.dev/demos/hillside-expert-electrical/ (route stale at verification) -->
 
-## RRRoofing Group
-
-- **Business:** RRRoofing Group
-- **Category:** Roofing contractor, roof repair/replacement, exterior service, emergency roof leak repair
-- **Location:** Altadena / Sierra Madre / San Gabriel Valley, CA; broader California & Arizona coverage claimed
-- **Website:** https://www.rrroofinggroup.com/
-- **Contact signals:** Site advertises 50+ years of experience, 1,000+ roofs completed, 24/7 emergency line, free estimates, phone (626) 975-9961, CA Contractor License 692187, bonded/workers comp/general liability, no-subcontracting claim, written estimates, and local Altadena team language.
-- **Why this is a good candidate:** High-ticket local roofing niche with strong trust/compliance signals, but the current site feels dense and repetitive, with awkward spacing/copy and room for a cleaner mobile-first estimate funnel. Likely upside from clearer emergency-vs-replacement CTAs, proof modules, service-area pages, photo-backed inspection process, license/insurance/review blocks, and calmer premium positioning.
-- **Observed services:** Roof leak repair, roof restoration, full roof replacement, roof inspections, residential/commercial roofing, emergency roofing, exterior service, written photo reports, and service across California/Arizona.
-- **Source/date added:** Iris nightly research, 2026-05-23.
-- **Status:** New lead — not contacted.
-
 ## Joseph & Sons Tile
 
 - **Business:** Joseph & Sons Tile
@@ -101,4 +89,16 @@
 - **Why this is a good candidate:** High-intent home-services niche with meaningful project value and trust/history signals, but the website appears thin, generic, and poorly surfaced in readable content. Likely upside from a mobile-first estimate funnel, material-selection paths for carpet/hardwood/laminate/vinyl, before/after gallery proof, showroom/free-estimate CTAs, financing/promotions if available, and stronger Riverside/Inland Empire service-area SEO.
 - **Observed services:** Carpet sales/installation, residential flooring, commercial flooring, showroom consultations, free in-home estimates; likely additional hardwood/laminate/vinyl/flooring categories based on local flooring positioning.
 - **Source/date added:** Iris nightly research, 2026-05-26 22:00 PT.
+- **Status:** New lead — not contacted.
+
+## Shafran Construction Inc.
+
+- **Business:** Shafran Construction Inc.
+- **Category:** General contractor, home improvement, remodeling, concrete/masonry, renovation, fire/water damage repair
+- **Location:** Woodland Hills / Los Angeles & Ventura Counties, CA
+- **Website:** http://shafranconstruction.com/
+- **Contact signals:** Search and source snippets describe a professional family-owned home improvement/general contracting company, fully licensed since 1988, serving Los Angeles and Ventura County communities; third-party profiles mention 30+ years of experience and 5,000+ projects. Site is live but fetch output is CSS-heavy/dated, suggesting weak readable structure.
+- **Why this is a good candidate:** High-ticket local contracting niche with strong longevity/trust signals, but the current site appears old, hard to parse, and likely underpowered for mobile lead conversion. Likely upside from a cleaner estimate funnel, service-path pages for remodeling/concrete/repairs, project gallery proof, license/trust modules, emergency/repair CTAs, and stronger LA/Ventura service-area SEO.
+- **Observed services:** General construction/home improvement, remodeling, renovation, concrete, driveway/block wall/retaining wall/patio/deck work, fire/water damage repair, energy-efficiency upgrades, residential and commercial projects.
+- **Source/date added:** Iris nightly research, 2026-05-27 22:00 PT.
 - **Status:** New lead — not contacted.

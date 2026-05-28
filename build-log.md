@@ -1,4 +1,28 @@
 
+### RRRoofing Group — Roofing contractor and emergency roof repair, Altadena CA
+- **Date:** 2026-05-28
+- **Model:** openai-codex/gpt-5.5
+- **Agent:** Lucy
+- **Folder:** rrroofing-group
+- **Hero pattern:** dark-immersive
+- **Typography:** Barlow Condensed + Inter
+- **Review layout:** no customer review cards; three same-treatment factual proof cards around CA license, own crew/no-subcontracting language, and written estimates because compliant named reviews were not verified
+- **Visit/hours layout:** final two-card emergency dispatch/contact block with phone CTA, official estimate-form link, license continuity, and “have this ready” prep list; no map because a canonical Google Maps business listing URL was not confidently verified
+- **Stats bar style:** no-stats
+- **WHY Score:** 7.93 (Jobs 8.0 / Graham 7.7 / Ogilvy 8.1)
+- **WHAT Score:** 7.50 (Norman 8.0 / Krug 7.5 / Nielsen 7.0)
+- **HOW Score:** 8.23 (Vignelli 8.4 / Spiekermann 8.1 / Rams 8.2 / Emil 8.2)
+- **Panel average:** 7.89
+- **Self-review:** 8.5
+- **Versions built:** 6 HTML versions + final index.html
+- **Build time:** ~40 minutes
+- **Token estimate:** ~40k
+- **Key decisions:** Built RRRoofing around the urgent homeowner moment: “Stop the leak before it spreads.” The page strips repeated SEO language into a practical flow: call, inspection, roof photos, written estimate, repair/replacement, cleanup.
+- **Notes:** Used official RRRoofing site imagery/assets only. No prices, customer reviews, generic Google Maps link, Arizona license detail, or unsourced origin/crew-size claims were invented. Desktop and mobile screenshot QA passed after removing source-language leakage, killing a stats-card-in-disguise, fixing hero-card contrast, and removing duplicate image use.
+- **GPT 5.5 comparison:** GPT 5.5 stayed materially better than the older GPT 5.4/Sonnet baseline for frontend/design execution: it produced a distinctive dark-immersive trade-site direction quickly, handled responsive CSS cleanly, and debugged visual issues from screenshot QA in tight loops. Weaknesses remained familiar: first pass leaked audit/source language, over-used proof metrics in a way that resembled a stats bar, and needed explicit review to avoid licensing/coverage ambiguity. Recommendation: keep using GPT 5.5 for Lucy builds, but preserve mandatory screenshot QA, source-language grep, mobile screenshot, and trade-compliance checks.
+- **Lessons:** Promoted `(4/5) [COPY] Contractor pages should avoid visible “licensed” claims unless the license number is verified and shown` with RRRoofing as the fourth confirming build.
+- **Live URL:** https://auto-sites.pages.dev/demos/rrroofing-group/ (pending push/live verification)
+
 ### Stir It Up — Caribbean Soul Food, Victoria BC
 - **Date:** 2026-05-06
 - **Model:** openai-codex/gpt-5.4 (subagent)

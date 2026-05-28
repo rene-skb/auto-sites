@@ -1,0 +1,110 @@
+<!--
+DELTA: v5 final polish notes
+- Ran final copy audit for source-language leakage, repeated image use, CTA clarity, and non-negotiables.
+- Kept no-stats layout: metrics appear only as traceable proof facts, not a stats bar.
+- Self-review score: 8.5
+- Panel averages carried forward from panel-notes.md: WHY 7.93 / WHAT 7.50 / HOW 8.23
+- Final polish focus: direct leak-first hero, verifiable license proof, responsive service cards, restrained motion.
+-->
+<!--
+DELTA: v4 motion pass
+- Kept the standard IntersectionObserver fade-up/stagger already present from v0.
+- Added tactile hover/focus states from the HOW panel and stronger nav contrast for the fixed header.
+- Confirmed no hover zoom or scale effects on non-clickable images.
+- Motion stays limited to opacity/translateY reveals and button feedback, with reduced-motion support.
+-->
+<!--
+DELTA: v3 iteration notes
+- Tightened the hero scale, side-card width, and section rhythm after HOW review.
+- Added tactile hover/focus states and stronger top-gradient support behind the fixed nav.
+- Reduced repeated estimate language and trimmed the service-area pills to the strongest local set.
+- Added license continuity in the footer.
+- HOW panel reviewers: Massimo Vignelli, Erik Spiekermann, Dieter Rams, Emil Kowalski
+- HOW panel scores: [8.4, 8.1, 8.2, 8.2] avg 8.23
+- Key feedback addressed: grid balance, type saturation, reduction, motion readiness.
+- Motion plan from Emil carried into Phase 10
+- See panel-notes.md -> HOW critique
+-->
+<!--
+DELTA: v2 iteration notes
+- Reduced middle-section heading scale so the hero and final CTA carry the loudest type.
+- Rewrote repeated process/trust copy into clearer user-facing labels.
+- Changed secondary CTAs to point clearly at the official estimate path.
+- Reframed proof around verifiable license/insurance/estimate facts because compliant reviews were not available.
+- WHAT panel reviewers: Don Norman, Steve Krug, Jakob Nielsen
+- WHAT panel scores: [8.0, 7.5, 7.0] avg 7.50
+- Key feedback addressed: hierarchy, scanability, proof clarity, CTA clarity.
+- See panel-notes.md -> WHAT critique
+-->
+<!--
+DELTA: v1 iteration notes
+- Reworked the hero proof card so it reads as a call checklist instead of a stats strip.
+- Removed customer-facing source/audit language from service, process, proof, and footer copy.
+- Removed skeptical “claimed” wording and kept license/proof language direct.
+- Swapped the repeated process image to avoid duplicate photo use.
+- WHY panel reviewers: Steve Jobs, Paul Graham, David Ogilvy
+- WHY panel scores: [8.0, 7.7, 8.1] avg 7.93
+- Key feedback addressed: make the emergency-roof concept calmer and more direct; cut internal notes.
+- See panel-notes.md -> WHY critique
+-->
+<!--
+BRAND RESEARCH + PHOTO EVALUATION
+Business: RRRoofing Group, roofing contractor serving Altadena, Sierra Madre, San Gabriel Valley, California and Arizona.
+Verified source set: official website + queue brief + search snippet for title/meta. No customer reviews or canonical Google Maps business pin verified.
+Brand colors: black/charcoal from current site, roof-safety orange, warm off-white, shingle gray.
+Vibe: practical emergency roofer, licensed, inspection-first, direct. The current site has strong proof but too much repeated SEO copy.
+Differentiator: 50+ years, 1,000+ roofs, CA Contractor License 692187, 24/7 emergency line, written photo reports, no subcontracting claim.
+Typography direction: Barlow Condensed for job-site urgency + Inter for clear homeowner reading.
+Photo ranking:
+1. hero-roofer-working.webp — worker on roof, strong low-angle 16:9, bright, confident; HERO.
+2. roofing-crew-work.webp — two roofers on shingle roof, 16:9, action/safety; process banner.
+3. roof-inspection.webp — inspector writing on roof, 16:9, trust/estimate; inspection card.
+4. roofer-nailgun.webp — drill close-up on shingles, 16:9, repair detail; service card.
+5. commercial-flat-roof.webp — worker on metal roof, 3:2, technical/commercial; service card.
+6. roof-repair-closeup.webp — hammer close-up, 3:2, craft detail but less roofing-specific; texture card.
+7. construction-worker-roof.webp — dramatic silhouette, generic; background only.
+8. new-construction-framing.webp — interior/underside framing; skipped to avoid misleading interior/exterior representation.
+CREATIVE DIRECTION
+Jobs: Make the page feel like a storm call that immediately turns into a plan. Less contractor chest-beating, more calm control.
+Paul Graham: Cut repeated SEO. The useful layer is simple: call, inspection, written estimate, licensed crew.
+Ogilvy: Lead with the homeowner fear in plain language. “Stop the leak before it becomes a ceiling repair.”
+-->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RRRoofing Group, roof repair and replacement in Altadena</title>
+  <meta name="description" content="Licensed roof repair, replacement, inspection, and emergency leak help for Altadena, Sierra Madre, Pasadena, and the San Gabriel Valley.">
+  <meta property="og:title" content="RRRoofing Group">
+  <meta property="og:description" content="Licensed roof repair, replacement, inspection, and emergency leak help for Altadena and the San Gabriel Valley.">
+  <meta property="og:image" content="https://auto-sites.pages.dev/demos/rrroofing-group/hero-roofer-working.webp">
+  <meta property="og:url" content="https://auto-sites.pages.dev/demos/rrroofing-group/">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--ink:#15120f;--coal:#231f1a;--roof:#d85b21;--sand:#f6efe3;--paper:#fffaf0;--muted:#72695e;--line:rgba(21,18,15,.14);--white:#fff;--ease-out:cubic-bezier(.23,1,.32,1);--ease-in-out:cubic-bezier(.77,0,.175,1);--section-pad:clamp(72px,10vw,136px)}
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--sand);color:var(--ink);font-family:Inter,system-ui,sans-serif;font-size:17px;line-height:1.55} img{max-width:100%;display:block} a{color:inherit;text-decoration:none} .wrap{width:min(1180px,calc(100% - 40px));margin:auto}.eyebrow{font:700 13px/1 Inter;letter-spacing:.14em;text-transform:uppercase;color:var(--roof)}
+    header{position:fixed;inset:16px 0 auto;z-index:30}.nav{width:min(1180px,calc(100% - 40px));margin:auto;display:flex;align-items:center;justify-content:space-between;padding:12px 14px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(21,18,15,.72);backdrop-filter:blur(18px);color:white}.brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.02em}.brand-mark{width:34px;height:34px;border-radius:50%;background:var(--roof);display:grid;place-items:center;font:800 17px Barlow Condensed}.links{display:flex;gap:24px;font-size:14px;color:rgba(255,255,255,.82)}.nav-cta{padding:10px 16px;background:white;color:var(--ink);border-radius:999px;font-weight:800;font-size:14px;transition:transform 160ms var(--ease-out)}.nav-cta:active,.btn:active{transform:scale(.97)}.menu{display:none;background:none;border:0;color:white;font-size:24px}
+    .hero{min-height:100svh;display:grid;align-items:end;position:relative;isolation:isolate;padding:128px 0 56px;color:white;background:#111;overflow:hidden}.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,8,6,.82),rgba(10,8,6,.06) 24%),linear-gradient(90deg,rgba(10,8,6,.88),rgba(10,8,6,.58) 42%,rgba(10,8,6,.24)),linear-gradient(0deg,rgba(10,8,6,.88),rgba(10,8,6,.02) 45%);z-index:-1}.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}.hero-grid{display:grid;grid-template-columns:minmax(0,1.05fr) 328px;gap:48px;align-items:end}.hero h1{font-family:Barlow Condensed,sans-serif;text-transform:uppercase;font-size:clamp(60px,9.2vw,126px);line-height:.86;letter-spacing:-.045em;margin:18px 0 24px;max-width:880px}.hero p{font-size:clamp(19px,2vw,25px);max-width:620px;color:rgba(255,255,255,.84);margin:0 0 32px}.btn-row{display:flex;gap:12px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;padding:15px 22px;border-radius:999px;font-weight:900;transition:transform 160ms var(--ease-out),background 160ms var(--ease-out),border-color 160ms var(--ease-out),box-shadow 160ms var(--ease-out)}.btn:hover{transform:translateY(-1px);box-shadow:0 14px 34px rgba(0,0,0,.18)}.btn.primary:hover{background:#bd4816}.btn.secondary:hover{border-color:rgba(255,255,255,.52)}.btn:focus-visible,.nav a:focus-visible,.menu:focus-visible{outline:3px solid rgba(216,91,33,.7);outline-offset:3px}.btn.primary{background:var(--roof);color:white}.btn.secondary{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.28);color:white}.signal-card{background:rgba(255,250,240,.94);color:var(--ink);border-radius:28px;padding:26px;border:1px solid rgba(255,255,255,.38);box-shadow:0 30px 80px rgba(0,0,0,.25)}.signal-card h2{font-family:Barlow Condensed;font-size:34px;line-height:.95;margin:0 0 14px;text-transform:uppercase}.signal-card p{color:#4d463e}.signal-list{display:grid;gap:12px;margin-top:20px}.signal{display:flex;justify-content:space-between;gap:14px;padding:12px 0;border-top:1px solid var(--line);font-size:14px}.signal strong{font-weight:900}.section{padding:var(--section-pad) 0}.intro{display:grid;grid-template-columns:.82fr 1.18fr;gap:64px;align-items:start}.section h2{font-family:Barlow Condensed,sans-serif;text-transform:uppercase;font-size:clamp(38px,5vw,72px);line-height:.86;letter-spacing:-.035em;margin:0}.lead{font-size:21px;color:#4d463e;margin:0 0 24px;max-width:760px}.service-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:44px}.service{background:var(--paper);border:1px solid var(--line);border-radius:24px;overflow:hidden}.service img{height:180px;width:100%;object-fit:cover}.service div{padding:22px}.service h3{font-family:Barlow Condensed;font-size:31px;text-transform:uppercase;line-height:.95;margin:0 0 10px}.service p{margin:0;color:var(--muted);font-size:15px}.dark{background:var(--coal);color:white}.dark .lead{color:rgba(255,255,255,.72)}.process{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}.process img{border-radius:32px;aspect-ratio:5/4;object-fit:cover}.steps{display:grid;gap:12px}.step{display:grid;grid-template-columns:54px 1fr;gap:18px;padding:22px;border:1px solid rgba(255,255,255,.14);border-radius:22px;background:rgba(255,255,255,.05)}.num{font:800 22px/1 Barlow Condensed;color:var(--roof)}.step h3{margin:0 0 6px;font-size:18px}.step p{margin:0;color:rgba(255,255,255,.68);font-size:15px}.proof-grid{display:grid;grid-template-columns:1.1fr .9fr .9fr;gap:16px;margin-top:40px}.proof{padding:28px;border-radius:26px;background:white;border:1px solid var(--line)}.proof.feature{background:var(--ink);color:white}.proof h3{font-family:Barlow Condensed;text-transform:uppercase;font-size:34px;line-height:.95;margin:0 0 12px}.proof p{margin:0;color:var(--muted)}.proof.feature p{color:rgba(255,255,255,.7)}.areas{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}.pill{border:1px solid var(--line);border-radius:999px;padding:9px 13px;background:rgba(255,255,255,.45);font-weight:700;font-size:14px}.contact{display:grid;grid-template-columns:1fr 1fr;gap:18px}.contact-card{background:var(--paper);padding:34px;border-radius:30px;border:1px solid var(--line)}.contact-card.darkcard{background:var(--ink);color:white}.contact-card h2,.contact-card h3{font-family:Barlow Condensed;text-transform:uppercase;line-height:.9;margin:0 0 18px;font-size:clamp(38px,5vw,70px)}.contact-card p{color:var(--muted)}.darkcard p{color:rgba(255,255,255,.72)}.prep{display:grid;gap:10px;margin-top:24px}.prep li{margin-bottom:8px}.footer{padding:32px 0;color:rgba(255,255,255,.62);background:var(--ink);font-size:14px}.footer .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}.reveal{opacity:1;transform:none}.js .reveal{opacity:0;transform:translateY(24px);transition:opacity 700ms var(--ease-out),transform 700ms var(--ease-out)}.js .reveal.in{opacity:1;transform:none}.skip{position:absolute;left:-999px}.skip:focus{left:16px;top:16px;z-index:99;background:white;color:black;padding:10px}
+    @media(max-width:860px){.links,.nav-cta{display:none}.menu{display:block}.hero-grid,.intro,.process,.contact{grid-template-columns:1fr}.signal-card{max-width:420px}.service-grid,.proof-grid{grid-template-columns:1fr}.hero h1{font-size:clamp(58px,18vw,86px)}.hero{padding-top:108px}.section{padding:76px 0}.service img{height:220px}.footer .wrap{display:block}.nav.mobile-open .links{display:flex;position:absolute;left:20px;right:20px;top:62px;flex-direction:column;background:rgba(21,18,15,.94);border:1px solid rgba(255,255,255,.14);border-radius:24px;padding:22px}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.js .reveal{opacity:1;transform:none}}
+  </style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header><nav class="nav" aria-label="Primary"><a class="brand" href="#top"><span class="brand-mark">RR</span><span>RRRoofing Group</span></a><div class="links"><a href="#services">Services</a><a href="#process">Process</a><a href="#proof">Proof</a><a href="#contact">Contact</a></div><a class="nav-cta" href="tel:+16269759961">Call 626-975-9961</a><button class="menu" aria-label="Open menu">☰</button></nav></header>
+<main id="main">
+<section class="hero" id="top"><img src="hero-roofer-working.webp" alt="Roofer working on a sloped roof in daylight"><div class="wrap hero-grid"><div class="reveal"><div class="eyebrow">Altadena · Sierra Madre · San Gabriel Valley</div><h1>Stop the leak before it spreads.</h1><p>RRRoofing Group handles roof leaks, inspections, restoration, and full replacement with a licensed California crew and a written estimate before work starts.</p><div class="btn-row"><a class="btn primary" href="tel:+16269759961">Call 626-975-9961</a><a class="btn secondary" href="https://www.rrroofinggroup.com/#quote">Get a written estimate</a></div></div><aside class="signal-card reveal"><h2>What happens after you call.</h2><p>A roofer looks at the problem, photographs the roof, and writes the estimate before the work starts.</p><div class="signal-list"><div class="signal"><span>Emergency line</span><strong>24/7</strong></div><div class="signal"><span>CA license</span><strong>692187</strong></div><div class="signal"><span>Estimate</span><strong>Written</strong></div></div></aside></div></section>
+<section class="section" id="services"><div class="wrap"><div class="intro reveal"><div><div class="eyebrow">Roofing services</div><h2>Roof repair, inspection, and replacement</h2></div><div><p class="lead">Start with the roof problem you can see: a leak, missing shingles, storm damage, a flat roof issue, or a roof that may be past repair.</p><p class="lead">RRRoofing Group covers repair, inspection, restoration, and replacement across residential and commercial roofing.</p></div></div><div class="service-grid"><article class="service reveal"><img src="roofer-nailgun.webp" alt="Close-up roofing repair work on shingles"><div><h3>Leak repair</h3><p>Emergency roof leak help through the advertised 24/7 phone line.</p></div></article><article class="service reveal"><img src="roof-inspection.webp" alt="Roofing inspector taking notes on a roof"><div><h3>Inspection</h3><p>On-site roof assessment with written notes and photos before the estimate.</p></div></article><article class="service reveal"><img src="roofing-crew-work.webp" alt="Two roofers working on a shingle roof"><div><h3>Replacement</h3><p>Full roof replacement with cleanup and a final walkthrough listed in the process.</p></div></article><article class="service reveal"><img src="commercial-flat-roof.webp" alt="Roofer working on a commercial flat roof"><div><h3>Commercial roofs</h3><p>Commercial roofing is listed alongside residential repair and replacement.</p></div></article></div></div></section>
+<section class="section dark" id="process"><div class="wrap process"><img class="reveal" src="construction-worker-roof.webp" alt="Roofer silhouetted on a roof at sunset"><div class="reveal"><div class="eyebrow">How the job starts</div><h2>What happens after you call</h2><p class="lead">Call first, then get the roof inspected, priced in writing, repaired or replaced, cleaned up, and walked through before the crew leaves.</p><div class="steps"><div class="step"><div class="num">01</div><div><h3>Call or request help</h3><p>Use the published phone line for emergency leak repair or a regular estimate.</p></div></div><div class="step"><div class="num">02</div><div><h3>Get the roof inspected</h3><p>The process includes an on-roof assessment and roof photos.</p></div></div><div class="step"><div class="num">03</div><div><h3>Review the written estimate</h3><p>Scope and cost are written down before the crew starts work.</p></div></div><div class="step"><div class="num">04</div><div><h3>Finish with cleanup</h3><p>The job ends with cleanup and a final walkthrough.</p></div></div></div></div></div></section>
+<section class="section" id="proof"><div class="wrap"><div class="intro reveal"><div><div class="eyebrow">Trust signals</div><h2>Proof you can check before hiring</h2></div><p class="lead">Before a roof job starts, you should be able to check the license, understand the scope, and know who is doing the work.</p></div><div class="proof-grid"><article class="proof feature reveal"><h3>Licensed in California</h3><p>CA Contractor License 692187. RRRoofing also lists bonded status, workers’ comp, and general liability coverage. Homeowners can verify California licenses through CSLB.</p></article><article class="proof reveal"><h3>Own crew</h3><p>RRRoofing says its licensed crew handles the work without subcontracting the job out.</p></article><article class="proof reveal"><h3>Written estimates</h3><p>Scope and price are written down before repair or replacement begins.</p></article></div><div class="areas reveal"><span class="pill">Altadena</span><span class="pill">Sierra Madre</span><span class="pill">Pasadena</span><span class="pill">Arcadia</span><span class="pill">San Gabriel Valley</span><span class="pill">Broader coverage by request</span></div></div></section>
+<section class="section" id="contact"><div class="wrap contact"><div class="contact-card darkcard reveal"><div class="eyebrow">Start here</div><h2>Leak getting worse? Call now.</h2><p>Use the published 24/7 emergency line for leaks, storm damage, inspections, restoration, or replacement estimates.</p><div class="btn-row"><a class="btn primary" href="tel:+16269759961">Call 626-975-9961</a><a class="btn secondary" href="https://www.rrroofinggroup.com/#quote">Open estimate form</a></div></div><div class="contact-card reveal"><h3>Have this ready</h3><p>A few details make the inspection faster and the estimate cleaner.</p><ul class="prep"><li>Where the leak or roof issue shows up inside.</li><li>Photos of ceiling stains, missing shingles, or storm damage if safe.</li><li>Roof type if you know it: shingle, tile, flat, metal, or mixed.</li><li>Whether you need repair, restoration, replacement, or an inspection first.</li></ul><p><strong>License:</strong> CA 692187</p></div></div></section>
+</main>
+<footer class="footer"><div class="wrap"><span>RRRoofing Group · CA Contractor License 692187.</span><span><a href="tel:+16269759961">626-975-9961</a> · <a href="https://www.rrroofinggroup.com/">rrroofinggroup.com</a></span></div></footer>
+<script>document.documentElement.classList.add('js');const nav=document.querySelector('.nav'),menu=document.querySelector('.menu');menu?.addEventListener('click',()=>nav.classList.toggle('mobile-open'));const items=[...document.querySelectorAll('.reveal')];const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.15});items.forEach((el,i)=>{el.style.transitionDelay=(i%4)*70+'ms';io.observe(el)});</script>
+<noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
+</body>
+</html>

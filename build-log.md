@@ -1,3 +1,27 @@
+### Cardea Concrete — Concrete contractor, polished concrete, and decorative coatings, Los Angeles CA
+- **Date:** 2026-05-29
+- **Model:** openai-codex/gpt-5.5
+- **Agent:** Lucy
+- **Folder:** cardea-concrete
+- **Hero pattern:** split-image-right with architectural material palette
+- **Typography:** Fraunces + Archivo
+- **Review layout:** no customer review cards; proof section uses verifiable address, direct contact paths, and published portfolio-range evidence because compliant named reviews were not verified
+- **Visit/hours layout:** final quote/contact card with phone, email, address, and “before you call” prep list; no map link because a canonical named Google Maps listing URL was not confidently verified
+- **Stats bar style:** no-stats
+- **WHY Score:** 7.93 (Jobs 8.0 / Graham 7.7 / Ogilvy 8.1)
+- **WHAT Score:** 7.97 (Norman 8.1 / Krug 8.0 / Nielsen 7.8)
+- **HOW Score:** 8.18 (Vignelli 8.2 / Spiekermann 8.0 / Rams 8.3 / Emil 8.2)
+- **Panel average:** 8.03
+- **Self-review:** 8.6
+- **Versions built:** 6 HTML versions + final index.html
+- **Build time:** ~45 minutes
+- **Token estimate:** ~42k
+- **Key decisions:** Built Cardea around the surface decision instead of generic contractor SEO: surface, traffic, finish, timeline. Avoided visible license/insured claims because no exact contractor license number was verified, and used official assets only.
+- **Notes:** Used Cardea official CDN imagery, official contact details, BuildZoom/about.me portfolio-range descriptions, and observed service categories. No fake reviews, star ratings, prices, warranty terms, license number, or generic map link were added.
+- **GPT 5.5 comparison:** GPT 5.5 remained materially better than the older GPT 5.4/Sonnet baseline for frontend/design execution. Quality and frontend taste were strong: it held a specific contractor concept, coherent material palette, clean responsive grid, and restrained motion without decorative image hover. Debugging was fast once screenshot/tool-path issues were corrected, though the model still needed explicit source-language and contractor-claim greps. Recommendation: keep using GPT 5.5 for Lucy builds, with mandatory screenshot QA, provenance checks, and final grep gates.
+- **Lessons:** Promoted the contractor license-claim lesson to DESIGN-KNOWLEDGE after Cardea became the fifth confirming build; also logged two operational cwd/dependency corrections in `memory/lessons.md`.
+- **Live URL:** https://auto-sites.pages.dev/demos/cardea-concrete/ (pending commit/push verification)
+
 
 ### RRRoofing Group — Roofing contractor and emergency roof repair, Altadena CA
 - **Date:** 2026-05-28

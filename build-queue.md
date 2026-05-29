@@ -67,17 +67,7 @@
 - **Source/date added:** Iris nightly research, 2026-05-24 22:00 PT.
 - **Status:** New lead — not contacted.
 
-## Cardea Concrete
-
-- **Business:** Cardea Concrete
-- **Category:** Concrete contractor, polished concrete, decorative concrete coatings, garage floor coatings, traffic coating, stamped concrete
-- **Location:** Los Angeles, CA
-- **Website:** https://www.cardeaconcrete.com/
-- **Contact signals:** Site advertises free quotes/free estimates, family-owned local business, licensed and insured, address at 4242 South Victoria Avenue, Los Angeles, phone (213) 755-4108, and email contact@cardeaconcrete.com.
-- **Why this is a good candidate:** High-value concrete/flooring trade with residential, commercial, and industrial project upside, but the current Duda-style site is generic, copy-heavy, and visually uneven. Likely upside from a sharper mobile-first redesign with quote-first CTAs, service cards for polished/stamped/decorative/garage coatings, gallery/testimonial proof, license/insurance trust modules, service-area SEO, and clearer residential vs commercial paths.
-- **Observed services:** Stamped concrete, polyurethane traffic coating, shot blasting and concrete surface preparation, polished concrete, decorative concrete coating, concrete sealer, concrete garage floor coating, metallic epoxy floor coatings, concrete stairs, driveways, patios, residential/commercial/industrial concrete floors.
-- **Source/date added:** Iris nightly research, 2026-05-25 22:00 PT.
-- **Status:** New lead — not contacted.
+<!-- Built 2026-05-29 → demos/cardea-concrete/ → https://auto-sites.pages.dev/demos/cardea-concrete/ (pending verification) -->
 
 ## Carpet Time Inc
 
@@ -101,4 +91,16 @@
 - **Why this is a good candidate:** High-ticket local contracting niche with strong longevity/trust signals, but the current site appears old, hard to parse, and likely underpowered for mobile lead conversion. Likely upside from a cleaner estimate funnel, service-path pages for remodeling/concrete/repairs, project gallery proof, license/trust modules, emergency/repair CTAs, and stronger LA/Ventura service-area SEO.
 - **Observed services:** General construction/home improvement, remodeling, renovation, concrete, driveway/block wall/retaining wall/patio/deck work, fire/water damage repair, energy-efficiency upgrades, residential and commercial projects.
 - **Source/date added:** Iris nightly research, 2026-05-27 22:00 PT.
+- **Status:** New lead — not contacted.
+
+## Castillo Landscaping and Tree Services
+
+- **Business:** Castillo Landscaping and Tree Services
+- **Category:** Landscaping contractor, tree service, tree trimming/removal, gardening, outdoor maintenance
+- **Location:** Los Angeles / Southern California service area
+- **Website:** https://castillolandscapingandtreeservice.com/
+- **Contact signals:** Site describes a family-owned and operated landscaping and tree service company with 25+ years of combined experience, roots in Juan Castillo Sr.'s gardening business starting in 1990, licensed and insured service, and free estimates.
+- **Why this is a good candidate:** High-intent local outdoor-services niche with trust/family-history signals, but the current site is thin, dated, video-heavy, and light on lead-capture structure. Likely upside from a mobile-first redesign with quote-first CTAs, service cards for tree trimming/removal/landscaping/gardening, before/after proof, license/insurance trust modules, review/gallery sections, emergency/storm-damage messaging if applicable, and stronger LA-area SEO.
+- **Observed services:** Landscaping, tree service, tree trimming, gardening/lawn care, plant/tree work, outdoor maintenance; exact service taxonomy should be confirmed from site images or owner call.
+- **Source/date added:** Iris nightly research, 2026-05-28 22:00 PT.
 - **Status:** New lead — not contacted.

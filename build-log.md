@@ -20,7 +20,7 @@
 - **Notes:** Used Cardea official CDN imagery, official contact details, BuildZoom/about.me portfolio-range descriptions, and observed service categories. No fake reviews, star ratings, prices, warranty terms, license number, or generic map link were added.
 - **GPT 5.5 comparison:** GPT 5.5 remained materially better than the older GPT 5.4/Sonnet baseline for frontend/design execution. Quality and frontend taste were strong: it held a specific contractor concept, coherent material palette, clean responsive grid, and restrained motion without decorative image hover. Debugging was fast once screenshot/tool-path issues were corrected, though the model still needed explicit source-language and contractor-claim greps. Recommendation: keep using GPT 5.5 for Lucy builds, with mandatory screenshot QA, provenance checks, and final grep gates.
 - **Lessons:** Promoted the contractor license-claim lesson to DESIGN-KNOWLEDGE after Cardea became the fifth confirming build; also logged two operational cwd/dependency corrections in `memory/lessons.md`.
-- **Live URL:** https://auto-sites.pages.dev/demos/cardea-concrete/ (pending commit/push verification)
+- **Live URL:** https://auto-sites.pages.dev/demos/cardea-concrete/ (pushed to GitHub in commit 1e8a4dd; Pages route still serving the portfolio landing page at verification time)
 
 
 ### RRRoofing Group — Roofing contractor and emergency roof repair, Altadena CA

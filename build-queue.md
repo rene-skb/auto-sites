@@ -67,7 +67,7 @@
 - **Source/date added:** Iris nightly research, 2026-05-24 22:00 PT.
 - **Status:** New lead — not contacted.
 
-<!-- Built 2026-05-29 → demos/cardea-concrete/ → https://auto-sites.pages.dev/demos/cardea-concrete/ (pending verification) -->
+<!-- Built 2026-05-29 → demos/cardea-concrete/ → https://auto-sites.pages.dev/demos/cardea-concrete/ (pushed in commit 1e8a4dd; route stale at verification) -->
 
 ## Carpet Time Inc
 

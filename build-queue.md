@@ -55,31 +55,11 @@
 
 <!-- Built 2026-05-27 → demos/hillside-expert-electrical/ → https://auto-sites.pages.dev/demos/hillside-expert-electrical/ (route stale at verification) -->
 
-## Joseph & Sons Tile
-
-- **Business:** Joseph & Sons Tile
-- **Category:** Tile installation contractor, flooring, backsplash, bathroom/kitchen tile, stone and ceramic tile
-- **Location:** Los Angeles, CA / greater LA service area
-- **Website:** https://josephandsonstile.com/
-- **Contact signals:** Site advertises 60+ years as LA tile contractors, free consultations, family/business lineage language, local supplier knowledge, and services across ceramic, travertine, slate, porcelain, wood-look, granite, marble, stone/pebble, quartzite, and onyx tile.
-- **Why this is a good candidate:** High-intent local trade niche with premium-project upside, but the current site is copy-heavy, sparse, and visually dated for a craft trade. Likely upside from a sharper mobile-first redesign with project gallery proof, material/service cards, bathroom/kitchen/flooring landing sections, stronger free-consultation CTAs, review/license/trust modules, and cleaner LA-area SEO.
-- **Observed services:** Tile flooring, walls, fireplaces, backsplash, ceramic tile, travertine, slate, porcelain, wood-look tile, granite, marble, stone and pebble, quartzite, and onyx tile consultation/installation.
-- **Source/date added:** Iris nightly research, 2026-05-24 22:00 PT.
-- **Status:** New lead — not contacted.
+<!-- Built 2026-05-22 → demos/joseph-and-sons-tile/ → https://auto-sites.pages.dev/demos/joseph-and-sons-tile/ (stale active queue entry removed 2026-05-30) -->
 
 <!-- Built 2026-05-29 → demos/cardea-concrete/ → https://auto-sites.pages.dev/demos/cardea-concrete/ (pushed in commit 1e8a4dd; route stale at verification) -->
 
-## Carpet Time Inc
-
-- **Business:** Carpet Time Inc
-- **Category:** Flooring contractor, carpet, hardwood, laminate, vinyl, tile-style residential/commercial flooring
-- **Location:** Riverside, CA / Inland Empire and surrounding Southern California service area
-- **Website:** https://www.carpettime.com/about
-- **Contact signals:** Search/source snippets describe the company as family owned and operated since 1989, offering free in-home estimates, a showroom, residential and commercial flooring, and long-tenured professional installers. The fetched site content was sparse/template-heavy, which itself suggests a weak web presence.
-- **Why this is a good candidate:** High-intent home-services niche with meaningful project value and trust/history signals, but the website appears thin, generic, and poorly surfaced in readable content. Likely upside from a mobile-first estimate funnel, material-selection paths for carpet/hardwood/laminate/vinyl, before/after gallery proof, showroom/free-estimate CTAs, financing/promotions if available, and stronger Riverside/Inland Empire service-area SEO.
-- **Observed services:** Carpet sales/installation, residential flooring, commercial flooring, showroom consultations, free in-home estimates; likely additional hardwood/laminate/vinyl/flooring categories based on local flooring positioning.
-- **Source/date added:** Iris nightly research, 2026-05-26 22:00 PT.
-- **Status:** New lead — not contacted.
+<!-- Built 2026-05-30 → demos/carpet-time-inc/ → https://auto-sites.pages.dev/demos/carpet-time-inc/ -->
 
 ## Shafran Construction Inc.
 

@@ -6911,3 +6911,26 @@ Real Victoria BC business. Website was literally just a street address (touristw
 - **Key decisions:** Built the page around RototillerGuy’s concrete soil-prep method instead of generic landscaping polish: pick-axe 6 to 8 inches, rototill, add 3 inches of organic compost, then till again. Removed the v0 quick proof cards after the HOW panel because they functioned like a stats bar in disguise.
 - **Notes:** Used official RototillerGuy website imagery only. No prices, Pasadena office, invented origin story, or generic address map link were used. Added/promoted one lesson in `skills/auto-site-builder/lessons.md` about stats-bar-in-disguise quick strips.
 - **Live URL:** https://auto-sites.pages.dev/demos/rototillerguy-landscaping/ (pushed to GitHub in commit b00e769; Pages route still serving the portfolio landing page at verification time)
+
+### Carpet Time Inc — Flooring contractor and showroom, Riverside CA
+- **Date:** 2026-05-30
+- **Model:** openai-codex/gpt-5.5
+- **Agent:** Lucy
+- **Folder:** carpet-time-inc
+- **Hero pattern:** split-image-right with warm official carpet room imagery
+- **Typography:** Fraunces + Manrope
+- **Review layout:** no customer review cards; factual proof chapter with family-owned since 1989, CSLB #630569, WFCA/BBB membership, commercial flooring scope, and long-tenured installer proof because compliant attributed customer reviews were not verified
+- **Visit/hours layout:** dark two-card visit close with phone, real Google Maps business listing, showroom hours, weekend appointment note, estimate CTA context, and service-area list
+- **Stats bar style:** no-stats
+- **WHY Score:** 7.93 (Jobs 8.0 / Graham 7.7 / Ogilvy 8.1)
+- **WHAT Score:** 8.00 (Norman 8.2 / Krug 8.0 / Nielsen 7.8)
+- **HOW Score:** 8.10 (Vignelli 8.1 / Spiekermann 8.0 / Rams 8.2 / Emil 8.1)
+- **Panel average:** 8.01
+- **Self-review:** 8.5
+- **Versions built:** 6 HTML versions + final index.html
+- **Build time:** ~55 minutes
+- **Token estimate:** ~39k
+- **Key decisions:** Discovery skipped stale Joseph & Sons Tile because it already existed locally and in the build log, then built the first unbuilt active queue item. Carpet Time was framed around flooring decision support instead of product-category volume: room use, traffic, measurement, installation readiness, and showroom logistics.
+- **Notes:** Used official Carpet Time/CMS imagery and official facts only. No prices, warranties, financing terms, customer review cards, generic map link, or unsourced promotion claims were added. Added one Tier 1 lesson about flooring/material showroom decision-support structure.
+- **GPT 5.5 comparison:** GPT 5.5 remains materially better than the older GPT 5.4/Sonnet baseline for Lucy frontend/design execution. Quality and frontend taste were strong: the model quickly held a coherent warm material palette, a responsive split-image composition, chaptered service flow, no-stats proof treatment, and restrained motion. Debugging was good but not automatic: screenshot/vision QA caught source-language leakage, too-tight display typography, image reuse, and vague copy; revisions were fast and localized. Recommendation: keep using GPT 5.5 for Lucy builds, but keep mandatory screenshot/vision QA, source-language grep, and visual polish passes.
+- **Live URL:** https://auto-sites.pages.dev/demos/carpet-time-inc/ (pending push/live verification at log-write time)

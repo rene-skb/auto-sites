@@ -20,7 +20,7 @@
 - **Notes:** No prices, named review cards, emergency-response promises, timeline promises, generic map link, fake storefronts, or unverified 5,000+ projects claim were added. Final screenshot/vision QA caught and removed customer-facing source/meta language before deploy.
 - **GPT 5.5 comparison:** GPT 5.5 remained materially better than the older GPT 5.4/Sonnet baseline for frontend/design execution: it produced a polished contractor-specific visual system quickly, handled responsive CSS and motion cleanly, and recovered well from screenshot/vision critique. The familiar weakness persisted around source-language leakage and strategy copy appearing in visible text, so mandatory screenshot QA remains non-negotiable. Recommendation: keep using GPT 5.5 for Lucy builds, especially for frontend/taste, with explicit copy-provenance and source-language grep gates.
 - **Lessons:** Added `(1/5) [PROCESS]` license-badge images should be translated into live text near the estimate path instead of relying on tiny bitmaps.
-- **Live URL:** https://auto-sites.pages.dev/demos/shafran-construction-inc/ (pending push/live verification)
+- **Live URL:** https://auto-sites.pages.dev/demos/shafran-construction-inc/ (pushed to GitHub in commit 6f0c9d2; route still serving the portfolio landing page at verification time)
 
 ### Cardea Concrete — Concrete contractor, polished concrete, and decorative coatings, Los Angeles CA
 - **Date:** 2026-05-29

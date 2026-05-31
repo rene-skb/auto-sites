@@ -61,7 +61,7 @@
 
 <!-- Built 2026-05-30 → demos/carpet-time-inc/ → https://auto-sites.pages.dev/demos/carpet-time-inc/ -->
 
-<!-- Built 2026-05-31 → demos/shafran-construction-inc/ → https://auto-sites.pages.dev/demos/shafran-construction-inc/ -->
+<!-- Built 2026-05-31 → demos/shafran-construction-inc/ → https://auto-sites.pages.dev/demos/shafran-construction-inc/ (pushed in commit 6f0c9d2; route stale at verification) -->
 
 ## Castillo Landscaping and Tree Services
 

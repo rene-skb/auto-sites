@@ -61,17 +61,7 @@
 
 <!-- Built 2026-05-30 → demos/carpet-time-inc/ → https://auto-sites.pages.dev/demos/carpet-time-inc/ -->
 
-## Shafran Construction Inc.
-
-- **Business:** Shafran Construction Inc.
-- **Category:** General contractor, home improvement, remodeling, concrete/masonry, renovation, fire/water damage repair
-- **Location:** Woodland Hills / Los Angeles & Ventura Counties, CA
-- **Website:** http://shafranconstruction.com/
-- **Contact signals:** Search and source snippets describe a professional family-owned home improvement/general contracting company, fully licensed since 1988, serving Los Angeles and Ventura County communities; third-party profiles mention 30+ years of experience and 5,000+ projects. Site is live but fetch output is CSS-heavy/dated, suggesting weak readable structure.
-- **Why this is a good candidate:** High-ticket local contracting niche with strong longevity/trust signals, but the current site appears old, hard to parse, and likely underpowered for mobile lead conversion. Likely upside from a cleaner estimate funnel, service-path pages for remodeling/concrete/repairs, project gallery proof, license/trust modules, emergency/repair CTAs, and stronger LA/Ventura service-area SEO.
-- **Observed services:** General construction/home improvement, remodeling, renovation, concrete, driveway/block wall/retaining wall/patio/deck work, fire/water damage repair, energy-efficiency upgrades, residential and commercial projects.
-- **Source/date added:** Iris nightly research, 2026-05-27 22:00 PT.
-- **Status:** New lead — not contacted.
+<!-- Built 2026-05-31 → demos/shafran-construction-inc/ → https://auto-sites.pages.dev/demos/shafran-construction-inc/ -->
 
 ## Castillo Landscaping and Tree Services
 
@@ -83,4 +73,29 @@
 - **Why this is a good candidate:** High-intent local outdoor-services niche with trust/family-history signals, but the current site is thin, dated, video-heavy, and light on lead-capture structure. Likely upside from a mobile-first redesign with quote-first CTAs, service cards for tree trimming/removal/landscaping/gardening, before/after proof, license/insurance trust modules, review/gallery sections, emergency/storm-damage messaging if applicable, and stronger LA-area SEO.
 - **Observed services:** Landscaping, tree service, tree trimming, gardening/lawn care, plant/tree work, outdoor maintenance; exact service taxonomy should be confirmed from site images or owner call.
 - **Source/date added:** Iris nightly research, 2026-05-28 22:00 PT.
+- **Status:** New lead — not contacted.
+
+## Pacificland Constructors
+
+- **Business:** Pacificland Constructors
+- **Category:** Masonry contractor, concrete contractor, residential/commercial construction, hardscape/design-build
+- **Location:** Lakewood / Los Angeles & Orange County, CA service area
+- **Website:** https://www.paclandinc.com/
+- **Contact signals:** Site says Pacificland has 15+ years of experience, serves Los Angeles and Orange County, handles residential and commercial construction, and offers free in-home/property estimates; search snippets surface California State License No. 715187 and masonry/concrete service pages.
+- **Why this is a good candidate:** High-ticket local trade niche with strong project-value upside, but the current site reads like an older SEO-template build: thin homepage copy, generic title/location pages, weak visual hierarchy, and likely poor mobile conversion. Likely upside from a sharper quote-first landing page, masonry/concrete/hardscape service cards, before/after project gallery, license/trust modules, city/service-area SEO, and clearer residential vs commercial paths.
+- **Observed services:** Custom masonry, concrete design/construction, stone masonry, commercial masonry/concrete, home improvement, hardscape/design-build, residential and commercial construction.
+- **Source/date added:** Iris nightly research, 2026-05-29 22:00 PT.
+- **Status:** New lead — not contacted.
+
+
+## Bobcat Masonry and Concrete
+
+- **Business:** Bobcat Masonry and Concrete
+- **Category:** Masonry contractor, concrete contractor, residential/commercial concrete and masonry
+- **Location:** Los Angeles / South Bay / Orange County, CA service area
+- **Website:** http://www.bcmconcrete.com/
+- **Contact signals:** Site lists California license `862497`, says the company is family owned and operated with 20+ years of experience, serves Los Angeles/South Bay/Orange County, and offers free estimates; site also claims licensed, insured, and bonded.
+- **Why this is a good candidate:** High-ticket local trade niche with strong trust signals, but the current site is very sparse, copy-light, typo-prone, and structurally dated. Likely upside from a mobile-first quote funnel, service-area pages, project/gallery proof, license/insurance trust modules, concrete vs masonry service paths, and stronger before/after conversion copy.
+- **Observed services:** Concrete and masonry restoration, repair, installation, alterations, residential and commercial work; exact service taxonomy should be confirmed from owner/project photos.
+- **Source/date added:** Iris nightly research, 2026-05-30 22:00 PT.
 - **Status:** New lead — not contacted.

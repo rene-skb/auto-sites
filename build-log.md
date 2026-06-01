@@ -1,3 +1,27 @@
+### Castillo Landscaping and Tree Service — Tree service / landscaping, Pacoima and Los Angeles County CA
+- **Date:** 2026-06-01
+- **Model:** openai-codex/gpt-5.5
+- **Agent:** Lucy
+- **Folder:** castillo-landscaping-and-tree-services
+- **Hero pattern:** editorial-spread with angled licensed tree-work card
+- **Typography:** Roboto Slab + Work Sans
+- **Review layout:** three same-treatment customer review cards with first-name + last-initial attributions from the official reviews page
+- **Visit/hours layout:** final dark estimate-prep card paired with a service-area panel; no generic map link because a canonical named Google Maps listing URL was not confidently verified
+- **Stats bar style:** no-stats
+- **WHY Score:** 7.97 (Jobs 8.1 / Graham 7.8 / Ogilvy 8.0)
+- **WHAT Score:** 8.00 (Norman 8.1 / Krug 8.0 / Nielsen 7.9)
+- **HOW Score:** 8.10 (Vignelli 8.1 / Spiekermann 8.1 / Rams 8.0 / Emil 8.2)
+- **Panel average:** 8.02
+- **Self-review:** 8.6
+- **Versions built:** 6 HTML versions + final index.html
+- **Build time:** ~65 minutes
+- **Token estimate:** ~40k
+- **Key decisions:** Built Castillo around the urgent homeowner path: licensed Pacoima-based tree crews, 24-hour calls, free estimates, and Juan-centered review proof. Used official site imagery only, removed a legacy poster because it showed a conflicting phone number, and translated service/review evidence into customer-facing copy without source-language leakage.
+- **Notes:** No prices, invented emergency dispatch promise, generic Google Maps link, fake storefront/interior imagery, duplicate image use, or unsourced crew-size claim was added. CSLB lookup was under maintenance during verification, so the final keeps license #1015951 as an official-site-surfaced contractor number rather than overexplaining the license status.
+- **GPT 5.5 comparison:** GPT 5.5 remained materially better than the older GPT 5.4/Sonnet baseline for Lucy frontend/design execution. Quality and frontend taste were strong: it produced a distinctive earthy editorial contractor page, responsive grid, useful mobile call path, and restrained motion quickly. Debugging was also strong, but not hands-free: screenshot/vision QA caught generic hero imagery, visible source-language, a conflicting old phone-number graphic, and over-rounded/repetitive card treatment. Recommendation: keep using GPT 5.5 for Lucy builds, with mandatory screenshot QA, source-language grep, and stale-asset/contact checks.
+- **Lessons:** Added `(1/5) [PHOTOS]` legacy branded graphics can be worse than no image when they contain stale/conflicting contact details.
+- **Live URL:** https://auto-sites.pages.dev/demos/castillo-landscaping-and-tree-services/
+
 ### Shafran Construction Inc. — General contractor, home improvement, remodeling, and repair, Woodland Hills CA
 - **Date:** 2026-05-31
 - **Model:** openai-codex/gpt-5.5

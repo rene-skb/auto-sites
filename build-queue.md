@@ -63,17 +63,7 @@
 
 <!-- Built 2026-05-31 → demos/shafran-construction-inc/ → https://auto-sites.pages.dev/demos/shafran-construction-inc/ (pushed in commit 6f0c9d2; route stale at verification) -->
 
-## Castillo Landscaping and Tree Services
-
-- **Business:** Castillo Landscaping and Tree Services
-- **Category:** Landscaping contractor, tree service, tree trimming/removal, gardening, outdoor maintenance
-- **Location:** Los Angeles / Southern California service area
-- **Website:** https://castillolandscapingandtreeservice.com/
-- **Contact signals:** Site describes a family-owned and operated landscaping and tree service company with 25+ years of combined experience, roots in Juan Castillo Sr.'s gardening business starting in 1990, licensed and insured service, and free estimates.
-- **Why this is a good candidate:** High-intent local outdoor-services niche with trust/family-history signals, but the current site is thin, dated, video-heavy, and light on lead-capture structure. Likely upside from a mobile-first redesign with quote-first CTAs, service cards for tree trimming/removal/landscaping/gardening, before/after proof, license/insurance trust modules, review/gallery sections, emergency/storm-damage messaging if applicable, and stronger LA-area SEO.
-- **Observed services:** Landscaping, tree service, tree trimming, gardening/lawn care, plant/tree work, outdoor maintenance; exact service taxonomy should be confirmed from site images or owner call.
-- **Source/date added:** Iris nightly research, 2026-05-28 22:00 PT.
-- **Status:** New lead — not contacted.
+<!-- Built 2026-06-01 → demos/castillo-landscaping-and-tree-services/ → https://auto-sites.pages.dev/demos/castillo-landscaping-and-tree-services/ -->
 
 ## Pacificland Constructors
 

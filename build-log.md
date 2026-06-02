@@ -20,7 +20,7 @@
 - **Notes:** No prices, warranties, timeline promises, review quotes, generic Google Maps link, fake storefront/interior imagery, or unverified staff/origin claims were added. Yelp was blocked, so review cards were skipped instead of inventing attribution. Final screenshot/source-language grep caught and removed visible “official site says” copy before deploy.
 - **GPT 5.5 comparison:** GPT 5.5 again looked materially better than the older GPT 5.4/Sonnet baseline for Lucy frontend/design execution. Quality and frontend taste were strong: it found a distinctive warm-industrial contractor direction, used real photos effectively, built clean responsive CSS, and handled motion without violating the no-hover-image rule. Debugging was strong but still needed gates: screenshot QA caught source-language leakage, hero copy abstraction, caption spacing, and mobile conversion affordance gaps. Recommendation: keep using GPT 5.5 for Lucy builds, but keep mandatory screenshot QA, source-language grep, and contractor-claim checks.
 - **Lessons:** Added `(1/5) [PHOTOS]` contractor project archives get more persuasive when every image carries the trade plus city caption.
-- **Live URL:** https://auto-sites.pages.dev/demos/pacificland-constructors/
+- **Live URL:** https://auto-sites.pages.dev/demos/pacificland-constructors/ (pushed to GitHub in commit acec431; Pages route still serving the Auto-Sites portfolio landing page at verification time)
 
 ### Castillo Landscaping and Tree Service — Tree service / landscaping, Pacoima and Los Angeles County CA
 - **Date:** 2026-06-01

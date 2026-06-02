@@ -65,17 +65,7 @@
 
 <!-- Built 2026-06-01 → demos/castillo-landscaping-and-tree-services/ → https://auto-sites.pages.dev/demos/castillo-landscaping-and-tree-services/ -->
 
-## Pacificland Constructors
-
-- **Business:** Pacificland Constructors
-- **Category:** Masonry contractor, concrete contractor, residential/commercial construction, hardscape/design-build
-- **Location:** Lakewood / Los Angeles & Orange County, CA service area
-- **Website:** https://www.paclandinc.com/
-- **Contact signals:** Site says Pacificland has 15+ years of experience, serves Los Angeles and Orange County, handles residential and commercial construction, and offers free in-home/property estimates; search snippets surface California State License No. 715187 and masonry/concrete service pages.
-- **Why this is a good candidate:** High-ticket local trade niche with strong project-value upside, but the current site reads like an older SEO-template build: thin homepage copy, generic title/location pages, weak visual hierarchy, and likely poor mobile conversion. Likely upside from a sharper quote-first landing page, masonry/concrete/hardscape service cards, before/after project gallery, license/trust modules, city/service-area SEO, and clearer residential vs commercial paths.
-- **Observed services:** Custom masonry, concrete design/construction, stone masonry, commercial masonry/concrete, home improvement, hardscape/design-build, residential and commercial construction.
-- **Source/date added:** Iris nightly research, 2026-05-29 22:00 PT.
-- **Status:** New lead — not contacted.
+<!-- Built 2026-06-02 → demos/pacificland-constructors/ → https://auto-sites.pages.dev/demos/pacificland-constructors/ -->
 
 
 ## Bobcat Masonry and Concrete

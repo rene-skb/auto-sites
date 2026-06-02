@@ -1,0 +1,201 @@
+<!--
+DELTA: v4 motion implementation notes
+- Kept existing scroll reveal but shortened travel to 16px from the HOW critique.
+- Kept button active scale at 0.97 and custom easing curves.
+- Added nav underline feedback and focus-visible states on interactive controls only.
+- Preserved non-negotiable: no hover zoom/scale on non-clickable images.
+- Motion is progressive enhancement with reduced-motion and noscript fallbacks.
+
+DELTA: v3 iteration notes
+- Tightened hero typography and measure for cleaner line breaks.
+- Aligned hero image more deliberately and reduced the soft/glossy shadow.
+- Quieted service chips while preserving fast service recognition.
+- Added captions to all gallery images.
+- Added nav-link feedback and shortened scroll reveal distance to 16px.
+- HOW panel reviewers: Massimo Vignelli, Erik Spiekermann, Dieter Rams, Emil Kowalski
+- HOW panel scores: [8.2, 7.8, 8.5, 8.0] avg 8.13
+- Motion plan from Emil carried into Phase 10
+- See panel-notes.md -> HOW critique
+
+DELTA: v2 iteration notes
+- Added compact hero service chips for faster recognition.
+- Renamed nav labels to Project Gallery and License + Trust.
+- Made the CSLB license proof directly checkable using the official CSLB link.
+- Added a sticky mobile call bar.
+- Tightened display sizing slightly for readability and mobile scroll cost.
+- WHAT panel reviewers: Don Norman, Steve Krug, Jakob Nielsen
+- WHAT panel scores: [8.0, 7.8, 7.7] avg 7.83
+- See panel-notes.md -> WHAT critique
+
+DELTA: v1 iteration notes
+- Changed hero from a stylish hardscape line to a clearer concrete/masonry/stonework promise.
+- Removed visible demo/source-backed footer language.
+- Reworded clever section headings into practical contractor-facing language.
+- Fixed project caption spacing and made CTA prep items read as a checklist, not fake form fields.
+- WHY panel reviewers: Steve Jobs, Paul Graham, David Ogilvy
+- WHY panel scores: [7.8, 7.5, 7.9] avg 7.73
+- See panel-notes.md -> WHY critique
+
+BRAND RESEARCH: Pacificland Constructors
+- Business: Pacificland Constructors, a specialized residential masonry, concrete, stonework, and foundation construction company in Lakewood, CA 90712.
+- Source-backed facts: 15+ years of experience; Los Angeles and Orange County service area; residential and commercial construction; free project estimates; CA State License No. 715187; main estimate line 562.900.5360; email martin@paclandinc.com; address 5942 Autry Ave, Lakewood CA 90712.
+- Observed services: concrete flatwork, stamped concrete, brick work, CMU block walls, foundation work, pavers, fire pits, BBQs, fireplaces/chimneys, flagstone, stone work, retaining walls.
+- Brand colors: pulled from existing logo/site and project materials: warm concrete #d8d0bf, brick oxide #a25337, deep charcoal #211f1a, sand #f4efe4.
+- Vibe: field-built, technical, Southern California exterior work, practical, construction-literate rather than glossy luxury.
+- What makes them different: broad masonry/concrete scope with a visible project archive across LA/OC cities and an exact CSLB license number.
+- Typography direction: condensed industrial headline face + readable humanist sans; more job-site ledger than generic contractor brochure.
+
+PHOTO RANKING / ROLE ASSIGNMENTS
+1. stone-work-manhattan-beach.jpg — high-end finished stone entry, landscape, strongest hero image; upscale and complete.
+2. concrete-stone-los-alamitos.jpg — finished driveway/facade context, landscape; strong proof/project card.
+3. brick-flatwork-cerritos.jpg — curved brick/concrete walkway, square-ish; good service card/detail proof.
+4. paver-work-long-beach.jpg — patterned paver driveway, square; good surface/detail card.
+5. retaining-wall-huntington-beach.jpg — structural retaining walls, portrait; useful for retaining-wall service card, not hero.
+6. architectural-concrete-san-pedro.jpg — geometric concrete work, landscape but cluttered; supporting project image.
+7. foundation-work-manhattan-beach.jpg — useful foundation/process image, less polished; use low on page if needed.
+8. martin-ruvalcaba-sr.jpg — profile photo, small; avoid unless copy is about contacting the team.
+
+CREATIVE DIRECTION PANEL
+- Steve Jobs: Make it feel like an estimate desk for serious exterior work. Lead with the surface/project decision, not a soft origin story.
+- Paul Graham: Cut the big corporate language. “Concrete, masonry, stonework, foundations. Lakewood crew. LA/OC.” That is clearer than “world-class performance.”
+- David Ogilvy: Headline should be specific and useful: “Concrete, masonry, and stonework built for LA/OC properties.”
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pacificland Constructors | Masonry, concrete, stonework in LA & Orange County</title>
+  <meta name="description" content="Pacificland Constructors builds concrete, masonry, stonework, foundations, pavers, and retaining walls for residential and commercial properties across Los Angeles and Orange County." />
+  <meta property="og:title" content="Pacificland Constructors" />
+  <meta property="og:description" content="Concrete, masonry, stonework, foundations, pavers, and retaining walls for LA and Orange County properties." />
+  <meta property="og:image" content="stone-work-manhattan-beach.jpg" />
+  <meta property="og:url" content="https://auto-sites.pages.dev/demos/pacificland-constructors/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --ink:#211f1a; --muted:#6f665a; --paper:#f4efe4; --paper2:#e5ddcf; --brick:#a25337; --concrete:#c9bdab; --white:#fffaf0;
+      --max:1180px; --pad:clamp(22px,4vw,56px); --section:clamp(72px,10vw,128px);
+      --ease-out:cubic-bezier(.23,1,.32,1); --ease-in-out:cubic-bezier(.77,0,.175,1);
+    }
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--paper);color:var(--ink);font-family:Figtree,system-ui,sans-serif;line-height:1.45;-webkit-font-smoothing:antialiased}
+    img{max-width:100%;display:block} a{color:inherit;text-decoration:none} .wrap{width:min(var(--max),calc(100% - var(--pad)*2));margin:0 auto}
+    .nav{position:sticky;top:0;z-index:20;background:rgba(244,239,228,.88);backdrop-filter:blur(18px);border-bottom:1px solid rgba(33,31,26,.1)}
+    .nav-inner{height:74px;display:flex;align-items:center;justify-content:space-between;gap:24px}.brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.02em}.brand img{width:156px;height:auto;filter:contrast(1.12) saturate(1.1)}.brand span{display:none}.nav-links{display:flex;align-items:center;gap:24px;font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:.08em}.nav-links a:not(.nav-cta){position:relative}.nav-links a:not(.nav-cta)::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;background:var(--brick);transform:scaleX(0);transform-origin:left;transition:transform 180ms var(--ease-out)}.nav-links a:not(.nav-cta):hover::after{transform:scaleX(1)}.nav-cta{background:var(--ink);color:var(--white);padding:12px 16px;border-radius:999px;transition:transform 160ms var(--ease-out),background 160ms}.nav-cta:hover{background:var(--brick)}.nav-cta:active,.btn:active{transform:scale(.97)}
+    #menu{display:none}.hamb{display:none;width:42px;height:42px;border:1px solid rgba(33,31,26,.16);border-radius:50%;align-items:center;justify-content:center}.hamb span,.hamb span:before,.hamb span:after{display:block;width:18px;height:2px;background:var(--ink);content:"";position:relative}.hamb span:before{position:absolute;top:-6px}.hamb span:after{position:absolute;top:6px}
+    .hero{padding:clamp(38px,6vw,74px) 0 var(--section)}.hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(28px,5vw,72px);align-items:center}.eyebrow{font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--brick);margin:0 0 18px}.hero h1{font-family:"Archivo Black",Impact,sans-serif;font-size:clamp(42px,7.05vw,96px);line-height:.94;letter-spacing:-.06em;margin:0;max-width:850px}.hero-copy{font-size:clamp(18px,2vw,23px);max-width:590px;color:#453e35;margin:30px 0 0}.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}.chips span{display:inline-flex;padding:7px 10px;border-radius:999px;border:1px solid rgba(33,31,26,.14);background:rgba(255,255,255,.24);font-size:12px;font-weight:800;color:#5b5147}.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:14px 20px;border-radius:999px;font-weight:800;transition:transform 160ms var(--ease-out),background 180ms var(--ease-out),color 180ms var(--ease-out)}.btn.primary{background:var(--brick);color:#fff}.btn.primary:hover{background:#7f3e2b}.btn:focus-visible,.nav-links a:focus-visible,.mobile-call:focus-visible{outline:3px solid rgba(162,83,55,.42);outline-offset:4px}.btn.secondary{border:1px solid rgba(33,31,26,.18);background:rgba(255,255,255,.34)}.btn.secondary:hover{background:var(--ink);color:var(--white)}
+    .hero-card{background:var(--ink);color:var(--white);padding:18px;border-radius:30px;transform:rotate(1.2deg);box-shadow:0 18px 44px rgba(33,31,26,.16)}.hero-card img{border-radius:22px;aspect-ratio:4/3;object-fit:cover}.hero-card figcaption{display:flex;justify-content:space-between;gap:16px;padding:16px 4px 2px;font-size:13px;color:#d8d0bf;text-transform:uppercase;letter-spacing:.08em;font-weight:800}
+    .quick{margin-top:44px;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(33,31,26,.14);border-bottom:1px solid rgba(33,31,26,.14)}.quick div{padding:18px 18px 18px 0}.quick div+div{border-left:1px solid rgba(33,31,26,.14);padding-left:18px}.label{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);font-weight:800;margin-bottom:7px}.quick strong{font-size:15px}
+    section{padding:var(--section) 0}.chapter{display:grid;grid-template-columns:.72fr 1.28fr;gap:clamp(28px,6vw,90px);align-items:start}.kicker{font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.16em;color:var(--brick);margin:0 0 14px}.section-title{font-family:"Archivo Black",Impact,sans-serif;font-size:clamp(34px,4.8vw,66px);line-height:.92;letter-spacing:-.052em;margin:0}.lead{font-size:20px;color:#4f473d;margin:22px 0 0;max-width:680px}.services{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.service{background:rgba(255,255,255,.42);border:1px solid rgba(33,31,26,.1);border-radius:24px;padding:24px;min-height:168px}.service h3{margin:0 0 10px;font-size:22px;letter-spacing:-.03em}.service p{margin:0;color:#5d554b}.service .num{font-family:"Archivo Black";font-size:13px;color:var(--brick);display:block;margin-bottom:28px}
+    .dark{background:var(--ink);color:var(--white)}.dark .kicker{color:#d19476}.dark .lead,.dark p{color:#e4d7c4}.project-strip{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;margin-top:42px}.project-main,.project-side{border-radius:30px;overflow:hidden;background:#111}.project-main{padding-bottom:18px}.project-main img{height:520px;width:100%;object-fit:cover}.project-side{display:grid;gap:18px;background:transparent}.project-side figure{margin:0}.project-side img{height:226px;width:100%;object-fit:cover;border-radius:30px}.mini-caption{font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:#cabca7;font-weight:800;margin-top:10px}.caption{font-size:13px;text-transform:uppercase;letter-spacing:.1em;color:#cabca7;font-weight:800;margin:16px 0 4px;padding-left:2px}
+    .proof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}.proof{background:var(--paper2);border-radius:26px;padding:28px;border:1px solid rgba(33,31,26,.08)}.proof b{display:block;font-family:"Archivo Black";font-size:34px;line-height:.95;letter-spacing:-.04em;margin-bottom:18px}.proof p{margin:0;color:#554d43}.proof a{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}
+    .process{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(33,31,26,.14);border-radius:28px;overflow:hidden;margin-top:42px}.step{background:var(--paper);padding:28px}.step span{font-family:"Archivo Black";color:var(--brick);font-size:13px}.step h3{margin:30px 0 10px;font-size:21px}.step p{margin:0;color:#5b5348;font-size:15px}
+    .contact{padding:var(--section) 0;background:#b55f3e;color:#fff}.contact-card{display:grid;grid-template-columns:1fr .92fr;gap:32px;align-items:stretch}.contact h2{font-family:"Archivo Black";font-size:clamp(42px,6vw,82px);line-height:.9;letter-spacing:-.056em;margin:0}.contact p{font-size:20px;color:#ffe6d9;max-width:600px}.contact-panel{background:rgba(33,31,26,.94);border-radius:30px;padding:32px;display:grid;gap:18px}.contact-row{border-bottom:1px solid rgba(255,255,255,.12);padding-bottom:16px}.contact-row:last-child{border-bottom:0;padding-bottom:0}.contact-row .label{color:#d6a58c}.contact-row strong,.contact-row a{font-size:20px;color:#fff;font-weight:800}.prep{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:24px}.prep div{border:1px solid rgba(255,255,255,.2);border-radius:18px;padding:16px;color:#ffe6d9;font-weight:700}
+    footer{padding:34px 0 86px;background:var(--ink);color:#d8d0bf;font-size:14px}.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.reveal{opacity:0;transform:translateY(16px);transition:opacity 700ms var(--ease-out),transform 700ms var(--ease-out)}.reveal.visible{opacity:1;transform:none}
+    .mobile-call{display:none}
+    @media(max-width:900px){.hero-grid,.chapter,.contact-card,.project-strip{grid-template-columns:1fr}.quick{grid-template-columns:repeat(2,1fr)}.quick div:nth-child(3){border-left:0}.services,.proof-grid,.process{grid-template-columns:1fr}.project-main img{height:360px}.nav-links{display:none;position:absolute;left:var(--pad);right:var(--pad);top:74px;background:var(--ink);color:var(--white);border-radius:24px;padding:20px;flex-direction:column;align-items:flex-start}.hamb{display:flex}#menu:checked~.nav-links{display:flex}.brand img{width:140px}.hero-card{transform:none}.prep{grid-template-columns:1fr}.mobile-call{display:flex;position:fixed;left:14px;right:14px;bottom:14px;z-index:30;min-height:54px;align-items:center;justify-content:center;border-radius:999px;background:var(--brick);color:#fff;font-weight:900;box-shadow:0 16px 44px rgba(33,31,26,.28)}}
+    @media(max-width:560px){.quick{grid-template-columns:1fr}.quick div+div{border-left:0;border-top:1px solid rgba(33,31,26,.14);padding-left:0}.hero h1{font-size:clamp(44px,16vw,72px)}.service,.proof,.step,.contact-panel{padding:22px}.project-side img,.project-main img{height:260px}.nav-inner{height:68px}.nav-links{top:68px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top" aria-label="Pacificland Constructors home"><img src="pacificland-logo.png" alt="Pacificland Constructors"><span>Pacificland Constructors</span></a>
+      <input type="checkbox" id="menu" aria-label="Toggle navigation">
+      <label class="hamb" for="menu"><span></span></label>
+      <div class="nav-links">
+        <a href="#services">Services</a><a href="#projects">Project Gallery</a><a href="#proof">License + Trust</a><a class="nav-cta" href="tel:5629005360">Call 562.900.5360</a>
+      </div>
+    </div>
+  </nav>
+  <main id="top">
+    <header class="hero wrap">
+      <div class="hero-grid">
+        <div class="reveal">
+          <p class="eyebrow">Lakewood masonry, concrete, stonework</p>
+          <h1>Concrete, masonry, and stonework in LA + Orange County.</h1>
+          <p class="hero-copy">Pacificland Constructors builds concrete, masonry, stonework, foundations, pavers, and retaining walls for residential and commercial properties across Los Angeles and Orange County.</p>
+          <div class="chips" aria-label="Services Pacificland builds"><span>Concrete</span><span>Masonry</span><span>Foundations</span><span>Pavers</span><span>Retaining walls</span></div>
+          <div class="hero-actions"><a class="btn primary" href="tel:5629005360">Call for a free estimate</a><a class="btn secondary" href="#services">See service scope</a></div>
+        </div>
+        <figure class="hero-card reveal">
+          <img src="stone-work-manhattan-beach.jpg" alt="Finished stone masonry entry project by Pacificland Constructors">
+          <figcaption><span>Stone work</span><span>Manhattan Beach</span></figcaption>
+        </figure>
+      </div>
+      <div class="quick reveal" aria-label="Quick project details">
+        <div><span class="label">Estimate line</span><strong>562.900.5360</strong></div>
+        <div><span class="label">Based in</span><strong>Lakewood, CA 90712</strong></div>
+        <div><span class="label">License</span><strong>CA CSLB No. 715187</strong></div>
+        <div><span class="label">Service area</span><strong>Los Angeles + Orange County</strong></div>
+      </div>
+    </header>
+
+    <section id="services" class="wrap chapter">
+      <div class="reveal"><p class="kicker">Scope</p><h2 class="section-title">Concrete, masonry, foundations, pavers, and retaining walls.</h2><p class="lead">Start with the material and the site condition. Pacificland’s published scope covers the exterior work that needs to be poured, stacked, repaired, supported, or finished.</p></div>
+      <div class="services reveal">
+        <article class="service"><span class="num">01</span><h3>Concrete</h3><p>Concrete flatwork and stamped concrete for driveways, patios, walkways, and exterior surfaces.</p></article>
+        <article class="service"><span class="num">02</span><h3>Masonry</h3><p>Brick work, CMU block walls, stone work, flagstone, fireplaces, BBQs, and chimney-related masonry.</p></article>
+        <article class="service"><span class="num">03</span><h3>Foundations</h3><p>Foundation work for projects that need technical construction experience before the finish goes on.</p></article>
+        <article class="service"><span class="num">04</span><h3>Pavers + retaining walls</h3><p>Paver work, fire pits, retaining walls, and hardscape pieces that shape the property.</p></article>
+      </div>
+    </section>
+
+    <section id="projects" class="dark">
+      <div class="wrap">
+        <div class="chapter">
+          <div class="reveal"><p class="kicker">Project archive</p><h2 class="section-title">A project archive across LA and Orange County.</h2></div>
+          <p class="lead reveal">Pacificland’s official site shows completed work by city: Cerritos brick flatwork, Anaheim brick walkways, San Pedro concrete, Manhattan Beach foundation work, Long Beach pavers, Huntington Beach retaining walls, and more.</p>
+        </div>
+        <div class="project-strip reveal">
+          <figure class="project-main"><img src="concrete-stone-los-alamitos.jpg" alt="Concrete and stone work project in Los Alamitos"><figcaption class="caption">Concrete + stone work · Los Alamitos</figcaption></figure>
+          <div class="project-side">
+            <figure><img src="brick-flatwork-cerritos.jpg" alt="Brick flatwork project in Cerritos"><figcaption class="mini-caption">Brick flatwork · Cerritos</figcaption></figure>
+            <figure><img src="paver-work-long-beach.jpg" alt="Paver work project in Long Beach"><figcaption class="mini-caption">Paver work · Long Beach</figcaption></figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="proof" class="wrap">
+      <div class="chapter">
+        <div class="reveal"><p class="kicker">Before you call</p><h2 class="section-title">Trust details you can check before calling.</h2></div>
+        <p class="lead reveal">For contractor pages, trust should stay checkable. Pacificland publishes an exact license number, a Lakewood address, a direct estimate phone line, and a real project gallery.</p>
+      </div>
+      <div class="proof-grid reveal">
+        <article class="proof"><b><a href="https://www2.cslb.ca.gov/OnlineServices/CheckLicenseII/LicenseDetail.aspx?LicNum=715187">715187</a></b><p>California State License number shown on the official Pacificland site and linked to CSLB lookup.</p></article>
+        <article class="proof"><b>15+ years</b><p>The official homepage says Pacificland has more than 15 years of construction experience.</p></article>
+        <article class="proof"><b>LA / OC</b><p>The company describes its service area as Los Angeles and Orange County for residential and commercial work.</p></article>
+      </div>
+      <div class="process reveal">
+        <article class="step"><span>01</span><h3>Name the surface</h3><p>Concrete, brick, CMU, stone, pavers, foundation, or retaining wall.</p></article>
+        <article class="step"><span>02</span><h3>Share the site</h3><p>Address, access, photos, and whether the work is residential or commercial.</p></article>
+        <article class="step"><span>03</span><h3>Ask for scope</h3><p>Repair, replacement, new build, finish change, drainage, or structural support.</p></article>
+        <article class="step"><span>04</span><h3>Book the estimate</h3><p>Use the official estimate line and get the project looked at directly.</p></article>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="wrap contact-card">
+        <div class="reveal"><p class="kicker">Free project estimate</p><h2>Have the project basics ready.</h2><p>Call Pacificland with the project type, property location, and any site photos you already have. Keep the first call about scope, access, and what needs to be built.</p><div class="prep"><div>✓ Project type</div><div>✓ Property city</div><div>✓ Photos if available</div><div>✓ Residential or commercial</div></div></div>
+        <aside class="contact-panel reveal" aria-label="Pacificland contact details">
+          <div class="contact-row"><span class="label">Call</span><a href="tel:5629005360">562.900.5360</a></div>
+          <div class="contact-row"><span class="label">Email</span><a href="mailto:martin@paclandinc.com">martin@paclandinc.com</a></div>
+          <div class="contact-row"><span class="label">Address</span><strong>5942 Autry Ave, Lakewood CA 90712</strong></div>
+          <div class="contact-row"><span class="label">License</span><strong>California State License No. 715187</strong></div>
+        </aside>
+      </div>
+    </section>
+  </main>
+  <a class="mobile-call" href="tel:5629005360">Call 562.900.5360 for estimate</a>
+  <footer><div class="wrap foot"><span>Pacificland Constructors Inc.</span><span>CA License 715187 · 562.900.5360</span></div></footer>
+  <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
+  <script>
+    const io = new IntersectionObserver((entries)=>{entries.forEach((entry)=>{if(entry.isIntersecting){entry.target.classList.add('visible');io.unobserve(entry.target)}})},{threshold:.15});
+    document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=`${Math.min(i*55,220)}ms`;io.observe(el)});
+  </script>
+</body>
+</html>

@@ -1,3 +1,27 @@
+### Pacificland Constructors — Masonry, concrete, stonework, foundations, pavers, and retaining walls, Lakewood / LA & Orange County CA
+- **Date:** 2026-06-02
+- **Model:** openai-codex/gpt-5.5
+- **Agent:** Lucy
+- **Folder:** pacificland-constructors
+- **Hero pattern:** split-image-right / editorial contractor proof card
+- **Typography:** Archivo Black + Figtree
+- **Review layout:** no customer review cards; three same-treatment trust/proof cards using CSLB license, experience, and LA/OC service-area facts because compliant named reviews were not verified
+- **Visit/hours layout:** final rust estimate-prep section with phone, email, address, license, and quote-prep checklist; no generic map link because a canonical named Google Maps listing URL was not confidently verified
+- **Stats bar style:** no-stats
+- **WHY Score:** 7.73 (Jobs 7.8 / Graham 7.5 / Ogilvy 7.9)
+- **WHAT Score:** 7.83 (Norman 8.0 / Krug 7.8 / Nielsen 7.7)
+- **HOW Score:** 8.13 (Vignelli 8.2 / Spiekermann 7.8 / Rams 8.5 / Emil 8.0)
+- **Panel average:** 7.90
+- **Self-review:** 8.6
+- **Versions built:** 6 HTML versions + final index.html
+- **Build time:** ~90 minutes
+- **Token estimate:** ~44k
+- **Key decisions:** Built Pacificland as a practical estimate desk for concrete, masonry, stonework, foundations, pavers, and retaining walls, using real official project photography instead of generated contractor filler. Kept trust checkable with CSLB #715187, Lakewood address, direct estimate phone, email, service scope, and city-labeled project captions.
+- **Notes:** No prices, warranties, timeline promises, review quotes, generic Google Maps link, fake storefront/interior imagery, or unverified staff/origin claims were added. Yelp was blocked, so review cards were skipped instead of inventing attribution. Final screenshot/source-language grep caught and removed visible “official site says” copy before deploy.
+- **GPT 5.5 comparison:** GPT 5.5 again looked materially better than the older GPT 5.4/Sonnet baseline for Lucy frontend/design execution. Quality and frontend taste were strong: it found a distinctive warm-industrial contractor direction, used real photos effectively, built clean responsive CSS, and handled motion without violating the no-hover-image rule. Debugging was strong but still needed gates: screenshot QA caught source-language leakage, hero copy abstraction, caption spacing, and mobile conversion affordance gaps. Recommendation: keep using GPT 5.5 for Lucy builds, but keep mandatory screenshot QA, source-language grep, and contractor-claim checks.
+- **Lessons:** Added `(1/5) [PHOTOS]` contractor project archives get more persuasive when every image carries the trade plus city caption.
+- **Live URL:** https://auto-sites.pages.dev/demos/pacificland-constructors/
+
 ### Castillo Landscaping and Tree Service — Tree service / landscaping, Pacoima and Los Angeles County CA
 - **Date:** 2026-06-01
 - **Model:** openai-codex/gpt-5.5

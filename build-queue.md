@@ -67,15 +67,17 @@
 
 <!-- Built 2026-06-02 → demos/pacificland-constructors/ → https://auto-sites.pages.dev/demos/pacificland-constructors/ -->
 
+<!-- Built 2026-06-03 → demos/bobcat-masonry-and-concrete/ → https://auto-sites.pages.dev/demos/bobcat-masonry-and-concrete/ -->
 
-## Bobcat Masonry and Concrete
 
-- **Business:** Bobcat Masonry and Concrete
-- **Category:** Masonry contractor, concrete contractor, residential/commercial concrete and masonry
-- **Location:** Los Angeles / South Bay / Orange County, CA service area
-- **Website:** http://www.bcmconcrete.com/
-- **Contact signals:** Site lists California license `862497`, says the company is family owned and operated with 20+ years of experience, serves Los Angeles/South Bay/Orange County, and offers free estimates; site also claims licensed, insured, and bonded.
-- **Why this is a good candidate:** High-ticket local trade niche with strong trust signals, but the current site is very sparse, copy-light, typo-prone, and structurally dated. Likely upside from a mobile-first quote funnel, service-area pages, project/gallery proof, license/insurance trust modules, concrete vs masonry service paths, and stronger before/after conversion copy.
-- **Observed services:** Concrete and masonry restoration, repair, installation, alterations, residential and commercial work; exact service taxonomy should be confirmed from owner/project photos.
-- **Source/date added:** Iris nightly research, 2026-05-30 22:00 PT.
+## Al Ruiz Concrete Construction
+
+- **Business:** Al Ruiz Concrete Construction
+- **Category:** Concrete contractor, masonry contractor, pavers, patios, driveways, retaining walls, custom outdoor construction
+- **Location:** Burbank / Glendale / Los Angeles County / San Fernando Valley, CA service area
+- **Website:** https://www.alruizconcrete.com/
+- **Contact signals:** Site lists free estimates, 40+ years of experience, fully insured status, family and locally owned business, same-day service by call, in business since 1980, residential and commercial customers, satisfaction guaranteed, and phone contact `(818) 848-1522`.
+- **Why this is a good candidate:** High-ticket local trade niche with strong trust and longevity signals, but the current site is a thin/template-like services page with dated visual hierarchy and limited conversion storytelling. Likely upside from a mobile-first quote funnel, concrete/masonry/paver service cards, before/after project gallery, license/insurance/trust modules, San Fernando Valley service-area SEO, offer framing, and clearer residential vs commercial paths.
+- **Observed services:** Custom patios, BBQs, fireplaces, interlocking paving, patio/porch pavers, driveway construction, stamped concrete, retaining walls, decks, parking lots/flats, excavating and grading.
+- **Source/date added:** Iris nightly research, 2026-06-01 22:00 PT run.
 - **Status:** New lead — not contacted.

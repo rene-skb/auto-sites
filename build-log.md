@@ -1,3 +1,27 @@
+### Bobcat Masonry and Concrete — Masonry and concrete contractor, Inglewood / Los Angeles CA
+- **Date:** 2026-06-03
+- **Model:** openai-codex/gpt-5.5
+- **Agent:** Lucy
+- **Folder:** bobcat-masonry-and-concrete
+- **Hero pattern:** dark-immersive / contractor photo board
+- **Typography:** Archivo Black + Public Sans
+- **Review layout:** no customer review cards; three same-treatment trust/proof cards using license, years, and service-area facts because compliant named reviews were not verified
+- **Visit/hours layout:** final orange estimate-prep section with phone, email, location, hours, and service-area chips; no generic map link because a canonical named Google Maps listing URL was not confidently verified
+- **Stats bar style:** no-stats
+- **WHY Score:** 7.87 (Jobs 7.9 / Graham 7.7 / Ogilvy 8.0)
+- **WHAT Score:** 7.87 (Norman 8.0 / Krug 7.8 / Nielsen 7.8)
+- **HOW Score:** 8.10 (Vignelli 8.1 / Spiekermann 8.0 / Rams 8.2 / Emil 8.1)
+- **Panel average:** 7.95
+- **Self-review:** 8.5
+- **Versions built:** 6 HTML versions + final index.html
+- **Build time:** ~85 minutes
+- **Token estimate:** ~46k
+- **Key decisions:** Built Bobcat as a dark, practical contractor estimate board around driveways, walls, stairs, patios, foundations, and masonry repair. Used official project imagery only, kept license #862497 visible where licensing appears, skipped review cards without compliant reviewer names, and turned the scattered old WordPress service list into concrete/masonry/structural/finish buckets.
+- **Notes:** No prices, timeline promises, emergency claims, invented owner story, generic Google Maps link, fake storefront/interior imagery, or customer reviews were added. Screenshot tooling initially needed the `playwright-core` Firefox cache repaired; final screenshot and grep gates passed after comment-level cleanup.
+- **GPT 5.5 comparison:** GPT 5.5 remains materially better than the older GPT 5.4/Sonnet Lucy baseline for frontend/design execution. Quality and frontend taste were strong: it quickly found a distinct dark contractor-board direction, used official assets without fake imagery, and produced responsive CSS/motion with few structural issues. Debugging was mixed tonight: design/code debugging stayed good, but environment/tool dependency assumptions caused friction (`bs4`, `PIL`, and Playwright browser cache). Recommendation: keep GPT 5.5 for Lucy builds, but add a preflight for local screenshot/image tooling so the model’s frontend gains are not eaten by runtime churn.
+- **Lessons:** Promoted `(2/5) [PHOTOS]` contractor project archives get more persuasive when every image carries the trade plus city caption.
+- **Live URL:** https://auto-sites.pages.dev/demos/bobcat-masonry-and-concrete/ (push succeeded; live route still serving portfolio fallback at verification time, so Pages verification pending)
+
 ### Pacificland Constructors — Masonry, concrete, stonework, foundations, pavers, and retaining walls, Lakewood / LA & Orange County CA
 - **Date:** 2026-06-02
 - **Model:** openai-codex/gpt-5.5

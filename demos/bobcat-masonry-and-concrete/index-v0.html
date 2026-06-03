@@ -1,0 +1,172 @@
+<!--
+BRAND RESEARCH: Bobcat Masonry and Concrete
+- Business: Bobcat Masonry and Concrete, a family-owned masonry and concrete contractor serving Los Angeles, South Bay, Orange County, Ventura County, and Kern County from Inglewood / Los Angeles.
+- Verified facts: License 862497; phone (310) 259-0448; email bobcatmasonry@gmail.com; Monday-Friday 08:00-20:00, Saturday/Sunday closed; family owned and operated; 20+ years on home page, 10+ years on concrete page; residential and commercial work; free estimates; insured and bonded claimed by business site; BuildZoom lists license 862497 as Masonry and active when last checked.
+- Observed services: stamped concrete, driveways, patios, sidewalks, city driveway approaches, curb cuts, porches and steps, parking slabs, garage slabs, retaining walls, foundations, tuckpointing, brick repair/replacement, chimneys, fireplaces, walls, church/school masonry repair, stucco/plaster, pavers, pool decks.
+- Brand colors: black/charcoal from logo and old theme, bobcat orange #d0642f, concrete tan #d8d0c2, worksite cream #f5efe4.
+- Vibe: no-frills LA contractor, older WordPress site, real job photos, practical estimate path, masonry/concrete scope is stronger than the current presentation.
+- What makes them different: broad concrete + masonry scope, license number, free estimates, published service-area counties, and a real project archive with city-labeled jobs.
+- Typography direction: compact industrial headline + clear grotesk body. Sturdy, contractor-literate, less polished luxury.
+
+PHOTO RANKING / ROLE ASSIGNMENTS
+1. source-27 / hollywood-driveway.jpg - finished driveway, landscape-ish, best hero because the result is clear and homeowner-relevant.
+2. source-26 / culver-city-patio-pavers-stairs.jpeg - finished patio/paver/stair project, landscape; strong main gallery proof.
+3. source-32 / hollywood-retaining-wall.jpg - retaining wall work, landscape; strong structural proof card.
+4. source-28 / gardena-way-stairs.jpg - stairs/walkway project, landscape; useful gallery card.
+5. source-33 / torrance-residential.jpg - residential patio/stairs, landscape; supporting gallery card.
+6. source-30 / encino-stucco.jpg - stucco/masonry, landscape; useful service proof.
+7. source-13 / brick-wall.jpg - clean material image, wide; good texture/support, not hero.
+8. service-category stock-ish images source-01 through source-12 - use sparingly or skip; portfolio photos are better.
+9. tiny logos/icons and partner badges - logo only; skip decorative badges unless needed.
+
+CREATIVE DIRECTION PANEL
+- Steve Jobs: Make the site feel like a contractor’s estimate board. The old site is scattered; the rebuild should make the job path feel solid.
+- Paul Graham: Lead with the useful nouns: driveways, walls, stairs, patios, foundations. Cut the abstract quality language.
+- David Ogilvy: Headline should tell the homeowner what to call for: “Driveways, walls, stairs, patios, foundations.”
+
+DELTA: v0 first build
+- Dark-immersive contractor board direction.
+- Real official project images only.
+- No review cards because compliant first-name + last-initial review sources were not verified.
+- Built around service scope, project archive, license/proof, and estimate prep.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bobcat Masonry and Concrete | LA concrete and masonry contractor</title>
+  <meta name="description" content="Bobcat Masonry and Concrete handles driveways, walls, stairs, patios, foundations, retaining walls, and masonry repair across Los Angeles, South Bay, Orange County, Ventura County, and Kern County." />
+  <meta property="og:title" content="Bobcat Masonry and Concrete" />
+  <meta property="og:description" content="Concrete and masonry contractor for driveways, walls, stairs, patios, foundations, retaining walls, and repair work across greater Los Angeles." />
+  <meta property="og:image" content="hollywood-driveway.jpg" />
+  <meta property="og:url" content="https://auto-sites.pages.dev/demos/bobcat-masonry-and-concrete/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Public+Sans:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{--ink:#171512;--charcoal:#24211d;--paper:#f5efe4;--sand:#d8d0c2;--muted:#9b9183;--orange:#d0642f;--orange2:#a94b27;--line:rgba(245,239,228,.14);--max:1180px;--pad:clamp(22px,4vw,56px);--section:clamp(74px,10vw,126px);--ease-out:cubic-bezier(.23,1,.32,1);--ease-in-out:cubic-bezier(.77,0,.175,1)}
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--ink);color:var(--paper);font-family:"Public Sans",system-ui,sans-serif;line-height:1.45;-webkit-font-smoothing:antialiased} img{max-width:100%;display:block} a{color:inherit;text-decoration:none}.wrap{width:min(var(--max),calc(100% - var(--pad)*2));margin:0 auto}
+    .nav{position:sticky;top:0;z-index:20;background:rgba(23,21,18,.9);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}.nav-inner{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}.brand{display:flex;align-items:center;gap:13px;font-weight:900;text-transform:uppercase;letter-spacing:.1em;font-size:12px}.brand img{width:152px;height:auto;filter:brightness(1.22) contrast(1.12)}
+    .nav-links{display:flex;align-items:center;gap:22px;font-size:13px;font-weight:900;text-transform:uppercase;letter-spacing:.11em}
+    .nav-links a:not(.nav-cta){position:relative;color:#e8dfd1}
+    .nav-links a:not(.nav-cta)::after{content:"";position:absolute;left:0;right:0;bottom:-7px;height:2px;background:var(--orange);transform:scaleX(0);transform-origin:left;transition:transform 180ms var(--ease-out)}
+    .nav-links a:not(.nav-cta):hover::after{transform:scaleX(1)}
+    .nav-cta{background:var(--orange);color:white;padding:12px 16px;border-radius:999px;transition:transform 160ms var(--ease-out),background 160ms}
+    .nav-cta:hover{background:#e36d33}
+    .nav-cta:active,.btn:active{transform:scale(.97)}#menu{display:none}.hamb{display:none;width:42px;height:42px;border:1px solid var(--line);border-radius:50%;align-items:center;justify-content:center}.hamb span,.hamb span:before,.hamb span:after{display:block;width:18px;height:2px;background:var(--paper);content:"";position:relative}.hamb span:before{position:absolute;top:-6px}.hamb span:after{position:absolute;top:6px}
+    .hero{padding:clamp(42px,7vw,88px) 0 clamp(64px,9vw,118px);background:radial-gradient(circle at 78% 12%, rgba(208,100,47,.22), transparent 34%),linear-gradient(180deg,#171512 0%,#211e1a 100%)}.hero-grid{display:grid;grid-template-columns:1fr .96fr;gap:clamp(28px,5vw,72px);align-items:center}.eyebrow{font-size:12px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:#f0a073;margin:0 0 18px}.hero h1{font-family:"Archivo Black",Impact,sans-serif;font-size:clamp(46px,7.5vw,104px);line-height:.9;letter-spacing:-.06em;margin:0;max-width:820px}.hero-copy{font-size:clamp(18px,2vw,23px);max-width:610px;color:#d9cfc0;margin:28px 0 0}.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:14px 20px;border-radius:999px;font-weight:900;transition:transform 160ms var(--ease-out),background 180ms var(--ease-out),color 180ms var(--ease-out)}.btn.primary{background:var(--orange);color:white}.btn.primary:hover{background:#e26d36}.btn.secondary{border:1px solid rgba(245,239,228,.18);background:rgba(245,239,228,.06);color:var(--paper)}.btn.secondary:hover{background:var(--paper);color:var(--ink)}.btn:focus-visible,.nav-links a:focus-visible,.mobile-call:focus-visible{outline:3px solid rgba(240,160,115,.5);outline-offset:4px}
+    .hero-board{margin:0;display:grid;grid-template-columns:.72fr 1fr;gap:14px;align-items:stretch;transform:rotate(.7deg)}
+    .hero-board img{width:100%;height:100%;object-fit:cover}
+    .hero-board .tall{border-radius:28px 0 0 28px;min-height:520px}.hero-board .stack{display:grid;grid-template-rows:1fr .82fr;gap:14px}.hero-board .stack img:first-child{border-radius:0 28px 0 0}.hero-board .stack img:last-child{border-radius:0 0 28px 0}.photo-label{position:absolute;left:-9999px}.quick{margin-top:46px;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.quick div{padding:18px 18px 18px 0}.quick div+div{border-left:1px solid var(--line);padding-left:18px}.label{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:#b7aa99;font-weight:900;margin-bottom:7px}.quick strong{font-size:15px;color:#fff}
+    section{padding:var(--section) 0}.light{background:var(--paper);color:var(--ink)}.chapter{display:grid;grid-template-columns:.7fr 1.3fr;gap:clamp(28px,6vw,90px);align-items:start}.kicker{font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.16em;color:var(--orange);margin:0 0 14px}.section-title{font-family:"Archivo Black",Impact,sans-serif;font-size:clamp(36px,5vw,70px);line-height:.9;letter-spacing:-.055em;margin:0}.lead{font-size:20px;color:#4d4439;margin:22px 0 0;max-width:720px}.dark-lead{color:#d9cfc0}.scope{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.scope-card{background:white;border:1px solid rgba(23,21,18,.08);border-radius:24px;padding:24px;min-height:174px}.scope-card span{font-family:"Archivo Black";font-size:13px;color:var(--orange);display:block;margin-bottom:26px}.scope-card h3{margin:0 0 10px;font-size:22px;letter-spacing:-.03em}.scope-card p{margin:0;color:#5a5146}.services-list{display:flex;flex-wrap:wrap;gap:9px;margin-top:20px}.services-list span{border:1px solid rgba(23,21,18,.12);border-radius:999px;padding:8px 11px;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.06em;color:#5b5045;background:#fbf7ef}
+    .projects{background:#211e1a}.gallery{display:grid;grid-template-columns:1.08fr .92fr;gap:18px;margin-top:42px}.gallery figure{margin:0;background:#12100e;border-radius:28px;overflow:hidden}.gallery img{width:100%;height:100%;object-fit:cover}.gallery .big img{height:580px}.gallery .small-grid{display:grid;grid-template-columns:1fr;gap:18px}.gallery .small-grid figure{height:281px}.caption{font-size:12px;text-transform:uppercase;letter-spacing:.11em;color:#cabca7;font-weight:900;margin:12px 16px 16px}.proof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}.proof{background:#2a261f;border:1px solid rgba(245,239,228,.12);border-radius:26px;padding:28px}.proof b{display:block;font-family:"Archivo Black";font-size:34px;line-height:.95;letter-spacing:-.04em;margin-bottom:18px;color:#fff}.proof p{margin:0;color:#d8ccbb}.proof a{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}.estimate{background:var(--orange);color:white}.estimate-card{display:grid;grid-template-columns:1fr .92fr;gap:32px;align-items:stretch}.estimate h2{font-family:"Archivo Black";font-size:clamp(42px,6vw,84px);line-height:.9;letter-spacing:-.056em;margin:0}.estimate p{font-size:20px;color:#ffe6d9;max-width:620px}.prep{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:24px}.prep div{border:1px solid rgba(255,255,255,.22);border-radius:18px;padding:16px;color:#ffe6d9;font-weight:800}.contact-panel{background:rgba(23,21,18,.94);border-radius:30px;padding:32px;display:grid;gap:18px}.contact-row{border-bottom:1px solid rgba(255,255,255,.12);padding-bottom:16px}.contact-row:last-child{border-bottom:0;padding-bottom:0}.contact-row .label{color:#efb08d}.contact-row strong,.contact-row a{font-size:20px;color:#fff;font-weight:900}.areas{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}.areas span{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:9px 12px;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.07em}
+    footer{padding:34px 0 86px;background:#111;color:#d8d0bf;font-size:14px}.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.reveal{opacity:0;transform:translateY(16px);transition:opacity 700ms var(--ease-out),transform 700ms var(--ease-out)}.reveal.visible{opacity:1;transform:none}.mobile-call{display:none}
+    @media(max-width:920px){.hero-grid,.chapter,.gallery,.estimate-card{grid-template-columns:1fr}
+    .nav-links{display:none;position:absolute;left:var(--pad);right:var(--pad);top:76px;background:#111;color:var(--paper);border-radius:24px;padding:20px;flex-direction:column;align-items:flex-start}.hamb{display:flex}#menu:checked~.nav-links{display:flex}
+    .hero-board{transform:none}
+    .hero-board .tall{min-height:420px}.quick{grid-template-columns:repeat(2,1fr)}.quick div:nth-child(3){border-left:0}.scope,.proof-grid{grid-template-columns:1fr}.gallery .big img{height:420px}.mobile-call{display:flex;position:fixed;left:14px;right:14px;bottom:14px;z-index:30;min-height:54px;align-items:center;justify-content:center;border-radius:999px;background:var(--orange);color:white;font-weight:900;box-shadow:0 16px 44px rgba(0,0,0,.34)}}
+    @media(max-width:560px){.brand img{width:132px}.nav-inner{height:68px}
+    .nav-links{top:68px}.hero h1{font-size:clamp(44px,16vw,72px)}
+    .hero-board{grid-template-columns:1fr}
+    .hero-board .tall,.hero-board .stack img:first-child,.hero-board .stack img:last-child{border-radius:24px;min-height:auto}
+    .hero-board .tall{height:300px}.quick{grid-template-columns:1fr}.quick div+div{border-left:0;border-top:1px solid var(--line);padding-left:0}.prep{grid-template-columns:1fr}.gallery .small-grid figure,.gallery .big img{height:280px}.scope-card,.proof,.contact-panel{padding:22px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top" aria-label="Bobcat Masonry and Concrete home"><img src="bobcat-logo.png" alt="Bobcat Masonry and Concrete"></a>
+      <input type="checkbox" id="menu" aria-label="Toggle navigation">
+      <label class="hamb" for="menu"><span></span></label>
+      <div class="nav-links">
+        <a href="#scope">Services</a><a href="#projects">Work</a><a href="#proof">License</a><a href="#estimate" class="nav-cta">Call (310) 259-0448</a>
+      </div>
+    </div>
+  </nav>
+  <main id="top">
+    <header class="hero">
+      <div class="wrap hero-grid">
+        <div class="reveal">
+          <p class="eyebrow">Licensed masonry + concrete · Inglewood / Los Angeles</p>
+          <h1>Driveways, walls, stairs, patios, foundations.</h1>
+          <p class="hero-copy">Bobcat Masonry and Concrete handles residential and commercial concrete and masonry work across Los Angeles, South Bay, Orange County, Ventura County, and Kern County.</p>
+          <div class="hero-actions"><a class="btn primary" href="tel:13102590448">Call for a free estimate</a><a class="btn secondary" href="#projects">See project work</a></div>
+        </div>
+        <figure class="hero-board reveal" aria-label="Bobcat project photos">
+          <img class="tall" src="hollywood-driveway.jpg" alt="Concrete driveway project by Bobcat Masonry and Concrete">
+          <div class="stack"><img src="gardena-way-stairs.jpg" alt="Concrete stair and walkway project"><img src="brick-wall.jpg" alt="Brick masonry wall detail"></div>
+        </figure>
+      </div>
+      <div class="wrap quick reveal" aria-label="Quick business details">
+        <div><span class="label">Estimate line</span><strong>(310) 259-0448</strong></div>
+        <div><span class="label">License</span><strong>CA 862497 · Masonry</strong></div>
+        <div><span class="label">Hours</span><strong>Mon-Fri · 08:00-20:00</strong></div>
+        <div><span class="label">Weekends</span><strong>Closed Sat + Sun</strong></div>
+      </div>
+    </header>
+
+    <section id="scope" class="light">
+      <div class="wrap chapter">
+        <div class="reveal"><p class="kicker">Service scope</p><h2 class="section-title">Concrete work and masonry repair, without making the homeowner decode a service menu.</h2><p class="lead">The job usually starts with a surface, a wall, a stair run, a foundation issue, or a damaged masonry detail.</p></div>
+        <div class="scope reveal">
+          <article class="scope-card"><span>01</span><h3>Concrete flatwork</h3><p>Driveways, patios, sidewalks, city driveway approaches, curb cuts, porches, steps, parking slabs, and garage slabs.</p></article>
+          <article class="scope-card"><span>02</span><h3>Masonry</h3><p>Brick repair and replacement, tuckpointing, walls, chimneys, fireplaces, churches, schools, and commercial buildings.</p></article>
+          <article class="scope-card"><span>03</span><h3>Structural exterior work</h3><p>Retaining walls, foundations, stairs, block walls, hardscape repair, and alterations.</p></article>
+          <article class="scope-card"><span>04</span><h3>Finish work</h3><p>Stamped concrete, pavers, stucco and plaster, decorative concrete, pool decks, patios, and walkways.</p></article>
+        </div>
+      </div>
+      <div class="wrap services-list reveal" aria-label="Observed services"><span>Stamped concrete</span><span>Driveways</span><span>Patios</span><span>Sidewalks</span><span>Curb cuts</span><span>Garage slabs</span><span>Retaining walls</span><span>Foundations</span><span>Tuckpointing</span><span>Brick repair</span><span>Stucco</span><span>Pavers</span></div>
+    </section>
+
+    <section id="projects" class="projects">
+      <div class="wrap">
+        <div class="chapter">
+          <div class="reveal"><p class="kicker">Project archive</p><h2 class="section-title">Real project photos beat contractor clip art.</h2></div>
+          <p class="lead dark-lead reveal">Bobcat’s archive includes city-labeled projects for Culver City, Hollywood, Gardena, Burbank, Encino, Studio City, and Torrance. The useful thing is simple: you can see the kind of work before you call.</p>
+        </div>
+        <div class="gallery reveal">
+          <figure class="big"><img src="culver-city-patio-pavers-stairs.jpeg" alt="Culver City patio, pavers, and stair project"><figcaption class="caption">Patio, pavers, stairs · Culver City</figcaption></figure>
+          <div class="small-grid">
+            <figure><img src="hollywood-retaining-wall.jpg" alt="Hollywood retaining wall project"><figcaption class="caption">Retaining wall · Hollywood</figcaption></figure>
+            <figure><img src="torrance-residential.jpg" alt="Torrance residential concrete and masonry project"><figcaption class="caption">Residential hardscape · Torrance</figcaption></figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="proof">
+      <div class="wrap chapter">
+        <div class="reveal"><p class="kicker">Trust checks</p><h2 class="section-title">Free estimates, license number, insured and bonded status.</h2></div>
+        <p class="lead dark-lead reveal">Contractor trust should be easy to verify. Bobcat publishes its license number, phone, email, service counties, weekday hours, and free-estimate path.</p>
+      </div>
+      <div class="wrap proof-grid reveal">
+        <article class="proof"><b><a href="https://www.buildzoom.com/contractor/bobcat-masonry">862497</a></b><p>California license number for Bobcat Masonry, listed as masonry by BuildZoom.</p></article>
+        <article class="proof"><b>20+ years</b><p>The home page describes Bobcat as family owned and operated with more than 20 years of experience.</p></article>
+        <article class="proof"><b>5 counties</b><p>Published service areas include Los Angeles, Orange, Ventura, and Kern counties, plus South Bay in the home-page copy.</p></article>
+      </div>
+    </section>
+
+    <section class="estimate" id="estimate">
+      <div class="wrap estimate-card">
+        <div class="reveal"><p class="kicker">Get a free quote</p><h2>Call with the job, the city, and a few photos.</h2><p>Use the first call to pin down the surface, site access, repair versus replacement, and whether the work is residential or commercial.</p><div class="prep"><div>✓ Driveway, wall, stair, patio, foundation, or masonry repair</div><div>✓ Property city and access notes</div><div>✓ Photos of current condition</div><div>✓ Residential or commercial</div></div></div>
+        <aside class="contact-panel reveal" aria-label="Bobcat contact details">
+          <div class="contact-row"><span class="label">Call</span><a href="tel:13102590448">(310) 259-0448</a></div>
+          <div class="contact-row"><span class="label">Email</span><a href="mailto:bobcatmasonry@gmail.com">bobcatmasonry@gmail.com</a></div>
+          <div class="contact-row"><span class="label">Location</span><strong>Inglewood, Los Angeles, CA</strong></div>
+          <div class="contact-row"><span class="label">Hours</span><strong>Monday-Friday 08:00-20:00 · weekends closed</strong></div>
+          <div><span class="label">Service areas</span><div class="areas"><span>Los Angeles</span><span>South Bay</span><span>Orange County</span><span>Ventura County</span><span>Kern County</span></div></div>
+        </aside>
+      </div>
+    </section>
+  </main>
+  <a class="mobile-call" href="tel:13102590448">Call (310) 259-0448 for estimate</a>
+  <footer><div class="wrap foot"><span>Bobcat Masonry and Concrete</span><span>CA license 862497 · bobcatmasonry@gmail.com</span></div></footer>
+  <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
+  <script>
+    const io = new IntersectionObserver((entries)=>{entries.forEach((entry)=>{if(entry.isIntersecting){entry.target.classList.add('visible');io.unobserve(entry.target)}})},{threshold:.15});
+    document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=`${Math.min(i*55,220)}ms`;io.observe(el)});
+  </script>
+</body>
+</html>

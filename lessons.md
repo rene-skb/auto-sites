@@ -128,3 +128,13 @@ Universal Landscaping v0/v1 included lines like “The old site lists…” and 
 *Moved to DESIGN-KNOWLEDGE.md "Things We've Learned" section.*
 
 *(List graduated lessons here for reference)*
+
+## 2026-05-25 — Model routing: Sonnet still wins frontend taste
+
+- GPT-5.5 can produce usable Lucy builds and may be stronger than GPT-5.4 for following constraints/debugging, but it is still not matching the stronger Sonnet/Anthropic frontend UI output.
+- For Lucy/design-site evaluation, separate:
+  - constraint following
+  - copy/source discipline
+  - debugging/layout repair
+  - actual frontend taste
+- Current assumption: Anthropic/Sonnet models are tuned better for frontend UI and visual composition. Keep building design lessons for GPT-5.5, but do not expect model routing alone to close the taste gap yet.

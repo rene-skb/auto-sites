@@ -70,14 +70,16 @@
 <!-- Built 2026-06-03 → demos/bobcat-masonry-and-concrete/ → https://auto-sites.pages.dev/demos/bobcat-masonry-and-concrete/ -->
 
 
-## Al Ruiz Concrete Construction
+<!-- Built 2026-06-04 → demos/al-ruiz-concrete-construction/ → https://auto-sites.pages.dev/demos/al-ruiz-concrete-construction/ -->
 
-- **Business:** Al Ruiz Concrete Construction
-- **Category:** Concrete contractor, masonry contractor, pavers, patios, driveways, retaining walls, custom outdoor construction
-- **Location:** Burbank / Glendale / Los Angeles County / San Fernando Valley, CA service area
-- **Website:** https://www.alruizconcrete.com/
-- **Contact signals:** Site lists free estimates, 40+ years of experience, fully insured status, family and locally owned business, same-day service by call, in business since 1980, residential and commercial customers, satisfaction guaranteed, and phone contact `(818) 848-1522`.
-- **Why this is a good candidate:** High-ticket local trade niche with strong trust and longevity signals, but the current site is a thin/template-like services page with dated visual hierarchy and limited conversion storytelling. Likely upside from a mobile-first quote funnel, concrete/masonry/paver service cards, before/after project gallery, license/insurance/trust modules, San Fernando Valley service-area SEO, offer framing, and clearer residential vs commercial paths.
-- **Observed services:** Custom patios, BBQs, fireplaces, interlocking paving, patio/porch pavers, driveway construction, stamped concrete, retaining walls, decks, parking lots/flats, excavating and grading.
-- **Source/date added:** Iris nightly research, 2026-06-01 22:00 PT run.
+## Island Pro Mowing and Landscaping
+
+- **Business:** Island Pro Mowing and Landscaping
+- **Category:** Landscaping, lawn care, landscape installation, landscape maintenance, garden/yard cleanups, tree trimming, hedge pruning, strata and estate maintenance
+- **Location:** Greater Victoria, BC
+- **Website:** https://www.islandpromowingandlandscaping.ca/landscaping-and-lawn-maintenance-victoria-bc/
+- **Contact signals:** Site lists president Cam McLennan, Greater Victoria service area, phone `250-812-4676`, contact-form estimate path, residential and commercial clients, strata/estate maintenance, and full-service landscaping/lawn care.
+- **Why this is a good candidate:** Local service business near Scott/Rene with clear conversion potential, but the current page is plain and thin. Strong upside from a mobile-first quote funnel, seasonal service packages, residential vs strata/commercial paths, before/after gallery/proof, local service-area SEO, and clearer distinction between maintenance, installation, and construction services.
+- **Observed services:** Landscape design, landscape installation, landscape construction, landscape maintenance, lawn mowing, tree trimming, hedge pruning, yard cleanups, strata and large-property maintenance.
+- **Source/date added:** Iris nightly research, 2026-06-03 22:00 PT run.
 - **Status:** New lead — not contacted.

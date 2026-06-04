@@ -1,3 +1,27 @@
+### Al Ruiz Concrete Construction — Concrete and masonry contractor, Burbank / Glendale / Los Angeles County CA
+- **Date:** 2026-06-04
+- **Model:** openai-codex/gpt-5.5
+- **Agent:** Lucy
+- **Folder:** al-ruiz-concrete-construction
+- **Hero pattern:** centered-minimal / oversized contractor board
+- **Typography:** Bebas Neue + IBM Plex Sans
+- **Review layout:** no customer review cards; source-backed trust/proof is woven into prose and contact copy because compliant named reviews were not verified
+- **Visit/hours layout:** final two-card phone-first contact section with callback link, license, and service-area chips; no generic map link because a canonical named Google Maps business listing URL was not confidently verified
+- **Stats bar style:** no-stats
+- **WHY Score:** 7.80 (Jobs 7.8 / Graham 7.6 / Ogilvy 8.0)
+- **WHAT Score:** 7.90 (Norman 8.0 / Krug 7.9 / Nielsen 7.8)
+- **HOW Score:** 8.10 (Vignelli 8.1 / Spiekermann 8.0 / Rams 8.2 / Emil 8.1)
+- **Panel average:** 7.93
+- **Self-review:** 8.5
+- **Versions built:** 6 HTML versions + final index.html
+- **Build time:** ~60 minutes
+- **Token estimate:** ~39k
+- **Key decisions:** Built Al Ruiz as a phone-first estimate page around the real work people call for: driveways, patios, pavers, retaining walls, masonry, grading, and outdoor concrete. Used official Hibu/CDN project imagery only, attached license language to CA #685-735, skipped review cards without compliant reviewer names, and removed a hero proof strip after QA because it behaved like a stats bar in disguise.
+- **Notes:** No prices beyond the sourced 10% new-customer offer, no customer review cards, no generic map link, no timeline promises beyond “same-day service, call for details,” no fake storefront/interior imagery, and no invented owner story were added. Final screenshot, asset, source-language, image-hover, and no-stats gates passed.
+- **GPT 5.5 comparison:** GPT 5.5 continues to be materially better than the older GPT 5.4/Sonnet Lucy baseline for frontend/design execution. Quality and frontend taste were strong: it produced a distinctive clay-and-sand contractor page, held a disciplined type system, avoided fake imagery, and recovered cleanly from panel/vision QA. Debugging was good on CSS and copy, but the run repeated a local screenshot-script URL mistake before correcting to explicit `file://`, so preflight/tool discipline still matters. Recommendation: keep GPT 5.5 for Lucy builds with mandatory screenshot QA, source-language grep, and non-negotiable checks.
+- **Lessons:** Promoted `(3/5) [STRUCTURE]` stats-bar-in-disguise pattern after the Al Ruiz hero proof strip was removed during final QA.
+- **Live URL:** https://auto-sites.pages.dev/demos/al-ruiz-concrete-construction/ (verified live after Cloudflare Pages propagation; commit aee681b)
+
 ### Bobcat Masonry and Concrete — Masonry and concrete contractor, Inglewood / Los Angeles CA
 - **Date:** 2026-06-03
 - **Model:** openai-codex/gpt-5.5

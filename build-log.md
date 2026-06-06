@@ -1,3 +1,27 @@
+### Island Pro Mowing and Landscaping — Landscaping, lawn care, landscape installation, and property maintenance, Greater Victoria BC
+- **Date:** 2026-06-06
+- **Model:** openai-codex/gpt-5.5
+- **Agent:** Lucy
+- **Folder:** island-pro-mowing-and-landscaping
+- **Hero pattern:** asymmetric-collage / editorial property-care hero
+- **Typography:** Fraunces + Archivo
+- **Review layout:** open two-quote section with same visual treatment, using compliant first-name + last-initial attributions from the official customer page
+- **Visit/hours layout:** split estimate/contact section with phone-first contact card, business-name Google Maps query, service-area chips, and a call/form prep checklist
+- **Stats bar style:** no-stats
+- **WHY Score:** 8.10 (Jobs 8.2 / Graham 7.9 / Ogilvy 8.2)
+- **WHAT Score:** 8.03 (Norman 8.0 / Krug 8.1 / Nielsen 8.0)
+- **HOW Score:** 8.18 (Vignelli 8.2 / Spiekermann 8.1 / Rams 8.3 / Emil 8.1)
+- **Panel average:** 8.10
+- **Self-review:** 8.6
+- **Versions built:** 6 HTML versions + final index.html
+- **Build time:** ~45 minutes for the original local build, plus final QA/log cleanup tonight
+- **Token estimate:** ~38k
+- **Key decisions:** Built Island Pro as a practical Victoria property-care page around three real customer jobs: maintain the property, clean up an overgrown yard, or plan landscape installation/construction work. Used official site assets only, surfaced Cam McLennan as the accountable project coordinator, split phone vs estimate-form intent, and kept trust to source-backed customer quotes and service facts.
+- **Notes:** No prices, license/insurance claims, fake reviews, fake storefront/interior imagery, duplicated images, stats bars, generic source-language copy, or image hover scaling were added. Final asset, source-language, no-stats, screenshot/vision, and live-route gates passed. Vision QA caught an underfilled estimate panel; the final version fills it with a short call/form prep checklist.
+- **GPT 5.5 comparison:** GPT 5.5 remains materially better than the earlier GPT 5.4/Sonnet Lucy baseline for frontend/design execution. Quality and frontend taste were strong: it made a thin contractor page feel regional, legible, and specific without fake polish, and it handled responsive CSS, motion, and source-backed copy discipline cleanly. Debugging was good after gates: screenshot/vision QA caught the blank-looking estimate panel, while grep/asset checks stayed clean. Recommendation: keep GPT 5.5 for Lucy builds, with mandatory screenshot/vision QA, source-language grep, and source-backed contact/review checks.
+- **Lessons:** Promoted `(2/5) [CTA]` mixed urgent/planned or recurring/planned home-service pages need two clear action modes: phone for immediate or recurring maintenance, quote form for planned project details.
+- **Live URL:** https://auto-sites.pages.dev/demos/island-pro-mowing-and-landscaping/ (verified live after Cloudflare Pages propagation; original demo commit 768d7d5, final QA/log commit pending)
+
 ### Al Ruiz Concrete Construction — Concrete and masonry contractor, Burbank / Glendale / Los Angeles County CA
 - **Date:** 2026-06-04
 - **Model:** openai-codex/gpt-5.5

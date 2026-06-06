@@ -72,14 +72,28 @@
 
 <!-- Built 2026-06-04 → demos/al-ruiz-concrete-construction/ → https://auto-sites.pages.dev/demos/al-ruiz-concrete-construction/ -->
 
-## Island Pro Mowing and Landscaping
+<!-- Built 2026-06-05 → demos/island-pro-mowing-and-landscaping/ → https://auto-sites.pages.dev/demos/island-pro-mowing-and-landscaping/ -->
 
-- **Business:** Island Pro Mowing and Landscaping
-- **Category:** Landscaping, lawn care, landscape installation, landscape maintenance, garden/yard cleanups, tree trimming, hedge pruning, strata and estate maintenance
-- **Location:** Greater Victoria, BC
-- **Website:** https://www.islandpromowingandlandscaping.ca/landscaping-and-lawn-maintenance-victoria-bc/
-- **Contact signals:** Site lists president Cam McLennan, Greater Victoria service area, phone `250-812-4676`, contact-form estimate path, residential and commercial clients, strata/estate maintenance, and full-service landscaping/lawn care.
-- **Why this is a good candidate:** Local service business near Scott/Rene with clear conversion potential, but the current page is plain and thin. Strong upside from a mobile-first quote funnel, seasonal service packages, residential vs strata/commercial paths, before/after gallery/proof, local service-area SEO, and clearer distinction between maintenance, installation, and construction services.
-- **Observed services:** Landscape design, landscape installation, landscape construction, landscape maintenance, lawn mowing, tree trimming, hedge pruning, yard cleanups, strata and large-property maintenance.
-- **Source/date added:** Iris nightly research, 2026-06-03 22:00 PT run.
+## Larix Landscape
+
+- **Business:** Larix Landscape
+- **Category:** Landscaping, landscape design/construction, drainage, hardscaping, garden design, retaining walls, decks, fences, pergolas, excavation, commercial/residential landscaping
+- **Location:** Victoria, BC and surrounding areas / Lower Vancouver Island
+- **Website:** https://www.larixlandscape.com/
+- **Contact signals:** Site has a free-estimate/contact form, Victoria BC service area, Facebook link, Google reviews CTA, and service pages for landscape design, garden design, drainage, custom woodworking, paving/concrete, and pergolas.
+- **Why this is a good candidate:** Local Victoria service business with broad high-ticket services and lots of SEO/conversion surface, but the current site is copy-heavy and visually generic. Strong upside from a sharper mobile estimate funnel, clearer residential vs commercial pathways, before/after proof, service-area landing pages, drainage emergency/inspection CTA, and better project-gallery storytelling.
+- **Observed services:** Landscape design, garden beds, drainage/perimeter drains, drainage inspection/repair/cleaning, retaining walls, fence/deck/stair construction, pergolas, patio paving, stonemasonry, concrete retaining walls, sprinkler irrigation, water features, excavation, land clearing, commercial and residential landscaping.
+- **Source/date added:** Iris nightly research, 2026-06-04 22:00 PT run.
+- **Status:** New lead — not contacted.
+
+## Pross Renovations Ltd
+
+- **Business:** Pross Renovations Ltd
+- **Category:** Home renovations, kitchen renovations, bathroom renovations, full-home remodels, exterior renovations, outdoor living spaces, hazardous-material renovation safety
+- **Location:** Greater Victoria, BC; serving Sidney, Saanich, Duncan, Mill Bay, and the greater Victoria area
+- **Website:** https://prossreno.com/
+- **Contact signals:** Site offers a free consultation/estimate, emphasizes more than 40 years of craftsmanship, certified professionals, founder Victor Pross, renovation planning for scope/budget/timeline, and safety precautions around asbestos, lead paint, and mold.
+- **Why this is a good candidate:** Local high-ticket renovation contractor with strong trust signals, but the current site is broad and generic. Strong upside from a mobile-first quote funnel, kitchen/bath/full-home service paths, before/after project proof, hazard-safe renovation positioning, financing/timeline expectations, and service-area SEO across Greater Victoria communities.
+- **Observed services:** Interior renovations, exterior renovations, kitchen upgrades, bathrooms, full-home remodels, outdoor living spaces, consultation/scope planning, budget/timeline guidance, asbestos/lead/mold precaution messaging.
+- **Source/date added:** Iris nightly research, 2026-06-05 22:00 PT run.
 - **Status:** New lead — not contacted.

@@ -24,6 +24,8 @@
 - Home/listing/backyard path → landscaping page mentions yard cleaned up for a house about to go on the market and total backyard makeovers.
 - Strata/estate/commercial path → landscaping page mentions regular maintenance for estates and stratas plus commercial clients.
 - Work captions → official image filenames/alt text from the source site: rock feature, new lawn installation, yard cleanup, mowing, irrigation, commercial maintenance, established property landscaping.
+
+- Estimate prep list: “property size and schedule” / “project address, photos, and the work you want priced” → inferred practical intake details from the site’s request-estimate/contact-form path and the service split between recurring maintenance, cleanup, and installation work.
 - “Responsive, punctual and thorough” → customer page quote from Barbara Fallot.
 - “He made me look great…” → customer page quote from Susan Pipes, Realtor Macdonald Realty.
 - Phone `250-812-4676` → website pages and search result.

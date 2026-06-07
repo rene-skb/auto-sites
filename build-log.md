@@ -1,3 +1,27 @@
+### Larix Landscape — Landscaping, drainage, hardscaping, and landscape construction, Victoria BC
+- **Date:** 2026-06-07
+- **Model:** openai-codex/gpt-5.5
+- **Agent:** Lucy
+- **Folder:** larix-landscape
+- **Hero pattern:** editorial-spread / rain-first residential garden hero
+- **Typography:** Newsreader + Manrope
+- **Review layout:** two equal inline customer quote blocks with same visual treatment, using first-name + last-initial attributions from the official homepage
+- **Visit/hours layout:** dark estimate desk with direct form/call/map actions, site-prep checklist, and mobile sticky CTA
+- **Stats bar style:** no-stats
+- **WHY Score:** 8.03 (Jobs 8.0 / Graham 8.2 / Ogilvy 7.9)
+- **WHAT Score:** 7.50 (Norman 7.6 / Krug 7.4 / Nielsen 7.5)
+- **HOW Score:** 8.35 (Vignelli 8.4 / Spiekermann 8.1 / Rams 8.6 / Emil 8.3)
+- **Panel average:** 7.96
+- **Self-review:** 8.7
+- **Versions built:** 6 HTML versions + final index.html
+- **Build time:** ~95 minutes
+- **Token estimate:** ~48k
+- **Key decisions:** Built Larix around the Victoria-specific truth that good landscapes have to handle water, slope, soil, walls, and outdoor use as one system. Used official project photography only, treated drainage as a primary conversion path instead of a buried service, and grouped the large service catalog into homeowner decision buckets: water, structure, garden, and site work.
+- **Notes:** No prices, generated images, fake storefront/interior imagery, duplicated images, stats bars, generic address links, hover image scaling, invented license/insurance claims, or invented origin story were added. Final asset, duplicate-image, source-language, no-stats, no-parent-path, screenshot/vision, and hover-image gates passed. The site source had conflicting phone signals; final visible phone uses the site/search-result visible (250) 590-9508 and records the conflict in `sources.md`.
+- **GPT 5.5 comparison:** GPT 5.5 remains materially better than earlier GPT 5.4/Sonnet Lucy runs for frontend/design execution. Quality was high: it found a strong local positioning angle (“built for rain”), built a distinctive editorial contractor system from real photos, and handled responsive CSS, mobile sticky CTA, motion, OG tags, and source-backed copy well. Frontend taste was stronger than the older baseline, especially section rhythm, typography, palette, and photo-led layout. Debugging was good after gates, but not flawless: final QA still caught visible source/demo leakage, a duplicate hero/gallery image, and I repeated optional Python dependency assumptions before rerunning standard-library checks. Recommendation: keep using GPT 5.5 for Lucy builds, with mandatory screenshot/vision QA, source-language grep, duplicate-image checks, dependency-light asset validation, and final route verification.
+- **Lessons:** Promoted `(2/5) [MOTION]` no-JS fallback for scroll-reveal content after adding an explicit `<noscript>` visibility fallback to the Larix final.
+- **Live URL:** https://auto-sites.pages.dev/demos/larix-landscape/ (pending push/live verification)
+
 ### Island Pro Mowing and Landscaping — Landscaping, lawn care, landscape installation, and property maintenance, Greater Victoria BC
 - **Date:** 2026-06-06
 - **Model:** openai-codex/gpt-5.5

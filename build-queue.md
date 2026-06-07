@@ -74,17 +74,7 @@
 
 <!-- Built 2026-06-05 → demos/island-pro-mowing-and-landscaping/ → https://auto-sites.pages.dev/demos/island-pro-mowing-and-landscaping/ -->
 
-## Larix Landscape
-
-- **Business:** Larix Landscape
-- **Category:** Landscaping, landscape design/construction, drainage, hardscaping, garden design, retaining walls, decks, fences, pergolas, excavation, commercial/residential landscaping
-- **Location:** Victoria, BC and surrounding areas / Lower Vancouver Island
-- **Website:** https://www.larixlandscape.com/
-- **Contact signals:** Site has a free-estimate/contact form, Victoria BC service area, Facebook link, Google reviews CTA, and service pages for landscape design, garden design, drainage, custom woodworking, paving/concrete, and pergolas.
-- **Why this is a good candidate:** Local Victoria service business with broad high-ticket services and lots of SEO/conversion surface, but the current site is copy-heavy and visually generic. Strong upside from a sharper mobile estimate funnel, clearer residential vs commercial pathways, before/after proof, service-area landing pages, drainage emergency/inspection CTA, and better project-gallery storytelling.
-- **Observed services:** Landscape design, garden beds, drainage/perimeter drains, drainage inspection/repair/cleaning, retaining walls, fence/deck/stair construction, pergolas, patio paving, stonemasonry, concrete retaining walls, sprinkler irrigation, water features, excavation, land clearing, commercial and residential landscaping.
-- **Source/date added:** Iris nightly research, 2026-06-04 22:00 PT run.
-- **Status:** New lead — not contacted.
+<!-- Built 2026-06-07 → demos/larix-landscape/ → https://auto-sites.pages.dev/demos/larix-landscape/ -->
 
 ## Pross Renovations Ltd
 
@@ -96,4 +86,16 @@
 - **Why this is a good candidate:** Local high-ticket renovation contractor with strong trust signals, but the current site is broad and generic. Strong upside from a mobile-first quote funnel, kitchen/bath/full-home service paths, before/after project proof, hazard-safe renovation positioning, financing/timeline expectations, and service-area SEO across Greater Victoria communities.
 - **Observed services:** Interior renovations, exterior renovations, kitchen upgrades, bathrooms, full-home remodels, outdoor living spaces, consultation/scope planning, budget/timeline guidance, asbestos/lead/mold precaution messaging.
 - **Source/date added:** Iris nightly research, 2026-06-05 22:00 PT run.
+- **Status:** New lead — not contacted.
+
+## Arbor Renovations
+
+- **Business:** Arbor Renovations
+- **Category:** Interior/exterior home renovations, finishing carpentry, decks, fences, bathrooms, kitchens, doors/windows, painting, stairs, arbors/privacy screens
+- **Location:** Greater Victoria, BC
+- **Website:** https://arborrenos.ca/
+- **Contact signals:** Site lists phone CTA (250-882-8080), BBB profile link, free estimates/consultations, senior discounts, fair hourly rates, and service pages for kitchens, bathrooms, decks, fences, windows, doors, stairs, painting, and finishing carpentry.
+- **Why this is a good candidate:** Local high-ticket renovation contractor with broad service coverage and trust signals, but the current site is conventional and copy-heavy. Strong upside from a mobile-first estimate funnel, before/after project storytelling, kitchen/bath/deck service paths, clearer service-area SEO, senior-discount positioning, and sharper “small jobs welcome” conversion messaging.
+- **Observed services:** Kitchen renovations, bathroom renovations, finishing carpentry, door/window installation, decks, stairs, arbors/privacy screens, fence installation, interior/exterior painting, remodel/renovate/repair work.
+- **Source/date added:** Iris nightly research, 2026-06-06 22:00 PT run.
 - **Status:** New lead — not contacted.

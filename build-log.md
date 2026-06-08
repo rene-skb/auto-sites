@@ -1,3 +1,27 @@
+### Pross Renovations Ltd — Home renovations, kitchen/bath/full-home remodels, exterior upgrades, Greater Victoria BC
+- **Date:** 2026-06-08
+- **Model:** openai-codex/gpt-5.5
+- **Agent:** Lucy
+- **Folder:** pross-renovations-ltd
+- **Hero pattern:** dark editorial contractor hero / older-home planning angle
+- **Typography:** Libre Baskerville + DM Sans
+- **Review layout:** one dominant official-client quote plus three same-treatment quote blocks with named attributions from the official homepage testimonial block
+- **Visit/hours layout:** phone/email-first consultation desk with service-area and estimate-prep details; no map link because no specific verified business pin/address was surfaced
+- **Stats bar style:** no-stats
+- **WHY Score:** 8.00 (Jobs 8.0 / Graham 8.1 / Ogilvy 7.9)
+- **WHAT Score:** 8.40 (Norman 8.4 / Krug 8.5 / Nielsen 8.3)
+- **HOW Score:** 8.20 (Vignelli 8.2 / Spiekermann 8.1 / Rams 8.3 / Emil 8.2)
+- **Panel average:** 8.20
+- **Self-review:** 8.6
+- **Versions built:** 5 HTML versions + final index.html
+- **Build time:** ~70 minutes
+- **Token estimate:** ~35k
+- **Key decisions:** Built Pross around the high-value renovation truth that the expensive part of a project is often decided before demolition: scope, budget range, timeline, permits, inspections, sequencing, and older-home material risk. Used official site assets only, avoided numeric years because the source conflicts between “more than 40 years” and “over 26 years,” and made hazardous-material copy legally safer by referring to identification, testing, and qualified handling where required.
+- **Notes:** No prices, invented license/insurance/WCB claims, fake reviews, generic map/address links, stats bars, duplicate image slots, fake storefront/interior claims, or image hover scaling were added. Final visible-text leak, em dash, duplicate-image, local-asset, screenshot/vision, OG-tag, and no-stats gates passed. Official site imagery is stock-like in places, so final captions do not present those images as completed Pross projects.
+- **GPT 5.5 comparison:** GPT 5.5 remains materially better than the previous GPT 5.4/Sonnet Lucy runs for frontend/design execution. Quality was high: it found a strong contractor positioning angle from thin source material, built a complete editorial visual system quickly, and recovered from screenshot QA issues without major rewrites. Frontend taste was stronger than the older baseline, especially typography, palette restraint, section rhythm, source-backed conversion flow, and motion/no-JS handling. Debugging was good: it caught the `.intro` class collision, visible demo-language leakage, em dash risk, duplicated-source conflict around years, and hazardous-material liability language during QA. Recommendation: keep using GPT 5.5 for Lucy builds, with mandatory screenshot/vision QA, visible-text leak grep, source-conflict notes, and legal-sensitive copy checks for contractor claims.
+- **Lessons:** No new lesson promoted; this run reinforces the existing contractor-source discipline around avoiding unverified license/insurance/hazard claims and resolving conflicting source facts in `sources.md`.
+- **Live URL:** https://auto-sites.pages.dev/demos/pross-renovations-ltd/ (pushed to GitHub in commit TBD; Pages verification pending)
+
 ### Larix Landscape — Landscaping, drainage, hardscaping, and landscape construction, Victoria BC
 - **Date:** 2026-06-07
 - **Model:** openai-codex/gpt-5.5

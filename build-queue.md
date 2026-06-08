@@ -76,17 +76,7 @@
 
 <!-- Built 2026-06-07 → demos/larix-landscape/ → https://auto-sites.pages.dev/demos/larix-landscape/ -->
 
-## Pross Renovations Ltd
-
-- **Business:** Pross Renovations Ltd
-- **Category:** Home renovations, kitchen renovations, bathroom renovations, full-home remodels, exterior renovations, outdoor living spaces, hazardous-material renovation safety
-- **Location:** Greater Victoria, BC; serving Sidney, Saanich, Duncan, Mill Bay, and the greater Victoria area
-- **Website:** https://prossreno.com/
-- **Contact signals:** Site offers a free consultation/estimate, emphasizes more than 40 years of craftsmanship, certified professionals, founder Victor Pross, renovation planning for scope/budget/timeline, and safety precautions around asbestos, lead paint, and mold.
-- **Why this is a good candidate:** Local high-ticket renovation contractor with strong trust signals, but the current site is broad and generic. Strong upside from a mobile-first quote funnel, kitchen/bath/full-home service paths, before/after project proof, hazard-safe renovation positioning, financing/timeline expectations, and service-area SEO across Greater Victoria communities.
-- **Observed services:** Interior renovations, exterior renovations, kitchen upgrades, bathrooms, full-home remodels, outdoor living spaces, consultation/scope planning, budget/timeline guidance, asbestos/lead/mold precaution messaging.
-- **Source/date added:** Iris nightly research, 2026-06-05 22:00 PT run.
-- **Status:** New lead — not contacted.
+<!-- Built 2026-06-08 → demos/pross-renovations-ltd/ → https://auto-sites.pages.dev/demos/pross-renovations-ltd/ -->
 
 ## Arbor Renovations
 

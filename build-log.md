@@ -7126,3 +7126,26 @@ Real Victoria BC business. Website was literally just a street address (touristw
 - **Notes:** Used official Carpet Time/CMS imagery and official facts only. No prices, warranties, financing terms, customer review cards, generic map link, or unsourced promotion claims were added. Added one Tier 1 lesson about flooring/material showroom decision-support structure.
 - **GPT 5.5 comparison:** GPT 5.5 remains materially better than the older GPT 5.4/Sonnet baseline for Lucy frontend/design execution. Quality and frontend taste were strong: the model quickly held a coherent warm material palette, a responsive split-image composition, chaptered service flow, no-stats proof treatment, and restrained motion. Debugging was good but not automatic: screenshot/vision QA caught source-language leakage, too-tight display typography, image reuse, and vague copy; revisions were fast and localized. Recommendation: keep using GPT 5.5 for Lucy builds, but keep mandatory screenshot/vision QA, source-language grep, and visual polish passes.
 - **Live URL:** https://auto-sites.pages.dev/demos/carpet-time-inc/ (pushed in commit 559be13; deploy-status commit cf94031; verified live 2026-05-30)
+
+### Arbor Renovations — Interior/exterior home renovations, Greater Victoria BC
+- **Date:** 2026-06-09
+- **Model:** openai-codex/gpt-5.5 (Lucy cron)
+- **Agent:** Lucy
+- **Folder:** arbor-renovations
+- **Hero pattern:** editorial-spread
+- **Typography:** Newsreader + IBM Plex Sans
+- **Review layout:** single sourced pull quote with same-treatment proof list; no review-card grid because most available testimonials lacked first-name + last-initial attribution
+- **Visit/hours layout:** dark two-card estimate command section with phone, contact form, service area, business hours, evening/weekend estimate note, and BBB profile link
+- **Stats bar style:** no-stats
+- **WHY Score:** 8.03 (Jobs 8.1 / Graham 7.8 / Ogilvy 8.2)
+- **WHAT Score:** 8.00 (Norman 8.1 / Krug 8.0 / Nielsen 7.9)
+- **HOW Score:** 8.20 (Vignelli 8.2 / Spiekermann 8.1 / Rams 8.2 / Emil 8.3)
+- **Panel average:** 8.08
+- **Self-review:** 8.6
+- **Versions built:** 6 HTML versions + final index.html
+- **Build time:** ~60 minutes
+- **Token estimate:** ~38k
+- **Key decisions:** Built Arbor around the real owner-led differentiator: the owner estimates projects personally and does most carpentry himself. Used official gallery photos, grouped the broad service list into inside/outside/finish paths, avoided license claims without a license number, avoided generic address/map links, and kept BBB/established-in-1999 proof in prose rather than a stats strip.
+- **GPT 5.5 comparison:** GPT 5.5 remains materially better than the previous GPT 5.4/Sonnet median for Lucy frontend/design execution. Quality and frontend taste were strong: it held a coherent warm contractor palette, chose an appropriate editorial spread, grouped dense renovation services cleanly, and responded quickly to screenshot/vision QA. Debugging was good but not self-completing: the first final pass still leaked source-language phrasing and had hero/caption spacing issues, both caught by visual QA and fixed locally. Recommendation: keep using GPT 5.5 for Lucy builds, with mandatory screenshot/vision QA, source-language grep, and final layout polish.
+- **Lessons:** Promoted `[CTA] Mixed urgent/planned or recurring/planned home-service pages need two clear action modes` to Tier 3 with Arbor Renovations.
+- **Live URL:** https://auto-sites.pages.dev/demos/arbor-renovations/ (pending verification until after push)

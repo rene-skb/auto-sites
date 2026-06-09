@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!--
+DELTA: v5 final polish notes
+- Final pass removed source-audit phrasing from visible copy, checked em dash and not-X patterns, kept service and proof claims tied to official sources, and copied this version to index.html.
+- Self-review score: 8.6
+- Panel averages carried forward from panel-notes.md: WHY 8.03 / WHAT 8.00 / HOW 8.20
+- Final polish focus: owner-led positioning, grouped services, real project-photo proof, clean estimate path, no-stats compliance.
+-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arbor Renovations · Greater Victoria home renovations</title>
+<meta name="description" content="Owner-led home renovation, finishing carpentry, decks, bathrooms, kitchens, fences, and repair work in Greater Victoria.">
+<meta property="og:title" content="Arbor Renovations">
+<meta property="og:description" content="Owner-led home renovation, finishing carpentry, decks, bathrooms, kitchens, fences, and repair work in Greater Victoria.">
+<meta property="og:image" content="photo-11.jpg">
+<meta property="og:url" content="https://auto-sites.pages.dev/demos/arbor-renovations/">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,650;6..72,750&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #17211c;
+  --muted: #647068;
+  --cedar: #9d5d33;
+  --cedar-dark: #6f3b1f;
+  --cream: #f4efe5;
+  --paper: #fffaf1;
+  --mist: #e7e2d6;
+  --forest: #18251e;
+  --line: rgba(23, 33, 28, .15);
+  --shadow: 0 28px 80px rgba(23, 33, 28, .18);
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --section-pad: clamp(72px, 9vw, 128px);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: 'IBM Plex Sans', system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.72;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+.skip-link { position: absolute; left: -999px; top: 0; background: var(--ink); color: var(--paper); padding: 10px 14px; z-index: 20; }
+.skip-link:focus { left: 12px; top: 12px; }
+.site-header {
+  position: sticky; top: 0; z-index: 10;
+  background: rgba(244, 239, 229, .88);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(23, 33, 28, .1);
+}
+.nav {
+  max-width: 1180px; margin: 0 auto; padding: 18px 24px;
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+}
+.logo { font-family: 'Newsreader', Georgia, serif; font-size: 24px; font-weight: 700; letter-spacing: -.03em; text-decoration: none; }
+.logo span { color: var(--cedar-dark); }
+.nav-links { display: flex; align-items: center; gap: 26px; font-size: 14px; letter-spacing: .05em; text-transform: uppercase; }
+.nav-links a { text-decoration: none; opacity: .78; }
+.nav-links a:hover { opacity: 1; }
+.phone-pill, .btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 46px; padding: 0 18px; border-radius: 999px;
+  background: var(--forest); color: var(--paper); text-decoration: none;
+  font-weight: 700; letter-spacing: .02em;
+  transition: transform 160ms var(--ease-out), background 160ms var(--ease-out), color 160ms var(--ease-out);
+}
+.phone-pill:active, .btn:active { transform: scale(.97); }
+.btn.light { background: var(--paper); color: var(--forest); }
+.btn.ghost { background: transparent; color: var(--forest); border: 1px solid var(--line); }
+.menu-toggle { display: none; border: 1px solid var(--line); background: transparent; border-radius: 999px; padding: 10px 12px; font: inherit; color: var(--ink); }
+.hero {
+  max-width: 1240px; margin: 0 auto; padding: clamp(54px, 7vw, 100px) 24px var(--section-pad);
+  display: grid; grid-template-columns: .92fr 1.08fr; gap: clamp(32px, 6vw, 76px); align-items: end;
+}
+.eyebrow { font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--cedar-dark); font-weight: 800; margin: 0 0 18px; }
+h1, h2, h3 { font-family: 'Newsreader', Georgia, serif; line-height: 1; letter-spacing: -.055em; margin: 0; }
+h1 { font-size: clamp(60px, 9vw, 126px); max-width: 780px; }
+h2 { font-size: clamp(42px, 6vw, 78px); }
+h3 { font-size: clamp(25px, 3vw, 34px); letter-spacing: -.035em; line-height: 1.04; }
+.lede { font-size: clamp(18px, 2.1vw, 23px); line-height: 1.55; color: #344139; max-width: 640px; margin: 28px 0 0; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+.hero-proof { margin-top: 34px; padding-top: 24px; border-top: 1px solid var(--line); max-width: 620px; color: var(--muted); }
+.hero-visual { display: grid; grid-template-columns: 1fr .78fr; gap: 16px; align-items: start; padding-top: 8px; }
+.photo-frame { background: #d8d1c1; overflow: hidden; box-shadow: var(--shadow); }
+.photo-frame img { width: 100%; height: 100%; object-fit: cover; }
+.hero-main { aspect-ratio: 4 / 5; border-radius: 34px; }
+.hero-side { aspect-ratio: 1 / 1.25; border-radius: 28px; margin-bottom: 0; }
+.caption { font-size: 14px; letter-spacing: .08em; text-transform: uppercase; color: #4d5b52; margin-top: 12px; }
+section { padding: var(--section-pad) 24px; }
+.inner { max-width: 1180px; margin: 0 auto; }
+.chapter-intro { max-width: 760px; margin-bottom: 44px; }
+.chapter-intro p { font-size: 20px; color: #445148; margin: 22px 0 0; }
+.service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.service-card { background: var(--paper); border-radius: 26px; padding: 28px; border: 1px solid rgba(23,33,28,.1); }
+.service-card ul { padding: 0; margin: 22px 0 0; list-style: none; display: grid; gap: 10px; color: var(--muted); }
+.service-card li::before { content: ''; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--cedar); margin-right: 10px; vertical-align: 1px; }
+.dark { background: var(--forest); color: var(--paper); }
+.dark .eyebrow { color: #d8a16b; }
+.dark p, .dark .caption { color: rgba(255,250,241,.74); }
+.dark .line { border-color: rgba(255,250,241,.18); }
+.process { display: grid; grid-template-columns: .8fr 1.2fr; gap: 54px; align-items: start; }
+.steps { display: grid; gap: 0; border-top: 1px solid rgba(255,250,241,.18); }
+.step { display: grid; grid-template-columns: 82px 1fr; gap: 24px; padding: 28px 0; border-bottom: 1px solid rgba(255,250,241,.18); }
+.step-num { font-family: 'Newsreader', Georgia, serif; font-size: 38px; color: #d8a16b; line-height: 1; }
+.step h3 { color: var(--paper); margin-bottom: 8px; }
+.projects { background: var(--paper); }
+.project-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 18px; align-items: stretch; }
+.project-tall { border-radius: 30px; overflow: hidden; height: 620px; }
+.project-stack { display: grid; gap: 18px; }
+.project-small { border-radius: 26px; overflow: hidden; height: 300px; }
+.project-grid img { width: 100%; height: 100%; object-fit: cover; }
+.quote-section { background: #e8ddce; }
+.quote-layout { display: grid; grid-template-columns: .8fr 1.2fr; gap: 58px; align-items: start; }
+blockquote { margin: 0; font-family: 'Newsreader', Georgia, serif; font-size: clamp(35px, 4.7vw, 64px); line-height: 1.04; letter-spacing: -.045em; }
+.quote-meta { margin-top: 22px; color: var(--cedar-dark); font-weight: 800; letter-spacing: .08em; text-transform: uppercase; font-size: 13px; }
+.proof-list { display: grid; gap: 18px; }
+.proof-item { padding: 22px 0; border-top: 1px solid rgba(23,33,28,.16); }
+.proof-item h3 { margin-bottom: 8px; }
+.estimate { background: var(--forest); color: var(--paper); }
+.estimate-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: stretch; }
+.estimate-card { background: rgba(255,250,241,.08); border: 1px solid rgba(255,250,241,.16); border-radius: 30px; padding: 34px; }
+.estimate-card p { color: rgba(255,250,241,.75); }
+.detail-list { display: grid; gap: 14px; margin-top: 24px; }
+.detail { display: flex; justify-content: space-between; gap: 18px; padding-top: 14px; border-top: 1px solid rgba(255,250,241,.14); }
+.detail span:first-child { color: rgba(255,250,241,.76); }
+.site-footer { padding: 34px 24px; background: #101812; color: rgba(255,250,241,.72); }
+.footer-inner { max-width: 1180px; margin: 0 auto; display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; font-size: 14px; }
+.reveal { opacity: 1; transform: none; }
+.js .reveal { opacity: 0; transform: translateY(24px); transition: opacity 700ms var(--ease-out), transform 700ms var(--ease-out); transition-delay: var(--delay, 0ms); }
+.js .reveal.is-visible { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .js .reveal { opacity: 1; transform: none; transition: none; } .phone-pill, .btn { transition: none; } }
+@media (max-width: 880px) {
+  .menu-toggle { display: inline-flex; }
+  .nav-links { display: none; position: absolute; left: 16px; right: 16px; top: 72px; background: var(--paper); border: 1px solid var(--line); border-radius: 22px; padding: 18px; flex-direction: column; align-items: flex-start; box-shadow: var(--shadow); }
+  .nav-links.open { display: flex; }
+  .hero, .process, .quote-layout, .estimate-grid, .project-grid { grid-template-columns: 1fr; }
+  .hero { padding-top: 42px; }
+  .hero-visual { grid-template-columns: 1fr; }
+  .hero-side { margin-bottom: 0; aspect-ratio: 4 / 3; }
+  .service-grid { grid-template-columns: 1fr; }
+  .project-tall, .project-small { height: auto; min-height: auto; aspect-ratio: 4 / 3; }
+  .step { grid-template-columns: 58px 1fr; }
+  h1 { font-size: clamp(56px, 17vw, 86px); }
+}
+@media (max-width: 540px) {
+  .nav { padding: 14px 16px; }
+  section, .hero { padding-left: 16px; padding-right: 16px; }
+  .phone-pill { display: none; }
+  .hero-actions { flex-direction: column; }
+  .btn { width: 100%; }
+  .service-card, .estimate-card { padding: 24px; border-radius: 22px; }
+  .detail { display: grid; }
+}
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#content">Skip to content</a>
+<header class="site-header">
+  <nav class="nav" aria-label="Main navigation">
+    <a class="logo" href="#content">Arbor <span>Renovations</span></a>
+    <button class="menu-toggle" aria-expanded="false" aria-controls="navLinks">Menu</button>
+    <div class="nav-links" id="navLinks">
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="#projects">Projects</a>
+      <a href="#estimate">Estimate</a>
+    </div>
+    <a class="phone-pill" href="tel:2508828080">Call 250.882.8080</a>
+  </nav>
+</header>
+<main id="content">
+  <section class="hero">
+    <div class="hero-copy reveal">
+      <p class="eyebrow">Greater Victoria renovations · Established 1999</p>
+      <h1>The owner estimates it. The carpenter builds it.</h1>
+      <p class="lede">Arbor Renovations handles interior and exterior home projects across Greater Victoria, from bathrooms and kitchens to decks, fences, doors, windows, stairs, painting, and finishing carpentry.</p>
+      <div class="hero-actions">
+        <a class="btn" href="tel:2508828080">Call for a free estimate</a>
+        <a class="btn ghost" href="https://arborrenos.ca/contact-us/">Send project details</a>
+      </div>
+      <p class="hero-proof">The owner estimates projects personally and does most of the carpentry himself. Arbor also offers free estimates, consultations, senior discounts, and fair hourly rates.</p>
+    </div>
+    <div class="hero-visual reveal" style="--delay: 120ms">
+      <figure>
+        <div class="photo-frame hero-main"><img src="photo-11.jpg" alt="Finished outdoor stair and deck project by Arbor Renovations"></div>
+        <figcaption class="caption">Exterior stairs and deck work · Arbor project gallery</figcaption>
+      </figure>
+      <figure>
+        <div class="photo-frame hero-side"><img src="photo-09.jpg" alt="Bathroom vanity renovation with wood cabinetry and tile"></div>
+        <figcaption class="caption">Bathroom renovation · Arbor project gallery</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="inner">
+      <div class="chapter-intro reveal">
+        <p class="eyebrow">What they take on</p>
+        <h2>One contractor for the parts of a home that have to fit right.</h2>
+        <p>Arbor’s service list is broad, but the useful pattern is simple: repair what is worn, remodel what is awkward, and finish the visible details cleanly.</p>
+      </div>
+      <div class="service-grid">
+        <article class="service-card reveal" style="--delay: 0ms">
+          <h3>Inside the house</h3>
+          <p>For rooms where layout, surfaces, and trades have to coordinate.</p>
+          <ul>
+            <li>Kitchen renovations</li>
+            <li>Bathroom renovations</li>
+            <li>Basements and suites</li>
+            <li>Flooring, drywall, painting</li>
+          </ul>
+        </article>
+        <article class="service-card reveal" style="--delay: 80ms">
+          <h3>Outside the house</h3>
+          <p>For weather-facing work that needs structure, drainage, and clean joins.</p>
+          <ul>
+            <li>Decks and stairs</li>
+            <li>Fences and gates</li>
+            <li>Arbors and privacy screens</li>
+            <li>Roofing and siding</li>
+          </ul>
+        </article>
+        <article class="service-card reveal" style="--delay: 160ms">
+          <h3>Finish work</h3>
+          <p>For the details that make a renovation feel settled instead of patched.</p>
+          <ul>
+            <li>Finishing carpentry</li>
+            <li>Doors and windows</li>
+            <li>Trim, sheet metal, venting</li>
+            <li>Plumbing and electrical subcontracting</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark" id="process">
+    <div class="inner process">
+      <div class="chapter-intro reveal">
+        <p class="eyebrow">How the work starts</p>
+        <h2>A renovation call should get specific fast.</h2>
+        <p>Arbor’s published process is practical: call, book an in-home consultation, get a free estimate, ask questions, then decide the scope.</p>
+      </div>
+      <div class="steps">
+        <article class="step reveal" style="--delay: 0ms">
+          <div class="step-num">01</div>
+          <div><h3>Talk through the project.</h3><p>Call 250.882.8080 or send project details through the contact form.</p></div>
+        </article>
+        <article class="step reveal" style="--delay: 80ms">
+          <div class="step-num">02</div>
+          <div><h3>Book the consultation.</h3><p>Estimates can be scheduled in the evening or on weekends when needed.</p></div>
+        </article>
+        <article class="step reveal" style="--delay: 160ms">
+          <div class="step-num">03</div>
+          <div><h3>Get a clear quote.</h3><p>The owner estimates projects personally, offers suggestions, and answers questions before the work begins.</p></div>
+        </article>
+        <article class="step reveal" style="--delay: 240ms">
+          <div class="step-num">04</div>
+          <div><h3>Build with one accountable lead.</h3><p>The owner is also the lead carpenter and does most of the carpentry himself.</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="projects" id="projects">
+    <div class="inner">
+      <div class="chapter-intro reveal">
+        <p class="eyebrow">Project proof</p>
+        <h2>Decks, bathrooms, stairs, floors. Real work from the gallery.</h2>
+        <p>The current gallery is full of practical renovation work rather than staged showroom photography. That is the point: finished wood, usable stairs, clean bathrooms, and repaired rooms.</p>
+      </div>
+      <div class="project-grid">
+        <figure class="reveal">
+          <div class="project-tall"><img src="photo-01.jpg" alt="Wood deck and stair renovation in warm evening light"></div>
+          <figcaption class="caption">Deck and stairs · exterior renovation</figcaption>
+        </figure>
+        <div class="project-stack">
+          <figure class="reveal" style="--delay: 80ms">
+            <div class="project-small"><img src="photo-06.jpg" alt="Deck railing and stair detail with new woodwork"></div>
+            <figcaption class="caption">Railing detail · carpentry</figcaption>
+          </figure>
+          <figure class="reveal" style="--delay: 160ms">
+            <div class="project-small"><img src="photo-03.jpg" alt="Kitchen and dining area with installed tile floor"></div>
+            <figcaption class="caption">Kitchen flooring · interior work</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="quote-section">
+    <div class="inner quote-layout">
+      <div class="reveal">
+        <p class="eyebrow">From a Victoria homeowner</p>
+        <blockquote>“I really felt that you treated our budget like it was your own money.”</blockquote>
+        <p class="quote-meta">Mark N. · client review</p>
+      </div>
+      <div class="proof-list">
+        <article class="proof-item reveal" style="--delay: 0ms">
+          <h3>Established in 1999.</h3>
+          <p>Arbor Renovations serves Greater Victoria and surrounding areas, with more than 25 years of renovation and carpentry field experience.</p>
+        </article>
+        <article class="proof-item reveal" style="--delay: 80ms">
+          <h3>A+ BBB rating and liability coverage.</h3>
+          <p>Arbor is a Vancouver Island Better Business Bureau member, a registered proprietor, and covered by commercial liability insurance.</p>
+        </article>
+        <article class="proof-item reveal" style="--delay: 160ms">
+          <h3>Small jobs are welcome.</h3>
+          <p>Arbor welcomes small projects, full renovations, and collaborative jobs where homeowners want to oversee parts of the work.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="estimate" id="estimate">
+    <div class="inner estimate-grid">
+      <div class="estimate-card reveal">
+        <p class="eyebrow">Start here</p>
+        <h2>Book a free estimate or consultation.</h2>
+        <p>Call during business hours, or send the project details through Arbor’s contact form.</p>
+        <div class="hero-actions">
+          <a class="btn light" href="tel:2508828080">Call 250.882.8080</a>
+          <a class="btn ghost" style="color: var(--paper); border-color: rgba(255,250,241,.26)" href="https://arborrenos.ca/contact-us/">Use the contact form</a>
+        </div>
+      </div>
+      <div class="estimate-card reveal" style="--delay: 100ms">
+        <h3>Contact details</h3>
+        <div class="detail-list">
+          <div class="detail"><span>Service area</span><strong>Greater Victoria, BC</strong></div>
+          <div class="detail"><span>Phone</span><strong>250.882.8080</strong></div>
+          <div class="detail"><span>Business hours</span><strong>Mon-Sat · 8:30 am-8:30 pm</strong></div>
+          <div class="detail"><span>Scheduling</span><strong>Evening and weekend estimates available</strong></div>
+          <div class="detail"><span>BBB profile</span><strong><a href="https://www.bbb.org/ca/bc/victoria/profile/general-contractor/arbor-renovations-0047-38471">Arbor Renovations</a></strong></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <span>Arbor Renovations · Greater Victoria, BC</span>
+    <span>Interior and exterior renovation services</span>
+  </div>
+</footer>
+<script>
+document.documentElement.classList.add('js');
+const toggle = document.querySelector('.menu-toggle');
+const links = document.querySelector('#navLinks');
+if (toggle && links) {
+  toggle.addEventListener('click', () => {
+    const open = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(open));
+  });
+}
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('is-visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.14 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+<noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
+
+</body>
+</html>

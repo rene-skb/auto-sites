@@ -78,14 +78,28 @@
 
 <!-- Built 2026-06-08 → demos/pross-renovations-ltd/ → https://auto-sites.pages.dev/demos/pross-renovations-ltd/ -->
 
-## Arbor Renovations
+<!-- Built 2026-06-09 → demos/arbor-renovations/ → https://auto-sites.pages.dev/demos/arbor-renovations/ -->
 
-- **Business:** Arbor Renovations
-- **Category:** Interior/exterior home renovations, finishing carpentry, decks, fences, bathrooms, kitchens, doors/windows, painting, stairs, arbors/privacy screens
+## Hutchinson Contracting
+
+- **Business:** Hutchinson Contracting
+- **Category:** General contracting, multi-family/townhouse construction, commercial home and building contracting, new residential construction, housing co-op and strata refurbishments
 - **Location:** Greater Victoria, BC
-- **Website:** https://arborrenos.ca/
-- **Contact signals:** Site lists phone CTA (250-882-8080), BBB profile link, free estimates/consultations, senior discounts, fair hourly rates, and service pages for kitchens, bathrooms, decks, fences, windows, doors, stairs, painting, and finishing carpentry.
-- **Why this is a good candidate:** Local high-ticket renovation contractor with broad service coverage and trust signals, but the current site is conventional and copy-heavy. Strong upside from a mobile-first estimate funnel, before/after project storytelling, kitchen/bath/deck service paths, clearer service-area SEO, senior-discount positioning, and sharper “small jobs welcome” conversion messaging.
-- **Observed services:** Kitchen renovations, bathroom renovations, finishing carpentry, door/window installation, decks, stairs, arbors/privacy screens, fence installation, interior/exterior painting, remodel/renovate/repair work.
-- **Source/date added:** Iris nightly research, 2026-06-06 22:00 PT run.
+- **Website:** https://www.hutchinsoncontracting.ca/
+- **Contact signals:** Site has “Start your project” CTA and a contact path; emphasizes structured project management, site supervisors, stakeholder communication, and Greater Victoria service.
+- **Why this is a good candidate:** Local high-ticket construction/refurbishment contractor with credible service categories, but the current site could be much more conversion-focused. Strong upside from project-type landing pages, strata/developer decision-maker messaging, case-study proof, mobile-first inquiry flow, timeline/process clarity, and Greater Victoria SEO.
+- **Observed services:** Multi-family and townhouse projects, commercial home/building contracting, new residential construction, housing co-op and strata refurbishments, property upgrades, project management and site supervision.
+- **Source/date added:** Iris nightly research, 2026-06-07 22:00 PT run.
+- **Status:** New lead — not contacted.
+
+## Miller Fence & Deck
+
+- **Business:** Miller Fence & Deck
+- **Category:** Fence, gate, deck, railing, and outdoor-structure contractor
+- **Location:** Sidney / Greater Victoria / Saanich / Langford / Westshore / Vancouver Island, BC
+- **Website:** https://www.millerfence.ca/
+- **Contact signals:** Site lists phone (250-656-7529), email (info@millerfence.ca), free quote CTA, warranty positioning, 35 years in business, testimonials, and SLEEKFENCE trained-contractor signal.
+- **Why this is a good candidate:** High-ticket local exterior contractor with clear homeowner pain points (deer fencing, aging fences, security, decks), strong trust claims, and visible conversion intent, but the current site has rough copy/spacing, generic blog remnants, and underdeveloped service-path storytelling. Strong upside from a cleaner estimate funnel, fence/deck/gate landing pages, project-gallery proof, material comparison guides, wildlife/pet-security positioning, and Greater Victoria SEO.
+- **Observed services:** Cedar/vinyl/chain-link/ornamental/aluminum fencing, custom gates, SLEEKFENCE installs, decks, railings, privacy/security/wildlife exclusion fencing, fence repair/replacement.
+- **Source/date added:** Iris nightly research, 2026-06-08 22:00 PT run.
 - **Status:** New lead — not contacted.

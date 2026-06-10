@@ -80,7 +80,7 @@
 
 <!-- Built 2026-06-09 → demos/arbor-renovations/ → https://auto-sites.pages.dev/demos/arbor-renovations/ -->
 
-<!-- Built 2026-06-10 → demos/hutchinson-contracting/ → https://auto-sites.pages.dev/demos/hutchinson-contracting/ (verification pending) -->
+<!-- Built 2026-06-10 → demos/hutchinson-contracting/ → https://auto-sites.pages.dev/demos/hutchinson-contracting/ (pushed in commits 80e246d + e1ac74f; route stale at verification) -->
 
 ## Miller Fence & Deck
 

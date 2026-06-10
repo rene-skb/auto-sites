@@ -1,3 +1,27 @@
+### Hutchinson Contracting — General contracting, multi-family/townhouse, commercial, strata, and residential construction, Greater Victoria BC
+- **Date:** 2026-06-10
+- **Model:** openai-codex/gpt-5.5
+- **Agent:** Lucy
+- **Folder:** hutchinson-contracting
+- **Hero pattern:** split-image-right / construction-management operating system
+- **Typography:** Source Serif 4 + Sora
+- **Review layout:** single dominant named commercial quote with source-backed context paragraph, plus separate same-treatment accreditation logo row
+- **Visit/hours layout:** project-intake board with official office address as text only; no map link because exact Google business listing URL was not verified
+- **Stats bar style:** no-stats
+- **WHY Score:** 8.00 (Jobs 8.0 / Graham 7.9 / Ogilvy 8.1)
+- **WHAT Score:** 8.20 (Norman 8.2 / Krug 8.3 / Nielsen 8.1)
+- **HOW Score:** 8.25 (Vignelli 8.3 / Spiekermann 8.2 / Rams 8.3 / Emil 8.2)
+- **Panel average:** 8.15
+- **Self-review:** 8.6
+- **Versions built:** 6 HTML versions + final index.html
+- **Build time:** ~65 minutes
+- **Token estimate:** ~43k
+- **Key decisions:** Built Hutchinson around the real differentiator in the source material: not generic contracting, but management for projects with developers, strata councils, architects, residents, trades, permits, and turnover all moving at once. Chose the most authentic official townhome image for the hero after visual QA flagged the more polished house image as render-like, and kept stock-like official imagery captioned as general construction visuals rather than completed-project proof.
+- **Notes:** No prices, phone/email, license/insurance/WCB/warranty claims, invented review cards, generic map/address links, stats bars, fake storefront/interior claims, duplicated image slots, or image hover scaling were added. Final OG-tag, local-asset, no-parent-path, em-dash, visible source-language, no-stats, screenshot, and vision QA gates passed. Official accreditation logos are used only because they appear as assets on the official homepage.
+- **GPT 5.5 comparison:** GPT 5.5 remains materially better than the previous GPT 5.4/Sonnet Lucy runs for frontend/design execution. Quality was strong: it found a useful B2B contractor-management angle from thin/generic source copy, built a polished split hero and process-led section system quickly, and handled source discipline without inventing proof. Frontend taste was stronger than the older baseline, especially warm restrained palette, typography, section rhythm, and the intake-board close. Debugging was good but still benefited from gates: final vision QA caught visible demo/source footer language, low-contrast CTA copy, weak badge sizing, and stock/render-like hero risk; those were fixed. Recommendation: keep using GPT 5.5 for Lucy builds, with mandatory screenshot/vision QA, dependency-light source probes, visible-source-language grep, and photo-authenticity review for contractor imagery.
+- **Lessons:** Added `(1/5) [PHOTOS]` official contractor imagery can be stock/render-like, so lead with the most authentic official photo and avoid over-captioned completed-project claims unless the source names the project.
+- **Live URL:** https://auto-sites.pages.dev/demos/hutchinson-contracting/ (push/live verification pending)
+
 ### Pross Renovations Ltd — Home renovations, kitchen/bath/full-home remodels, exterior upgrades, Greater Victoria BC
 - **Date:** 2026-06-08
 - **Model:** openai-codex/gpt-5.5

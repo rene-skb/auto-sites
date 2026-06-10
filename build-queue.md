@@ -80,17 +80,7 @@
 
 <!-- Built 2026-06-09 → demos/arbor-renovations/ → https://auto-sites.pages.dev/demos/arbor-renovations/ -->
 
-## Hutchinson Contracting
-
-- **Business:** Hutchinson Contracting
-- **Category:** General contracting, multi-family/townhouse construction, commercial home and building contracting, new residential construction, housing co-op and strata refurbishments
-- **Location:** Greater Victoria, BC
-- **Website:** https://www.hutchinsoncontracting.ca/
-- **Contact signals:** Site has “Start your project” CTA and a contact path; emphasizes structured project management, site supervisors, stakeholder communication, and Greater Victoria service.
-- **Why this is a good candidate:** Local high-ticket construction/refurbishment contractor with credible service categories, but the current site could be much more conversion-focused. Strong upside from project-type landing pages, strata/developer decision-maker messaging, case-study proof, mobile-first inquiry flow, timeline/process clarity, and Greater Victoria SEO.
-- **Observed services:** Multi-family and townhouse projects, commercial home/building contracting, new residential construction, housing co-op and strata refurbishments, property upgrades, project management and site supervision.
-- **Source/date added:** Iris nightly research, 2026-06-07 22:00 PT run.
-- **Status:** New lead — not contacted.
+<!-- Built 2026-06-10 → demos/hutchinson-contracting/ → https://auto-sites.pages.dev/demos/hutchinson-contracting/ (verification pending) -->
 
 ## Miller Fence & Deck
 
@@ -102,4 +92,16 @@
 - **Why this is a good candidate:** High-ticket local exterior contractor with clear homeowner pain points (deer fencing, aging fences, security, decks), strong trust claims, and visible conversion intent, but the current site has rough copy/spacing, generic blog remnants, and underdeveloped service-path storytelling. Strong upside from a cleaner estimate funnel, fence/deck/gate landing pages, project-gallery proof, material comparison guides, wildlife/pet-security positioning, and Greater Victoria SEO.
 - **Observed services:** Cedar/vinyl/chain-link/ornamental/aluminum fencing, custom gates, SLEEKFENCE installs, decks, railings, privacy/security/wildlife exclusion fencing, fence repair/replacement.
 - **Source/date added:** Iris nightly research, 2026-06-08 22:00 PT run.
+- **Status:** New lead — not contacted.
+
+## Ace Tile Pro
+
+- **Business:** Ace Tile Pro
+- **Category:** Tile installation, bathroom renovations, waterproofing, heated floors, large-format tile, backsplash, fireplace tiling
+- **Location:** Victoria / Greater Victoria, BC
+- **Website:** https://ace-tilepro.com/
+- **Contact signals:** Site emphasizes free online and onsite estimates, same-day response, recent Google reviews, local family-run positioning, transparent quotes, and Greater Victoria service coverage.
+- **Why this is a good candidate:** Local high-intent renovation/tile contractor with premium homeowner services and strong trust signals, but the current site could convert better with a clearer estimate funnel, project-gallery proof, bathroom-renovation landing page, waterproofing/process storytelling, service-area SEO, and more polished mobile-first visual hierarchy.
+- **Observed services:** Shower and bathroom tiling, bathroom renovations, kitchen backsplashes, floor tile, large-format tile, mosaic/decorative tile, curbless/barrier-free showers, fireplace tiling, waterproofing membranes, heated-floor installation.
+- **Source/date added:** Iris nightly research, 2026-06-09 22:00 PT run.
 - **Status:** New lead — not contacted.

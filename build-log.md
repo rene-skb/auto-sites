@@ -1,3 +1,27 @@
+### Miller Fence & Deck — Fence, gate, deck, railing, and outdoor-structure contractor, Greater Victoria / Vancouver Island BC
+- **Date:** 2026-06-11
+- **Model:** openai-codex/gpt-5.5
+- **Agent:** Lucy
+- **Folder:** miller-fence-and-deck
+- **Hero pattern:** giant-display-type / outdoor-boundary decision hero with project-photo belt
+- **Typography:** Fraunces + Inter
+- **Review layout:** four same-treatment customer quote cards with first-name + last-initial attributions from official homepage testimonials, plus separate SLEEKFENCE trained-contractor note
+- **Visit/hours layout:** phone/email-first estimate close with contact-form budget buckets and exact Google listing link from the homepage; no street address because official extracted pages did not verify one
+- **Stats bar style:** no-stats
+- **WHY Score:** 8.07 (Jobs 8.0 / Graham 8.0 / Ogilvy 8.2)
+- **WHAT Score:** 8.20 (Norman 8.2 / Krug 8.3 / Nielsen 8.1)
+- **HOW Score:** 8.20 (Vignelli 8.2 / Spiekermann 8.1 / Rams 8.3 / Emil 8.2)
+- **Panel average:** 8.16
+- **Self-review:** 8.7
+- **Versions built:** 6 HTML versions + final index.html
+- **Build time:** ~70 minutes
+- **Token estimate:** ~34k
+- **Key decisions:** Built Miller around the real homeowner decision layer: deer, pets, privacy, security, aging fences, deck structure, drainage, gates, and railings. Used only official Miller project imagery, led with a type-heavy hero to avoid repeating the last three contractor patterns, and organized services by customer job rather than a raw material catalog.
+- **Notes:** No prices beyond sourced contact-form budget buckets, no invented address, no generic address link, no fake storefront/interior/exterior images, no generated images, no stats bars, no duplicate images, no image hover scaling, and no visible source/process language. Final screenshot and vision QA passed after changing motion so content is visible by default instead of hidden before scroll intersection.
+- **GPT 5.5 comparison:** GPT 5.5 remains materially better than the previous GPT 5.4/Sonnet Lucy runs for this frontend/design execution task. Quality was high: it found a strong outdoor-boundary positioning angle from a messy contractor site and produced a coherent one-page decision flow. Frontend taste was stronger than the older GPT 5.4/Sonnet baseline in typography, restrained color, section rhythm, and contractor-specific CTA structure, though it still needed visual QA to catch the reveal-motion/screenshot blanking problem. Debugging was good once the gate exposed the issue: the final removed hidden reveal states, tightened hero spacing, removed sticky mobile overlap, and reran screenshot/vision QA cleanly. Recommendation: keep GPT 5.5 for Lucy builds, but keep mandatory screenshot/vision QA and keep motion enhancement non-blocking, never content-hiding.
+- **Lessons:** Added a real correction to `memory/lessons.md`: do not assume Python third-party packages during Lucy builds. This run also reinforces a motion lesson: scroll reveal should not hide core content by default because full-page QA and no-intersection states can look broken.
+- **Live URL:** https://auto-sites.pages.dev/demos/miller-fence-and-deck/
+
 ### Hutchinson Contracting — General contracting, multi-family/townhouse, commercial, strata, and residential construction, Greater Victoria BC
 - **Date:** 2026-06-10
 - **Model:** openai-codex/gpt-5.5

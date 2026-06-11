@@ -82,17 +82,7 @@
 
 <!-- Built 2026-06-10 → demos/hutchinson-contracting/ → https://auto-sites.pages.dev/demos/hutchinson-contracting/ (pushed in commits 80e246d + e1ac74f; route stale at verification) -->
 
-## Miller Fence & Deck
-
-- **Business:** Miller Fence & Deck
-- **Category:** Fence, gate, deck, railing, and outdoor-structure contractor
-- **Location:** Sidney / Greater Victoria / Saanich / Langford / Westshore / Vancouver Island, BC
-- **Website:** https://www.millerfence.ca/
-- **Contact signals:** Site lists phone (250-656-7529), email (info@millerfence.ca), free quote CTA, warranty positioning, 35 years in business, testimonials, and SLEEKFENCE trained-contractor signal.
-- **Why this is a good candidate:** High-ticket local exterior contractor with clear homeowner pain points (deer fencing, aging fences, security, decks), strong trust claims, and visible conversion intent, but the current site has rough copy/spacing, generic blog remnants, and underdeveloped service-path storytelling. Strong upside from a cleaner estimate funnel, fence/deck/gate landing pages, project-gallery proof, material comparison guides, wildlife/pet-security positioning, and Greater Victoria SEO.
-- **Observed services:** Cedar/vinyl/chain-link/ornamental/aluminum fencing, custom gates, SLEEKFENCE installs, decks, railings, privacy/security/wildlife exclusion fencing, fence repair/replacement.
-- **Source/date added:** Iris nightly research, 2026-06-08 22:00 PT run.
-- **Status:** New lead — not contacted.
+<!-- Built 2026-06-11 → demos/miller-fence-and-deck/ → https://auto-sites.pages.dev/demos/miller-fence-and-deck/ -->
 
 ## Ace Tile Pro
 
@@ -104,4 +94,16 @@
 - **Why this is a good candidate:** Local high-intent renovation/tile contractor with premium homeowner services and strong trust signals, but the current site could convert better with a clearer estimate funnel, project-gallery proof, bathroom-renovation landing page, waterproofing/process storytelling, service-area SEO, and more polished mobile-first visual hierarchy.
 - **Observed services:** Shower and bathroom tiling, bathroom renovations, kitchen backsplashes, floor tile, large-format tile, mosaic/decorative tile, curbless/barrier-free showers, fireplace tiling, waterproofing membranes, heated-floor installation.
 - **Source/date added:** Iris nightly research, 2026-06-09 22:00 PT run.
+- **Status:** New lead — not contacted.
+
+## Wicks Electric
+
+- **Business:** Wicks Electric
+- **Category:** Residential, commercial, and industrial electrical contractor
+- **Location:** Vancouver / Lower Mainland / Vancouver Island, BC
+- **Website:** https://wickselectric.ca/
+- **Contact signals:** Site has a prominent booking CTA, phone `(604) 765-8439`, email `info@wickselectric.ca` from search/contact snippets, Vancouver address `1990 Pandora St`, 4.9 rating based on 249 reviews, Google/Yelp review links, and recent testimonial/project-gallery content.
+- **Why this is a good candidate:** High-intent local trades business with emergency/service-call, renovation, commercial, and industrial demand. The site has strong proof but messy duplicated CTAs/images, weak service-path hierarchy, and a generic “trusted since 2007” story that could convert better with clearer residential/commercial funnels, emergency repair landing page, EV/panel/renovation SEO, project proof, and quote/booking flow polish.
+- **Observed services:** Electrical service calls and small jobs, residential electrical, commercial electrical, industrial electrical, new construction, emergency fixes, fixture installs, exterior/GFCI work, project electrical installs.
+- **Source/date added:** Iris nightly research, 2026-06-10 22:00 PT run.
 - **Status:** New lead — not contacted.

@@ -138,3 +138,6 @@ Universal Landscaping v0/v1 included lines like “The old site lists…” and 
   - debugging/layout repair
   - actual frontend taste
 - Current assumption: Anthropic/Sonnet models are tuned better for frontend UI and visual composition. Keep building design lessons for GPT-5.5, but do not expect model routing alone to close the taste gap yet.
+
+### [MOTION] Scroll reveal must enhance visible content, not hide the page by default.
+Miller Fence & Deck initially used opacity-0 reveal states until IntersectionObserver marked each element visible. Full-page screenshot QA captured offscreen sections before intersection and made the page look blank/broken, even though the design content existed. Fix: keep content visible by default, use motion as non-blocking enhancement, and include no-script/reduced-motion safety. — Miller Fence & Deck 2026-06-11

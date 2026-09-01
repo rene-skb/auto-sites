@@ -216,10 +216,6 @@ nav {
 .hero-visual-meta a:hover {
   color: var(--accent);
 }
-.naka-caption {
-  font-size: 12px; color: var(--mid); margin-top: 12px;
-  letter-spacing: 0.02em;
-}
 .hero-headline {
   font-family: var(--serif); font-size: clamp(44px, 5.8vw, 76px);
   font-weight: 400; line-height: 1.08; letter-spacing: -0.02em;
@@ -573,8 +569,8 @@ body.portfolio-lightbox-open { overflow: hidden; }
 
 .naka-feature {
   display: grid; grid-template-columns: 220px 1fr; gap: 48px;
-  align-items: start; margin-bottom: 40px;
-  padding-bottom: 0; border-bottom: none;
+  align-items: start; margin-bottom: 48px;
+  padding-bottom: 48px; border-bottom: 1px solid var(--faint);
 }
 .naka-tag {
   font-size: 12px; font-weight: 700; letter-spacing: 0.12em;
@@ -592,82 +588,109 @@ body.portfolio-lightbox-open { overflow: hidden; }
   transition: color 200ms ease;
 }
 .naka-body { font-size: 16px; color: var(--mid); line-height: 1.7; max-width: 600px; transition: color 200ms ease; }
-.naka-body p { margin-bottom: 16px; }
+.naka-body p { margin-bottom: 0; }
 .naka-copy-link:hover .naka-title,
 .naka-copy-link:hover .naka-body {
   color: var(--accent);
 }
-.naka-previews {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
-  margin-top: 24px;
-}
-.naka-preview-wrap {
-  background: none; border: none; padding: 0;
-}
-.naka-preview-link {
-  display: block;
-  color: inherit;
-  text-decoration: none;
-  transition: transform 120ms cubic-bezier(0.22, 1, 0.36, 1), opacity 200ms ease;
-}
-.naka-preview-link:hover { opacity: 0.9; }
-.naka-preview-link:active { transform: scale(0.98); }
-.naka-preview-wrap img { width: 100%; display: block; aspect-ratio: 4/3; object-fit: cover; object-position: top center; }
-
-.product-list { display: flex; flex-direction: column; }
-.product-entry { display: flex; flex-direction: column; }
-.product-item {
-  display: grid; grid-template-columns: 220px 1fr;
-  gap: 40px; padding: 28px 0; border-top: 1px solid var(--faint);
-  color: inherit; text-decoration: none;
-  transition: opacity 200ms ease;
-}
-.product-tag {
-  font-size: 12px; font-weight: 700; letter-spacing: 0.12em;
-  text-transform: uppercase; color: var(--accent);
-  transition: color 200ms ease;
-}
-.product-title {
-  font-family: var(--serif); font-size: 24px; font-weight: 400;
-  margin-bottom: 8px; line-height: 1.2;
-  transition: color 200ms ease;
-}
-.product-body {
-  font-size: 15px; color: var(--mid); line-height: 1.7; max-width: 560px;
-  transition: color 200ms ease;
-}
-.product-item:hover .product-tag,
-.product-item:hover .product-title,
-.product-item:hover .product-body {
-  color: var(--accent);
-}
-.product-inline-preview {
+.product-grid {
   display: grid;
-  grid-template-columns: 220px 1fr;
-  gap: 40px;
-  margin-top: -4px;
-  padding: 0 0 28px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 28px;
+  align-items: stretch;
 }
-.product-inline-preview-media {
-  width: calc((100% - 36px) / 4);
-  max-width: none;
+.product-card {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
 }
-.product-preview-link {
+.product-card-media {
   display: block;
   color: inherit;
   text-decoration: none;
   background: #fff;
   box-shadow: 0 0 0 1px rgba(26, 26, 24, 0.06) inset;
+  margin-bottom: 18px;
+  overflow: hidden;
   transition: transform 120ms cubic-bezier(0.22, 1, 0.36, 1), opacity 200ms ease;
 }
-.product-preview-link:hover { opacity: 0.9; }
-.product-preview-link:active { transform: scale(0.98); }
-.product-preview-link img {
+.product-card-media:hover { opacity: 0.9; }
+.product-card-media:active { transform: scale(0.98); }
+.product-card-media > img {
   width: 100%;
   display: block;
   aspect-ratio: 4/3;
   object-fit: cover;
   object-position: top center;
+}
+.product-card-media--mosaic {
+  aspect-ratio: 4/3;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 2px;
+  background: var(--surface);
+}
+.product-card-media--mosaic img {
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  object-fit: cover;
+  object-position: top center;
+}
+.product-card-tag {
+  min-height: 32px;
+  margin-bottom: 8px;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.product-card-title {
+  font-family: var(--serif);
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+.product-card-title a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 200ms ease;
+}
+.product-card-title a:hover { color: var(--accent); }
+.product-card-body {
+  flex: 1;
+  font-size: 14px;
+  color: var(--mid);
+  line-height: 1.65;
+}
+.product-card-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  margin-top: 16px;
+}
+.product-card-links--stacked {
+  flex-direction: column;
+  align-items: flex-start;
+}
+.product-card-links a {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+  text-decoration: none;
+  transition: opacity 200ms ease;
+}
+.product-card-links a:hover { opacity: 0.65; }
+
+@media (max-width: 980px) {
+  .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px 24px; }
 }
 
 /* ABOUT */
@@ -750,8 +773,9 @@ footer span:last-child {
 .case-item.reveal:nth-child(2) { transition-delay: 60ms; }
 .case-item.reveal:nth-child(3) { transition-delay: 120ms; }
 .case-item.reveal:nth-child(4) { transition-delay: 180ms; }
-.product-item.reveal:nth-child(2) { transition-delay: 60ms; }
-.product-item.reveal:nth-child(3) { transition-delay: 120ms; }
+.product-card.reveal:nth-child(2) { transition-delay: 60ms; }
+.product-card.reveal:nth-child(3) { transition-delay: 120ms; }
+.product-card.reveal:nth-child(4) { transition-delay: 180ms; }
 
 /* MOBILE */
 @media (max-width: 768px) {
@@ -808,10 +832,8 @@ footer span:last-child {
   .inline-cta { flex-direction: column; align-items: flex-start; }
   .current-inner { padding: 0 20px; }
   .naka-feature { grid-template-columns: 1fr; gap: 12px; }
-  .naka-previews { grid-template-columns: 1fr 1fr; }
-  .product-item { grid-template-columns: 1fr; gap: 10px; }
-  .product-inline-preview { grid-template-columns: 1fr; gap: 10px; margin-top: 0; padding: 0 0 24px; }
-  .product-inline-preview-media { width: 100%; max-width: none; }
+  .product-grid { grid-template-columns: 1fr; gap: 40px; }
+  .product-card-tag { min-height: 0; }
   .about-grid { grid-template-columns: 1fr; gap: 40px; }
   .contact-section { padding: 80px 20px; }
   footer { flex-direction: column; gap: 8px; padding: 20px; }
@@ -1078,66 +1100,56 @@ footer span:last-child {
         <a class="naka-copy-link" href="https://nakamotodesign.co" target="_blank" rel="noreferrer">
           <h3 class="naka-title">Nakamoto Design Co.</h3>
           <div class="naka-body">
-            <p>Nakamoto is my AI-native design studio. I designed and direct a multi-agent system that finds local businesses without websites, researches them, pulls real signals from Instagram and reviews, writes the positioning, and ships polished live demos. After 230+ sites, the work compounds: every prompt, review, and correction improves the next build.</p>
+            <p>Nakamoto is my AI-native design studio for building products, tools, and systems with AI. The work ranges from a multi-agent website pipeline to small utilities built from problems I kept running into.</p>
           </div>
         </a>
-        <div class="naka-previews">
-          <div class="naka-preview-wrap"><a class="naka-preview-link" href="https://kid-sister-ice-cream.nakamotodesign.co/" target="_blank" rel="noreferrer"><img src="assets/kid-sister-ice-cream-preview.png" alt="Kid Sister Ice Cream live site preview"></a></div>
-          <div class="naka-preview-wrap"><a class="naka-preview-link" href="https://working-culture.nakamotodesign.co/" target="_blank" rel="noreferrer"><img src="assets/working-culture-preview.png" alt="Working Culture live site preview"></a></div>
-          <div class="naka-preview-wrap"><a class="naka-preview-link" href="https://33-acres-brewing.nakamotodesign.co/" target="_blank" rel="noreferrer"><img src="assets/33-acres-brewing-preview.png" alt="33 Acres Brewing live site preview"></a></div>
-          <div class="naka-preview-wrap"><a class="naka-preview-link" href="https://auto-sites.pages.dev/demos/kreative-ink-lucy/" target="_blank" rel="noreferrer"><img src="assets/kreative-ink-v8-preview.png" alt="Kreative Ink live site preview"></a></div>
-        </div>
-        <p class="naka-caption">Recent demo sites built by the studio</p>
       </div>
     </div>
 
-    <!-- Products -->
-    <div class="product-list">
-      <div class="product-entry">
-        <a class="product-item reveal" href="https://clawprint.dev" target="_blank" rel="noreferrer">
-          <p class="product-tag">OpenClaw &middot; Agent calibration</p>
-          <div>
-            <h3 class="product-title">Clawprint</h3>
-            <p class="product-body">Clawprint is a Deep Self assessment and OpenClaw calibration kit. It surfaces how you think, what drives you, and when your agent should push or listen, then imprints that profile as behavior rules so the agent works with your personality instead of around it.</p>
-          </div>
+    <!-- Studio projects -->
+    <div class="product-grid">
+      <article class="product-card reveal">
+        <a class="product-card-media product-card-media--mosaic" href="https://auto-sites.pages.dev/" target="_blank" rel="noreferrer" aria-label="View Auto-Sites">
+          <img src="assets/kid-sister-ice-cream-preview.png" alt="" loading="lazy" decoding="async">
+          <img src="assets/working-culture-preview.png" alt="" loading="lazy" decoding="async">
+          <img src="assets/33-acres-brewing-preview.png" alt="" loading="lazy" decoding="async">
+          <img src="assets/kreative-ink-v8-preview.png" alt="" loading="lazy" decoding="async">
         </a>
-        <div class="product-inline-preview reveal">
-          <div></div>
-          <div class="product-inline-preview-media">
-            <a class="product-preview-link" href="https://clawprint.dev" target="_blank" rel="noreferrer"><img src="assets/clawprint-preview.jpg" alt="Clawprint site preview"></a>
-          </div>
+        <p class="product-card-tag">Multi-agent system &middot; 230+ demos</p>
+        <h3 class="product-card-title"><a href="https://auto-sites.pages.dev/" target="_blank" rel="noreferrer">Auto-Sites</a></h3>
+        <p class="product-card-body">An agent pipeline that researches local businesses, writes the positioning, builds the site, and critiques the result. Each review feeds the next run.</p>
+        <div class="product-card-links"><a href="https://auto-sites.pages.dev/" target="_blank" rel="noreferrer">View project &nearr;</a></div>
+      </article>
+
+      <article class="product-card reveal">
+        <a class="product-card-media" href="https://clawprint.dev" target="_blank" rel="noreferrer"><img src="assets/clawprint-preview.jpg" alt="Clawprint site preview" loading="lazy" decoding="async"></a>
+        <p class="product-card-tag">Agent calibration &middot; OpenClaw</p>
+        <h3 class="product-card-title"><a href="https://clawprint.dev" target="_blank" rel="noreferrer">Clawprint</a></h3>
+        <p class="product-card-body">A personality assessment and calibration kit that turns how someone thinks and works into practical behavior rules for their agent.</p>
+        <div class="product-card-links"><a href="https://clawprint.dev" target="_blank" rel="noreferrer">View project &nearr;</a></div>
+      </article>
+
+      <article class="product-card reveal">
+        <a class="product-card-media" href="https://www.scottkbell.com/loopin"><img src="assets/loopin-preview.jpg" alt="LoopIn site preview" loading="lazy" decoding="async"></a>
+        <p class="product-card-tag">Chrome extension &middot; MCP bridge</p>
+        <h3 class="product-card-title"><a href="https://www.scottkbell.com/loopin">LoopIn</a></h3>
+        <p class="product-card-body">Send live browser context to a coding agent. Click an element and LoopIn captures the DOM, styles, and screenshot so the agent knows exactly what you mean.</p>
+        <div class="product-card-links product-card-links--stacked">
+          <a href="https://www.scottkbell.com/loopin">View project</a>
+          <a href="https://chromewebstore.google.com/detail/loopin/igphcclkppjopmdgjlnbopfdikfijndm" target="_blank" rel="noreferrer">Chrome Web Store &nearr;</a>
         </div>
-      </div>
-      <div class="product-entry">
-        <a class="product-item reveal" href="https://www.scottkbell.com/loopin">
-          <p class="product-tag">Design-to-code &middot; Chrome extension</p>
-          <div>
-            <h3 class="product-title">LoopIn</h3>
-            <p class="product-body">Design-to-code bridge for Claude Code. Click any UI element, and LoopIn captures the DOM, computed styles, and a screenshot, then sends the exact context to the agent. Less guessing. Better fixes.</p>
-          </div>
-        </a>
-        <div class="product-inline-preview reveal">
-          <div></div>
-          <div class="product-inline-preview-media">
-            <a class="product-preview-link" href="https://www.scottkbell.com/loopin"><img src="assets/loopin-preview.jpg" alt="LoopIn site preview"></a>
-          </div>
+      </article>
+
+      <article class="product-card reveal">
+        <a class="product-card-media" href="https://auto-sites.pages.dev/demos/mixid/" target="_blank" rel="noreferrer"><img src="assets/mixid-preview.png" alt="Mix ID site preview" loading="lazy" decoding="async"></a>
+        <p class="product-card-tag">Open source &middot; npm</p>
+        <h3 class="product-card-title"><a href="https://auto-sites.pages.dev/demos/mixid/" target="_blank" rel="noreferrer">Mix ID</a></h3>
+        <p class="product-card-body">A tracklist generator for DJ mixes. Paste a Mixcloud, SoundCloud, or YouTube URL and get timestamped IDs.</p>
+        <div class="product-card-links product-card-links--stacked">
+          <a href="https://auto-sites.pages.dev/demos/mixid/" target="_blank" rel="noreferrer">View project</a>
+          <a href="https://www.npmjs.com/package/mix-id" target="_blank" rel="noreferrer">View on npm &nearr;</a>
         </div>
-      </div>
-      <div class="product-entry">
-        <a class="product-item reveal" href="https://auto-sites.pages.dev/demos/mixid/" target="_blank" rel="noreferrer">
-          <p class="product-tag">Open Source &middot; npm</p>
-          <div>
-            <h3 class="product-title">Mix ID</h3>
-            <p class="product-body">Tracklist generator for DJ mixes. Paste a Mixcloud, SoundCloud, or YouTube URL and get timestamped IDs. It started as a selfish radio-show tool, then turned into an npm package.</p>
-          </div>
-        </a>
-        <div class="product-inline-preview reveal">
-          <div></div>
-          <div class="product-inline-preview-media">
-            <a class="product-preview-link" href="https://auto-sites.pages.dev/demos/mixid/" target="_blank" rel="noreferrer"><img src="assets/mixid-preview.png" alt="Mix ID site preview"></a>
-          </div>
-        </div>
-      </div>
+      </article>
     </div>
   </div>
 </div>

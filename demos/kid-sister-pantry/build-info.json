@@ -1,0 +1,7 @@
+{
+  "project": "kid-sister-storefront",
+  "sourceCommit": "c23680830ed6509d22f1eb727623be1800a369c9",
+  "mode": "preview",
+  "payments": false,
+  "orders": false
+}
